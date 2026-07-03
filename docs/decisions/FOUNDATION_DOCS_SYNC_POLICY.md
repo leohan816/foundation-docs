@@ -14,6 +14,15 @@
 7. **소스코드/DB/secret/env/PII/고객 원문 로그/서버 접속정보는 절대 복사 금지.**
 8. 완료 보고에 **원본 경로 · mirror 경로 · foundation-docs commit hash · push 결과**를 포함한다.
 
+## ★foundation-docs = GPT observation repo (상태표기 후 무조건 mirror·2026-07-03 addendum)
+foundation-docs는 **production source of truth가 아니라 GPT가 읽고 판단하기 위한 observation repo**다. 문서가 push되지 않으면 GPT가 원문을 못 읽고 Leo가 수동 복사해야 한다. 따라서:
+- 문서가 생성/수정되면 **내용이 완전히 맞지 않아도 반드시 mirror·push**한다: 틀린 설계·초안·PATCH_REQUIRED·실패 보고서·검증 실패 결과도 push.
+- **단 문서 상단 또는 파일명에 상태를 명시**한다: `DRAFT` · `REVIEW_REQUIRED` · `PATCH_REQUIRED` · `FAILED` · `STALE` · `SUPERSEDED` · `WRONG_PLAN` · `CLOSED` · `PASS_WITH_WATCH`.
+- **repo 구분**:
+  - **source project repo**: 정확하고 검증된 것만 commit/push.
+  - **foundation-docs repo**: 문서가 생기면 *민감정보 스캔 후* 상태가 DRAFT/PATCH_REQUIRED/FAILED여도 **무조건 mirror/push**.
+- **절대 예외(민감정보 → foundation-docs에도 push 금지·BLOCKED 보고)**: API key/secret/token · .env/credential · DB/memory.db/sqlite · 고객 PII/원문 상담 로그 · 결제/주소/전화/email · 서버 접속정보 · private key/pem · 소스코드 전체.
+
 ## 분류 규칙
 | 문서 | 대상 |
 |---|---|
@@ -43,4 +52,5 @@ cd ~/Project/foundation-docs
 ./scripts/sync-docs.sh             # 실제 복사(copied/skipped/blocked)
 git add -A && git commit -m "docs: sync <scope>" && git push
 ```
-★`sync-docs.sh`는 **문서 미러 전용**(소스코드 전체 mirror 도구 아님). 대량 미검토 문서 일괄 push 전에는 사람이 대상 목록을 검토한다.
+★`sync-docs.sh`는 **문서 미러 전용**(소스코드 전체 mirror 도구 아님).
+★**자기 문서**는 상태(DRAFT/PATCH_REQUIRED/FAILED 등) 무관 **무조건 mirror/push**(민감정보 스캔 통과 시·`git add -A` 금지·explicit path만). *다른 에이전트의 대량 미검토 문서*를 대신 일괄 push할 때만 사람이 대상 목록을 검토한다.
