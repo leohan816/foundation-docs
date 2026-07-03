@@ -35,7 +35,7 @@ scripts/
 ```
 ./scripts/sync-docs.sh --dry-run   # 복사 대상/차단 목록만 출력
 ./scripts/sync-docs.sh             # 실제 복사(copied/skipped/blocked 요약)
-# 이후 이 repo에서 git add/commit/push
+# 이후 이 repo에서 git add <자기 mirror 파일만> && commit && push (★git add -A 금지)
 ```
 
 ## 보안

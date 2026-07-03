@@ -37,6 +37,7 @@ SECRET_CONTENT_RE='(BEGIN (RSA|OPENSSH|EC|PRIVATE) KEY|sk-[A-Za-z0-9]{20,}|AKIA[
 classify() {  # $1=filename → 대상 상대폴더
   local n; n="$(basename "$1")"
   case "$n" in
+    FOUNDATION_DOCS_SYNC_POLICY.md) echo "docs/decisions" ;;   # 정책 문서 정본 위치(중복 방지)
     FABLE5_*)                 echo "docs/reports/fable5" ;;
     RECOVERY_*|CANONICAL_*)   echo "docs/reports/recovery" ;;
     CONTROL_*)                echo "docs/reports/control" ;;
@@ -101,4 +102,4 @@ if [ ${#BLOCKED_LIST[@]} -gt 0 ]; then
   echo "-- BLOCKED (복사 안 함) --"; printf '   %s\n' "${BLOCKED_LIST[@]}"
 fi
 echo ""
-echo "다음: cd $DOCS_ROOT && git add -A && git commit && git push"
+echo "다음: cd $DOCS_ROOT && git add <자기가 미러한 파일들만> && git commit && git push   # ★git add -A 금지"
