@@ -1,0 +1,1323 @@
+{
+  "title": "SIASIU 실제 엔진 → Foundation Common Brain 승격용 Source Package",
+  "date": "2026-06-30",
+  "status": "read-only audit 산출물",
+  "intended_use": "foundation-control 세션 인계용 source package",
+  "key_finding": "실 엔진 거의 전부 foundation_status=absent. Foundation엔 계약·shadow·가드추상·LMR·classifier 1개만. 실 검색/작문/추천/메모리 로직은 미이식. 예외: answer_type_classifier.classify=migrated_real, safety_gate/external_guard=rebuilt_abstraction_only.",
+  "two_paths": {
+    "path_A_live": {
+      "entry": "server.py /api/chat → brain.chat()",
+      "search": "brain.kb_search → ssbrain.engine.Engine.search",
+      "safety": "brain.guardrail_check/verify_output",
+      "called_by": "실제 앱",
+      "foundation_wrapped": false
+    },
+    "path_B_answer_face": {
+      "entry": "ssbrain/answer.py answer()",
+      "safety": "answer.py safety_gate + disclosure_policy.external_guard",
+      "evidence": "evidence_mode + answer_provenance.compose",
+      "called_by": "ssbrain/demo.py·tests",
+      "foundation_wrapped": true,
+      "wrapper": "foundation_brain_answer_adapter"
+    },
+    "mismatch_note": "Foundation shadow는 경로 B를 감쌌으나 실제 사용자는 경로 A 사용 → '이식했는데 라이브 그대로'의 근본 원인"
+  },
+  "inventory": {
+    "brain_orchestrator": {
+      "path_notes": "라이브 /api/chat → brain.chat() 오케스트레이터. brain.py 58함수. 전부 foundation_status=absent.",
+      "components": [
+        {
+          "name": "app/brain.py:chat",
+          "role": "라이브 상담 오케스트레이터",
+          "inputs": "user_id,message,name,system_lang",
+          "outputs": "{reply,memory,used_deepseek}",
+          "dependencies": [
+            "guardrail_check",
+            "kb_search",
+            "_system_prompt",
+            "memory_context",
+            "recent_episodes",
+            "_llm",
+            "verify_output",
+            "extract",
+            "upsert_fact",
+            "add_episode"
+          ],
+          "foundation_status": "absent",
+          "foundation_counterpart": "foundation_brain_runtime_pipeline(추상 계약, 실 brain 아님)",
+          "siasiu_specific": "partial",
+          "siasiu_specific_reason": "오케스트레이션 골격은 일반화 가능, 호출 부품들이 SIASIU 결합",
+          "generalize_note": "파이프라인 골격=common, 주입 부품 분리",
+          "priority": "P0",
+          "owner": "both",
+          "test_cases": [
+            "빈 메모리+'내 피부타입?'→환각 아닌 되묻기",
+            "가드레일 차단 시 used_deepseek=False",
+            "근거 있음→제시/없음→보류"
+          ]
+        },
+        {
+          "name": "app/brain.py:guardrail_classify+guardrail_check",
+          "role": "LLM 의미 분류(domain/risk)·차단(default-deny)",
+          "inputs": "message",
+          "outputs": "{domain:on|off,risk:none|injection|medical|finance|politics|payment|emergency|minor|pii}",
+          "dependencies": [
+            "_llm"
+          ],
+          "foundation_status": "absent",
+          "foundation_counterpart": "foundation_trust_core(가드 추상, 실 분류기 아님)",
+          "siasiu_specific": "partial",
+          "siasiu_specific_reason": "domain 목록(피부/기능의학/퍼스널컬러)은 SIASIU, 분류 골격은 일반",
+          "generalize_note": "LLM 의미분류 framework=common, domain/risk 정책=SIASIU 주입",
+          "priority": "P0",
+          "owner": "foundation-control",
+          "test_cases": [
+            "injection/medical/payment/politics 분류",
+            "자외선·기능의학 on-domain 통과",
+            "default-deny"
+          ]
+        },
+        {
+          "name": "app/brain.py:kb_search→_kb_engine",
+          "role": "retrieval 진입(ssbrain engine 호출)",
+          "inputs": "query,user_id,k",
+          "outputs": "근거 문자열[]",
+          "dependencies": [
+            "ssbrain.engine.Engine",
+            "avoid_atoms"
+          ],
+          "foundation_status": "absent",
+          "foundation_counterpart": "foundation_retrieval_hit_contract(계약만)",
+          "siasiu_specific": "yes",
+          "siasiu_specific_reason": "회피필터·atom 결합",
+          "generalize_note": "검색 진입 골격=common, 어휘=SIASIU",
+          "priority": "P0",
+          "owner": "both",
+          "test_cases": [
+            "회피성분 배제",
+            "근거 반환 형식"
+          ]
+        },
+        {
+          "name": "app/brain.py:_system_prompt+_output_lang+_localize",
+          "role": "composer(페르소나·그라운딩·언어 현지화)",
+          "inputs": "user_id,system_lang",
+          "outputs": "system prompt 문자열",
+          "dependencies": [
+            "PERSONA",
+            "TALK_STYLE",
+            "memory_context"
+          ],
+          "foundation_status": "absent",
+          "foundation_counterpart": "none",
+          "siasiu_specific": "yes",
+          "siasiu_specific_reason": "존댓말 절대·한국 드라마 톤·선택적 그라운딩 문구",
+          "generalize_note": "composer 계약(LLM=표현만)=common, PERSONA/언어=SIASIU 주입",
+          "priority": "P1",
+          "owner": "both",
+          "test_cases": [
+            "LLM 교체해도 판단 불변",
+            "존댓말 유지"
+          ]
+        },
+        {
+          "name": "app/brain.py:_llm+_deepseek+_log_usage",
+          "role": "LLM 라우터(task→tier→provider)·생성·사용량 로깅",
+          "inputs": "task,messages,temperature",
+          "outputs": "text",
+          "dependencies": [
+            "DeepSeek API",
+            "LLM_TASK_TIER",
+            "LLM_TIER_MODEL"
+          ],
+          "foundation_status": "absent",
+          "foundation_counterpart": "none",
+          "siasiu_specific": "no",
+          "siasiu_specific_reason": "프로바이더 라우팅은 일반",
+          "generalize_note": "LLM Router framework=common(task 매핑만 주입)",
+          "priority": "P1",
+          "owner": "foundation-control",
+          "test_cases": [
+            "task→tier 라우팅",
+            "사용량 로깅",
+            "provider 스위칭"
+          ]
+        },
+        {
+          "name": "app/brain.py:verify_output",
+          "role": "출력검증(internal/efficacy/avoid)·fail-closed",
+          "inputs": "reply,avoid",
+          "outputs": "{ok,issue}",
+          "dependencies": [
+            "_llm"
+          ],
+          "foundation_status": "absent",
+          "foundation_counterpart": "foundation_safety_guard_layer(추상)",
+          "siasiu_specific": "partial",
+          "siasiu_specific_reason": "검수 골격 일반, 회피목록 SIASIU",
+          "generalize_note": "LLM-judge 검수 framework=common(+fabrication 항목 신설), 회피=SIASIU",
+          "priority": "P0",
+          "owner": "foundation-control",
+          "test_cases": [
+            "internal/efficacy/avoid 차단",
+            "★fabrication(저장사실 없는 기억 단정) 차단",
+            "fail-closed(파싱실패=보류)"
+          ]
+        },
+        {
+          "name": "app/brain.py:memory_context+active_facts+recent_episodes+add_episode",
+          "role": "기억 주입·단기/장기",
+          "inputs": "user_id",
+          "outputs": "facts/episodes",
+          "dependencies": [
+            "DB(memory.db)"
+          ],
+          "foundation_status": "absent",
+          "foundation_counterpart": "memory_trust_gate_m6/foundation_customer_decision_memory(일부 이식·정책만)",
+          "siasiu_specific": "partial",
+          "siasiu_specific_reason": "구조 일반, CANON 라벨 SIASIU",
+          "generalize_note": "Memory Trust=LMR로 일부 이식됨, CANON 주입 인터페이스 필요",
+          "priority": "P0",
+          "owner": "both",
+          "test_cases": [
+            "facts 주입",
+            "빈 메모리 처리"
+          ]
+        },
+        {
+          "name": "app/brain.py:extract+_deepseek_extract+upsert_fact+_norm_value",
+          "role": "사실 추출·정규화·저장(supersede)",
+          "inputs": "message,use_deepseek",
+          "outputs": "facts→DB",
+          "dependencies": [
+            "_llm",
+            "CANON",
+            "SINGLE",
+            "SAFETY_TYPES"
+          ],
+          "foundation_status": "absent",
+          "foundation_counterpart": "learning_memory_state(일부)",
+          "siasiu_specific": "partial",
+          "siasiu_specific_reason": "추출 골격 일반, CANON 타입 SIASIU",
+          "generalize_note": "추출/정규화 framework=common, 타입 레지스트리=SIASIU 주입",
+          "priority": "P0",
+          "owner": "both",
+          "test_cases": [
+            "SINGLE supersede",
+            "SAFETY 즉시 active",
+            "키없음→빈배열(휴리스틱 금지)"
+          ]
+        },
+        {
+          "name": "app/brain.py:CANON+SAFETY_TYPES+SINGLE",
+          "role": "사실타입 레지스트리(데이터)",
+          "inputs": "-",
+          "outputs": "-",
+          "dependencies": [],
+          "foundation_status": "absent",
+          "foundation_counterpart": "none",
+          "siasiu_specific": "yes",
+          "siasiu_specific_reason": "K-뷰티 사실타입·임신/회피 라벨",
+          "generalize_note": "레지스트리 *구조*=common, *내용*=SIASIU 주입",
+          "priority": "P0",
+          "owner": "siasiu-repo-local",
+          "test_cases": [
+            "SAFETY_TYPES is_safety=1",
+            "SINGLE supersede 규칙"
+          ]
+        },
+        {
+          "name": "app/brain.py:avoid_list+avoid_atoms",
+          "role": "제품추천 권한(회피성분 하드체크)",
+          "inputs": "user_id",
+          "outputs": "atom set",
+          "dependencies": [
+            "bridge.massage"
+          ],
+          "foundation_status": "absent",
+          "foundation_counterpart": "foundation_do_not_buy_guard/purchase_decision_guard(추상)",
+          "siasiu_specific": "yes",
+          "siasiu_specific_reason": "K-뷰티 성분 atom",
+          "generalize_note": "추천 권한 framework=common, atom=SIASIU",
+          "priority": "P0",
+          "owner": "both",
+          "test_cases": [
+            "회피성분→제품 결정론 배제",
+            "verify_output 최종 검증"
+          ]
+        },
+        {
+          "name": "app/brain.py:recall+recall_greeting+_suggestion_chips",
+          "role": "재진입 인사·회상·추천칩",
+          "inputs": "user_id,name",
+          "outputs": "greeting/facts/chips",
+          "dependencies": [
+            "active_facts",
+            "_is_stale"
+          ],
+          "foundation_status": "absent",
+          "foundation_counterpart": "none",
+          "siasiu_specific": "yes",
+          "siasiu_specific_reason": "한국어 인사·도메인 칩",
+          "generalize_note": "회상 골격 일반, 표현=SIASIU",
+          "priority": "P2",
+          "owner": "siasiu-repo-local",
+          "test_cases": [
+            "재방문 신호 있을 때만 친밀 인사",
+            "stale 비안전 후순위"
+          ]
+        },
+        {
+          "name": "app/brain.py:recos+pitch+checkins",
+          "role": "추천·음성 pitch·홈 체크인",
+          "inputs": "user_id",
+          "outputs": "추천/오디오/체크인",
+          "dependencies": [
+            "products",
+            "voice",
+            "_llm"
+          ],
+          "foundation_status": "absent",
+          "foundation_counterpart": "none",
+          "siasiu_specific": "yes",
+          "siasiu_specific_reason": "K-뷰티 제품·음성",
+          "generalize_note": "추천 framework 일부 common, 제품 도메인=SIASIU",
+          "priority": "P2",
+          "owner": "siasiu-repo-local",
+          "test_cases": [
+            "정보 없으면 안전 기본",
+            "회피 정합"
+          ]
+        },
+        {
+          "name": "app/brain.py:_conn+init_db+DB스키마",
+          "role": "memory.db(user/episode/memory_fact/fact_type_registry)·WAL",
+          "inputs": "-",
+          "outputs": "sqlite conn",
+          "dependencies": [
+            "sqlite3"
+          ],
+          "foundation_status": "absent",
+          "foundation_counterpart": "none",
+          "siasiu_specific": "yes",
+          "siasiu_specific_reason": "SIASIU 메모리 스키마",
+          "generalize_note": "DB 연결 패턴 common, 스키마=SIASIU",
+          "priority": "P0",
+          "owner": "siasiu-repo-local",
+          "test_cases": [
+            "WAL+busy_timeout",
+            "멱등 init",
+            "마이그레이션 무손실"
+          ]
+        }
+      ]
+    },
+    "search_stack": {
+      "components": [
+        {
+          "name": "app/ssbrain/engine.py:Engine",
+          "role": "Main hybrid search engine orchestrating BM25+vector+graph+rerank channels via RRF fusion",
+          "inputs": "query (str), k (int, top-k results), cand (int, candidate pool size), brand (str|None, scope filter), rerank_on (bool), opts (dict, channel toggles)",
+          "outputs": "List of dicts with doc_id, score (RRF fusion), vscore (vector component), title, doc_type, domain, brand, risk_level, text (full), graph (bool), name_match (bool)",
+          "dependencies": [
+            "ssbrain.bm25 (build, search)",
+            "ssbrain.bridge (massage for CLIR expansion)",
+            "ssbrain.graph (load, related for atom→doc mapping)",
+            "ssbrain.vector (build, search - lazy import)",
+            "ssbrain.rerank (conditional rerank on head hits)",
+            "ssbrain.text (tokens, surface_match)"
+          ],
+          "foundation_status": "absent",
+          "foundation_counterpart": "foundation_retrieval_hit_contract (contract only)",
+          "siasiu_specific": "yes",
+          "siasiu_specific_reason": "Korean-centric CLIR (다국어 매핑, 원자 매핑), intent recognition (제품/성분 마커), graph-based ingredient→product boosting, brand scope filtering",
+          "generalize_note": "RRF fusion generic but atom vocabulary, bridge rules, intent markers are SIASIU/COSMILE-specific. Externalize for generalization.",
+          "priority": "P0",
+          "owner": "siasiu-repo-local",
+          "test_cases": [
+            "test_engine_rrf: RRF doc deduplication (best rank only), multichannel summation",
+            "test_engine_search: top-k cutoff, graph rescue (atom→product), brand filtering, full text preservation",
+            "test_engine_rerank_order: head+tail rerank invariant (#6), no score mixing"
+          ]
+        },
+        {
+          "name": "app/ssbrain/engine.py:rrf",
+          "role": "Reciprocal Rank Fusion — normalized score aggregation across channels (BM25, vector, graph)",
+          "inputs": "channels (list of hit lists), k (int, RRF parameter, default 60)",
+          "outputs": "dict: doc_id → float (RRF score = Σ 1/(k + rank + 1) per best rank per channel)",
+          "dependencies": [
+            "stdlib: dict, list"
+          ],
+          "foundation_status": "absent",
+          "foundation_counterpart": "none",
+          "siasiu_specific": "no",
+          "siasiu_specific_reason": "RRF is standard fusion algorithm, scale-agnostic",
+          "generalize_note": "Generic fusion primitive, reusable in any multimodal retrieval",
+          "priority": "P0",
+          "owner": "siasiu-repo-local",
+          "test_cases": [
+            "test_engine_rrf: within-channel dedup (best rank), multi-channel summation, empty channel handling"
+          ]
+        },
+        {
+          "name": "app/ssbrain/bridge.py:massage",
+          "role": "Query Massage (CLIR) — multi-lingual surface expansion + semantic atom mapping",
+          "inputs": "query (str)",
+          "outputs": "dict: {expanded (multilingal terms), atoms (set of 'concern:x' / 'ing:x' / 'safe:x'), matched (bool)}",
+          "dependencies": [
+            "ssbrain.text.surface_match",
+            "stdlib: set, dict, re"
+          ],
+          "foundation_status": "absent",
+          "foundation_counterpart": "none",
+          "siasiu_specific": "yes",
+          "siasiu_specific_reason": "BRIDGE hardcoded with KO↔EN↔ZH concern/ingredient atoms; cross-lingual gap filling for zh-origin products; deterministic glossary-based",
+          "generalize_note": "Architecture (glossary→atoms+expansion) generic; externalize vocabulary/rules for generalization",
+          "priority": "P0",
+          "owner": "siasiu-repo-local",
+          "test_cases": [
+            "test_bridge: CJK→Latin expansion (모공→pore/毛孔), atom inference, Latin phrase cross-interference blocking, empty query safety"
+          ]
+        },
+        {
+          "name": "app/ssbrain/bm25.py:build",
+          "role": "BM25 index construction — in-memory for seed scale",
+          "inputs": "chunks (list of {chunk_id, doc_id, text})",
+          "outputs": "dict: {docs, df (Counter), n, avgdl}",
+          "dependencies": [
+            "ssbrain.text.tokens",
+            "stdlib: Counter, math"
+          ],
+          "foundation_status": "absent",
+          "foundation_counterpart": "none",
+          "siasiu_specific": "no",
+          "siasiu_specific_reason": "Standard BM25 construction, agnostic to language",
+          "generalize_note": "In-memory BM25 suitable for <1M docs; swap with FTS5/Elasticsearch at scale",
+          "priority": "P0",
+          "owner": "siasiu-repo-local",
+          "test_cases": [
+            "test_bm25: build (n, avgdl), search ranking, log-IDF non-negativity, empty corpus"
+          ]
+        },
+        {
+          "name": "app/ssbrain/bm25.py:search",
+          "role": "BM25 lexical retrieval — keyword matching with IDF scoring",
+          "inputs": "idx (BM25 index), query (str), k (int), k1 (float), b (float)",
+          "outputs": "list of dicts: {chunk_id, doc_id, bm25 (score), retriever ('bm25')}, sorted desc, limited to k",
+          "dependencies": [
+            "ssbrain.text.tokens",
+            "stdlib: Counter, math.log"
+          ],
+          "foundation_status": "absent",
+          "foundation_counterpart": "none",
+          "siasiu_specific": "no",
+          "siasiu_specific_reason": "Standard BM25 ranking formula, language-agnostic",
+          "generalize_note": "Reusable across domains",
+          "priority": "P0",
+          "owner": "siasiu-repo-local",
+          "test_cases": [
+            "test_bm25: keyword retrieval (모공→d1,d3), no-match empty result, score monotonicity"
+          ]
+        },
+        {
+          "name": "app/ssbrain/vector.py:build",
+          "role": "Dense semantic index construction via multilingual-e5-small embeddings",
+          "inputs": "chunks (list of {chunk_id, doc_id, text})",
+          "outputs": "dict: {chunks (preserved), embs (np.ndarray shape (n, 384), float32, L2-normalized)}",
+          "dependencies": [
+            "sentence_transformers.SentenceTransformer (intfloat/multilingual-e5-small, lazy load)",
+            "numpy"
+          ],
+          "foundation_status": "absent",
+          "foundation_counterpart": "none",
+          "siasiu_specific": "partial",
+          "siasiu_specific_reason": "e5-small is generic multilingual; lazy load pattern avoids torch/st imports unless needed",
+          "generalize_note": "Embedding model swappable; lazy load pattern reusable",
+          "priority": "P0",
+          "owner": "siasiu-repo-local",
+          "test_cases": [
+            "test_vector: embeddings shape (n, 384), cosine search, vscore>0 filtering, empty corpus"
+          ]
+        },
+        {
+          "name": "app/ssbrain/vector.py:search",
+          "role": "Dense semantic retrieval via cosine similarity (dot product on normalized embeddings)",
+          "inputs": "idx (vector index), query (str), k (int)",
+          "outputs": "list of dicts: {chunk_id, doc_id, vscore (cosine), retriever ('vector')}, filtered by vscore>0, sorted desc",
+          "dependencies": [
+            "ssbrain.vector.embed_query",
+            "numpy (@ operator, argsort)"
+          ],
+          "foundation_status": "absent",
+          "foundation_counterpart": "none",
+          "siasiu_specific": "no",
+          "siasiu_specific_reason": "Standard cosine similarity, model-agnostic",
+          "generalize_note": "Reusable dense retrieval primitive",
+          "priority": "P0",
+          "owner": "siasiu-repo-local",
+          "test_cases": [
+            "test_vector: semantic retrieval (모공케어→d1), vscore>0 filtering, empty corpus, no-overlap zero-out"
+          ]
+        },
+        {
+          "name": "app/ssbrain/graph.py:load",
+          "role": "Load relationship graph from SQLite edges table into in-memory adjacency dict",
+          "inputs": "conn (sqlite3.Connection)",
+          "outputs": "dict: src→set(dst), e.g., {'concern:pore': {'prod1', 'prod2'}}",
+          "dependencies": [
+            "sqlite3",
+            "stdlib: defaultdict"
+          ],
+          "foundation_status": "absent",
+          "foundation_counterpart": "none",
+          "siasiu_specific": "yes",
+          "siasiu_specific_reason": "Graph semantics (concern/ingredient atoms, in_product/suits/safe_for relations) are COSMILE-specific",
+          "generalize_note": "Adjacency dict pattern reusable; externalize edge semantics for generalization",
+          "priority": "P0",
+          "owner": "siasiu-repo-local",
+          "test_cases": [
+            "test_graph: related() set union, immutability (no side effects)"
+          ]
+        },
+        {
+          "name": "app/ssbrain/graph.py:related",
+          "role": "Retrieve products related to query atoms via graph edges",
+          "inputs": "by_src (adjacency dict), atoms (set)",
+          "outputs": "set of related doc_ids (union of all atom→product edges)",
+          "dependencies": [
+            "stdlib: set union"
+          ],
+          "foundation_status": "absent",
+          "foundation_counterpart": "none",
+          "siasiu_specific": "yes",
+          "siasiu_specific_reason": "Atom vocabulary (concern:pore, ing:centella) SIASIU-specific",
+          "generalize_note": "Graph traversal logic reusable; externalize atom semantics",
+          "priority": "P0",
+          "owner": "siasiu-repo-local",
+          "test_cases": [
+            "test_graph: single/multi-atom retrieval, missing atoms → empty, empty atom set → empty, immutability"
+          ]
+        },
+        {
+          "name": "app/ssbrain/rerank.py:rerank",
+          "role": "Conditional cross-encoder reranking of top-n hits; head+tail pattern preserves tail order (#6 invariant)",
+          "inputs": "query (str), hits (list of dicts with 'text'), top_n (int)",
+          "outputs": "list: head (top_n reranked desc) + tail (remaining, original order), head entries get 'rerank' field",
+          "dependencies": [
+            "sentence_transformers.CrossEncoder (BAAI/bge-reranker-v2-m3, lazy load)",
+            "stdlib: sorted"
+          ],
+          "foundation_status": "absent",
+          "foundation_counterpart": "none",
+          "siasiu_specific": "partial",
+          "siasiu_specific_reason": "bge-reranker is generic; head+tail invariant (#6) is SIASIU design (avoid negative rerank scores dominating RRF tail)",
+          "generalize_note": "Cross-encoder reranking pattern reusable; head+tail order preservation (#6) is key invariant",
+          "priority": "P0",
+          "owner": "siasiu-repo-local",
+          "test_cases": [
+            "test_rerank_unit: head reranking (MATCH document rises), tail passthrough (original order), rerank score injection (head only), empty input"
+          ]
+        },
+        {
+          "name": "app/ssbrain/text.py:tokens",
+          "role": "Multilingual tokenizer — Latin words + CJK bigram",
+          "inputs": "text (str)",
+          "outputs": "list of tokens: Latin alnum tokens (lowercased) + CJK bigram or single-char tokens",
+          "dependencies": [
+            "stdlib: re.findall, str.lower"
+          ],
+          "foundation_status": "absent",
+          "foundation_counterpart": "none",
+          "siasiu_specific": "yes",
+          "siasiu_specific_reason": "CJK bigram (captures 2-char words 진정, 모공) reflects Korean hairball; bigram+Latin mix reflects multilingual strategy",
+          "generalize_note": "Bigram for CJK reusable across Korean/Chinese; Latin alnum pattern generic",
+          "priority": "P1",
+          "owner": "siasiu-repo-local",
+          "test_cases": [
+            "test_text: CJK bigram (진정모공→[진정,정모,모공]), Latin word extraction, 1-char CJK passthrough"
+          ]
+        },
+        {
+          "name": "app/ssbrain/text.py:surface_match",
+          "role": "Deterministic surface form matching — Latin phrase boundary-aware, CJK continuous substring",
+          "inputs": "term (str), query (str)",
+          "outputs": "bool: term normalized surface appears in query with proper boundaries",
+          "dependencies": [
+            "stdlib: re.escape, re.search"
+          ],
+          "foundation_status": "absent",
+          "foundation_counterpart": "none",
+          "siasiu_specific": "partial",
+          "siasiu_specific_reason": "Latin boundary logic (word-boundary anchors, comma/period barriers) blocks cross-lingual false matches; CJK substring has known boundary limitation (requires jieba-style segmentation for fix), documented as TODO, low impact",
+          "generalize_note": "Latin boundary matching reusable; CJK limitation known and acceptable. Blocks most false positives via comma/period barriers.",
+          "priority": "P1",
+          "owner": "siasiu-repo-local",
+          "test_cases": [
+            "test_text: Latin boundary (tea-tree matches 'tea tree' but not 'green tea, tree house'), CJK substring matching, empty term safety"
+          ]
+        },
+        {
+          "name": "app/ssbrain/ingest.py:parse_product",
+          "role": "Parse product .md frontmatter + body → doc/chunks/edges/product_ingredients dicts (legacy & PRISM)",
+          "inputs": "path (str, .md or core.yaml file)",
+          "outputs": "dict: {doc, chunks, edges, product_ingredients, fm}",
+          "dependencies": [
+            "stdlib: os, re, yaml (safe-load only)",
+            "ssbrain.ingest helpers (_frontmatter, _pitch_blocks, _body_chunks, _parse_conc, _flat)"
+          ],
+          "foundation_status": "absent",
+          "foundation_counterpart": "none",
+          "siasiu_specific": "yes",
+          "siasiu_specific_reason": "Product schema (doc_type=product, brand, concern_tags, ingredients, atoms) and COSMILE/PRISM structures (core.yaml, ingredients.yaml, locales/) are SIASIU-specific; clean-not-compress preservation (no truncate) reflects grounding requirement",
+          "generalize_note": "Parsing pattern (frontmatter+body→chunks+edges) reusable; externalize schema/vocabulary (atom definitions, edge types)",
+          "priority": "P1",
+          "owner": "siasiu-repo-local",
+          "test_cases": [
+            "test_ingest_product: frontmatter parsing, chunk generation (main+prose), concentration parsing (49%→49.0, 适量→None), edge creation, full text preservation, idempotence, remove symmetry"
+          ]
+        },
+        {
+          "name": "app/ssbrain/ingest.py:ingest_file",
+          "role": "Insert/upsert parsed product into SQLite (idempotent: recreates chunks/edges/product_ingredients on reingest)",
+          "inputs": "conn (sqlite3.Connection), path (str, .md or core.yaml)",
+          "outputs": "int (chunk count inserted)",
+          "dependencies": [
+            "ssbrain.ingest.parse_product",
+            "sqlite3 (INSERT OR REPLACE, DELETE)"
+          ],
+          "foundation_status": "absent",
+          "foundation_counterpart": "none",
+          "siasiu_specific": "yes",
+          "siasiu_specific_reason": "Schema (documents.doc_type=product, chunks, edges, product_ingredients) SIASIU-specific; rebuild strategy (DELETE old chunks/edges on reingest) prevents stale data",
+          "generalize_note": "Idempotent upsert pattern reusable; note DELETE edges WHERE dst=product_id is critical for consistency",
+          "priority": "P1",
+          "owner": "siasiu-repo-local",
+          "test_cases": [
+            "test_ingest_product: idempotence (reingest same counts), remove_product symmetry (delete all refs)"
+          ]
+        },
+        {
+          "name": "app/ssbrain/ingest.py:ingest_knowledge_file",
+          "role": "Parse knowledge .md → doc/chunks (ingredient card if atom present); ingredient table index for name-based exact match",
+          "inputs": "conn (sqlite3.Connection), path (str, .md)",
+          "outputs": "int (chunk count inserted)",
+          "dependencies": [
+            "ssbrain.ingest._frontmatter, _ing_meta, _chunk_text",
+            "sqlite3"
+          ],
+          "foundation_status": "absent",
+          "foundation_counterpart": "none",
+          "siasiu_specific": "yes",
+          "siasiu_specific_reason": "Ingredient card schema (atom slug as stable doc_id, name/aliases/inci/category as metadata chunks) is COSMILE-specific; name indexing enables exact-match boost in engine.search (NAME_BOOST)",
+          "generalize_note": "Chunk generation from prose reusable (~1500 char semantic chunks); ingredient indexing pattern reusable",
+          "priority": "P1",
+          "owner": "siasiu-repo-local",
+          "test_cases": [
+            "test_ingest_knowledge_rebuild: file filtering (_prefix, README skip), rebuild invariant (single path = single doc), doc_id change handling"
+          ]
+        },
+        {
+          "name": "app/ssbrain/ingest.py:ingest_knowledge_dir",
+          "role": "Recursively ingest knowledge diet_dir .md files; rebuild (default) clears old knowledge docs to prevent orphans",
+          "inputs": "conn (sqlite3.Connection), diet_dir (str), rebuild (bool, default True)",
+          "outputs": "tuple: (doc_count, chunk_count)",
+          "dependencies": [
+            "ssbrain.ingest.ingest_knowledge_file",
+            "stdlib: os.walk"
+          ],
+          "foundation_status": "absent",
+          "foundation_counterpart": "none",
+          "siasiu_specific": "yes",
+          "siasiu_specific_reason": "rebuild=True clears all knowledge docs (not products) before reingest to handle doc_id=hash(path+content) changes; preserves products (doc_type filter)",
+          "generalize_note": "Batch ingest + rebuild pattern reusable; type-specific selective clear is domain-specific",
+          "priority": "P1",
+          "owner": "siasiu-repo-local",
+          "test_cases": [
+            "test_ingest_knowledge_rebuild: idempotence (no orphans), doc_id migration, product preservation"
+          ]
+        },
+        {
+          "name": "app/ssbrain/ingest.py:remove_product",
+          "role": "Delete product and all its refs symmetrically (documents/chunks/edges/product_ingredients)",
+          "inputs": "conn (sqlite3.Connection), doc_id (str)",
+          "outputs": "None",
+          "dependencies": [
+            "sqlite3 (DELETE WHERE)"
+          ],
+          "foundation_status": "absent",
+          "foundation_counterpart": "none",
+          "siasiu_specific": "no",
+          "siasiu_specific_reason": "Symmetric delete pattern generic",
+          "generalize_note": "Reusable delete symmetry pattern",
+          "priority": "P1",
+          "owner": "siasiu-repo-local",
+          "test_cases": [
+            "test_ingest_product: remove_product deletes all 4 tables"
+          ]
+        },
+        {
+          "name": "app/ssbrain/schema.py:connect",
+          "role": "SQLite connection + schema initialization (DDL, WAL mode, version seeding)",
+          "inputs": "path (str|None, DB path; None → DB_PATH)",
+          "outputs": "sqlite3.Connection (row_factory=Row, WAL mode, schema initialized)",
+          "dependencies": [
+            "sqlite3 (connect, executescript, PRAGMA)",
+            "stdlib: os"
+          ],
+          "foundation_status": "absent",
+          "foundation_counterpart": "none",
+          "siasiu_specific": "yes",
+          "siasiu_specific_reason": "Schema (documents.doc_type, ingredients, product_ingredients, edges, search_logs, think_logs) integrates search + safety + logging for SIASIU grounding",
+          "generalize_note": "Schema-first initialization (idempotent DDL, IF NOT EXISTS) reusable pattern",
+          "priority": "P0",
+          "owner": "siasiu-repo-local",
+          "test_cases": [
+            "test_schema: all tables present, dead chunks_fts removed (BM25 in-memory replaces), schema_version seeded, idempotence, row_factory=Row"
+          ]
+        }
+      ],
+      "path_notes": "All ssbrain components are in /home/leo/Project/SIASIU/app/ssbrain/ (engine.py, bridge.py, bm25.py, vector.py, graph.py, rerank.py, text.py, ingest.py, schema.py, answer.py, demo.py). No actual search algorithms migrated to /home/leo/Project/FOUNDATION/foundation/_core/ (only foundation_retrieval_hit_contract.py exists as contract DTO, foundation_brain_retrieval_distribution_sampler.py as test fixture sampler). Test suite in /home/leo/Project/SIASIU/app/tests/test_ssbrain.py (results-driven, deterministic fakes for vector/rerank). Foundation integration via foundation_core_client.py and foundation_trace_bridge.py (in-process, no network, no write, phase 5 status)."
+    },
+    "answer_face": {
+      "components": [
+        {
+          "name": "ssbrain/answer.py:answer()",
+          "role": "Grounded answer generation pipeline — retrieval + LLM draft + multi-gate safety/evidence/external",
+          "inputs": "Engine, query:str, k:int=4, rerank_on:bool=False, audience:str='customer', source_layer:str='learned'",
+          "outputs": "dict{reply:str(user-facing), trace:dict(internal), grounded:bool, safety_gated:bool, hits:list}",
+          "dependencies": [
+            "brain._llm",
+            "brain.verify_output",
+            "safety_words.violations",
+            "answer_provenance.build_trace",
+            "answer_provenance.pick_opener",
+            "disclosure_policy.external_guard",
+            "disclosure_policy.redact",
+            "evidence_mode.evidence_answer_mode",
+            "evidence_mode.cap_mode",
+            "answer_type_classifier.classify"
+          ],
+          "foundation_status": "absent",
+          "foundation_counterpart": "none",
+          "siasiu_specific": "yes",
+          "siasiu_specific_reason": "Core SIASIU brain answer generation pipeline calling live LLM router + grounding logic specific to skin/health domain safety constraints",
+          "generalize_note": "answer() is high-level orchestrator; could be generalized by extracting gate/evidence/external functions into reusable foundation contracts/policies. Currently tightly coupled to ssbrain engine.search() and brain._llm routing.",
+          "priority": "P0",
+          "owner": "siasiu-repo-local",
+          "test_cases": [
+            "test_ssbrain.py::test_answer",
+            "test_answer_pipeline_guard.py",
+            "test_siasiu_answer_behavior_unchanged.py"
+          ]
+        },
+        {
+          "name": "ssbrain/answer.py:safety_gate()",
+          "role": "Pre-response safety gate — detect forbidden phrases (safety_words + extra cosmetic/medical claims) + pregnancy/safety assertion co-occurrence + verify_output LLM check",
+          "inputs": "reply:str, query:str=''",
+          "outputs": "tuple(reply_gated:str, issues:list[str])",
+          "dependencies": [
+            "safety_words.violations",
+            "brain.verify_output"
+          ],
+          "foundation_status": "rebuilt_abstraction_only",
+          "foundation_counterpart": "foundation.trust_core.safety_guard",
+          "siasiu_specific": "partial",
+          "siasiu_specific_reason": "_EXTRA_FORBIDDEN rule set (청소년/의료대체/질환완화/부작용 단정) is domain-specific; preg/lact + safe_assert co-occurrence is cosmetic/medical specific; gate pattern is generalizable",
+          "generalize_note": "Abstract as: rule_based_gate(text, forbidden_list) + optional_llm_verify(text, key_available). Foundation trust_core has similar but different rule content.",
+          "priority": "P0",
+          "owner": "both",
+          "test_cases": [
+            "test_ssbrain.py::test_answer",
+            "test_answer_pipeline_guard.py::test6"
+          ]
+        },
+        {
+          "name": "app/answer_provenance.py:select_phrase()",
+          "role": "Emit user-facing provenance phrase based on answer_mode + source_layer pair; guards against forbidden system-exposure phrases",
+          "inputs": "answer_mode:str(assertive|grounded|cautious|uncertain|cannot_determine), source_layer:str='learned'",
+          "outputs": "str (e.g. '현재 확인된 근거를 종합하면')",
+          "dependencies": [
+            "FORBIDDEN_PHRASES"
+          ],
+          "foundation_status": "absent",
+          "foundation_counterpart": "none",
+          "siasiu_specific": "yes",
+          "siasiu_specific_reason": "Phrase set is Korean-language domain-specific (skin/cosmetic/health context)",
+          "generalize_note": "Abstract as phrase_selector(mode, layer) with pluggable phrase table. Table content is domain/language specific.",
+          "priority": "P1",
+          "owner": "siasiu-repo-local",
+          "test_cases": [
+            "test_answer_pipeline_guard.py::test11-12",
+            "test_answer_provenance.py"
+          ]
+        },
+        {
+          "name": "app/answer_provenance.py:pick_opener()",
+          "role": "Select conditional opener phrase (deterministic seed-based) based on situation to avoid mechanical repetition in UX v1.1",
+          "inputs": "situation:str(general|uncertain|sensitive), seed_text:str=''",
+          "outputs": "str (opener or empty)",
+          "dependencies": [
+            "is_forbidden",
+            "_OPENERS"
+          ],
+          "foundation_status": "absent",
+          "foundation_counterpart": "none",
+          "siasiu_specific": "yes",
+          "siasiu_specific_reason": "UX pattern (conditional openers, seed-based determinism) and phrase inventory are SIASIU-specific",
+          "generalize_note": "Deterministic opener selection via seed_hash is reusable pattern. Phrase table and situation taxonomy are domain-specific.",
+          "priority": "P2",
+          "owner": "siasiu-repo-local",
+          "test_cases": [
+            "test_answer_pipeline_guard.py::test11,15",
+            "test_answer_provenance.py"
+          ]
+        },
+        {
+          "name": "app/answer_provenance.py:build_trace()",
+          "role": "Construct internal trace dict for audit/internal use; NOT exposed to user",
+          "inputs": "source_layer:str, evidence_score:float|None, source_urls:list=None, reviewed_by:str=None, last_verified_at:str=None, answer_mode:str=None, claim_type:str=None",
+          "outputs": "dict{source_layer, evidence_score, source_urls, reviewed_by, last_verified_at, answer_mode, claim_type}",
+          "dependencies": [],
+          "foundation_status": "absent",
+          "foundation_counterpart": "none",
+          "siasiu_specific": "no",
+          "siasiu_specific_reason": "Generic audit trace schema. Could be lifted to Foundation common layer.",
+          "generalize_note": "Trivial key-value wrapper. Should move to foundation.common as reusable trace contract.",
+          "priority": "P2",
+          "owner": "both",
+          "test_cases": [
+            "test_answer_provenance.py",
+            "test_answer_pipeline_guard.py::test8"
+          ]
+        },
+        {
+          "name": "app/answer_provenance.py:is_forbidden()",
+          "role": "Scan text for FORBIDDEN_PHRASES that expose internal system details",
+          "inputs": "text:str|None",
+          "outputs": "list[str] (matching forbidden phrases)",
+          "dependencies": [
+            "FORBIDDEN_PHRASES"
+          ],
+          "foundation_status": "absent",
+          "foundation_counterpart": "none",
+          "siasiu_specific": "yes",
+          "siasiu_specific_reason": "Forbidden list is SIASIU-specific system-exposure phrases (저장된 검증 지식, 내 데이터베이스, etc.)",
+          "generalize_note": "Generic pattern: check_violations(text, rule_list). Rule list is context-specific.",
+          "priority": "P2",
+          "owner": "siasiu-repo-local",
+          "test_cases": [
+            "test_answer_provenance.py",
+            "test_answer_pipeline_guard.py::test1"
+          ]
+        },
+        {
+          "name": "app/answer_provenance.py:compose()",
+          "role": "Package answer_mode + source_layer into (user_text with opener, trace) dict",
+          "inputs": "answer_mode:str, source_layer:str, body:str, evidence_score:float=None, [trace fields]",
+          "outputs": "dict{user_text:str, trace:dict}",
+          "dependencies": [
+            "select_phrase",
+            "build_trace"
+          ],
+          "foundation_status": "absent",
+          "foundation_counterpart": "none",
+          "siasiu_specific": "partial",
+          "siasiu_specific_reason": "Composition logic is generic; phrase + trace are SIASIU-specific",
+          "generalize_note": "High-level convenience; not used in answer.py main path. Could be generalized or deprecated.",
+          "priority": "P2",
+          "owner": "siasiu-repo-local",
+          "test_cases": [
+            "test_answer_provenance.py"
+          ]
+        },
+        {
+          "name": "app/disclosure_policy.py:external_guard()",
+          "role": "Final gate before external (customer/partner/investor) exposure — detect never_disclose sensitivity levels",
+          "inputs": "text:str",
+          "outputs": "dict{safe_for_external:bool, violations:list[str], max_sensitivity_name:str}",
+          "dependencies": [
+            "classify_sensitivity"
+          ],
+          "foundation_status": "rebuilt_abstraction_only",
+          "foundation_counterpart": "foundation.trust_core",
+          "siasiu_specific": "partial",
+          "siasiu_specific_reason": "Gate pattern is generic. never_disclose categories (scoring_formula, reranker_routing, safety_gate_rule_detail, api_key_secret, etc.) are SIASIU-specific internal details.",
+          "generalize_note": "Generic gate pattern: classify_sensitivity(text) → apply_audience_policy(sensitivity, audience). Categories and patterns are context-specific.",
+          "priority": "P0",
+          "owner": "both",
+          "test_cases": [
+            "test_answer_pipeline_guard.py::test2-5",
+            "test_disclosure_policy.py"
+          ]
+        },
+        {
+          "name": "app/disclosure_policy.py:classify_sensitivity()",
+          "role": "Scan text for never_disclose patterns (scoring_formula, reranker_routing, safety_gate_rule, api_key_secret, etc.) and return max sensitivity level",
+          "inputs": "text:str",
+          "outputs": "dict{categories:list[str], max_sensitivity:int, max_sensitivity_name:str}",
+          "dependencies": [
+            "NEVER_DISCLOSE",
+            "SENSITIVITY_LEVEL",
+            "regex"
+          ],
+          "foundation_status": "absent",
+          "foundation_counterpart": "none",
+          "siasiu_specific": "yes",
+          "siasiu_specific_reason": "Pattern set (scoring_formula, reranker_routing, safety_gate_rule_detail, learned_promotion_internals, model_orchestration_rules) is SIASIU internal implementation detail",
+          "generalize_note": "Pattern-based classifier is generic; patterns are context-specific to SIASIU internal/external contracts.",
+          "priority": "P0",
+          "owner": "siasiu-repo-local",
+          "test_cases": [
+            "test_answer_pipeline_guard.py::test3-5",
+            "test_disclosure_policy.py"
+          ]
+        },
+        {
+          "name": "app/disclosure_policy.py:redact()",
+          "role": "Redact (replace with [비공개]) never_disclose patterns above audience clearance level",
+          "inputs": "text:str, audience:str('customer'|'partner'|'investor'|'internal')",
+          "outputs": "str (text with patterns replaced)",
+          "dependencies": [
+            "NEVER_DISCLOSE",
+            "AUDIENCE_LEVEL",
+            "SENSITIVITY_LEVEL",
+            "regex"
+          ],
+          "foundation_status": "absent",
+          "foundation_counterpart": "none",
+          "siasiu_specific": "yes",
+          "siasiu_specific_reason": "Redaction strategy and pattern set are SIASIU-specific",
+          "generalize_note": "Generic pattern: for_each_category if_above_audience_level redact_patterns(category). Patterns and levels are context-specific.",
+          "priority": "P1",
+          "owner": "siasiu-repo-local",
+          "test_cases": [
+            "test_answer_pipeline_guard.py::test14",
+            "test_disclosure_policy.py"
+          ]
+        },
+        {
+          "name": "app/evidence_mode.py:evidence_answer_mode()",
+          "role": "Determine conservative answer_mode based on evidence score + claim_type + tier1 + hit count. Knowledge Brain evidence policy (Response Brain not referenced).",
+          "inputs": "hits:list, query:str, source_layer_hint:str=None",
+          "outputs": "dict{mode:str, source_layer:str, evidence_score:int, reason:str}",
+          "dependencies": [
+            "confidence_model.answer_mode",
+            "confidence_model.HIGH_RISK",
+            "retrieval_evidence.summarize",
+            "_claim_type",
+            "_coarse_score"
+          ],
+          "foundation_status": "absent",
+          "foundation_counterpart": "none",
+          "siasiu_specific": "partial",
+          "siasiu_specific_reason": "Evidence scoring logic (coarse_score, claim_type mapping) and HIGH_RISK override are SIASIU-specific. answer_mode enum is generic.",
+          "generalize_note": "Extract: confidence_score(hits) → answer_mode_policy(score, claim_type, tier1) → mode. Mode ranking and safety caps are reusable.",
+          "priority": "P1",
+          "owner": "siasiu-repo-local",
+          "test_cases": [
+            "test_ssbrain.py::test_answer",
+            "test_answer_pipeline_guard.py::test6",
+            "test_confidence_metadata_wiring.py"
+          ]
+        },
+        {
+          "name": "app/evidence_mode.py:cap_mode()",
+          "role": "Enforce conservative ceiling on answer_mode — lower rank if exceeds",
+          "inputs": "mode:str, ceiling:str('cautious'|'uncertain')",
+          "outputs": "str (lower or equal rank mode)",
+          "dependencies": [
+            "_RANK"
+          ],
+          "foundation_status": "absent",
+          "foundation_counterpart": "none",
+          "siasiu_specific": "no",
+          "siasiu_specific_reason": "Generic mode capping logic. Mode enum is application-specific.",
+          "generalize_note": "Trivial rank comparison. Should be inlined or moved to foundation.common.",
+          "priority": "P2",
+          "owner": "both",
+          "test_cases": [
+            "test_ssbrain.py::test_answer",
+            "test_answer_pipeline_guard.py::test6"
+          ]
+        },
+        {
+          "name": "app/answer_type_classifier.py:classify()",
+          "role": "Rule-based answer_type classification for risk flagging + shadow trace. NO user_text modification.",
+          "inputs": "query:str, hits:list=None",
+          "outputs": "dict{answer_type:str, reason:str('kw_match'|'default'|'no_hits'), high_risk:bool}",
+          "dependencies": [
+            "HIGH_RISK_TYPES",
+            "_RULES"
+          ],
+          "foundation_status": "migrated_real",
+          "foundation_counterpart": "foundation._core.answer_type_classifier",
+          "siasiu_specific": "partial",
+          "siasiu_specific_reason": "HIGH_RISK_TYPES and keyword rules are SIASIU/skin-health domain specific (pregnancy, medical_boundary, adverse_reaction, internal_algorithm). Rule-based pattern is generic.",
+          "generalize_note": "Classification pattern (keyword→type→high_risk) is reusable; rule table is domain-specific. Stays in Foundation as shared reference.",
+          "priority": "P1",
+          "owner": "both",
+          "test_cases": [
+            "test_answer_type_classifier.py",
+            "test_ssbrain.py::test_answer",
+            "test_answer_pipeline_guard.py"
+          ]
+        }
+      ],
+      "path_notes": "ANSWER.PY LAYER INVENTORY v1 (Slice 3: ssbrain/answer.py + supporting modules)\\n\\nLIVE BRAIN ANSWER PIPELINE (grounded generation):\\n  answer.py (ssbrain/) is the primary answer generation interface, used in live demo (ssbrain/demo.py) and tests (tests/test_ssbrain.py). Returns dict{reply(user-facing), trace(internal-only), grounded:bool, hits}.\\n\\nMODULE SEPARATION:\\n  answer.py (orchestrator) depends on 4 Trust Core submodules:\\n    - answer_provenance.py: provenance phrases (select_phrase, pick_opener) + trace building (build_trace) + forbidden phrase checks\\n    - disclosure_policy.py: external exposure gate (external_guard, classify_sensitivity, redact) for customer/partner/investor audiences\\n    - evidence_mode.py: Knowledge Brain answer_mode determination (evidence_answer_mode, cap_mode) based on hit score/claim type/tier1\\n    - answer_type_classifier.py: question type classification for shadow trace only (classify), NO behavior change\\n    - Also uses: brain._llm (live LLM router), safety_words.violations (deterministic forbidden phrase list)\\n\\nFOUNDATION WRAPPING & SHADOW:\\n  Foundation's foundation_brain_answer_adapter.py wraps answer() WITHOUT modifying behavior:\\n    - shadow_for_request() generates Foundation shadow trace from answer.py inputs (query, hits, answer_type, high_risk) WITHOUT calling answer.py\\n    - answer_py_fingerprint() verifies answer.py source unchanged (d7f579443f8a110a)\\n    - Adapter imports only contracts (foundation_brain_contracts), not answer.py source\\n    - Test test_siasiu_answer_behavior_unchanged.py verifies fingerprint stable + shadow identity (siasiu_output unchanged)\\n\\nFOUNDATION COUNTERPARTS:\\n  - answer_type_classifier.py: migrated_real (Foundation has identical copy at foundation/_core/answer_type_classifier.py)\\n  - answer_provenance.py, disclosure_policy.py, evidence_mode.py: absent in Foundation (SIASIU-only or not yet lifted)\\n  - safety_gate() + _guard_external() + _situation(): rebuilt_abstraction_only (Foundation trust_core has different implementations)\\n\\nDIFFERENCE VS LIVE BRAIN.CHAT:\\n  answer() is a separate, explicit grounded answer pipeline (introduced 2026-06-22). It differs from brain.chat (if it exists) by:\\n    - Mandatory retrieval-based grounding (engine.search() -> cannot_determine if no hits, pre-gate LLM)\\n    - Multi-stage gating: safety_gate(content) -> evidence_mode (conservative mode) -> answer_type shadow -> external_guard (disclosure policy)\\n    - Explicit audience parameter (customer|partner|investor) controlling redaction level\\n    - Trace separation (internal trace never exposed to user_text)\\n    - answer_type_classifier shadow (trace-only, no behavior change)\\n  answer.py is NOT integrated into live brain.chat; it's a companion face for grounded answers.\\n\\nKEY ARCHITECTURAL POINTS:\\n  1. GROUNDING = retrieval pre-gate (no LLM if no hits) + system prompt forcing \\\"근거 없으면 모름\\\"\\n  2. SAFETY = safety_gate (rule+verify) + evidence_mode (conservative mode) + external_guard (disclosure redact)\\n  3. SHADOW = answer_type_classifier.classify() records type/high_risk in trace only; no user_text change\\n  4. TRACE INTERNAL = source_layer/evidence_score/answer_mode/claim_type never exposed (separate from reply)\\n  5. OPENER DETERMINISTIC = seed-based (no random) to ensure reproducibility + variety via conditional rules\\n\\nTEST COVERAGE:\\n  - test_ssbrain.py::test_answer: core pipeline (grounded/cannot_determine, LLM call branches)\\n  - test_answer_pipeline_guard.py: comprehensive gates (safety, scoring redact, routing redact, high_risk override, UX v1.1 conditions)\\n  - test_siasiu_answer_behavior_unchanged.py: fingerprint + shadow identity verification\\n  - test_answer_py_shadow_no_behavior_change.py: adapter isolation (no patch, no sys.modules mutation)\\n\\nFILE PATHS:\\n  /home/leo/Project/SIASIU/app/ssbrain/answer.py (main interface)\\n  /home/leo/Project/SIASIU/app/answer_provenance.py (phrases, trace, opener)\\n  /home/leo/Project/SIASIU/app/disclosure_policy.py (external gate, redact)\\n  /home/leo/Project/SIASIU/app/evidence_mode.py (Knowledge Brain mode determination)\\n  /home/leo/Project/SIASIU/app/answer_type_classifier.py (shadow classification)\\n  /home/leo/Project/SIASIU/app/safety_words.py (forbidden phrase list, used by safety_gate)\\n  /home/leo/Project/FOUNDATION/foundation/_core/answer_type_classifier.py (Foundation mirror)\\n  /home/leo/Project/FOUNDATION/foundation/_core/foundation_brain_answer_adapter.py (wrapper adapter)\""
+    },
+    "products_memory": {
+      "components": [
+        {
+          "name": "/home/leo/Project/SIASIU/app/brain.py:avoid_list()",
+          "role": "Retrieve customer's avoided ingredients as original display values",
+          "inputs": "user_id: string",
+          "outputs": "List[string] avoided ingredient values",
+          "dependencies": [
+            "active_facts()",
+            "memory_fact table filter"
+          ],
+          "foundation_status": "absent",
+          "foundation_counterpart": "none",
+          "siasiu_specific": "yes",
+          "siasiu_specific_reason": "Queries SIASIU memory_fact for avoid_ingredient/allergy type facts with domain-specific type taxonomy",
+          "generalize_note": "Generic pattern: get_fact_values_by_type(user_id, type_set) for any fact-based domain",
+          "priority": "P1",
+          "owner": "siasiu-repo-local",
+          "test_cases": [
+            "avoid_list returns original display values from active facts",
+            "avoid_list returns empty list when no avoided facts exist",
+            "verify_output uses avoid_list to check response safety"
+          ]
+        },
+        {
+          "name": "/home/leo/Project/SIASIU/app/brain.py:avoid_atoms()",
+          "role": "Normalize avoided ingredients to deterministic atoms for product matching and KB filtering",
+          "inputs": "user_id: string",
+          "outputs": "Set[str] of atoms (ing:component) or fallback norm_value strings",
+          "dependencies": [
+            "active_facts()",
+            "ssbrain.bridge.massage()",
+            "_norm_value()",
+            "_det_norm()"
+          ],
+          "foundation_status": "absent",
+          "foundation_counterpart": "none",
+          "siasiu_specific": "yes",
+          "siasiu_specific_reason": "K-beauty ingredient normalization via ssbrain bridge to ing: atoms; NFKC+casefold deterministic fallback. Safety-critical for kb_search and pitch recommendation gates",
+          "generalize_note": "Generic pattern: normalize_fact_values(user_id, fact_types, bridge_fn, fallback_fn) -> Set for cross-domain deterministic comparison",
+          "priority": "P0",
+          "owner": "siasiu-repo-local",
+          "test_cases": [
+            "avoid_atoms converts retinol/Retinol variants to ing:retinol",
+            "avoid_atoms falls back to deterministic norm when bridge has no atoms",
+            "kb_search and _pitch_variant use set intersection (&) for matching"
+          ]
+        },
+        {
+          "name": "/home/leo/Project/SIASIU/app/brain.py:CANON",
+          "role": "Canonical fact type registry - defines all memory fact types with safety classification and aliases",
+          "inputs": "none - static configuration",
+          "outputs": "dict[fact_type -> (label, is_safety: bool, aliases: List[str])]",
+          "dependencies": [],
+          "foundation_status": "absent",
+          "foundation_counterpart": "none",
+          "siasiu_specific": "yes",
+          "siasiu_specific_reason": "Defines K-beauty/health domain fact types: avoid_ingredient, allergy, pregnancy_nursing (safety=1), skin_type, personal_color, concern, goal, preference, reaction, age_range, lifestyle (safety=0)",
+          "generalize_note": "Generic pattern: FACT_TYPE_REGISTRY(domain) with (label, is_safety, aliases) tuples for any domain",
+          "priority": "P0",
+          "owner": "foundation-control",
+          "test_cases": [
+            "CANON keys form normalize_type() whitelist (default-deny)",
+            "SAFETY_TYPES derived from CANON is_safety=1 flag",
+            "normalize_type() rejects unmapped types (no auto-registration)"
+          ]
+        },
+        {
+          "name": "/home/leo/Project/SIASIU/app/brain.py:_pitch_variant()",
+          "role": "PRODUCT RECOMMENDATION PERMISSION GATE - Determines if product conflicts with user's avoided ingredients",
+          "inputs": "user_id: string, p: product dict with avoid_match, ingredients",
+          "outputs": "Tuple[variant: 'avoid'|'default', conflict: bool]",
+          "dependencies": [
+            "avoid_atoms(user_id)",
+            "_product_atoms(p)"
+          ],
+          "foundation_status": "absent",
+          "foundation_counterpart": "none",
+          "siasiu_specific": "yes",
+          "siasiu_specific_reason": "Hardcoded permission check via set intersection: avoid_atoms(user_id) & _product_atoms(p) -> conflict detection. Returns 'avoid' variant when non-empty intersection",
+          "generalize_note": "Generic pattern: check_recommendation_safety(user_exclusions: Set, product_features: Set) -> bool_has_conflict",
+          "priority": "P0",
+          "owner": "siasiu-repo-local",
+          "test_cases": [
+            "_pitch_variant returns ('avoid', True) when avoid_atoms & product_atoms intersection non-empty",
+            "_pitch_variant returns ('default', False) when no conflict",
+            "Used by pitch() and pitch_audio() to select warm decline vs standard pitch text"
+          ]
+        },
+        {
+          "name": "/home/leo/Project/SIASIU/app/brain.py:kb_search() avoid_docs filtering",
+          "role": "PRODUCT RECOMMENDATION - Filter KB search results to exclude documents containing avoided ingredients",
+          "inputs": "query: string, user_id: optional, k: int=4",
+          "outputs": "List[str] of top-k knowledge base document snippets (already filtered)",
+          "dependencies": [
+            "_kb_engine()",
+            "avoid_atoms(user_id)",
+            "ssbrain.graph.related()"
+          ],
+          "foundation_status": "absent",
+          "foundation_counterpart": "none",
+          "siasiu_specific": "yes",
+          "siasiu_specific_reason": "Lines 566-578: avoid_atoms -> ing_atoms (atoms starting with ing:) -> graph.related() -> avoid_docs set. Deterministic exclusion before RRF ranking/fusion",
+          "generalize_note": "Generic pattern: search_with_exclusions(query, user_exclusions, search_fn, filter_fn) -> results",
+          "priority": "P0",
+          "owner": "siasiu-repo-local",
+          "test_cases": [
+            "kb_search for 'retinol' excludes KB documents containing avoided retinol component",
+            "avoid_docs set computed once via graph.related() for efficiency",
+            "RRF fusion and reranking happen after avoid_docs filtering"
+          ]
+        },
+        {
+          "name": "/home/leo/Project/SIASIU/app/brain.py:verify_output() avoid check",
+          "role": "OUTPUT VERIFICATION - LLM checks if response recommends user's avoided ingredients",
+          "inputs": "reply: string, avoid: List[string] of avoided ingredients",
+          "outputs": "dict with ok: bool, issue: 'none'|'internal'|'efficacy'|'avoid'",
+          "dependencies": [
+            "_llm('classify')",
+            "avoid_list(user_id)"
+          ],
+          "foundation_status": "absent",
+          "foundation_counterpart": "none",
+          "siasiu_specific": "yes",
+          "siasiu_specific_reason": "Lines 748-767: LLM-based output verification includes avoid check - double-checks response doesn't recommend avoided components",
+          "generalize_note": "Generic pattern: verify_output(response, policies) -> Dict[passed, violations]",
+          "priority": "P0",
+          "owner": "siasiu-repo-local",
+          "test_cases": [
+            "verify_output detects when response recommends avoided ingredients",
+            "Called at lines 928, 939 in chat() function for safety gating",
+            "Fail-closed: unverifiable responses blocked, trigger correction or safe fallback"
+          ]
+        },
+        {
+          "name": "/home/leo/Project/SIASIU/app/brain.py:DB schema (user/episode/memory_fact/fact_type_registry)",
+          "role": "Core memory persistence schema - all customer facts, conversation history, fact type metadata",
+          "inputs": "SQL CREATE TABLE statements defined at init_db() lines 80-86",
+          "outputs": "SQLite tables with columns: user(id, name, created), episode(id, user_id, ts, role, text), memory_fact(id, user_id, type, value, norm_value, note, confidence, as_of, status, fact_state, source_episode_id, created_at, updated_at), fact_type_registry(type, label, is_safety, norm_aliases, status)",
+          "dependencies": [
+            "sqlite3"
+          ],
+          "foundation_status": "absent",
+          "foundation_counterpart": "none",
+          "siasiu_specific": "yes",
+          "siasiu_specific_reason": "SIASIU-specific columns: norm_value, fact_state for CANON normalization; confidence, as_of for 2-rule promotion logic; is_safety for safety type classification",
+          "generalize_note": "Generic schema template: customer_memory(user_id, fact_type, value, confidence, status, as_of, source_ref); fact_registry(type, label, safety_flag, aliases)",
+          "priority": "P0",
+          "owner": "siasiu-repo-local",
+          "test_cases": [
+            "init_db() idempotent via _DB_READY flag",
+            "ALTER TABLE ADD COLUMN with backfill for norm_value and fact_state fields",
+            "fact_type_registry INSERT OR IGNORE maintains CANON whitelist"
+          ]
+        }
+      ],
+      "path_notes": "CRITICAL IMPLEMENTATION LOCATIONS FOR PRODUCT RECOMMENDATION PERMISSION (회피성분 회피/avoid 배제): (1) avoid_atoms(user_id) [brain.py 138-148] normalizes user's avoided ingredients to deterministic atoms via ssbrain.bridge.massage(). (2) _product_atoms(p) [brain.py 985-998] extracts product's avoid_match + ingredients, normalizes to atoms. (3) _pitch_variant(user_id, p) [brain.py 1000-1005] HARD CHECK: avoid_atoms(user_id) & _product_atoms(p) set intersection - conflict detection. Returns 'avoid' variant when non-empty. (4) pitch(user_id, product_id) [brain.py 1058-1065] calls _pitch_variant, generates warm avoid-text when conflict detected (not hard rejection). (5) kb_search(query, user_id) [brain.py 557-585] filters avoid_docs using graph.related() BEFORE ranking (lines 566-578). (6) verify_output(reply, avoid_list) [brain.py 748-767] LLM re-checks output doesn't recommend avoided ingredients (double gate, fail-closed). Foundation modules (foundation_purchase_decision_guard.py, safety_guard_layer.py, do_not_buy_guard.py, customer_decision_memory.py) are wrappers re-exporting actual implementation from app/ files - only abstract policy definitions in foundation/_core (stub-only or absent), NOT actual SIASIU logic. Memory schema (user/episode/memory_fact/fact_type_registry) defined in init_db() lines 75-106. CANON fact types (line 35-47), SAFETY_TYPES (line 53), SINGLE (line 48) are hardcoded configuration, not migrated to foundation/_core."
+    }
+  },
+  "foundation_status_summary": {
+    "migrated_real": [
+      "answer_type_classifier.classify"
+    ],
+    "rebuilt_abstraction_only": [
+      "ssbrain/answer.py:safety_gate",
+      "disclosure_policy.external_guard"
+    ],
+    "absent": "나머지 ~40 부품 전부(검색스택·brain 오케스트레이터·answer.py·evidence_mode·answer_provenance·disclosure redaction·products·CANON/메모리스키마·avoid 권한)"
+  },
+  "copy_forbidden_siasiu_specific": [
+    {
+      "part": "bridge.py 글로서리",
+      "reason": "KO/EN/ZH 성분·고민 atom 하드코딩(K-뷰티)"
+    },
+    {
+      "part": "graph.py edge 의미",
+      "reason": "concern:/ing:/safe: 관계=COSMILE 도메인"
+    },
+    {
+      "part": "text.py tokens",
+      "reason": "한국어 형태 처리"
+    },
+    {
+      "part": "CANON·SAFETY_TYPES·SEED_KB",
+      "reason": "K-뷰티 사실타입·임신/회피·시드 지식"
+    },
+    {
+      "part": "_system_prompt PERSONA·TALK_STYLE",
+      "reason": "존댓말 절대·한국 드라마 톤"
+    },
+    {
+      "part": "guardrail_classify domain 목록",
+      "reason": "피부/기능의학/퍼스널컬러=SIASIU 영역"
+    },
+    {
+      "part": "products.py 스키마·avoid atoms",
+      "reason": "K-뷰티 제품·성분"
+    }
+  ],
+  "generalization_framework": [
+    {
+      "framework": "Retrieval Fusion",
+      "common": "RRF·BM25·dense·rerank 파이프 골격",
+      "siasiu_injects": "bridge 글로서리·atom·brand 규칙"
+    },
+    {
+      "framework": "Grounding Gate",
+      "common": "근거 임계·'모름' 컷",
+      "siasiu_injects": "KB 소스·임계값"
+    },
+    {
+      "framework": "Guardrail Framework",
+      "common": "LLM 의미분류 구조·default-deny",
+      "siasiu_injects": "domain 목록·risk 정책"
+    },
+    {
+      "framework": "Output Verify Framework",
+      "common": "LLM-judge 검수 구조(+fabrication 신설)",
+      "siasiu_injects": "회피 목록·금칙"
+    },
+    {
+      "framework": "Evidence Mode",
+      "common": "confidence→answer_mode(cautious cap)",
+      "siasiu_injects": "위험 카테고리"
+    },
+    {
+      "framework": "Memory Trust",
+      "common": "사실 신뢰·stale·supersede·SAFETY 불변(LMR 일부 이식)",
+      "siasiu_injects": "CANON 타입·라벨"
+    },
+    {
+      "framework": "Answer Composer 인터페이스",
+      "common": "'LLM=표현만, 판단 고정' 계약",
+      "siasiu_injects": "PERSONA·언어"
+    },
+    {
+      "framework": "LLM Router",
+      "common": "프로바이더 스위칭·사용량 로깅",
+      "siasiu_injects": "task 매핑"
+    }
+  ],
+  "priorities": {
+    "P0": [
+      "Retrieval Fusion framework",
+      "Grounding Gate",
+      "Guardrail framework",
+      "Output Verify(+fabrication)",
+      "Memory Trust 정합(CANON 주입 인터페이스)"
+    ],
+    "P1": [
+      "Evidence Mode/answer_mode cap",
+      "Answer Composer 계약(LLM표현층)",
+      "disclosure redaction",
+      "ingest/schema 추상"
+    ],
+    "P2": [
+      "products 추천 권한 framework",
+      "pitch/checkins",
+      "answer_provenance trace"
+    ]
+  },
+  "test_cases_by_part": {
+    "Retrieval Fusion": [
+      "rrf 채널내 best-rank dedup·다채널 합산·빈채널",
+      "engine.search top-k·graph 구제·brand 필터·full text 보존"
+    ],
+    "BM25/Vector": [
+      "키워드 검색 단조성·빈코퍼스",
+      "임베딩 shape(n,384)·cos·vscore>0·no-overlap zero-out"
+    ],
+    "Bridge(주입형)": [
+      "CJK→Latin 확장(모공→pore/毛孔)·atom 추론·교차간섭 차단"
+    ],
+    "Grounding Gate": [
+      "근거 있음→자신/없음→'확인할게요' 컷(지어내지 않음)"
+    ],
+    "Guardrail": [
+      "injection/medical/payment/politics 분류·default-deny·on-domain 통과(자외선·기능의학)"
+    ],
+    "Output Verify": [
+      "internal/efficacy/avoid 차단",
+      "★fabrication(저장사실 없는 기억 단정) 차단",
+      "fail-closed"
+    ],
+    "Evidence Mode": [
+      "임신/의료→cautious cap·assertive 금지"
+    ],
+    "Memory Trust": [
+      "SAFETY_TYPES 즉시 active·decay 없음·SINGLE supersede·cross-customer 격리·삭제 재등장 0"
+    ],
+    "Composer": [
+      "LLM 교체해도 판단 불변(표현만)·존댓말 유지(주입 언어별)"
+    ]
+  },
+  "ownership": [
+    {
+      "work": "Common Brain framework 추출(검색융합·가드·그라운딩·verify·evidence·composer 계약·LLM라우터)",
+      "owner": "foundation-control",
+      "reason": "cross-project=control tower 관할"
+    },
+    {
+      "work": "어휘/정책/페르소나/도메인 데이터 주입층(bridge·atom·CANON·SEED_KB·PERSONA·domain·products)",
+      "owner": "siasiu-repo-local",
+      "reason": "SIASIU 전용·복사 금지"
+    },
+    {
+      "work": "answer_type_classifier 일반화 마무리",
+      "owner": "both",
+      "reason": "이미 이식·계약은 control·어휘는 SIASIU"
+    },
+    {
+      "work": "라이브 brain.py가 common brain 호출 전환(나중)",
+      "owner": "foundation-control 계획→SIASIU 구현",
+      "reason": "계약=control·배선=SIASIU"
+    },
+    {
+      "work": "임시 라이브 fix(온보딩→메모리·환각가드)[보류 A]",
+      "owner": "siasiu-repo-local",
+      "reason": "live 품질·단일 repo"
+    }
+  ],
+  "conclusion": "승격할 '공통 두뇌'=검색융합·그라운딩·가드레일·출력검증·evidence·composer 계약·LLM라우터의 framework이고 현재 Foundation에 거의 absent. bridge/atom/CANON/SEED_KB/PERSONA/domain은 SIASIU 전용이라 복사 말고 주입형 분리. framework=foundation-control, 어휘/정책=SIASIU repo-local.",
+  "references": {
+    "docs": [
+      "FOUNDATION_PIPELINE_WIRING_PLAN_V1.md",
+      "FOUNDATION_ANSWER_PIPELINE_GUARD_WIRING_V1.md",
+      "SIASIU_검색아키텍처_설계서.md",
+      "SIASIU_가드레일_설계서.md",
+      "SIASIU_메모리_설계서.md",
+      "SIASIU_상담_대화_설계서.md",
+      "SIASIU_LLM표현층_설계서.md",
+      "FOUNDATION_CONFIDENCE_MODEL_V1.md"
+    ],
+    "code": [
+      "app/brain.py",
+      "app/ssbrain/{engine,bridge,bm25,vector,graph,rerank,text,ingest,schema}.py",
+      "app/ssbrain/answer.py",
+      "app/{answer_type_classifier,evidence_mode,disclosure_policy,answer_provenance}.py",
+      "app/products.py"
+    ],
+    "shadow_boundary": [
+      "app/ssbrain/foundation_*",
+      "app/foundation_brain_*",
+      "foundation/",
+      "/home/leo/Project/FOUNDATION"
+    ]
+  },
+  "audit_provenance": {
+    "read_only": true,
+    "modifications": 0,
+    "commits": 0,
+    "pushes": 0,
+    "failed_slice": "brain_orchestrator(structured retry cap)→직접 작성 보완",
+    "note": "PASS 숫자 미사용·실 위치 기준"
+  }
+}
