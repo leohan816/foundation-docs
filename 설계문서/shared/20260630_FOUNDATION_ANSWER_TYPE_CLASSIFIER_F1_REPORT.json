@@ -1,0 +1,64 @@
+{
+ "train_name": "Foundation Answer-Type Classifier + Category Disambiguation (F1)",
+ "date": "2026-06-30",
+ "scope": "F1 only (T1). F2~F8/Path A/Cosmile/SIASIU/contract/canonical = 미구현·무수정.",
+ "changed_files": [
+  "foundation_http_service/core.py",
+  "scripts/foundation_answer_type_classifier_f1_test.py",
+  "설계자료/..._F1_REPORT.{md,json}"
+ ],
+ "principles_implemented": {
+  "category_as_target_category_slot": true,
+  "substring_safe_matcher(선크림≠크림)": true,
+  "separate_routine_use_comparison_education_recommendation_adverse": true,
+  "default_to_education": true,
+  "adverse_lexicon_form_group(따가/따가워/따가움/따갑다)": true,
+  "recommend_only_from_explicit_signal": true,
+  "candidate_guard_preserved": true
+ },
+ "residual_6_gap_resolution": {
+  "토너는 꼭 써야 해?": "education",
+  "크림은 꼭 발라야 해?": "education",
+  "세럼은 언제 발라?": "routine_guidance",
+  "토너 다음에 뭐 발라?": "routine_guidance",
+  "앰플이랑 세럼 중 뭐가 더 좋아?": "product_comparison",
+  "따가워도 효과 좋은 거 추천해줘": "adverse_or_safety",
+  "선크림 추천해줘(false-block fixed)": "product_recommendation/recommend/target_category=suncare",
+  "레이저 받고 선크림만 발라도 돼?(new exposure)": "safety(레이저 high)"
+ },
+ "backward_compat": {
+  "이 크림 민감성 괜찮을까?": "do_not_recommend(유지)",
+  "크림 추천해줘": "recommend(유지)",
+  "건조하고 따가운데 크림 추천해줘(up3)": "recommend+caution(유지)",
+  "피부가 건조해": "clarify(유지)"
+ },
+ "test_results": {
+  "v0.2": "40/40",
+  "v0.3": "16/16",
+  "guard_v031": "19/19",
+  "f1_new": "14/14",
+  "adversarial_180": {
+   "guard_critical_pass": true,
+   "decision_integrity_pass_rate": 1.0,
+   "false_recommendation_count": 0,
+   "safety_critical_violation_count": 0,
+   "intent_classification_gap_count": 0,
+   "catalog_out_count": 0,
+   "permission_invariant_violations": 0,
+   "recommendation_permission_invariant_violations": 0,
+   "clear_recommendation_survival_count": 13
+  }
+ },
+ "no_change_assertions": {
+  "cosmile": 0,
+  "siasiu": 0,
+  "foundation_repo": 0,
+  "contract": 0,
+  "canonical": 0,
+  "product": 0,
+  "retrieval_llm_memory": 0,
+  "path_A_switch": 0,
+  "memory_write": 0,
+  "push": 0
+ }
+}

@@ -1,0 +1,174 @@
+{
+ "design_name": "Foundation T2 — Retrieval Fusion + Grounding Gate Framework",
+ "mode": "design_and_test_plan_no_implementation",
+ "date": "2026-06-30",
+ "scope": "T2 design only. F2 Retrieval Fusion + F3 Grounding Gate + retrieval decision contract. dev-shadow. NO implementation/live/LLM/memory/F4-F8/Cosmile/SIASIU/contract/canonical/push.",
+ "references": [
+  "20260630_FOUNDATION_COMMON_BRAIN_PROMOTION_PLAN.md",
+  "T1 result 38f8056 (answer_type/target_category/adverse/explicit_reco)",
+  "SIASIU Source Package(read-only: search_triggers/evidence_grading/evidence_mode candidate cap/grounding)"
+ ],
+ "problem": "Cosmile injects candidates unconditionally → education/concern leak to product. T1 fixed classification(guard blocks). T2 adds: Foundation decides retrieval_needed/candidate_needed/grounding_mode/no_evidence_action + grounding gate(no evidence→defer, no fabrication).",
+ "attach_position": "additive after T1 classification + alongside existing decision/guard. Output-only layer(reads dt, never writes). decision_type/recommend unchanged. Part A=Retrieval Decision layer(immediate, no real search). Part B=F2 Fusion + F3 Grounding Gate skeleton(KB/embedding = SIASIU injection seam, stub this train).",
+ "retrieval_decision_contract": {
+  "retrieval_needed": "bool — 지식/근거 검색 필요",
+  "candidate_needed": "bool — 제품 candidate 주입 필요(추천 의도+안전 clear일 때만 true)",
+  "grounding_mode": "enum required|cautious|optional|none",
+  "no_evidence_action": "enum defer_or_clarify|safety_first|proceed_general|ask_more",
+  "evidence_required_reason": "str|null (pregnancy_safety|ingredient_claim|product_specific...)",
+  "retrieval_scope": "enum knowledge|product_catalog|safety|none",
+  "product_candidate_policy": "enum deny|conditional|allow"
+ },
+ "invariants": [
+  "candidate_needed=true ⟹ refined_intent==product_recommendation_request AND risk!=high",
+  "product_candidate_policy=deny ⟹ recommended_products=0",
+  "grounding_mode=required AND no_evidence ⟹ no_evidence_action∈(defer_or_clarify,safety_first) (no fabrication)",
+  "T2 출력 전용 — decision_type/products 불변"
+ ],
+ "policy_table": [
+  {
+   "answer_type": "greeting",
+   "retrieval_needed": false,
+   "candidate_needed": false,
+   "grounding_mode": "none",
+   "no_evidence_action": "proceed_general",
+   "retrieval_scope": "none",
+   "product_candidate_policy": "deny"
+  },
+  {
+   "answer_type": "education/skin_concern_explanation",
+   "retrieval_needed": true,
+   "candidate_needed": false,
+   "grounding_mode": "cautious",
+   "no_evidence_action": "defer_or_clarify",
+   "retrieval_scope": "knowledge",
+   "product_candidate_policy": "deny"
+  },
+  {
+   "answer_type": "routine_guidance",
+   "retrieval_needed": true,
+   "candidate_needed": false,
+   "grounding_mode": "cautious",
+   "no_evidence_action": "defer_or_clarify",
+   "retrieval_scope": "knowledge",
+   "product_candidate_policy": "deny"
+  },
+  {
+   "answer_type": "product_comparison",
+   "retrieval_needed": true,
+   "candidate_needed": false,
+   "grounding_mode": "cautious",
+   "no_evidence_action": "proceed_general",
+   "retrieval_scope": "knowledge",
+   "product_candidate_policy": "deny"
+  },
+  {
+   "answer_type": "concern_clarify",
+   "retrieval_needed": false,
+   "candidate_needed": false,
+   "grounding_mode": "optional",
+   "no_evidence_action": "defer_or_clarify",
+   "retrieval_scope": "none",
+   "product_candidate_policy": "deny"
+  },
+  {
+   "answer_type": "vague_product",
+   "retrieval_needed": false,
+   "candidate_needed": false,
+   "grounding_mode": "none",
+   "no_evidence_action": "ask_more",
+   "retrieval_scope": "none",
+   "product_candidate_policy": "deny"
+  },
+  {
+   "answer_type": "adverse_or_safety",
+   "retrieval_needed": true,
+   "candidate_needed": false,
+   "grounding_mode": "required",
+   "no_evidence_action": "safety_first",
+   "retrieval_scope": "safety",
+   "product_candidate_policy": "deny"
+  },
+  {
+   "answer_type": "product_recommendation",
+   "retrieval_needed": true,
+   "candidate_needed": "conditional→true(risk!=high)",
+   "grounding_mode": "required(product; candidate=근거)",
+   "no_evidence_action": "defer_or_clarify(no candidates→ask_more)",
+   "retrieval_scope": "product_catalog",
+   "product_candidate_policy": "conditional/allow(safety clear)"
+  }
+ ],
+ "safety_ingredient_product_specific_policy": {
+  "safety_adverse_medical_procedure": "grounding=required·no_evidence=safety_first·scope=safety·candidate=deny",
+  "ingredient": "grounding=cautious·no_evidence=defer_or_clarify·candidate=false",
+  "product_specific(이 크림 괜찮을까?)": "grounding=cautious~required·candidate_policy=conditional(do_not_recommend 유지)"
+ },
+ "candidate_injection_timing": "Foundation declares candidate_needed; upstream(Cosmile) injects candidates only when true. Even if violated, product_candidate_policy=deny + existing guard ⟹ recommend 0 (double safety). T2 does not replace guard.",
+ "grounding_gate_no_evidence": "required+no/low hits → action=defer_or_clarify(or safety_first). no catalog-out/ungrounded assertion. raw hits not injected into judgment(used_for_judgment=False). dev-shadow: hits=∅ → defer default(safe). product: candidate present ⟹ grounded-for-product(recommend flow preserved).",
+ "relation_to_T1_guard": "reuses T1 answer_type/target_category/refined/adverse/explicit_reco. guard unchanged(v0.3.1). candidate_needed/policy same direction as guard, never relaxes. decision/products/response_plan unchanged.",
+ "risks": [
+  "Cosmile 미적응(guard가 안전망)",
+  "실 retrieval 욕심→skeleton/injection만(stub)",
+  "grounding over-defer→product는 candidate를 근거로 grounded",
+  "decision 변형→출력 전용 격리",
+  "fabrication→fail-closed defer"
+ ],
+ "test_plan": {
+  "regression_gate": [
+   "v0.2 40/40",
+   "v0.3 16/16",
+   "guard 19/19",
+   "F1 14/14",
+   "adversarial 180(decision_integrity=1.0/false_recommendation=0/safety_violation=0/intent_gap=0)",
+   "live/write/memory/push=0"
+  ],
+  "new_t2_cases": [
+   "안녕→candidate F",
+   "교육→candidate F·grounding cautious",
+   "routine→candidate F",
+   "comparison→candidate F",
+   "adverse/따가→grounding required·safety_first",
+   "임신 레티놀→required·safety_first·reason=pregnancy_safety",
+   "레이저→required·safety_first",
+   "미백 추천+cand→candidate T·conditional·product_catalog",
+   "미백 추천 no cand→ask_more·products0",
+   "토너 꼭→candidate F·knowledge",
+   "제품추천 vague→candidate F·ask_more",
+   "grounding required+hits∅→defer(fabrication 0)",
+   "불변: candidate_needed=T⟹product_recommendation_request&risk≠high",
+   "불변: policy=deny⟹products0·dt before==after"
+  ],
+  "f2_skeleton": "rrf dedup/sum/empty·interface contract(real BM25/vector/KB stub)",
+  "f3_grounding": "required+no evidence→defer·optional→general·product candidate=grounded"
+ },
+ "success_criteria": [
+  "기존 40/40·16/16·19/19·F1 14/14 유지",
+  "adversarial 180 유지",
+  "false_recommendation=0",
+  "product recommendation permission invariant 유지",
+  "T2 신규 ~14 PASS",
+  "decision_type/products 불변(dt before/after 동일)",
+  "live/write/memory/push=0"
+ ],
+ "ownership": {
+  "framework(decide_retrieval/F2 skeleton/F3 gate)": "foundation-control",
+  "KB/glossary/embedding/source_policy vocab": "SIASIU repo-local(후속)",
+  "Cosmile 2-step candidate call": "control 계약→Cosmile 구현(별도)"
+ },
+ "no_change_assertions": {
+  "implementation": 0,
+  "foundation_core": 0,
+  "cosmile": 0,
+  "siasiu": 0,
+  "foundation_repo": 0,
+  "contract": 0,
+  "canonical": 0,
+  "product_logic": 0,
+  "llm": 0,
+  "memory_write": 0,
+  "path_A_switch": 0,
+  "push": 0,
+  "docs_created": 2
+ }
+}

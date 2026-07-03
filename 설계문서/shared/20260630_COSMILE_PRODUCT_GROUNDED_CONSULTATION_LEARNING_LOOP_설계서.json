@@ -1,0 +1,69 @@
+{
+  "design": "cosmile_product_grounded_consultation_web_learning_loop_v0_3",
+  "date": "2026-06-30",
+  "status": "PROPOSED (Leo APPROVED 시 Cosmile repo-local 구현 착수)",
+  "design_first_rule": "CLAUDE.md §2.6",
+  "intent": "Cosmile AI 상담을 preset scenario 버튼 → 실제 catalog 기반 자유 상담으로 확장. 모르는 일반 지식은 web lookup → 출처와 함께 learning candidate 저장 → 유사 질문 재사용. 실 서버 테스트. ★몰 전체 개편 아님.",
+  "stage": "설계자료 작성 (Cosmile 코드 미구현)",
+  "grounding_inventory": {
+    "cosmile_catalog": "28 ELT products in mockFoundationProducts.ts (immutable, not DB); read via foundationProductClient (getProduct/listProducts/search); no product write API; commerce write = SKU/Offer/ProductListingConfig (out of scope)",
+    "consultation_slice": "FoundationConsultationRequest{userId,productId?,scenario?,locale?} / Response{decisionType,evidenceMode,safetyGateResult,reasonCodes,recommendedProducts,doNotBuyReasons,traceId,...}; 5 preset scenarios; free-text=fail-closed; ★Cosmile client-side text parsing 금지; decisionMapping/RecommendationCards 재사용 가능",
+    "foundation_kr": "foundation_knowledge_runtime.decide(request_id,query,hits,high_risk,risk_level); RetrievalHit(source_tier/provenance_ref/review_status, raw_text 불가); source_tier external→cautious 상한; learning states candidate→approved_for_reuse→learned/canonical; v0.1 dry-run only(auto-promotion 없음); memory.db 금지; medical_boundary_guard + trust final_guard"
+  },
+  "scope": ["read-only catalog adapter", "free-chat consultation pipeline", "web lookup interface + provider(real/mock)", "shadow/local learning store", "learned reuse", "safety/medical gate 재사용"],
+  "out_of_scope": ["몰 홈/상품상세/검색몰 개편", "실 cart/order/payment", "고객 DB", "checkout/order/customer schema", "catalog 제품 DB write", "commerce SKU/Offer/Listing write", "Foundation canonical/learned 정식 승격(후속)", "실 web provider 프로덕션 운영"],
+  "ports": [
+    {"name": "CatalogReadPort", "impl": "foundationProductClient 래핑(read-only): getProduct/listProducts/searchProducts/getBrand", "boundary": "제품 write 0, schema 변경 0, DISPLAYED_BRANDS 필터"},
+    {"name": "KnowledgeLookupPort", "impl": "internal-first: Foundation KR decide() + shadow learning read"},
+    {"name": "WebLookupPort", "impl": "real(server-testable) 또는 mock provider; 결과를 external/raw RetrievalHit로 정규화(raw_text 미저장)"},
+    {"name": "LearningStorePort", "impl": "shadow/local JSONL/in-memory; learning_candidate write/read; ★memory.db 금지, Foundation canonical write 금지"},
+    {"name": "ConsultationPort", "impl": "Foundation consultation, scenario:'free' + freeText; real bridge 또는 deterministic mock provider"}
+  ],
+  "core_policies": [
+    "추천은 catalog 존재 제품만; 없으면 추천 안 함",
+    "제품명 불명확 → 후보 제시 또는 추가 질문",
+    "성분/피부 지식은 Foundation/learning store 먼저",
+    "내부 부족 시 web lookup 가능",
+    "web 결과는 출처/URL/검색일시/요약/confidence 동반 저장",
+    "web 결과 즉시 canonical 승격 금지",
+    "최초 learning_candidate/shadow_learned_knowledge로 저장(local/shadow)",
+    "학습 지식 재사용은 출처·confidence 표시, 단정 금지",
+    "의료/치료/임신/이상반응/금기 강한 safety gate",
+    "위험하면 구매로 연결하지 않음"
+  ],
+  "free_chat_pipeline": "intake(PII 마스킹·raw 미전송) → classify(Foundation 구조화, ★Cosmile 키워드 파싱 금지) → route(product→catalog search/judge | knowledge→internal-first→부족 시 web→learning_candidate | safety→gate) → respond(decision + 출처/confidence)",
+  "intent_classification": "no-heuristics: Foundation 구조화 분류 또는 그 출력에 대한 결정론 정책; unknown→fail-closed(ask_more/cannot_determine); v0.3 mock provider는 deterministic fixture",
+  "web_lookup_normalization": "RetrievalHit{source_tier='external', review_status='raw', source_layer='external', source_ref=URL, provenance_ref, content_hash, raw_text 미저장}; Foundation decide(internal+external) → external tier는 cautious 상한",
+  "citation_fields": ["source_name", "url", "retrieved_at", "summary", "confidence", "source_tier", "provenance_ref?"],
+  "learning_candidate_fields": ["candidate_id", "query_norm", "intent", "summary", "source_name", "url", "retrieved_at", "confidence", "source_tier=external", "review_status=raw", "content_hash", "origin=web_search", "risk_level", "answer_type", "raw_text_stored=false"],
+  "reuse_policy": "shadow store 항목을 출처·confidence·'shadow/검증 전' 라벨과 함께 재사용; candidate 단정 금지; 고위험은 reviewed 전 cautious; privacy/customer-specific 재사용 금지",
+  "safety_gate": "medical/treatment/pregnancy/adverse/금기 → Foundation medical_boundary_guard(cautious 상한)+trust final_guard; safety_gate_result=block → 구매 비연결(slice UX v1.1 hard stop 재사용); web 의료지식 tier1 없이는 grounded 불가",
+  "ui_ux": "free-text 우선(채팅), scenario 버튼 보조; decision badge + catalog-only 추천 카드 + 출처/confidence/'shadow·검증 전' 라벨; do_not_*(비-block)→ConfirmModal, block→hard stop; dev/staging banner; 기존 컴포넌트 확장·재사용",
+  "test_plan": [
+    "기존 vertical slice 5/5 smoke 유지",
+    "product-grounded free chat: catalog-한정 추천(비-catalog 0), 모호→후보/ask_more, grounded+pass만 직접추천",
+    "web→learn→reuse: 내부부족→WebLookupPort→learning_candidate 저장→다음 유사질문 shadow 재사용 PASS (실 서버 dev)",
+    "safety: 임신/이상반응/금기→block→구매 비연결; web 의료지식 cautious 상한",
+    "불변식: real order/payment/customer DB write 0·catalog write 0·memory write 0·raw/PII 0·production disabled·schema 변경 0"
+  ],
+  "regression_to_preserve": {
+    "vertical_slice_loop100": "1377/0", "cosmile_readiness": "164/164", "decision_loop_v0_1": "112/112",
+    "foundation_runner": "89/89", "siasiu_integration": "39/39", "siasiu_workflow": "119/119",
+    "control_loop_tests": "23/23", "answer_py_fingerprint": "d7f579443f8a110a unchanged", "tsc_noemit": "PASS"
+  },
+  "rollout": "flag default OFF(NEXT_PUBLIC_COSMILE_FREECHAT_ENABLED + sub-flags), dev/staging only, production 무조건 OFF; 단계 a(catalog adapter+free-chat mock)→b(WebLookupPort+shadow store)→c(reuse)→d(dev 서버 테스트); 후속=Foundation canonical 승격·실 web provider·스케일 인덱스",
+  "forbidden": [
+    "기존 몰 구조 수정", "실 결제", "실 주문 생성", "실 고객 DB write", "real customer memory write",
+    "raw 상담 원문 Foundation 저장", "PII 저장/전송", "production live", "catalog 제품 DB write",
+    "checkout/order/customer schema 변경", "memory flag default ON", "memory.db 생성", "Foundation canonical/learned 승격", "push", "force push"
+  ],
+  "approval_conditions": ["설계서 20섹션 존재", "JSON valid", "제품 repo 변경 0", "secret/PII 0", "(구현 시) smoke 5/5", "free-chat catalog-only PASS", "web→learn→reuse PASS", "real write 0", "raw/PII 0", "production disabled", "catalog write 0"],
+  "noted_risks": [
+    "Foundation v0.1 dry-run only → web candidate는 approved_for_reuse 이상 자동 승격 안 됨(의도된 freeze; 정식 학습은 후속)",
+    "web 고위험(의료) 지식은 tier1+provenance 없이 grounded 불가(보수적 by design)",
+    "기존 smoke 스크립트에 하드코딩된 dev 콘솔 비밀번호 존재 → 별도 정리 권고(값은 본 문서에 미기재)",
+    "free-chat HTTP Foundation provider 미연결 — v0.3는 real bridge 또는 mock provider로 테스트",
+    "in-memory catalog 검색(28제품) — 스케일 인덱스는 후속"
+  ],
+  "commit_policy": {"foundation_control_design_only": true, "product_repo_modified": false, "push": "separate approval", "force_push": false}
+}

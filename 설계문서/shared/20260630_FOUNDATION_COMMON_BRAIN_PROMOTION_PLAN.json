@@ -1,0 +1,241 @@
+{
+ "plan_name": "Foundation Common Brain Promotion Plan",
+ "mode": "read_only_plan_no_implementation",
+ "date": "2026-06-30",
+ "source": [
+  "SIASIU/설계문서/SIASIU_TO_FOUNDATION_COMMON_BRAIN_SOURCE_PACKAGE_20260630.{md,json}(read-only)",
+  "foundation-control 1ac8297 lineage audit"
+ ],
+ "central_insight_path_A_vs_B": "SIASIU has 2 answer faces. Path A(live: brain.chat→ssbrain.engine→DeepSeek→verify→memory) is used by real users. Path B(ssbrain/answer.py) is what Foundation shadow wrapped. Foundation wrapped Path B but users use Path A → real search/compose/recommend/memory logic never ported(absent ~40). Promotion must target Path A framework; final live switch = brain.chat→common brain(control plans, SIASIU implements).",
+ "foundation_already_has": {
+  "foundation_http_service_v031": [
+   "_classify_intent(11)",
+   "_kw_risk",
+   "_detect_conditions",
+   "_detect_concern_families",
+   "_refine_intent",
+   "_response_mode",
+   "response_plan",
+   "clarification_plan",
+   "candidate_override_guard",
+   "_permissions",
+   "rule_composer"
+  ],
+  "FOUNDATION_repo": [
+   "contracts",
+   "shadow_wrapper",
+   "LMR_memory_trust_partial",
+   "trust_core_safety_guard",
+   "answer_type_classifier.classify(migrated_real)"
+  ],
+  "rebuilt_abstraction_only": [
+   "safety_gate",
+   "external_guard"
+  ]
+ },
+ "foundation_missing_absent": [
+  "retrieval_stack(engine/bridge/bm25/vector/graph/rerank/text/ingest/schema)",
+  "brain_orchestrator(chat/guardrail/kb_search/_llm/verify_output/memory/avoid_list)",
+  "path_B_answer_stack(answer.py/evidence_mode/answer_provenance/disclosure_redaction)",
+  "products_recommend(recos/pitch/checkins)",
+  "CANON/memory_schema",
+  "history_session"
+ ],
+ "copy_forbidden_siasiu_specific": [
+  {
+   "part": "bridge glossary",
+   "reason": "KO/EN/ZH atom hardcoded(K-beauty)"
+  },
+  {
+   "part": "graph edges(concern/ing/safe)",
+   "reason": "Cosmile/beauty domain"
+  },
+  {
+   "part": "text tokens",
+   "reason": "Korean morphology"
+  },
+  {
+   "part": "CANON/SAFETY_TYPES/SEED_KB",
+   "reason": "K-beauty fact types/seed knowledge"
+  },
+  {
+   "part": "PERSONA/TALK_STYLE",
+   "reason": "존댓말/drama tone/domain phrasing"
+  },
+  {
+   "part": "guardrail domain list",
+   "reason": "skin/functional-med/personal-color = SIASIU scope"
+  },
+  {
+   "part": "products schema/avoid atoms",
+   "reason": "K-beauty products/ingredients"
+  }
+ ],
+ "promote_frameworks": [
+  {
+   "id": "F1",
+   "name": "Answer-Type/Category Classifier",
+   "common": "taxonomy·priority·category-word isolation·substring-safe matcher·default-to-education·routine·adverse(따가)",
+   "siasiu_injects": "category lexicon·domain vocab",
+   "foundation_now": "classifier migrated + 11 intent(simple)"
+  },
+  {
+   "id": "F2",
+   "name": "Retrieval Fusion",
+   "common": "RRF+BM25+dense+rerank skeleton",
+   "siasiu_injects": "bridge glossary·atom·brand·embedding model",
+   "foundation_now": "absent"
+  },
+  {
+   "id": "F3",
+   "name": "Grounding Gate",
+   "common": "search→evidence?→answer/\"unknown\" cut(no fabrication)",
+   "siasiu_injects": "KB source·threshold",
+   "foundation_now": "absent(unconditional candidate)"
+  },
+  {
+   "id": "F4",
+   "name": "Guardrail Framework",
+   "common": "LLM semantic classify skeleton·default-deny",
+   "siasiu_injects": "domain list·risk policy",
+   "foundation_now": "partial(keyword risk)"
+  },
+  {
+   "id": "F5",
+   "name": "Output Verify",
+   "common": "LLM-judge(internal/efficacy/avoid/fabrication)·fail-closed",
+   "siasiu_injects": "avoid·forbidden vocab",
+   "foundation_now": "absent"
+  },
+  {
+   "id": "F6",
+   "name": "Evidence Mode",
+   "common": "confidence→answer_mode(candidate→cautious cap·assertive off)",
+   "siasiu_injects": "risk categories",
+   "foundation_now": "absent"
+  },
+  {
+   "id": "F7",
+   "name": "Memory Trust",
+   "common": "fact trust·stale·supersede·SAFETY invariant·isolation",
+   "siasiu_injects": "CANON types·labels",
+   "foundation_now": "LMR partial"
+  },
+  {
+   "id": "F8",
+   "name": "Composer contract + LLM Router",
+   "common": "\"LLM=expression,judgment fixed\" contract·task→tier",
+   "siasiu_injects": "PERSONA·language·task map",
+   "foundation_now": "rule composer only"
+  }
+ ],
+ "siasiu_repo_local_injection": [
+  "lexicon/policy/persona/domain data(bridge·atom·CANON·SAFETY_TYPES·SEED_KB·PERSONA·domain·products)",
+  "live wiring brain.chat→common brain(impl)",
+  "temporary live fixes(deferred A)"
+ ],
+ "priorities": {
+  "P0_immediate_deterministic": [
+   "F1 Answer-Type/Category Classifier(resolves residual gap #5,#6,#7,#8; additive; response_plan/guard unchanged)"
+  ],
+  "P0_framework": [
+   "F2 Retrieval Fusion",
+   "F3 Grounding Gate",
+   "F4 Guardrail",
+   "F5 Output Verify(+fabrication)",
+   "F7 Memory Trust alignment"
+  ],
+  "P1": [
+   "F6 Evidence Mode",
+   "F8 Composer contract",
+   "disclosure redaction",
+   "ingest/schema"
+  ],
+  "P2": [
+   "products recommend permission",
+   "pitch/checkins",
+   "answer_provenance trace",
+   "Path A live switch(approval)"
+  ]
+ },
+ "implementation_trains": [
+  {
+   "id": "T1",
+   "name": "Foundation Answer-Type Classifier + Category Disambiguation",
+   "priority": "P0",
+   "deterministic": true,
+   "resolves": "gap #5,#6,#7,#8",
+   "invariant": "response_plan/clarification_plan/candidate_guard + 40/40+16/16+19/19+180 unchanged"
+  },
+  {
+   "id": "T2",
+   "name": "Retrieval Fusion + Grounding Gate framework",
+   "priority": "P0",
+   "mode": "dev/shadow",
+   "note": "replaces unconditional candidate injection with need-gated retrieval"
+  },
+  {
+   "id": "T3",
+   "name": "Guardrail + Output Verify + Evidence Mode framework",
+   "priority": "P0/P1",
+   "mode": "dev/shadow",
+   "note": "LLM contract only; real call separate approval"
+  },
+  {
+   "id": "T4",
+   "name": "Composer contract + LLM Router",
+   "priority": "P1",
+   "note": "real LLM = canonical §17 guarded approval"
+  },
+  {
+   "id": "T5",
+   "name": "Memory Trust alignment + Multi-turn Context",
+   "priority": "P1"
+  },
+  {
+   "id": "T6",
+   "name": "Path A live switch(brain.chat→common brain)",
+   "priority": "P2",
+   "note": "after all frameworks verified + approval"
+  }
+ ],
+ "test_strategy": {
+  "common_gate_every_train": [
+   "v0.2 40/40",
+   "v0.3 16/16",
+   "guard 19/19",
+   "adversarial 180(decision_integrity=1.0·false_recommendation=0)",
+   "live/write/promotion/memory=0"
+  ],
+  "per_framework": {
+   "F1": "category-only→education·선크림≠크림·언제발라→routine·따가→adverse·only 추천/골라→recommendation·180 residual 6 gap→0",
+   "F2": "rrf dedup/sum/empty·engine top-k/graph/brand/full-text",
+   "F3": "evidence→confident / none→\"확인할게요\"(0 fabrication)",
+   "F4": "injection/medical/payment classify·default-deny·on-domain pass",
+   "F5": "internal/efficacy/avoid + fabrication block·fail-closed",
+   "F6": "pregnancy/medical→cautious cap·assertive off",
+   "F7": "SAFETY active·no decay·SINGLE supersede·cross-customer isolation·deleted no-reappear",
+   "F8": "LLM swap→judgment unchanged·존댓말 by injected language"
+  },
+  "regression_principle": "each framework = additive layer beside/before existing judge; existing decision/safety/intent/products/permission outputs unchanged; Path A live switch last + approval"
+ },
+ "ownership": {
+  "framework_extraction_and_contract": "foundation-control(control tower)",
+  "lexicon_policy_persona_domain_injection": "SIASIU repo-local",
+  "answer_type_classifier_generalization": "both",
+  "live_switch": "control plans→SIASIU implements",
+  "temporary_live_fix": "SIASIU repo-local"
+ },
+ "no_change_assertions": {
+  "implementation": 0,
+  "foundation": 0,
+  "siasiu": 0,
+  "cosmile": 0,
+  "foundation_repo": 0,
+  "contract": 0,
+  "canonical": 0,
+  "memory_write": 0,
+  "push": 0,
+  "plan_files_created": 2
+ }
+}

@@ -1,0 +1,52 @@
+{
+  "rule": "control_tower_design_first_operating_rule",
+  "date": "2026-06-29",
+  "status": "PROPOSED (Leo APPROVED 시 효력)",
+  "canonical_design_location": "설계자료/",
+  "summary": "cross-project 작업은 설계자료/에 16섹션 설계서를 먼저 작성·승인한 뒤에만 구현/코딩/implementation prompt 발행.",
+  "mandatory_rules": [
+    "foundation-control 루트에 설계자료/ 폴더를 둔다(구현 전 설계의 canonical 위치).",
+    "모든 release train / cross-project / memory / consultation / commerce / identity / migration / live 전환 / safety 작업은 설계자료/에 설계서를 먼저 작성한다.",
+    "설계서 없이 제품 repo 구현 지시를 내리지 않는다.",
+    "설계서 없이 FOUNDATION/SIASIU/Cosmile 코드를 수정하지 않는다.",
+    "설계서는 구현 전에 작성한다 — 구현 후 사후 기록으로 대체 금지.",
+    "설계서가 PASS/APPROVED 된 뒤에만 implementation prompt를 발행한다.",
+    "긴급 수정도 최소 decision record 또는 hotfix design note를 설계자료/에 먼저 남긴다."
+  ],
+  "naming_convention": {
+    "md": "설계자료/YYYYMMDD_<작업명>_설계서.md",
+    "json_optional": "설계자료/YYYYMMDD_<작업명>_설계서.json"
+  },
+  "document_types": [
+    "아키텍처 설계", "role boundary 설계", "contract 설계", "API 설계",
+    "memory/identity/consent 설계", "release train plan", "risk/gap 분석",
+    "test plan", "rollback plan", "implementation prompt 초안", "decision record"
+  ],
+  "required_sections": [
+    "1 목적", "2 현재 상태", "3 관련 repo/commit", "4 작업 범위", "5 하지 않을 것",
+    "6 role boundary", "7 data boundary", "8 safety boundary", "9 contract/schema",
+    "10 expected behavior", "11 test plan", "12 regression plan", "13 rollback plan",
+    "14 implementation phases", "15 승인 조건", "16 다음 implementation prompt"
+  ],
+  "control_tower_order_before_implementation": [
+    "1) 설계자료/YYYYMMDD_<작업명>_설계서.md (16섹션) 작성",
+    "2) Leo APPROVED (PASS)",
+    "3) (필요 시) 설계자료/에 implementation prompt 초안",
+    "4) 제품 repo repo-local 구현 지시 발행",
+    "5) control regression/simulation",
+    "6) report (reports/integrated/)"
+  ],
+  "boundaries": {
+    "no_raw_text_or_pii_in_design_docs": true,
+    "no_product_repo_change": true,
+    "no_live_write_promotion": true,
+    "existing_docs_contracts_reports_structure": "유지(이동/삭제 안 함; 위치만 명시)"
+  },
+  "this_task": {
+    "product_repo_modified": false,
+    "code_changed": false,
+    "commit_scope": "foundation-control only",
+    "push": "separate approval",
+    "force_push": false
+  }
+}

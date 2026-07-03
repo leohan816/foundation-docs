@@ -1,0 +1,63 @@
+{
+  "train_name": "Foundation Response Plan + Clarification Planner v0.3",
+  "date": "2026-06-30",
+  "scope": {
+    "included": ["dev/shadow core.py response planning", "intent refinement", "education/explanation split", "concern taxonomy + concern_family_tags", "response_mode", "response_plan", "clarification_plan", "permission 3 fields", "additive answer enhancement for explain_first/clarify_concern_axis"],
+    "excluded": ["multi-turn history payload", "Cosmile history send", "Contract v0.3 formalization", "Natural Answer Composer", "LLM API", "memory write", "FOUNDATION product repo", "Cosmile renderer", "product catalog/recommendation logic"]
+  },
+  "changed_files": [
+    "foundation_http_service/core.py (additive v0.3 planner)",
+    "scripts/foundation_response_plan_v03_test.py (new, 16 checks)",
+    "설계자료/20260630_FOUNDATION_RESPONSE_PLAN_CLARIFICATION_PLANNER_V03_REPORT.{md,json}"
+  ],
+  "intent_refinement_summary": "additive refined_intent_type derived from structured signals (intent_type + concern_families + explain_signal + risk): safety_question, adverse_or_sensitivity_signal, greeting, comparison_question, skin_concern_explanation, product_recommendation_request, vague_product_request, clarify_concern_axis, cannot_determine. base intent_type unchanged.",
+  "concern_model_summary": "central concern taxonomy; extraction lexicon (_FAMILY_FROM_CONDITION mapping existing conditions + _FAMILY_EXTRA_LEXICON for sun) SEPARATE from response content (_FAMILY_MODEL). 7 families. existing 'conditions' list unchanged (sun added only as family).",
+  "response_mode_summary": "_response_mode(refined, decision, risk, families): safety_first, explain_first, compare_then_followup, ask_more_first, clarify_concern_axis, recommend_if_allowed, smalltalk_or_greeting. product decisions (recommend/do_not_recommend) take precedence over explain_first (hardening). does not relax recommendation permission.",
+  "response_plan_schema": ["response_mode", "opening", "explanation_points[]", "clarification_goal", "next_questions[]", "quick_replies[]", "safety_notes[]", "recommendation_policy", "answer_style", "should_show_products", "should_show_purchase_cta", "limitations[]"],
+  "clarification_plan_schema": ["required", "reason", "ambiguity_type", "question_type", "next_questions[]", "quick_replies[]", "max_questions", "product_search_deferred", "recommendation_deferred"],
+  "permission_fields": {
+    "retrieval_allowed": "len(query)>=2",
+    "product_candidate_allowed": "decision in {recommend, do_not_recommend}",
+    "product_recommendation_allowed": "decision == recommend",
+    "invariants": ["candidate_allowed=false => recommended_products=0", "recommendation_allowed=true => decision==recommend", "retrieval ⊇ candidate ⊇ recommendation"]
+  },
+  "no_heuristic_assertion": {
+    "raw_keyword_to_answer_hardcoding": "none (planner dispatches on normalized family key / refined_intent / response_mode)",
+    "raw_keyword_to_clarification_hardcoding": "none (clarification from family taxonomy clarify_axes, keyed by normalized family)",
+    "response_plan_basis": "structured signals (refined_intent_type, concern_family_tags, risk, permission)",
+    "alias_normalization_separated": "extraction lexicons (_FAMILY_*_LEXICON, _EXPLAIN_SIGNAL) used only for extraction; content in _FAMILY_MODEL",
+    "cosmile_surface_heuristic": "none (Cosmile untouched this train)",
+    "note": "intent_type-based answer dispatch in judge() is the pre-existing v0.2 path and uses intent_type — a structured signal the task explicitly permits. Full routing of all answer text through the planner = Natural Answer Composer = FORBIDDEN this train (deferred)."
+  },
+  "test_cases": {
+    "existing_v02_regression": {"total": 40, "pass": 40, "fail": 0, "all_pass": true},
+    "new_v03": {"total": 16, "pass": 16, "fail": 0, "all_pass": true}
+  },
+  "before_after_summary": {
+    "여드름 피부에 대해서 알고 싶어": {"before": "hold · '여드름/트러블 관련해서 조금 더 확인이 필요해요'", "after": "explain_first · 설명(피지/모공/염증/장벽 + 좁쌀/염증/반복 타입) + 경로 질문 · 추천 0"},
+    "피부가 요즘 자외선 때문에 고민이야": {"before": "cannot_determine · '무엇을 도와드릴까요?'", "after": "clarify_concern_axis · '자외선 때문이면 붉어짐·잡티·건조함' + '붉어짐/잡티/건조함/선케어 중 어디?' · 추천 0"},
+    "제품추천": {"after": "ask_more_first · 피부 타입/고민/제형 질문 · 추천 0"},
+    "세럼이 좋아 크림이 좋아?": {"after": "compare_then_followup · 비교 설명 유지 + 목적 질문 · 추천 0"},
+    "피부가 따끔거려": {"after": "safety_first · do_not_buy/block 불변 · 추천 0 (over-block은 별도 JUDGE train)"},
+    "미백 제품 추천해줘(후보 동반)": {"after": "recommend_if_allowed · recommend · REC ⊆ candidates · 위반 0"},
+    "뭘 알려줘?": {"after": "ask_more_first generic — context payload 없이는 맥락 해결 불가(multi-turn 별도 train)"}
+  },
+  "regression_results": {"v02_backward_compat": "40/40 PASS", "v03_new": "16/16 PASS", "decision_safety_intent_products_unchanged": true},
+  "product_recommendation_invariant": {"violation_count": 0, "catalog_out_count": 0, "adverse_safety_recommend_count": 0, "candidate_allowed_false_implies_zero_products": true},
+  "adversarial_verification": {
+    "method": "3 independent skeptic lenses (Workflow wf_03e7d8a2-c61)",
+    "lens_safety_permission": {"verdict": "PASS", "violations": 0, "note": "all safety/permission invariants intact; high-risk block preserved; v0.3 only overrides plain/clar text; permissions correctly derived"},
+    "lens_heuristic": {"verdict": "FAIL (assessed over-strict)", "resolution": "skeptic flagged intent_type-based dispatch as heuristic; but intent_type is a task-sanctioned structured signal and concern-specific content IS family-key dispatched. requiring all answer text through the planner = full Natural Answer Composer = forbidden this train. No real violation; documented as deferred composer item."},
+    "lens_backward_compat": {"verdict": "FAIL (1 real kernel, fixed)", "resolution": "skeptic flagged that explain_signal+families could override answer for product-bearing decisions. FIXED: _response_mode now prioritizes recommend/do_not_recommend over explain_first, and the override is guarded by 'not products'. Verified: explain+family+candidates -> recommend_if_allowed (product-grounded answer preserved, NOT overridden); pure explain -> explain_first preserved. 40/40 + 16/16 still pass."}
+  },
+  "no_change_assertions": {
+    "cosmile": 0, "siasiu": 0, "foundation_product_repo": 0, "contract_json": 0, "canonical_md_json": 0,
+    "product_data_search_ranking": 0, "llm_api": 0, "memory_write": 0, "push": 0
+  },
+  "next_train_recommendation": [
+    "Multi-turn Context Payload v0.3 (Cosmile sends history + Foundation accepts/uses)",
+    "Cosmile response_plan renderer (render-only, no heuristic)",
+    "Contract v0.3 formalization (response_plan/clarification_plan/permission additive)",
+    "JUDGE minor: 따끔 standalone block -> caution (safety-reviewed, separate approval)"
+  ]
+}

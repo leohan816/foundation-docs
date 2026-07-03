@@ -1,0 +1,54 @@
+{
+  "design": "foundation_dev_shadow_http_service_for_cosmile",
+  "date": "2026-06-30",
+  "status": "APPROVED",
+  "approval_basis": "Leo go-ahead 2026-06-30 (본 train: 설계+구현 지시) — §9 dev fail-closed 분류 포함 승인",
+  "design_first_rule": "CLAUDE.md §2.6",
+  "intent": "Cosmile 상담/추천이 in-Cosmile mock 대신 실제 Foundation dev/shadow HTTP endpoint 호출. ★production live 아님 · api_live=false · mode=dev_shadow · real write 0.",
+  "jurisdiction": "foundation-control이 dev/shadow HTTP service를 빌드(제품 repo 무수정). Cosmile은 endpoint 준비 후 client 연결(별도 승인).",
+  "api_live_interpretation": "api_live=false = public/production API live 금지(유지). dev/shadow localhost HTTP는 live 아님 → 충돌 없음. 모든 응답에 api_live=false/mode=dev_shadow/write_enabled=false 명시.",
+  "endpoints": [
+    {"method": "GET", "path": "/health", "role": "status (api_live=false, mode=dev_shadow, write_enabled=false)"},
+    {"method": "POST", "path": "/v1/schema/validate", "role": "SCHEMA — 입출력 검증, raw/PII durable 0"},
+    {"method": "POST", "path": "/v1/consult/judge", "role": "JUDGE — decision/safety, fail-closed"},
+    {"method": "POST", "path": "/v1/recommend", "role": "REC — catalog 한정 추천"}
+  ],
+  "roles": {
+    "SCHEMA": "입력/출력 schema validation",
+    "JUDGE": "상담 판단·safety decision·hold/ask_more/block",
+    "REC": "catalog candidates 안에서만 추천/비추천/대안"
+  },
+  "response_invariants": {"api_live": false, "mode": "dev_shadow", "write_performed": false, "raw_text_stored": false, "pii_stored": false, "memory_write": false},
+  "decision_types": ["recommend", "do_not_recommend", "do_not_buy", "hold", "ask_more", "cannot_determine"],
+  "safety_gate_results": ["pass", "caution", "block"],
+  "evidence_modes": ["grounded", "cautious", "uncertain", "cannot_determine"],
+  "judge_policy": "fail-closed: 구조화 risk_signal/intent 우선(no-heuristics); 없으면 결정론 keyword 분류는 caution/block로 상향만(완화 금지); grounding 없으면 evidence_mode<=cautious; 불확실→hold/ask_more; 위험→do_not_buy/block",
+  "rec_policy": "출력 product_id ⊆ 입력 catalog_candidates (catalog 밖 제품 생성 0); product_id/slug 기반만; recommendation_reason/match_reason/confidence/limitations",
+  "cosmile_client_contract": {
+    "FOUNDATION_API_URL": "http://127.0.0.1:8731 (dev)",
+    "FOUNDATION_BRIDGE_MODE": "foundation_http",
+    "timeout_ms": 3000, "retry": 1,
+    "trace_id_format": "fdsh_<hex16>",
+    "error_format": "{error_code, message, trace_id, http_status}",
+    "error_codes": ["BAD_REQUEST", "SCHEMA_INVALID", "UNAVAILABLE", "INTERNAL"],
+    "fallback": "timeout/5xx → cannot_determine + safety pass(추천 0) + '일시적 연결 불가, 상담 계속' (구매 유도 0)",
+    "contract_file": "contracts/COSMILE_FOUNDATION_HTTP_CONTRACT_V0.json"
+  },
+  "forbidden": [
+    "production live", "api_live=true", "raw 상담 원문 durable 저장", "PII 저장", "memory write",
+    "customer memory write", "web lookup 구현", "learning store 구현", "catalog write",
+    "실 결제/주문/customer DB write", "Cosmile repo 수정", "SIASIU repo 수정", "push"
+  ],
+  "test_plan": [
+    "service starts", "/health PASS", "schema validation PASS", "recommend/pass", "do_not_recommend/caution",
+    "do_not_buy/block", "hold/ask_more", "catalog 밖 제품 생성 0", "raw durable 0", "PII 저장 0",
+    "memory write 0", "real write 0", "production disabled", "Cosmile contract JSON valid", "endpoint URL 산출"
+  ],
+  "rollout": "a) foundation-control dev service 기동(localhost) b) Cosmile FOUNDATION_BRIDGE_MODE=foundation_http 연결(repo-local, 별도 승인) c) dev/staging 테스트; production expose·real Foundation runtime judge·실 write=후속",
+  "rollback": "프로세스 종료로 런타임 비활성; 코드 revert로 롤백; Cosmile은 env로 mock 복귀(별도)",
+  "deliverables": [
+    "설계자료 2 (md+json)", "foundation_http_service/ (service code)", "contracts/COSMILE_FOUNDATION_HTTP_CONTRACT_V0.json",
+    "scripts/foundation_http_service_test.py", "reports/integrated/FOUNDATION_DEV_SHADOW_HTTP_SERVICE_TEST_20260630.{md,json}"
+  ],
+  "commit_policy": {"foundation_control_only": true, "product_repo_modified": false, "push": "separate approval", "force_push": false}
+}

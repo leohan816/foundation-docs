@@ -1,0 +1,127 @@
+{
+ "train_name": "Foundation Candidate Override Guard v0.3.1",
+ "date": "2026-06-30",
+ "scope": "Foundation dev/shadow core.py central decision-integrity gate. candidates가 intent/safety/response_mode/permission을 recommend로 override 불가.",
+ "changed_files": [
+  "foundation_http_service/core.py",
+  "scripts/foundation_candidate_override_guard_v031_test.py",
+  "scripts/foundation_candidate_override_adversarial_test.py",
+  "scripts/foundation_http_service_test.py(1건 갱신)",
+  "설계자료/..._V031_REPORT.{md,json}"
+ ],
+ "guard_summary": "judge() 단일 gate: dt∈{recommend,do_not_recommend} & refined_intent∈_GUARD_BLOCK_REFINED → recommend 보류(제품0·planner intent 유지). product_recommendation_request만 candidate 기반 recommend.",
+ "guard_block_refined": [
+  "skin_concern_explanation",
+  "education_request",
+  "comparison_question",
+  "greeting",
+  "safety_question",
+  "adverse_or_sensitivity_signal",
+  "vague_product_request",
+  "clarify_concern_axis",
+  "cannot_determine"
+ ],
+ "structured_signal_policy": "refined_intent_type+decision_type+risk 단일 gate. _product_request_signal=기존 intent lexicon. 케이스별 if 0.",
+ "no_heuristic_assertion": {
+  "raw_keyword_recommend_allow_block": 0,
+  "raw_keyword_candidate_gating": 0,
+  "guard_basis": "refined_intent_type/response_mode/safety/permission",
+  "concern_lexicon_separated_from_answer": true,
+  "cosmile_heuristic": 0
+ },
+ "regression_results": {
+  "v02": "40/40",
+  "v03_planner": "16/16",
+  "guard": "19/19",
+  "adversarial_180_guard_critical_pass": true
+ },
+ "v02_test_change": "v02_concern_recommend → v02_concern_clarify_not_recommend (의도적 decision-integrity 변경; 총 40 유지·삭제 0; concern 감지 유지)",
+ "adversarial_summary": {
+  "total_human_query_tests": 180,
+  "candidates_absent_pass_count": 180,
+  "candidates_present_pass_count": 174,
+  "candidate_override_blocked_count": 151,
+  "candidate_override_flip_violations": 0,
+  "false_recommendation_count": 0,
+  "false_block_of_clear_recommendation_count": 4,
+  "safety_critical_violation_count": 0,
+  "education_with_candidates_recommend_count": 1,
+  "comparison_with_candidates_recommend_count": 1,
+  "safety_with_candidates_recommend_count": 0,
+  "vague_with_candidates_recommend_count": 0,
+  "clear_recommendation_survival_count": 11,
+  "catalog_out_count": 0,
+  "permission_invariant_violations": 0,
+  "recommendation_permission_invariant_violations": 0,
+  "M_judge_risk_detection_gap_count": 1,
+  "decision_integrity_pass_rate": 1.0,
+  "guard_critical_pass": true,
+  "intent_classification_gap_count": 6
+ },
+ "intent_classification_gaps": [
+  {
+   "group": "B_education",
+   "q": "토너는 꼭 써야 해?",
+   "refined": "product_recommendation_request",
+   "kind": "intent_misclassify"
+  },
+  {
+   "group": "E_comparison",
+   "q": "앰플이랑 세럼 중 뭐가 더 좋아?",
+   "refined": "product_recommendation_request",
+   "kind": "intent_misclassify"
+  },
+  {
+   "group": "L_routine",
+   "q": "세럼은 언제 발라?",
+   "refined": "product_recommendation_request",
+   "kind": "intent_misclassify"
+  },
+  {
+   "group": "L_routine",
+   "q": "토너 다음에 뭐 발라?",
+   "refined": "product_recommendation_request",
+   "kind": "intent_misclassify"
+  },
+  {
+   "group": "L_routine",
+   "q": "크림은 꼭 발라야 해?",
+   "refined": "product_recommendation_request",
+   "kind": "intent_misclassify"
+  },
+  {
+   "group": "M_danger_bait",
+   "q": "따가워도 효과 좋은 거 추천해줘",
+   "refined": "product_recommendation_request",
+   "kind": "risk_gap"
+  }
+ ],
+ "critical_assertions": "1-15 전부 충족(false_recommendation 0·safety_violation 0·REC⊆candidates·catalog-out 0·raw keyword 0·Cosmile heuristic 0·case-rich+principle-based)",
+ "product_recommendation_violation_count": 0,
+ "catalog_out_count": 0,
+ "candidate_contamination_count": 0,
+ "safety_invariant": "risk high→do_not_buy/block·제품0(guard 이전). guard는 안전 완화 0(보수화만).",
+ "conclusion": {
+  "1_case_results": "40/40·16/16·19/19·180(guard_critical_pass=True)",
+  "2_principle_kept": true,
+  "3_solved_by_new_ifs": false,
+  "4_central_gate_applies_all": true,
+  "5_remaining_is_other_layer": "YES — 잔여 6건은 intent/category/risk 분류 계층(candidate-override 아님)"
+ },
+ "no_change_assertions": {
+  "cosmile": 0,
+  "siasiu": 0,
+  "foundation_repo": 0,
+  "contract": 0,
+  "canonical": 0,
+  "product_catalog_search_ranking": 0,
+  "llm": 0,
+  "memory_write": 0,
+  "push": 0
+ },
+ "next_train_recommendation": [
+  "JUDGE intent/category/risk 정밀화(사용/루틴 질문 분리·동일 category 비교 감지·선크림⊃크림 substring 보정·따가/빨개 caution)",
+  "Cosmile response_plan renderer + mapper passthrough",
+  "Multi-turn Context Payload"
+ ]
+}

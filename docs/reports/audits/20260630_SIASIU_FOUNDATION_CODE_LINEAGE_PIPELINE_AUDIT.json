@@ -1,0 +1,86 @@
+{
+  "train_name": "SIASIU → Foundation Code Lineage / Answer Pipeline Extraction Audit",
+  "mode": "read_only_lineage_audit",
+  "date": "2026-06-30",
+  "repo_statuses": {
+    "foundation_control": {"head": "97abf96", "dirty": 0},
+    "cosmile": {"head": "31bbc45", "dirty": 1, "dirty_files": ["app/next.config.ts (Leo, untouched)"]},
+    "siasiu": {"head": "921caf4", "dirty": 0},
+    "foundation": {"head": "b7cce1f", "dirty": 0}
+  },
+  "lineage_summary": "Foundation foundation_http_service is NOT a direct code copy of SIASIU (no SIASIU/ssbrain imports or source comments in core.py). Lineage is SPEC-based: the canonical doc (CANONICAL_STANDARD_SIASIU_BASELINE) analyzed SIASIU answer_type_classifier/ssbrain.answer/evidence_mode/foundation_shadow_adapter and promoted their PRINCIPLES into the Foundation common chat standard. Foundation v0.2/v0.3/v0.3.1 is a PARTIAL implementation (intent/risk/permission/response_plan/candidate-guard ported; answer_type taxonomy, retrieval timing, evidence grading, category-word isolation, LLM composer NOT yet promoted).",
+  "confirmed_source_files": [
+    {"foundation_part": "intent/risk-first judge", "siasiu_source": "app/answer_type_classifier.py:13-39 classify(query,hits) priority rules + high_risk override", "evidence": "canonical §3 + direct read", "certainty": "confirmed"},
+    {"foundation_part": "evidence/safety mode", "siasiu_source": "app/evidence_mode.py:50-73 evidence_answer_mode + foundation_*_guard.py", "evidence": "canonical §3 + direct read", "certainty": "confirmed"},
+    {"foundation_part": "non-sales-first / high-risk fallback", "siasiu_source": "app/ssbrain/answer.py:47-68 safety_gate + _SAFE_CAUTION", "evidence": "canonical §3 + direct read", "certainty": "confirmed"}
+  ],
+  "suspected_source_files": [
+    {"file": "app/answer_pattern_taxonomy.py", "reason": "15 answer-type canonical schema — likely archetype of Foundation _classify_intent/_FAMILY_MODEL", "certainty": "strong_candidate"},
+    {"file": "app/search_triggers.py + evidence_grading.py + source_policy.py", "reason": "retrieval timing standard — NOT promoted to Foundation", "certainty": "strong_candidate"}
+  ],
+  "uncertain_or_unknown": ["foundation_http_service의 SIASIU code-level 출처 commit 추적 불가 — canonical 문서가 유일 lineage 기록(코드 diff 증거 없음)"],
+  "siasiu_call_graph": "POST /api/chat → brain.chat → guardrail_check(LLM) → kb_search(ssbrain.engine: BM25+vector+graph+rerank) [retrieval FIRST] → answer_type_classifier.classify(query,hits) [no_hits→unknown] → evidence_mode.evidence_answer_mode [high_risk/candidate→cautious cap] → brain._llm(DeepSeek, persona+grounding+history, t=0.4) → safety_gate(reply)→_SAFE_CAUTION fallback → trust_core.evaluate(16 gates) → external_guard/redact(NEVER_DISCLOSE→[비공개]) → final. history: episode+memory_fact tables.",
+  "foundation_current_call_graph": "POST /v1/consult/judge → core.judge → _kw_risk/_detect_conditions/_classify_intent(candidate-independent) → decision → _detect_concern_families/_refine_intent/_response_mode → Candidate Override Guard → _enrich_products(⊆candidates) → _plain_explanation(rule composer) → response_plan/clarification_plan. NO retrieval/KB/evidence-grading/LLM/history(stateless).",
+  "missing_components": [
+    {"component": "answer_type taxonomy (15 types)", "exists_in_SIASIU": true, "exists_in_Foundation": "partial", "quality_gap": "medium", "evidence": "answer_pattern_taxonomy.py:23-108", "should_promote": true, "promotion_priority": "P1", "promotion_type": "generalize_classifier", "risk_if_not": "intent classification imprecision"},
+    {"component": "category-word isolation (category terms excluded from intent rules)", "exists_in_SIASIU": true, "exists_in_Foundation": false, "quality_gap": "high", "evidence": "answer_type_classifier.py _RULES contain NO 토너/세럼/크림; ssbrain/engine.py prod_intent only boosts ranking not answer-type", "should_promote": true, "promotion_priority": "P0", "promotion_type": "generalize_classifier", "risk_if_not": "category word → false product recommend (#6,#7)"},
+    {"component": "substring-safe category matcher", "exists_in_SIASIU": true, "exists_in_Foundation": false, "quality_gap": "high", "evidence": "ssbrain/engine.py TYPE_MAP separate keys 크림/선크림; ssbrain/text.py surface_match word-boundary", "should_promote": true, "promotion_priority": "P0", "promotion_type": "generalize_classifier", "risk_if_not": "선크림⊃크림 collision → misclassify (#5)"},
+    {"component": "routine/use detector (routine_guidance)", "exists_in_SIASIU": true, "exists_in_Foundation": false, "quality_gap": "high", "evidence": "answer_type_classifier.py:21 (순서/루틴/언제 발라/바르는 법)", "should_promote": true, "promotion_priority": "P0", "promotion_type": "generalize_classifier", "risk_if_not": "routine question → false recommend (#7)"},
+    {"component": "default-to-education (unmatched → ingredient_definition)", "exists_in_SIASIU": true, "exists_in_Foundation": false, "quality_gap": "high", "evidence": "answer_type_classifier.py:39 default ingredient_definition", "should_promote": true, "promotion_priority": "P0", "promotion_type": "generalize_policy", "risk_if_not": "unmatched category → false recommend (#6)"},
+    {"component": "risk/adverse expression normalizer (따가 etc.)", "exists_in_SIASIU": true, "exists_in_Foundation": false, "quality_gap": "high", "evidence": "answer_type_classifier.py:16 ('따가','화끈','부었','뒤집어'...)→adverse_reaction_question high_risk; evidence_mode.py:17 _ADV; foundation_brain_runtime_pipeline.py:17", "should_promote": true, "promotion_priority": "P0", "promotion_type": "generalize_classifier", "risk_if_not": "adverse '따가' undetected (#8)"},
+    {"component": "retrieval timing policy (need-gated search)", "exists_in_SIASIU": true, "exists_in_Foundation": false, "quality_gap": "medium", "evidence": "search_triggers.py:30-84 detect_search_needs (8 conditions)", "should_promote": true, "promotion_priority": "P1", "promotion_type": "generalize_policy", "risk_if_not": "upfront candidate injection bypasses plan"},
+    {"component": "evidence grading/mode + candidate cap", "exists_in_SIASIU": true, "exists_in_Foundation": false, "quality_gap": "medium", "evidence": "evidence_grading.py:64-83; evidence_mode.py:50-73 candidate_cap; source_policy.py POLICY", "should_promote": true, "promotion_priority": "P1", "promotion_type": "generalize_contract", "risk_if_not": "ungrounded assertions"},
+    {"component": "safety/evidence answer policy (high_risk mode cap)", "exists_in_SIASIU": true, "exists_in_Foundation": "partial", "quality_gap": "medium", "evidence": "foundation_medical_boundary_guard.py mode-rank cap; foundation_safety_guard_layer.py caveat requirement", "should_promote": true, "promotion_priority": "P1", "promotion_type": "generalize_policy", "risk_if_not": "high-risk overreach"},
+    {"component": "do_not_buy/purchase guard (evidence-required)", "exists_in_SIASIU": true, "exists_in_Foundation": "partial", "quality_gap": "low", "evidence": "foundation_do_not_buy_guard.py (reason+evidence+safer_alt); foundation_purchase_decision_guard.py", "should_promote": "partial", "promotion_priority": "P2", "promotion_type": "generalize_policy", "risk_if_not": "speculative recommend"},
+    {"component": "LLM natural composer", "exists_in_SIASIU": true, "exists_in_Foundation": false, "quality_gap": "high_UX", "evidence": "brain._llm DeepSeek + ssbrain/answer.py:121-122", "should_promote": "goal", "promotion_priority": "P2", "promotion_type": "copy_not_allowed", "risk_if_not": "templated tone"},
+    {"component": "history/session + memory_fact", "exists_in_SIASIU": true, "exists_in_Foundation": false, "quality_gap": "medium", "evidence": "brain.py episode table + memory_fact table + recent_episodes(10)", "should_promote": true, "promotion_priority": "P1", "promotion_type": "generalize_contract", "risk_if_not": "no multi-turn context ('뭘 알려줘?')"},
+    {"component": "surface/internal redaction policy", "exists_in_SIASIU": true, "exists_in_Foundation": "partial", "quality_gap": "low", "evidence": "disclosure_policy.py NEVER_DISCLOSE regex→[비공개]", "should_promote": true, "promotion_priority": "P2", "promotion_type": "generalize_policy", "risk_if_not": "internal code leak (depends on Cosmile redact)"},
+    {"component": "negation/defer intent (추천 말고/나중에)", "exists_in_SIASIU": false, "exists_in_Foundation": false, "quality_gap": "medium", "evidence": "ssbrain category agent: '말고'/'나중에' not explicitly handled", "should_promote": "new", "promotion_priority": "P2", "promotion_type": "generalize_classifier", "risk_if_not": "defer intent ignored (#11,#12)"}
+  ],
+  "per_case_results": [
+    {"input": "여드름 피부에 대해서 알고 싶어", "siasiu_classification": "ingredient_definition(default)", "siasiu_risk_result": "low", "siasiu_composer_path": "LLM(INFERRED)", "foundation_current_behavior": "explain_first·prod0", "gap": "none(v0.3)", "likely_missing_component": "-", "certainty": "confirmed_classify/INFERRED_answer"},
+    {"input": "피부 장벽이 뭔지 알려줘", "siasiu_classification": "ingredient_definition(default)", "siasiu_risk_result": "low", "foundation_current_behavior": "explain_first·prod0", "gap": "none(v0.3.1 guard)", "likely_missing_component": "-", "certainty": "confirmed"},
+    {"input": "피부가 요즘 자외선 때문에 고민이야", "siasiu_classification": "ingredient_definition(default,INFERRED)", "siasiu_risk_result": "low", "foundation_current_behavior": "clarify_concern_axis·prod0", "gap": "none(both non-recommend)", "likely_missing_component": "-", "certainty": "INFERRED"},
+    {"input": "세럼이 좋아 크림이 좋아?", "siasiu_classification": "ingredient_definition(default — SIASIU comparison kw miss → education default safety-net)", "siasiu_risk_result": "low", "foundation_current_behavior": "compare_then_followup·prod0", "gap": "none(both non-recommend)", "likely_missing_component": "default-to-education(safety net)", "certainty": "confirmed"},
+    {"input": "선크림 추천해줘", "siasiu_classification": "product_recommendation(추천)·TYPE_MAP 선크림→sunscreen", "siasiu_risk_result": "low", "foundation_current_behavior": "ask_more(선크림⊃크림→comparison misclassify·false block)", "gap": "Foundation substring collision", "likely_missing_component": "substring-safe matcher + category lexicon", "certainty": "confirmed"},
+    {"input": "토너는 꼭 써야 해?", "siasiu_classification": "ingredient_definition(default)", "siasiu_risk_result": "low", "foundation_current_behavior": "recommend(토너 category→product)", "gap": "Foundation category→product", "likely_missing_component": "category-word isolation + default-to-education", "certainty": "confirmed"},
+    {"input": "세럼은 언제 발라?", "siasiu_classification": "routine_guidance(언제 발라)", "siasiu_risk_result": "low", "foundation_current_behavior": "recommend(세럼 category→product)", "gap": "Foundation no routine + category→product", "likely_missing_component": "routine_guidance + category isolation", "certainty": "confirmed"},
+    {"input": "피부가 따가워", "siasiu_classification": "adverse_reaction_question", "siasiu_risk_result": "high_risk", "foundation_current_behavior": "low risk(따가 undetected)", "gap": "Foundation adverse miss", "likely_missing_component": "adverse lexicon(따가)", "certainty": "confirmed"},
+    {"input": "임신 중인데 레티놀 써도 돼?", "siasiu_classification": "pregnancy_lactation_question", "siasiu_risk_result": "high_risk", "foundation_current_behavior": "safety_first·block", "gap": "none", "likely_missing_component": "-", "certainty": "confirmed"},
+    {"input": "미백 제품 추천해줘", "siasiu_classification": "product_recommendation(추천)+evidence gate", "siasiu_risk_result": "low+evidence-gated", "foundation_current_behavior": "recommend(⊆candidates)", "gap": "evidence-grading quality", "likely_missing_component": "retrieval/evidence timing", "certainty": "confirmed"},
+    {"input": "추천은 나중에 받고 지금은 장벽이 뭔지 알려줘", "siasiu_classification": "product_recommendation(추천) — SIASIU MISCLASSIFIES", "siasiu_risk_result": "low", "foundation_current_behavior": "explain_first(explain precedence — Foundation MORE correct)", "gap": "both lack defer-intent; SIASIU worse here", "likely_missing_component": "negation/defer intent", "certainty": "confirmed"},
+    {"input": "피부가 따가운데 추천 말고 왜 그런지 알려줘", "siasiu_classification": "adverse_reaction_question(따가 priority)", "siasiu_risk_result": "high_risk", "foundation_current_behavior": "explain_first·prod0", "gap": "SIASIU adverse-priority safer", "likely_missing_component": "adverse lexicon + priority", "certainty": "confirmed"}
+  ],
+  "promotion_candidates": [
+    "P0: category-word isolation + substring-safe matcher (TYPE_MAP/surface_match principle)",
+    "P0: answer_type taxonomy + default-to-education + routine_guidance",
+    "P0: adverse/risk lexicon normalization (따가)",
+    "P1: retrieval/evidence timing gating + candidate cap",
+    "P1: safety/evidence answer policy (high_risk mode cap)",
+    "P1: history/session context"
+  ],
+  "do_not_copy_list": [
+    "DeepSeek LLM composer 직접 이식 (rule→LLM = canonical §17 guarded 별도 train)",
+    "SIASIU episode/memory_fact SQLite 모델 · ssbrain KB/engine(BM25/graph)",
+    "PERSONA 톤 · 상담 추임새(vertical adapter)",
+    "SIASIU route/server/DB (service-specific)"
+  ],
+  "evidence_table_note": "모든 component는 SIASIU 파일:심볼:라인 증거 보유(missing_components.evidence 참조). classify 결과는 결정론(순수 keyword)이라 confirmed; 최종 LLM 답변은 INFERRED.",
+  "uncertainty_table": {
+    "answer_type_classifier_excludes_category_words": "confirmed",
+    "siasiu_classify_result": "confirmed(deterministic keyword)",
+    "siasiu_final_llm_answer": "INFERRED",
+    "foundation_http_service_codelevel_origin": "insufficient_evidence(spec-based conclusion)",
+    "tagga_variant_normalization": "substring_only_no_stemming(confirmed)"
+  },
+  "next_train_recommendation": [
+    {"rank": 1, "name": "Foundation Answer-Type Classifier + Category Disambiguation from SIASIU", "priority": "P0", "resolves": "gap #5,#6,#7,#8 (category isolation, substring-safe, routine, default-to-education, adverse 따가)", "type": "core additive (pre-contract)", "note": "structured, no per-case if"},
+    {"rank": 2, "name": "Foundation Retrieval/Evidence Timing Policy from SIASIU", "priority": "P1", "resolves": "candidate-injection bypass (prior sim)", "type": "policy"},
+    {"rank": 3, "name": "Multi-turn Context Payload", "priority": "P1", "resolves": "'뭘 알려줘?' context"},
+    {"rank": 4, "name": "Foundation Safety/Evidence Answer Policy + Guarded LLM Composer", "priority": "P2", "type": "canonical §17"}
+  ],
+  "no_change_assertions": {
+    "code": 0, "foundation": 0, "siasiu": 0, "cosmile": 0, "foundation_repo": 0,
+    "contract": 0, "canonical": 0, "memory_write": 0, "push": 0, "report_files_created": 2
+  }
+}

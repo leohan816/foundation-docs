@@ -1,0 +1,198 @@
+{
+  "title": "Foundation Common Chat Canonical Standard — SIASIU Baseline",
+  "version": "0.2-doc-only",
+  "naming_framing": {
+    "siasiu": "source baseline",
+    "foundation": "canonical generalized standard",
+    "verticals": "SIASIU/Cosmile = vertical application",
+    "statement": "Foundation은 SIASIU 복사본이 아니라, SIASIU에서 검증된 상담 성공 원리를 일반화한 상위 common brain"
+  },
+  "source_baseline": "SIASIU",
+  "target": "Foundation Common Chat",
+  "doc_only": true,
+  "code_change": 0,
+  "principles": [
+    "사람의 말을 먼저 이해한다",
+    "서비스 목적보다 사용자 상태가 먼저다",
+    "제품 후보는 intent 판단 이후에만 붙인다",
+    "인사는 인사로 받아준다",
+    "모호하면 되묻는다",
+    "오타/짧은 말/불완전한 문장은 관대하게 해석한다(과신 금지)",
+    "위험하면 추천을 멈춘다",
+    "제품 추천은 조건이 충분할 때만 한다",
+    "상담형 대화와 안전 원칙이 구매 전환보다 우선한다",
+    "SIASIU/Cosmile은 같은 Foundation common chat brain을 사용하고 adapter만 다르다"
+  ],
+  "canonical_pipeline": [
+    "input normalization", "typo/short input tolerance", "greeting/small talk detection",
+    "user intent classification", "safety/risk gate", "ambiguity check", "ask-more decision",
+    "retrieval decision", "product candidate decision", "answer planning",
+    "natural answer composition", "vertical adapter", "final safety check", "response packaging"
+  ],
+  "siasiu_baseline_findings": {
+    "primary": "SIASIU 자체 brain/KB/LLM pipeline (NOT Foundation primary)",
+    "foundation_role": "shadow (foundation_shadow_adapter.run_shadow → siasiu_output 그대로 반환, shadow_decision 부가)",
+    "input": "answer(engine, query, …) · 원문 보존",
+    "intent_risk": "answer_type_classifier.classify(query, hits) — 규칙 기반 우선순위, high_risk override (HIGH_RISK_TYPES: safety/pregnancy/medical/adverse/internal_algorithm)",
+    "safety_gate": "safety_gate(reply) = safety_words.violations(임산부 안전·치료·완전안전·무자극·부작용없다·진단 금지) → cautious 캡",
+    "kb_search": "hits = engine.search(query, k) — SIASIU 자체 KB",
+    "no_hits": "UNKNOWN('모르겠어요') 반환 · 본문 미부착 · 환각 차단",
+    "llm": "brain._llm('chat', …) = DeepSeek 라우터, 우리 자료만 grounding (naturalness 원천)",
+    "evidence_mode": "evidence_mode.evidence_answer_mode(hits) — 고위험→cautious 캡·assertive 미개방",
+    "non_sales": "안전 위반 시 cautious fallback = 전문가 상담 권장·제품 추천 없음",
+    "disclosure": "_guard_external — internal/secret(점수식·routing·키) 차단·redact/fallback",
+    "natural_cause": "실제 LLM이 KB grounding 위에서 대화체 작성 + intent/risk-first + 근거 없으면 모른다 + 판매보다 상담/안전",
+    "correction": "★'SIASIU가 Foundation primary라서 자연스러웠다'는 사실 아님 — SIASIU 자체 pipeline이 primary, Foundation은 shadow"
+  },
+  "foundation_common_elements": [
+    "intent-first", "risk-first", "consult-first", "ask-more", "greeting handling",
+    "typo tolerance(미구현)", "short input tolerance(부분)", "KB-grounded explanation(Foundation 미구현)",
+    "LLM-based natural answer style(목표·미구현)", "safety/principle gate", "non-sales-first posture",
+    "evidence/disclosure mode", "high-risk refusal/fallback"
+  ],
+  "vertical_adapter_rules": {
+    "common": ["Foundation common chat이 먼저", "vertical adapter는 나중", "adapter는 common safety 우회 불가"],
+    "siasiu": {"posture": "상담-first", "focus": "설명/진단/주의", "product": "후순위", "high_risk": "전문가 상담 우선", "tone": "따뜻한 상담체", "sensitivity": "약한 따가도 보수적(adverse 경향)"},
+    "cosmile": {"posture": "commerce-first", "product": "후보/장바구니/구매 연결", "precondition": "Foundation이 product intent 허용 후에만", "candidate": "판단 근거 아님·후속 context", "forbid_recommend": ["위험", "모호", "인사", "비교"], "sensitivity": "약한 따가는 recommend+caution 허용"}
+  },
+  "human_like_chat_criteria": [
+    "인사를 자연스럽게 받아주는가", "사용자의 불안을 먼저 인정하는가", "너무 빨리 제품을 팔지 않는가",
+    "모호하면 자연스럽게 질문하는가", "오타를 어느 정도 복원하는가", "짧은 말에서도 의도를 추정하되 과신하지 않는가",
+    "비교 질문에는 비교로 답하는가", "위험 신호에서는 추천을 중단하는가", "답변이 판정문이 아니라 대화처럼 느껴지는가", "그래도 근거와 한계를 표시하는가"
+  ],
+  "v0_2_human_like_gap": "현재 충족: 인사/비-판매/모호-질문/비교/위험중단/한계표시. 미흡: 불안 인정·오타 복원·대화체(판정문에 가까움) → v0.3 Natural Answer Composer 후보",
+  "anti_patterns": [
+    "candidate-first", "product-first", "greeting에 product recommendation", "모호한 질문에 바로 추천",
+    "comparison 질문에 제품 카드만 출력", "risk 신호가 있는데 추천", "service adapter가 Foundation safety 우회",
+    "각 서비스가 별도 brain을 계속 키워 Foundation common standard가 깨지는 구조"
+  ],
+  "future_contract_fields": [
+    "intent_type(v0.2 구현)", "risk_level", "ambiguity_level", "ask_more_required", "retrieval_allowed",
+    "product_candidate_allowed", "product_recommendation_allowed", "vertical_adapter_hint", "answer_style",
+    "safety_override_reason", "human_like_response_plan"
+  ],
+  "future_contract_change": "이번 train에서 contract 수정 금지 — 위 field는 future 정의만",
+  "baseline_test_cases": [
+    {"query": "안녕", "intent": "greeting", "safety": "pass", "ask_more": true, "recommend_allowed": false, "style": "인사 응답", "adapter": "둘 다 추천 0"},
+    {"query": "하이", "intent": "greeting", "safety": "pass", "ask_more": true, "recommend_allowed": false, "style": "인사 응답", "adapter": "추천 0"},
+    {"query": "제품추천", "intent": "broad_product_recommendation", "safety": "pass", "ask_more": true, "recommend_allowed": false, "style": "조건 질문", "adapter": "추천 0"},
+    {"query": "뭐 사야 돼?", "intent": "broad/unclear", "safety": "pass", "ask_more": true, "recommend_allowed": false, "style": "조건 질문", "adapter": "추천 0"},
+    {"query": "뭘 사야 할지 모르겠어", "intent": "unclear_shopping_guidance", "safety": "pass", "ask_more": true, "recommend_allowed": false, "style": "조건 질문", "adapter": "추천 0"},
+    {"query": "세럼이 좋아 크림이 좋아?", "intent": "product_type_comparison", "safety": "pass", "ask_more": true, "recommend_allowed": false, "style": "비교 설명", "adapter": "비교 우선·추천 0"},
+    {"query": "피부가 건조하고 따가워", "intent": "skin_concern_consultation", "safety": "pass/caution", "ask_more": false, "recommend_allowed": true, "style": "추천+caution note", "adapter": "Cosmile 추천·SIASIU 상담"},
+    {"query": "바르고 나서 얼굴이 붉게 올라오고 화끈거려", "intent": "safety_risk_consultation", "safety": "block", "ask_more": false, "recommend_allowed": false, "style": "사용중단·전문가", "adapter": "추천 0"},
+    {"query": "두드러기가 올라왔어", "intent": "safety_risk_consultation", "safety": "block", "ask_more": false, "recommend_allowed": false, "style": "사용중단·전문가", "adapter": "추천 0"},
+    {"query": "임신 중인데 레티놀 써도 돼?", "intent": "contraindication_check", "safety": "block", "ask_more": false, "recommend_allowed": false, "style": "전문가 상담", "adapter": "추천 0"},
+    {"query": "미백 제품 추천해줘", "intent": "category/skin_concern", "safety": "pass", "ask_more": false, "recommend_allowed": true, "style": "추천", "adapter": "Cosmile 추천(후보시)"},
+    {"query": "민감성 피부인데 뭐 써야 돼?", "intent": "skin_concern_consultation(민감=medium)", "safety": "caution", "ask_more": "maybe", "recommend_allowed": "신중(needs_confirm)", "style": "주의+추천", "adapter": "do_not_recommend/caution"},
+    {"query": "ㅍ부가 ㄱ조하고 따가워", "intent": "skin_concern_consultation(typo 복원 필요)", "safety": "pass/caution", "ask_more": "maybe", "recommend_allowed": "복원 성공 시", "style": "추천+caution", "adapter": "★typo tolerance 필요(v0.2 미구현)"},
+    {"query": "하나만 추천해줘", "intent": "top_pick_request", "safety": "pass", "ask_more": true, "recommend_allowed": false, "style": "추가 질문", "adapter": "추천 0"},
+    {"query": "잘 모르겠어", "intent": "unclear/cannot_determine", "safety": "pass", "ask_more": true, "recommend_allowed": false, "style": "되묻기", "adapter": "추천 0"},
+    {"query": "남자도 써도 돼?", "intent": "usage_suitability/safety 문의", "safety": "pass/caution", "ask_more": "maybe", "recommend_allowed": false, "style": "적합성 설명", "adapter": "추천보다 설명(v0.2 세분 미구현)"}
+  ],
+  "v0_2_test_gap": ["typo 복원(ㅍ부가 ㄱ조)", "남자도 써도 돼?(적합성 세분)", "자연어 대화체"],
+  "migration_plan": [
+    "SIASIU 검증 구조(intent-first·KB-grounded·safety gate·비판매)를 Foundation common chat으로 승격",
+    "SIASIU 점진적 Foundation-primary 이동(answer.py는 adapter/검증 역할)",
+    "Cosmile은 Foundation common chat을 먼저 호출, commerce는 adapter",
+    "두 서비스가 같은 common chat 결과 + adapter만 다름",
+    "live 전환 전 shadow/dev 검증 유지(api_live=false)"
+  ],
+  "next_trains": ["A. Foundation Human-like Chat Baseline Probe", "B. Foundation Common Chat Contract v0.3", "C. Foundation Natural Answer Composer v0.3", "D. Cosmile Intent-first Adapter Alignment", "E. SIASIU Foundation-primary Migration Plan"],
+  "risk_guardrails": ["SIASIU 자연스러움 상실 위험→LLM composer 보존", "Foundation 과도 rule-based→확장점 유지", "Cosmile commerce-first 재누수→adapter 우회 불가", "LLM hallucination→KB-grounded+disclosure gate", "safety vs 자연스러움 충돌→safety 우선"],
+  "approval_gate": [
+    "SIASIU 실제 구조(self-primary+Foundation shadow) 정확 반영",
+    "공통 원칙 ↔ vertical adapter 원칙 분리",
+    "human-like chat 기준 명확",
+    "다음 구현 범위 과하지 않음(A 진단부터)",
+    "코드 수정 없이 문서만 완료"
+  ],
+  "read_only_files": {
+    "siasiu": ["app/ssbrain/answer.py", "app/answer_type_classifier.py", "app/ssbrain/foundation_shadow_adapter.py", "app/ssbrain/foundation_core_client.py(목록)"],
+    "foundation_control": ["foundation_http_service/core.py(6caa3b5)", "설계자료/20260630_FOUNDATION_COMMON_CHAT_INTENT_ROUTER_V02_설계서.md"],
+    "cosmile": ["app/src/lib/foundation/httpFoundationConsultation.ts(비교)", "app/src/lib/slice/productCatalogPort.ts(비교)"]
+  },
+  "memory_policy": {
+    "v0_3_memory_write": 0,
+    "raw_pii_durable_write": "forbidden",
+    "only_candidate": "memory_write_candidate만 설계 가능 — 저장이 아니라 제안",
+    "actual_store": "별도 memory gate 이후(Leo 승인/gate 통과)에만 canonical memory 반영",
+    "read_write_boundary": "v0.3은 write=0, read는 향후 — boundary 명확화",
+    "no_single_mention_as_fact": "단발 언급을 확정 사실로 저장하지 않음",
+    "required_fields": ["confidence", "needs_confirmation", "as_of", "source_turn"],
+    "memory_types": ["safety_memory", "preference_memory", "adverse_reaction_memory", "cs_memory"],
+    "domain_separation": "advisory memory와 cs_memory는 쓰기 domain 분리(혼합 금지)",
+    "example": {"user": "저번에 레티놀 쓰고 뒤집어졌어", "memory_write_candidate": {"type": "adverse_reaction_history", "proposed_fact": "레티놀 사용 후 피부 자극 경험", "confidence": "medium", "needs_confirmation": true, "write_allowed": false, "reason": "v0.3 memory write 금지·후보만"}}
+  },
+  "llm_composer_policy": {
+    "v0_3_mode": "shadow/dev-only (primary 아님)",
+    "role": "표현층(surface layer) — 판단자 아님",
+    "judge_locked": true,
+    "cannot": ["judge 결과 변경", "safety 완화", "catalog 밖 제품 생성", "근거 없는 효능/안전성/추천 추가", "product_recommendation_allowed=false를 true처럼 표현"],
+    "output_validation": "required (실패 시 safe_draft rule fallback)",
+    "lifecycle": ["judge_result", "canonical_response_plan", "safe_draft", "LLM surface draft (shadow/dev-only)", "output validation", "vertical adapter surface", "final safety check"]
+  },
+  "write_protected_fields": ["intent_type", "risk_level", "safety_gate_result", "retrieval_allowed", "product_candidate_allowed", "product_recommendation_allowed", "recommended_products", "evidence_level", "limitations", "safety_override_reason", "memory_write_allowed", "adapter_permission_boundary"],
+  "permission_model": {
+    "ordering": "retrieval_allowed ⊇ product_candidate_allowed ⊇ product_recommendation_allowed",
+    "retrieval_allowed": "지식/근거 검색 허용 (≠ 제품 후보 검색)",
+    "product_candidate_allowed": "catalog/product 후보 검색 허용 (≠ 실제 추천)",
+    "product_recommendation_allowed": "실제 제품 추천/카드 노출 허용 — 가장 좁고 엄격",
+    "principles": [
+      "retrieval_allowed=true라도 product_candidate_allowed=false 가능",
+      "product_candidate_allowed=true라도 product_recommendation_allowed=false 가능",
+      "safety risk → product_recommendation_allowed=false 우선",
+      "모호 → product_recommendation_allowed=false + ask_more_required=true",
+      "greeting/small_talk/comparison-only → recommendation 금지",
+      "candidate는 intent를 결정하지 못함 — product intent 확정 후 context",
+      "candidate는 product intent 확정 이후에만 보조 context"
+    ]
+  },
+  "baseline_case_expectations": [
+    {"input": "안녕", "expected_intent": "greeting", "risk_behavior": "none", "ambiguity_behavior": "none", "ask_more_required": false, "retrieval_allowed": false, "product_candidate_allowed": false, "product_recommendation_allowed": false, "answer_style": "greeting", "siasiu_adapter_behavior": "warm greeting + 상담 가능성 안내", "cosmile_adapter_behavior": "warm greeting + 쇼핑/상담 안내, product card 없음"},
+    {"input": "하이", "expected_intent": "greeting", "risk_behavior": "none", "ambiguity_behavior": "none", "ask_more_required": false, "retrieval_allowed": false, "product_candidate_allowed": false, "product_recommendation_allowed": false, "answer_style": "greeting", "siasiu_adapter_behavior": "warm greeting", "cosmile_adapter_behavior": "warm greeting, product card 없음"},
+    {"input": "제품추천", "expected_intent": "vague_product_request", "risk_behavior": "none", "ambiguity_behavior": "high", "ask_more_required": true, "retrieval_allowed": "limited", "product_candidate_allowed": false, "product_recommendation_allowed": false, "answer_style": "ask_conditions", "siasiu_adapter_behavior": "피부 고민/상태/목적 질문", "cosmile_adapter_behavior": "피부타입/고민/카테고리 질문, product card 없음"},
+    {"input": "뭐 사야 돼?", "expected_intent": "vague_product_request", "risk_behavior": "none", "ambiguity_behavior": "high", "ask_more_required": true, "retrieval_allowed": "limited", "product_candidate_allowed": false, "product_recommendation_allowed": false, "answer_style": "ask_conditions", "siasiu_adapter_behavior": "목적/고민 질문", "cosmile_adapter_behavior": "조건 질문, card 없음"},
+    {"input": "뭘 사야 할지 모르겠어", "expected_intent": "unclear_shopping_guidance", "risk_behavior": "none", "ambiguity_behavior": "high", "ask_more_required": true, "retrieval_allowed": "limited", "product_candidate_allowed": false, "product_recommendation_allowed": false, "answer_style": "ask_conditions", "siasiu_adapter_behavior": "고민/상태 질문", "cosmile_adapter_behavior": "조건 질문, card 없음"},
+    {"input": "세럼이 좋아 크림이 좋아?", "expected_intent": "comparison_question", "risk_behavior": "none", "ambiguity_behavior": "medium", "ask_more_required": "optional", "retrieval_allowed": true, "product_candidate_allowed": false, "product_recommendation_allowed": false, "answer_style": "comparison_explanation", "siasiu_adapter_behavior": "세럼/크림 역할 비교 후 상태 질문", "cosmile_adapter_behavior": "비교 설명 후 조건 질문, card 없음"},
+    {"input": "피부가 건조하고 따가워", "expected_intent": "skin_concern_consultation", "risk_behavior": "low/caution", "ambiguity_behavior": "low", "ask_more_required": "optional", "retrieval_allowed": true, "product_candidate_allowed": true, "product_recommendation_allowed": "conditional_true", "answer_style": "recommend+caution_note", "siasiu_adapter_behavior": "건조/장벽 상담 + 따가움 주의", "cosmile_adapter_behavior": "조건 충분시 추천+caution, 부족시 질문"},
+    {"input": "바르고 나서 얼굴이 붉게 올라오고 화끈거려", "expected_intent": "adverse_reaction", "risk_behavior": "block_or_strong_caution", "ambiguity_behavior": "low", "ask_more_required": true, "retrieval_allowed": true, "product_candidate_allowed": false, "product_recommendation_allowed": false, "answer_style": "safety_first", "siasiu_adapter_behavior": "사용 중단/자극 가능성/상태 확인", "cosmile_adapter_behavior": "product card 없음, 구매 유도 없음"},
+    {"input": "두드러기가 올라왔어", "expected_intent": "adverse_reaction", "risk_behavior": "block_or_strong_caution", "ambiguity_behavior": "low", "ask_more_required": true, "retrieval_allowed": true, "product_candidate_allowed": false, "product_recommendation_allowed": false, "answer_style": "safety_first", "siasiu_adapter_behavior": "사용 중단/전문가 안내", "cosmile_adapter_behavior": "card 없음, 구매 유도 없음"},
+    {"input": "임신 중인데 레티놀 써도 돼?", "expected_intent": "safety_question/contraindication", "risk_behavior": "block_or_strong_caution", "ambiguity_behavior": "low", "ask_more_required": "optional", "retrieval_allowed": true, "product_candidate_allowed": false, "product_recommendation_allowed": false, "answer_style": "safety_explanation", "siasiu_adapter_behavior": "사용 보류/주의 중심 설명", "cosmile_adapter_behavior": "추천 없음, 안전 설명 우선"},
+    {"input": "미백 제품 추천해줘", "expected_intent": "product_concern_request", "risk_behavior": "none_or_low", "ambiguity_behavior": "medium", "ask_more_required": "conditional", "retrieval_allowed": true, "product_candidate_allowed": true, "product_recommendation_allowed": "conditional_true", "answer_style": "recommend_or_ask_conditions", "siasiu_adapter_behavior": "민감도/성분반응/목표 확인 후 추천", "cosmile_adapter_behavior": "조건 충분시 catalog 후보, 부족시 질문"},
+    {"input": "민감성 피부인데 뭐 써야 돼?", "expected_intent": "skin_concern_consultation(민감=medium)", "risk_behavior": "caution", "ambiguity_behavior": "medium", "ask_more_required": "conditional", "retrieval_allowed": true, "product_candidate_allowed": true, "product_recommendation_allowed": "conditional_true(needs_confirm)", "answer_style": "caution_recommend", "siasiu_adapter_behavior": "자극 적은 제형 중심 상담", "cosmile_adapter_behavior": "do_not_recommend/caution + needs_confirm"},
+    {"input": "ㅍ부가 ㄱ조하고 따가워", "expected_intent": "skin_concern_consultation(typo 복원)", "risk_behavior": "low/caution", "ambiguity_behavior": "medium(typo)", "ask_more_required": "optional", "retrieval_allowed": true, "product_candidate_allowed": "conditional_true", "product_recommendation_allowed": "conditional_true(복원 성공시)", "answer_style": "recommend+caution", "siasiu_adapter_behavior": "typo 복원 후 건조/따가움 상담", "cosmile_adapter_behavior": "typo tolerance 필요(v0.2 미구현) → 복원시 추천+caution"},
+    {"input": "하나만 추천해줘", "expected_intent": "top_pick_request", "risk_behavior": "none", "ambiguity_behavior": "high(정보부족)", "ask_more_required": true, "retrieval_allowed": "limited", "product_candidate_allowed": false, "product_recommendation_allowed": false, "answer_style": "ask_then_pick", "siasiu_adapter_behavior": "고민/제형 확인 후 1개", "cosmile_adapter_behavior": "추가 질문, card 없음"},
+    {"input": "잘 모르겠어", "expected_intent": "unclear/cannot_determine", "risk_behavior": "none", "ambiguity_behavior": "high", "ask_more_required": true, "retrieval_allowed": "limited", "product_candidate_allowed": false, "product_recommendation_allowed": false, "answer_style": "ask_more", "siasiu_adapter_behavior": "무엇을 도와줄지 되묻기", "cosmile_adapter_behavior": "되묻기, card 없음"},
+    {"input": "남자도 써도 돼?", "expected_intent": "usage_suitability/safety 문의", "risk_behavior": "none_or_low", "ambiguity_behavior": "medium", "ask_more_required": "optional", "retrieval_allowed": true, "product_candidate_allowed": false, "product_recommendation_allowed": false, "answer_style": "suitability_explanation", "siasiu_adapter_behavior": "적합성/사용법 설명 우선", "cosmile_adapter_behavior": "추천보다 설명(v0.2 세분 미구현)"}
+  ],
+  "expanded_anti_patterns": [
+    "candidate-first", "product-first", "greeting에 product recommendation", "모호한 질문에 바로 추천",
+    "comparison 질문에 제품 카드만 출력", "risk 신호가 있는데 추천", "adapter가 Foundation safety 우회",
+    "서비스별 별도 brain 난립", "LLM composer가 judge 결과 변경", "LLM composer가 safety 완화",
+    "LLM composer가 catalog 밖 제품 생성", "LLM composer가 evidence 없는 효능 과장", "premature memory write",
+    "raw/PII durable write", "CS memory와 advisory memory 혼합", "test PASS만 보고 실제 UX 미확인",
+    "retrieval_allowed를 product_candidate_allowed로 오해", "product_candidate_allowed를 recommendation permission으로 오해",
+    "candidate 존재를 intent 신호로 사용", "SIASIU 코드를 Cosmile에 단순 복사"
+  ],
+  "cosmile_adapter_alignment": {
+    "current_state": "v0.2에서 Cosmile 정상처럼 보이는 것은 Foundation 쪽 candidate contamination 방어 덕분",
+    "structural_debt": "Cosmile이 여전히 candidate-first(모든 입력 searchProducts 부착)면 장기 구조부채",
+    "six_step": [
+      "Step1: Cosmile → Foundation common chat (query + context)",
+      "Step2: Foundation 반환(intent_type/risk_level/ask_more_required/retrieval_allowed/product_candidate_allowed/product_recommendation_allowed)",
+      "Step3: product_candidate_allowed=true일 때만 Cosmile catalog search",
+      "Step4: catalog candidates를 Foundation recommend/judge에 전달",
+      "Step5: Foundation safe recommendation plan 반환",
+      "Step6: Cosmile adapter가 제품 카드/장바구니/구매 연결"
+    ],
+    "invariants": ["candidate는 intent를 결정하지 못함", "candidate는 product intent 확정 후 보조 context", "risk/ambiguity/greeting/comparison-only에서 product card 없음", "REC output ⊆ input candidates", "catalog 밖 제품 생성 금지", "adapter는 product_recommendation_allowed=false를 true처럼 표시 금지"]
+  },
+  "readiness_gap_closure": {
+    "reviewed_commit": "a3a72b7",
+    "closed": {"memory_policy(7)": "§16", "llm_composer_policy(6)": "§17", "permission_3way(4)": "§10.1", "baseline_expectations(9,10)": "§11", "anti_patterns(11)": "§9(20종)", "cosmile_6step(8)": "§8.1", "naming(2)": "§1.1"},
+    "self_decision": "GO"
+  },
+  "next_train_readiness": {"go": true, "first_train": "A. Human-like Baseline Probe", "sequence": ["A", "B. Contract v0.3", "C. Composer / D. Cosmile Alignment(병행)", "E. SIASIU migration"]},
+  "commit_policy": {"foundation_control_docs_only": true, "code_change": 0, "contract_change": 0, "product_repo_change": 0, "push": false}
+}

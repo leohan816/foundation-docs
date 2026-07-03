@@ -1,0 +1,50 @@
+{
+  "design": "cosmile_vertical_slice_v0_control_revalidation",
+  "date": "2026-06-29",
+  "status": "APPROVED",
+  "approval_basis": "Leo go-ahead 2026-06-29 (본 작업 지시: 설계서 먼저 APPROVED 후 revalidation 실행)",
+  "design_first_rule": "CLAUDE.md §2.6",
+  "intent": "Cosmile 5439c4e Vertical Slice v0(UX v1.1) 독립 control 재검증. 제품 repo 무수정. real write 0·memory write 0·raw/PII 0·production OFF·push 0.",
+  "targets": {
+    "cosmile_commit": "5439c4e",
+    "cosmile_change": "additive 17 files (+1003), 기존 파일 수정 0 (next.config.ts pre-existing 무관)",
+    "foundation_branch": "shadow/foundation-shared-memory-v0@b7cce1f",
+    "siasiu_commit": "d0f8dc3",
+    "foundation_control": "main@00185c7"
+  },
+  "static_inventory_confirmed": {
+    "decisionMapping": "block→addPolicy=blocked/hardStop=true(decision_type 무관); recommend+grounded+pass→direct; do_not_*→confirm; else→weak; showSafety on block/caution(은폐 0)",
+    "mockAdapters": "durableWriteCount=0; realWritePerformed=false; appliedToRealUser=false; no prisma/DB/network; signal storedAsMemory=false + tamper 거부; memory rawTextIncluded=false/read-only",
+    "flags": "전부 default OFF + NODE_ENV==production이면 OFF(서버 재게이트)",
+    "container": "mock/shadow만 바인딩; purchaseBackend=real → throw(fail-closed)",
+    "purchase_route": "서버측 hard-stop(block 라인 409, override 불가) + do_not_* 미동의 409; realWritePerformed=false; durableWrites=0",
+    "signal_route": "서버가 interpretsCustomer/memoryCandidate/storedAsMemory=false 강제; aggregate만(raw/PII 0)"
+  },
+  "verification_criteria": {
+    "ux_v1_1": "block hard-stop(override 0, UI+서버 양쪽); do_not_*→confirm; recommend는 grounded+pass만 direct; 은폐 0",
+    "mock_purchase": "real write 0; durableWrites 0; customer write 0; real backend fail-closed; schema 변경 0",
+    "memory_shadow_read": "summary-only/scoped/read-only; rawTextIncluded=false; write/extraction/candidate 0",
+    "commerce_signal": "interpretsCustomer=false; memoryCandidate=false; storedAsMemory=false; tamper 거부; raw/PII 0"
+  },
+  "required_scenarios": [
+    "recommend flow", "do_not_recommend + confirm flow", "do_not_buy caution/pass + confirm flow",
+    "do_not_buy block hard-stop flow", "hold/ask_more flow", "Foundation failure fallback",
+    "memory shadow read OFF/ON", "signal outbox failure/tamper fallback", "pregnancy/high-risk block flow"
+  ],
+  "per_loop_invariants": [
+    "no real order", "no real payment", "no customer DB write", "no memory write",
+    "no raw/PII leak", "no production live", "UI state consistent", "safety_gate_result 은폐 0", "do_not_buy block override 0"
+  ],
+  "test_plan": ["정적 검증(완료)", "TypeScript build/typecheck(가능 시)", "loop100 독립 재실행(node)", "cross-project regression"],
+  "regression_to_preserve": {
+    "cosmile_readiness": "164/164", "decision_loop_v0_1": "112/112", "foundation_runner": "89/89",
+    "siasiu_integration": "39/39", "siasiu_workflow": "119/119", "control_loop_tests": "23/23",
+    "answer_py_fingerprint": "d7f579443f8a110a unchanged"
+  },
+  "must_not": [
+    "Cosmile/Foundation/SIASIU 코드 수정", "Foundation main merge", "실 결제/주문/고객 DB write",
+    "real customer memory write", "raw 상담 원문 Foundation 저장", "PII 저장/전송", "production live", "push", "force push"
+  ],
+  "rollback": "foundation-control 문서/리포트만 추가 → 해당 커밋 revert로 충분. 제품 repo 영향 0.",
+  "commit_policy": {"foundation_control_only": true, "product_repo_modified": false, "push": "separate approval", "force_push": false}
+}

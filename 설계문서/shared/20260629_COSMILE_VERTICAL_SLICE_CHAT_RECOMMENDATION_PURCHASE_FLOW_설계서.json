@@ -1,0 +1,99 @@
+{
+  "design": "cosmile_vertical_slice_chat_recommendation_purchase_flow",
+  "date": "2026-06-29",
+  "version": "1.1",
+  "status": "PROPOSED (Leo APPROVED 시 P1 구현 진행)",
+  "changelog": [
+    "v1.1 (2026-06-29): recommendation UX 정책 개정 — do_not_recommend/do_not_buy 무조건 담기 비활성화 폐기. 차단보다 설명·강제보다 경고·판매보다 신뢰·고위험은 확실히 멈춤·저위험/선호불일치는 사용자 선택권 보존. override 게이트=safety_gate_result(block=hard stop, 그 외=확인 모달).",
+    "v1.0 (2026-06-29): 최초 설계(APPROVED)."
+  ],
+  "design_first_rule": "CLAUDE.md §2.6",
+  "intent": "throwaway 데모 아님 — 실제 제품으로 이어질 첫 end-to-end vertical slice. 위험 write는 adapter boundary로 격리(mock/shadow).",
+  "stage": "설계자료 작성 (Cosmile 코드 미수정)",
+  "related": {
+    "foundation_control": "main@11093cf",
+    "cosmile": "main@b048e55 (consultation dev wiring 존재, slice UI/outbox 미구현)",
+    "foundation": "shadow/foundation-shared-memory-v0@b7cce1f (memory shadow, flag OFF)",
+    "siasiu": "main@d0f8dc3 (본 slice 미사용)",
+    "reuse_assets": ["cosmile readiness adapter 1ce099e (164/164)", "AI Commerce Decision Loop v0.1 (112/112)"],
+    "contract_freeze": "03f33cb"
+  },
+  "cofounder_key_messages": [
+    "상담이 곧 commerce — Foundation 판단이 추천/비추천/보류/사지마세요로 화면에 직접 반영",
+    "안전이 먼저 — 근거 없는 추천 차단, do_not_recommend/do_not_buy 은폐 금지",
+    "구조가 실제 — 결제/주문은 mock이지만 실제 흐름과 동일한 adapter boundary",
+    "기억은 경계 — Foundation memory는 요약/shadow read만, Cosmile은 추출/저장 안 함",
+    "차단보다 설명 — 고위험은 확실히 멈추되, 저위험/선호불일치는 이유·대안과 함께 사용자 선택권 보존"
+  ],
+  "screen_flow": "Chat -> Consultation+DecisionBadge -> RecommendationCards(graded) -> Cart -> Checkout(mock) -> PurchaseComplete(mock). recommend=담기 / hold·ask_more·cannot=약한담기+상담계속 / do_not_recommend=경고카드+이유+대안, '그래도 담기'->확인모달 / do_not_buy=더 강한 경고, 비-block은 확인모달, safety block은 담기·checkout hard stop. (상단 dev/staging banner)",
+  "adapter_boundary": {
+    "principle": "real write가 필요한 모든 위치 = interface 뒤. 교체는 DI/flag 한 곳. 화면/흐름 코드는 interface만 의존.",
+    "interfaces": [
+      {"name": "PurchaseGateway.createOrder/pay", "mock": "MockPurchaseAdapter(in-memory, 결정론 성공)", "future_real": "RealOrderAdapter(payment provider + order DB)"},
+      {"name": "OrderRepository", "mock": "InMemoryOrderRepo(휘발성)", "future_real": "SqlOrderRepo"},
+      {"name": "CustomerRepository", "mock": "NoopCustomerRepo(write 무시)", "future_real": "RealCustomerRepo"},
+      {"name": "CommerceSignalOutbox.emit", "mock": "FoundationShadowSignalOutbox(ingest_event_signal, shadow)", "future_real": "동일 인터페이스 real 환경"},
+      {"name": "MemoryReadPort.readSummary", "mock": "FoundationShadowMemoryRead(scoped summary)", "future_real": "동일(consent 강화)"}
+    ]
+  },
+  "recommendation_ux_policy": {
+    "principle": ["차단보다 설명", "강제보다 경고", "판매보다 신뢰", "고위험은 확실히 멈춤", "저위험/선호불일치는 사용자 선택권 보존"],
+    "override_gate": "safety_gate_result",
+    "rules": {
+      "block": "담기·checkout 차단 — override 불가(hard stop), 확인 모달도 없음. 고위험(의료/임신/이상반응/금기).",
+      "caution_or_pass": "기본 비활성이라도 '그래도 담기'->확인 모달(이유·주의·대안) 동의 후 담기 허용 — 사용자 선택권 보존."
+    },
+    "confirm_modal": "추천하지 않는 이유 + 주의사항 + 대안 안내 표시. 동의해야 담기. safety/이유 은폐 금지.",
+    "do_not_recommend_vs_do_not_buy": "do_not_buy가 더 강한 경고(구매 비권유 전면). do_not_buy + safety block만 유일한 hard stop. do_not_recommend와 비-block do_not_buy는 설명 후 사용자 선택 보존."
+  },
+  "decision_mapping": {
+    "recommend": "일반 추천 카드 + 담기 활성 (evidence_mode=grounded ∧ safety=pass일 때만)",
+    "hold / ask_more / cannot_determine": "'추가 확인 필요'/'정보 부족' + 상담 계속 우선. 담기는 약하게(부차) — 강한 구매유도 금지",
+    "do_not_recommend": "경고색 카드 + 이유 명확 + 대안. 기본 CTA '다른 제품 보기'/'상담 계속'. '그래도 담기'->확인 모달 후 허용(무조건 비활성화 아님)",
+    "do_not_buy (non-block)": "더 강한 경고 '구매를 권하지 않습니다' + 이유. 기본 CTA 대안/상담. 확인 모달로 사용자 선택권 보존",
+    "do_not_buy + safety_gate_result=block": "고위험 — 담기·checkout 차단(override 불가, hard stop)"
+  },
+  "decision_schema_reused": ["decision_type", "evidence_mode", "safety_gate_result", "memory_reuse_decision", "reason_codes", "trace_id"],
+  "foundation_memory_use": "read-only 요약 표시만(read_memory, summary/hash/refs/범주). flag OFF default. 미동의/만료/삭제 미노출. Cosmile write/extraction 0.",
+  "siasiu_candidate_used": false,
+  "commerce_signal_outbox": "PlatformEventSignal(interprets_customer=false, memory_candidate=false) -> Foundation ingest_event_signal(shadow). signal != memory. v0 미도출. IMPL_PROMPT_COSMILE_MEMORY_V0 정합.",
+  "feature_flags": {
+    "cosmile_vertical_slice_enabled": "OFF",
+    "cosmile_purchase_backend": "mock (real 미구현)",
+    "foundation_memory_shadow_read_enabled": "OFF",
+    "shared_memory_v0_shadow": "OFF",
+    "COSMILE_ENV": "dev"
+  },
+  "can_implement": [
+    "상담 질문 입력", "Foundation consultation/dev 응답 표시",
+    "graded recommendation UX (recommend/hold/ask_more/cannot/do_not_recommend/do_not_buy)",
+    "do_not_recommend/비-block do_not_buy 의 '그래도 담기' 확인 모달(이유·주의·대안)",
+    "safety_gate_result=block hard stop(담기·checkout 차단)",
+    "상품 추천 카드", "장바구니 담기 UI(override 동의 반영)",
+    "checkout 화면(진입 시 block 항목 재검증)", "purchase complete 화면", "safe mock purchase adapter",
+    "Foundation memory shadow 요약 read 표시", "dev/staging banner"
+  ],
+  "must_not": [
+    "실제 결제", "실제 주문 생성", "실제 고객 DB write", "real payment provider 연동",
+    "실고객 memory write", "raw 상담 원문 Foundation 저장", "PII 저장/전송", "production live",
+    "Foundation main merge", "memory flag default ON", "customer memory extraction in Cosmile",
+    "checkout/order/customer DB schema 변경", "이번 단계 Cosmile 코드 수정",
+    "safety_gate_result=block 항목의 override 허용", "safety_gate_result/이유 은폐"
+  ],
+  "plans": {
+    "fallback": "consultation 실패->안전 fallback 문구+추천 미표시; memory read 실패/OFF->memory 영역 숨김; signal 실패->흐름 계속; mock purchase 실패->오류+재시도, 주문 미생성",
+    "regression": "Cosmile readiness 164/164 · loop 112/112 · Foundation 89/89 · SIASIU 39/39+119/119 · answer.py fingerprint 불변 유지(additive, flag OFF면 불변)",
+    "rollback": "flag OFF로 런타임 비활성 + 해당 커밋 normal revert(신규 모듈 위주). 기존 readiness/loop 자산 무수정->영향 0"
+  },
+  "implementation_phases": ["P0 설계 APPROVED", "P1 boundary 인터페이스+mock/shadow+flag", "P2 chat+consultation wiring", "P3 graded recommendation cards+매핑+확인 모달", "P4 cart->checkout(mock)->purchase complete(mock)", "P5 memory shadow read+signal outbox", "P6 banner+test+control e2e"],
+  "verification_criteria": [
+    "설계서 필수 섹션 존재", "JSON valid", "제품 repo 변경 0", "secret/PII 0",
+    "implementation prompt가 Cosmile role boundary 위반 안 함(memory extraction/candidate 생성 없음)",
+    "mock purchase가 real DB write 안 함(adapter boundary 명확)",
+    "real payment/order 연결 시 교체 지점 명확(interface 표)",
+    "graded UX: do_not_recommend/비-block do_not_buy는 확인 모달로 사용자 선택권 보존, safety block은 hard stop(override 0)",
+    "safety_gate_result/이유 은폐 0", "evidence 부족 시 기본 담기 활성(직접 추천) 금지",
+    "fallback plan 존재", "rollback plan 존재"
+  ],
+  "commit_policy": {"foundation_control_design_only": true, "product_repo_modified": false, "push": "separate approval", "force_push": false}
+}

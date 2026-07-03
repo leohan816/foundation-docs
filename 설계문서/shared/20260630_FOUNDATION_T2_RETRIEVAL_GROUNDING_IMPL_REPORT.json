@@ -1,0 +1,73 @@
+{
+ "train_name": "Foundation T2 — Retrieval Decision + Grounding Gate (impl)",
+ "date": "2026-06-30",
+ "scope": "Part A retrieval decision contract + Part B F2 RRF/F3 grounding gate skeleton. dev-shadow/additive output-only. NO real search/LLM/memory/Path A/F4-F8/Cosmile/SIASIU/contract/canonical/push.",
+ "changed_files": [
+  "foundation_http_service/core.py (decide_retrieval/rrf/grounding_gate + judge additive output)",
+  "scripts/foundation_t2_retrieval_grounding_test.py",
+  "설계자료/..._T2_..._IMPL_REPORT.{md,json}"
+ ],
+ "output_fields": [
+  "retrieval_needed",
+  "candidate_needed",
+  "grounding_mode",
+  "no_evidence_action",
+  "evidence_required_reason",
+  "retrieval_scope",
+  "product_candidate_policy",
+  "grounding{grounded,action}"
+ ],
+ "policy_principles": {
+  "education_routine_comparison_concern_vague→candidate_needed_false": true,
+  "explicit_product_recommendation_only→candidate_needed_true": true,
+  "adverse_safety_medical_ingredient_product_specific→grounding_required_or_cautious": true,
+  "no_evidence→defer_or_clarify_or_safety_first": true,
+  "candidate_present_but_candidate_needed_false→no_recommend(policy_deny+guard)": true,
+  "candidate_guard_not_relaxed": true,
+  "v0.3_response_plan_v0.3.1_guard_T1_answer_type_unchanged": true
+ },
+ "invariants_verified": [
+  "candidate_needed=true ⟹ refined==product_recommendation_request AND safety!=block",
+  "product_candidate_policy=deny ⟹ recommended_products=0",
+  "decision_type/products unchanged (additive output only)"
+ ],
+ "skeleton": {
+  "rrf": "Reciprocal Rank Fusion deterministic (channel dedup + multi-channel sum); real BM25/vector/KB stub",
+  "grounding_gate": "hits+mode→{grounded,action}; fail-closed defer; product candidate=grounded; dev-shadow hits=∅"
+ },
+ "test_results": {
+  "v0.2": "40/40",
+  "v0.3": "16/16",
+  "guard_v031": "19/19",
+  "f1": "14/14",
+  "t2_new": "16/16",
+  "adversarial_180": {
+   "guard_critical_pass": true,
+   "decision_integrity_pass_rate": 1.0,
+   "false_recommendation_count": 0,
+   "safety_critical_violation_count": 0,
+   "intent_classification_gap_count": 0,
+   "catalog_out_count": 0,
+   "permission_invariant_violations": 0,
+   "recommendation_permission_invariant_violations": 0
+  }
+ },
+ "limitations": [
+  "dev-shadow no real retrieval → grounding advisory(hits=∅+has_candidates); knowledge grounding real eval after F2 KB(SIASIU injection)",
+  "retrieval_decision/grounding = advisory output; Cosmile 2-step candidate call = separate train(guard safe meanwhile)"
+ ],
+ "no_change_assertions": {
+  "cosmile": 0,
+  "siasiu": 0,
+  "foundation_repo": 0,
+  "contract": 0,
+  "canonical": 0,
+  "products_logic": 0,
+  "f4_f8": 0,
+  "llm": 0,
+  "memory_write": 0,
+  "path_A_switch": 0,
+  "push": 0
+ },
+ "next_train": "T3 Guardrail+Output Verify+Evidence Mode framework OR T2 real KB(F2 retrieval + SIASIU vocab injection) — Leo 판단"
+}

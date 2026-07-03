@@ -1,0 +1,106 @@
+{
+ "design_name": "Foundation Stage 2 — Adapter / Injection Structure",
+ "mode": "design_and_implementation",
+ "date": "2026-06-30",
+ "problem": "core.py hardcodes K-beauty vocab(_CATEGORY_KW/_ADVERSE_SOFT/_RISK_TAG_KO/_GR_*) — vertical vocab mixed into common framework. Externalize to service profiles.",
+ "separation": {
+  "framework_keep": [
+   "category matching(substring-safe)",
+   "adverse 감지 구조",
+   "recommend gate",
+   "retrieval/candidate/grounding decision",
+   "guardrail/output_verify/evidence 구조",
+   "risk tag label mapping interface"
+  ],
+  "profile_injection": [
+   "category_lexicon",
+   "adverse_lexicon",
+   "recommend_extra",
+   "risk_tag_ko",
+   "guardrail_lexicons",
+   "retrieval_policy"
+  ],
+  "siasiu_repo_local": [
+   "bridge glossary",
+   "atom",
+   "CANON",
+   "SAFETY_TYPES",
+   "SEED_KB",
+   "PERSONA",
+   "TALK_STYLE",
+   "domain 목록",
+   "products schema",
+   "risk tag Korean labels"
+  ],
+  "cosmile_repo_local": [
+   "product catalog schema",
+   "brand/product metadata",
+   "commerce CTA policy",
+   "surface copy policy",
+   "shopping profile"
+  ]
+ },
+ "architecture": {
+  "Profile": "dict; 키별 vocab/policy/label + 확장 slot; 미지정→core default",
+  "providers": [
+   "lexicon_provider(category/adverse/recommend/routine)",
+   "policy_provider(retrieval scope/threshold)",
+   "surface_label_provider(risk_tag_ko/CTA copy)"
+  ],
+  "seam": "threading.local() per-request active profile(thread-safe); judge resolves payload.service/profile→get_profile→set_active_profile; seam fns _pget(key, core_default); default→core 내장 default(behavior 보존)",
+  "profiles_py": [
+   "DEFAULT_PROFILE(override 없음)",
+   "SIASIU_PROFILE(stub)",
+   "Cosmile_PROFILE(stub)",
+   "get_profile/register_profile"
+  ]
+ },
+ "seam_points": {
+  "_categories_in": "category_lexicon←_CATEGORY_KW",
+  "_has_adverse_soft": "adverse_lexicon←_ADVERSE_SOFT",
+  "_explicit_reco_signal": "recommend_extra←_RECO_EXTRA",
+  "_risk_tags_ko": "risk_tag_ko←_RISK_TAG_KO",
+  "guardrail_classify": "guardrail_lexicons←_GR_*",
+  "decide_retrieval": "retrieval_policy(seam)"
+ },
+ "profile_switching": "judge({service:siasiu|cosmile|default}); default→core baseline→기존 suite 불변; 주입 profile은 vocab만 확장/치환",
+ "test_plan": [
+  "default→기존 동작 동일",
+  "category_lexicon 주입→target_category 반영",
+  "adverse_lexicon 주입→감지",
+  "risk_tag_ko 치환→answer_summary",
+  "guardrail 주입→category",
+  "SIASIU/Cosmile stub slots",
+  "profile 무관 decision/products/safety 불변",
+  "core hardcoding 증가 0",
+  "thread isolation"
+ ],
+ "success_criteria": [
+  "기존 7 suite + adversarial 180 유지",
+  "false_recommendation=0",
+  "safety_critical_violation=0",
+  "permission invariant 유지",
+  "Stage2 신규 PASS",
+  "Foundation core SIASIU hardcoding 증가 0",
+  "decision/판단 불변",
+  "live/write/memory/push=0"
+ ],
+ "ownership": {
+  "framework+DEFAULT+stub": "foundation-control",
+  "실 SIASIU profile(bridge/canon/persona/products)": "SIASIU repo-local",
+  "실 Cosmile profile(catalog/CTA/copy)": "Cosmile repo-local"
+ },
+ "no_change_assertions": {
+  "cosmile": 0,
+  "siasiu": 0,
+  "foundation_repo": 0,
+  "contract": 0,
+  "canonical": 0,
+  "llm": 0,
+  "kb": 0,
+  "memory": 0,
+  "path_A": 0,
+  "enforcement": 0,
+  "push": 0
+ }
+}

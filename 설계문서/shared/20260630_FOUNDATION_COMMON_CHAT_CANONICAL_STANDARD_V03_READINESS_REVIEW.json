@@ -1,0 +1,73 @@
+{
+  "title": "Foundation Common Chat Canonical Standard v0.1 — v0.3 Readiness Review",
+  "date": "2026-06-30",
+  "reviewed_commit": "0bf34b7",
+  "reviewed_docs": [
+    "설계자료/20260630_FOUNDATION_COMMON_CHAT_CANONICAL_STANDARD_SIASIU_BASELINE.md",
+    "설계자료/20260630_FOUNDATION_COMMON_CHAT_CANONICAL_STANDARD_SIASIU_BASELINE.json"
+  ],
+  "overall": "PARTIAL",
+  "v03_readiness_decision": "GO-WITH-DOC-FIXES",
+  "criteria": {
+    "1_v03_spec_grade": "PARTIAL",
+    "2_not_a_siasiu_copy": "PARTIAL",
+    "3_pipeline_concreteness": "PARTIAL",
+    "4_permission_separation": "PARTIAL",
+    "5_responsibility_split": "PASS",
+    "6_llm_composer_policy": "FAIL",
+    "7_memory_policy": "FAIL",
+    "8_cosmile_adapter_alignment": "PARTIAL",
+    "9_human_like_testable": "PARTIAL",
+    "10_baseline_test_cases": "PARTIAL",
+    "11_anti_patterns": "PARTIAL",
+    "12_json_machine_readable": "PASS"
+  },
+  "best_5": [
+    "SIASIU baseline 정확성(self-primary + Foundation shadow 정정, 복사 아님·일반화)",
+    "확정 원칙 10개(intent-first·non-sales·safety>sales)",
+    "canonical pipeline 14단계 골격",
+    "adapter 분리 + 불변식(adapter는 common safety 우회 불가)",
+    "16 baseline test cases 전부 포함"
+  ],
+  "weakest_5": [
+    "memory 정책 전무(criterion 7 FAIL)",
+    "LLM composer 안전 정책 전무(criterion 6 FAIL)",
+    "anti-pattern 6종 누락(criterion 11)",
+    "permission 3분리 얕음·per-case 기대값 부재(criterion 4·9·10)",
+    "Cosmile 6-step alignment + 구조부채 명명 부재(criterion 8)"
+  ],
+  "must_fix_before_impl": [
+    "Memory Policy 섹션",
+    "LLM Natural Answer Composer 안전 정책",
+    "Anti-patterns 6종 추가",
+    "baseline test case 3-way permission + adapter별 기대값"
+  ],
+  "md_json_consistency": {"conflict": false, "principles": "10=10", "anti_patterns": "8=8", "baseline_test_cases": "16=16", "pipeline": "14=14", "note": "양쪽 동일 gap 공유"},
+  "permission_separation_eval": "PARTIAL — retrieval_allowed/product_candidate_allowed/product_recommendation_allowed가 future field로 나열만(§10). 지식검색↔후보검색↔실추천 분리 논리·contamination 연결·per-case 기대값 부재.",
+  "adapter_boundary_eval": "PASS(개념: Foundation 먼저·adapter 나중·safety 우회 불가 불변식) / PARTIAL(상세: Cosmile 6-step 시퀀스·v0.2=Foundation 방어·candidate-first=구조 부채 명시 부재)",
+  "llm_composer_policy_eval": "FAIL — shadow/dev-only·LLM=표현층(판단자 아님)·judge-locked·write-protected fields·output validation 전부 부재. C train 전 필수 보강.",
+  "memory_policy_eval": "FAIL — 문서에 memory 경계 전무. v0.3 memory_write=0·memory_write_candidate만·실 저장은 별도 gate 후·advisory/CS/safety memory 분리 필요.",
+  "human_like_test_readiness_eval": "PARTIAL — §7 10기준이 §11 test에 연결되나 불안 인정·대화체는 측정지표 부재 + test case에 3-way permission/adapter 기대값 빠져 probe(A) 기계 채점엔 부족.",
+  "evidence_grep": {
+    "memory_policy_hits": 0, "llm_composer_policy_hits": 0,
+    "anti_pattern_extra6_hits": 0, "safe_draft_step_hits": 0,
+    "cosmile_6step_or_debt_hits": 0, "source_canonical_vertical_naming_hits": 0,
+    "permission_fields_each_hits": 1
+  },
+  "required_document_fixes": [
+    {"id": 1, "priority": "MUST", "fix": "Memory Policy 섹션: v0.3 memory_write=0 · memory_write_candidate만 · 실 저장 별도 gate 후 · advisory/CS/safety memory 분리"},
+    {"id": 2, "priority": "MUST", "fix": "LLM Natural Answer Composer 안전 정책: shadow/dev-only(non-primary) · LLM=표현층(판단자 아님) · judge-locked · write-protected fields[intent_type,risk_level,safety_gate_result,retrieval_allowed,product_candidate_allowed,product_recommendation_allowed,recommended_products,evidence_level,limitations,safety_override_reason] · output validation 필수"},
+    {"id": 3, "priority": "MUST", "fix": "Anti-patterns 6종 추가: LLM composer가 judge 결과 변경 · premature memory write · raw/PII durable write · catalog 밖 제품 생성 · evidence 없는 효능 과장 · 테스트 PASS만 보고 UX 미확인"},
+    {"id": 4, "priority": "MUST", "fix": "3-way permission 분리 상세 + 각 16 test case에 retrieval_allowed/product_candidate_allowed/product_recommendation_allowed + SIASIU/Cosmile adapter별 기대값 컬럼"},
+    {"id": 5, "priority": "SHOULD", "fix": "Cosmile 6-step alignment 시퀀스 + 'v0.2=Foundation 방어 / Cosmile candidate-first=구조 부채' 명명"},
+    {"id": 6, "priority": "SHOULD", "fix": "명명 framing: SIASIU=source baseline · Foundation=canonical generalized standard · SIASIU/Cosmile=vertical application · Foundation=상위 common brain"},
+    {"id": 7, "priority": "MINOR", "fix": "pipeline에 'safe draft generation' 단계 분리(natural answer composition 앞)"}
+  ],
+  "next_train_recommendation": {
+    "sequence": ["doc-fix(작은 보강·MUST 1-4)", "A. Human-like Baseline Probe", "B. Contract v0.3", "C. Natural Answer Composer v0.3 / D. Cosmile Adapter Alignment(병행)", "E. SIASIU Foundation-primary Migration"],
+    "first": "A. Human-like Baseline Probe (doc-fix 후)",
+    "reason": "A는 read-only 진단으로 현 v0.2를 16 baseline에 채점 → 실제 gap 수치화. 이 데이터가 B(필요 permission/field)·C(자연어 필요 지점)·D(정렬 우선순위)의 근거. 측정-우선."
+  },
+  "actions": {"code_change": 0, "contract_change": 0, "canonical_doc_change": 0, "product_repo_change": 0, "memory_write": 0, "push": false, "report_files_created": 2, "auto_fix": false},
+  "note": "문서 부족분은 본 리포트 Required Document Fixes에 제안만. Leo 승인 전 canonical 문서/코드 미반영. 본 검수 리포트만 docs-only commit."
+}

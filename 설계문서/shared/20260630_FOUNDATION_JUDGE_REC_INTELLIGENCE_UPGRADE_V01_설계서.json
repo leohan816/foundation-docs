@@ -1,0 +1,38 @@
+{
+  "design": "foundation_judge_rec_intelligence_upgrade_v0_1",
+  "date": "2026-06-30",
+  "status": "APPROVED",
+  "approval_basis": "Leo go-ahead 2026-06-30 (본 train 지시) — §11 descriptive condition mapping 포함 승인",
+  "design_first_rule": "CLAUDE.md §2.6",
+  "intent": "Foundation dev/shadow HTTP service의 JUDGE/REC 응답을 evidence-rich하게 개선. ★결정론(LLM 0)·web/learning 0·api_live=false·real write 0. backward compatible.",
+  "scope": "foundation_http_service/core.py JUDGE/REC/answer-composer + 테스트 확장 + contract additive 문서화",
+  "endpoint_unchanged": "http://127.0.0.1:8731 (dev_shadow, api_live=false, write_enabled=false)",
+  "judge_new_fields": ["user_intent_summary", "detected_conditions", "concern_tags", "safety_risk_tags", "plain_language_explanation", "limitations", "answer", "recommended_products"],
+  "rec_product_fields": ["product_id", "slug", "name", "brand", "recommendation_rank", "match_reason", "matched_fields", "match_tags", "why_this_product", "why_not_others", "confidence", "limitations", "source_label"],
+  "answer_composer_fields": ["answer_title", "answer_summary", "user_condition_summary", "recommendation_logic", "recommended_products", "caution_notes", "next_questions", "limitations", "display_sections"],
+  "decision_product_policy": {
+    "recommend": "enriched recommended_products + recommendation_logic",
+    "do_not_recommend/caution": "products + caution reason + confirm 필요 정보",
+    "do_not_buy/block": "recommended_products = []",
+    "hold/ask_more": "products 0, clarification questions"
+  },
+  "safety_rules": [
+    "위험 신호 → recommend downgrade 금지(escalation-only)",
+    "임신/수유/이상반응/부어오름/화끈거림/두드러기/금기 → caution/block",
+    "block → recommended_products 0 · purchase 비연결",
+    "risk = max(structured, keyword) · case-insensitive · 타입가드 유지"
+  ],
+  "grounding_rules": ["REC output ⊆ input candidates", "catalog 밖 제품 0", "없는 성분/효능/가격 0", "product_id/slug 없는 추천 0", "candidate echo PII mask", "raw durable 저장 0"],
+  "condition_detection": "결정론 descriptive 키워드 사전(검색·설명 보조, safety 판단 아님). safety는 기존 _kw_risk fail-closed escalation 유지. no-heuristics: 본 설계로 승인.",
+  "backward_compatible": "기존 필드 전부 유지(decision_type/safety_gate_result/evidence_mode/reason_codes/answer_summary/clarification_questions/product_refs + 불변식). 새 필드 추가만.",
+  "must_not": [
+    "실 LLM/API 연결", "web lookup", "learning store", "learned reuse", "production live", "api_live=true",
+    "raw durable 저장", "PII 저장", "memory write", "customer memory write", "catalog write",
+    "실 결제/주문/customer DB write", "Cosmile repo 수정", "SIASIU repo 수정", "FOUNDATION repo 수정", "push",
+    "없는 성분/효능/가격 생성", "catalog 밖 제품 생성", "기존 필드 제거/rename"
+  ],
+  "test_plan": "기존 20/20 유지 + 신규 ~20(enriched recommend/condition summary/caution/do_not_recommend reason/block products 0/pregnancy·adverse block/hold questions/catalog 0/catalog-out 0/REC⊆input/PII mask/uppercase risk/risk_signal guard/health invariants/raw 0/memory 0/real write 0/contract valid/service starts)",
+  "rollback": "core.py 변경 → 커밋 revert + 8731 재기동. 제품 repo 영향 0.",
+  "deliverables": ["설계자료 2", "foundation_http_service/core.py 개선", "scripts/foundation_http_service_test.py 확장", "reports/integrated/FOUNDATION_JUDGE_REC_INTELLIGENCE_UPGRADE_V01_TEST_20260630.{md,json}", "contract additive 갱신(필요 시)", "before/after 비교"],
+  "commit_policy": {"foundation_control_only": true, "product_repo_modified": false, "push": "separate approval", "force_push": false}
+}

@@ -1,0 +1,45 @@
+{
+  "design": "real_foundation_gate_revalidation",
+  "date": "2026-06-29",
+  "status": "APPROVED",
+  "approval_basis": "Leo go-ahead 2026-06-29 ('c로 진행: 설계서 먼저 → APPROVED → revalidation 실행')",
+  "design_first_rule_applied": "CLAUDE.md §2.6 / 설계자료/20260629_CONTROL_TOWER_DESIGN_FIRST_OPERATING_RULE_설계서.md",
+  "targets": {
+    "foundation_control": "main@0f04413 (pushed, in sync)",
+    "foundation_branch": "shadow/foundation-shared-memory-v0",
+    "foundation_commit": "b7cce1f",
+    "siasiu_commit": "d0f8dc3",
+    "cosmile_commit": "b048e55",
+    "contract_freeze": "03f33cb",
+    "mock_simulation": "76ca035 (16/16 PASS)",
+    "prior_revalidation": "8558e31 (25/25 PASS)"
+  },
+  "scope": "real Foundation shadow gate/API (read-only import)로 mock 교체 후 synthetic e2e 재검증 + mock↔real parity",
+  "must_not": [
+    "제품 repo 수정", "Foundation main merge", "real customer memory write",
+    "production/public API/live", "canonical/learned/Vault write", "memory.db 생성/접근", "force push",
+    "answer.py/answer_provenance.py/safety guard/answer_mode 변경"
+  ],
+  "required_scenarios": [
+    "SIASIU candidate -> Foundation gate -> shadow write/read",
+    "raw_text candidate block", "PII-like candidate block",
+    "session_only durable read 미노출", "consent unknown cross_service read block",
+    "expired read block", "deleted must_not_reappear",
+    "Cosmile PlatformEventSignal(memory_candidate=false) -> stored_as_memory=false",
+    "malicious candidate/signal block", "trace/report raw/PII 0",
+    "memory.db 0", "live/write/promotion 0", "mock<->real gate parity"
+  ],
+  "harness": "scripts/cross_platform_memory_v0_real_foundation_gate_revalidation.py",
+  "deliverables": [
+    "설계자료/20260629_REAL_FOUNDATION_GATE_REVALIDATION_설계서.md",
+    "reports/integrated/CROSS_PLATFORM_SHARED_MEMORY_V0_REAL_FOUNDATION_GATE_REVALIDATION_20260629.md",
+    "reports/integrated/CROSS_PLATFORM_SHARED_MEMORY_V0_REAL_FOUNDATION_GATE_REVALIDATION_20260629.json"
+  ],
+  "regression_to_preserve": {
+    "foundation_runner": "89/89·651", "siasiu_integration": "39/39", "siasiu_workflow": "119/119",
+    "cosmile_readiness": "164/164", "cosmile_loop_v0_1": "112/112",
+    "answer_py_fingerprint": "d7f579443f8a110a unchanged"
+  },
+  "approval_conditions": ["설계서 16섹션 존재", "JSON valid", "제품 repo 변경 0", "secret/PII 0", "memory.db 0"],
+  "commit_policy": {"foundation_control_only": true, "product_repo_modified": false, "foundation_main_merge": false, "push": "separate approval", "force_push": false}
+}

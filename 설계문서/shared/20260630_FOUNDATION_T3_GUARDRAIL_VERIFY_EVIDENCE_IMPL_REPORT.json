@@ -1,0 +1,120 @@
+{
+ "train_name": "Foundation T3 — Guardrail + Output Verify + Evidence Mode (impl)",
+ "date": "2026-06-30",
+ "scope": "F4 Guardrail + F5 Output Verify + F6 Evidence Mode. dev-shadow/additive output-only/deterministic stub. NO LLM/KB/retrieval/memory/Path A/enforcement/F7-F8/Cosmile/SIASIU/contract/canonical/push.",
+ "changed_files": [
+  "foundation_http_service/core.py (guardrail_classify/verify_output/evidence_mode_decide + judge 3 additive fields)",
+  "scripts/foundation_t3_guardrail_verify_evidence_test.py",
+  "설계자료/..._T3_..._IMPL_REPORT.{md,json}"
+ ],
+ "output_fields": {
+  "guardrail_result": [
+   "guardrail_category",
+   "guardrail_action",
+   "guardrail_risk",
+   "guardrail_reason"
+  ],
+  "output_verify": [
+   "ok",
+   "issues",
+   "severity",
+   "suggested_fallback"
+  ],
+  "evidence_mode_result": [
+   "answer_mode",
+   "mode_capped",
+   "cap_reason",
+   "evidence_required"
+  ]
+ },
+ "field_name_note": "기존 scalar evidence_mode(v0.2 ev) 보존 → F6은 evidence_mode_result(dict)로 충돌 회피",
+ "F4": {
+  "categories": [
+   "none",
+   "prompt_injection",
+   "internal_algorithm_probe",
+   "payment_or_account",
+   "medical_overreach",
+   "off_domain",
+   "politics_or_unsafe"
+  ],
+  "actions": [
+   "allow",
+   "deny",
+   "route_safety",
+   "clarify"
+  ],
+  "default_deny": true,
+  "deterministic_stub": true
+ },
+ "F5": {
+  "issues": [
+   "internal_code_leak",
+   "efficacy_overclaim",
+   "disclosure_leak",
+   "fabrication",
+   "avoid_violation",
+   "preg_lact_safety_assertion"
+  ],
+  "answer_body_modified": false,
+  "fail_closed": true,
+  "catches_known_10_leak": "임신/adverse answer_summary 영문 risk_tag → internal_code_leak(F5 작동·deferred JUDGE fix)"
+ },
+ "F6": {
+  "answer_mode": [
+   "cannot_determine",
+   "uncertain",
+   "cautious",
+   "grounded"
+  ],
+  "assertive_forbidden": true,
+  "high_risk_cap": "cautious",
+  "candidate_cap": "cautious",
+  "grounded_false": "cannot_determine/uncertain",
+  "dev_shadow_no_grounded_assert": true
+ },
+ "invariants_verified": [
+  "answer_mode != assertive (all cases)",
+  "high-risk → answer_mode in (cannot_determine,uncertain,cautious)",
+  "decision_type/recommended_products unchanged(미백 추천 recommend·products≥1)",
+  "clean answers verify ok + known #10 leak detected"
+ ],
+ "test_results": {
+  "v0.2": "40/40",
+  "v0.3": "16/16",
+  "guard": "19/19",
+  "f1": "14/14",
+  "t2": "16/16",
+  "t3_new": "18/18",
+  "adversarial_180": {
+   "guard_critical_pass": true,
+   "decision_integrity_pass_rate": 1.0,
+   "false_recommendation_count": 0,
+   "safety_critical_violation_count": 0,
+   "intent_classification_gap_count": 0,
+   "catalog_out_count": 0,
+   "permission_invariant_violations": 0
+  }
+ },
+ "limitations": [
+  "deterministic stub — LLM-judge/F5 enforcement/F6 real-KB grounded 미연결(seam)",
+  "F5 surfaced #10 answer_summary 영문 risk_tag = deferred JUDGE/composer 한국어화 train(Cosmile redact로 user-facing 0)",
+  "3필드 advisory — enforcement(deny/fallback/answer_mode 적용)는 별도 승인"
+ ],
+ "no_change_assertions": {
+  "cosmile": 0,
+  "siasiu": 0,
+  "foundation_repo": 0,
+  "contract": 0,
+  "canonical": 0,
+  "products_logic": 0,
+  "f7_f8": 0,
+  "llm": 0,
+  "kb_retrieval": 0,
+  "memory_write": 0,
+  "path_A": 0,
+  "enforcement_applied": 0,
+  "push": 0
+ },
+ "next_train": "JUDGE/composer minor(#10 answer_summary 한국어화) · T4 Composer+LLM Router OR F2 real KB · enforcement train — Leo 판단"
+}
