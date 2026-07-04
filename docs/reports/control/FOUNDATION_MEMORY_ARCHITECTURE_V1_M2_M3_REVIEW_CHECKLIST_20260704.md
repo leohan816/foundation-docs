@@ -1,0 +1,61 @@
+# Memory Architecture V1 — M2/M3 계약 검수 체크리스트
+
+> 작성: foundation-control · 2026-07-04 · ★read-only 검수 · 코드 0 · migration 0 · source push 0 · raw/secret 미열람.
+> 대상: `COMMON_SERVICE_MEMORY_CONTRACT_V1_20260704.md`(M2) · `MEMORY_CONTEXT_CONTRACT_V1_20260704.md`(M3).
+> 기준: `FOUNDATION_SERVICE_MEMORY_ARCHITECTURE_V1`(v0.3·DESIGN_READY) · `M1_REVIEW_CONSOLIDATION`.
+
+## 1. M2/M3 ↔ M1 결정 충돌 여부
+| M1 결정 | M2/M3 반영 | 충돌 |
+|---|---|---|
+| 동일 계약 = 9엔티티 전부 | M2 §3 9엔티티 field-level 계약(양 서비스 매핑) | 없음 |
+| opt-B(서비스별 자기 원문) | M2 §3.2 ConversationMessage(SIASIU→SIASIU·Cosmile→Cosmile)·external_consult_ref 보조 | 없음 |
+| Foundation 고객 LTM 미저장 | M3 §2 Foundation 저장 0·memory_read_provider 미사용 | 없음 |
+| memory_context ephemeral | M3 §6 lifecycle(폐기)·§2 request-scoped | 없음 |
+| cross-service v1 범위 밖 | M2 §2/§6/§7·M3 §2(broker 아님) | 없음 |
+| service-local(subject/guest/erasure) | M2 §6/§7/§3.9 | 없음 |
+| Control self-review 제한 | 두 문서 상단 DESIGN_READY 상한·Fable5 FINAL_PASS | 없음 |
+- ★**M2/M3는 M1 결정과 충돌 0.**
+
+## 2. 항목별 반영 여부
+- **opt-B 반영:** ✅ M2 §3.2(각 서비스 자기 ConversationMessage 원문 저장)·external_consult_ref=보조 참조(정본 대체 아님).
+- **service-local 반영:** ✅ M2 §3.9/§6/§7(SubjectRefMap·guest 병합·erasure 전부 service-local·SIASIU↔Cosmile 미연결).
+- **Foundation no-broker 반영:** ✅ M3 §2(Foundation 다른 서비스 memory 미조회·memory_read_provider 미사용)·M2 §1.
+- **cross-service v1 밖 반영:** ✅ M2 §2/§6(consent cross_service·broker·cross-store erasure = v1 미사용·future)·M3 §2.
+- **P1/P2/P3 반영:** ✅ M2 §9(Cosmile P1/P2 동반패치·SIASIU P3·trace_id↔raw identity same row 금지·payload_refs only)·M3 §9 테스트.
+- **taxonomy/upsert:** ✅ M2 §4(FactTypeRegistry default-deny)·§5(다중값/SINGLE upsert·pregnancy_nursing SINGLE∩SAFETY immutable 아님).
+- **consent/retention/delete:** ✅ M2 §6(enum·3-state·must_not_reappear·is_safety override·ConsentRecord ledger·service-local erasure).
+- **ingress gate:** ✅ M3 §7(has_raw_or_pii 배선·fail-closed·M5 전 필수·W26).
+- **memory_reuse_decision:** ✅ M3 §8(shadow/OFF·service-side filter 우선·FRC 필드 후속).
+- **예시 payload:** ✅ M3 §10 fake/synthetic only·raw/PII/secret 0.
+
+## 3. M4/M5 구현 전 blocker (M1 B1~B7 + 계약 파생)
+| # | blocker | 소관 | 계약 근거 |
+|---|---|---|---|
+| B1 | `1ce099e` readiness adapter 소재 확인(★CLAUDE.md baseline 164/164 discrepancy) | Cosmile+control | M2 §10 |
+| B2 | Cosmile P1/P2 de-anon 동반패치(foundation_decision_received·SignalOutbox) | Cosmile | M2 §9 |
+| B3 | subject_ref v2 gate 배선(Foundation W16)+prod secret 배포 | Foundation | M2 §3.9·M3 §7 |
+| B4 | Foundation ingress default-deny gate(W26) | Foundation | M3 §7 |
+| B5 | opt-B raw 상담원문 at-rest 암호화/접근통제(W24) | Cosmile+SIASIU | M2 §3.2/§3.6 |
+| B6 | SIASIU consent/expiry/delete 컬럼·reset per-fact·user_id email keying(W1/W2/W3) | SIASIU | M2 §3.5/§6 |
+| B7 | (해소) M2 공통 계약 field-level 확정 = 본 M2 문서 | control | M2 |
+| B8 | retention TTL 실기간·expires_at·auto-sweep 확정(W8) | control+서비스 | M2 §6 |
+| B9 | taxonomy 3자 정합(brain.py·CDM·shared) → FactTypeRegistry canonical(W12/W13) | 서비스 | M2 §4 |
+- ★전부 additive·flag OFF·shadow·rollback 가능(구조적 blocker 아님).
+
+## 4. Fable5 검증 질문
+1. **FINAL_PASS:** M2/M3 계약(+아키텍처 v0.3)의 **DESIGN_READY → APPROVED** 판정(Control self-review 금지).
+2. **착지점(M3 §3):** memory_context를 별도 typed 필드가 아니라 freeform SSC.session_context에 착지시키고 **ingress gate로 강제**하는 설계가 충분한가, 아니면 typed schema 전환이 필요한가?
+3. **opt-B raw storage(M2 §3.2):** 서버 raw 상담원문 저장 + at-rest 암호화(W24)가 Cosmile "Foundation-only·서버 raw 미저장" 원칙과 상충하지 않는가(서비스 자체 저장은 별개)?
+4. **upsert(M2 §5):** SINGLE 타입에 norm_value UNIQUE 금지 + procedural supersede가 pregnancy_nursing(SINGLE∩SAFETY)에서 안전하게 동작하는가?
+5. **is_safety override(M2 §6):** 안전 fact auto-expire 제외가 same-service 보호 게이팅에만 적용되고 (v1 밖인) cross_service를 우회하지 않음이 계약으로 강제되는가?
+6. **subject_ref(M2 §3.9):** service-local SubjectRefMap이 미래 cross-service 재도입 시 hard precondition(consent+broker+v2 gate)을 명확히 남기는가?
+7. **payload_refs/keyed hash(M2 §9·M3 §4):** content_hash/query_hash keyed(HMAC)/per-service salt가 de-anon correlator 방지에 충분한가?
+
+## 5. verdict
+- **M2 = DESIGN(계약 문서 완성·M1 정합·충돌 0).** Control 상한 = DESIGN_READY.
+- **M3 = DESIGN(계약 문서 완성·M1 정합·충돌 0·ingress gate 계약 명시).** Control 상한 = DESIGN_READY.
+- **M2/M3 통합 검수 필요 = YES(독립)** · **Fable5 FINAL_PASS 필요 = YES**(Control self-review 금지).
+- **M4/M5 착수 = B1~B9 해소 후.**
+
+## 무결성
+코드 변경 0 · migration 0 · source push 0 · raw 고객데이터/secret 미열람 · 예시 fake/synthetic only.
