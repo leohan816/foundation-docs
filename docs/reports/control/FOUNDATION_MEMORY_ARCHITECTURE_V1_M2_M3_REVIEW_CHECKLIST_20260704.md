@@ -28,19 +28,24 @@
 - **memory_reuse_decision:** ✅ M3 §8(shadow/OFF·service-side filter 우선·FRC 필드 후속).
 - **예시 payload:** ✅ M3 §10 fake/synthetic only·raw/PII/secret 0.
 
-## 3. M4/M5 구현 전 blocker (M1 B1~B7 + 계약 파생)
-| # | blocker | 소관 | 계약 근거 |
-|---|---|---|---|
-| B1 | `1ce099e` readiness adapter 소재 확인(★CLAUDE.md baseline 164/164 discrepancy) | Cosmile+control | M2 §10 |
-| B2 | Cosmile P1/P2 de-anon 동반패치(foundation_decision_received·SignalOutbox) | Cosmile | M2 §9 |
-| B3 | subject_ref v2 gate 배선(Foundation W16)+prod secret 배포 | Foundation | M2 §3.9·M3 §7 |
-| B4 | Foundation ingress default-deny gate(W26) | Foundation | M3 §7 |
-| B5 | opt-B raw 상담원문 at-rest 암호화/접근통제(W24) | Cosmile+SIASIU | M2 §3.2/§3.6 |
-| B6 | SIASIU consent/expiry/delete 컬럼·reset per-fact·user_id email keying(W1/W2/W3) | SIASIU | M2 §3.5/§6 |
-| B7 | (해소) M2 공통 계약 field-level 확정 = 본 M2 문서 | control | M2 |
-| B8 | retention TTL 실기간·expires_at·auto-sweep 확정(W8) | control+서비스 | M2 §6 |
-| B9 | taxonomy 3자 정합(brain.py·CDM·shared) → FactTypeRegistry canonical(W12/W13) | 서비스 | M2 §4 |
-- ★전부 additive·flag OFF·shadow·rollback 가능(구조적 blocker 아님).
+## 3. M4/M5 구현 전 blocker (★Fable5 F/N 개정 — B1~B14)
+| # | blocker | 상태 | 소관 | 근거 |
+|---|---|---|---|---|
+| B1 | `1ce099e` readiness adapter 소재 확인(★baseline 164/164 discrepancy) | 유지 | Cosmile+control | M2 §10 |
+| B2 | Cosmile P1/P2 de-anon **M4 동반패치**(원자적·§9) | 유지 | Cosmile | M2 §9 |
+| B3 | subject_ref v2 gate 배선(W16)+prod secret 배포 | 유지 | Foundation | M2 §3.9·M3 §7 |
+| B4 | Foundation ingress **신규 default-deny gate**(D-1·"재사용"→"신규 스펙") | 유지(재정의) | Foundation | M3 §7 |
+| B5 | opt-B raw at-rest 보안 = **§11 최소 스펙 exit criteria**(W24 지위 통일) | 수정 | Cosmile+SIASIU | M2 §11 |
+| B6 | SIASIU: **M4 산출물**(consent/delete·reset) ↔ **M4 선행 설계**(brain.py 분기 순서·§5) **분리**(순환 해소) | 수정 | SIASIU | M2 §3.5/§5/§6 |
+| B7 | **M2 개정판(본 v1.1)** 으로 재확정 | 수정(해소) | control | M2 |
+| B8 | retention TTL 실기간·expires_at·auto-sweep 확정(임신 max-age 포함) | 유지 | control+서비스 | M2 §5/§6 |
+| B9 | taxonomy 3자 정합 → FactTypeRegistry canonical(goal=SINGLE·sensitivity enum) | 유지 | 서비스 | M2 §4 |
+| **B10** | **V0 계약 SUPERSEDED 선언**(Foundation-owns-memory/broker/identity 모순) | 신설 | control | M2 §12·D-11 |
+| **B11** | **Memory Candidate Adapter v0 재작성** + keyed hash 정합(unsalted sha256/하드코딩 salt·W25) | 신설 | SIASIU | M2 §13·D-12 |
+| **B12** | **M4 migration release train 요건**(backup·dry-run·rollback rehearsal·plan·Leo 승인) | 신설 | control+SIASIU | M2 §14·D-13 |
+| **B13** | **P3 gate 결속** + 동반패치 semantics 확정(logins.txt 무기한 잔존 금지) | 신설 | SIASIU | M2 §9·D-10 |
+| **B14** | **consent write-gate** + backfill 정책(raw 저장 사전 grant 필요) | 신설 | 서비스 | M2 §6·D-7 |
+- ★전부 additive·flag OFF·shadow·rollback 가능(구조적 blocker 아님·아키텍처 재설계 불요).
 
 ## 4. Fable5 검증 질문
 1. **FINAL_PASS:** M2/M3 계약(+아키텍처 v0.3)의 **DESIGN_READY → APPROVED** 판정(Control self-review 금지).
@@ -51,10 +56,12 @@
 6. **subject_ref(M2 §3.9):** service-local SubjectRefMap이 미래 cross-service 재도입 시 hard precondition(consent+broker+v2 gate)을 명확히 남기는가?
 7. **payload_refs/keyed hash(M2 §9·M3 §4):** content_hash/query_hash keyed(HMAC)/per-service salt가 de-anon correlator 방지에 충분한가?
 
-## 5. verdict
-- **M2 = DESIGN(계약 문서 완성·M1 정합·충돌 0).** Control 상한 = DESIGN_READY.
-- **M3 = DESIGN(계약 문서 완성·M1 정합·충돌 0·ingress gate 계약 명시).** Control 상한 = DESIGN_READY.
-- **M2/M3 통합 검수 필요 = YES(독립)** · **Fable5 FINAL_PASS 필요 = YES**(Control self-review 금지).
+## 5. verdict  ★Fable5 PATCH_REQUIRED(D-1~D-14) 반영 후 (v1.1)
+- **M2 v1.1 = DESIGN(Fable5 D-1~D-14 반영·앵커 정합·direction 승인).** Control 상한 = DESIGN_READY.
+- **M3 v1.1 = DESIGN(ingress gate를 신규 default-deny 스펙으로 재작성·D-1).** Control 상한 = DESIGN_READY.
+- **B-list = B1~B14**(B10~B14 신설·B5/B6/B7 수정). **M4/M5 착수 = B1~B14 해소 후**(아키텍처 재설계 불요·문서-레벨 수정 완료).
+- ★**Fable5 delta 재검증 필요 = YES**(전량 재감사 불요 — D-1~D-14 반영분 delta만). **최종 FINAL_PASS = Fable5**(Control self-review 금지).
+- 상세 반영 매핑: `FOUNDATION_MEMORY_ARCHITECTURE_V1_M2_M3_PATCH_DELTA_20260704.md`.
 - **M4/M5 착수 = B1~B9 해소 후.**
 
 ## 무결성

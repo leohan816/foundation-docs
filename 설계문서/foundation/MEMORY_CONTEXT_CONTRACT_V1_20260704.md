@@ -1,6 +1,7 @@
 # MEMORY_CONTEXT CONTRACT V1 (M3) — ephemeral request context 계약
 
-> 작성: foundation-control · 2026-07-04 · **상태: DESIGN (M3 계약 문서 · 구현 전)** · Control verdict 상한 = DESIGN_READY · 최종 FINAL_PASS = Fable5/독립 reviewer.
+> 작성: foundation-control · 2026-07-04 · **상태: DESIGN (M3 계약 문서 · 구현 전 · v1.1)** · Control verdict 상한 = DESIGN_READY · 최종 FINAL_PASS = Fable5/독립 reviewer.
+> ★**v1.1 = Fable5 D-1 반영:** §7 ingress gate를 has_raw_or_pii 재사용 → **신규 default-deny 스펙**(unknown-key reject·whitelist 강제·field type/enum·nested recursive scan·식별자(customer/user/anonymous/session_id/order/payment/shipping) 차단·한국어 raw text/name/address·size/depth/count 상한·fail-closed)으로 재작성 · §8 V3 attribution(O) · §10 privacy_level enum(D-5) 정정.
 > 근거: FOUNDATION_SERVICE_MEMORY_ARCHITECTURE_V1(v0.3) §O~R·S · COMMON_SERVICE_MEMORY_CONTRACT_V1(M2) · Foundation-side review · SUBJECT_REF_HARD_GATE_RESULT.
 > ★코드 수정 0 · migration 0 · source push 0 · raw 고객 데이터/secret 미열람 · 예시 payload = fake/synthetic only.
 
@@ -34,7 +35,7 @@
 | `known_allergy_atoms` | 알레르기 atom | [atom_ref] |
 | `avoid_ingredient_atoms` | 회피성분 atom | [atom_ref] |
 | `product_refs` | 상품 참조 | [canonicalProductId] |
-| `commerce_signal_refs` | 커머스 신호 | [{signal_kind, product_ref, privacy_level}] |
+| `commerce_signal_refs` | 커머스 신호 | [{signal_kind, product_ref, privacy_level(`normal`\|`sensitive`\|`restricted`)}] |
 | `consent_flags` | 동의 상태 | {consent_scope, sensitivity_level} |
 | `retention_flags` | 보존 상태 | {retention_policy} |
 | `safety_flags` | 안전 표시 | {has_safety_fact, pregnancy_nursing:bool} |
@@ -60,17 +61,26 @@
 (7) service decides local persist   — session_context_out을 자기 storage에 반영(정본은 서비스 소유·FRC trace_id는 hashing/미저장)
 ```
 
-## 7. Foundation ingress gate contract (★M5 구현 전 필수)
-- **gate:** FOUNDATION `shared_memory/gate.has_raw_or_pii` **또는 equivalent** 를 consult_contract 진입에 배선.
-- **scan 대상:** `session_context` · `service_context` · `product_context` **모두**.
-- **동작:** raw utterance / PII 패턴(email/phone/RRN) / raw 식별자(customer_id/user_id/anonymous_id) 발견 시 → **fail-closed reject**(수용·반영 금지).
-- **assertion:** `session_context_out` echo도 clean(raw/PII 0).
-- ★**현재 미배선(W26)** — foundation_http_service에 has_raw_or_pii 미연결(grep 0). **M5 구현 전 필수**. §9 테스트에서 `session_context 내 raw/PII/식별자 = 0` assert.
+## 7. Foundation ingress gate contract — ★D-1 재명세(Fable5·신규 default-deny 스펙)
+★기존 `shared_memory/gate.has_raw_or_pii` **단순 재사용 표현은 폐기**한다 — 그 gate는 **default-allow blacklist**(top-level 키 + email/phone/RRN 정규식만)라 설계 요구를 수행할 수 없다: (a) `customer_id/user_id/anonymous_id/session_id` 미차단(gate.py:15-17), (b) 중첩 dict/list 미스캔(top-level만), (c) **한국어 raw 상담원문·이름·주소 통과**, (d) M3 §4 whitelist 미강제, (e) 크기/깊이/개수 상한 전무(context 폭탄·재귀 crash). → **신규 default-deny gate 스펙으로 재작성.**
 
-## 8. memory_reuse_decision
+**신규 gate 스펙 (M5 배선·전부 fail-closed):**
+1. **default-deny + unknown-key reject:** §4 whitelist에 **없는 key는 거부**(허용목록 외 전부 reject) — blacklist가 아니라 **whitelist 구조적 강제**.
+2. **field별 type/enum 검증:** 허용 필드의 **타입·enum**(service_id∈{siasiu,cosmile}·role·risk_level·consent_scope·privacy_level 등) 검증·위반 reject.
+3. **nested recursive scan:** dict/list **재귀 스캔**(top-level만 검사 금지) — 중첩 내부 raw/PII/식별자 탐지.
+4. **식별자 차단:** `customer_id`·`user_id`·`anonymous_id`·**`session_id`(raw)**·`order`·`payment`·`shipping` 키/값 **차단**(기존 gate 누락분 명시 추가).
+5. **raw text/name/address 차단:** email/phone/RRN 정규식 + **한국어 raw 상담원문·이름·주소 휴리스틱**(길이·자연어 패턴)·free-text 필드는 whitelist 외 **거부**.
+6. **크기/깊이/개수 상한:** context **byte size·nesting depth·item count 상한** — 초과 시 **fail-closed reject**(context 폭탄·재귀 crash 방지).
+7. **위반 시 fail-closed:** 어느 항이든 위반 = **reject**(수용·반영·저장 0).
+8. **echo clean assertion:** `session_context_out` echo도 raw/PII/식별자 0 유지(§9 assert).
+- ★**scan 대상:** `session_context` · `service_context` · `product_context` **모두**(재귀).
+- ★**B4 재정의:** "has_raw_or_pii 재사용" → **"신규 default-deny gate 스펙 구현"**. 현재 미배선(W26·grep 0)·M5 구현 전 필수.
+
+## 8. memory_reuse_decision  ★O 보강(Fable5·V3 attribution seam)
 - **현재 FRC 미배선**(W15) → **shadow / default OFF**.
 - ★**deleted/blocked/expired/consent 없는 memory 재사용 금지**(must_not_reappear).
 - ★**service-side filter 우선:** 서비스가 memory_context 조립(§6-1) 시 deleted/blocked/expired fact를 **애초에 제외**(fail-closed). FRC `memory_reuse_decision`(allowed/blocked/expired/deleted/consent_required/not_available) 필드 추가는 후속 release train.
+- ★**V3 attribution 전제(O):** P1에서 FRC trace_id를 **미저장** 선택 시 V3 feedback loop join key 소실 → **keyed-hash(HMAC·per-service) 저장을 V3 전제 후보로 고정**(raw trace_id 저장 아님·de-anon 없이 attribution 유지). **FRC `memory_reuse_decision`(W15) 선행 필요**(M2 §15).
 
 ## 9. 테스트 기준
 - **raw/PII/identifier in memory_context = 0**(whitelist만·ingress reject 동작).
@@ -116,7 +126,7 @@
   "ltm_fact_refs": [{"type": "concern", "norm_value": "pigmentation", "fact_state": "active"}],
   "product_refs": ["fprod_synthetic_a", "fprod_synthetic_b"],
   "commerce_signal_refs": [
-    {"signal_kind": "wishlist", "product_ref": "fprod_synthetic_a", "privacy_level": "internal"}
+    {"signal_kind": "wishlist", "product_ref": "fprod_synthetic_a", "privacy_level": "normal"}
   ],
   "consent_flags": {"consent_scope": "same_service", "sensitivity_level": "normal"},
   "retention_flags": {"retention_policy": "standard_ttl"},
