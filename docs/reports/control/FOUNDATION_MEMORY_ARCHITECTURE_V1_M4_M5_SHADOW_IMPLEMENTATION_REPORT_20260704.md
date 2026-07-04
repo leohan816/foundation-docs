@@ -1,5 +1,10 @@
 # Memory Architecture V1 — M4/M5 Shadow Implementation Report (Batch 2~4)
 
+> ★**PATCH-1 정정(2026-07-04·Fable5 post-impl PATCH_REQUIRED 반영):** 본 원본 보고서에는 아래 **과대/누락 표현**이 있어 정정한다. 정정 정본 = `..._M4_M5_SHADOW_PATCH1_REPORT_20260704.md`.
+> - ❌ "9엔티티 additive DDL/+9 models" 표현은 **field-complete 완료가 아니라 invariant/구조 skeleton**이었다(SIASIU ltm_fact consent/retention/sensitivity·candidate source_ref/raw_text_stored 누락 → patch1에서 보강). "field-level 완료"로 읽히지 않도록 정정한다.
+> - ❌ Cosmile **CommerceMemory를 신규 standalone 테이블로 구현**한 것은 M2 §3.7(기존 5모델 overlay) **위반·미신고 deviation**이었다 → patch1에서 overlay 컬럼으로 재구현.
+> - ❌ Foundation gate는 plan §4 검증 7종 중 다수 미구현(service_id/version/consent/retention/sensitivity enum·per-field 상한·match_level·catalog length)이었고 echo_strip은 key-level만이었다 → patch1에서 F-1/F-2 구현. **안전 경계(STOP 15항·baseline)는 원본에서도 무결**했다.
+>
 > 작성: foundation-control · 2026-07-04 · 압축 오케스트레이션 Batch 2~4. ★source 제품 repo push 0 · DB migration 0 · live/write/promotion 0 · raw/secret/PII 0.
 > 원칙: 작은 batch·additive/shadow·독립 revert·현 HEAD baseline·**보고만 믿지 말고 diff/test/grep/SQL 검증**·실패 시 STOP.
 > 기준: M4_IMPLEMENTATION_PLAN · M5_FOUNDATION_GATE_PLAN · M4_MIGRATION_PLAN · M4_M5_READINESS_REVIEW(Fable5) · M2/M3 v1.2.
