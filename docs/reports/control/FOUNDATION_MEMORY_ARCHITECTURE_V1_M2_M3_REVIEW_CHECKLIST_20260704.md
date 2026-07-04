@@ -37,7 +37,7 @@
 | B4 | Foundation ingress **신규 default-deny gate**(D-1·"재사용"→"신규 스펙") | 유지(재정의) | Foundation | M3 §7 |
 | B5 | opt-B raw at-rest 보안 = **§11 최소 스펙 exit criteria**(W24 지위 통일) | 수정 | Cosmile+SIASIU | M2 §11 |
 | B6 | SIASIU: **M4 산출물**(consent/delete·reset) ↔ **M4 선행 설계**(brain.py 분기 순서·§5) **분리**(순환 해소) | 수정 | SIASIU | M2 §3.5/§5/§6 |
-| B7 | **M2 개정판(본 v1.1)** 으로 재확정 | 수정(해소) | control | M2 |
+| B7 | **M2 개정판(본 v1.1→v1.2)** 으로 재확정 | 수정(해소) | control | M2 |
 | B8 | retention TTL 실기간·expires_at·auto-sweep 확정(임신 max-age 포함) | 유지 | control+서비스 | M2 §5/§6 |
 | B9 | taxonomy 3자 정합 → FactTypeRegistry canonical(goal=SINGLE·sensitivity enum) | 유지 | 서비스 | M2 §4 |
 | **B10** | **V0 계약 SUPERSEDED 선언**(Foundation-owns-memory/broker/identity 모순) | 신설 | control | M2 §12·D-11 |
@@ -61,7 +61,7 @@
 - **M2 v1.2 = DESIGN(Fable5 D-1~D-14·delta-2·delta-3 반영·앵커 정합·direction 승인).** Control 상한 = DESIGN_READY.
 - **M3 v1.2 = DESIGN(ingress gate 신규 default-deny 스펙·whitelist 재정합·enum 정본·D-1/delta-3).** Control 상한 = DESIGN_READY.
 - **B-list = B1~B15**(B10~B15 신설·B5/B6/B7 수정). **M4/M5 착수 = B1~B15 해소 후**(아키텍처 재설계 불요·문서-레벨 수정 완료·delta-2 반영).
-- ★**Fable5 delta-2 재검증 필요 = YES**(전량 재감사 불요 — delta-2 반영분만). **최종 FINAL_PASS = Fable5**(Control self-review 금지).
+- ★**Fable5 delta-3 재검증 완료(FINAL_PASS — DELTA3_FINAL_REVIEW 참조).**
 - 상세 반영 매핑: `FOUNDATION_MEMORY_ARCHITECTURE_V1_M2_M3_PATCH_DELTA_20260704.md` + `..._DELTA2_PATCH_20260704.md`.
 
 ## 무결성

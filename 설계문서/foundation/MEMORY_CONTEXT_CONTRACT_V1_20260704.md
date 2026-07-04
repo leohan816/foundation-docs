@@ -41,7 +41,7 @@
 | `known_allergy_atoms` | []atom | atom_ref | ≤128 | dedupe |
 | `avoid_ingredient_atoms` | []atom | atom_ref | ≤128 | dedupe |
 | `episode_summary_refs` | []object | `{summary_id, content_hash(keyed), intent_types, risk_level}` | ≤32 | oldest-drop |
-| `ltm_fact_refs` | []object | `{type(registry enum), norm_value/atom, fact_state, confidence}` | ≤256 | — |
+| `ltm_fact_refs` | []object | `{type(registry enum), norm_value/atom, fact_state, confidence(opt)}` | ≤256 | — |
 | `product_refs` | []string | canonicalProductId | ≤128 | — |
 | `product_context.catalog_candidates` | []object | ★하단 item 표(자유문장 금지) | ≤128 | ★catalog 경로 유지(REG-1) |
 | `commerce_signal_refs` | []object | `{signal_kind, product_ref, privacy_level}` | ≤128 | — |
