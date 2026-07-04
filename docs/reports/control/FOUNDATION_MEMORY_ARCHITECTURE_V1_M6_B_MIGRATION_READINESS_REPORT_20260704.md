@@ -10,7 +10,7 @@
 ## 1. Fact
 
 ### 1.1 읽은 foundation-docs 문서 (★GitHub 원격 확인됨)
-- foundation-docs **main = `910b73b`** (GitHub `refs/heads/main` 원격 해시와 로컬 일치 확인). 아래 문서 전부 이 원격에 포함:
+- foundation-docs **main = `910b73b`**(작성 시점·GitHub `refs/heads/main` 원격 해시와 로컬 일치 확인) → ★**본 M6-B report 병합 후 main = `98d2043`**(Fable5 M6-B 검수 기준) → Fable5 review 병합 후 `d4d97ec`(P-2 시점 정합). 아래 문서 전부 이 원격에 포함:
   - `docs/reports/control/FOUNDATION_MEMORY_ARCHITECTURE_V1_M6_A_WATCH_PATCH_REPORT_20260704.md`
   - `docs/reports/control/FOUNDATION_MEMORY_ARCHITECTURE_V1_M6_PLANNING_20260704.md`
   - `docs/reports/fable5/FOUNDATION_MEMORY_ARCHITECTURE_V1_M4_M5_SHADOW_PATCH1_DELTA_REVIEW_20260704.md`
@@ -96,7 +96,7 @@ GROUP BY COALESCE("subjectRef","guestRef"), "type" HAVING COUNT(*) > 1;
 --     standalone CommerceMemory model grep=0 · 5모델 memorySubjectRef 존재 · CartItem overlay 부재.
 ```
 - **(8) commerce overlay nullable 컬럼 확인**(정적·schema): CommerceEvent·Cart·Order·Wishlist·AlertSubscription에 `memorySubjectRef`~`memoryExpiresAt` 존재(local 확인·✅) · **(9) AlertSubscription overlay 누락 여부**: 존재(✅) · **(10) standalone CommerceMemory 잔존**: 0(✅).
-- **(11) same-row raw identity 결합 위험**(commerce event de-anon): `SELECT COUNT(*) FROM "CommerceEvent" WHERE customer_id IS NOT NULL AND foundation_trace_id IS NOT NULL` 형태 → ★단 **de-anon 라이브 배선 전(M6-E)**이라 현재 raw same-row 저장 경로는 미배선. same-row 위험 = 라이브 emit train(M6-E)에서 검증.
+- **(11) same-row raw identity 결합 위험**(commerce event de-anon): `SELECT COUNT(*) FROM "CommerceEvent" WHERE customer_id IS NOT NULL AND foundation_trace_id IS NOT NULL` 형태 → ★단 **de-anon 라이브 배선 전(M6-E)**이라 현재 raw same-row 저장 경로는 미배선. same-row 위험 = 라이브 emit train(M6-E)에서 검증. ★**P-1:** 위 컬럼(`customer_id`·`foundation_trace_id`)·`"CommerceEvent"` 테이블명도 (1)~(7)과 동일하게 **Cosmile 명칭 미확정 대상**(prisma table명/컬럼명 introspection 확인 필요).
 
 ### 4.3 SQL 원칙 준수
 - raw value/PII/secret/customer_id/anonymous_id/trace_id **SELECT 0** · id/hash/count/aggregate만 · non-prod/sanitized/disposable/synthetic 기준.
