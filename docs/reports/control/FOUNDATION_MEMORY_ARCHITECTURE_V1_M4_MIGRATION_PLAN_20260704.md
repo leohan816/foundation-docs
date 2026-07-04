@@ -1,5 +1,7 @@
 # Foundation Memory Architecture V1 — M4 Migration Plan (B12)
 
+> ★**M6-B 보완(2026-07-04):** 본 plan은 유효하되, M6-A watch patch 반영분(① SIASIU candidate `status` 정본 = `candidate|approved|rejected`·default candidate ② Cosmile CommerceMemory = standalone 아님·5모델 개별 nullable overlay 컬럼 ③ retention 정본 = `session|short_ttl|standard_ttl|revocable`·off-contract 제거 ④ repo별 실 명칭 상이: SIASIU `ltm_fact`/snake vs Cosmile `LongTermMemoryFact`/camelCase·prisma table명 확인 필요)은 **`..._M6_B_MIGRATION_READINESS_REPORT_20260704.md`(M6-B addendum)를 정본**으로 참조한다. 전면 개정 불요·pre-scan SQL/repair rule의 실 명칭·enum은 M6-B addendum 기준.
+>
 > 작성: foundation-control · 2026-07-04 · **상태: DESIGN/PLAN (구현 전 · 코드 0 · migration 미실행)** · Control verdict 상한 = DESIGN_READY.
 > 목적: M4 additive schema migration의 **Leo 승인 대상이 될 수 있는 상세 계획**(Fable5 G-1·B12 FAIL 보강). ★실제 migration은 **Leo 승인 후·별도 실행**.
 > 근거: M2 v1.2 §5/§14 · M4_IMPLEMENTATION_PLAN §8 · Fable5 M4/M5 Readiness §E-1/§F(R-1/R-2).
