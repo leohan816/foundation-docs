@@ -1,6 +1,7 @@
 # COMMON SERVICE MEMORY CONTRACT V1 (M2) — field-level 계약
 
-> 작성: foundation-control · 2026-07-04 · **상태: DESIGN (M2 계약 문서 · 구현 전 · v1.1)** · Control verdict 상한 = DESIGN_READY · 최종 FINAL_PASS = Fable5/독립 reviewer.
+> 작성: foundation-control · 2026-07-04 · **상태: DESIGN (M2 계약 문서 · 구현 전 · v1.2)** · Control verdict 상한 = DESIGN_READY · 최종 FINAL_PASS = Fable5/독립 reviewer.
+> ★**v1.2 = delta-2(94bd93b)+delta-3 반영:** whitelist 재정합(B15)·enum 정본 고정·predicate 정정(subject_key COALESCE)·guest_ref keying·at-rest §11·V0 SUPERSEDED §12·catalog item 표(match_reason 금지).
 > ★**v1.1 = Fable5 PATCH_REQUIRED(D-1~D-14) 반영:** fact_state 직교 상태머신(D-2)·SINGLE upsert partial index(D-3)·EpisodeSummary summary_text 복원(D-4)·MemoryFactCandidate status enum(D-5)·pregnancy_nursing SAFETY∩SINGLE supersede 우선(D-8)·opt-B at-rest 보안 §11(D-6)·consent write-gate(D-7)·P1/P2/P3 semantics §9(D-10)·V0 SUPERSEDED §12(D-11)·adapter v0 재작성 §13(D-12)·migration train §14(D-13)·V3-ready §15(O)·B1~B14(N).
 > 근거: FOUNDATION_SERVICE_MEMORY_ARCHITECTURE_V1(v0.3) · M1_REVIEW_CONSOLIDATION · Foundation/SIASIU/Cosmile-side review · MEMORY_INVENTORY_AUDIT · COMMON_IDENTITY_REF_POLICY(APPROVED_CANDIDATE) · SUBJECT_REF_HARD_GATE_RESULT(c9bb996).
 > ★코드 수정 0 · migration 0 · source push 0 · raw 고객 데이터/secret 미열람.
@@ -79,7 +80,7 @@
 - **필수 필드(오버레이):** `subject_ref`·`consent_scope`·`retention_policy`. · **nullable:** privacy_level·deleted/blocked·expires_at.
 - **consent/retention/delete:** 적용. · **raw/PII:** 미포함(주소/전화/이메일 컬럼 없음·properties_sanitized 강제). · **Foundation 전달:** commerce_signal_refs(sanitized enum/ref만).
 - **SIASIU 매핑:** ★**schema-available / 미populate**(commerce 축 부재 = 계약 위반 아님·§8). · **Cosmile 매핑:** **full populate**(Cart/Order/Wishlist/CommerceEvent overlay).
-- **note:** `sanitizeProperties`(piiPolicy)가 강제 기반.
+- **note:** `sanitizeProperties`(piiPolicy)가 강제 기반. ★catalog_candidates item 형상 = M3 §4 item 표 정본(match_reason 자유문장 금지·reason_code 대체 후속).
 
 ### 3.8 ConsentRecord (ledger)
 - **목적:** 동의 grant/withdrawal 영속 audit(3-state·erasure 근거). · **소유자:** 발생 서비스.
@@ -123,7 +124,7 @@
 - ★`goal` 카디널리티는 anchor·brain.py와 재검토 후 **SINGLE 확정**(supersede 대상).
 
 ## 5. LongTermMemoryFact upsert 규칙  ★D-3/D-8/D-9 정정(Fable5)
-- **다중값 타입:** **partial UNIQUE** `(subject_ref, type, norm_value) WHERE deleted=false AND blocked=false` — 같은 값 재진술=갱신·다른 값=병존. ★**soft-delete row는 key 미점유**(D-9): 삭제 후 자발 재진술 = 새 active INSERT 허용(단 `must_not_reappear`는 gate가 재사용을 별도 차단 — 저장 허용 ≠ 자동 재노출).
+- **다중값 타입:** **partial UNIQUE** `(subject_key, type, norm_value) WHERE deleted=false AND blocked=false` (★subject_key=COALESCE(subject_ref,guest_ref)·§3.5와 동일) — 같은 값 재진술=갱신·다른 값=병존. ★**soft-delete row는 key 미점유**(D-9): 삭제 후 자발 재진술 = 새 active INSERT 허용(단 `must_not_reappear`는 gate가 재사용을 별도 차단 — 저장 허용 ≠ 자동 재노출).
 - **SINGLE 타입:** ★**DB `UNIQUE(subject_key, type)` 고정 금지**(D-3) — 이력 보존(superseded row)과 새 active row 공존이 깨진다. 대신 **① procedural supersede** 또는 **② partial unique index `WHERE fact_state='active' AND deleted=false AND blocked=false`**(★D-3 REGRESSION 정정: `active∧deleted` 소프트삭제 row가 SINGLE 키를 점유하지 않도록 — 삭제 후 재진술 INSERT 충돌·pregnancy 삭제→재진술 저장 실패 방지)(active ≤1 유일·superseded/deleted 이력은 무제한 보존).
 - ★**SINGLE 타입에 `(subject_ref, type, norm_value)` UNIQUE 금지**(supersede 파괴).
 - ★**SAFETY ∩ SINGLE (pregnancy_nursing) — 신규 규칙(D-8·FACT-1):** ~~"현 brain.py와 동일"~~ **주장 삭제.** **safety insert 분기보다 SINGLE supersede를 우선 적용**한다. (현행 brain.py는 safety 분기가 SINGLE 분기보다 먼저 return → 새 norm_value(임신중→임신아님)가 supersede 없이 **2번째 active로 INSERT = 모순 안전 fact 2건 동시 active**.) → ★**M4 SIASIU 작업에 brain.py 분기 순서 변경(SINGLE supersede first) 포함.** ★**상충 pregnancy_nursing active fact 2건 동시 존재 금지**(active ≤1 불변).

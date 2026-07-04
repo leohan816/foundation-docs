@@ -57,9 +57,9 @@
 6. **subject_ref(M2 §3.9):** service-local SubjectRefMap이 미래 cross-service 재도입 시 hard precondition(consent+broker+v2 gate)을 명확히 남기는가?
 7. **payload_refs/keyed hash(M2 §9·M3 §4):** content_hash/query_hash keyed(HMAC)/per-service salt가 de-anon correlator 방지에 충분한가?
 
-## 5. verdict  ★Fable5 PATCH_REQUIRED(D-1~D-14) 반영 후 (v1.1)
-- **M2 v1.1 = DESIGN(Fable5 D-1~D-14 반영·앵커 정합·direction 승인).** Control 상한 = DESIGN_READY.
-- **M3 v1.1 = DESIGN(ingress gate를 신규 default-deny 스펙으로 재작성·D-1).** Control 상한 = DESIGN_READY.
+## 5. verdict  ★Fable5 PATCH_REQUIRED(D-1~D-14)+delta-2+delta-3 반영 후 (v1.2)
+- **M2 v1.2 = DESIGN(Fable5 D-1~D-14·delta-2·delta-3 반영·앵커 정합·direction 승인).** Control 상한 = DESIGN_READY.
+- **M3 v1.2 = DESIGN(ingress gate 신규 default-deny 스펙·whitelist 재정합·enum 정본·D-1/delta-3).** Control 상한 = DESIGN_READY.
 - **B-list = B1~B15**(B10~B15 신설·B5/B6/B7 수정). **M4/M5 착수 = B1~B15 해소 후**(아키텍처 재설계 불요·문서-레벨 수정 완료·delta-2 반영).
 - ★**Fable5 delta-2 재검증 필요 = YES**(전량 재감사 불요 — delta-2 반영분만). **최종 FINAL_PASS = Fable5**(Control self-review 금지).
 - 상세 반영 매핑: `FOUNDATION_MEMORY_ARCHITECTURE_V1_M2_M3_PATCH_DELTA_20260704.md` + `..._DELTA2_PATCH_20260704.md`.
