@@ -24,11 +24,11 @@
 - **P1/P2/P3 반영:** ✅ M2 §9(Cosmile P1/P2 동반패치·SIASIU P3·trace_id↔raw identity same row 금지·payload_refs only)·M3 §9 테스트.
 - **taxonomy/upsert:** ✅ M2 §4(FactTypeRegistry default-deny)·§5(다중값/SINGLE upsert·pregnancy_nursing SINGLE∩SAFETY immutable 아님).
 - **consent/retention/delete:** ✅ M2 §6(enum·3-state·must_not_reappear·is_safety override·ConsentRecord ledger·service-local erasure).
-- **ingress gate:** ✅ M3 §7(has_raw_or_pii 배선·fail-closed·M5 전 필수·W26).
+- **ingress gate:** ✅ M3 §7 v1.2 **신규 default-deny gate**(has_raw_or_pii SUPERSEDED·unknown-key reject·nested·상한·CUTOVER echo 호환·B15)·fail-closed·M5 전 필수·W26.
 - **memory_reuse_decision:** ✅ M3 §8(shadow/OFF·service-side filter 우선·FRC 필드 후속).
 - **예시 payload:** ✅ M3 §10 fake/synthetic only·raw/PII/secret 0.
 
-## 3. M4/M5 구현 전 blocker (★Fable5 F/N 개정 — B1~B14)
+## 3. M4/M5 구현 전 blocker (★Fable5 F/N + delta-2 — B1~B15)
 | # | blocker | 상태 | 소관 | 근거 |
 |---|---|---|---|---|
 | B1 | `1ce099e` readiness adapter 소재 확인(★baseline 164/164 discrepancy) | 유지 | Cosmile+control | M2 §10 |
@@ -45,6 +45,7 @@
 | **B12** | **M4 migration release train 요건**(backup·dry-run·rollback rehearsal·plan·Leo 승인) | 신설 | control+SIASIU | M2 §14·D-13 |
 | **B13** | **P3 gate 결속** + 동반패치 semantics 확정(logins.txt 무기한 잔존 금지) | 신설 | SIASIU | M2 §9·D-10 |
 | **B14** | **consent write-gate** + backfill 정책(raw 저장 사전 grant 필요) | 신설 | 서비스 | M2 §6·D-7 |
+| **B15** | **M3 §4 whitelist 재정합 + CUTOVER echo round-trip compatibility gate**(앵커 §P+실코드 echo 필드: stated_concerns·safety_facts·recommendation_deferred·last_refined_intent·user_constraints·catalog_candidates·상한·version gate·echo round-trip pass) | 신설(delta-2 핵심) | control+Foundation | M3 §4/§7/§9·D-1/D-5(d)/REG-1 |
 - ★전부 additive·flag OFF·shadow·rollback 가능(구조적 blocker 아님·아키텍처 재설계 불요).
 
 ## 4. Fable5 검증 질문
@@ -59,10 +60,9 @@
 ## 5. verdict  ★Fable5 PATCH_REQUIRED(D-1~D-14) 반영 후 (v1.1)
 - **M2 v1.1 = DESIGN(Fable5 D-1~D-14 반영·앵커 정합·direction 승인).** Control 상한 = DESIGN_READY.
 - **M3 v1.1 = DESIGN(ingress gate를 신규 default-deny 스펙으로 재작성·D-1).** Control 상한 = DESIGN_READY.
-- **B-list = B1~B14**(B10~B14 신설·B5/B6/B7 수정). **M4/M5 착수 = B1~B14 해소 후**(아키텍처 재설계 불요·문서-레벨 수정 완료).
-- ★**Fable5 delta 재검증 필요 = YES**(전량 재감사 불요 — D-1~D-14 반영분 delta만). **최종 FINAL_PASS = Fable5**(Control self-review 금지).
-- 상세 반영 매핑: `FOUNDATION_MEMORY_ARCHITECTURE_V1_M2_M3_PATCH_DELTA_20260704.md`.
-- **M4/M5 착수 = B1~B9 해소 후.**
+- **B-list = B1~B15**(B10~B15 신설·B5/B6/B7 수정). **M4/M5 착수 = B1~B15 해소 후**(아키텍처 재설계 불요·문서-레벨 수정 완료·delta-2 반영).
+- ★**Fable5 delta-2 재검증 필요 = YES**(전량 재감사 불요 — delta-2 반영분만). **최종 FINAL_PASS = Fable5**(Control self-review 금지).
+- 상세 반영 매핑: `FOUNDATION_MEMORY_ARCHITECTURE_V1_M2_M3_PATCH_DELTA_20260704.md` + `..._DELTA2_PATCH_20260704.md`.
 
 ## 무결성
 코드 변경 0 · migration 0 · source push 0 · raw 고객데이터/secret 미열람 · 예시 fake/synthetic only.

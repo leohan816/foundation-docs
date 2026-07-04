@@ -47,19 +47,19 @@
 
 ### 3.4 MemoryFactCandidate  ★D-5 정정(Fable5)
 - **목적:** 추출된 fact 후보(gate 대기·아직 LTM 아님). · **소유자:** 발생 서비스.
-- **필수 필드:** `candidate_id`(PK) · `type`(FactTypeRegistry) · `norm_value` · `source_ref`(episode/summary·`derived_from_message_ids` provenance) · **`status`(candidate|approved|rejected)** · `raw_text_stored`(=**false** 불변) · `consent_scope` · `sensitivity_level`.
-- **nullable:** `subject_ref`(★게스트 = **null**·`guest_ref` 보완) · `gate_decision`(**enum: null(미판정)|allow|block|session_only|ask_consent** — 무enum 표현 금지) · `confidence`·`value_display`(raw·service-local)·`deleted_at`.
+- **필수 필드:** `candidate_id`(PK) · `type`(FactTypeRegistry) · `norm_value` · `source_ref`(episode/summary·`derived_from_message_ids` provenance) · **`status`(candidate|approved|rejected)** · **`fact_state`(hypothesis|active)** · `raw_text_stored`(=**false** 불변) · `consent_scope` · `sensitivity_level`.
+- **nullable:** `subject_ref`(★게스트 = **null**) · **`guest_ref`**(subject_ref null 시 세션/디바이스 참조) · `gate_decision`(**enum: null(미판정)|allow|block|session_only|ask_consent** — 무enum 표현 금지) · `confidence`·`value_display`(raw·service-local)·`deleted_at`.
 - **key/index:** PK `candidate_id` · idx `(subject_ref, type)`.
 - **consent/retention/delete:** 적용(gate 통과 전 재사용 0). · **raw/PII:** ★`raw_text_stored=false`(원문 미저장)·value_display만 raw(service-local). · **Foundation 전달:** 불가(gate 전).
 - **SIASIU 매핑:** 현행 `extract`(compute-only) → candidate row persist(신설). · **Cosmile 매핑:** 신설.
-- **note:** semantic=AI 추출·policy=rule gate 분리. ★`status`(candidate/approved/rejected)=후보 lifecycle · `gate_decision` enum=gate 판정. subject_ref nullable(게스트).
+- **note:** ★D-5(b) 3축 역할 분리(anchor J-1 정합): **`status`(candidate/approved/rejected)=후보 승인 lifecycle** · **`fact_state`(hypothesis→active)=신뢰도 축**(hypothesis 축 복원) · **`gate_decision` enum=gate 판정 결과**. subject_ref nullable(게스트=guest_ref).
 
 ### 3.5 LongTermMemoryFact  ★D-2 정정(Fable5·직교 상태머신)
 - **목적:** 확정 고객 장기 사실(개인화·재현·안전). · **소유자:** 발생 서비스(**정본**).
-- **필수 필드:** `fact_id`(PK) · `subject_ref`(nullable·게스트=`guest_ref`) · `type` · `norm_value` · **`fact_state`(active|hypothesis|superseded)** · `is_safety` · `source_ref` · `consent_scope` · `retention_policy` · `sensitivity_level`.
+- **필수 필드:** `fact_id`(PK) · `subject_ref`(**nullable**·게스트=null) · **`guest_ref`**(★subject_ref NULL 시 세션/디바이스 참조·subject_ref XOR guest_ref 중 하나 필수·NEW-1) · `type` · `norm_value` · **`fact_state`(active|hypothesis|superseded)** · `is_safety` · `source_ref` · `consent_scope` · `retention_policy` · `sensitivity_level`.
 - **★직교 3-state flag(fact_state와 독립·BOOL):** `deleted` · `blocked` · `expired`. → **`superseded ∧ deleted` 등 동시 표현 가능**(anchor §J-2 모델). ★`hypothesis`(신뢰도 축적 중·0.40→active 0.60) 소실 금지.
 - **nullable:** `value_display`(raw·service-local)·`confidence`·`as_of`·`reconfirmed`/`reconfirmed_at`·`deleted_at`/`expires_at`.
-- **key/index:** ★**upsert 규칙 §5** — 다중값 **partial UNIQUE** `(subject_ref,type,norm_value) WHERE deleted=false AND blocked=false` · SINGLE = **DB `UNIQUE(subject_ref,type)` 금지**(procedural supersede 또는 partial index `WHERE fact_state='active'`).
+- **key/index:** ★**upsert 규칙 §5** — 다중값 **partial UNIQUE** `(subject_key,type,norm_value) WHERE deleted=false AND blocked=false` · SINGLE = **DB `UNIQUE(subject_key,type)` 금지**(procedural supersede 또는 partial index **`WHERE fact_state='active' AND deleted=false AND blocked=false`**·★D-3 REGRESSION 정정). ★**guest(subject_ref NULL·NEW-1):** `subject_key = COALESCE(subject_ref, guest_ref)`로 partial unique 적용(NULL별 충돌·오병합 방지) · guest fact는 §N-5 병합 시 subject_ref로 **재키잉(merge/supersede)** · 미동의(allow_link=false) 시 guest_ref 유지·병합 거부.
 - **consent/retention/delete:** 적용(deleted/blocked/expired must_not_reappear). · **raw/PII:** value_display만 raw(service-local). · **Foundation 전달:** **가능(refs만)** — type/norm_value/atom/fact_state·**value_display 평문 제외**.
 - **SIASIU 매핑:** `memory_fact` **확장**(+subject_ref·consent/retention·fact_state·3-state flag·reconfirm·deleted_at/expires_at·source_ref). · **Cosmile 매핑:** **신설**(현 부재).
 - **note:** ★"현행 brain.py와 동일" 주장 **삭제**(D-8). SINGLE supersede·SAFETY∩SINGLE 분기 순서는 §5 **신규 규칙**(M4 SIASIU brain.py 분기 순서 변경 포함).
@@ -75,7 +75,7 @@
 
 ### 3.7 CommerceMemory (overlay)
 - **목적:** cart/order/purchase/상품행동 기억. · **소유자:** 발생 서비스.
-- **구현:** 신규 테이블 아님 — 기존 Cart/Order/Wishlist/CommerceEvent/AlertSubscription에 **additive 컬럼**: `subject_ref`·`properties_sanitized`·`privacy_level`·`consent_scope`·`retention_policy`·`deleted`/`blocked`·`expires_at`.
+- **구현:** 신규 테이블 아님 — 기존 Cart/Order/Wishlist/CommerceEvent/AlertSubscription에 **additive 컬럼**: `subject_ref`·`properties_sanitized`·`privacy_level`(★enum 정본 `anonymous`\|`user_consented`\|`aggregated`·앵커·M3 §4 동일)·`consent_scope`·`retention_policy`·`deleted`/`blocked`·`expires_at`.
 - **필수 필드(오버레이):** `subject_ref`·`consent_scope`·`retention_policy`. · **nullable:** privacy_level·deleted/blocked·expires_at.
 - **consent/retention/delete:** 적용. · **raw/PII:** 미포함(주소/전화/이메일 컬럼 없음·properties_sanitized 강제). · **Foundation 전달:** commerce_signal_refs(sanitized enum/ref만).
 - **SIASIU 매핑:** ★**schema-available / 미populate**(commerce 축 부재 = 계약 위반 아님·§8). · **Cosmile 매핑:** **full populate**(Cart/Order/Wishlist/CommerceEvent overlay).
@@ -124,7 +124,7 @@
 
 ## 5. LongTermMemoryFact upsert 규칙  ★D-3/D-8/D-9 정정(Fable5)
 - **다중값 타입:** **partial UNIQUE** `(subject_ref, type, norm_value) WHERE deleted=false AND blocked=false` — 같은 값 재진술=갱신·다른 값=병존. ★**soft-delete row는 key 미점유**(D-9): 삭제 후 자발 재진술 = 새 active INSERT 허용(단 `must_not_reappear`는 gate가 재사용을 별도 차단 — 저장 허용 ≠ 자동 재노출).
-- **SINGLE 타입:** ★**DB `UNIQUE(subject_ref, type)` 고정 금지**(D-3) — 이력 보존(superseded row)과 새 active row 공존이 깨진다. 대신 **① procedural supersede** 또는 **② partial unique index `WHERE fact_state='active'`**(active ≤1 유일·superseded 이력은 무제한 보존).
+- **SINGLE 타입:** ★**DB `UNIQUE(subject_key, type)` 고정 금지**(D-3) — 이력 보존(superseded row)과 새 active row 공존이 깨진다. 대신 **① procedural supersede** 또는 **② partial unique index `WHERE fact_state='active' AND deleted=false AND blocked=false`**(★D-3 REGRESSION 정정: `active∧deleted` 소프트삭제 row가 SINGLE 키를 점유하지 않도록 — 삭제 후 재진술 INSERT 충돌·pregnancy 삭제→재진술 저장 실패 방지)(active ≤1 유일·superseded/deleted 이력은 무제한 보존).
 - ★**SINGLE 타입에 `(subject_ref, type, norm_value)` UNIQUE 금지**(supersede 파괴).
 - ★**SAFETY ∩ SINGLE (pregnancy_nursing) — 신규 규칙(D-8·FACT-1):** ~~"현 brain.py와 동일"~~ **주장 삭제.** **safety insert 분기보다 SINGLE supersede를 우선 적용**한다. (현행 brain.py는 safety 분기가 SINGLE 분기보다 먼저 return → 새 norm_value(임신중→임신아님)가 supersede 없이 **2번째 active로 INSERT = 모순 안전 fact 2건 동시 active**.) → ★**M4 SIASIU 작업에 brain.py 분기 순서 변경(SINGLE supersede first) 포함.** ★**상충 pregnancy_nursing active fact 2건 동시 존재 금지**(active ≤1 불변).
 - ★**pregnancy_nursing 시간유한성(D-9·재확인 주기/max-age 초안):** immutable 아님. **max-age 경과(초안 ~300일) 시 `reconfirm_required`** → 재확인 없으면 active→hypothesis(안전 보호는 유지하되 stale 임신 fact 무기한 active 방지). 실기간은 M4 확정(W8·W14 임신 특수성 명시).

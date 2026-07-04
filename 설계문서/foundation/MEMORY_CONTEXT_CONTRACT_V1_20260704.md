@@ -24,31 +24,49 @@
   - `SSC.product_context` — product/commerce refs.
 - ★`session_context`/`service_context`/`product_context`는 **freeform** → **Foundation ingress raw/PII gate 대상**(§7). 착지 필드가 freeform이므로 **경계는 typed schema가 아니라 ingress default-deny scan으로 강제**한다.
 
-## 4. 허용 필드 (whitelist)
-| 필드 | 의미 | 값 종류 |
-|---|---|---|
-| `service_id` | 발생 서비스 | siasiu \| cosmile |
-| `request_memory_context_version` | 계약 버전 | "mctx-1.0" |
-| `session_ref` | 현 세션 참조 | opaque session_id |
-| `episode_summary_refs` | 최근 요약 refs | [{summary_id, content_hash(keyed), intent_types, risk_level}] |
-| `ltm_fact_refs` | 장기사실 refs | [{type, norm_value/atom, fact_state, confidence}] |
-| `known_allergy_atoms` | 알레르기 atom | [atom_ref] |
-| `avoid_ingredient_atoms` | 회피성분 atom | [atom_ref] |
-| `product_refs` | 상품 참조 | [canonicalProductId] |
-| `commerce_signal_refs` | 커머스 신호 | [{signal_kind, product_ref, privacy_level(`normal`\|`sensitive`\|`restricted`)}] |
-| `consent_flags` | 동의 상태 | {consent_scope, sensitivity_level} |
-| `retention_flags` | 보존 상태 | {retention_policy} |
-| `safety_flags` | 안전 표시 | {has_safety_fact, pregnancy_nursing:bool} |
-| `trace_refs` | 추적 참조 | request_id/trace_id(hex·raw id 아님) |
+## 4. 허용 필드 (whitelist) — ★B15 재정합(Fable5 delta-2·앵커 §P + 실코드 소비 필드)
+★**REG-1 해소:** unknown-key reject(§7)와 정상 echo/carry 충돌 방지 — whitelist = **앵커 §P + `core.py` session_out echo/consume 필드 전체**를 포함해 **Foundation 자신의 echo가 다음 요청 gate를 통과**하게 한다.
+**전역 상한(초과 시 fail-closed):** context total ≤ **32 KB** · nesting depth ≤ **5** · 총 item count ≤ **512**.
+
+| 필드 | type | enum/형식 | max count | truncation rule |
+|---|---|---|---|---|
+| `service_id` | string | `siasiu`\|`cosmile` | — | — |
+| `request_memory_context_version` | string | `mctx-1.0` | — | 미일치 = reject |
+| `session_ref` | string | ★opaque(§8): `sess_ref_*`/UUID/HMAC ref (≤128 char) | — | — |
+| `stated_concerns` | []string | concern/condition **카테고리 enum**(FactTypeRegistry·원문❌) | ≤64 | ★append-only → **cap 64·oldest-drop(FIFO)** |
+| `recommendation_deferred` | bool | true\|false | — | — |
+| `last_refined_intent` | string | intent enum(refined·≤64 char) | — | — |
+| `safety_facts` | object | `{avoid_ingredient:[atom], allergy:[atom/enum], pregnancy_nursing:bool}` | 각 ≤128 | ★immutable union carry·dedupe·**drop 금지**·상한 초과=reject(이상신호) |
+| `known_allergy_atoms` | []atom | atom_ref | ≤128 | dedupe |
+| `avoid_ingredient_atoms` | []atom | atom_ref | ≤128 | dedupe |
+| `episode_summary_refs` | []object | `{summary_id, content_hash(keyed), intent_types, risk_level}` | ≤32 | oldest-drop |
+| `ltm_fact_refs` | []object | `{type(registry enum), norm_value/atom, fact_state, confidence}` | ≤256 | — |
+| `product_refs` | []string | canonicalProductId | ≤128 | — |
+| `product_context.catalog_candidates` | []object | catalog candidate refs(canonicalProductId·enum·refs만·원문❌) | ≤128 | ★catalog 경로 유지(REG-1) |
+| `commerce_signal_refs` | []object | `{signal_kind, product_ref, privacy_level}` | ≤128 | — |
+| `consent_flags` | object | `{consent_scope, sensitivity_level}` | — | — |
+| `retention_flags` | object | `{retention_policy}` | — | — |
+| `safety_flags` | object | `{has_safety_fact:bool, pregnancy_nursing:bool}` | — | — |
+| `user_constraints` | object | `{no_recommendation:bool, explanation_only:bool}` | — | — |
+| `trace_refs` | object | `{request_id/trace_id: hex·raw id 아님}` | — | — |
+
+- ★**enum 정본(통일·1개):** `privacy_level = anonymous | user_consented | aggregated`(**앵커 §M/§P 정본** — v1.1의 `normal|sensitive|restricted` **폐기**) · `sensitivity_level = low | normal | sensitive | high`(code `SENSITIVITY_LEVELS` 기준·앵커 3값→4값 정정·M2 §4 동일) · `fact_state = active | hypothesis | superseded`.
+- ★**append-only 성장 필드 truncation:** `stated_concerns`·`episode_summary_refs`는 세션 누적 → 상한 도달 시 **oldest-drop(FIFO)**. `safety_facts`는 안전이라 **drop 금지**(상한 초과=reject). → gate가 정상 성장 echo를 reject하지 않도록 전역 상한을 넉넉히.
 - ★모두 **opaque refs·enum·atom·bool·hash(keyed)** — 원문/평문 식별자 없음.
 
 ## 5. 금지 필드 (blacklist · 하나라도 발견 시 ingress reject)
 - `raw utterance` / **raw 상담 원문** / `summary_text plaintext` / `value_display plaintext`
 - `email` / `phone` / `name`
-- `customer_id` / `user_id` / `anonymous_id` (raw 식별자)
+- `customer_id` / `user_id` / `anonymous_id` / **`session_id`(raw key)** (raw 식별자)
 - `raw order / payment / shipping` (주문번호·결제·배송주소)
 - `raw query / body`
 - ★subject_ref도 **미전송 권장**(Foundation은 broker 아님·고객 memory 미조회).
+
+### 5.1 session_ref opaque 형식 스펙 (★item 8·D-14)
+raw `session_id` key는 금지(§5)하되 **opaque `session_ref`는 허용** — 판별 기준:
+- **허용:** `sess_ref_*` prefix · opaque UUID · HMAC ref(고객 신원과 역추적 불가·서비스 내부 세션 참조). 값에 고객 식별자/원문 미포함.
+- **금지:** **raw DB session_id**(내부 PK 직노출) · **raw customer-linked session_id**(고객 식별자 파생·join 가능). 
+- ★키 이름 `session_id` = **reject** · 필드 `session_ref`(opaque 형식 검증 통과) = **allow**. gate(§7-4)가 `session_id` 키를 차단하되 `session_ref`는 형식 검증 후 통과.
 
 ## 6. memory_context lifecycle
 ```
@@ -66,7 +84,7 @@
 
 **신규 gate 스펙 (M5 배선·전부 fail-closed):**
 1. **default-deny + unknown-key reject:** §4 whitelist에 **없는 key는 거부**(허용목록 외 전부 reject) — blacklist가 아니라 **whitelist 구조적 강제**.
-2. **field별 type/enum 검증:** 허용 필드의 **타입·enum**(service_id∈{siasiu,cosmile}·role·risk_level·consent_scope·privacy_level 등) 검증·위반 reject.
+2. **field별 type/enum 검증:** 허용 필드의 **타입·enum은 §4 정의표를 정본**으로 검증(service_id∈{siasiu,cosmile}·risk_level·last_refined_intent·consent_scope·sensitivity_level·privacy_level·fact_state) — §4에 없는 enum(예: 스펙 오염된 `role`) 사용 금지. 위반 reject.
 3. **nested recursive scan:** dict/list **재귀 스캔**(top-level만 검사 금지) — 중첩 내부 raw/PII/식별자 탐지.
 4. **식별자 차단:** `customer_id`·`user_id`·`anonymous_id`·**`session_id`(raw)**·`order`·`payment`·`shipping` 키/값 **차단**(기존 gate 누락분 명시 추가).
 5. **raw text/name/address 차단:** email/phone/RRN 정규식 + **한국어 raw 상담원문·이름·주소 휴리스틱**(길이·자연어 패턴)·free-text 필드는 whitelist 외 **거부**.
@@ -74,6 +92,8 @@
 7. **위반 시 fail-closed:** 어느 항이든 위반 = **reject**(수용·반영·저장 0).
 8. **echo clean assertion:** `session_context_out` echo도 raw/PII/식별자 0 유지(§9 assert).
 - ★**scan 대상:** `session_context` · `service_context` · `product_context` **모두**(재귀).
+- ★**CUTOVER echo round-trip 호환(REG-1 해소·필수):** whitelist(§4)는 **Foundation 자신이 만든 `session_context_out` echo/carry 필드(`stated_concerns`·`safety_facts`·`recommendation_deferred`·`last_refined_intent`·`user_constraints`·`catalog_candidates`)를 전부 포함**한다 → **이전 요청의 `session_context_out`이 다음 요청 `session_context_in`으로 재송신될 때 gate를 통과**(2턴째 세션 연속성·safety carry·catalog 경로 유지). gate가 **자기 echo를 reject하지 않음**을 §9에서 assert.
+- ★**version gate:** `request_memory_context_version` 없는/구버전 legacy payload는 **호환 모드**로 처리(기존 CUTOVER 트래픽이 신규 gate에 능동 파괴되지 않도록)·신규 필드는 `mctx-1.0`부터 강제.
 - ★**B4 재정의:** "has_raw_or_pii 재사용" → **"신규 default-deny gate 스펙 구현"**. 현재 미배선(W26·grep 0)·M5 구현 전 필수.
 
 ## 8. memory_reuse_decision  ★O 보강(Fable5·V3 attribution seam)
@@ -90,8 +110,13 @@
 - **memory_read_provider_called = false**.
 - **session_context_out clean**(raw/PII 0 echo).
 - **trace_id ↔ raw identity same row 금지**(서비스-side FRC trace_id는 hashing/미저장·§P1).
-- 기존 regression 유지: Foundation runner 89/89·SIASIU 39/39·119/119·Cosmile readiness 164/164·loop 112/112.
-- ★중단 조건: session_context ingress raw/PII/식별자>0 · deleted/blocked/expired reuse>0 · write/live/promotion>0.
+- ★**CUTOVER echo round-trip 호환 assert(REG-1·item 2·필수):**
+  - `assert gate(previous session_context_out) == pass` — **이전 session_context_out을 다음 session_context_in으로 재송신 시 gate 통과**(2턴째 세션 거부 0).
+  - `assert safety_facts carry pass` — `{avoid_ingredient, allergy, pregnancy_nursing}` immutable union carry가 2턴째에도 gate 통과·유지.
+  - `assert product_context.catalog_candidates pass` — catalog 경로가 gate에서 죽지 않음.
+  - `assert gate(unknown malicious key) == reject` — whitelist 외 악성 key(customer_id·raw 원문 등) reject.
+- 기존 regression 유지: Foundation runner 89/89·SIASIU 39/39·119/119·Cosmile readiness 164/164·loop 112/112. ★기존 CUTOVER 트래픽(session_context echo·safety carry·catalog)이 신규 gate로 파괴되지 않음 확인.
+- ★중단 조건: session_context ingress raw/PII/식별자>0 · deleted/blocked/expired reuse>0 · write/live/promotion>0 · **정상 echo/safety carry/catalog가 gate에 reject>0**.
 
 ## 10. SIASIU / Cosmile 예시 payload (★fake/synthetic only)
 > ★아래는 **합성 예시**다. 실제 고객 데이터·secret·PII 아님.
@@ -126,7 +151,7 @@
   "ltm_fact_refs": [{"type": "concern", "norm_value": "pigmentation", "fact_state": "active"}],
   "product_refs": ["fprod_synthetic_a", "fprod_synthetic_b"],
   "commerce_signal_refs": [
-    {"signal_kind": "wishlist", "product_ref": "fprod_synthetic_a", "privacy_level": "normal"}
+    {"signal_kind": "wishlist", "product_ref": "fprod_synthetic_a", "privacy_level": "user_consented"}
   ],
   "consent_flags": {"consent_scope": "same_service", "sensitivity_level": "normal"},
   "retention_flags": {"retention_policy": "standard_ttl"},
