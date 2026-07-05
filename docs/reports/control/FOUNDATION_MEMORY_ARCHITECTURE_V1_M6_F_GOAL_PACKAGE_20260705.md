@@ -72,5 +72,20 @@ subj_v2_<32hex>  = HMAC-SHA256(FOUNDATION_SUBJECT_REF_SECRET, furef_v2)[:32]    
 - **W-2 raw echo 제거:** candidate의 raw `local_user_ref` echo 제거(furef_v2 가명만·§7 output-0 정합). 정정 완료(shadow `dd2c631`).
 - **W-3 backfill idempotency:** backfill 조건에 추가 — 이미 non-NULL subject_ref row는 **skip**(재계산 금지)·`furef_local_ref` 없는 row는 subject_ref 계산 불가 → **abort/skip 기준 명시**·전체 idempotent(재실행 안전).
 
+## 11. PATCH ROUND 2 (외부 Fable5 review 반영 · 2026-07-05)
+> 외부 Fable5 review(`c622f14`·PATCH_REQUIRED)의 §11 PATCH 반영. 상세 reconciliation = `..._M6_F_EXTERNAL_FABLE5_RECONCILIATION_20260705.md`. ★모두 문서-레벨(+ 일부 FOUNDATION-side 별도 gate)·shadow 코드 추가 변경 0.
+- **① key-version 필수 선결(격상):** subj_v2_는 스킴 버전이지 secret 버전 아님. ★**backfill 전 필수 선결 = `secret_version` 도입**(§5 조건에 추가). rotation 후 재계산 봉인 방지. (P-2 default = SubjectRefMap `secret_version` 컬럼·§reconciliation Leo decision 1)
+- **② backfill 검증기준 M4 §7 이상:** §5 backfill 조건에 **검증/수용 기준** 추가 — 전후 NULL/row count·checksum·idempotency(재실행 동일)·부분실패 rollback·복원 리허설(EXEC-1 패턴). 비가역 backfill이 저위험 M4 additive보다 약하면 안 됨.
+- **③ guest-only row 제외:** guest_ref-only row(furef 부재)는 **backfill 대상 아님**(NULL 정상·M2 §3.5 COALESCE). backfill은 furef 보유 row만·guest 오염/미동의 병합 금지.
+- **⑥/5a 서비스 secret rotation도 re-key 축:** subj_v2=HMAC(F,furef)상 **서비스 secret rotation도 그 서비스 전 subj_v2 연쇄 변경→orphan.** Foundation·service **두 축 모두 re-key 축** 명시(이중계층 rotation).
+- **⑦ furef 획득/SubjectRefMap 거버넌스/대상 테이블:** 기존 NULL row furef 획득 경로·SubjectRefMap(가명 PII) 저장 범위/거버넌스·대상 테이블 열거(SIASIU `subject_ref_map`/`ltm_fact`/`memory_fact_candidate`/`episode_summary`·Cosmile `SubjectRefMap`/`LongTermMemoryFact`/`MemoryFactCandidate`/overlay 5모델).
+- **⑧ 파생 흐름(identity-touch API):** ★서비스는 **furef를 Foundation에 전송→Foundation이 subject_ref mint·회수**(identity-touch API·secret 공유 아님). resolve_subject/factory가 furef 수용하도록 **FOUNDATION-side 정정 = 별도 gate**(reconciliation Leo decision 2).
+- **⑨ 유출 주장 정정:** §3 "한 secret 유출이 전 체인 역추적 안 됨"은 **부정확** — SubjectRefMap이 furef↔subject_ref 실체화 → **서비스 secret+서비스 DB 접근**이면 Foundation secret 없이 전 체인 역추적. 2-layer 방어 = **매핑 미접근 공격자 한정**.
+- **⑩ correlation 정직화:** §2 "correlation 방지"는 crypto 보증 아님(양 furef 역산→id→graph join 가능). 실제 차단선 = **consent fail-closed·flag OFF·gate**(secret 구조 아님).
+- **2a per-service secret 값 분리:** 동일 env명 공유 배포 가능 → M6-F가 **per-service 상이 secret 값 배포를 신규 요구·집행**(값 분리 검증).
+- **R10-1 순서 자구:** §8 "prod secret·backfill 독립"→ **backfill 선결 = secret 주입 완료**(§5 조건1 "확정"≠"주입 완료"·dev-env backfill 해석 차단).
+- **R10-2 review trigger:** §9 "(또는 Control invoke)" → **"Leo 승인 하 Control 대행"**(권한 명확화).
+- **R8-2/R9-1(watch·FOUNDATION-side 별도 gate):** api.py reason_codes 상수 enum 가드 · FOUNDATION `_factory` legacy `local_user_ref` 제거(M2 v1.2 폐기·SIASIU adapter는 `dd2c631` 완료).
+
 ## 무결성
-M6-F Goal Package(설계/계획) + PATCH ROUND(shadow code 정정) · **prod 실행 = 실행 아님** · prod secret 실주입 0 · subject_ref backfill 실행 0 · prod DB 0 · live 전환/emit/hard reject 0 · repair/mapping/backfill 0 · **product repo main merge 0** · schema code main merge 0 · raw/PII/raw identifier 출력 0 · Foundation durable customer memory 0 · cross-service 0 · V3 0 · Vault write 0 · 본 package만 foundation-docs commit/push · **M6-F execution(prod secret·backfill)은 각 별도 Leo 승인 후.**
+M6-F Goal Package(설계/계획) + PATCH ROUND(shadow code 정정) + PATCH ROUND 2(외부 Fable5 문서 반영) · **prod 실행 = 실행 아님** · prod secret 실주입 0 · subject_ref backfill 실행 0 · prod DB 0 · live 전환/emit/hard reject 0 · repair/mapping/backfill 0 · **product repo main merge 0** · schema code main merge 0 · raw/PII/raw identifier 출력 0 · Foundation durable customer memory 0 · cross-service 0 · V3 0 · Vault write 0 · 본 package만 foundation-docs commit/push · **M6-F execution(prod secret·backfill)은 각 별도 Leo 승인 후.**
