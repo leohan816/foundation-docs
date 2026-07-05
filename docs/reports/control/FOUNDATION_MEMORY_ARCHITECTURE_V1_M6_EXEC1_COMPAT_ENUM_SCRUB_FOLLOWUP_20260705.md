@@ -18,7 +18,7 @@ delta 검수가 flag한 잔여 WATCH(compat-mode enum-field scrub gap)를 shadow
 - ★hook inert 유지(`SHADOW_HOOK_FLAG != "1"` → None) · hard_reject=False 유지 · live 배선 0.
 
 ## 3. regression evidence
-- **compat service_id = PII(`user@example.com`)** → **`ok:False`·GATE_REJECT_PII**(patch 전 ok:True).
+- **compat service_id = PII(synthetic email 패턴)** → **`ok:False`·GATE_REJECT_PII**(patch 전 ok:True).
 - **compat service_id = raw(한국어 원문)** → **`ok:False`·RAW_TEXT**.
 - **compat last_refined_intent = raw(한국어 원문)** → **`ok:False`·RAW_TEXT**.
 - **compat last_refined_intent = PII(email)** → **`ok:False`·PII**.
