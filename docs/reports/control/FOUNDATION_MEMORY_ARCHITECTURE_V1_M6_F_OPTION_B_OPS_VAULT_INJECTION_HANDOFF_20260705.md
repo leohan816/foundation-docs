@@ -15,12 +15,15 @@
 | env/Vault key | 역할 | 주입 |
 |---|---|---|
 | `SIASIU_SUBJECT_SECRET` | SIASIU service-local subject_ref mint | ops·실 값 |
-| `SIASIU_FUREF_SECRET` | SIASIU furef 내부 ref(SubjectRefMap.local_user_ref_hash) | ops·실 값 |
+| `SIASIU_SUBJECT_SECRET_VERSION` | SIASIU subject rotation version(dual-read) | ops·`1` |
+| `SIASIU_FUREF_SECRET` | SIASIU **Option B memory** furef 내부 ref(SubjectRefMap.local_user_ref_hash) | ops·실 값 |
 | `SIASIU_MEMORY_CANDIDATE_SECRET` | SIASIU content_hash | ops·실 값 |
 | `SIASIU_P3_AUTH_SECRET` | SIASIU login de-id | ops·실 값 |
 | `COSMILE_MEMORY_SECRET` | Cosmile de-anon | ops·실 값 |
 | `COSMILE_SUBJECT_SECRET` | Cosmile service-local subject_ref mint | ★**미배선**(Cosmile subject mint gate 필요 시·주입 보류) |
-| ~~`FOUNDATION_SUBJECT_REF_SECRET`~~ | — | ★**삭제**(Foundation mint 없음·Option B) |
+| (별개) `FOUNDATION_USER_REF_SECRET` | ★**CUTOVER-01 furef_v2_ HMAC**(provider_flag.py·기존 배선·Option B memory furef **아님**·별개 존재) | ops·기존 유지(별도) |
+| ~~`FOUNDATION_SUBJECT_REF_SECRET`~~ | — | ★**삭제**(Foundation subject mint 없음·Option B) |
+> ★키 목록 정합: SIASIU env policy와 동일(SIASIU_SUBJECT_SECRET·_VERSION·FUREF·MEMORY_CANDIDATE·P3_AUTH). `FOUNDATION_USER_REF_SECRET`은 **CUTOVER-01 별개 메커니즘**(Option B memory와 구분·superseded 아님). unification은 별도 design.
 - ★per-service **값 상이**·서비스간 미공유·하드코딩/커밋 금지·secret 값 로그/출력 0.
 
 ## 3. Secret boundary (Option B)

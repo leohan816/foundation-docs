@@ -48,7 +48,11 @@
 | `SIASIU_FUREF_SECRET` | furef 내부 ref(SubjectRefMap.local_user_ref_hash·Option B adapter) | service-local·subject/content-hash secret과 분리 |
 | (기존) `FOUNDATION_USER_REF_SECRET` | CUTOVER-01 furef_v2_ HMAC | prod 부재 시 fail-closed(이미 배선) |
 → 위 key는 **초안**(설계). 실 배선/값 주입은 별도 승인·구현.
-> ★watch(reconciliation): Option B adapter 코드는 furef를 `SIASIU_FUREF_SECRET`으로 파생하고, 기존 문서는 furef를 `FOUNDATION_USER_REF_SECRET`(CUTOVER-01)로 표기 — **두 furef secret 이름 정합은 별도 확정**(코드↔env 정본화·별도 승인). 현재 adapter 정본 = `SIASIU_FUREF_SECRET`.
+> ★reconciliation(정정·2026-07-05): `SIASIU_FUREF_SECRET`과 `FOUNDATION_USER_REF_SECRET`은 **서로 다른 두 메커니즘**이다(단순 rename 아님).
+> - `SIASIU_FUREF_SECRET` = **Option B memory adapter furef 내부 ref**(`foundation_memory_candidate_adapter.py`·`foundation_p3_auth_shadow.py`·shadow). ★Option B memory furef **정본**.
+> - `FOUNDATION_USER_REF_SECRET` = **CUTOVER-01 furef_v2_ HMAC**(`app/adapters/provider_flag.py` + test·**기존 배선**). Option B memory furef 아님·**별개 존재**(superseded 아님).
+> - ★**unification 질문**(memory furef == CUTOVER-01 furef 이어야 하는가)은 **별도 design 결정**(코드 변경 수반 가능·별도 승인). 지금은 **두 secret 구분 유지**·병합 안 함.
+> - Foundation 명칭(`FOUNDATION_USER_REF_SECRET`)은 Option B(Foundation mint 없음)에서 혼선 소지 → **명칭 정정도 별도**(CUTOVER-01 코드 참조라 지금 rename 안 함).
 
 ## 7. Verification runner = boolean/count only
 - env/secret 검증 스크립트는 **존재 여부·형식 boolean·count만** 출력한다: `SIASIU_SUBJECT_SECRET present? true` · `len>=32? true` · `furef_v2_ prefix? true`.
