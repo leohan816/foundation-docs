@@ -20,7 +20,7 @@ furef_v2_<32hex> = HMAC-SHA256(서비스 secret, "<service>:<subject_type>:<stab
    ▼
 subj_v2_<32hex>  = HMAC-SHA256(FOUNDATION_SUBJECT_REF_SECRET, furef_v2)[:32]                  ← service-local memory key
 ```
-- **2-layer·domain-separated:** furef(서비스 secret) → subject_ref(Foundation secret). ★cross-service correlation 방지(서비스별 furef 상이·subject_ref는 Foundation secret 기반).
+- **2-layer·domain-separated:** furef(서비스 secret) → subject_ref(Foundation secret). ★cross-service correlation 방지(서비스별 furef 상이·subject_ref는 Foundation secret 기반). **★[SUPERSEDED — §11 PATCH ROUND 2 ⑩로 정정: "correlation 방지"는 crypto 보증이 아님(양 furef 역산→id 복원→graph join 가능). 실제 차단선 = consent fail-closed·flag OFF·gate. corrected by §11 ⑩.]**
 - **현재 shadow 상태:** adapter/util은 **dev fallback secret**(siasiu_dev_shadow_*·env override)·subj_v2_[:32]·keyed HMAC. ★M6-F = 이 체인을 **정본 secret 경로**로 연결(설계)·prod secret 실주입은 별도.
 - **hard gate(c9bb996):** `subject_identity.resolve_subject`(subj_v2_·require_furef_v2·prod fail-closed·`subject_ref_from_foundation_user_ref` bridge) = subject_ref 정본 생성기.
 
@@ -29,11 +29,11 @@ subj_v2_<32hex>  = HMAC-SHA256(FOUNDATION_SUBJECT_REF_SECRET, furef_v2)[:32]    
 |---|---|---|---|
 | **FOUNDATION_SUBJECT_REF_SECRET** | Foundation(단일) | subj_v2_ 생성(subject_ref) | ★Foundation-only·서비스 미공유·subject_ref는 Foundation secret으로만 생성 |
 | **service-level secret**(FOUNDATION_USER_REF_SECRET 서비스별·SIASIU_P3_AUTH_SECRET·candidate secret) | 각 서비스 | furef_v2·content hash·auth de-id | ★서비스별 분리·cross-service correlation 방지·서비스간 미공유 |
-- ★**경계 원칙:** 두 층 secret 분리 → 한 secret 유출이 전 체인 역추적으로 이어지지 않음(defense-in-depth). subject_ref는 **service-local**(M2 §3.9)·cross-service 재도입은 hard precondition(consent+broker+v2 gate·v1 밖).
+- ★**경계 원칙:** 두 층 secret 분리 → 한 secret 유출이 전 체인 역추적으로 이어지지 않음(defense-in-depth). subject_ref는 **service-local**(M2 §3.9)·cross-service 재도입은 hard precondition(consent+broker+v2 gate·v1 밖). **★[SUPERSEDED — §11 PATCH ROUND 2 ⑨로 정정: "한 secret 유출이 전 체인 역추적 안 됨"은 부정확. SubjectRefMap이 furef↔subject_ref를 서비스 DB에 실체화 → 서비스 secret 1건 + 서비스 DB 접근이면 Foundation secret 없이 전 체인 역추적 가능. 2-layer 방어 = 매핑 미접근 공격자 한정. corrected by §11 ⑨.]**
 
 ## 4. prod secret 주입 방식 / rotation / vault policy (★설계·실주입 0)
 - **주입:** env 주입(배포 secret·**하드코딩/커밋 금지**·`os.environ`/vault-injected). dev fallback은 shadow 전용(prod 미사용).
-- **rotation:** 주기적 rotation. ★**rotation 영향:** FOUNDATION_SUBJECT_REF_SECRET rotation = subject_ref **전면 re-keying**(subj_v2_ 값 변경) → 기존 memory row와 orphan. → **rotation 정책 = subject_ref 재계산/이관 계획 동반**(또는 versioned secret·subj_v3_). service secret rotation = furef 재계산(consumer-side).
+- **rotation:** 주기적 rotation. ★**rotation 영향:** FOUNDATION_SUBJECT_REF_SECRET rotation = subject_ref **전면 re-keying**(subj_v2_ 값 변경) → 기존 memory row와 orphan. → **rotation 정책 = subject_ref 재계산/이관 계획 동반**(또는 versioned secret·subj_v3_). service secret rotation = furef 재계산(consumer-side). **★[SUPERSEDED — §11 PATCH ROUND 2 ⑥/5a로 정정: service secret rotation은 단순 furef 재계산이 아니라 subj_v2=HMAC(F,furef)상 그 서비스 전 subj_v2 연쇄 변경 → memory row·SubjectRefMap orphan. Foundation·service 두 축 모두 re-key 축. corrected by §11 ⑥.]**
 - **vault:** secret store(Vault/KMS)·접근통제·감사·최소권한. ★M6-F package = policy 정의·**Vault write/실 secret 접근 0**.
 
 ## 5. subject_ref backfill 범위와 조건 (★backfill 실행 0)
