@@ -13,7 +13,8 @@
 - **doc drift cleanup**: Option A 참조 19문서 supersede pointer·Option B backfill/post-injection/ops handoff 재작성 완료.
 - **Foundation** = subject_ref format/validation/gate/contract만·durable customer memory/broker/service-DB-reader **아님**. subject_ref 생성/저장/SubjectRefMap = **service-local**.
 - **remaining hard stops(재정리)**: 실 Vault write(per-service SUBJECT_SECRET·ops) · prod DB backfill(service-local mint) · hard reject activation · live enable · main merge/promotion · prod secret rotation · cross-service identity linkage.
-- **watch**: SubjectRefSecretMissing relic(후속·코드 미수정) · Cosmile subject_ref mint 미배선(별도 gate) · runner 83/89(runner-fix train·live 전 89/89).
+- **residual cleanup(safe·완료)**: R-1 SubjectRefSecretMissing relic **제거 완료**(FOUNDATION shadow `225e25c`·active dep 0·mint 재도입 0) · R-2 SIASIU ENV policy Option B sync **완료**(SIASIU shadow `4848ad9`·5키·값 0).
+- **watch**: Cosmile subject_ref mint 미배선(별도 gate·blocker 아님) · runner 83/89(runner-fix train·live 전 89/89) · furef secret 이름 정합(SIASIU_FUREF_SECRET vs FOUNDATION_USER_REF_SECRET·별도 확정).
 
 ## 1. Goal 상태표
 | goal | 내용 | status | 근거(commit) |
