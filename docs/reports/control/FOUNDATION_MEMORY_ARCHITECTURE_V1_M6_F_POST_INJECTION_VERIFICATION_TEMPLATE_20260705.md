@@ -1,5 +1,7 @@
 # Memory V1 — M6-F Post-Injection Verification Template (ops-run · boolean/hash/count)
 
+> ★[OPTION A — Option B pivot(shadow FOUNDATION `5a0003c` / SIASIU `d0f51cb` · docs `1e24c33`)로 **SUPERSEDED**. 정본: `..._M6_F_OPTION_B_SUBJECT_REF_CONTRACT_20260705.md` · `..._OPTION_B_SHADOW_PIVOT_RESULT_20260705.md`. ★Foundation-side mint · FOUNDATION_SUBJECT_REF_SECRET · identity-touch = **폐기(deprecated·Option A relic)**. subject_ref = service-local mint(Foundation validate/gate only).]
+
 > 작성: foundation-control(Control) · 2026-07-05 · **범위: ops 실 Vault 주입 **후** control이 review할 검증 runner/template + evidence format + checklist.**
 > ★control은 실 secret 값 미접근·**boolean/hash/count evidence만** review. runner는 **ops가 주입된 deploy 환경에서 실행**·secret 값 미출력. 실 Vault write/prod DB/backfill/live/main merge = Hard Stop(미수행).
 > 근거(local): ops handoff(`c433f14`) · injection contract verification(`83ae233`) · FOUNDATION impl(subject_identity/adapter/p3).

@@ -1,5 +1,7 @@
 # Memory V1 — M6-F Prod DB Backfill Gate Package (plan-only · prod write = Hard Stop)
 
+> ★[OPTION A — Option B pivot(shadow FOUNDATION `5a0003c` / SIASIU `d0f51cb` · docs `1e24c33`)로 **SUPERSEDED**. 정본: `..._M6_F_OPTION_B_SUBJECT_REF_CONTRACT_20260705.md` · `..._OPTION_B_SHADOW_PIVOT_RESULT_20260705.md`. ★Foundation-side mint · FOUNDATION_SUBJECT_REF_SECRET · identity-touch = **폐기(deprecated·Option A relic)**. subject_ref = service-local mint(Foundation validate/gate only).]
+
 > 작성: foundation-control(Control) · 2026-07-05 · **범위: 실 prod DB subject_ref backfill gate **package**(계획) — prod DB write = Hard Stop·미수행.**
 > ★**prod DB write/backfill · 실 Vault write · live · main merge = Hard Stop(Leo 별도 최종 승인 전 절대 미수행).** Restricted Actions List = source report 참조.
 > ★진입 조건: **ops post-injection verification PASS 후에만.** raw/PII/실 secret 값 출력 0(count/hash/boolean).

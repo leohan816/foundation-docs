@@ -1,5 +1,7 @@
 # Memory V1 — M6-F FOUNDATION Implementation Review (read-only·local source)
 
+> ★[OPTION A — Option B pivot(shadow FOUNDATION `5a0003c` / SIASIU `d0f51cb` · docs `1e24c33`)로 **SUPERSEDED**. 정본: `..._M6_F_OPTION_B_SUBJECT_REF_CONTRACT_20260705.md` · `..._OPTION_B_SHADOW_PIVOT_RESULT_20260705.md`. ★Foundation-side mint · FOUNDATION_SUBJECT_REF_SECRET · identity-touch = **폐기(deprecated·Option A relic)**. subject_ref = service-local mint(Foundation validate/gate only).]
+
 > 기록: foundation-control(Control) · 2026-07-05 · **성격: Control-invoke 독립 implementation review(Claude 검수 에이전트·read-only·adversarial·1회).**
 > ★정직 라벨: Control-invoke 독립 Claude review(외부 Fable5 GPT/ChatGPT와 별개). ★**handoff = local filesystem 직독만**(GitHub URL/remote fetch/web/pasted 0·HEAD provenance).
 > ★read-only: M6-F execution · prod secret 주입 · subject_ref backfill · main merge = **미승인·미수행.** Restricted Actions List = source report 참조.

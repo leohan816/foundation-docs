@@ -1,5 +1,7 @@
 # Memory V1 — Goal 4 / M6-F Goal Package (prod secret / subject_ref chain)
 
+> ★[OPTION A — Option B pivot(shadow FOUNDATION `5a0003c` / SIASIU `d0f51cb` · docs `1e24c33`)로 **SUPERSEDED**. 정본: `..._M6_F_OPTION_B_SUBJECT_REF_CONTRACT_20260705.md` · `..._OPTION_B_SHADOW_PIVOT_RESULT_20260705.md`. ★Foundation-side mint · FOUNDATION_SUBJECT_REF_SECRET · identity-touch = **폐기(deprecated·Option A relic)**. subject_ref = service-local mint(Foundation validate/gate only).]
+
 > 작성: foundation-control(Control) · 2026-07-05 · **요청 유형: M6-F 실행 계획/검증 package(critical identity/secret gate).**
 > ★**이 문서 = 설계/계획 package이며, 작성 자체는 실행이 아니다.** prod secret **실주입** · subject_ref **backfill 실행** · prod DB · live 전환/emit/hard reject · repair/mapping/backfill · main merge = **Leo 별도 승인 전 금지·미수행.**
 > ★M6-F = **critical identity/secret gate** → **Fable5 strict review 대상**(§9). Control이 package 작성 → Leo 확인 → Fable5 review 판단.

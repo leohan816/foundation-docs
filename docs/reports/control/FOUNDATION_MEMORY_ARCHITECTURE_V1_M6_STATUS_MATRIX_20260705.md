@@ -6,6 +6,15 @@
 
 ---
 
+## 0. ★Option B pivot update (2026-07-05·최신)
+> M6-F subject_ref = **Option B(service-local mint · Foundation validate/gate/contract only)**로 pivot. 아래 §1 표의 M6-F 행은 Option A 기준·**Option B 갱신은 본 절 우선**.
+- **A1 real Foundation vault injection = STOPPED**(중단·`FOUNDATION_SUBJECT_REF_SECRET`/identity-touch 폐기).
+- **Option B shadow pivot = PASS**(FOUNDATION `5a0003c`·SIASIU `d0f51cb`·flag OFF·회귀 0·runner 83/89 불변·docs `1e24c33`).
+- **doc drift cleanup**: Option A 참조 19문서 supersede pointer·Option B backfill/post-injection/ops handoff 재작성 완료.
+- **Foundation** = subject_ref format/validation/gate/contract만·durable customer memory/broker/service-DB-reader **아님**. subject_ref 생성/저장/SubjectRefMap = **service-local**.
+- **remaining hard stops(재정리)**: 실 Vault write(per-service SUBJECT_SECRET·ops) · prod DB backfill(service-local mint) · hard reject activation · live enable · main merge/promotion · prod secret rotation · cross-service identity linkage.
+- **watch**: SubjectRefSecretMissing relic(후속·코드 미수정) · Cosmile subject_ref mint 미배선(별도 gate) · runner 83/89(runner-fix train·live 전 89/89).
+
 ## 1. Goal 상태표
 | goal | 내용 | status | 근거(commit) |
 |---|---|---|---|

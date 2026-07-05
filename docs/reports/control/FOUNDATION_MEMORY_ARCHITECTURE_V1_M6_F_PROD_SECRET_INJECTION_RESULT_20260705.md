@@ -1,5 +1,7 @@
 # Memory V1 — M6-F Prod Secret Injection Gate Result (injection contract verification)
 
+> ★[OPTION A — Option B pivot(shadow FOUNDATION `5a0003c` / SIASIU `d0f51cb` · docs `1e24c33`)로 **SUPERSEDED**. 정본: `..._M6_F_OPTION_B_SUBJECT_REF_CONTRACT_20260705.md` · `..._OPTION_B_SHADOW_PIVOT_RESULT_20260705.md`. ★Foundation-side mint · FOUNDATION_SUBJECT_REF_SECRET · identity-touch = **폐기(deprecated·Option A relic)**. subject_ref = service-local mint(Foundation validate/gate only).]
+
 > 작성: foundation-control(Control) · 2026-07-05 · **범위: prod secret 주입 **계약 검증**(synthetic secret·boolean/hash 비교만).**
 > ★**control workspace 규율(CLAUDE.md §3·§4): 실 Vault write · 실 prod secret 취급 = 금지.** 따라서 **실 production vault/prod runtime에 실 secret을 쓰지 않는다.** 본 gate = **주입 계약(env 주입 시 동작·분리·fail-closed·flag OFF)을 synthetic secret으로 검증**·실 vault 주입은 **ops 배포 단계(별도)**.
 > ★secret 값 출력 0 · raw/PII 출력 0 · boolean/hash 비교만 · synthetic secret 미영속(ephemeral·미커밋). subject_ref backfill 0 · prod DB 0 · live 0 · main merge 0.

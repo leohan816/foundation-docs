@@ -1,5 +1,7 @@
 # Memory V1 — M6-F Additive Schema Migration Gate Package (SubjectRefMap +secret_version)
 
+> ★[OPTION A — Option B pivot(shadow FOUNDATION `5a0003c` / SIASIU `d0f51cb` · docs `1e24c33`)로 **SUPERSEDED**. 정본: `..._M6_F_OPTION_B_SUBJECT_REF_CONTRACT_20260705.md` · `..._OPTION_B_SHADOW_PIVOT_RESULT_20260705.md`. ★Foundation-side mint · FOUNDATION_SUBJECT_REF_SECRET · identity-touch = **폐기(deprecated·Option A relic)**. subject_ref = service-local mint(Foundation validate/gate only).]
+
 > 작성: foundation-control(Control) · 2026-07-05 · **범위: SubjectRefMap `secret_version` additive schema **package**(DDL 설계/검증 계획) — migration 실행 아님.**
 > ★**gate package only. schema migration 실행 · FOUNDATION-side 구현 · M6-F execution = 각 별도 Leo 승인 전까지 미진행.** Restricted Actions List = source report 참조.
 > 근거(local 직독): design review(`02fe421`·APPROVE_WITH_WATCH·proceed to additive schema migration gate) · design gate(`24b3014`·§3) · SIASIU `foundation_memory_schema_shadow.py`(subject_ref_map DDL) · Cosmile `schema.prisma`(SubjectRefMap) · EXEC-1 result(dev DB additive 패턴).

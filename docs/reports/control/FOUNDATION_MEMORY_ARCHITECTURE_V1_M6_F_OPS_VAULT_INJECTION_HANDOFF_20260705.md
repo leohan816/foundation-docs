@@ -1,5 +1,7 @@
 # Memory V1 — M6-F OPS Vault Injection Handoff + Post-Injection Verification
 
+> ★[OPTION A — Option B pivot(shadow FOUNDATION `5a0003c` / SIASIU `d0f51cb` · docs `1e24c33`)로 **SUPERSEDED**. 정본: `..._M6_F_OPTION_B_SUBJECT_REF_CONTRACT_20260705.md` · `..._OPTION_B_SHADOW_PIVOT_RESULT_20260705.md`. ★Foundation-side mint · FOUNDATION_SUBJECT_REF_SECRET · identity-touch = **폐기(deprecated·Option A relic)**. subject_ref = service-local mint(Foundation validate/gate only).]
+
 > 작성: foundation-control(Control) · 2026-07-05 · **범위: ops 실 Vault 주입 handoff + 주입 후 control 검증 절차(planning).**
 > ★**control workspace는 실 secret 값을 생성·보관·출력·커밋·Vault write 하지 않는다(§3·§4).** 실 Vault 주입 = **ops/deploy 환경**. control은 주입 후 **값이 아니라 boolean/hash 비교 evidence만** 검증.
 > ★handoff + verification **계획**까지. 실 vault write · prod DB backfill · live · main merge = 각 별도 승인/ops. secret 값 출력 0.

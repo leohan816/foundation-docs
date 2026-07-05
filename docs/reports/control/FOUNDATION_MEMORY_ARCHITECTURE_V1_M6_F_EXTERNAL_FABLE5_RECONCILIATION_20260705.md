@@ -1,5 +1,7 @@
 # Memory V1 — M6-F External Fable5 Reconciliation + Patch Round 2
 
+> ★[OPTION A — Option B pivot(shadow FOUNDATION `5a0003c` / SIASIU `d0f51cb` · docs `1e24c33`)로 **SUPERSEDED**. 정본: `..._M6_F_OPTION_B_SUBJECT_REF_CONTRACT_20260705.md` · `..._OPTION_B_SHADOW_PIVOT_RESULT_20260705.md`. ★Foundation-side mint · FOUNDATION_SUBJECT_REF_SECRET · identity-touch = **폐기(deprecated·Option A relic)**. subject_ref = service-local mint(Foundation validate/gate only).]
+
 > 작성: foundation-control(Control) · 2026-07-05 · **범위: 외부 Fable5 strict review(`c622f14`) ↔ Control patch round(`5e46279`) reconciliation + 남은 문서 패치(Patch Round 2).**
 > ★M6-F execution · prod secret 주입 · subject_ref backfill · prod/live/main merge = **미승인·미수행.** Restricted Actions List = source report(외부 Fable5 review) 참조(본 문서에서 확장 안 함). package reconciliation / patch planning / shadow-safe correction only.
 > 근거: 외부 Fable5 review(`c622f14`·PATCH_REQUIRED) · Control-invoke 독립 검수(`ca60b80`) · Control patch round(`5e46279`·shadow `dd2c631`/`91bd803`) · M6-F package(`20190fb`→patch `5e46279`).

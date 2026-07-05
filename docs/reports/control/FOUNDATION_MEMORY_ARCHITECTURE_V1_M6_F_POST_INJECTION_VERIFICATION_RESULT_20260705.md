@@ -1,5 +1,7 @@
 # Memory V1 — M6-F Post-Injection Verification Result (A1)
 
+> ★[OPTION A — Option B pivot(shadow FOUNDATION `5a0003c` / SIASIU `d0f51cb` · docs `1e24c33`)로 **SUPERSEDED**. 정본: `..._M6_F_OPTION_B_SUBJECT_REF_CONTRACT_20260705.md` · `..._OPTION_B_SHADOW_PIVOT_RESULT_20260705.md`. ★Foundation-side mint · FOUNDATION_SUBJECT_REF_SECRET · identity-touch = **폐기(deprecated·Option A relic)**. subject_ref = service-local mint(Foundation validate/gate only).]
+
 > 작성: foundation-control(Control) · 2026-07-05 · **범위: A1(ops 실 Vault 주입 + Control boolean review)의 Control-side 결과.**
 > ★**판정: HOLD / WAITING_FOR_OPS_EVIDENCE** — ops 실 주입 boolean/count evidence가 **아직 Control에 미수신**. Control은 실 Vault write/실 secret 취급 0(§3·§4). 실 evidence 없이 PASS를 만들지 않는다(행동 진실 §1).
 > ★A2 prod DB backfill = **미수행**(Hard Stop·Leo 별도 최종 승인 전).

@@ -1,5 +1,7 @@
 # Memory V1 — M6-F Execution Gate Package (prod secret / subject_ref backfill · plan-only)
 
+> ★[OPTION A — Option B pivot(shadow FOUNDATION `5a0003c` / SIASIU `d0f51cb` · docs `1e24c33`)로 **SUPERSEDED**. 정본: `..._M6_F_OPTION_B_SUBJECT_REF_CONTRACT_20260705.md` · `..._OPTION_B_SHADOW_PIVOT_RESULT_20260705.md`. ★Foundation-side mint · FOUNDATION_SUBJECT_REF_SECRET · identity-touch = **폐기(deprecated·Option A relic)**. subject_ref = service-local mint(Foundation validate/gate only).]
+
 > 작성: foundation-control(Control) · 2026-07-05 · **범위: M6-F execution(prod secret 주입 + subject_ref backfill) **package/계획** — 실행 아님.**
 > ★**plan-only. prod secret 주입 · subject_ref backfill 실행 · prod DB 접근 · live enable · main merge = 각 별도 Leo 승인 전까지 미수행.** Restricted Actions List = source report 참조.
 > 근거(local): impl review(`088613a`·APPROVE_WITH_WATCH) · schema migration result(`b0f8685`·secret_version) · FOUNDATION impl result(`0687404`·flag OFF) · design review(`02fe421`·W1~W6).

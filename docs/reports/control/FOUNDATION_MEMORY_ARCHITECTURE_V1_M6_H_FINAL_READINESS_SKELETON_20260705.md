@@ -6,6 +6,16 @@
 
 ---
 
+## 0. ★Option B pivot update (2026-07-05·최신)
+> M6-F subject_ref = **Option B(service-local mint · Foundation validate/gate/contract only)**로 pivot. 아래 §2 표의 M6-F 행은 Option A 기준·**Option B 갱신은 본 절 우선**.
+- **A1 real Foundation vault injection = STOPPED** · **Option B shadow pivot = PASS**(FOUNDATION `5a0003c`·SIASIU `d0f51cb`·flag OFF·회귀 0·docs `1e24c33`).
+- **Foundation** = format/validation/gate/contract만·durable customer memory/broker/service-DB-reader **아님**. subject_ref 생성/저장/SubjectRefMap = **service-local**(`<SERVICE>_SUBJECT_SECRET`).
+- **doc drift cleanup**: Option A 19문서 supersede·Option B backfill/post-injection/ops handoff 재작성.
+- **M6-F prod backfill 상태**: 여전히 **prod DB write 전**(BLOCKED_BY_HARD_STOP). backfill = service-local mint(Foundation call 0)·ops post-injection PASS + Leo 최종 승인 선결.
+- **M6-G 상태**: activation 전(BLOCKED_BY_HARD_STOP·decision package 준비).
+- **remaining hard stops**: 실 Vault write(per-service SUBJECT_SECRET·ops)·prod DB backfill·hard reject activation·live enable·main merge·prod secret rotation·cross-service identity linkage.
+- **watch**: SubjectRefSecretMissing relic(후속) · Cosmile subject mint 미배선(별도 gate) · runner 83/89(live 전 89/89).
+
 ## 1. Fact
 - M6-H = 종합 final readiness → **live enable** 판단(그 다음 별도 승인). 본 문서 = 통합 skeleton(현 시점 상태·blocker·approval matrix).
 

@@ -1,5 +1,7 @@
 # Memory V1 — M6-F PATCH_REQUIRED Fix Plan (P-1/P-2/P-3 + W-1/W-2/W-3)
 
+> ★[OPTION A — Option B pivot(shadow FOUNDATION `5a0003c` / SIASIU `d0f51cb` · docs `1e24c33`)로 **SUPERSEDED**. 정본: `..._M6_F_OPTION_B_SUBJECT_REF_CONTRACT_20260705.md` · `..._OPTION_B_SHADOW_PIVOT_RESULT_20260705.md`. ★Foundation-side mint · FOUNDATION_SUBJECT_REF_SECRET · identity-touch = **폐기(deprecated·Option A relic)**. subject_ref = service-local mint(Foundation validate/gate only).]
+
 > 작성: foundation-control(Control) · 2026-07-05 · **범위: M6-F strict review(PATCH_REQUIRED) 대응 patch round — M6-F package 정정 + 필요 shadow code 정정.**
 > ★M6-F execution · prod secret 주입 · subject_ref backfill · prod/live/main merge = **미수행·승인 아님.** shadow code만 정정(shadow 브랜치·main merge 0).
 > ★검수 라벨 정정: 근거 review는 **Control-invoke 독립 Claude strict review**(외부 Fable5 GPT 아님). 외부 Fable5 답변 도착 시 별도 비교.
