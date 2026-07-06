@@ -72,8 +72,9 @@ enum/key/threshold의 **유일 정본 = `COSMILE_MEMORY_V3_DATA_DICTIONARY_CANON
 ### INV-DB-2 — Promotion Monotonic Evidence (단일 신호 장기기억 금지 — **`direction≠safety` fact 한정**)
 - **적용 범위 (P1):** 본 invariant는 **`direction ≠ safety` fact에만** 적용된다(사전 §2.1·§5.2). safety/adverse fact(`ingredient_adverse`·`product_adverse`·safety_flag 부착 fact)는 evidence 문턱 강등 대상이 아니다.
 - **정의:** ltm_fact로 승격(`status='approved'` — 구 `long_term` 제3 어휘는 superseded — 사전 §2.2, promoted≡approved)된 모든 non-safety 행은 (a) `evidence_count >= N_min`, (b) `confidence >= C_min`, (c) `distinct_signal_source_count >= 2` 를 만족한다. **단일 signal로 장기기억 확정 금지**(V3-06 상속).
-- **검증 쿼리(개념):** `status='approved' AND direction <> 'safety' AND (evidence_count < N_min OR confidence < C_min OR distinct_signal_source_count < 2)` count = 0.
-- **위반 시(non-safety):** 해당 fact를 `status='candidate'` + `lifecycle_state='demoted'`(사전 §2.2)로 강등(demote), promotion job 중단·audit.
+- **검증 쿼리(개념):** `status='approved' AND direction <> 'safety' AND safety_flag IS NULL AND (evidence_count < N_min OR confidence < C_min OR distinct_signal_source_count < 2)` count = 0.
+  - ★**P1 tightening (V3-10 gate 2026-07-06):** predicate에 `safety_flag IS NULL`을 추가해 산문 예외 범위(`direction=safety` **OR** `safety_flag 부착 fact` — 사전 §2.13)와 일치시킨다. direction≠safety이나 `safety_flag`(safety_frozen·safety_caution·safety_block·safety_resolved·pregnancy_nursing_context)를 단 fact는 predicate에서 제외되어 강등 후보에 포함되지 않는다(report-only backstop에 의존하지 않는 값-레벨 정합).
+- **위반 시(non-safety):** 해당 fact(= direction≠safety **AND** safety_flag IS NULL)를 `status='candidate'` + `lifecycle_state='demoted'`(사전 §2.2)로 강등(demote), promotion job 중단·audit.
 - **★safety-fact 예외 (P1 — 사전 §5.2 필수 문구 인용):**
   > "Safety/adverse facts are not subject to ordinary evidence-threshold demotion. A safety fact may be deactivated only by an explicit safety-resolution rule, consent/erasure rule, or verified correction path. Commerce optimization and margin logic cannot demote or weaken an active safety fact."
   - safety fact를 evidence 문턱 미달을 이유로 **자동 강등하는 것 = 계약 위반**이다.
