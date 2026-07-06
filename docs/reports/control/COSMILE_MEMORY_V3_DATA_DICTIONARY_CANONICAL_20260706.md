@@ -86,6 +86,20 @@ consultation ──> RecommendationEvent(recommendation_id, subject_ref XOR anon
 
 **`low` | `moderate` | `severe`** — 3값 유일. 매핑: `mild`≡`low`(V3-02 표기 superseded) · `none`=신호 부재(레코드를 만들지 않음·enum 값 아님) · `unknown`=severity 미상 → `low`로 기록 + `adverse_certainty=reported` + 재평가 대기.
 
+**★raw signal → adverse_severity 매핑 (D4 — Leo 확정 2026-07-06·V3-10 gate):** 구현자가 저장할 base severity를 신호별로 확정한다. "단독 low~moderate"는 **certainty 축으로 결정화**(base=low, `adverse_certainty=repeated`면 §5.3 matrix가 moderate-equivalent로 escalate).
+
+| raw signal | base `adverse_severity` | 비고 |
+|---|---|---|
+| 자극·따가움 (irritation/stinging) | **low** | 단독=low · 반복(certainty=repeated) → §5.3 matrix로 moderate-equivalent escalate |
+| 사용 중단 (discontinuation) | **moderate** | 명시적 중단 신호 |
+| 트러블 악화 (worsening·반복/명시) | **moderate** | |
+| 붓기 (swelling) | **severe** | 강한 붓기 기준 severe(경미 시 moderate·재평가) |
+| 발진 (rash) | **severe** | |
+| 의료 언급 (medical_reference — 병원/약) | **severe** | |
+| 알러지 언급 (allergy_reference) | **severe** | |
+
+- ★불변식(§5.3 상속): 어느 base severity든 commerce optimization보다 우선·low도 무시 금지(no automatic commerce boost)·전 affinity 동결 아님(target 축 한정)·matrix 밖 조합 = fail-closed(상위 severity). 신호 다중이면 **최상위 severity 채택**. 본 매핑은 §5.3 matrix의 severity 축 입력을 확정할 뿐 matrix 효과를 바꾸지 않는다(동일-트리거 단일 정본 유지).
+
 ### 2.5 `adverse_certainty` [V3 ext — P2 정본 축]
 
 **`reported`**(1회 자가보고) | **`repeated`**(독립 2회+) | **`verified`**(CS/반품/전문 확인) | **`contradicted`**(반증/정정·resolution 경로).

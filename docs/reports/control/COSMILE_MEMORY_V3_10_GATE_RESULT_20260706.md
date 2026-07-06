@@ -65,5 +65,34 @@ prod DB migration · live emit activation · real secret/Vault injection · subj
 - Fable `bd01ba1` · patch `8f9b1a8` · P1 tightening = 본 gate에서 V3-08 patch(아래 commit)
 - 근거: `COSMILE_MEMORY_V3_08_...:72-81`(INV-DB-2) · 사전 `..._DATA_DICTIONARY_CANONICAL_...:§2.1/§2.13/§5.3` · `..._V3_09_...:116`(D1) · `..._V3_07_...:§4.5`(D4 matrix)
 
+---
+
+## Addendum (2026-07-06) — Leo D1~D4 확정 반영
+
+> Leo가 D1~D4를 추천 default로 **확정**. fable-sentinel 분기 reference(safety-review·review-classification) 로드 적용.
+
+### A1. D1~D4 final decision (CONFIRMED)
+| # | 결정 | 확정값 | 상태 |
+|---|---|---|---|
+| D1 | 다중 추천 귀속 | **last-touch 단일**(V3-11)·first/multi/weighted = V3 backlog | ✅ CONFIRMED |
+| D2 | anon→login stitching consent | **명시 동의 전 memory promotion 금지**·attribution = session-level 제한·UX는 후속 gate | ✅ CONFIRMED |
+| D3 | margin_band 범위 | **ranking signal 아님·analytics only·safety/adverse 절대 우선 안 함**·line cost 저장 = pre-prod gate 이월 | ✅ CONFIRMED |
+| D4 | adverse signal→severity | **자극/따가움=low(반복→moderate)·중단/악화=moderate·붓기/발진/의료/알러지=severe** | ✅ CONFIRMED·사전 등재 |
+
+### A2. D4 dictionary patch
+- 사전 §2.4에 **raw signal → adverse_severity 매핑** 최소 등재(7 신호·base severity·certainty 결정화). 위치: `DATA_DICTIONARY_CANONICAL:89~`.
+- ★"low~moderate" 범위를 **certainty 축으로 결정화**(base=low·repeated→§5.3 matrix moderate escalate) — 구현자가 저장할 결정값 확보.
+- ★§5.3 AdverseSignalActionMatrix 효과는 **불변**(동일-트리거 단일 정본 유지) — D4는 severity 축 **입력**만 확정. 새 다효과 충돌 0.
+
+### A3. STOP 재확인 (review-classification §3·5조건)
+safety 약화(P1)·정본 오염(P11)·join key(P4)·이질 enum(P5)·구현 불가 = **전부 미해당**. 구현 착수 금지 조건 없음.
+
+### A4. Verdict 유지: **GATE_PASS_WITH_LIMITS**
+잔여 = 전부 **추적 가능한 제한/이월 gate**(닫기를 막는 미해결 아님): line cost 저장(pre-prod)·DB-touch tests(별도 gate)·COSMILE-4 DDL(G13)·anon stitching UX(후속 gate)·multi-touch(V3 backlog). → DESIGN 층은 구현 준비 완료.
+
+### A5. V3-11 준비 가부
+- **준비 가능(CAN BE PREPARED)**: D1~D4 확정 + scope(§6/§7) 정의 + STOP 0 → 구현 계획 수립 단계 진입 가능.
+- ★**단 명시적 Leo 승인 대기(STILL WAITING)**: V3-11 **착수**는 Leo의 "§6/§7 scope 승인 + 시작 지시" 필요. 이번 라운드는 gate 마무리이며 **V3-11 미착수**.
+
 ## 무결성
-V3-10 gate only · 구현 0 · DB/migration 0 · prod/live/main/secret 0 · 문서 patch = P1 tightening 1건(V3-08 query predicate·산문 정합) · Leo 결정 4건 추천 default 제안(확정 대기) · V3-11 scope IN/이월/Hard Stop 분리 · verdict **GATE_PASS_WITH_LIMITS** · V3-11 착수 = Leo D1~D4 확정 + scope 승인 후 fable-builder 별도 batch.
+V3-10 gate 마무리 · 구현 0 · DB/migration 0 · prod/live/main/secret 0 · fable-builder 미사용 · 문서 patch 2건(P1 tightening[V3-08]·D4 등재[dictionary]) · Leo D1~D4 확정 반영 · fable-sentinel 분기 reference(safety-review·review-classification) 로드 적용 · STOP 5조건 미해당 · verdict **GATE_PASS_WITH_LIMITS** · V3-11 준비 가능하나 **착수는 Leo 명시 승인 대기**.
