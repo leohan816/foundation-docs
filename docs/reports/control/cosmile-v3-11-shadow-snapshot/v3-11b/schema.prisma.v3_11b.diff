@@ -1,0 +1,72 @@
+
+
+diff --git a/app/prisma/schema.prisma b/app/prisma/schema.prisma
+index b15a1cd..3cbab5b 100644
+--- a/app/prisma/schema.prisma
++++ b/app/prisma/schema.prisma
+@@ -811,12 +811,65 @@ model LongTermMemoryFact {
+   retentionPolicy  String?  @default("standard_ttl")   // ★BUG-2·session|short_ttl|standard_ttl|revocable
+   sensitivityLevel String?  @default("normal")         // ★BUG-2·low|normal|sensitive|high
+   createdAt  DateTime @default(now())
++  // ★V3-11B additive(D-2·INV-DB-2/3 집행 컬럼) — CHECK는 migration SQL(prisma enum 미사용·값 오타 방지)
++  direction                 String?                     // positive|negative|safety(§2.1)·CHECK
++  safetyFlag                String?                     // safety_frozen|safety_caution|safety_block|safety_resolved|pregnancy_nursing_context|null(§2.13)·CHECK
++  evidenceCount             Int      @default(0)         // INV-DB-2(a)
++  distinctSignalSourceCount Int      @default(0)         // INV-DB-2(c)
++  status                    String   @default("candidate") // candidate|approved|rejected(§2.2)·CHECK
++  lifecycleState            String   @default("active")    // active|demoted|superseded(§2.2)·CHECK
++  secretVersion             Int      @default(1) @db.SmallInt // ★V3-11B additive(D-3 readiness·rotation 실행 아님)
+   // ★partial-unique (COALESCE(subjectRef,guestRef), type, normValue) WHERE factState='active' AND deleted=false AND blocked=false
+   //   = migration SQL로 집행(prisma @@unique는 partial 미지원). 아래는 조회용 index.
+   @@index([subjectRef, type])
+   @@index([guestRef, type])
+ }
+ 
++// ★V3-11B Learning Commerce Memory — 신규 model 3종(D-1·commerce/outcome 계층). CHECK/XOR/FK는 migration SQL 집행.
++model RecommendationEvent {
++  recommendationId String   @id                         // rec_v3_+ULID26·CHECK(형식)
++  eventType        String                               // 5값(V3-03)·CHECK
++  subjectRef       String?                              // subject_ref XOR anonymous_ref·CHECK
++  anonymousRef     String?                              // ★commerce 계층 전용(memory 직접 유입 금지)
++  sessionId        String
++  productId        String
++  skuId            String?
++  reasonCodes      Json     @default("[]")              // §2.15 taxonomy
++  secretVersion    Int      @default(1) @db.SmallInt    // D-3 readiness
++  createdAt        DateTime @default(now()) @db.Timestamptz(6) // ★문자열 정렬 금지
++  @@index([subjectRef])
++  @@index([anonymousRef])
++}
++
++model RecOutcomeEvent {
++  id               String   @id                         // 생성 id
++  recommendationId String?                              // ★NULLABLE(R-K1)·organic/unattributed/unknown→null(R-K2·CHECK)
++  attributionMode  String                               // §2.9 5값·CHECK
++  subjectRef       String?                              // subject_ref XOR anonymous_ref·CHECK
++  anonymousRef     String?                              // downstream 유지(R-K3)
++  orderId          String
++  orderItemId      String                               // ★order_item 단위(R-K4/6)·FK OrderItem
++  productId        String
++  skuId            String?
++  refundQty        Int?
++  refundAmountBand String?                              // 밴드(원가 저장 금지)
++  secretVersion    Int      @default(1) @db.SmallInt
++  createdAt        DateTime @default(now()) @db.Timestamptz(6)
++  @@index([orderItemId])
++  @@index([recommendationId])
++}
++
++model RecOutcomeFeedback {
++  feedbackId       String   @id
++  orderItemId      String                               // FK OrderItem
++  recommendationId String?
++  semanticLabel    String                               // ★§2.12 patched 10값·CHECK(구 adverse_reaction/unknown 거부)
++  adverseSeverity  String?                              // low|moderate|severe|null(§2.4)·CHECK
++  adverseCertainty String?                              // reported|repeated|verified|contradicted|null(§2.5)·CHECK
++  createdAt        DateTime @default(now()) @db.Timestamptz(6)
++  @@index([orderItemId])
++}
++
+ model CustomerProfile {
+   subjectRef  String   @id
+   guestRef    String?
