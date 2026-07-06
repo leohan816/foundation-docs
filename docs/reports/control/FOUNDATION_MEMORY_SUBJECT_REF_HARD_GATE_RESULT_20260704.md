@@ -1,5 +1,7 @@
 # FOUNDATION MEMORY subject_ref HARD GATE — 구현 결과 (RESULT)
 
+> ★★SUPERSEDED (Memory V1 Option B · 2026-07-06): **M2의 Option A / FOUNDATION_SUBJECT_REF_SECRET 기반 subject_ref mint 공식은 Memory V1 Option B에 의해 superseded되었다. 현행 정본은 service-local subject_ref mint + Foundation validate/gate/reasoning only이다.** 아래 원문은 이력 보존(clean-not-compress)·정본 계약=`FOUNDATION_MEMORY_ARCHITECTURE_V1_M6_F_OPTION_B_SUBJECT_REF_CONTRACT_20260705.md`·closure=`..._M6_FINAL_CLOSURE_20260706.md`. ★V3는 폐기된 Option A 계약을 상속하지 않는다.
+
 > 작성: foundation-control / Foundation Memory 담당 · 2026-07-04 · **상태: PASS** · 설계서: `FOUNDATION_MEMORY_SUBJECT_REF_HARD_GATE_20260704.md`
 > 대상 repo: FOUNDATION `foundation/shared_memory/` · branch `shadow/foundation-shared-memory-v0` · **local commit `c9bb996`(미푸시)** · ★Memory live/write ON 0.
 

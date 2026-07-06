@@ -1,5 +1,7 @@
 # Memory Architecture V1 — M2/M3 계약 검수 체크리스트
 
+> ★★SUPERSEDED (Memory V1 Option B · 2026-07-06): **M2의 Option A / FOUNDATION_SUBJECT_REF_SECRET 기반 subject_ref mint 공식은 Memory V1 Option B에 의해 superseded되었다. 현행 정본은 service-local subject_ref mint + Foundation validate/gate/reasoning only이다.** 아래 원문은 이력 보존(clean-not-compress). 정본 계약=`..._M6_F_OPTION_B_SUBJECT_REF_CONTRACT_20260705.md`·closure=`..._M6_FINAL_CLOSURE_20260706.md`. ★V3는 폐기된 Option A 계약을 상속하지 않는다.
+
 > 작성: foundation-control · 2026-07-04 · ★read-only 검수 · 코드 0 · migration 0 · source push 0 · raw/secret 미열람.
 > 대상: `COMMON_SERVICE_MEMORY_CONTRACT_V1_20260704.md`(M2) · `MEMORY_CONTEXT_CONTRACT_V1_20260704.md`(M3).
 > 기준: `FOUNDATION_SERVICE_MEMORY_ARCHITECTURE_V1`(v0.3·DESIGN_READY) · `M1_REVIEW_CONSOLIDATION`.
