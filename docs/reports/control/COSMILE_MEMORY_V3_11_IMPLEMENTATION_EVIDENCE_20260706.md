@@ -70,3 +70,20 @@ V3-11 provider-independent scope 7항 이행: recommendation_id threading·Recom
 
 ## 무결성
 V3-11 provider-independent 구현 · Cosmile shadow `b744871`(main merge 0) · pure 35/35·regression 10/10 · prisma/DB/migration/prod/live/secret 무접촉 · 단일 정본 생성기(identityRef 재사용 0·split-brain 방지) · reward hacking 0(skip/기대값 하향/공허 assertion 0) · §8에 미증명 범위 정직 명시 · DB 착지·emit 배선·LTM pipeline = 이월(후속 gate).
+
+---
+
+## Addendum — V3-11A patch batch (2026-07-06 · Cosmile shadow `af26f94`)
+> V3-11A snapshot review `V3_11A_SNAPSHOT_NEEDS_PATCH`(F1/F2/F3) 이행. ★코드 수정만·DB/prisma/prod/live/main/secret 0.
+
+| finding | patch | 결과 |
+|---|---|---|
+| **F1** semantic_label divergence | `recOutcome.ts` SEMANTIC_LABELS = 사전 §2.12 10값(**usage_question_safety 복원**·adverse skin/other 분리·unclear)·허위 주석 정정 | ✓ T15 4케이스(adverse_reaction/unknown 거부·usage_question_safety 존재) |
+| **F2** adverse enum inline | `recOutcome.ts`가 `adverse.ts`의 AdverseSeverity/AdverseCertainty **import**(inline 재선언 0) | ✓ single-source |
+| **F3-T4** not_in_memory_layer 미검증 | `memoryCandidate.isMemorySubjectKeyAllowed` gate + canCreateCandidate 배선(anon_v3_ subject_key 거부) | ✓ T4 실검증 2케이스 |
+| **F3-T13** 과대표기 | test 이름/설명을 "constant-level·runtime enforcement deferred(ranking wiring 단계 재증명)"로 정직화·margin allowlist 배제는 계속 검증 | ✓ |
+| **P-d** created_at 문자열 정렬 | `attribution.ts` epoch 파싱(혼합 TZ 정확)·ISO 위반 throw·전 매칭 이벤트 선검증 | ✓ T16 2케이스 |
+
+- 테스트: **43/43**(기존 35 + 신규 8)·regression **10/10**·reward-hacking 0(skip/xfail/기대값 하향 0).
+- ★**이월 LIMIT(scope 확대 금지)**: HMAC secret_version/rotation·canPromote 승격시점 tombstone 재검증·full DB lifecycle·T12 branch 보강 = V3-11B/후속. RANKING_SIGNALS runtime enforcement = ranking wiring 단계.
+- Cosmile shadow `af26f94`(구 b744871·main 3ba91e0 무변경). public snapshot 4파일 동기화(정본과 diff 0).

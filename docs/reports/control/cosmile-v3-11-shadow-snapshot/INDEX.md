@@ -3,7 +3,7 @@
 > 작성: foundation-control / fable-builder · 2026-07-06 · **목적: `leohan816/Cosmile`가 PRIVATE이라 ChatGPT GitHub connector가 404 → V3-11 구현 파일을 PUBLIC `foundation-docs`에 review snapshot으로 복사.**
 
 ## ★이것은 사본(review snapshot)이다 — 정본 아님
-- **정본(source-of-truth)** = `leohan816/Cosmile` (PRIVATE) · branch `shadow/m4-cosmile-memory` · commit **`b744871101869a0a8a011f70155eb0e96c7f1f47`**.
+- **정본(source-of-truth)** = `leohan816/Cosmile` (PRIVATE) · branch `shadow/m4-cosmile-memory` · commit **`af26f94`**(V3-11A patch·구 b744871).
 - 아래 파일은 그 커밋에서 **원 경로 보존 raw copy**(검수 전용). 실행/빌드 대상 아님. 수정 시 정본(Cosmile shadow)만 수정한다.
 - ★sync-policy 예외: 평소 foundation-docs엔 소스코드 미복사가 원칙이나, private repo 외부검수 목적 + **실 secret 0·PII 0**(스캔 확인)에서 Leo 명시 지시로 복사.
 

@@ -17,12 +17,19 @@ export function canCreateCandidate(
   existing: FactState[],
   key: { subject_key: string; fact_type: string; fact_target: string },
 ): { ok: boolean; reason?: string } {
+  // F3/R-K3: anonymous_ref(anon_v3_)는 memory 계층 subject_key로 직접 유입 금지(stitching §2.10 경유만).
+  if (!isMemorySubjectKeyAllowed(key.subject_key)) return { ok: false, reason: "anon_ref_not_in_memory_layer" };
   const match = existing.find(
     (f) => f.subject_key === key.subject_key && f.fact_type === key.fact_type && f.fact_target === key.fact_target,
   );
   if (match?.must_not_reappear) return { ok: false, reason: "must_not_reappear" };
   if (match && (match.deleted || match.blocked || match.expired)) return { ok: false, reason: "tombstone" };
   return { ok: true };
+}
+
+// F3/R-K3: memory 계층 subject_key 허용 여부. anon_v3_(commerce 계층 전용)는 memory 직접 유입 금지.
+export function isMemorySubjectKeyAllowed(subjectKey: string): boolean {
+  return !subjectKey.startsWith("anon_v3_");
 }
 
 // D2: consent 전 memory promotion 금지 · anonymous promotion 금지

@@ -9,7 +9,7 @@ import { RANKING_SIGNALS } from "../src/lib/ranking";
 import { marginBandDistribution } from "../src/lib/analytics";
 import { assertXor } from "../src/lib/identity";
 import { REC_EVENT_TYPES } from "../src/types/recommendationEvent";
-import { ATTRIBUTION_MODES } from "../src/types/recOutcome";
+import { ATTRIBUTION_MODES, SEMANTIC_LABELS } from "../src/types/recOutcome";
 
 // T1 rec_id format (③쌍: 수락 + garbage 거부 + 과거 결함값 거부)
 describe("T1 rec_id_format", () => {
@@ -30,6 +30,15 @@ describe("T3 subject_ref_format + env_hmac", () => {
 describe("T4 anon_ref_format + not_in_memory_layer", () => {
   it("format anon_v3_+32hex", () => { expect(ANON_REF_RE.test(anonymousRef("a1", { secret: "s" }))).toBe(true); });
   it("subject_ref format과 구분(prefix 다름)", () => { expect(anonymousRef("a1", { secret: "s" }).startsWith("anon_v3_")).toBe(true); expect(SUBJECT_REF_RE.test(anonymousRef("a1", { secret: "s" }))).toBe(false); });
+  // ★F3 정정: 실 invariant 검증 — anonymous_ref는 memory 계층 subject_key로 직접 유입 금지
+  it("anon_v3_ subject_key로 candidate 생성 거부(memory 계층 유입 금지)", () => {
+    const anon = anonymousRef("a1", { secret: "s" });
+    const r = canCreateCandidate([], { subject_key: anon, fact_type: "ingredient_affinity", fact_target: "i1" });
+    expect(r.ok).toBe(false); expect(r.reason).toBe("anon_ref_not_in_memory_layer");
+  });
+  it("subj_v2_ subject_key는 허용", () => {
+    expect(canCreateCandidate([], { subject_key: subjectRef("u1", { secret: "s" }), fact_type: "ingredient_affinity", fact_target: "i1" }).ok).toBe(true);
+  });
 });
 
 // T5 attribution last-touch (D1)
@@ -88,11 +97,33 @@ describe("T12 adverse_matrix_effect", () => {
   it("verified = active safety fact", () => { expect(matrixEffect("low", "verified")).toBe("active_safety_fact"); });
 });
 
-// T13 margin_band analytics only + not in ranking (D3)
-describe("T13 margin_band_analytics_only + margin_not_in_ranking", () => {
-  it("ranking signal 목록에 margin_band 없음", () => { expect((RANKING_SIGNALS as readonly string[]).includes("margin_band")).toBe(false); });
-  it("ranking signal에 safety 포함(우선)", () => { expect((RANKING_SIGNALS as readonly string[]).includes("safety_filtered")).toBe(true); });
-  it("margin_band는 analytics read에서만 사용", () => { const d = marginBandDistribution([{ margin_band: "high" }, { margin_band: "low" }, { margin_band: "high" }]); expect(d.high).toBe(2); expect(d.low).toBe(1); });
+// T13 (F3 정직화) margin_band = analytics only + NOT in ranking allowlist (D3)
+// ★한계 명시: RANKING_SIGNALS는 현재 계약 상수(비-test 참조 0). "실 ranking 경로의 margin 배제"는
+//   ranking engine 배선 단계(V3-11E 등)에서 재증명 대상. 여기서는 allowlist membership + analytics-only만 검증.
+describe("T13 margin_band NOT in ranking allowlist + analytics-only (constant-level; runtime enforcement deferred)", () => {
+  it("ranking allowlist(RANKING_SIGNALS)에 margin_band 없음", () => { expect((RANKING_SIGNALS as readonly string[]).includes("margin_band")).toBe(false); });
+  it("ranking allowlist에 safety 포함(우선)", () => { expect((RANKING_SIGNALS as readonly string[]).includes("safety_filtered")).toBe(true); });
+  it("margin_band는 analytics read 집계에서만 사용", () => { const d = marginBandDistribution([{ margin_band: "high" }, { margin_band: "low" }, { margin_band: "high" }]); expect(d.high).toBe(2); expect(d.low).toBe(1); });
+});
+
+// T15 (F1) semantic_label = 사전 §2.12 전체 집합·usage_question_safety 존재·과거 뭉갠 값 거부
+describe("T15 semantic_label_canonical §2.12", () => {
+  const S = SEMANTIC_LABELS as readonly string[];
+  it("사전 §2.12 10값 전체 일치", () => { expect(SEMANTIC_LABELS).toEqual(["satisfied","dissatisfied","neutral","adverse_skin_reaction","adverse_other","usage_question_safety","usage_question_general","repurchase_intent","avoid_intent","unclear"]); });
+  it("★safety-first 라벨 usage_question_safety 존재", () => { expect(S.includes("usage_question_safety")).toBe(true); });
+  it("adverse skin/other 분리(뭉갠 adverse_reaction 거부)", () => { expect(S.includes("adverse_skin_reaction")).toBe(true); expect(S.includes("adverse_other")).toBe(true); expect(S.includes("adverse_reaction")).toBe(false); });
+  it("unclear 사용(unknown 아님)", () => { expect(S.includes("unclear")).toBe(true); expect(S.includes("unknown")).toBe(false); });
+});
+
+// T16 (P-d) created_at ISO precondition — 혼합 TZ에서도 last-touch 정확
+describe("T16 attribution_created_at_iso", () => {
+  const mk = (id: string, ts: string) => ({ recommendation_id: id, event_type: "recommendation_shown" as const, subject_ref: "subj_v2_" + "0".repeat(32), anonymous_ref: null, session_id: "s", product_id: "p1", sku_id: null, reason_codes: [], created_at: ts });
+  it("혼합 TZ(+09:00 vs Z)에서도 epoch 기준 last-touch(문자열 정렬이면 오정렬될 케이스)", () => {
+    // 실제 최근 = 09:30Z(=18:30+09) vs 10:00+09:00(=01:00Z). 문자열 비교면 "10:00+09"가 뒤로 정렬돼 오답.
+    const evs = [ mk("rec_v3_" + "A".repeat(26), "2026-07-06T10:00:00+09:00"), mk("rec_v3_" + "B".repeat(26), "2026-07-06T09:30:00Z") ];
+    expect(lastTouchAttribution(evs, { productId: "p1", sameSession: true }).recommendation_id).toBe("rec_v3_" + "B".repeat(26));
+  });
+  it("ISO8601 위반 created_at은 throw", () => { expect(() => lastTouchAttribution([mk("rec_v3_" + "C".repeat(26), "not-a-date")], { productId: "p1", sameSession: true })).toThrow(); });
 });
 
 // T14 consent before promotion + anon no promotion (D2)
