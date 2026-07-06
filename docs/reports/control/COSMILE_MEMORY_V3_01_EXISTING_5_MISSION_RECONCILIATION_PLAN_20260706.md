@@ -2,6 +2,8 @@
 
 > 작성: foundation-control · 2026-07-06 · design-only · no code · Hard Stop 무접촉
 
+> depends_on: [COSMILE_MEMORY_V3_DATA_DICTIONARY_CANONICAL_20260706.md · COSMILE_MEMORY_V3_00_PROBLEM_DEFINITION_20260706.md · COSMILE_MEMORY_V3_02_LEARNING_COMMERCE_MEMORY_CONTRACT_20260706.md] · owns: [기존 Cosmile 5 미션 reconciliation 분류 기준(DONE/DONE_WITH_LIMITS/OBSOLETE/NEEDS_V3_PATCH)·미션별 evidence 앵커·read-only inspection plan] · referenced_by: [COSMILE_MEMORY_V3_00_INDEX_AND_EXECUTIVE_SUMMARY_20260706.md · COSMILE_MEMORY_V3_00_PROBLEM_DEFINITION_20260706.md · COSMILE_MEMORY_V3_02_LEARNING_COMMERCE_MEMORY_CONTRACT_20260706.md · COSMILE_MEMORY_V3_03_RECOMMENDATION_EVENT_CONTRACT_20260706.md · COSMILE_MEMORY_V3_04_ORDER_REVENUE_FEEDBACK_OUTCOME_CONTRACT_20260706.md · COSMILE_MEMORY_V3_05_PRODUCT_INGREDIENT_INTELLIGENCE_MAPPING_20260706.md · COSMILE_MEMORY_V3_06_MEMORY_FACT_CANDIDATE_PROMOTION_RULES_20260706.md · COSMILE_MEMORY_V3_07_SAFETY_ADVERSE_REACTION_GUARDRAIL_20260706.md · COSMILE_MEMORY_V3_08_DB_INTEGRATION_INVARIANT_DESIGN_20260706.md · COSMILE_MEMORY_V3_09_ANALYTICS_REPORT_MINIMUM_20260706.md · COSMILE_MEMORY_V3_10_PRE_IMPLEMENTATION_REVIEW_PLAN_20260706.md · COSMILE_MEMORY_V3_EXISTING_5_MISSION_RECONCILIATION_RESULT_20260706.md]
+
 ---
 
 ## 0. 목적 / 이 문서가 아닌 것
@@ -14,13 +16,15 @@
 - 이 문서는 **read-only 조사 계획 + 분류 CRITERIA** 만 확정한다.
 - 산출물: (a) 4단계 분류 기준 정의, (b) 미션별 read-only inspection plan, (c) 채워질 결과 표 skeleton.
 
-관련 형제 문서(작성/예정):
-- `COSMILE_MEMORY_V3_02_...` — V3 타깃 루프 데이터 계약 / MemoryFactCandidate→LongTermMemoryFact 승격 설계(예정)
-- `COSMILE_MEMORY_V3_03_...` — subject_ref / furef service-local mint 및 minimized memory_context 계약(예정)
-- `COSMILE_MEMORY_V3_04_...` — safety-first / adverse-reaction 우선 gate 설계(예정)
-- (본 문서 = `COSMILE_MEMORY_V3_01_...`)
+관련 형제 문서(실제 파일명 — 확정):
+- `COSMILE_MEMORY_V3_DATA_DICTIONARY_CANONICAL_20260706.md` — V3 유일 어휘/키/문턱 정본(사전)
+- `COSMILE_MEMORY_V3_02_LEARNING_COMMERCE_MEMORY_CONTRACT_20260706.md` — 학습 커머스 메모리 계약 · **minimized memory_context 계약(19필드) 소유**
+- `COSMILE_MEMORY_V3_03_RECOMMENDATION_EVENT_CONTRACT_20260706.md` — RecommendationEvent 계약(얕은 상호작용 저장 소유 — 사전 §1.3 R-K7)
+- `COSMILE_MEMORY_V3_06_MEMORY_FACT_CANDIDATE_PROMOTION_RULES_20260706.md` — MemoryFactCandidate→ltm_fact 승격 규칙
+- `COSMILE_MEMORY_V3_07_SAFETY_ADVERSE_REACTION_GUARDRAIL_20260706.md` — safety-first / adverse-reaction 우선 gate
+- (본 문서 = `COSMILE_MEMORY_V3_01_EXISTING_5_MISSION_RECONCILIATION_PLAN_20260706.md`)
 
-> 형제 문서 번호/제목은 실제 파일명이 확정되면 그 filename으로 교체한다. ★Leo 결정 필요: 형제 문서 넘버링 최종 확정.
+> (구) 임시 번호 안내 "V3-02=타깃 루프 계약·V3-03=subject_ref/memory_context·V3-04=safety gate"는 superseded — 실제 번호 체계는 `COSMILE_MEMORY_V3_00_INDEX_AND_EXECUTIVE_SUMMARY_20260706.md` 기준(위 목록). ★Leo 결정 필요(형제 문서 넘버링 확정) = **해소(2026-07-06 실제 파일명 확정)**.
 
 ---
 
@@ -30,10 +34,8 @@
 
 1. **Memory V1 = CLOSED_WITH_LIMITS** (dev/shadow/readiness 수준). V3는 V1의 **Option B**를 canonical로 상속한다.
 2. **Option A / `FOUNDATION_SUBJECT_REF_SECRET` mint 는 상속하지 않는다 (superseded).**
-3. **subject_ref mint = SERVICE-LOCAL:**
-   `subj_v2_ + HMAC(<SVC>_SUBJECT_SECRET, '<svc>:subject:' + ref)[:32]`
-4. **furef = SERVICE-LOCAL, cross-producer consistent:**
-   `furef_v2_ + HMAC(<SVC>_FUREF_SECRET, '<svc>:local_user:' + ref)[:32]`
+3. **subject_ref mint = SERVICE-LOCAL.** 형식 정본 = 사전 `COSMILE_MEMORY_V3_DATA_DICTIONARY_CANONICAL_20260706.md` §1.1 (`subj_v2_` 계열 — 여기서 재선언하지 않음).
+4. **furef = SERVICE-LOCAL, cross-producer consistent.** 형식 정본 = 사전 §1.1 (`furef_v2_` 계열).
 5. **Foundation = validate / gate / reasoning ONLY.** Foundation은 durable customer memory DB가 아니고, SIASIU/Cosmile service DB를 **직접 읽지 않는다.**
 6. Foundation에 넘어가는 것은 **minimized, request-scoped `memory_context`**뿐이다 (`raw_text_stored=False`, `request_scoped=True`, raw text/PII 없음).
 7. **SIASIU / Cosmile 는 각자 자기 customer memory + commerce data를 소유**한다 (service-local, per-service postgres schema `siasiu` / `cosmile`, cross-schema 직접 참조 금지).
@@ -117,9 +119,19 @@ prod DB access · real secret/Vault · main merge · live activation · external
 | M2 | `COSMILE-EVENT-TRACKING-AUDIT` | product_view/add_to_cart/checkout/order 이벤트 **감사** | raw text/PII trace leak, minimized payload, postgres schema level |
 | M3 | `COSMILE-EVENT-TRACKING-SPEC` | 이벤트 **스펙/스키마 정의** | V3 루프 필드 수용력, event→candidate 매핑 가능성 |
 | M4 | `COSMILE-ANALYTICS-PIPELINE` | revenue/margin/satisfaction/repurchase 집계 → 학습 신호 | 단일 신호 승격 금지, evidence/confidence 누적, safety 우선 |
-| M5 | `COSMILE-FOUNDATION-COMMERCE-LOOP` | 상담→추천→상품 판단 loop (Foundation 소비) | Foundation validate/gate-only 경계, memory_context minimized |
+| M5 | **COSMILE AI Commerce Decision Loop v0.1** (구 표기 `COSMILE-FOUNDATION-COMMERCE-LOOP` — superseded·실존 코드명 아님) | 상담→추천→상품 판단 loop (Foundation 소비) | Foundation validate/gate-only 경계, memory_context minimized |
 
-> 위 "추정 담당 구간"은 **가설**이다. 실제 조사(§5)에서 확정한다. ★Leo 결정 필요: 조사 대상 미션 코드 5개가 최종 목록이 맞는지 확인(누락/추가 미션 여부).
+> 위 "추정 담당 구간"은 **가설**이다. 실제 조사(§5)에서 확정한다. ★Leo 결정 필요: 조사 대상 미션 코드 5개가 최종 목록이 맞는지 확인(누락/추가 미션 여부) — **5건 전부 원본 앵커 실재 확인 완료(2026-07-06·§4.1)**, 누락/추가 여부 확인만 잔여.
+
+### 4.1 미션별 실제 evidence 앵커 (2026-07-06 확정 — 파일 실재 확인)
+
+| # | 실제 원본 문서/코드 앵커 | commit |
+|---|---|---|
+| M1 | Cosmile repo commit `35febe2`(HEAD ancestor·UI switch CONTROL_PASS) · 설계서 foundation-control `설계자료/20260702_COSMILE_CONNECT_UI_SWITCH_설계서.md` · 마감기록 foundation-control `docs/COSMILE_CONNECT_UI_SWITCH_CLOSED_20260702.md`(+REVIEW/REVIEW2) | Cosmile `35febe2` · foundation-docs mirror `설계문서/cosmile|shared` @`3c9dee2` (foundation-control 원본은 untracked) |
+| M2 | foundation-control `docs/COSMILE_EVENT_TRACKING_AUDIT_PLAN_20260702.md` · `docs/COSMILE_EVENT_TRACKING_AUDIT_REPORT_20260702.md`(AUDIT_READY_FOR_SCHEMA) | foundation-docs mirror @`1320018`/`3c9dee2` (foundation-control 원본은 untracked) |
+| M3 | foundation-control `docs/COSMILE_EVENT_TRACKING_SPEC_20260702.md`(cev-1.0·DRAFT 미승인) + PHASE1/2 REVIEW·PHASE2/3 PLAN | foundation-docs mirror @`3c9dee2` (foundation-control 원본은 untracked) |
+| M4 | Cosmile repo `app/docs/COSMILE_ANALYTICS_PIPELINE_MVP.md`(정본) · `app/scripts/analytics-report.mjs` | Cosmile `77f0941`(최초 MVP)·`567b667`(문서 정본) · foundation-docs mirror @`a719c51` |
+| M5 | foundation-control `docs/COSMILE_AI_COMMERCE_DECISION_LOOP_V0_1_DESIGN_20260629.md`(+TEST_PLAN·RISK_REGISTER·ROLLBACK_PLAN) · `cosmile_loop/`(11모듈) · `scripts/cosmile_ai_commerce_loop_eval.py` · CLAUDE.md §5 | foundation-control `01fa896` |
 
 ---
 
@@ -168,7 +180,7 @@ prod DB access · real secret/Vault · main merge · live activation · external
 - **STOP 트리거:** learned/canonical promotion 경로가 live로 열림 · write_live_promotion>0.
 - **가설 상태:** NEEDS_V3_PATCH.
 
-### M5 · COSMILE-FOUNDATION-COMMERCE-LOOP
+### M5 · COSMILE AI Commerce Decision Loop v0.1 (구 표기 COSMILE-FOUNDATION-COMMERCE-LOOP — superseded)
 - **무엇을 볼까:**
   - loop가 Foundation을 **validate/gate/reasoning ONLY**로 쓰는지, decision을 Foundation이 소유하는지 확인.
   - Foundation으로 넘기는 것이 **minimized, request-scoped memory_context**인지(`raw_text_stored=False`).
@@ -192,10 +204,12 @@ prod DB access · real secret/Vault · main merge · live activation · external
 
 ---
 
-## 7. 결과 표 SKELETON (실제 reconciliation에서 채움 — 현재 미판정)
+## 7. 결과 표 SKELETON (계획 시점 표 — 이력 보존)
 
-> 아래 표는 **skeleton**이다. 현재 상태 값은 모두 `미판정(TBD)`이며, 별도 read-only 조사에서 §3 기준으로 채운다.
-> 이 문서는 값을 확정하지 않는다.
+> 아래 표는 계획 시점 **skeleton**이다(작성 당시 전부 TBD). **실제 read-only reconciliation은 2026-07-06 수행 완료** —
+> 판정 정본 = `COSMILE_MEMORY_V3_EXISTING_5_MISSION_RECONCILIATION_RESULT_20260706.md`
+> (M1 DONE_WITH_LIMITS · M2 DONE_WITH_LIMITS · M3 **NEEDS_V3_PATCH** · M4 DONE_WITH_LIMITS(2-pass 재판정 대상) · M5 DONE_WITH_LIMITS).
+> 본 표는 채우지 않고 이력 보존용으로 유지한다(정보 손실 금지).
 
 | # | 미션 코드 | 상태 (DONE / DONE_WITH_LIMITS / OBSOLETE / NEEDS_V3_PATCH) | Option B 정합 | postgres(schema/validate) 정합 | subject_ref/furef service-local 정합 | Foundation validate/gate-only 정합 | safety-first 정합 | 근거(파일경로/boolean/count) | patch 필요 시 후속 설계서 |
 |---|-----------|:---:|:---:|:---:|:---:|:---:|:---:|---|---|
@@ -203,20 +217,20 @@ prod DB access · real secret/Vault · main merge · live activation · external
 | M2 | COSMILE-EVENT-TRACKING-AUDIT | TBD | TBD | TBD | TBD | TBD | TBD | (조사 시 기입) | (필요 시) |
 | M3 | COSMILE-EVENT-TRACKING-SPEC | TBD | TBD | TBD | TBD | TBD | TBD | (조사 시 기입) | (필요 시) |
 | M4 | COSMILE-ANALYTICS-PIPELINE | TBD | TBD | TBD | TBD | TBD | TBD | (조사 시 기입) | (필요 시) |
-| M5 | COSMILE-FOUNDATION-COMMERCE-LOOP | TBD | TBD | TBD | TBD | TBD | TBD | (조사 시 기입) | (필요 시) |
+| M5 | COSMILE AI Commerce Decision Loop v0.1 (구 표기 COSMILE-FOUNDATION-COMMERCE-LOOP — superseded) | TBD | TBD | TBD | TBD | TBD | TBD | (조사 시 기입) | (필요 시) |
 
 범례: 정합 컬럼 = `OK` / `LIMIT`(전제 명시 필요) / `PATCH`(조정 필요) / `N/A` / `TBD`.
 
-집계 슬롯(조사 완료 시 기입):
-- DONE: __ / DONE_WITH_LIMITS: __ / OBSOLETE: __ / NEEDS_V3_PATCH: __
-- NEEDS_V3_PATCH로 판정된 미션 → 각각 별도 patch 설계서 목록: __
+집계 (2026-07-06 조사 완료 — 정본 = RESULT 문서):
+- DONE: 0 / DONE_WITH_LIMITS: 4 (M1·M2·M4·M5) / OBSOLETE: 0 / NEEDS_V3_PATCH: 1 (M3)
+- NEEDS_V3_PATCH로 판정된 미션 → 별도 patch 설계서 목록: M3 cev-1.0 → `COSMILE_MEMORY_V3_03_RECOMMENDATION_EVENT_CONTRACT_20260706.md` 정렬 patch(2-pass 재판정 대상 — 계약 확정 후 발행)
 
 ---
 
 ## 8. 열린 질문 / ★Leo 결정 필요
 
-- ★Leo 결정 필요: **조사 대상 5개 미션 목록 확정** (§4 코드가 최종인지, 누락/추가 미션 여부).
-- ★Leo 결정 필요: **형제 문서(V3-02/03/04...) 넘버링·파일명 확정** (본 문서의 cross-reference 고정용).
+- ★Leo 결정 필요: **조사 대상 5개 미션 목록 확정** — §4.1 앵커로 5건 실재 확인 완료(2026-07-06)·M5 실명 정정. 잔여 = 누락/추가 미션 여부만.
+- ★Leo 결정 필요(형제 문서 넘버링·파일명 확정) = **해소(2026-07-06)** — 실제 파일명 체계 확정(§0 목록·00_INDEX 참조).
 - ★Leo 결정 필요: `NEEDS_V3_PATCH`가 다수로 나올 경우 **patch 설계서를 미션별 개별 발행 vs 통합 1건**으로 낼지.
 - ★Leo 결정 필요: M2/M4에서 STOP 트리거(잠재 raw trace/promotion 경로)가 발견될 때 **즉시 문서화만 vs 조사 중단** 정책.
 - 열린 질문: `OBSOLETE` 판정 시 "대체됨" 표기 위치를 본 문서 표에만 둘지, 각 미션 원본 report에도 pointer를 남길지.

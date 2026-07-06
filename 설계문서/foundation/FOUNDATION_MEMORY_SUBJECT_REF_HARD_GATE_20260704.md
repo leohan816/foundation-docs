@@ -3,6 +3,8 @@
 > 작성: foundation-control / Foundation Memory 담당 · 2026-07-04 · **상태: DESIGN(구현 전 설계·이후 patch)**
 > 대상 repo: FOUNDATION (`foundation/shared_memory/`) · HEAD `b7cce1f` · ★Memory live ON 안 함 · source repo push 0(local commit만) · foundation-docs push 허용.
 > 근거: FOUNDATION_USER_REF_V2_FINAL_PARITY_CHECK(E차원 PATCH_REQUIRED) · FOUNDATION_COMMON_IDENTITY_REF_POLICY(APPROVED_CANDIDATE).
+> ★**[OPTION A MINT SUPERSEDED — 2026-07-06 P11]** 본 문서의 Foundation-side mint(`key = FOUNDATION_SUBJECT_REF_SECRET`·resolve_subject 발급)는 **Option B로 대체됨** — 정본: `OPTION_B_SUBJECT_REF_CONTRACT_20260705.md`(service-local mint·Foundation은 validate/gate only·mint 코드 제거됨). V3는 Option A를 상속하지 않는다.
+> ★원문은 이력 보존용으로 유지(삭제 0). (Fable review bd01ba1 P11)
 
 ## A. 현재 문제 요약
 Memory live 전 반드시 닫아야 할 subject_ref hard gate 5건(read-only 실측·`subject_identity.py`):

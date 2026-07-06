@@ -2,11 +2,17 @@
 
 > 작성: foundation-control · 2026-07-06 · design-only · no code · Hard Stop 무접촉
 
+> depends_on: [`COSMILE_MEMORY_V3_DATA_DICTIONARY_CANONICAL_20260706.md`(이하 "사전") · `COSMILE_MEMORY_V3_00_INDEX_AND_EXECUTIVE_SUMMARY_20260706.md`] ·
+> owns: [per-customer 학습 메모리 19필드 계약(§2) · **memory_context 최소화 계약(Foundation 전달 최소화 — §2.1, 타 V3 문서는 본 절을 참조하고 재선언하지 않는다)** · V1 canonical 테이블 매핑 vs Cosmile commerce extension 배치(§4)] ·
+> referenced_by: [`COSMILE_MEMORY_V3_00_INDEX_AND_EXECUTIVE_SUMMARY_20260706.md` · `COSMILE_MEMORY_V3_00_PROBLEM_DEFINITION_20260706.md` · `COSMILE_MEMORY_V3_01_EXISTING_5_MISSION_RECONCILIATION_PLAN_20260706.md` · `COSMILE_MEMORY_V3_03_RECOMMENDATION_EVENT_CONTRACT_20260706.md` · `COSMILE_MEMORY_V3_04_ORDER_REVENUE_FEEDBACK_OUTCOME_CONTRACT_20260706.md` · `COSMILE_MEMORY_V3_06_MEMORY_FACT_CANDIDATE_PROMOTION_RULES_20260706.md` · `COSMILE_MEMORY_V3_07_SAFETY_ADVERSE_REACTION_GUARDRAIL_20260706.md` · `COSMILE_MEMORY_V3_08_DB_INTEGRATION_INVARIANT_DESIGN_20260706.md` · `COSMILE_MEMORY_V3_10_PRE_IMPLEMENTATION_REVIEW_PLAN_20260706.md`]
+> 어휘/키/문턱 정본 = **사전**. 본 문서와 사전이 다르면 사전이 이긴다(구 표기는 superseded로 흔적만 유지).
+
 이 문서는 Cosmile Memory V3 "Learning Commerce Memory Loop"의 **고객 단위(per-customer) 학습 메모리 계약(contract)**을 정의한다.
 설계 전용 문서이며, 코드·마이그레이션·live/prod 활성화·secret 접근을 포함하지 않는다.
-전체 loop·아키텍처 개요는 형제 문서 `COSMILE_MEMORY_V3_01_LEARNING_COMMERCE_MEMORY_LOOP_20260706.md`,
-승격(promotion)·confidence 수식 상세는 `COSMILE_MEMORY_V3_03_PROMOTION_AND_CONFIDENCE_20260706.md`,
-safety/adverse 우선 규칙은 `COSMILE_MEMORY_V3_04_SAFETY_FIRST_MEMORY_GATE_20260706.md`(예정)를 참조한다.
+전체 loop·아키텍처 개요는 형제 문서 `COSMILE_MEMORY_V3_00_INDEX_AND_EXECUTIVE_SUMMARY_20260706.md`,
+승격(promotion)·confidence 규칙 상세는 `COSMILE_MEMORY_V3_06_MEMORY_FACT_CANDIDATE_PROMOTION_RULES_20260706.md`,
+safety/adverse 우선 규칙은 `COSMILE_MEMORY_V3_07_SAFETY_ADVERSE_REACTION_GUARDRAIL_20260706.md`를 참조한다.
+(구 참조 `V3_01_LEARNING_COMMERCE_MEMORY_LOOP`·`V3_03_PROMOTION_AND_CONFIDENCE`·`V3_04_SAFETY_FIRST_MEMORY_GATE`는 패키지 재편으로 superseded — 위 실제 파일명이 정본.)
 
 ---
 
@@ -48,26 +54,36 @@ safety/adverse 우선 규칙은 `COSMILE_MEMORY_V3_04_SAFETY_FIRST_MEMORY_GATE_2
 | 2 | `customer_profile` | struct ref | 안정적 프로필 집합체(피부/민감/선호 요약)에 대한 포인터 | No | `customer_profile` (canonical) |
 | 3 | `skin_concern` | enum[] `acne`,`pigmentation`,`wrinkle`,`redness`,`pore`,`dryness`,`oiliness`,`sensitivity`,`elasticity`,`barrier`,`unknown` | 고객 피부 고민(다중) | No | `ltm_fact` (fact_type=`skin_concern`) |
 | 4 | `skin_type` | enum `dry`,`oily`,`combination`,`normal`,`sensitive`,`unknown` | 피부 타입 | No | `ltm_fact` (fact_type=`skin_type`) |
-| 5 | `sensitivity_signal` | enum `none`,`mild`,`moderate`,`high`,`unknown` + `signal_source` | 민감성/자극 취약 정도 | No (안전 관련 → §5) | `ltm_fact` + safety mirror |
-| 6 | `ingredient_preference` | list<{ingredient_code, polarity `like`/`neutral`, weight 0–1}> | 선호 성분 경향 | No | `ltm_fact` (fact_type=`ingredient_pref`) |
-| 7 | `avoid_ingredient` | list<{ingredient_code, reason_code, hard_flag bool}> | 회피/금지 성분 | **hard_flag=true는 안전계약, §5** | `ltm_fact` + safety mirror |
+| 5 | `sensitivity_signal` | enum `none`,`low`,`moderate`,`high`,`unknown` + `signal_source` (구 `mild`≡`low` — superseded, 사전 §2.4 표기 정합) | 민감성/자극 취약 정도 | No (안전 관련 → §5) | `ltm_fact` + safety mirror |
+| 6 | `ingredient_preference` | list<{ingredient_code, polarity `like`/`neutral`, weight 0–1}> | 선호 성분 경향 | No | `ltm_fact` (fact_type=`ingredient_affinity` — 사전 §2.1) |
+| 7 | `avoid_ingredient` | list<{ingredient_code, reason_code, hard_flag bool}> | 회피/금지 성분 (fact_type=`ingredient_aversion` — 사전 §2.1) | **hard_flag=true는 안전계약, §5** | `ltm_fact` + safety mirror |
 | 8 | `positive_ingredient_response` | list<{ingredient_code, evidence_count, last_event_ref}> | 특정 성분에 긍정 반응(만족/재구매) | No | Cosmile commerce ext + `ltm_fact` |
-| 9 | `negative_ingredient_response` | list<{ingredient_code, severity `mild`/`moderate`/`severe`, evidence_count}> | 특정 성분에 부정/이상 반응 | **severe = 즉시 safety escalate, §5** | Cosmile commerce ext + safety mirror |
+| 9 | `negative_ingredient_response` | list<{ingredient_code, severity = `adverse_severity`(사전 §2.4: `low`/`moderate`/`severe` — 구 `mild`≡`low` superseded), evidence_count}> | 특정 성분에 부정/이상 반응 | **severe = 즉시 safety escalate, §5** | Cosmile commerce ext + safety mirror |
 | 10 | `seasonality_signal` | list<{season `spring`/`summer`/`autumn`/`winter`, concern_shift enum}> | 계절별 고민/사용 변화 | No | Cosmile commerce ext |
-| 11 | `purchase_history_signal` | struct{category_freq map, price_band enum, brand_affinity list} (aggregated, no order raw) | 구매 경향(집계값만) | No | Cosmile commerce ext |
-| 12 | `repurchase_signal` | list<{sku_or_ingredient_code, cycle_days_est, count}> | 재구매 주기/횟수(만족 proxy) | No | Cosmile commerce ext |
-| 13 | `adverse_reaction_signal` | list<{ingredient_or_sku_code, severity, reported_at_bucket, resolved bool}> | 이상반응 신호 | **YES — 안전 우선, 단발도 caution 이상, §5** | safety-priority store + `ltm_fact` mirror |
-| 14 | `confidence` | float 0.0–1.0 | 해당 fact의 신뢰도 | — (파생값) | `ltm_fact.confidence` / candidate |
-| 15 | `evidence_count` | int ≥1 | fact를 뒷받침하는 독립 이벤트 수 | — (파생값) | `ltm_fact.evidence_count` / candidate |
+| 11 | `purchase_history_signal` | struct{category_freq map} — `price_band`·`brand_affinity`는 **RESERVED(수집·승격 금지 — 사전 §2.1)**, aggregated·no order raw | 구매 경향(집계값만) | No | Cosmile commerce ext |
+| 12 | `repurchase_signal` | list<{sku_or_ingredient_code, cycle_days_est, count}> (재구매 판정 단위 = product_id — 사전 R-K5) | 재구매 주기/횟수(만족 proxy) | No | Cosmile commerce ext |
+| 13 | `adverse_reaction_signal` | list<{ingredient_or_sku_code, severity = `adverse_severity`(사전 §2.4) + `adverse_certainty`(사전 §2.5), reported_at_bucket, resolved bool}> | 이상반응 신호 | **YES — 안전 우선, 효력 matrix = 사전 §5.3, §5** | safety-priority store + `ltm_fact` mirror |
+| 14 | `confidence` | float 0.0–1.0 (문턱 정본 = 사전 §3) | 해당 fact의 신뢰도 | — (파생값) | `ltm_fact.confidence` / candidate |
+| 15 | `evidence_count` | int ≥1 (독립성·문턱 정본 = 사전 §3) | fact를 뒷받침하는 독립 이벤트 수 | — (파생값) | `ltm_fact.evidence_count` / candidate |
 | 16 | `source_event_refs` | list<event_ref> (opaque id, no raw payload) | 근거 이벤트 참조(원문 아님) | — | candidate·`ltm_fact` provenance |
-| 17 | `retention_policy` | enum `session`,`short_30d`,`mid_180d`,`long_365d`,`durable_consented` | 보존 기간 정책 | — (정책) | 모든 계층 메타 |
-| 18 | `consent_scope` | enum `none`,`service_local`,`personalization`,`cross_session`,`revoked` | 동의 범위 | — (정책) | 모든 계층 메타 |
-| 19 | `sensitivity_level` | enum `low`,`normal`,`elevated`,`health_related` | 데이터 민감도(health_related = 최고 보호) | — (정책) | 모든 계층 메타 |
+| 17 | `retention_policy` | enum = **사전 §2.7 [M2 reused]**: `session`/`short_ttl`/`standard_ttl`/`revocable` (구 `short_30d`/`mid_180d`/`long_365d`/`durable_consented`는 enum이 아니라 TTL 파라미터 매핑 — superseded, 사전 §2.7) | 보존 기간 정책 | — (정책) | 모든 계층 메타 |
+| 18 | `consent_scope` | enum = **사전 §2.6 [M2 reused]**: `none`/`same_service`/`cross_service`/`foundation_only` + 직교 `consent_state`(`active`/`withdrawn`)·`consent_purpose` [V3 ext] (구 `service_local`≡`same_service`·`personalization`/`cross_session`은 scope가 아니라 purpose·`revoked`→`consent_state=withdrawn` — superseded, 사전 §2.6) | 동의 범위 | — (정책) | 모든 계층 메타 |
+| 19 | `sensitivity_level` | enum = **사전 §2.8 [M2 reused]**: `low`/`normal`/`sensitive`/`high` (구 `elevated`≡`sensitive`·`health_related`≡`high` — superseded, 사전 §2.8) | 데이터 민감도(`high` = 최고 보호) | — (정책) | 모든 계층 메타 |
 
 **표 원칙:**
 - `ingredient_code` / `sku_or_ingredient_code`는 **정규화된 코드**이며 원문 성분명·상품명 raw string이 아니다.
 - `*_at_bucket`은 정확 timestamp가 아니라 **버킷(예: 주/월 단위)**으로 저장해 PII/재식별 위험을 낮춘다.
 - 안전 관련 필드(5·7 hard_flag·9 severe·13)는 **commerce 최적화 신호보다 우선**하며, revenue/margin 신호가 이를 덮어쓰지 못한다(§5).
+- **식별 키 계층(P4 — 사전 §1.1/§1.3):** memory 계층(ltm_fact/candidate/consent)의 비로그인 키 = **`guest_ref`** [M2 reused] — `subject_ref XOR guest_ref`·`subject_key = COALESCE(subject_ref, guest_ref)`. **`anonymous_ref`(`anon_v3_`)는 commerce event 계층 전용**(`COSMILE_MEMORY_V3_03_RECOMMENDATION_EVENT_CONTRACT_20260706.md`)이며 memory 계층에 **직접 유입 금지** — 로그인 전후 연결은 사전 §1.3 R-K3 stitching(`identity_stitching_state`, 사전 §2.10) 경유만이고, memory promotion에는 consent 확인 후에만 반영된다.
+
+### 2.1 memory_context 최소화 계약 (Foundation 전달 최소화 — 소유: 본 문서)
+
+Foundation에 전달되는 `memory_context`의 최소화 계약은 **V3-02가 소유**한다. 타 V3 문서는 본 절을 참조만 하고 재선언하지 않는다.
+
+- **request-scoped·minimized**: 판단 1회에 필요한 최소 부분집합만 전달. durable 저장·재사용 없음.
+- **허용**: §2 19필드의 구조화 값(코드/enum/count/score/band/opaque ref)만.
+- **금지**: raw 발화·주문 raw·PII·정확 timestamp(버킷만)·service DB 직접 read(Foundation은 validate/gate/reasoning only).
+- `raw_text_stored=False` 불변(사전 §8).
 
 ---
 
@@ -83,19 +99,31 @@ service event (상담/추천/commerce)
    → next recommendation improvement (읽기 소비)
 ```
 
-**최소 승격 기준(초안 — 상세·수식은 V3-03):**
+**최소 승격 기준 — 수치 정본 = 사전 §3(confidence/evidence)·§4(time window) (규칙 상세 = `COSMILE_MEMORY_V3_06_MEMORY_FACT_CANDIDATE_PROMOTION_RULES_20260706.md`):**
 
 | 조건 | 일반 fact (skin_type, ingredient_pref 등) | 안전 fact (adverse, avoid hard_flag) |
 |------|-------------------------------------------|--------------------------------------|
-| 최소 `evidence_count` | ≥ 2 (독립 이벤트) | 저장은 1부터, 단 **차단은 즉시** (§5) |
-| 최소 `confidence` | ≥ 0.6 | commerce 승격 기준과 무관하게 **caution 즉시 적용** |
+| 최소 `evidence_count` | **N_min = 사전 §3**(독립 이벤트·`distinct_signal_source_count` 포함) | 저장은 1부터, 단 **차단은 즉시** (§5·사전 §5 — 문턱 미적용) |
+| 최소 `confidence` | **C_min = 사전 §3** (구 "≥ 0.6" 직접 선언은 사전 참조로 대체) | commerce 승격 기준과 무관하게 **caution 즉시 적용**(효력 = 사전 §5.3) |
 | 상충 신호 처리 | 최근성 가중·감쇠 후 재평가 | 안전 방향으로 fail-closed |
 | 승격 판정자 | AI semantic + deterministic gate | + Foundation safety gate (덮어쓰기 불가) |
 
-- **evidence 독립성:** 같은 세션의 동일 이벤트를 중복 카운트하지 않는다(이벤트 dedup은 `source_event_refs` 기준).
+- **evidence 독립성:** 같은 세션의 동일 이벤트를 중복 카운트하지 않는다(이벤트 dedup은 `source_event_refs` 기준 — 사전 §3).
 - **감쇠(decay):** 오래된 근거는 confidence 기여가 시간에 따라 감소한다(구체 half-life는 ★Leo 결정 필요).
-- ★**Leo 결정 필요:** 일반 fact 승격 임계값(evidence_count≥2 / confidence≥0.6)의 정확한 값. 초안일 뿐 canonical 아님.
+- ★**Leo 결정 필요:** 승격 임계값·window 수치의 최종 확정 — 정본 초안과 확정 절차 = **사전 §3/§4**(본 문서는 수치를 직접 선언하지 않는다).
 - ★**Leo 결정 필요:** confidence decay half-life와 상충 신호 감쇠 계수.
+
+---
+
+## 3.5 V1 M2 fact 규율 상속 (P3 — 정본 = 사전 §5.1, V3가 재정의하지 않음)
+
+V3-02는 M2(COMMON_SERVICE_MEMORY_CONTRACT_V1 v1.2) fact 규율을 **자구 그대로 상속**한다. 아래는 사전 §5.1 pointer이며 재정의가 아니다.
+
+- **SAFETY∩SINGLE**: safety 성격 SINGLE fact는 `subject_key + fact_type` 기준 **active ≤ 1**(SINGLE supersede 우선).
+- **tombstone**: `deleted`/`blocked`/`expired`는 `fact_state`와 별개의 **직교 BOOL** — tombstone row는 이력 보존.
+- **must_not_reappear**: `must_not_reappear=true`인 deleted/blocked/tombstoned fact는 **candidate로 재생성 금지**.
+- **candidate promotion은 tombstone/must_not_reappear를 우회할 수 없다** — candidate 생성/승격 **전에** 동일 `(subject_key, fact_type, fact_target)`의 active/tombstone 상태 조회를 선행한다(V3-06 R-C1 — 조회 없이 승격 = 계약 위반).
+- **erasure/consent withdrawal 이후 재등장 금지**: erasure 처리 후 동일 fact의 자동 재생성 금지 — 고객의 명시 재진술만 신규 fact로 허용하며, 그 경우도 safety review 경유(사전 §7).
 
 ---
 
@@ -103,19 +131,27 @@ service event (상담/추천/commerce)
 
 V3 필드는 **V1 canonical 테이블**(재사용·삭제 금지)과 **Cosmile commerce extension**(신규, service-local schema `cosmile`)으로 분리 배치한다.
 
-### 4.1 canonical V1 테이블 (재사용)
+### 4.1 canonical V1 테이블 (재사용 — M2 원문 정합, 재정의 금지)
+
+> "재사용" 선언과 실제 필드가 일치하도록 M2 canonical 필수 필드를 아래에 **복원**한다(P3/P5). 본 절은 M2를 재정의하지 않는다 — 필드/enum 정본 = M2·사전.
 
 - **`customer_profile`** (안정적 프로필 집계)
   - `subject_ref` (key), `skin_type`, `skin_concern[]`, `sensitivity_signal`, `ingredient_preference`(요약), `consent_scope`, `sensitivity_level`, `retention_policy`
   - 성격: 승격 완료된 안정 사실의 **읽기 최적화 집계 뷰**. 후보 신호는 여기 직접 쓰지 않는다.
 
 - **`memory_fact_candidate`** (승격 전 후보)
-  - `subject_ref`, `fact_type`, `candidate_value`, `evidence_count`, `confidence`, `source_event_refs[]`, `created_at_bucket`, `status` (`pending`/`promoted`/`rejected`/`expired`)
-  - §2의 신규 신호(3·4·5·6·8·9·13 등)는 **먼저 여기로** 들어온다. `raw_text_stored=False`.
+  - `subject_key`(= `COALESCE(subject_ref, guest_ref)` — 사전 §1.1), `fact_type`(사전 §2.1), `fact_target`, `candidate_value`, `evidence_count`, `confidence`, `source_event_refs[]`, `created_at_bucket`
+  - `status` = **`candidate`/`approved`/`rejected` [M2 reused — 사전 §2.2 3값]** + 직교 컬럼 **`lifecycle_state` [V3 ext — 사전 §2.2]**(`pending_evidence`·`safety_frozen`·`human_review_required`·`demoted`·`stale`·`expired`·`merged` 등).
+    (구 `pending`/`promoted`/`expired` status 표기는 superseded — 사전 §2.2: `pending`≡`candidate`·`promoted`≡`approved`·`expired`는 status가 아니라 `lifecycle_state` 값.)
+  - §2의 신규 신호(3·4·5·6·8·9·13 등)는 **먼저 여기로** 들어온다. `raw_text_stored=False`. 생성/승격 전 tombstone/must_not_reappear 조회 선행(§3.5).
 
-- **`ltm_fact`** (승격된 장기 사실)
-  - `subject_ref`, `fact_type` (`skin_concern`/`skin_type`/`sensitivity`/`ingredient_pref`/`avoid_ingredient`/`adverse_reaction` ...), `fact_value`(코드/enum), `confidence`, `evidence_count`, `provenance`(source_event_refs), `retention_policy`, `consent_scope`, `sensitivity_level`
-  - 승격 기준(§3) 충족 시에만 candidate → ltm_fact.
+- **`ltm_fact`** (승격된 장기 사실 — M2 canonical 필수 필드 복원)
+  - key: `subject_ref` **XOR** `guest_ref`(`subject_key` — 사전 §1.1)
+  - `fact_type` = **사전 §2.1 정본**((fact_type, fact_target, direction) 모델). 구 명칭 매핑(superseded — 사전 §2.1): `avoid_ingredient`→`ingredient_aversion`(M2 core avoid와 별개 유지) · `adverse_reaction`→`ingredient_adverse`. M2 core fact 타입(skin_type·skin_concern 등)은 [M2 reused].
+  - `fact_state` = `active`/`hypothesis`/`superseded` [M2 reused — 사전 §2.3]
+  - 직교 3-state BOOL: `deleted`/`blocked`/`expired` + `must_not_reappear` [M2 reused — §3.5 tombstone 규율]
+  - `is_safety`(safety fact 표시 — SAFETY∩SINGLE·사전 §5 lifecycle 적용 대상), `norm_value`(정규화 값), `fact_value`(코드/enum), `confidence`, `evidence_count`, `provenance`(source_event_refs), `retention_policy`, `consent_scope`, `sensitivity_level`
+  - 승격 기준(§3·사전 §3) 충족 시에만 candidate → ltm_fact. safety fact는 사전 §5.2 lifecycle(일반 문턱 강등 미적용).
 
 ### 4.2 Cosmile commerce extension (신규, schema/validate level)
 
@@ -128,7 +164,7 @@ commerce 고유 신호는 V1 core에 섞지 않고 **`cosmile` schema extension*
 | `cosmile_adverse_reaction` (safety-priority) | `adverse_reaction_signal` | 안전 우선 store, revenue 신호가 override 불가 |
 
 - **cross-schema 직접 참조 금지:** Cosmile extension은 `siasiu` schema를 직접 읽지 않는다. 공유가 필요하면 contract/minimized memory_context 경유.
-- **Foundation 소비:** 위 어떤 테이블도 Foundation이 직접 read하지 않는다. Foundation에는 request-scoped `memory_context`(구조화·minimized)만 전달.
+- **Foundation 소비:** 위 어떤 테이블도 Foundation이 직접 read하지 않는다. Foundation에는 request-scoped `memory_context`(구조화·minimized — 계약 = §2.1, 본 문서 소유)만 전달.
 - ★**Leo 결정 필요:** commerce extension을 `ltm_fact`의 fact_type으로 흡수할지, 별도 `cosmile_*` 테이블로 유지할지(현 초안은 별도 유지 = 역할 경계 보존).
 
 ### 4.3 필드 → 계층 요약
@@ -153,11 +189,11 @@ commerce 고유 신호는 V1 core에 섞지 않고 **`cosmile` schema extension*
 
 ## 6. retention / consent / sensitivity 정책 스켈레톤
 
-- `retention_policy`: 기본은 최소 보존. `durable_consented`는 명시 동의 + `consent_scope ∈ {personalization, cross_session}`일 때만.
-- `consent_scope=revoked` → 해당 subject_ref의 candidate/ltm 소비 즉시 중단(읽기 차단), 삭제/만료 절차는 별도 계약(V3-05 예정).
-- `sensitivity_level=health_related`(이상반응·민감성 등) → 최고 보호. 최소 보존·접근 제한·집계 우선.
+- `retention_policy`: 기본은 최소 보존. `revocable`(구 `durable_consented` — superseded, 사전 §2.7)은 명시 동의(ConsentRecord) + `consent_purpose ∈ {memory_personalization, cross_session_reuse}`(구 `personalization`/`cross_session` — superseded, 사전 §2.6)일 때만.
+- `consent_state=withdrawn`(구 `consent_scope=revoked` — superseded, 사전 §2.6) → fact **보존 + `reuse_blocked=true`**·candidate/ltm 소비 즉시 중단(읽기 차단). 삭제(erasure)·만료·un-learning 절차 = **사전 §7 정본**(상세 규칙 = `COSMILE_MEMORY_V3_06_MEMORY_FACT_CANDIDATE_PROMOTION_RULES_20260706.md`).
+- `sensitivity_level=high`(구 `health_related` — superseded, 사전 §2.8. 이상반응·민감성 등) → 최고 보호. 최소 보존·접근 제한·집계 우선.
 - **Hard Stop 재확인:** 실제 삭제/백필/마이그레이션·live 소비는 이 문서 범위 밖. 여기서는 정책 필드의 계약만 고정한다.
-- ★**Leo 결정 필요:** `durable_consented` 최대 보존 기간(초안 365d)과 revoke 시 candidate 즉시 파기 여부(즉시 파기 vs 만료 대기).
+- ★**Leo 결정 필요:** retention TTL 파라미터 확정(정본 초안 = 사전 §2.7/§4). withdrawn 시 fact 운명은 사전 §7 정본(보존+`reuse_blocked` — "즉시 deleted/파기" 표기는 superseded)·erasure는 tombstone+`must_not_reappear`(§3.5).
 
 ---
 
@@ -181,4 +217,5 @@ Foundation = **validate/gate/reasoning only** (durable customer memory DB 아님
 **service-local ownership**(SIASIU·Cosmile 각자 memory+commerce 소유, cross-schema 직접 참조 금지, Cosmile postgres는 schema/validate level).
 **safety-first**(adverse/sensitivity 신호가 revenue/commerce 최적화보다 우선, 의학적 단정 금지).
 no prod · no live · no main merge · no real secret/Vault · no prod DB migration.
-형제 문서: `COSMILE_MEMORY_V3_01_LEARNING_COMMERCE_MEMORY_LOOP_20260706.md`, `COSMILE_MEMORY_V3_03_PROMOTION_AND_CONFIDENCE_20260706.md`.
+어휘/키/문턱 정본: `COSMILE_MEMORY_V3_DATA_DICTIONARY_CANONICAL_20260706.md`.
+형제 문서: `COSMILE_MEMORY_V3_00_INDEX_AND_EXECUTIVE_SUMMARY_20260706.md` · `COSMILE_MEMORY_V3_03_RECOMMENDATION_EVENT_CONTRACT_20260706.md` · `COSMILE_MEMORY_V3_06_MEMORY_FACT_CANDIDATE_PROMOTION_RULES_20260706.md` · `COSMILE_MEMORY_V3_07_SAFETY_ADVERSE_REACTION_GUARDRAIL_20260706.md`.

@@ -2,9 +2,11 @@
 
 > 작성: foundation-control · 2026-07-06 · design-only · no code · Hard Stop 무접촉
 
+> depends_on: [FOUNDATION_MEMORY_ARCHITECTURE_V1_M6_F_OPTION_B_SUBJECT_REF_CONTRACT_20260705 · FOUNDATION_MEMORY_ARCHITECTURE_V1_M6_FABLE_FINAL_REVIEW_20260706 · COSMILE_MEMORY_V3_DATA_DICTIONARY_CANONICAL_20260706] · owns: [V3 문제 정의 · V1 close vs V3 open 분리 · Cosmile-first 근거 · goals/non-goals · Hard Stop 목록 · loop canonical 명칭] · referenced_by: [COSMILE_MEMORY_V3_00_INDEX_AND_EXECUTIVE_SUMMARY_20260706 및 전 V3 형제 문서]
+
 이 문서는 Cosmile Memory V3(Learning Commerce Memory Loop)의 **문제 정의(Problem Definition)** 단계다.
 구현·테스트·live 전환을 하지 않는다. **자동화 가능한 memory/learning 구조를 설계**하는 것이 목적이며, **auto-execution(자동 실행)은 목적이 아니다.**
-후속 형제 문서: `COSMILE_MEMORY_V3_01_...`(loop 아키텍처), `COSMILE_MEMORY_V3_02_...`(contract/schema), `COSMILE_MEMORY_V3_03_...`(safety/gate), `COSMILE_MEMORY_V3_04_...`(reviewable implementation plan) 순으로 이어진다(파일명은 릴리스 확정 시 고정).
+후속 형제 문서(실제 파일명 — 구 5문서 번호 표기 "`_01_` loop 아키텍처·`_02_` contract·`_03_` safety·`_04_` impl plan"은 superseded): 패키지는 `COSMILE_MEMORY_V3_01_EXISTING_5_MISSION_RECONCILIATION_PLAN_20260706` ~ `COSMILE_MEMORY_V3_10_PRE_IMPLEMENTATION_REVIEW_PLAN_20260706`의 11문서 + 어휘 정본 `COSMILE_MEMORY_V3_DATA_DICTIONARY_CANONICAL_20260706`로 구성된다 — 전체 지도 = `COSMILE_MEMORY_V3_00_INDEX_AND_EXECUTIVE_SUMMARY_20260706` §5 mission map.
 
 ---
 
@@ -30,6 +32,9 @@ Memory V1 상태 = **CLOSED_WITH_LIMITS** (dev/shadow/readiness 수준). V3는 V
 | memory + commerce data 소유 | SIASIU·Cosmile 각자 **service-local** 소유 (per-service postgres schema `siasiu`/`cosmile`, cross-schema 직접 참조 없음) | 그대로 상속 |
 | Cosmile postgres 성숙도 | **schema/validate 수준** (real DB-integration 미완) | 그대로 유지·확장 대상 |
 | safety 우선순위 | safety / adverse-reaction > commerce/revenue. medical assertion 금지. "계속 써도 돼?"류 safety-first | 그대로 상속·강화 |
+
+> ★**V1 정본 provenance (P11)**: Option B 정본 = `FOUNDATION_MEMORY_ARCHITECTURE_V1_M6_F_OPTION_B_SUBJECT_REF_CONTRACT_20260705`(foundation-docs `1e24c33` 도입) · V1 판정 = `FOUNDATION_MEMORY_ARCHITECTURE_V1_M6_FABLE_FINAL_REVIEW_20260706`(**CLOSED_WITH_LIMITS** · L1/L2/COSMILE-4 이월) · M2(`COMMON_SERVICE_MEMORY_CONTRACT_V1_20260704`)의 identity 절은 Option B로 superseded.
+> ★**V1 limit 이월 3종(이름 열거)** — V3는 이를 인지하고 추적한다: **L1** = M2 정본 계약의 Option A mint 공식 잔존(supersede pointer 패치 대상) · **L2** = M6-G 정의 미확정(ingress-gate vs memory-reuse gate — activation은 Hard Stop) · **COSMILE-4** = Cosmile postgres baseline에 DB-level invariant 3종 미복원(첫 `migrate deploy` 전 필수). V3 추적 위치 = **V3-08**(`COSMILE_MEMORY_V3_08_DB_INTEGRATION_INVARIANT_DESIGN_20260706`) · **V3-10**(`COSMILE_MEMORY_V3_10_PRE_IMPLEMENTATION_REVIEW_PLAN_20260706`).
 
 ### 2.2 V3가 새로 OPEN(신규 설계 대상)하는 것
 
@@ -96,7 +101,7 @@ Memory V1 상태 = **CLOSED_WITH_LIMITS** (dev/shadow/readiness 수준). V3는 V
 - **이번에 만들지 않는 것:** 그 구조가 **스스로 판단을 실행(auto-execute)** 하는 것. 승격된 memory가 자동으로 추천을 바꾸거나, 자동으로 고객에게 노출되거나, 자동으로 canonical/learned promotion 되는 것.
 
 > 원칙: **구조는 자동화 가능하게, 실행은 사람이 승인.** 모든 승격/재사용은 설계상 `applied_to_real_user=false`, `write_performed=false` 를 유지하며, 실제 실행 전환은 **별도 release train + Leo 승인**을 요구한다.
-> **★Leo 결정 필요:** "automatable → 실제 auto-promotion 실행"으로 넘어가는 승인 게이트를 어느 milestone(예: V3-04 이후 별도 train)에 둘지.
+> **★Leo 결정 필요:** "automatable → 실제 auto-promotion 실행"으로 넘어가는 승인 게이트를 어느 milestone(예: `COSMILE_MEMORY_V3_10_PRE_IMPLEMENTATION_REVIEW_PLAN_20260706` 최종 통합 review 통과 후 별도 train)에 둘지. (구 표기 "V3-04 이후"는 옛 5문서 번호 기준 — superseded.)
 
 ---
 
@@ -123,16 +128,18 @@ consultation result            (상담 결과)
 
 핵심 불변식(설계 원칙, 상세는 형제 문서에서 계약화):
 
-- **single-signal 승격 금지:** `MemoryFactCandidate` → `LongTermMemoryFact` 는 evidence/confidence 임계 + 다중 신호 후에만.
+- **single-signal 승격 금지:** `MemoryFactCandidate` → `LongTermMemoryFact` 는 evidence/confidence 임계 + 다중 신호 후에만 (임계 수치 정본 = 사전 `COSMILE_MEMORY_V3_DATA_DICTIONARY_CANONICAL_20260706` §3 · safety fact는 별도 lifecycle — 사전 §5).
 - **safety override:** adverse_reaction / safety 신호는 loop의 어느 지점에서든 commerce 최적화보다 우선(fail-closed).
 - **service-local ownership:** view/cart/checkout/order/revenue/margin 원천 데이터는 Cosmile `cosmile` schema 소유. Foundation에는 minimized request-scoped memory_context만.
 - **재현 가능:** 각 전이는 `trace_id` + `reason_codes` 로 감사 가능해야 한다.
 
-각 단계의 필드 표·enum·승격 임계·gate 규칙은 형제 문서에서 구체화한다:
-- loop 아키텍처·상태 전이: `COSMILE_MEMORY_V3_01_...`
-- MemoryFactCandidate / LongTermMemoryFact contract·schema·enum: `COSMILE_MEMORY_V3_02_...`
-- safety/gate·adverse override·consent 규칙: `COSMILE_MEMORY_V3_03_...`
-- reviewable implementation plan(단계·검증방법): `COSMILE_MEMORY_V3_04_...`
+각 단계의 필드 표·enum·승격 임계·gate 규칙은 형제 문서에서 구체화한다 (실제 파일명 — 구 "`_01_`~`_04_`" 4문서 포인터는 superseded):
+- **키/enum/threshold/window 정본(유일)**: `COSMILE_MEMORY_V3_DATA_DICTIONARY_CANONICAL_20260706` — 아래 문서들은 값을 직접 선언하지 않고 사전을 참조한다.
+- loop 단계별 계약: `COSMILE_MEMORY_V3_02_LEARNING_COMMERCE_MEMORY_CONTRACT_20260706`(19필드 learning memory + **memory_context 최소화 계약 소유**) · `COSMILE_MEMORY_V3_03_RECOMMENDATION_EVENT_CONTRACT_20260706`(추천 이벤트) · `COSMILE_MEMORY_V3_04_ORDER_REVENUE_FEEDBACK_OUTCOME_CONTRACT_20260706`(주문/매출/피드백 outcome) · `COSMILE_MEMORY_V3_05_PRODUCT_INGREDIENT_INTELLIGENCE_MAPPING_20260706`(제품/성분 mapping)
+- MemoryFactCandidate → LongTermMemoryFact 승격/강등: `COSMILE_MEMORY_V3_06_MEMORY_FACT_CANDIDATE_PROMOTION_RULES_20260706`
+- safety/gate·adverse override·consent 규칙: `COSMILE_MEMORY_V3_07_SAFETY_ADVERSE_REACTION_GUARDRAIL_20260706`
+- DB invariant·substrate: `COSMILE_MEMORY_V3_08_DB_INTEGRATION_INVARIANT_DESIGN_20260706` · analytics 최소 지표: `COSMILE_MEMORY_V3_09_ANALYTICS_REPORT_MINIMUM_20260706`
+- 기존 5 미션 정합: `COSMILE_MEMORY_V3_01_EXISTING_5_MISSION_RECONCILIATION_PLAN_20260706` · 구현 전 review(각 단계 gate): `COSMILE_MEMORY_V3_10_PRE_IMPLEMENTATION_REVIEW_PLAN_20260706` — 구현 batch = V3-11(예정)·post-implementation review = V3-12(예정).
 
 ---
 
@@ -140,8 +147,8 @@ consultation result            (상담 결과)
 
 - **★Leo 결정 필요 (§3):** V3의 SIASIU 연동 범위 — read-only 참조만 vs 후속 별도 release train.
 - **★Leo 결정 필요 (§5):** automatable → auto-promotion 실제 실행 전환의 승인 게이트 위치.
-- **★Leo 결정 필요:** LongTermMemoryFact 승격 임계(신호 수·confidence 하한·관측 기간)의 초기 기본값 — 형제 문서 `_02_`에서 표로 제안하되 확정은 Leo.
-- **★Leo 결정 필요:** adverse_reaction 신호의 memory 반영 정책 — "재추천 억제(suppression)"까지 자동화 가능 구조에 넣을지, safety review 수동 게이트로 둘지.
+- **★Leo 결정 필요:** LongTermMemoryFact 승격 임계(신호 수·confidence 하한·관측 기간)의 초기 기본값 — 단일 정본 표 = 사전 `COSMILE_MEMORY_V3_DATA_DICTIONARY_CANONICAL_20260706` §3(C_min 0.60·N_min 2)·§4(window)로 제안하되 확정은 Leo. (구 표기 "형제 문서 `_02_`에서 표로 제안"은 superseded — 어휘 정본 소유는 사전.)
+- **★Leo 결정 필요:** adverse_reaction 신호의 memory 반영 정책 — "재추천 억제(suppression)"까지 자동화 가능 구조에 넣을지, safety review 수동 게이트로 둘지. (정본 초안 = 사전 §5.3 AdverseSignalActionMatrix·상세 절차 소유 = `COSMILE_MEMORY_V3_07_SAFETY_ADVERSE_REACTION_GUARDRAIL_20260706`.)
 
 ---
 

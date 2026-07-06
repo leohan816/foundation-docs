@@ -5,6 +5,8 @@
 > ★**v1.1 = Fable5 PATCH_REQUIRED(D-1~D-14) 반영:** fact_state 직교 상태머신(D-2)·SINGLE upsert partial index(D-3)·EpisodeSummary summary_text 복원(D-4)·MemoryFactCandidate status enum(D-5)·pregnancy_nursing SAFETY∩SINGLE supersede 우선(D-8)·opt-B at-rest 보안 §11(D-6)·consent write-gate(D-7)·P1/P2/P3 semantics §9(D-10)·V0 SUPERSEDED §12(D-11)·adapter v0 재작성 §13(D-12)·migration train §14(D-13)·V3-ready §15(O)·B1~B14(N).
 > 근거: FOUNDATION_SERVICE_MEMORY_ARCHITECTURE_V1(v0.3) · M1_REVIEW_CONSOLIDATION · Foundation/SIASIU/Cosmile-side review · MEMORY_INVENTORY_AUDIT · COMMON_IDENTITY_REF_POLICY(APPROVED_CANDIDATE) · SUBJECT_REF_HARD_GATE_RESULT(c9bb996).
 > ★코드 수정 0 · migration 0 · source push 0 · raw 고객 데이터/secret 미열람.
+> ★**[OPTION A IDENTITY SUPERSEDED — 2026-07-06 P11]** 본 문서의 subject_ref mint 공식(`subj_v2_ = HMAC(FOUNDATION_SUBJECT_REF_SECRET, furef_v2)[:32]`)은 **Option B로 대체됨** — 정본: `OPTION_B_SUBJECT_REF_CONTRACT_20260705.md`(service-local mint·Foundation validate/gate only). V3는 Option A를 상속하지 않는다.
+> ★원문은 이력 보존용으로 유지(삭제 0). identity 절 외 canonical schema/enum/invariant 절은 계속 유효. (Fable review bd01ba1 P11)
 
 ## 1. 목적
 - SIASIU와 Cosmile이 **동일 Service Memory Contract**(9 엔티티·동일 필드-의미/상태머신/게이트/거버넌스)를 각자 service-local로 구현하기 위한 **field-level 계약**.

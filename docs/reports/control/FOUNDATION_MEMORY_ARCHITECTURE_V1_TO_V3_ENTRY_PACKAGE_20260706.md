@@ -7,7 +7,7 @@
 
 ## 1. V3 시작 정본(inherited baseline)
 - ★**Option B service-local subject_ref** — subject_ref mint/저장/SubjectRefMap = service-local · Foundation = validate/gate/reasoning only.
-- ★**V3는 Option A(FOUNDATION_SUBJECT_REF_SECRET mint) 계약을 상속하지 않는다**(L1 supersede·M2/HARD_GATE 문서 supersede pointer 적용).
+- ★**V3는 Option A(FOUNDATION_SUBJECT_REF_SECRET mint) 계약을 상속하지 않는다**(L1 supersede — ★정정(P11): ffb7d21은 보고서 2건(CHECKLIST·HARD_GATE_RESULT)만 패치했었고, 정본 계약 2건(설계문서/foundation/COMMON_SERVICE_MEMORY_CONTRACT_V1·FOUNDATION_MEMORY_SUBJECT_REF_HARD_GATE)은 2026-07-06 P11 패치로 실제 적용됨).
 - **canonical identity**: subject_ref=`subj_v2_+HMAC(<SVC>_SUBJECT_SECRET,'<svc>:subject:'+ref)[:32]` · furef=`furef_v2_+HMAC(<SVC>_FUREF_SECRET,'<svc>:local_user:'+ref)[:32]`(cross-producer 3자 동일).
 - **substrate**: PostgreSQL(schema siasiu/cosmile·canonical 8 core·permission isolation·Foundation DB user 0).
 - **crypto**: prod fail-closed(unknown env→prod raise·dev fallback 조건부).

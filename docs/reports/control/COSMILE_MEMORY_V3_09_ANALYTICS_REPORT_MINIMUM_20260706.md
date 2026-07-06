@@ -2,6 +2,8 @@
 
 > 작성: foundation-control · 2026-07-06 · design-only · no code · Hard Stop 무접촉
 
+> depends_on: [COSMILE_MEMORY_V3_DATA_DICTIONARY_CANONICAL_20260706.md, COSMILE_MEMORY_V3_03_RECOMMENDATION_EVENT_CONTRACT_20260706.md, COSMILE_MEMORY_V3_04_ORDER_REVENUE_FEEDBACK_OUTCOME_CONTRACT_20260706.md, COSMILE_MEMORY_V3_05_PRODUCT_INGREDIENT_INTELLIGENCE_MAPPING_20260706.md, COSMILE_MEMORY_V3_06_MEMORY_FACT_CANDIDATE_PROMOTION_RULES_20260706.md, COSMILE_MEMORY_V3_07_SAFETY_ADVERSE_REACTION_GUARDRAIL_20260706.md, COSMILE_MEMORY_V3_08_DB_INTEGRATION_INVARIANT_DESIGN_20260706.md] · owns: [Metric Registry(최소 지표·safety 지표 포함) · CLI/Markdown 리포트 형식 · small-cell 억제/집계 프라이버시 규칙] · referenced_by: [COSMILE_MEMORY_V3_10_PRE_IMPLEMENTATION_REVIEW_PLAN_20260706.md, COSMILE_MEMORY_V3_00_INDEX_AND_EXECUTIVE_SUMMARY_20260706.md]
+
 이 문서는 COSMILE MEMORY V3 "Learning Commerce Memory Loop"의 **최소 분석 리포트(Analytics Report Minimum)** 설계다.
 목적은 V3 target loop —
 `상담 결과 → 추천 이유 → 추천 상품 → 상품/SKU/성분 → product_view/add_to_cart/checkout/order → 매출/마진 → 만족/이상반응/재구매 → MemoryFactCandidate → evidence/confidence 장기기억 승격 → 다음 추천 개선` —
@@ -13,15 +15,18 @@
 2. **읽기 전용 · service-local.** 이 리포트는 Cosmile service-local(postgres schema `cosmile`) 이벤트/커머스 테이블만 집계한다. Foundation을 durable memory DB로 읽지 않는다.
 3. **안전 우선.** adverse_reaction(이상반응) 지표는 매출·마진·CTR과 **동렬 KPI가 아니라 상위 게이트 지표**로 다룬다. "이상반응이 적어 보이게" 최적화하지 않는다.
 
-형제 문서 상호참조 (V3 시리즈 인덱스 기준; 번호 확정은 시리즈 인덱스 문서 소유):
+형제 문서 상호참조 (실제 파일명):
 
-- `COSMILE_MEMORY_V3_01_OVERVIEW_...` — V3 target loop 전체 그림·범위
-- `COSMILE_MEMORY_V3_03_EVENT_TELEMETRY_CONTRACT_...` — 이벤트/telemetry 스키마 계약 (본 리포트의 **입력 소스**)
-- `COSMILE_MEMORY_V3_05_MEMORY_FACT_CANDIDATE_PROMOTION_...` — Candidate → LongTermMemoryFact 승격 기준
-- `COSMILE_MEMORY_V3_07_SAFETY_ADVERSE_PRIORITY_...` — 안전/이상반응 우선순위 규칙
-- `COSMILE_MEMORY_V3_08_SUBJECT_REF_IDENTITY_...` — subject_ref / furef 식별자 규칙 (집계 grain)
+- `COSMILE_MEMORY_V3_00_INDEX_AND_EXECUTIVE_SUMMARY_20260706.md` — V3 target loop 전체 그림·범위
+- `COSMILE_MEMORY_V3_DATA_DICTIONARY_CANONICAL_20260706.md` — enum/key/window/threshold **유일 정본(이하 "사전")** — 본 문서는 값 목록을 재선언하지 않는다
+- `COSMILE_MEMORY_V3_03_RECOMMENDATION_EVENT_CONTRACT_20260706.md` — RecommendationEvent(노출·클릭·장바구니 등 얕은 상호작용) 계약 — 본 리포트 **입력 소스 1(읽기 전용)**
+- `COSMILE_MEMORY_V3_04_ORDER_REVENUE_FEEDBACK_OUTCOME_CONTRACT_20260706.md` — rec_outcome_event/rec_outcome_feedback(checkout 이후 결과) 계약 — 본 리포트 **입력 소스 2(읽기 전용)**
+- `COSMILE_MEMORY_V3_05_PRODUCT_INGREDIENT_INTELLIGENCE_MAPPING_20260706.md` — product→ingredient 매핑(M12 입력)
+- `COSMILE_MEMORY_V3_06_MEMORY_FACT_CANDIDATE_PROMOTION_RULES_20260706.md` — Candidate → ltm_fact 승격 기준
+- `COSMILE_MEMORY_V3_07_SAFETY_ADVERSE_REACTION_GUARDRAIL_20260706.md` — 안전/이상반응 우선순위 규칙·suppression 규칙(R3)
+- `COSMILE_MEMORY_V3_08_DB_INTEGRATION_INVARIANT_DESIGN_20260706.md` — DB invariant / schema-validate 수준 정의
 
-> 형제 파일명의 정확한 접미사·번호가 시리즈 인덱스와 어긋나면 인덱스를 정본으로 본다. ★Leo 결정 필요: V3 시리즈 파일명 번호 고정.
+> (구 "번호 고정 ★Leo 결정 필요" 및 임시 접미사 목록은 해소 — 위가 실제 파일명. 식별자 규칙의 정본은 사전 §1.)
 
 ---
 
@@ -49,74 +54,66 @@
 
 ## 2. 데이터 소스 모델 (service-local, schema `cosmile`)
 
-리포트는 아래 이벤트/테이블만 입력으로 삼는다. 모두 **Cosmile 소유**. 교차 스키마 직접 참조(예: `siasiu.*` 직접 join) 금지 — 상담 맥락은 이벤트에 이미 최소화되어 실려 온다고 가정한다(`COSMILE_MEMORY_V3_03_...` 계약).
+리포트는 아래 계약 소스만 입력으로 삼는다. 모두 **Cosmile 소유**. 교차 스키마 직접 참조(예: `siasiu.*` 직접 join) 금지 — 상담 맥락은 이벤트에 이미 최소화되어 실려 온다고 가정한다(`COSMILE_MEMORY_V3_03_RECOMMENDATION_EVENT_CONTRACT_20260706.md` 계약).
 
-### 2.1 이벤트/테이블 인벤토리 (논리 스키마 · 예시 컬럼)
+### 2.1 입력 소스 (읽기 전용 — 자체 이벤트 테이블 선언 없음)
 
-| 논리명 | 성격 | 핵심 컬럼(예시) | 비고 |
-|---|---|---|---|
-| `rec_impression` | 추천 노출 이벤트 | `recommendation_id`, `trace_id`, `subject_ref`, `furef`, `product_id`, `sku`, `reason_codes[]`, `decision_type`, `evidence_mode`, `safety_gate_result`, `shown_at` | recommendation_shown. reason_codes·decision_type은 Foundation decision output 소비 결과 |
-| `rec_click` | 추천 클릭 이벤트 | `recommendation_id`, `trace_id`, `clicked_at` | recommendation_clicked |
-| `product_view` | 상품 상세 조회 | `session_ref`, `furef`, `product_id`, `sku`, `viewed_at`, `src_recommendation_id?` | 추천 경유 여부 optional |
-| `add_to_cart` | 장바구니 담기 | `furef`, `sku`, `qty`, `added_at`, `src_recommendation_id?` | |
-| `checkout_started` | 결제 시작 | `checkout_id`, `furef`, `at` | order 미확정 |
-| `order` | 주문 헤더 | `order_id`, `furef`, `status`, `paid_at`, `currency` | status ∈ enum(§3.2) |
-| `order_line` | 주문 라인 | `order_id`, `sku`, `qty`, `unit_price`, `unit_cost`, `src_recommendation_id?`, `line_revenue`, `line_margin` | margin = revenue − cost(관측 근사) |
-| `feedback` | 만족/이상반응 피드백 | `feedback_id`, `furef`, `sku?`, `feedback_type`, `satisfaction_score?`, `adverse_flag`, `adverse_severity?`, `created_at` | feedback_type enum(§3.3) |
-| `repurchase_derived` | 재구매 파생 뷰 | `furef`, `sku`, `first_paid_at`, `repurchase_at`, `interval_days` | order에서 파생, 물리 테이블 아닐 수 있음 |
+**R-K7(사전 §1.3) 상속:** 얕은 상호작용(impression/click/add_to_cart)의 **저장 소유 = V3-03 RecommendationEvent 단일**, checkout 이후 결과(stage ≥ order)의 소유 = **V3-04**(rec_outcome_event·rec_outcome_feedback). **본 문서(V3-09)는 두 소스를 읽기만 한다** — 구 §2.1의 자체 이벤트 테이블 인벤토리(`rec_impression`/`rec_click`/`product_view`/`add_to_cart`/`checkout_started`/`order`/`order_line`/`feedback` 논리 테이블 선언)는 **superseded — 사전 §1.3 R-K7**(자체 이벤트 테이블 정의 금지).
 
-> 위 컬럼은 **설계 예시**다. 실제 컬럼 확정은 `COSMILE_MEMORY_V3_03_...` 이벤트 계약이 정본. 본 문서는 그 계약을 "이렇게 집계 가능해야 한다"는 관점에서 요구할 뿐이다.
+| 입력 소스 | 소유 계약 | 본 리포트가 읽는 계약 필드(사전 §1·§2) |
+|---|---|---|
+| RecommendationEvent | V3-03 | `recommendation_id`(`rec_v3_`+ULID — 사전 §1.1), `subject_ref XOR anonymous_ref`, `session_id`, `product_id`[, `sku_id`], `reason_codes[]`(사전 §2.15), `decision_type`, `evidence_mode`, `safety_gate_result`, 노출/클릭/장바구니 stage |
+| rec_outcome_event | V3-04 | `recommendation_id`(NULLABLE — 사전 R-K1), `attribution_mode`(사전 §2.9), `order_id`, `order_item_id`, `product_id`, `sku_id`, paid/refund 이벤트(`refund_qty`·`refund_amount_band` — 사전 R-K4), `net_outcome_value_band`, `margin_band`(사전 §2.14) |
+| rec_outcome_feedback | V3-04 | `feedback_id`, `order_item_id`[, `recommendation_id`], `feedback_type`(사전 §2.11), `semantic_label`(사전 §2.12), `adverse_severity`(사전 §2.4), `adverse_certainty`(사전 §2.5) |
+| product→ingredient 매핑 | V3-05 | `product_id` → ingredient (M12 입력) |
+| repurchase 파생 뷰 | (본 문서 — 파생 정의만·저장 신설 없음) | rec_outcome_event(paid)에서 동일 `product_id` 재구매(사전 R-K5) — 물리 테이블 아님 |
 
-### 2.2 조인 키 규칙
+> 컬럼 정본 = V3-03/V3-04 계약 + 사전. 본 문서는 그 계약을 "이렇게 집계 가능해야 한다"는 관점에서 요구할 뿐이다.
 
-- 추천 → 커머스 귀속의 **1차 키는 `src_recommendation_id`**(명시 귀속). 이벤트에 실려 있으면 그것을 신뢰한다.
-- `src_recommendation_id`가 없을 때만 **fallback 귀속**: 동일 `furef` + 동일 `sku` + attribution window 내 last-touch. (§4 참조)
-- 집계 grain 식별자: `furef`(cross-producer consistent local user), `subject_ref`(subject 단위). 두 식별자 정의는 `COSMILE_MEMORY_V3_08_...` 상속.
+### 2.2 조인 키 규칙 (정본 = 사전 §1)
+
+- 추천 → 커머스 귀속의 **1차 키는 `recommendation_id`**(명시 귀속·`rec_outcome_event.recommendation_id`는 NULLABLE — 사전 R-K1). 귀속 방식은 `attribution_mode`(사전 §2.9: `direct`/`session`/`organic`/`unattributed`/`unknown`)로 구분한다.
+- (구 규칙 superseded — 사전 §1.3 R-K2) `src_recommendation_id` 필드명과 "furef+sku last-touch fallback"은 사전 정본으로 대체: 명시 링크 = `direct`, 동일 세션 내 SKU 일치 fallback = `session`.
+- 집계 grain 식별자: `subject_ref XOR anonymous_ref`(사전 §1.1·R-K3 — anonymous 여정도 downstream까지 유지). 구 `furef` grain은 superseded — 사전 §1.1 (furef는 V1 SubjectRefMap identity 층 전용·commerce event/analytics 키 아님).
 
 ---
 
-## 3. 열거형 (Enums)
+## 3. 열거형 (Enums — 값 정본은 사전·본 문서는 참조만)
 
-### 3.1 outcome (추천 결과 단계)
+### 3.1 outcome (추천 결과 단계 — 리포트 축)
 
 `shown` → `clicked` → `viewed` → `added_to_cart` → `checkout_started` → `order_paid` → (`satisfied` | `adverse` | `repurchased`)
 
-리포트의 top-reason 분해는 이 outcome 축을 기준으로 한다.
+리포트의 top-reason 분해는 이 outcome 축을 기준으로 한다. stage 소유: `order_paid` 이전 = V3-03, 이후 = V3-04(사전 R-K7).
 
-### 3.2 order.status
+### 3.2 order/refund 상태 (정본 = V3-04)
 
-| 값 | 의미 | revenue/margin 집계 포함 |
-|---|---|---|
-| `created` | 생성됨(미결제) | 제외 |
-| `paid` | 결제완료 | **포함** |
-| `cancelled` | 취소 | 제외 |
-| `refunded` | 환불 | 제외(또는 음수 조정 — ★Leo 결정 필요) |
-| `failed` | 실패 | 제외 |
+주문/환불 상태와 부분 환불 표현의 정본은 V3-04다 — 특히 환불/취소는 주문 전체 status가 아니라 **order_item 단위 refund 이벤트**(`refund_qty`·`refund_amount_band`)로 기록하고 net_outcome을 라인 단위 재계산한다(사전 §1.3 R-K4).
+본 리포트의 포함 규칙: **paid 귀속 라인만** 커머스 집계에 포함, refund는 별도 라인으로 병기하고 `net_outcome_value_band` 재계산에 반영한다. (구 §3.2 order.status 표의 "refunded 제외 또는 음수 조정" 초안은 superseded — 사전 R-K4.)
 
-### 3.3 feedback_type
+### 3.3 feedback (정본 = 사전 §2.11/§2.12/§2.4/§2.5)
 
-`satisfaction` · `dissatisfaction` · `adverse_reaction` · `neutral` · `unknown`
+- `feedback_type` = 사전 §2.11: `satisfaction_score`(1–5) · `adverse_report` · `repurchase` · `refund_return` · `cs_contact` · `review_semantic`. (구 `satisfaction/dissatisfaction/adverse_reaction/neutral/unknown` 초안은 superseded — 사전 §2.11.)
+- 만족/불만/안전 라벨 = `semantic_label`(사전 §2.12: `satisfied`·`dissatisfied`·`neutral`·`adverse_skin_reaction`·`adverse_other`·`usage_question_safety`·`usage_question_general`·`repurchase_intent`·`avoid_intent`·`unclear`).
+- `adverse_severity` = 사전 §2.4: `low` · `moderate` · `severe` 3값 유일. (구 `mild`≡`low`·`unknown`은 severity 값이 아니라 `low` 기록 + `adverse_certainty=reported` + 재평가 대기 — superseded — 사전 §2.4.) `adverse_certainty` = 사전 §2.5.
 
-- `adverse_reaction`은 `adverse_flag=true`를 동반한다.
-- `adverse_severity` ∈ `mild` · `moderate` · `severe` · `unknown` (있을 때).
+### 3.4 reason_code 집계 카테고리 (정본 = 사전 §2.15)
 
-### 3.4 reason_code 집계 카테고리 (예시)
-
-`ingredient_match` · `skin_type_match` · `concern_match` · `avoid_ingredient_respected` · `repurchase_pattern` · `price_fit` · `safety_hold` · `insufficient_evidence` — 실제 코드 집합은 Foundation decision contract 소유. 리포트는 **코드를 해석하지 않고 그대로 group-by**만 한다(휴리스틱 재분류 금지).
+`skin_type_match` · `concern_match` · `ingredient_match` · `avoid_conflict_none` · `safety_filtered` · `repurchase_cycle` · `seasonal_match` · `consultation_derived` — 확장은 사전 개정으로만. (구 예시 목록의 `avoid_ingredient_respected`·`price_fit`·`safety_hold`·`insufficient_evidence` 등은 superseded — 사전 §2.15.) 리포트는 **코드를 해석하지 않고 그대로 group-by**만 한다(휴리스틱 재분류 금지).
 
 ---
 
 ## 4. 귀속(Attribution) 모델
 
-★Leo 결정 필요 항목이 밀집한 구역이므로 후보를 명시한다.
+window 파라미터의 정본 = **사전 §4(★Leo 확정 파라미터 단일 표)** — 본 문서는 재선언하지 않는다.
 
-| 항목 | 후보 | 기본 제안(v1) |
-|---|---|---|
-| 귀속 방식 | 명시 `src_recommendation_id` 우선 → 없으면 last-touch fallback | **명시 우선 + last-touch fallback** |
-| attribution window | 24h / 72h / 7d / 14d | **7d** (★Leo 결정 필요) |
-| 재구매 판정 window | 30d / 60d / 90d | **60d** (★Leo 결정 필요) |
-| refund 처리 | 제외 vs 음수 조정 | **v1은 제외, 별도 refund 라인 병기** (★Leo 결정 필요) |
-| 다중 추천 중복 귀속 | first-touch vs last-touch vs 균등분배 | **last-touch 단일 귀속** |
+| 항목 | 정본 |
+|---|---|
+| 귀속 방식 | 명시 `recommendation_id`(=`direct`) 우선 → 동일 세션 SKU 일치 fallback(=`session`) → 그 외 `organic`/`unattributed`/`unknown` (사전 §2.9 R-K2) |
+| attribution window | **14d** — 사전 §4 (구 7d 초안은 superseded — 사전 §4) |
+| 재구매 판정 window | **90d** · 동일 `product_id` 기준(sku 변형 무관 — 사전 R-K5) (구 60d 초안은 superseded — 사전 §4) |
+| refund 처리 | order_item 단위 refund 이벤트 + `net_outcome_value_band` 재계산(사전 R-K4) — 리포트는 refund 라인 병기 |
+| 다중 추천 중복 귀속 | **last-touch 단일 귀속** 제안 유지(사전 미소유 — ★Leo 결정 필요). 단 하나의 rec_id가 여러 order_item 라인에 귀속되는 1:N은 허용(사전 R-K6) |
 
 리포트는 사용한 attribution 설정을 **헤더에 그대로 print**한다(재현성). 설정을 바꾸면 리포트 수치가 바뀐다는 사실을 숨기지 않는다.
 
@@ -127,37 +124,43 @@
 각 지표: 정의 · 공식 · 최소 쿼리 입력(테이블/이벤트) · grain · window · 안전등급.
 안전등급 `S` = 안전 우선 지표(억제·최적화 대상 아님), `C` = 커머스 지표, `L` = 학습 신호 지표.
 
-| # | metric_id | 정의 | 공식 | 최소 쿼리 입력 | grain | 안전등급 |
+| # | metric_id | 정의 | 공식 | 최소 쿼리 입력 (§2.1 소스만) | grain | 안전등급 |
 |---|---|---|---|---|---|---|
-| M1 | `recommendation_shown` | 추천 노출 수 | `count(rec_impression)` | `rec_impression` | recommendation | C |
-| M2 | `recommendation_clicked` | 추천 클릭 수 | `count(distinct recommendation_id in rec_click)` | `rec_click` | recommendation | C |
-| M3 | `recommendation_ctr` | 클릭률 | `M2 / M1` | `rec_impression`, `rec_click` | 전체/세그먼트 | C |
-| M4 | `rec_to_add_to_cart` | 추천→장바구니 전환 | `count(attributed add_to_cart) / M1` | `rec_impression`, `add_to_cart`(귀속) | recommendation | C |
-| M5 | `rec_to_order_paid` | 추천→결제완료 전환 | `count(attributed order.status=paid) / M1` | `rec_impression`, `order`, `order_line`(귀속) | recommendation | C |
-| M6 | `recommendation_revenue` | 추천 귀속 매출 | `sum(order_line.line_revenue where status=paid & attributed)` | `order`, `order_line` | 전체/reason_code | C |
-| M7 | `recommendation_gross_margin` | 추천 귀속 총마진 | `sum(order_line.line_margin where status=paid & attributed)` = Σ(revenue−cost) | `order_line` | 전체/reason_code | C |
-| M8 | `satisfaction_feedback_count` | 만족 피드백 수 | `count(feedback where feedback_type=satisfaction)` | `feedback` | 전체/sku | L |
-| M9 | `adverse_reaction_feedback_count` | **이상반응 피드백 수** | `count(feedback where feedback_type=adverse_reaction)` (+ severity 분해) | `feedback` | 전체/sku/severity | **S** |
-| M10 | `repurchase_count` | 재구매 수 | `count(repurchase_derived where interval_days ≤ window)` | `order`→`repurchase_derived` | furef/sku | L |
-| M11 | `top_reason_codes_by_outcome` | outcome별 상위 reason_code | `group by reason_code, outcome; count` | `rec_impression.reason_codes[]` × outcome join | reason_code×outcome | L |
-| M12 | `ingredient_response_signals` | 성분별 반응 신호 | 성분 축에서 만족/이상반응/재구매 분포 | `rec_impression`(product→ingredient map) × `feedback` × `repurchase_derived` | ingredient | **S/L** |
+| M1 | `recommendation_shown` | 추천 노출 수 | `count(RecommendationEvent 노출 stage)` | RecommendationEvent(V3-03) | recommendation | C |
+| M2 | `recommendation_clicked` | 추천 클릭 수 | `count(distinct recommendation_id, 클릭 stage)` | RecommendationEvent(V3-03) | recommendation | C |
+| M3 | `recommendation_ctr` | 클릭률 | `M2 / M1` | RecommendationEvent(V3-03) | 전체/세그먼트 | C |
+| M4 | `rec_to_add_to_cart` | 추천→장바구니 전환 | `count(장바구니 stage) / M1` | RecommendationEvent(V3-03) | recommendation | C |
+| M5 | `rec_to_order_paid` | 추천→결제완료 전환 | `count(귀속 paid — attribution_mode ∈ {direct, session}) / M1` | RecommendationEvent, rec_outcome_event(V3-04) | recommendation | C |
+| M6 | `recommendation_outcome_value` | 추천 귀속 결과 가치 분포 | `net_outcome_value_band` 분포(paid & 귀속) — 금액 합계 아님 | rec_outcome_event(V3-04) | 전체/reason_code | C |
+| M7 | `recommendation_margin_band` | 추천 귀속 마진 밴드 분포 | `margin_band`(사전 §2.14: low/medium/high) 분포 + `margin_coverage`(%) 병기 — 구 `gross_margin` 금액 합산은 superseded — 사전 §6 | rec_outcome_event(V3-04) | 전체/reason_code | C |
+| M8 | `satisfaction_feedback_count` | 만족 피드백 수 | `count(rec_outcome_feedback where semantic_label=satisfied)` (+ `satisfaction_score` 분포) | rec_outcome_feedback(V3-04) | 전체/product_id | L |
+| M9 | `adverse_feedback_count` | **이상반응 피드백 수** | `count(feedback_type=adverse_report OR semantic_label ∈ {adverse_skin_reaction, adverse_other})` (+ `adverse_severity`·`adverse_certainty` 분해 — 사전 §2.4/§2.5) | rec_outcome_feedback(V3-04) | 전체/product_id/severity | **S** |
+| M10 | `repurchase_count` | 재구매 수 | `count(동일 product_id 재구매, interval ≤ 90d — 사전 §4·R-K5)` | rec_outcome_event(paid)→repurchase 파생 | subject_key/product_id | L |
+| M11 | `top_reason_codes_by_outcome` | outcome별 상위 reason_code | `group by reason_code(사전 §2.15), outcome; count` | RecommendationEvent.reason_codes[] × outcome join | reason_code×outcome | L |
+| M12 | `ingredient_response_signals` | 성분별 반응 신호 | 성분 축에서 만족/이상반응/재구매 분포 | V3-05 product→ingredient 매핑 × rec_outcome_feedback × repurchase 파생 | ingredient | **S/L** |
+| M13 | `adverse_reaction_rate` | **이상반응 발생률** | `M9 / 귀속 paid 주문 수`(주 분모) — **노출 수(M1) 분모 병기** | rec_outcome_feedback, rec_outcome_event | 전체/product_id/기간 | **S** |
+| M14 | `safety_suppression_effectiveness` | **suppression 효과 검증** | suppress 대상(`safety_frozen`/`safety_block` target — 사전 §2.13)의 **재노출 count = 0** 확인 | safety suppression 목록(V3-07) × RecommendationEvent | subject_key×target | **S** |
+| M15 | `safety_block_zero_exposure` | **R3 불변식 검증(block ⇒ 노출 0)** | `count(노출 stage where safety_gate_result=block)` = **0** | RecommendationEvent | 전체/기간 | **S** |
 
 ### 5.1 지표별 최소 쿼리 입력 상세
 
-- **M1 recommendation_shown** — 입력: `rec_impression`. 필터: 리포트 기간 `shown_at ∈ [from,to)`. 중복 노출 정책(동일 rec 재노출 카운트 여부)은 ★Leo 결정 필요(기본: 노출 이벤트 그대로 카운트).
-- **M2 recommendation_clicked** — 입력: `rec_click` join `rec_impression`(orphan click 제외). distinct `recommendation_id`.
+- **M1 recommendation_shown** — 입력: RecommendationEvent 노출 stage(V3-03). 필터: 리포트 기간. 중복 노출 정책(동일 rec 재노출 카운트 여부)은 ★Leo 결정 필요(기본: 노출 이벤트 그대로 카운트).
+- **M2 recommendation_clicked** — 입력: RecommendationEvent 클릭 stage(orphan click 제외). distinct `recommendation_id`.
 - **M3 CTR** — M2/M1. 분모 0 방어(표시 `n/a`). 세그먼트: reason_code, decision_type, safety_gate_result별 분해 옵션.
-- **M4 rec→add_to_cart** — 입력: `add_to_cart` 중 귀속된 것(§4). 분모 M1. add_to_cart는 노출보다 뒤(added_at ≥ shown_at).
-- **M5 rec→order_paid** — 입력: `order`(status=paid) join `order_line`(귀속). 분모 M1. paid_at ≥ shown_at & window 내.
-- **M6 revenue** — 입력: `order_line.line_revenue` where status=paid & 귀속 & window. currency 혼합 시 통화별 분리(환산 금지 — ★Leo 결정 필요: 기준통화·환율 소스).
-- **M7 gross_margin** — 입력: `order_line.line_margin`. `unit_cost` 없으면 해당 라인은 margin 집계 제외 + `margin_coverage%`(cost 있는 라인 비율) 병기. cost 없는 걸 0으로 넣어 마진을 부풀리지 않는다.
-- **M8 satisfaction_count** — 입력: `feedback` type=satisfaction. sku/기간 group.
-- **M9 adverse_reaction_count** — 입력: `feedback` type=adverse_reaction. severity 분해 필수. **이 지표는 0이 아니면 리포트 최상단 SAFETY 섹션에 강조**. 낮게 보이게 하는 필터·반올림·집계 은닉 금지.
-- **M10 repurchase_count** — 입력: `order`(paid)에서 동일 furef+sku 2회 이상, interval_days ≤ 재구매 window. `repurchase_derived` 파생 규칙 고정 필요.
-- **M11 top_reason_codes_by_outcome** — 입력: `rec_impression.reason_codes[]`(배열 unnest) × 각 outcome 도달 집합. outcome축(§3.1)마다 상위 N reason_code. reason_code는 원본 그대로(재분류 금지).
-- **M12 ingredient_response_signals** — 입력: product→ingredient 매핑(Cosmile 카탈로그) × feedback(satisfaction/adverse) × repurchase. 성분당 (긍정신호, adverse신호, 재구매) 카운트. **adverse가 붙은 성분은 안전 신호로 우선 표기**, "잘 팔리는 성분"으로만 요약하지 않는다.
+- **M4 rec→add_to_cart** — 입력: RecommendationEvent 장바구니 stage. 분모 M1. 장바구니는 노출보다 뒤(timestamp 순서).
+- **M5 rec→order_paid** — 입력: rec_outcome_event(paid & `attribution_mode ∈ {direct, session}`). 분모 M1. paid ≥ shown & attribution window(14d — 사전 §4) 내.
+- **M6 outcome_value** — 입력: rec_outcome_event.`net_outcome_value_band` where paid & 귀속 & window. **밴드 분포만** — 정확 금액 합산(구 `line_revenue` 합계)은 superseded — 사전 §6(정확 실매가/원가 저장 금지·V3-05 Hard Stop 유지). currency 혼합 시 통화별 분리(환산 금지 — ★Leo 결정 필요: 기준통화·환율 소스).
+- **M7 margin_band** — 입력: rec_outcome_event.`margin_band`(사전 §2.14). `margin_band` 분포 + `margin_coverage%`(밴드 판정 가능 라인 비율) 병기. 밴드 미상 라인은 분포에서 제외하고 coverage로 정직하게 드러낸다 — 구 `gross_margin`=Σ(revenue−cost) 금액 지표는 superseded — 사전 §6.
+- **M8 satisfaction_count** — 입력: rec_outcome_feedback where `semantic_label=satisfied`(사전 §2.12) + `satisfaction_score`(1–5) 분포. product_id/기간 group.
+- **M9 adverse_count** — 입력: rec_outcome_feedback where `feedback_type=adverse_report` OR `semantic_label ∈ {adverse_skin_reaction, adverse_other}`. `adverse_severity`(low/moderate/severe — 사전 §2.4)·`adverse_certainty`(사전 §2.5) 분해 필수. **이 지표는 0이 아니면 리포트 최상단 SAFETY 섹션에 강조**. 낮게 보이게 하는 필터·반올림·집계 은닉 금지.
+- **M10 repurchase_count** — 입력: rec_outcome_event(paid)에서 동일 `subject_key` + 동일 **`product_id`**(sku 변형 무관 — 사전 R-K5) 2회 이상, interval ≤ 90d(사전 §4). 파생 규칙은 본 절로 고정(저장 신설 없음).
+- **M11 top_reason_codes_by_outcome** — 입력: RecommendationEvent.`reason_codes[]`(배열 unnest·값 집합 = 사전 §2.15) × 각 outcome 도달 집합. outcome축(§3.1)마다 상위 N reason_code. reason_code는 원본 그대로(재분류 금지).
+- **M12 ingredient_response_signals** — 입력: product→ingredient 매핑(V3-05) × rec_outcome_feedback(satisfied/adverse) × repurchase 파생. 성분당 (긍정신호, adverse신호, 재구매) 카운트. **adverse가 붙은 성분은 안전 신호로 우선 표기**, "잘 팔리는 성분"으로만 요약하지 않는다.
+- **M13 adverse_reaction_rate** — 공식: `M9 / 귀속 paid 주문 수`(주 분모 = attribution_mode ∈ {direct, session} & paid 주문 수). **노출 수(M1) 분모 버전을 반드시 병기**(분모 선택으로 rate가 달라짐을 숨기지 않는다). 기간/product 비교는 count(M9)가 아니라 rate(M13)로 한다 — count만으로는 노출/판매량 변화에 왜곡된다.
+- **M14 safety_suppression_effectiveness** — 입력: V3-07 suppression 대상 목록(`safety_frozen`/`safety_block`이 걸린 (subject_key, target)) × RecommendationEvent. 검증: suppress 발효 시점 이후 해당 target의 **재노출 count = 0**. 0이 아니면 리포트 최상단 SAFETY 섹션에 위반으로 표기 + STOP 후보(은닉 금지). loop의 safety 측 검증 필요조건.
+- **M15 safety_block_zero_exposure** — R3 불변식(block ⇒ 고객 노출 0) 검증: `safety_gate_result=block`인 추천의 노출 stage count = **0**. 0이 아니면 즉시 SAFETY 위반 보고.
 
-> M12는 학습 loop의 핵심 신호(다음 추천 개선의 근거)지만, 성분-이상반응 상관을 **의학적 인과로 단정하지 않는다**. 리포트는 "신호(signal) count"만 제시하고 medical assertion을 만들지 않는다. Candidate→LongTermMemoryFact 승격은 단일 신호로 확정하지 않으며 그 기준은 `COSMILE_MEMORY_V3_05_...` 소유.
+> M12는 학습 loop의 핵심 신호(다음 추천 개선의 근거)지만, 성분-이상반응 상관을 **의학적 인과로 단정하지 않는다**. 리포트는 "신호(signal) count"만 제시하고 medical assertion을 만들지 않는다. Candidate→ltm_fact 승격은 단일 신호로 확정하지 않으며 그 기준은 `COSMILE_MEMORY_V3_06_MEMORY_FACT_CANDIDATE_PROMOTION_RULES_20260706.md` 소유(문턱 값은 사전 §3).
 
 ---
 
@@ -169,18 +172,18 @@
 
 ```
 # Cosmile Memory V3 — Analytics Report (period: <from>~<to>)
-> mode: schema/validate · read-only · attribution=<explicit+last-touch, window=7d> · generated_at=<ts>
+> mode: schema/validate · read-only · attribution=<direct+session, window=14d(사전 §4)> · generated_at=<ts>
 
-## 0. SAFETY FIRST          ← adverse_reaction(M9) · ingredient adverse 신호(M12) 최상단
+## 0. SAFETY FIRST          ← adverse count(M9)·rate(M13, 분모 병기) · suppression 검증(M14) · R3 block⇒노출0(M15) · ingredient adverse 신호(M12) 최상단
 ## 1. Funnel                ← M1 shown → M2 clicked(CTR M3) → M4 cart → M5 order_paid
-## 2. Commerce Outcome      ← M6 revenue · M7 gross_margin(+margin_coverage%)
+## 2. Commerce Outcome      ← M6 net_outcome_value_band 분포 · M7 margin_band 분포(+margin_coverage%)
 ## 3. Learning Signals      ← M8 satisfaction · M10 repurchase · M12 ingredient(비-adverse 부분)
 ## 4. Reason Code Breakdown ← M11 outcome별 top reason_codes
-## 5. Data Coverage / Caveats ← 귀속 커버리지, cost 커버리지, small-cell 억제, null 비율
+## 5. Data Coverage / Caveats ← 귀속 커버리지, margin_coverage, small-cell 억제, null 비율
 ```
 
 - SAFETY FIRST를 **0번(맨 위)** 에 고정: 이상반응이 매출 지표 아래로 밀려 시야에서 사라지지 않게 한다.
-- 5번 Data Coverage에 **정직 델타**를 명시: 귀속 실패 건수, cost 없는 라인 비율, 억제된 small-cell 수, synthetic vs real fixture 여부.
+- 5번 Data Coverage에 **정직 델타**를 명시: 귀속 실패 건수(attribution_mode=unattributed/unknown), margin_band 미상 라인 비율(margin_coverage), 억제된 small-cell 수, synthetic vs real fixture 여부.
 
 ### 6.2 표현 규칙
 
@@ -193,8 +196,8 @@
 
 ## 7. 프라이버시 / 데이터 최소화
 
-- 리포트는 **집계 수치만** 산출한다. raw text · 상담 원문 · PII · 개별 order_id/customer id · raw furef/subject_ref 값을 리포트에 싣지 않는다.
-- furef/subject_ref는 **grain(집계 단위)로만** 사용하고 출력하지 않는다.
+- 리포트는 **집계 수치만** 산출한다. raw text · 상담 원문 · PII · 개별 order_id/customer id · raw subject_ref/anonymous_ref 값을 리포트에 싣지 않는다.
+- subject_ref/anonymous_ref는 **grain(집계 단위)로만** 사용하고 출력하지 않는다(구 furef grain은 superseded — §2.2).
 - **small-cell 억제**: 셀 카운트 < 임계값(기본 `k=5`, ★Leo 결정 필요)이면 `<k`로 마스킹. 특히 이상반응·성분 단위 소집단 재식별 방지.
 - Foundation으로 전달되는 것은 request-scoped minimized `memory_context`뿐이며(raw_text_stored=False), **본 리포트는 Foundation을 읽지 않는다**(service-local read only).
 - 리포트 산출물 저장 위치·보존기간은 control 산출물 정책을 따른다(prod 저장 금지, secret 금지).
@@ -203,7 +206,7 @@
 
 ## 8. 안전/역할 경계 가드레일
 
-- **Safety > commerce.** M9/M12의 adverse 신호는 CTR·revenue·margin 최적화 대상이 아니다. "이상반응을 줄여 보이게" 하는 어떤 집계 변형도 금지(clean-not-compress 상속).
+- **Safety > commerce.** M9/M12/M13/M14/M15의 adverse·suppression 신호는 CTR·outcome_value·margin_band 최적화 대상이 아니다. "이상반응을 줄여 보이게" 하는 어떤 집계 변형도 금지(clean-not-compress 상속).
 - adverse_reaction·"계속 써도 돼?" 류 신호는 안전 우선으로 분류되며, 리포트는 이를 **강조**한다(숨김/평탄화 금지).
 - Foundation = validate/gate/reasoning **only**. 리포트 생성은 service-local 분석이며 Foundation을 durable memory DB로 만들지 않는다.
 - 휴리스틱 금지: reason_code·outcome 재분류를 키워드/정규식 추측으로 하지 않는다. 이벤트에 실린 구조화된 값만 group-by.
@@ -213,23 +216,25 @@
 
 ## 9. 산출 단계(Reviewable Plan, 구현 아님)
 
-설계 순서만 명시(코드 없음): **설계(본 문서) → 승인 → 이벤트 계약 확정(`V3_03`) → synthetic/readiness fixture로 CLI 리포트 초안 → control regression(수치 재현·안전 지표 배치 검증) → report**. 이후 별도 train에서만 Slack/대시보드/AI-Analyst 검토.
+설계 순서만 명시(코드 없음): **설계(본 문서) → 승인 → 이벤트/결과 계약 확정(`COSMILE_MEMORY_V3_03_RECOMMENDATION_EVENT_CONTRACT_20260706.md`·`COSMILE_MEMORY_V3_04_ORDER_REVENUE_FEEDBACK_OUTCOME_CONTRACT_20260706.md`) → synthetic/readiness fixture로 CLI 리포트 초안 → control regression(수치 재현·안전 지표 배치 검증) → report**. 이후 별도 train에서만 Slack/대시보드/AI-Analyst 검토.
 
 검증 목표(예시, 구현 시 채움):
 - 동일 fixture·동일 attribution 설정에서 리포트 수치 **결정적 재현**.
-- adverse 지표가 항상 §6.1 SAFETY FIRST(0번)에 위치.
-- margin_coverage < 100%일 때 cost 결측을 0으로 채우지 않음(마진 부풀림 0).
+- adverse 지표(M9·M13 rate 분모 병기 포함)가 항상 §6.1 SAFETY FIRST(0번)에 위치.
+- margin_coverage < 100%일 때 밴드 미상 라인을 임의 밴드/0으로 채우지 않음(마진 부풀림 0).
+- suppression 검증(M14)·R3 검증(M15)이 synthetic fixture에서 위반 주입 시 위반을 실제로 검출함(검증 지표 자체의 동작 확인).
 - small-cell 억제가 이상반응/성분 셀에 적용됨.
 
 ---
 
 ## 10. Open Questions / ★Leo 결정 필요 (요약)
 
-- attribution window(제안 7d) · 재구매 window(제안 60d) · refund 처리(제외 vs 음수) · 다중추천 귀속(제안 last-touch).
+- (사전으로 이관) attribution window **14d**·재구매 window **90d** = 사전 §4 ★Leo 파라미터 표 소유(구 7d/60d 초안 superseded — 사전 §4). refund 처리 = 사전 R-K4(order_item 단위)로 확정 — 잔여는 리포트 병기 표기 방식만.
+- 다중추천 중복 귀속(제안 last-touch 단일 — 사전 미소유·★Leo).
 - currency 혼합 시 기준통화/환율 소스(또는 통화별 분리 유지).
 - 중복 노출 카운트 정책(동일 rec 재노출).
 - small-cell 임계값 `k`(제안 5).
-- V3 시리즈 형제 문서 파일명 번호 고정.
+- (해소) V3 시리즈 형제 문서 파일명 번호 고정 — 실제 파일명으로 교정 완료(상단 상호참조).
 - 리포트 산출물 저장/보존 정책(control 산출물 위치·기간).
 
 ---
