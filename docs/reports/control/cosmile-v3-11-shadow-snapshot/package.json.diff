@@ -1,16 +1,3 @@
-commit b744871101869a0a8a011f70155eb0e96c7f1f47
-Author: Leo Han <heropapa.han@gmail.com>
-Date:   Mon Jul 6 18:33:12 2026 +0000
-
-    feat(v3-11): COSMILE MEMORY V3-11 provider-independent implementation (ids/attribution/adverse/memoryCandidate/types + 35 tests)
-    
-    - single-source id generators (rec_v3_+ULID·subj_v2_·anon_v3_) — no reuse of identityRef (de-anon) · L1 fail-closed
-    - last-touch attribution(D1)·adverse D4 severity+§5.3 matrix·R-C1 tombstone/must_not_reappear·consent gate(D2)·P1 demotion exempt·margin analytics-only(D3)
-    - 35/35 provider-independent tests · existing vitest regression 10/10 · no prisma/DB/migration/secret
-    
-    Co-Authored-By: Claude Opus 4.8 (1M context) <noreply@anthropic.com>
-    Claude-Session: https://claude.ai/code/session_017CNBALCrRTQi7nBdntsVf7
-
 diff --git a/app/package.json b/app/package.json
 index fa7898b..9bcdef3 100644
 --- a/app/package.json
