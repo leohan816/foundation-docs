@@ -1,0 +1,39 @@
+
+    feat(v3-11c): RecommendationEvent event wiring — trackRecommendationEvent(신설) + cart add_to_cart 병기 emit(shadow/flag OFF)
+    
+    - D-C1 신설: trackRecommendationEvent(commerceEventService 확장 아님)·ids.ts 생성기 사용(재발명 0)
+    - flag OFF 기본(COSMILE_REC_EVENT_ENABLED)·shadow inert·subject_ref XOR anonymous_ref·safety/do_not reason_codes 필터
+    - fail-open(실패해도 cart 미파손)이나 observable(written/skipped/error)
+    - cart/items POST에 병기(기존 trackCommerceEvent 무변경·additive)·vitest @ alias·prisma client 재생성
+    - provider-independent 10/10·전체 63/63·DB-touch 37/37(+DB1f reasonCodes JSONB)·기존 commerce flow 무변경
+    
+
+diff --git a/app/src/app/api/cart/items/route.ts b/app/src/app/api/cart/items/route.ts
+index 9c13c2d..775b476 100644
+--- a/app/src/app/api/cart/items/route.ts
++++ b/app/src/app/api/cart/items/route.ts
+@@ -3,6 +3,7 @@ import { getShopper } from "@/lib/shopper";
+ import { addItem } from "@/lib/cart";
+ import { resolveUnitPrice } from "@/lib/sku";
+ import { trackCommerceEvent } from "@/lib/commerceEventService";
++import { trackRecommendationEvent } from "@/lib/recommendationEventService";
+ import { MOCK_USER } from "@/lib/mockUser";
+ 
+ // 장바구니 담기. 로그인=userId / 비회원=guestId. ★서버가 가격 결정. 같은 상품=수량 증가.
+@@ -42,5 +43,16 @@ export async function POST(req: NextRequest) {
+     locale: MOCK_USER.locale,
+     properties: { quantity, unitPrice: resolved.price, skuId: resolved.skuId ?? undefined, offerId: resolved.offerId ?? undefined, offerType: resolved.offerType, guestId: o.guestId ?? undefined },
+   });
++  // ★V3-11C shadow(flag OFF 기본): RecommendationEvent 병기 emit. fail-open — 실패해도 cart 미파손(observable result만).
++  //   subject_ref XOR anonymous_ref = isGuest로 분기. sessionId=null(G-C5 이월). reasonCodes=client optional(safety/do_not 계열만 기록).
++  await trackRecommendationEvent({
++    eventType: "recommendation_added_to_cart",
++    userId: o.isGuest ? undefined : (o.userId ?? undefined),
++    guestId: o.isGuest ? (o.guestId ?? undefined) : undefined,
++    sessionId: null,
++    productId,
++    skuId: resolved.skuId ?? null,
++    reasonCodes: Array.isArray(body.reasonCodes) ? body.reasonCodes : [],
++  });
+   return NextResponse.json({ ok: true, itemId: item.id, quantity: item.quantity, isGuest: o.isGuest });
+ }
