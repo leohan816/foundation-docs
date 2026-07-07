@@ -69,13 +69,15 @@ ALTER TABLE "LongTermMemoryFact"
     ADD COLUMN "evidenceCount" INTEGER NOT NULL DEFAULT 0,
     ADD COLUMN "distinctSignalSourceCount" INTEGER NOT NULL DEFAULT 0,
     ADD COLUMN "status" TEXT NOT NULL DEFAULT 'candidate',
-    ADD COLUMN "lifecycleState" TEXT NOT NULL DEFAULT 'active',
+    ADD COLUMN "lifecycleState" TEXT NOT NULL DEFAULT 'pending_evidence',
     ADD COLUMN "secretVersion" SMALLINT NOT NULL DEFAULT 1;
 ALTER TABLE "LongTermMemoryFact"
-    ADD CONSTRAINT "LongTermMemoryFact_direction_chk" CHECK ("direction" IS NULL OR "direction" IN ('positive','negative','safety')),
+    -- P-A(사전 §2.1): direction 정본 5값(behavioral=repurchase/seasonal·context=skin_condition). active/superseded는 factState 값이지 direction 아님.
+    ADD CONSTRAINT "LongTermMemoryFact_direction_chk" CHECK ("direction" IS NULL OR "direction" IN ('positive','negative','safety','behavioral','context')),
     ADD CONSTRAINT "LongTermMemoryFact_safetyFlag_chk" CHECK ("safetyFlag" IS NULL OR "safetyFlag" IN ('safety_frozen','safety_caution','safety_block','safety_resolved','pregnancy_nursing_context')),
     ADD CONSTRAINT "LongTermMemoryFact_status_chk" CHECK ("status" IN ('candidate','approved','rejected')),
-    ADD CONSTRAINT "LongTermMemoryFact_lifecycle_chk" CHECK ("lifecycleState" IN ('active','demoted','superseded'));
+    -- P-B(사전 §2.2): lifecycle_state 정본 7값(status/factState와 별개 직교 컬럼). active/superseded는 lifecycleState 값 아님.
+    ADD CONSTRAINT "LongTermMemoryFact_lifecycle_chk" CHECK ("lifecycleState" IN ('pending_evidence','safety_frozen','human_review_required','demoted','stale','expired','merged'));
 
 -- 5) secretVersion (D-3 readiness): 신규 rec model 3종·LongTermMemoryFact(위)에 포함.
 --    ★SubjectRefMap."secretVersion"는 base init에 이미 존재(20260705 subjectrefmap_secret_version) → 재추가 안 함(D-3 pre-satisfied).

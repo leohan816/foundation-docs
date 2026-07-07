@@ -85,12 +85,25 @@ cur = conn.cursor(); cur.execute("INSERT INTO \"LongTermMemoryFact\"(\"factId\",
 detect = scalar(INV2); conn.rollback(); cur.close()
 ok("DB5b INV-DB-2 counter detects injected violation (>=1·비-tautology)", detect >= 1)
 
-# T-DB-6 INV-DB-3 safety-priority: safety fact(direction=safety OR safetyFlag not null)는 demoted 금지
-INV3 = "SELECT count(*) FROM \"LongTermMemoryFact\" WHERE (\"direction\"='safety' OR \"safetyFlag\" IS NOT NULL) AND \"lifecycleState\"='demoted'"
-ok("DB6a INV-DB-3 counter = 0 (safety fact 강등 없음)", scalar(INV3) == 0)
+# T-DB-6 (P-C 정정) INV-DB-3 DB-SUBSET: safety fact/ safetyFlag fact demotion 금지만 측정.
+# ★V3-08 원 INV-DB-3(adverse signal 후 safety_reviewed 없는 active recommendation 금지)은 필요 컬럼/배선 부재 → Event/Safety Gate Wiring 단계로 이월(여기서 미측정).
+INV3_SUBSET = "SELECT count(*) FROM \"LongTermMemoryFact\" WHERE (\"direction\"='safety' OR \"safetyFlag\" IS NOT NULL) AND \"lifecycleState\"='demoted'"
+ok("DB6a INV-DB-3[DB-subset: safety fact demotion 금지] counter = 0", scalar(INV3_SUBSET) == 0)
 cur = conn.cursor(); cur.execute("UPDATE \"LongTermMemoryFact\" SET \"lifecycleState\"='demoted' WHERE \"factId\"='f_safe'")
-detect3 = scalar(INV3); conn.rollback(); cur.close()
-ok("DB6b INV-DB-3 detects demoted safety fact (>=1·비-tautology)", detect3 >= 1)
+detect3 = scalar(INV3_SUBSET); conn.rollback(); cur.close()
+ok("DB6b INV-DB-3[DB-subset] detects demoted safety fact (>=1·비-tautology)", detect3 >= 1)
+
+# T-DB-8 (P-A 사전 §2.1) direction 정본 5값: behavioral/context 통과·구값 거부
+expect_ok("DB8a direction behavioral 통과(repurchase/seasonal)", "INSERT INTO \"LongTermMemoryFact\"(\"factId\",\"subjectRef\",\"type\",\"normValue\",\"direction\") VALUES('d_beh',%s,'repurchase_pattern','p9','behavioral')", (SUBJ,))
+expect_ok("DB8b direction context 통과(skin_condition)", "INSERT INTO \"LongTermMemoryFact\"(\"factId\",\"subjectRef\",\"type\",\"normValue\",\"direction\") VALUES('d_ctx',%s,'skin_condition_context','rosacea','context')", (SUBJ,))
+expect_reject("DB8c direction 구/오류값 'up' 거부", "INSERT INTO \"LongTermMemoryFact\"(\"factId\",\"subjectRef\",\"type\",\"normValue\",\"direction\") VALUES('d_bad',%s,'ingredient_affinity','x','up')", (SUBJ,))
+
+# T-DB-9 (P-B 사전 §2.2) lifecycleState 정본 7값: 정본값 통과·active/superseded 거부(factState 값과 혼동 금지)
+expect_ok("DB9a lifecycleState pending_evidence 통과", "INSERT INTO \"LongTermMemoryFact\"(\"factId\",\"subjectRef\",\"type\",\"normValue\",\"lifecycleState\") VALUES('l_pe',%s,'category_preference','c1','pending_evidence')", (SUBJ,))
+expect_ok("DB9b lifecycleState safety_frozen 통과", "INSERT INTO \"LongTermMemoryFact\"(\"factId\",\"subjectRef\",\"type\",\"normValue\",\"lifecycleState\") VALUES('l_sf',%s,'category_preference','c2','safety_frozen')", (SUBJ,))
+expect_ok("DB9c lifecycleState expired 통과", "INSERT INTO \"LongTermMemoryFact\"(\"factId\",\"subjectRef\",\"type\",\"normValue\",\"lifecycleState\") VALUES('l_ex',%s,'category_preference','c3','expired')", (SUBJ,))
+expect_reject("DB9d lifecycleState 'active' 거부(factState 값이지 lifecycleState 아님)", "INSERT INTO \"LongTermMemoryFact\"(\"factId\",\"subjectRef\",\"type\",\"normValue\",\"lifecycleState\") VALUES('l_act',%s,'category_preference','c4','active')", (SUBJ,))
+expect_reject("DB9e lifecycleState 'superseded' 거부", "INSERT INTO \"LongTermMemoryFact\"(\"factId\",\"subjectRef\",\"type\",\"normValue\",\"lifecycleState\") VALUES('l_sup',%s,'category_preference','c5','superseded')", (SUBJ,))
 
 # T-DB-7 partial-unique (INV-DB-1): 동일 active identity 중복 거부·deleted는 예외
 expect_ok("DB7a first active fact", "INSERT INTO \"LongTermMemoryFact\"(\"factId\",\"subjectRef\",\"type\",\"normValue\",\"factState\") VALUES('u1',%s,'concern','acne','active')", (SUBJ,))

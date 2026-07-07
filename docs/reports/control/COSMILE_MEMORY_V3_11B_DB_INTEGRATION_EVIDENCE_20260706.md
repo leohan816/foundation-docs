@@ -67,3 +67,18 @@ prod DB 접근·live emit·real secret/Vault·prod rotation·main merge·PR·**G
 
 ## 무결성
 V3-11B non-prod DB integration · ephemeral Postgres only · additive(up DROP 0) · DB-touch 28/28·INV-DB-2/3=0(+위반 detect)·rollback 복원·partial-unique·CHECK 구값 거부 · provider-independent 43/43·regression 10/10 무영향 · prod/live/main/secret/Vault 0 · §9 미증명 정직 명시 · G13/semantic/ranking/pipeline 이월.
+
+---
+
+## Addendum — V3-11B DB patch batch (2026-07-07 · Cosmile shadow `6fd7815`)
+> 독립 검수 `V3_11B_DB_NEEDS_PATCH`(P-A/P-B/P-C) 이행. ★scope 확대 없음·non-prod ephemeral·prod/live/main/secret 0. 정본 실 사전 직접 대조.
+
+| P | 문제 | patch | 검증 |
+|---|---|---|---|
+| **P-A** direction CHECK | 구 3값(positive/negative/safety) — §2.1 정본 5값 누락 | CHECK = positive\|negative\|safety\|**behavioral\|context**(§2.1 실 table 대조) | DB8a behavioral·DB8b context 통과·DB8c 구값 거부 |
+| **P-B** lifecycleState CHECK | 구 active/demoted/superseded — §2.2 정본 아님(active/superseded=factState 값) | CHECK = pending_evidence\|safety_frozen\|human_review_required\|demoted\|stale\|expired\|merged(7)·default active→**pending_evidence** | DB9a/b/c 정본값 통과·DB9d active·DB9e superseded 거부 |
+| **P-C** INV-DB-3 라벨 과장 | "INV-DB-3 전체 충족"으로 읽힘 | counter를 **[DB-subset: safety fact demotion 금지]**로 정직 라벨. ★원 INV-DB-3(adverse signal 후 safety_reviewed 없는 active recommendation 금지)은 필요 컬럼/배선 부재 → **Event/Safety Gate Wiring 단계 이월**(여기 미측정) | DB6a/b 라벨 정정 |
+
+- 테스트: **DB-touch 36/36**(기존 28 + P-A 3 + P-B 5)·INV-DB-2=0·INV-DB-3[DB-subset]=0·**rollback 정합 YES(전항: base 40→up 43→down 40·additive 컬럼 0·base 무손상)**·provider-independent **43/43** 무영향·prisma schema valid·skip/xfail 0·expected 하향 0.
+- ★**정정된 이해**: INV-DB-3 **DB-subset만** 이번 층에서 집행(safety/safetyFlag fact demotion 금지). 완전 INV-DB-3은 event wiring 후속.
+- Cosmile shadow `6fd7815`(구 4c22c83·main 3ba91e0 무변경). ephemeral disposable·prod 무접촉.
