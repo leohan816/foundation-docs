@@ -86,14 +86,24 @@ Required artifacts:
 
 For implementation jobs, Advisor job folders may also include:
 - `06_WORKER_HANDOFF_PROMPT.md`
+- `06_WORKER_RUN_PROMPT.md`
 - `07_SENTINEL_HANDOFF_PROMPT.md`
+- `07_SENTINEL_RUN_PROMPT.md`
 - `08_SERVICE_REVIEW_HANDOFF_PROMPT.md`
+- `08_SERVICE_REVIEW_RUN_PROMPT.md`
 - `09_REWORK_HANDOFF_PROMPT.md`
+- `09_REWORK_RUN_PROMPT.md`
 - `10_LOOP_STATE.md`
 
 Brief files define standards, scope, allowed changes, tests, evidence, and review criteria.
 
-Handoff prompt files are the actual copy-paste-ready prompts Leo/GPT pastes into separate role-specific sessions.
+Full handoff prompt files contain the complete role instructions.
+
+Short run prompt / launcher files are the default prompts Leo/GPT pastes into separate role-specific sessions.
+
+Until Hermes is introduced, Leo/GPT manually pastes short run prompts into target sessions. After Hermes is introduced, Hermes reads and executes the `READ_AND_EXECUTE` path from the short run prompt.
+
+Long instructions stay in full handoff prompt files. Do not require Leo/GPT to manually copy large full handoff prompt bodies when a short run prompt exists.
 
 Every handoff prompt must start with this target header before the copy-paste prompt body:
 
@@ -127,18 +137,20 @@ Loop state records current status, completed actors, blocking findings, rework a
    - `07_SENTINEL_HANDOFF_PROMPT.md` for independent technical review sessions.
    - `08_SERVICE_REVIEW_HANDOFF_PROMPT.md` when service review is required.
    - `09_REWORK_HANDOFF_PROMPT.md` when a patch loop is needed.
-6. Leo/GPT checks the target header, then manually pastes handoff prompts into separate Worker, Sentinel, Service Reviewer, or rework sessions.
-7. Worker, Sentinel, and Service Reviewer results must be returned to Advisor.
-8. Advisor compares returned results against:
+6. Advisor writes matching short run prompts when role sessions are needed. The run prompt points to the full handoff prompt with `READ_AND_EXECUTE`.
+7. Leo/GPT checks the target header, then manually pastes the short run prompt into the separate Worker, Sentinel, Service Reviewer, or rework session.
+8. If no short run prompt exists, Leo/GPT may use the full handoff prompt only after confirming the target header.
+9. Worker, Sentinel, and Service Reviewer results must be returned to Advisor.
+10. Advisor compares returned results against:
    - original Leo/GPT instruction
    - Advisor brief
    - Worker brief
    - Reviewer brief
    - actual diff/result/evidence
-9. If Sentinel or Service Review finds issues, Advisor must not proceed to final audit. Advisor classifies each issue and decides whether it is patchable within approved scope or requires Leo/GPT decision.
-10. If patchable within approved scope, Advisor writes `09_REWORK_HANDOFF_PROMPT.md` for Worker and writes or updates the Sentinel re-review handoff. Repeat until review verdict is `PASS`, `PASS_WITH_RISK`, accepted-risk equivalent, or STOP.
-11. Advisor writes `05_FINAL_AUDIT.md` only after Worker result and all required reviews are complete.
-12. Final approval remains Leo/GPT only.
+11. If Sentinel or Service Review finds issues, Advisor must not proceed to final audit. Advisor classifies each issue and decides whether it is patchable within approved scope or requires Leo/GPT decision.
+12. If patchable within approved scope, Advisor writes `09_REWORK_HANDOFF_PROMPT.md` and `09_REWORK_RUN_PROMPT.md` for Worker and writes or updates the Sentinel re-review handoff. Repeat until review verdict is `PASS`, `PASS_WITH_RISK`, accepted-risk equivalent, or STOP.
+13. Advisor writes `05_FINAL_AUDIT.md` only after Worker result and all required reviews are complete.
+14. Final approval remains Leo/GPT only.
 
 ## Skill role boundary
 
@@ -199,8 +211,9 @@ Routing rules:
 3. If the next actor is Service Reviewer, state clearly when it should be used.
 4. If no role session should be started, state `STOP` / `NEEDS_LEO_DECISION`.
 5. If multiple actors exist, list them separately.
-6. Always include the exact file path of the handoff prompt.
+6. Always include the exact file path of the short run prompt when one exists; otherwise include the full handoff prompt path.
 7. Always state where the result must be returned.
+8. `NEXT ACTION ROUTING` should prioritize the short run prompt body over the full handoff prompt body.
 
 ## Instruction validation rule
 

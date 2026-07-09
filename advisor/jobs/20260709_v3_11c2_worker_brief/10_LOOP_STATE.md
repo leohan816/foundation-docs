@@ -16,13 +16,15 @@ Advisor
 
 Worker
 
-## Available Handoff Prompt
+## Available Prompts
 
 - `06_WORKER_HANDOFF_PROMPT.md`
+- `06_WORKER_RUN_PROMPT.md`
 
 Target header status:
 
 - `06_WORKER_HANDOFF_PROMPT.md` starts with `TARGET_ACTOR: Worker`.
+- `06_WORKER_RUN_PROMPT.md` starts with `TARGET_ACTOR: Worker`.
 - Target session is a separate Worker role session, never the Advisor session.
 
 ## Completed Artifacts
@@ -33,6 +35,7 @@ Target header status:
 - `03_SENTINEL_REVIEW_BRIEF.md`
 - `04_SERVICE_REVIEW_BRIEF.md`
 - `06_WORKER_HANDOFF_PROMPT.md`
+- `06_WORKER_RUN_PROMPT.md`
 - `10_LOOP_STATE.md`
 - `index.md`
 
@@ -51,7 +54,8 @@ Target header status:
 
 ## Loop Rules
 
-- Leo/GPT manually pastes `06_WORKER_HANDOFF_PROMPT.md` into a separate Worker session.
+- Leo/GPT manually pastes `06_WORKER_RUN_PROMPT.md` into a separate Worker session.
+- Worker opens and executes the full handoff prompt at `06_WORKER_HANDOFF_PROMPT.md`.
 - Worker result returns to Advisor.
 - Advisor compares the result against the original Leo/GPT instruction, Advisor brief, Worker brief, actual diff, tests, and evidence.
 - Advisor writes or updates Sentinel and Service Review handoff prompts after Worker result exists.
@@ -61,7 +65,7 @@ Target header status:
 
 ## Next Required Action
 
-Leo/GPT should paste `06_WORKER_HANDOFF_PROMPT.md` into a separate Worker session.
+Leo/GPT should paste `06_WORKER_RUN_PROMPT.md` into a separate Worker session.
 
 ## NEXT ACTION ROUTING
 
@@ -72,10 +76,10 @@ Leo/GPT should paste `06_WORKER_HANDOFF_PROMPT.md` into a separate Worker sessio
   Separate Worker session
 
 - Prompt/file to use:
-  `../foundation-docs/advisor/jobs/20260709_v3_11c2_worker_brief/06_WORKER_HANDOFF_PROMPT.md`
+  `../foundation-docs/advisor/jobs/20260709_v3_11c2_worker_brief/06_WORKER_RUN_PROMPT.md`
 
 - Leo action:
-  Paste this into a separate Worker session.
+  Paste this short run prompt into a separate Worker session. The Worker must read and execute the full handoff prompt referenced by `READ_AND_EXECUTE`.
 
 - Return result to:
   Advisor

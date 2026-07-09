@@ -12,9 +12,16 @@ Handoff prompt documents must begin with a target header that states the target
 actor, separate target session, source Advisor job, forbidden Advisor-session
 destination, result return path, and GPT direct-use limitation.
 
+Full handoff prompt files contain complete role instructions. Short run prompt /
+launcher files are the default prompts Leo/GPT pastes into role sessions. Until
+Hermes is introduced, Leo/GPT manually pastes short run prompts. After Hermes is
+introduced, Hermes reads and executes the `READ_AND_EXECUTE` path from the short
+run prompt.
+
 Advisor final responses must include a `NEXT ACTION ROUTING` block that states
 the next actor, target session, exact prompt file, Leo action, result return
-path, wrong sessions, and readiness status.
+path, wrong sessions, and readiness status. When a short run prompt exists,
+routing should point to the short run prompt instead of the full handoff prompt.
 
 The local cockpit is:
 
