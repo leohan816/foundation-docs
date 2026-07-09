@@ -8,6 +8,10 @@ It may include orchestration artifacts and handoff prompt conventions for manual
 Hermes-style role sessions, but those files remain Advisor operating references,
 not runtime code or final approval.
 
+Handoff prompt documents must begin with a target header that states the target
+actor, separate target session, source Advisor job, forbidden Advisor-session
+destination, result return path, and GPT direct-use limitation.
+
 The local cockpit is:
 
 `~/Project/foundation-advisor`

@@ -1,3 +1,14 @@
+TARGET_ACTOR: Worker
+TARGET_SESSION: separate role session, never Advisor session
+SOURCE_ADVISOR_JOB: ../foundation-docs/advisor/jobs/20260709_v3_11c2_worker_brief/
+DO_NOT_PASTE_INTO: Advisor session
+RETURN_RESULT_TO: Advisor
+GPT_DIRECT_USE: inspect only, do not execute unless acting as the target session
+
+이 지시문을 붙여넣을 대상: Worker
+이 지시문을 붙여넣으면 안 되는 곳: Advisor 세션 / GPT 전략 세션
+작업 결과 반환 대상: Advisor
+
 # 06 Worker Handoff Prompt - V3-11C2 Organic RecOutcomeEvent MVI
 
 Copy and paste the prompt below into a separate Worker session. Do not run it inside the Advisor session.

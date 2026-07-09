@@ -95,6 +95,25 @@ Brief files define standards, scope, allowed changes, tests, evidence, and revie
 
 Handoff prompt files are the actual copy-paste-ready prompts Leo/GPT pastes into separate role-specific sessions.
 
+Every handoff prompt must start with this target header before the copy-paste prompt body:
+
+```text
+TARGET_ACTOR: Worker | Sentinel | Service Reviewer | Worker-Rework | Sentinel-ReReview | Service-ReReview
+TARGET_SESSION: separate role session, never Advisor session
+SOURCE_ADVISOR_JOB: <advisor job path>
+DO_NOT_PASTE_INTO: Advisor session
+RETURN_RESULT_TO: Advisor
+GPT_DIRECT_USE: inspect only, do not execute unless acting as the target session
+```
+
+For Korean-readable handoff prompts, also include:
+
+```text
+이 지시문을 붙여넣을 대상: <Worker/Sentinel/Service Reviewer>
+이 지시문을 붙여넣으면 안 되는 곳: Advisor 세션 / GPT 전략 세션
+작업 결과 반환 대상: Advisor
+```
+
 Loop state records current status, completed actors, blocking findings, rework attempts, and the next required actor.
 
 ## Orchestration protocol
@@ -108,7 +127,7 @@ Loop state records current status, completed actors, blocking findings, rework a
    - `07_SENTINEL_HANDOFF_PROMPT.md` for independent technical review sessions.
    - `08_SERVICE_REVIEW_HANDOFF_PROMPT.md` when service review is required.
    - `09_REWORK_HANDOFF_PROMPT.md` when a patch loop is needed.
-6. Leo/GPT manually pastes handoff prompts into separate Worker, Sentinel, Service Reviewer, or rework sessions.
+6. Leo/GPT checks the target header, then manually pastes handoff prompts into separate Worker, Sentinel, Service Reviewer, or rework sessions.
 7. Worker, Sentinel, and Service Reviewer results must be returned to Advisor.
 8. Advisor compares returned results against:
    - original Leo/GPT instruction

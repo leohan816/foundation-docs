@@ -20,6 +20,11 @@ Worker
 
 - `06_WORKER_HANDOFF_PROMPT.md`
 
+Target header status:
+
+- `06_WORKER_HANDOFF_PROMPT.md` starts with `TARGET_ACTOR: Worker`.
+- Target session is a separate Worker role session, never the Advisor session.
+
 ## Completed Artifacts
 
 - `00_INTAKE.md`
