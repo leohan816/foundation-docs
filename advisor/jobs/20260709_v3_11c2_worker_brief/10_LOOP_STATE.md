@@ -2,7 +2,7 @@
 
 ## Current State
 
-`SENTINEL_PASS_WITH_RISK_SERVICE_REVIEW_READY`
+`FINAL_AUDIT_WRITTEN_PENDING_LEO_APPROVAL`
 
 ## Last Updated
 
@@ -14,53 +14,80 @@ Advisor
 
 ## Next Required Actor
 
-Service Reviewer
+Advisor
 
-## Sentinel Routing Decision
+## Worker Result
 
-- Target actor:
-  Sentinel
+- Worker result file: `../foundation-docs/runs/cosmile/20260709_v3_11c2_rec_outcome/WORKER_RESULT.md`
+- Worker pointer file: `../foundation-docs/advisor/jobs/20260709_v3_11c2_worker_brief/11_WORKER_RESULT_POINTER.md`
+- Foundation-docs result commit reported by Worker: `361c533`
+- Runtime repo: `../Cosmile`
+- Runtime branch: `shadow/m4-cosmile-memory`
+- Runtime commit status: `not committed`
+- Status: returned to Advisor
 
-- Selected reviewer:
-  fable5 Sentinel
+Worker-reported changed files:
 
-- Target session:
-  fable5 Sentinel session
+- `../Cosmile/app/src/lib/ids.ts`
+- `../Cosmile/app/src/lib/recOutcomeEventService.ts`
+- `../Cosmile/app/src/app/api/checkout/mock-complete/route.ts`
+- `../Cosmile/app/scripts/v3_11c2_rec_outcome.vitest.ts`
 
-- Required skill:
-  `/fable-sentinel`
+## Sentinel Result
 
-- Review level:
-  Level 3
+- Sentinel result file: `../foundation-docs/runs/cosmile/20260709_v3_11c2_rec_outcome/SENTINEL_REVIEW_RESULT.md`
+- Sentinel pointer file: `../foundation-docs/advisor/jobs/20260709_v3_11c2_worker_brief/12_SENTINEL_RESULT_POINTER.md`
+- Foundation-docs result commit reported by Sentinel: `c9c541f`
+- Runtime repo: `../Cosmile`
+- Runtime branch: `shadow/m4-cosmile-memory`
+- Runtime commit status: `read-only, no runtime changes`
+- Verdict: `PASS_WITH_RISK`
+- Status: returned to Advisor
 
-- Result:
-  `PASS_WITH_RISK`
+Sentinel risks carried forward:
 
-- Return result to:
-  Advisor
+- flag-ON requires unique index first (`D-O1`)
+- guest+login strict-XOR records no outcome, as approved
+- group-buy paid path is not hooked, out of current scope
+- env-default feature flag branch was code-inspected but not directly tested
 
-- Status:
-  COMPLETED
+## Service Review Decision
 
-## Service Review Routing Decision
+Leo/GPT decided that this V3-11C2 Service Review will be handled as a direct Leo/GPT decision, not by a separate Service Reviewer session.
 
-- Target actor:
-  Service Reviewer
+- Decision source: Leo/GPT
+- Decision: `ACCEPT_WITH_LIMITS`
+- Separate Service Reviewer session: not required for this loop
+- Service Reviewer handoff execution: forbidden for this loop unless Leo/GPT reopens the decision
+- Status: completed
 
-- Target session:
-  Separate Service Reviewer session
+Accepted service meaning:
 
-- Prompt/file to use:
-  `../foundation-docs/advisor/jobs/20260709_v3_11c2_worker_brief/08_SERVICE_REVIEW_RUN_PROMPT.md`
+1. `recommendationId=null` and `attributionMode=organic` are accepted as an organic purchase outcome design that should not be interpreted as recommendation performance.
+2. The unhooked group-buy paid path is accepted as out of scope for this Organic checkout MVI.
+3. The guest+login strict-XOR no-record behavior is accepted as approved behavior and carried as an observation risk.
+4. Before flag-ON/live, the `D-O1` unique index gate is mandatory.
 
-- Reason:
-  Sentinel returned `PASS_WITH_RISK` with no `NEEDS_PATCH` or `FAIL` finding. Service Review is still required before final audit to validate checkout/order learning semantics, false-attribution boundaries, semantic feedback exclusion, and preservation of existing `purchase_complete` commerce analytics.
+## Final Audit Status
 
-- Return result to:
-  Advisor
+- Worker result: available
+- Sentinel result: available
+- Service Review finding: completed by Leo/GPT direct decision, `ACCEPT_WITH_LIMITS`
+- Required rework: no
+- Worker rework: forbidden unless a new Leo/GPT instruction reopens scope
+- Sentinel rerun: forbidden unless a new Leo/GPT instruction reopens scope
+- Runtime commit/push: forbidden
+- Schema/migration/DB/prod/live/main/secret: forbidden
+- Final audit file: `../foundation-docs/advisor/jobs/20260709_v3_11c2_worker_brief/05_FINAL_AUDIT.md`
+- Final audit verdict: `PASS_WITH_RISK`
+- Final approval: pending Leo/GPT
 
-- Status:
-  READY_TO_USE
+## Rework State
+
+- Rework attempts: 0
+- Active rework prompt: none
+- Blocking findings: none
+- Rework required now: no
 
 ## Available Prompts
 
@@ -72,125 +99,40 @@ Service Reviewer
 - `08_SERVICE_REVIEW_HANDOFF_PROMPT.md`
 - `08_SERVICE_REVIEW_RUN_PROMPT.md`
 
-Target header status:
-
-- `06_WORKER_HANDOFF_PROMPT.md` starts with `TARGET_ACTOR: Worker`.
-- `06_WORKER_RUN_PROMPT.md` wraps the copy-paste launcher in `========` delimiters and includes `TARGET_ACTOR: Worker`.
-- `06_WORKER_REREPORT_RUN_PROMPT.md` wraps the copy-paste launcher in `========` delimiters and includes `TARGET_ACTOR: Worker`.
-- `07_SENTINEL_HANDOFF_PROMPT.md` starts with `TARGET_ACTOR: Sentinel`.
-- `07_SENTINEL_RUN_PROMPT.md` wraps the copy-paste launcher in `========` delimiters and includes `TARGET_ACTOR: Sentinel`.
-- `08_SERVICE_REVIEW_HANDOFF_PROMPT.md` starts with `TARGET_ACTOR: Service Reviewer`.
-- `08_SERVICE_REVIEW_RUN_PROMPT.md` wraps the copy-paste launcher in `========` delimiters and includes `TARGET_ACTOR: Service Reviewer`.
-
-## Completed Artifacts
-
-- `00_INTAKE.md`
-- `01_ADVISOR_BRIEF.md`
-- `02_WORKER_BRIEF.md`
-- `03_SENTINEL_REVIEW_BRIEF.md`
-- `04_SERVICE_REVIEW_BRIEF.md`
-- `06_WORKER_HANDOFF_PROMPT.md`
-- `06_WORKER_RUN_PROMPT.md`
-- `06_WORKER_REREPORT_RUN_PROMPT.md`
-- `07_SENTINEL_HANDOFF_PROMPT.md`
-- `07_SENTINEL_RUN_PROMPT.md`
-- `08_SERVICE_REVIEW_HANDOFF_PROMPT.md`
-- `08_SERVICE_REVIEW_RUN_PROMPT.md`
-- `10_LOOP_STATE.md`
-- `11_WORKER_RESULT_POINTER.md`
-- `12_SENTINEL_RESULT_POINTER.md`
-- `index.md`
-
-## Returned Worker Result
-
-- Worker result file: `../foundation-docs/runs/cosmile/20260709_v3_11c2_rec_outcome/WORKER_RESULT.md`
-- Worker pointer file: `../foundation-docs/advisor/jobs/20260709_v3_11c2_worker_brief/11_WORKER_RESULT_POINTER.md`
-- Foundation-docs result commit reported by Worker: `361c533`
-- Runtime repo: `../Cosmile`
-- Runtime branch: `shadow/m4-cosmile-memory`
-- Runtime commit status: `not committed`
-
-Worker-reported changed files:
-
-- `../Cosmile/app/src/lib/ids.ts`
-- `../Cosmile/app/src/lib/recOutcomeEventService.ts`
-- `../Cosmile/app/src/app/api/checkout/mock-complete/route.ts`
-- `../Cosmile/app/scripts/v3_11c2_rec_outcome.vitest.ts`
-
-## Returned Sentinel Result
-
-- Sentinel result file: `../foundation-docs/runs/cosmile/20260709_v3_11c2_rec_outcome/SENTINEL_REVIEW_RESULT.md`
-- Sentinel pointer file: `../foundation-docs/advisor/jobs/20260709_v3_11c2_worker_brief/12_SENTINEL_RESULT_POINTER.md`
-- Foundation-docs result commit reported by Sentinel: `c9c541f`
-- Runtime repo: `../Cosmile`
-- Runtime branch: `shadow/m4-cosmile-memory`
-- Runtime commit status: `read-only, no runtime changes`
-- Verdict: `PASS_WITH_RISK`
-
-Sentinel risks carried forward:
-
-- flag-ON requires unique index first (`D-O1`)
-- guest+login strict-XOR records no outcome, as approved
-- group-buy paid path is not hooked, out of current scope
-- env-default feature flag branch was code-inspected but not directly tested
-
-## Pending Results
-
-- Worker result: returned
-- Sentinel review result: returned, `PASS_WITH_RISK`
-- Service review result: pending
-- Final audit: blocked until Service Review result is returned to Advisor
-
-Expected Service Review result storage:
-
-- result file: `../foundation-docs/runs/cosmile/20260709_v3_11c2_rec_outcome/SERVICE_REVIEW_RESULT.md`
-- Advisor pointer: `../foundation-docs/advisor/jobs/20260709_v3_11c2_worker_brief/13_SERVICE_REVIEW_RESULT_POINTER.md`
-- chat output: short pointer only
-- runtime repo commit: forbidden
-
-## Rework State
-
-- Rework attempts: 0
-- Active rework prompt: none
-- Blocking findings: none
-- Rework required now: no
-
-## Loop Rules
-
-- Leo/GPT manually pastes `08_SERVICE_REVIEW_RUN_PROMPT.md` into a separate Service Reviewer session.
-- Service Reviewer opens and executes the full handoff prompt at `08_SERVICE_REVIEW_HANDOFF_PROMPT.md`.
-- Service Reviewer is read-only and must not implement, patch, stage, commit, or push runtime repo files.
-- Service Reviewer writes the long result to `../foundation-docs/runs/cosmile/20260709_v3_11c2_rec_outcome/SERVICE_REVIEW_RESULT.md`.
-- Service Reviewer writes `13_SERVICE_REVIEW_RESULT_POINTER.md` in this Advisor job folder.
-- Service Reviewer chat output is a short pointer only.
-- Service Review result returns to Advisor through the pointer and result files.
-- Advisor compares Service Review findings against the original Leo/GPT instruction, Advisor brief, Worker result, Sentinel result, actual diff, tests, and service semantics.
-- If Service Review finds issues, Advisor classifies them before any final audit.
-- Final audit is not allowed until Service Review result is complete.
+Note: `08_SERVICE_REVIEW_*` files remain historical/prepared artifacts, but they should not be executed for this V3-11C2 loop because Leo/GPT completed Service Review by direct decision.
 
 ## Next Required Action
 
-Leo/GPT should paste `08_SERVICE_REVIEW_RUN_PROMPT.md` into a separate Service Reviewer session.
+Leo/GPT should review `05_FINAL_AUDIT.md` for V3-11C2. Final audit compares:
+
+- original Leo/GPT instruction
+- Advisor brief
+- Worker output
+- Sentinel findings
+- Leo/GPT direct Service Review decision
+- actual diff/result/evidence
+
+Final approval remains with Leo/GPT only.
 
 ## NEXT ACTION ROUTING
 
 - Target actor:
-  Service Reviewer
+  Leo/GPT
 
 - Target session:
-  Separate Service Reviewer session
+  GPT strategy session
 
 - Prompt/file to use:
-  `../foundation-docs/advisor/jobs/20260709_v3_11c2_worker_brief/08_SERVICE_REVIEW_RUN_PROMPT.md`
+  `../foundation-docs/advisor/jobs/20260709_v3_11c2_worker_brief/05_FINAL_AUDIT.md`
 
 - Leo action:
-  Paste the short run prompt between `========` delimiters into a separate Service Reviewer session.
+  Review the final audit and decide whether to approve, request a higher-grade review, request runtime commit preparation, or stop.
 
 - Return result to:
   Advisor
 
 - Do not send to:
-  Advisor session, Worker session, Sentinel session, GPT strategy session
+  Worker session, Sentinel session, Service Reviewer session
 
 - Status:
-  READY_TO_USE
+  FINAL_AUDIT_READY_FOR_LEO_GPT_REVIEW

@@ -3,9 +3,9 @@
 ## Job Overview
 
 - Job ID: `20260709_v3_11c2_worker_brief`
-- Type: Worker and review brief package
+- Type: Worker, review, orchestration, and final audit package
 - Scope: V3-11C2 Organic RecOutcomeEvent MVI
-- Non-goal: no implementation, no runtime repo modification
+- Non-goal: no Advisor implementation, no Advisor runtime repo modification
 
 ## Generated Artifacts
 
@@ -14,11 +14,22 @@
 - `02_WORKER_BRIEF.md`
 - `03_SENTINEL_REVIEW_BRIEF.md`
 - `04_SERVICE_REVIEW_BRIEF.md`
+- `05_FINAL_AUDIT.md`
+- `06_WORKER_HANDOFF_PROMPT.md`
+- `06_WORKER_RUN_PROMPT.md`
+- `06_WORKER_REREPORT_RUN_PROMPT.md`
+- `07_SENTINEL_HANDOFF_PROMPT.md`
+- `07_SENTINEL_RUN_PROMPT.md`
+- `08_SERVICE_REVIEW_HANDOFF_PROMPT.md`
+- `08_SERVICE_REVIEW_RUN_PROMPT.md`
+- `10_LOOP_STATE.md`
+- `11_WORKER_RESULT_POINTER.md`
+- `12_SENTINEL_RESULT_POINTER.md`
 - `index.md`
 
 ## Verdict
 
-`V3_11C2_WORKER_AND_REVIEW_BRIEFS_READY`
+`PASS_WITH_RISK`
 
 ## Links
 
@@ -27,7 +38,9 @@
 - [02 Worker Brief](./02_WORKER_BRIEF.md)
 - [03 Sentinel Review Brief](./03_SENTINEL_REVIEW_BRIEF.md)
 - [04 Service Review Brief](./04_SERVICE_REVIEW_BRIEF.md)
+- [05 Final Audit](./05_FINAL_AUDIT.md)
+- [10 Loop State](./10_LOOP_STATE.md)
 
 ## Next Recommended Action
 
-Start a separate Worker session using `02_WORKER_BRIEF.md`.
+Leo/GPT should review `05_FINAL_AUDIT.md` and decide final approval or next orchestration step.
