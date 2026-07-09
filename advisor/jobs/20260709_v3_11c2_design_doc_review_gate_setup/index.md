@@ -14,6 +14,9 @@ This Advisor job proposes canonical design-doc locations and mandatory design-re
 
 - `00_INTAKE.md`
 - `01_DESIGN_DOC_REVIEW_GATE_PROPOSAL.md`
+- `07_FABLE5_DESIGN_REVIEW_HANDOFF_PROMPT.md`
+- `07_FABLE5_DESIGN_REVIEW_RUN_PROMPT.md`
+- `10_LOOP_STATE.md`
 - `index.md`
 
 ## Required Gate
@@ -26,10 +29,12 @@ This Advisor job proposes canonical design-doc locations and mandatory design-re
 
 Codex/SOL review is not part of the current required gate because it is unavailable. It remains a future retrospective review candidate before production/main/flag ON.
 
-## Next Recommended Action
+## Current Routing
 
-Leo/GPT should decide whether to approve the proposed canonical design-doc location:
+Leo/GPT approved the canonical design-doc location and approved Fable5 Design Review routing only.
 
-`../foundation-docs/설계문서/cosmile/COSMILE_V3_11C2_COMMERCE_MEMORY_DESIGN.md`
+Send the short run prompt to a separate Fable5 review session:
 
-Do not route anything to Worker, Sentinel, or Service Reviewer yet.
+`../foundation-docs/advisor/jobs/20260709_v3_11c2_design_doc_review_gate_setup/07_FABLE5_DESIGN_REVIEW_RUN_PROMPT.md`
+
+Do not send anything to Worker, Cosmile Worker, Service Reviewer, or Phase 2A executor.
