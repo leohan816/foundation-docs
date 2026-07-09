@@ -2,7 +2,7 @@
 
 ## Current State
 
-`WORKER_RESULT_RETURNED_SENTINEL_READY`
+`SENTINEL_PASS_WITH_RISK_SERVICE_REVIEW_READY`
 
 ## Last Updated
 
@@ -14,9 +14,9 @@ Advisor
 
 ## Next Required Actor
 
-Sentinel
+Service Reviewer
 
-## Reviewer Routing Decision
+## Sentinel Routing Decision
 
 - Target actor:
   Sentinel
@@ -30,17 +30,31 @@ Sentinel
 - Required skill:
   `/fable-sentinel`
 
-- Reason:
-  V3-11C2 touches Cosmile checkout/order outcome event wiring and uncommitted runtime code. The change is default-OFF and has no schema/prod/live change, but it still requires strict independent diff/test/code/evidence review before Service Review or final audit.
-
-- Not selected:
-  Control Reviewer: too broad for direct implementation diff review.
-  Opus 4.8 Sentinel: acceptable for Level 2, but this task touches checkout/order learning behavior.
-  Codex SOL / Codex 5.6 SOL Sentinel: reserve for DB/schema/payment/prod-live/security/Foundation contract escalation or unresolved fable5 risk.
-  Multi-reviewer: not required yet because the scope is narrow, feature flag default OFF, and no schema/prod/live changes are approved.
-
 - Review level:
   Level 3
+
+- Result:
+  `PASS_WITH_RISK`
+
+- Return result to:
+  Advisor
+
+- Status:
+  COMPLETED
+
+## Service Review Routing Decision
+
+- Target actor:
+  Service Reviewer
+
+- Target session:
+  Separate Service Reviewer session
+
+- Prompt/file to use:
+  `../foundation-docs/advisor/jobs/20260709_v3_11c2_worker_brief/08_SERVICE_REVIEW_RUN_PROMPT.md`
+
+- Reason:
+  Sentinel returned `PASS_WITH_RISK` with no `NEEDS_PATCH` or `FAIL` finding. Service Review is still required before final audit to validate checkout/order learning semantics, false-attribution boundaries, semantic feedback exclusion, and preservation of existing `purchase_complete` commerce analytics.
 
 - Return result to:
   Advisor
@@ -84,6 +98,7 @@ Target header status:
 - `08_SERVICE_REVIEW_RUN_PROMPT.md`
 - `10_LOOP_STATE.md`
 - `11_WORKER_RESULT_POINTER.md`
+- `12_SENTINEL_RESULT_POINTER.md`
 - `index.md`
 
 ## Returned Worker Result
@@ -102,19 +117,29 @@ Worker-reported changed files:
 - `../Cosmile/app/src/app/api/checkout/mock-complete/route.ts`
 - `../Cosmile/app/scripts/v3_11c2_rec_outcome.vitest.ts`
 
+## Returned Sentinel Result
+
+- Sentinel result file: `../foundation-docs/runs/cosmile/20260709_v3_11c2_rec_outcome/SENTINEL_REVIEW_RESULT.md`
+- Sentinel pointer file: `../foundation-docs/advisor/jobs/20260709_v3_11c2_worker_brief/12_SENTINEL_RESULT_POINTER.md`
+- Foundation-docs result commit reported by Sentinel: `c9c541f`
+- Runtime repo: `../Cosmile`
+- Runtime branch: `shadow/m4-cosmile-memory`
+- Runtime commit status: `read-only, no runtime changes`
+- Verdict: `PASS_WITH_RISK`
+
+Sentinel risks carried forward:
+
+- flag-ON requires unique index first (`D-O1`)
+- guest+login strict-XOR records no outcome, as approved
+- group-buy paid path is not hooked, out of current scope
+- env-default feature flag branch was code-inspected but not directly tested
+
 ## Pending Results
 
 - Worker result: returned
-- Sentinel review result: pending
-- Service review result: pending, do not run until Sentinel result returns to Advisor
-- Final audit: blocked until Sentinel and Service Review results are returned to Advisor
-
-Expected Sentinel result storage:
-
-- result file: `../foundation-docs/runs/cosmile/20260709_v3_11c2_rec_outcome/SENTINEL_REVIEW_RESULT.md`
-- Advisor pointer: `../foundation-docs/advisor/jobs/20260709_v3_11c2_worker_brief/12_SENTINEL_RESULT_POINTER.md`
-- chat output: short pointer only
-- runtime repo commit: forbidden
+- Sentinel review result: returned, `PASS_WITH_RISK`
+- Service review result: pending
+- Final audit: blocked until Service Review result is returned to Advisor
 
 Expected Service Review result storage:
 
@@ -127,54 +152,27 @@ Expected Service Review result storage:
 
 - Rework attempts: 0
 - Active rework prompt: none
-- Blocking findings: none yet
+- Blocking findings: none
+- Rework required now: no
 
 ## Loop Rules
 
-- Leo/GPT manually pastes `07_SENTINEL_RUN_PROMPT.md` into a separate fable5 Sentinel session.
-- Sentinel opens and executes the full handoff prompt at `07_SENTINEL_HANDOFF_PROMPT.md`.
-- Sentinel is read-only and must not implement, patch, stage, commit, or push runtime repo files.
-- Sentinel writes the long result to `../foundation-docs/runs/cosmile/20260709_v3_11c2_rec_outcome/SENTINEL_REVIEW_RESULT.md`.
-- Sentinel writes `12_SENTINEL_RESULT_POINTER.md` in this Advisor job folder.
-- Sentinel chat output is a short pointer only.
-- Sentinel result returns to Advisor through the pointer and result files.
-- Advisor compares Sentinel findings against the Worker result, Advisor brief, Worker brief, actual diff, tests, and evidence.
-- If Sentinel finds issues, Advisor classifies them before Service Review or final audit.
-- Service Review must wait until Sentinel result returns to Advisor.
-- Final audit is not allowed until Worker result and required reviews are complete.
+- Leo/GPT manually pastes `08_SERVICE_REVIEW_RUN_PROMPT.md` into a separate Service Reviewer session.
+- Service Reviewer opens and executes the full handoff prompt at `08_SERVICE_REVIEW_HANDOFF_PROMPT.md`.
+- Service Reviewer is read-only and must not implement, patch, stage, commit, or push runtime repo files.
+- Service Reviewer writes the long result to `../foundation-docs/runs/cosmile/20260709_v3_11c2_rec_outcome/SERVICE_REVIEW_RESULT.md`.
+- Service Reviewer writes `13_SERVICE_REVIEW_RESULT_POINTER.md` in this Advisor job folder.
+- Service Reviewer chat output is a short pointer only.
+- Service Review result returns to Advisor through the pointer and result files.
+- Advisor compares Service Review findings against the original Leo/GPT instruction, Advisor brief, Worker result, Sentinel result, actual diff, tests, and service semantics.
+- If Service Review finds issues, Advisor classifies them before any final audit.
+- Final audit is not allowed until Service Review result is complete.
 
 ## Next Required Action
 
-Leo/GPT should paste `07_SENTINEL_RUN_PROMPT.md` into a separate fable5 Sentinel session.
-
-Do not run `08_SERVICE_REVIEW_RUN_PROMPT.md` until Sentinel result has returned to Advisor and Advisor explicitly routes Service Review.
+Leo/GPT should paste `08_SERVICE_REVIEW_RUN_PROMPT.md` into a separate Service Reviewer session.
 
 ## NEXT ACTION ROUTING
-
-### Sentinel
-
-- Target actor:
-  Sentinel
-
-- Target session:
-  Separate fable5 Sentinel session
-
-- Prompt/file to use:
-  `../foundation-docs/advisor/jobs/20260709_v3_11c2_worker_brief/07_SENTINEL_RUN_PROMPT.md`
-
-- Leo action:
-  Paste the short run prompt between `========` delimiters into a separate fable5 Sentinel session.
-
-- Return result to:
-  Advisor
-
-- Do not send to:
-  Advisor session, Worker session, Service Reviewer session, GPT strategy session
-
-- Status:
-  READY_TO_USE
-
-### Service Review
 
 - Target actor:
   Service Reviewer
@@ -186,13 +184,13 @@ Do not run `08_SERVICE_REVIEW_RUN_PROMPT.md` until Sentinel result has returned 
   `../foundation-docs/advisor/jobs/20260709_v3_11c2_worker_brief/08_SERVICE_REVIEW_RUN_PROMPT.md`
 
 - Leo action:
-  Do not use yet. Wait until Sentinel result has returned to Advisor and Advisor explicitly routes Service Review.
+  Paste the short run prompt between `========` delimiters into a separate Service Reviewer session.
 
 - Return result to:
   Advisor
 
 - Do not send to:
-  Worker session, Sentinel session, GPT strategy session
+  Advisor session, Worker session, Sentinel session, GPT strategy session
 
 - Status:
-  WAIT_FOR_SENTINEL_RESULT
+  READY_TO_USE
