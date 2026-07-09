@@ -1,0 +1,17 @@
+- TARGET_PROJECT: Cosmile
+- ROLE_ACTOR: Worker
+- RESULT_FILE: ../foundation-docs/runs/cosmile/20260709_v3_11c2_phase1_ephemeral_fresh_deploy_rehearsal/WORKER_RESULT.md
+- RUNTIME_REPO: ../Cosmile
+- RUNTIME_BRANCH: shadow/m4-cosmile-memory
+- RUNTIME_HEAD: ac2ea4c (unchanged; local==origin)
+- RUNTIME_COMMIT_STATUS: no runtime changes (rehearsal only; nothing staged/committed/pushed)
+- INFRA: docker available → disposable postgres:16-alpine (loopback 55433, --rm, synthetic pw), torn down
+- REHEARSAL_RESULT: PASS (executed, NOT SKIP_INFRA_NOT_PASS)
+- MIGRATE_DEPLOY: 3 migrations applied fresh (init_postgres → v3_11b → d_o1), status up-to-date
+- D_O1_DUPLICATE_REJECTION: verified (unique constraint RecOutcomeEvent_orderItemId_key rejected duplicate orderItemId)
+- DUPLICATE_PREFLIGHT: 0
+- FLAG_STATUS: COSMILE_REC_OUTCOME_ENABLED OFF (unchanged)
+- REAL_DB_SECRET_PROD_LIVE_MAIN_ACCESS: none
+- RESULT: COMPLETED
+- RETURN_TO: Advisor
+- NEXT_ACTOR: Advisor
