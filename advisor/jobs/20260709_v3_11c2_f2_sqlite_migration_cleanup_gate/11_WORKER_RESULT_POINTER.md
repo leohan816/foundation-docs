@@ -1,0 +1,16 @@
+- TARGET_PROJECT: Cosmile
+- ROLE_ACTOR: Worker
+- RESULT_FILE: ../foundation-docs/runs/cosmile/20260709_v3_11c2_f2_sqlite_migration_cleanup_gate/WORKER_RESULT.md
+- RUNTIME_REPO: ../Cosmile
+- RUNTIME_BRANCH: shadow/m4-cosmile-memory
+- RUNTIME_HEAD: 004c52d (unchanged)
+- RUNTIME_COMMIT_STATUS: not committed, not staged (move left unstaged for Sentinel review)
+- CHANGE: moved 20260624181637_commerce_intelligence/migration.sql → migrations_legacy_sqlite/ (byte-identical, cmp PASS)
+- PRISMA_VALIDATE: valid
+- SQLITE_TOKEN_SCAN_ACTIVE_MIGRATIONS: no hits
+- SCHEMA_LOCK_TOML: unchanged (postgresql)
+- FLAG_STATUS: COSMILE_REC_OUTCOME_ENABLED OFF (unchanged)
+- PROD_LIVE_MAIN_SECRET_DB_ACCESS: none
+- RESULT: COMPLETED
+- RETURN_TO: Advisor
+- NEXT_ACTOR: Advisor
