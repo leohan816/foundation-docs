@@ -1,0 +1,7 @@
+- TARGET_PROJECT: Cosmile
+- RESULT_FILE: ../foundation-docs/runs/cosmile/20260709_v3_11c2_rec_outcome/WORKER_RESULT.md
+- RUNTIME_REPO: ../Cosmile
+- RUNTIME_BRANCH: shadow/m4-cosmile-memory
+- RUNTIME_COMMIT_STATUS: not committed
+- RETURN_TO: Advisor
+- NEXT_ACTOR: Advisor
