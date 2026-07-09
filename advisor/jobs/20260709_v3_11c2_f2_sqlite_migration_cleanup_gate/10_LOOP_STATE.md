@@ -4,17 +4,29 @@ Date: 2026-07-09
 
 ## Current Status
 
-`READY_FOR_WORKER_F2_CLEANUP`
+`READY_FOR_SENTINEL_F2_REVIEW`
 
 ## Current Required Actor
 
-Worker.
+Sentinel.
 
-Leo should paste the short run prompt into [cosmile Worker session]:
+Leo should paste the short run prompt into [검수자-fable5 세션]:
 
-`../foundation-docs/advisor/jobs/20260709_v3_11c2_f2_sqlite_migration_cleanup_gate/06_WORKER_RUN_PROMPT.md`
+`../foundation-docs/advisor/jobs/20260709_v3_11c2_f2_sqlite_migration_cleanup_gate/07_SENTINEL_RUN_PROMPT.md`
 
-Do not send this to GPT strategy session, Sentinel, or Service Reviewer.
+Do not send this to GPT strategy session, Advisor, Worker, or Service Reviewer.
+
+## Completed Inputs
+
+- Worker cleanup result received.
+- Worker result file: `../foundation-docs/runs/cosmile/20260709_v3_11c2_f2_sqlite_migration_cleanup_gate/WORKER_RESULT.md`
+- Worker pointer file: `../foundation-docs/advisor/jobs/20260709_v3_11c2_f2_sqlite_migration_cleanup_gate/11_WORKER_RESULT_POINTER.md`
+- Foundation-docs Worker result commit: `0eb05ba`
+- Advisor direct checks:
+  - moved file content matches original tracked file
+  - active migration graph no longer contains `20260624181637_commerce_intelligence`
+  - active migration graph sqlite-token scan returned no hits
+  - `prisma validate` passed without DB access
 
 ## Approved Cleanup Scope
 
@@ -45,6 +57,11 @@ Content must remain byte-for-byte identical.
 - result: `../foundation-docs/runs/cosmile/20260709_v3_11c2_f2_sqlite_migration_cleanup_gate/WORKER_RESULT.md`
 - pointer: `../foundation-docs/advisor/jobs/20260709_v3_11c2_f2_sqlite_migration_cleanup_gate/11_WORKER_RESULT_POINTER.md`
 
+## Expected Sentinel Result
+
+- result: `../foundation-docs/runs/cosmile/20260709_v3_11c2_f2_sqlite_migration_cleanup_gate/SENTINEL_REVIEW_RESULT.md`
+- pointer: `../foundation-docs/advisor/jobs/20260709_v3_11c2_f2_sqlite_migration_cleanup_gate/12_SENTINEL_RESULT_POINTER.md`
+
 ## Next Required Action
 
-Leo should paste `06_WORKER_RUN_PROMPT.md` into [cosmile Worker session].
+Leo should paste `07_SENTINEL_RUN_PROMPT.md` into [검수자-fable5 세션].

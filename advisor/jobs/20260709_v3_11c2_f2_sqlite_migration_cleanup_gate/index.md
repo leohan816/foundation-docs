@@ -20,11 +20,14 @@ The cleanup moves the legacy sqlite migration to `migrations_legacy_sqlite/` wit
 - `03_SENTINEL_REVIEW_BRIEF.md`
 - `06_WORKER_HANDOFF_PROMPT.md`
 - `06_WORKER_RUN_PROMPT.md`
+- `07_SENTINEL_HANDOFF_PROMPT.md`
+- `07_SENTINEL_RUN_PROMPT.md`
 - `10_LOOP_STATE.md`
+- `11_WORKER_RESULT_POINTER.md`
 - `index.md`
 
 ## Next Recommended Action
 
-Paste `06_WORKER_RUN_PROMPT.md` into [cosmile Worker session].
+Paste `07_SENTINEL_RUN_PROMPT.md` into [검수자-fable5 세션].
 
-Do not send this prompt to GPT strategy session, Advisor session, Sentinel, or Service Reviewer.
+Do not send this prompt to GPT strategy session, Advisor session, Worker, or Service Reviewer.

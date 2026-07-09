@@ -123,6 +123,18 @@ Reason:
 
 This is not feature logic, but it modifies the runtime migration graph. Sentinel must directly inspect the diff and verify no DB execution, schema rewrite, or scope expansion occurred.
 
+## Reviewer Routing Decision
+
+- Target actor: Sentinel
+- Selected reviewer: fable5 Sentinel
+- Target session: `검수자-fable5`
+- Required skill: `/fable-sentinel`
+- Reason: The Worker changed the runtime migration graph. The review must be independent, read-only, and must directly inspect the actual diff, active migration graph, file identity, validation, and no-DB/no-prod/no-commit constraints.
+- Not selected: Control Reviewer, because this is not primarily Foundation contract or safety boundary review. Opus 4.8 Sentinel, because fable5 has already been used for the V3-11C2/D-O1 technical review loop. Codex SOL, because this is Level 2 cleanup and not a live/prod/schema-deploy execution.
+- Review level: Level 2
+- Return result to: Advisor
+- Status: READY_TO_USE after Worker result is received
+
 ## Completion Criteria
 
 This gate is ready for final audit only after:
