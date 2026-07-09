@@ -2,7 +2,7 @@
 
 ## Current State
 
-`HANDOFF_READY`
+`WORKER_RESULT_RETURNED_SENTINEL_READY`
 
 ## Last Updated
 
@@ -14,19 +14,59 @@ Advisor
 
 ## Next Required Actor
 
-Worker
+Sentinel
+
+## Reviewer Routing Decision
+
+- Target actor:
+  Sentinel
+
+- Selected reviewer:
+  fable5 Sentinel
+
+- Target session:
+  fable5 Sentinel session
+
+- Required skill:
+  `/fable-sentinel`
+
+- Reason:
+  V3-11C2 touches Cosmile checkout/order outcome event wiring and uncommitted runtime code. The change is default-OFF and has no schema/prod/live change, but it still requires strict independent diff/test/code/evidence review before Service Review or final audit.
+
+- Not selected:
+  Control Reviewer: too broad for direct implementation diff review.
+  Opus 4.8 Sentinel: acceptable for Level 2, but this task touches checkout/order learning behavior.
+  Codex SOL / Codex 5.6 SOL Sentinel: reserve for DB/schema/payment/prod-live/security/Foundation contract escalation or unresolved fable5 risk.
+  Multi-reviewer: not required yet because the scope is narrow, feature flag default OFF, and no schema/prod/live changes are approved.
+
+- Review level:
+  Level 3
+
+- Return result to:
+  Advisor
+
+- Status:
+  READY_TO_USE
 
 ## Available Prompts
 
 - `06_WORKER_HANDOFF_PROMPT.md`
 - `06_WORKER_RUN_PROMPT.md`
+- `06_WORKER_REREPORT_RUN_PROMPT.md`
+- `07_SENTINEL_HANDOFF_PROMPT.md`
+- `07_SENTINEL_RUN_PROMPT.md`
+- `08_SERVICE_REVIEW_HANDOFF_PROMPT.md`
+- `08_SERVICE_REVIEW_RUN_PROMPT.md`
 
 Target header status:
 
 - `06_WORKER_HANDOFF_PROMPT.md` starts with `TARGET_ACTOR: Worker`.
 - `06_WORKER_RUN_PROMPT.md` wraps the copy-paste launcher in `========` delimiters and includes `TARGET_ACTOR: Worker`.
-- `06_WORKER_RUN_PROMPT.md` includes `REQUIRED_SKILL: /fable-builder`.
-- Target session is a separate Worker role session, never the Advisor session.
+- `06_WORKER_REREPORT_RUN_PROMPT.md` wraps the copy-paste launcher in `========` delimiters and includes `TARGET_ACTOR: Worker`.
+- `07_SENTINEL_HANDOFF_PROMPT.md` starts with `TARGET_ACTOR: Sentinel`.
+- `07_SENTINEL_RUN_PROMPT.md` wraps the copy-paste launcher in `========` delimiters and includes `TARGET_ACTOR: Sentinel`.
+- `08_SERVICE_REVIEW_HANDOFF_PROMPT.md` starts with `TARGET_ACTOR: Service Reviewer`.
+- `08_SERVICE_REVIEW_RUN_PROMPT.md` wraps the copy-paste launcher in `========` delimiters and includes `TARGET_ACTOR: Service Reviewer`.
 
 ## Completed Artifacts
 
@@ -37,15 +77,51 @@ Target header status:
 - `04_SERVICE_REVIEW_BRIEF.md`
 - `06_WORKER_HANDOFF_PROMPT.md`
 - `06_WORKER_RUN_PROMPT.md`
+- `06_WORKER_REREPORT_RUN_PROMPT.md`
+- `07_SENTINEL_HANDOFF_PROMPT.md`
+- `07_SENTINEL_RUN_PROMPT.md`
+- `08_SERVICE_REVIEW_HANDOFF_PROMPT.md`
+- `08_SERVICE_REVIEW_RUN_PROMPT.md`
 - `10_LOOP_STATE.md`
+- `11_WORKER_RESULT_POINTER.md`
 - `index.md`
+
+## Returned Worker Result
+
+- Worker result file: `../foundation-docs/runs/cosmile/20260709_v3_11c2_rec_outcome/WORKER_RESULT.md`
+- Worker pointer file: `../foundation-docs/advisor/jobs/20260709_v3_11c2_worker_brief/11_WORKER_RESULT_POINTER.md`
+- Foundation-docs result commit reported by Worker: `361c533`
+- Runtime repo: `../Cosmile`
+- Runtime branch: `shadow/m4-cosmile-memory`
+- Runtime commit status: `not committed`
+
+Worker-reported changed files:
+
+- `../Cosmile/app/src/lib/ids.ts`
+- `../Cosmile/app/src/lib/recOutcomeEventService.ts`
+- `../Cosmile/app/src/app/api/checkout/mock-complete/route.ts`
+- `../Cosmile/app/scripts/v3_11c2_rec_outcome.vitest.ts`
 
 ## Pending Results
 
-- Worker result: pending
+- Worker result: returned
 - Sentinel review result: pending
-- Service review result: pending
-- Final audit: blocked until Worker result and required reviews are returned to Advisor
+- Service review result: pending, do not run until Sentinel result returns to Advisor
+- Final audit: blocked until Sentinel and Service Review results are returned to Advisor
+
+Expected Sentinel result storage:
+
+- result file: `../foundation-docs/runs/cosmile/20260709_v3_11c2_rec_outcome/SENTINEL_REVIEW_RESULT.md`
+- Advisor pointer: `../foundation-docs/advisor/jobs/20260709_v3_11c2_worker_brief/12_SENTINEL_RESULT_POINTER.md`
+- chat output: short pointer only
+- runtime repo commit: forbidden
+
+Expected Service Review result storage:
+
+- result file: `../foundation-docs/runs/cosmile/20260709_v3_11c2_rec_outcome/SERVICE_REVIEW_RESULT.md`
+- Advisor pointer: `../foundation-docs/advisor/jobs/20260709_v3_11c2_worker_brief/13_SERVICE_REVIEW_RESULT_POINTER.md`
+- chat output: short pointer only
+- runtime repo commit: forbidden
 
 ## Rework State
 
@@ -55,66 +131,68 @@ Target header status:
 
 ## Loop Rules
 
-- Leo/GPT manually pastes `06_WORKER_RUN_PROMPT.md` into a separate Worker session.
-- Worker opens and executes the full handoff prompt at `06_WORKER_HANDOFF_PROMPT.md`.
-- Worker result returns to Advisor.
-- Advisor compares the result against the original Leo/GPT instruction, Advisor brief, Worker brief, actual diff, tests, and evidence.
-- Advisor writes or updates Sentinel and Service Review handoff prompts after Worker result exists.
-- If review finds issues, Advisor classifies them before any final audit.
-- If patchable within approved scope, Advisor writes `09_REWORK_HANDOFF_PROMPT.md` and updates this loop state.
+- Leo/GPT manually pastes `07_SENTINEL_RUN_PROMPT.md` into a separate fable5 Sentinel session.
+- Sentinel opens and executes the full handoff prompt at `07_SENTINEL_HANDOFF_PROMPT.md`.
+- Sentinel is read-only and must not implement, patch, stage, commit, or push runtime repo files.
+- Sentinel writes the long result to `../foundation-docs/runs/cosmile/20260709_v3_11c2_rec_outcome/SENTINEL_REVIEW_RESULT.md`.
+- Sentinel writes `12_SENTINEL_RESULT_POINTER.md` in this Advisor job folder.
+- Sentinel chat output is a short pointer only.
+- Sentinel result returns to Advisor through the pointer and result files.
+- Advisor compares Sentinel findings against the Worker result, Advisor brief, Worker brief, actual diff, tests, and evidence.
+- If Sentinel finds issues, Advisor classifies them before Service Review or final audit.
+- Service Review must wait until Sentinel result returns to Advisor.
 - Final audit is not allowed until Worker result and required reviews are complete.
 
 ## Next Required Action
 
-Leo/GPT should paste `06_WORKER_RUN_PROMPT.md` into a separate Worker session.
+Leo/GPT should paste `07_SENTINEL_RUN_PROMPT.md` into a separate fable5 Sentinel session.
+
+Do not run `08_SERVICE_REVIEW_RUN_PROMPT.md` until Sentinel result has returned to Advisor and Advisor explicitly routes Service Review.
 
 ## NEXT ACTION ROUTING
 
+### Sentinel
+
 - Target actor:
-  Worker
+  Sentinel
 
 - Target session:
-  Separate Worker session
+  Separate fable5 Sentinel session
 
 - Prompt/file to use:
-  `../foundation-docs/advisor/jobs/20260709_v3_11c2_worker_brief/06_WORKER_RUN_PROMPT.md`
+  `../foundation-docs/advisor/jobs/20260709_v3_11c2_worker_brief/07_SENTINEL_RUN_PROMPT.md`
 
 - Leo action:
-  Paste the short run prompt between `========` delimiters into an existing or separate Cosmile Worker session. The Worker must read and execute the full handoff prompt referenced by `READ_AND_EXECUTE`.
+  Paste the short run prompt between `========` delimiters into a separate fable5 Sentinel session.
 
 - Return result to:
   Advisor
 
 - Do not send to:
-  Advisor session, Sentinel session, Service Reviewer session, GPT strategy session
+  Advisor session, Worker session, Service Reviewer session, GPT strategy session
 
 - Status:
   READY_TO_USE
 
-Short run prompt:
+### Service Review
 
-```text
-========
-TARGET_ACTOR: Worker
-TARGET_PROJECT: Cosmile
-TARGET_REPO: ../Cosmile
-TARGET_APP_ROOT: ../Cosmile/app
-TARGET_SESSION_NAME: cosmile
-TARGET_SESSION: existing or separate Cosmile Worker session, never Advisor session
-REQUIRED_SKILL: /fable-builder
-READ_AND_EXECUTE: ../foundation-docs/advisor/jobs/20260709_v3_11c2_worker_brief/06_WORKER_HANDOFF_PROMPT.md
-RETURN_RESULT_TO: Advisor
-DO_NOT_EXECUTE_FROM_MEMORY: true
-DO_NOT_BROADEN_SCOPE: true
-Worker 확인.
-필요 skill: /fable-builder
-이 작업은 Cosmile Worker 세션에서 실행한다.
-Advisor 세션, GPT 전략 세션, Sentinel 세션, Service Reviewer 세션에서 실행하지 말라.
-아래 파일을 직접 열고, 그 파일의 지시를 기준으로 작업하라:
-../foundation-docs/advisor/jobs/20260709_v3_11c2_worker_brief/06_WORKER_HANDOFF_PROMPT.md
-기억이나 요약만 보고 실행하지 말라.
-scope를 넓히지 말라.
-허용 파일 밖 수정이 필요하면 즉시 STOP하고 보고하라.
-작업 결과는 Advisor에게 반환할 수 있는 형식으로 보고하라.
-========
-```
+- Target actor:
+  Service Reviewer
+
+- Target session:
+  Separate Service Reviewer session
+
+- Prompt/file to use:
+  `../foundation-docs/advisor/jobs/20260709_v3_11c2_worker_brief/08_SERVICE_REVIEW_RUN_PROMPT.md`
+
+- Leo action:
+  Do not use yet. Wait until Sentinel result has returned to Advisor and Advisor explicitly routes Service Review.
+
+- Return result to:
+  Advisor
+
+- Do not send to:
+  Worker session, Sentinel session, GPT strategy session
+
+- Status:
+  WAIT_FOR_SENTINEL_RESULT
