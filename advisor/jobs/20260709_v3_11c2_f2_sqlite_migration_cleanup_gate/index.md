@@ -18,16 +18,18 @@ The cleanup moves the legacy sqlite migration to `migrations_legacy_sqlite/` wit
 - `01_ADVISOR_BRIEF.md`
 - `02_WORKER_BRIEF.md`
 - `03_SENTINEL_REVIEW_BRIEF.md`
+- `05_FINAL_AUDIT.md`
 - `06_WORKER_HANDOFF_PROMPT.md`
 - `06_WORKER_RUN_PROMPT.md`
 - `07_SENTINEL_HANDOFF_PROMPT.md`
 - `07_SENTINEL_RUN_PROMPT.md`
 - `10_LOOP_STATE.md`
 - `11_WORKER_RESULT_POINTER.md`
+- `12_SENTINEL_RESULT_POINTER.md`
 - `index.md`
 
 ## Next Recommended Action
 
-Paste `07_SENTINEL_RUN_PROMPT.md` into [검수자-fable5 세션].
+Prepare runtime commit routing for the reviewed F-2 move only.
 
-Do not send this prompt to GPT strategy session, Advisor session, Worker, or Service Reviewer.
+Do not route additional implementation, flag-ON, production migration, main merge, or operational use from this gate.

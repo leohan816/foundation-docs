@@ -4,17 +4,15 @@ Date: 2026-07-09
 
 ## Current Status
 
-`READY_FOR_SENTINEL_F2_REVIEW`
+`FINAL_AUDIT_COMPLETE_READY_FOR_RUNTIME_COMMIT_ROUTING`
 
 ## Current Required Actor
 
-Sentinel.
+Advisor.
 
-Leo should paste the short run prompt into [검수자-fable5 세션]:
+The Worker result and Sentinel review have been returned to Advisor and audited.
 
-`../foundation-docs/advisor/jobs/20260709_v3_11c2_f2_sqlite_migration_cleanup_gate/07_SENTINEL_RUN_PROMPT.md`
-
-Do not send this to GPT strategy session, Advisor, Worker, or Service Reviewer.
+No rework is required. The next internal orchestration step is runtime commit routing for the reviewed F-2 move.
 
 ## Completed Inputs
 
@@ -22,6 +20,13 @@ Do not send this to GPT strategy session, Advisor, Worker, or Service Reviewer.
 - Worker result file: `../foundation-docs/runs/cosmile/20260709_v3_11c2_f2_sqlite_migration_cleanup_gate/WORKER_RESULT.md`
 - Worker pointer file: `../foundation-docs/advisor/jobs/20260709_v3_11c2_f2_sqlite_migration_cleanup_gate/11_WORKER_RESULT_POINTER.md`
 - Foundation-docs Worker result commit: `0eb05ba`
+- Sentinel cleanup review result received.
+- Sentinel result file: `../foundation-docs/runs/cosmile/20260709_v3_11c2_f2_sqlite_migration_cleanup_gate/SENTINEL_REVIEW_RESULT.md`
+- Sentinel pointer file: `../foundation-docs/advisor/jobs/20260709_v3_11c2_f2_sqlite_migration_cleanup_gate/12_SENTINEL_RESULT_POINTER.md`
+- Foundation-docs Sentinel result commit: `bfc1c4c`
+- Sentinel verdict: `PASS`
+- Advisor final audit written: `05_FINAL_AUDIT.md`
+- Advisor final audit verdict: `PASS_WITH_RISK`
 - Advisor direct checks:
   - moved file content matches original tracked file
   - active migration graph no longer contains `20260624181637_commerce_intelligence`
@@ -64,4 +69,4 @@ Content must remain byte-for-byte identical.
 
 ## Next Required Action
 
-Leo should paste `07_SENTINEL_RUN_PROMPT.md` into [검수자-fable5 세션].
+Advisor should prepare runtime commit routing for the reviewed F-2 move only.
