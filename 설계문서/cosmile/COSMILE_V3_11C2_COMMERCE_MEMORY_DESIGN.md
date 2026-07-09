@@ -2,7 +2,7 @@
 
 Date: 2026-07-09
 
-Status: `DRAFT_PENDING_FABLE5_DESIGN_REVIEW`
+Status: `DRAFT_PATCHED_AFTER_FABLE5_PASS_WITH_RISK_PENDING_LEO_FINAL_APPROVAL`
 
 Canonical location:
 
@@ -24,6 +24,13 @@ Required design gate before Phase 2A execution or further implementation:
 4. Leo/GPT Final Design Approval
 5. Only then: Phase 2A execution consideration or Worker implementation
 
+Current review state:
+
+- Fable5 Design Review returned `PASS_WITH_RISK`.
+- Leo/GPT requested a design patch before final design approval.
+- This document has been patched with accepted review risks and carry-forward gates.
+- Leo/GPT final design approval is still pending.
+
 Codex/SOL design review is not part of the current required gate because Codex 5.6 SOL reviewer is unavailable. If Codex/SOL becomes available later, it remains a retrospective review candidate before production/main merge, flag ON, persistent migration rehearsal, or operational use.
 
 ## Evidence Links
@@ -34,6 +41,79 @@ This draft is based on the following Advisor evidence and decision artifacts:
 - `../foundation-docs/advisor/jobs/20260709_v3_11c2_phase2a_readonly_preflight_approval_package/01_ADVISOR_BRIEF.md`
 - `../foundation-docs/advisor/jobs/20260709_v3_11c2_phase2a_approval_fields_options/01_ADVISOR_BRIEF.md`
 - `../foundation-docs/advisor/jobs/20260709_v3_11c2_design_doc_review_gate_setup/01_DESIGN_DOC_REVIEW_GATE_PROPOSAL.md`
+- `../foundation-docs/runs/cosmile/20260709_v3_11c2_design_doc_review_gate_setup/FABLE5_DESIGN_REVIEW_RESULT.md`
+- `../foundation-docs/advisor/jobs/20260709_v3_11c2_design_doc_review_gate_setup/13_ADVISOR_REVIEW_CONSOLIDATION.md`
+
+## Accepted Review Risks / Carry-Forward Gates
+
+Fable5 Design Review returned `PASS_WITH_RISK`. Leo/GPT requested that the review risks be patched into this canonical design doc before final design approval.
+
+These risks do not block approval of the current summary-row design direction if Leo/GPT accepts them explicitly. They are not solved by this document. They are carry-forward gates for future work.
+
+### R-1 - Signal Whitelist Canonical Owner Missing
+
+Current status:
+
+- This does not block current design approval by itself.
+- It does block future Foundation-facing commerce signal expansion until resolved.
+
+Problem:
+
+The design states that Foundation receives refined/whitelisted commerce signals only, but it does not yet designate the canonical owner of that whitelist or the exact contract location.
+
+Required future decision:
+
+- Define the canonical whitelist/contract owner for Foundation-facing commerce signals.
+- Define where the whitelist/contract lives.
+- Ensure future Foundation-facing commerce signal implementation references that canonical contract.
+
+Carry-forward gate:
+
+`FOUNDATION_SIGNAL_WHITELIST_CONTRACT_OWNER_GATE`
+
+### R-2 - RecOutcomeEvent Retention / Erasure Policy Missing
+
+Current status:
+
+- This does not block current summary-row architecture approval by itself.
+- It is a blocker before production use, live use, customer-facing use, operational use, `COSMILE_REC_OUTCOME_ENABLED` flag ON, or any customer-facing data retention claim.
+
+Problem:
+
+`RecOutcomeEvent` can contain `subjectRef` / `anonymousRef` style identifiers. The current design does not define retention, erasure, consent withdrawal, tombstone, or reuse-block policy for those identifiers.
+
+Required future decision:
+
+- Define retention policy.
+- Define erasure policy.
+- Define consent withdrawal behavior.
+- Define tombstone behavior if rows must remain for integrity.
+- Define reuse-block behavior if erased or restricted identities must not be reused for learning.
+
+Carry-forward gate:
+
+`REC_OUTCOME_RETENTION_ERASURE_POLICY_GATE`
+
+### R-3 - Guest-To-Login Stitching / Re-Keying Policy Missing
+
+Current status:
+
+- This does not block current organic summary-row design approval by itself.
+- It must be decided before future identity stitching, direct/session attribution, or attribution-change event-log design.
+
+Problem:
+
+The design does not decide whether anonymous summary rows should be re-keyed, stitched, linked, or left unchanged after a guest user later logs in.
+
+Required future decision:
+
+- Decide whether anonymous summary rows may be re-keyed after login.
+- Decide whether guest-to-login stitching should be represented as an attribution-change lifecycle event.
+- Do not infer or implement re-key/stitch/link behavior during Phase 2A or unrelated Worker implementation.
+
+Carry-forward gate:
+
+`IDENTITY_STITCHING_AND_ATTRIBUTION_CHANGE_POLICY_GATE`
 
 ## Official Design Decisions
 
@@ -273,6 +353,32 @@ Before Phase 2B can be considered, the following must exist:
 - secret masking policy;
 - stop conditions.
 
+## Operational Blockers Before Future Use
+
+The following remain forbidden after this design patch unless separately approved through the required design/review/execution gates:
+
+- production use;
+- live use;
+- customer-facing use;
+- operational use;
+- `COSMILE_REC_OUTCOME_ENABLED` flag ON;
+- Phase 2B migration rehearsal;
+- Foundation signal expansion;
+- event log table implementation;
+- refund implementation;
+- cancel implementation;
+- reorder implementation;
+- direct attribution implementation;
+- session attribution implementation.
+
+The R-2 retention/erasure policy is a hard blocker before:
+
+- production use;
+- operational use;
+- live/customer-facing use;
+- `COSMILE_REC_OUTCOME_ENABLED` flag ON;
+- any customer-facing data retention claim.
+
 ## Out Of Scope
 
 This design document does not approve:
@@ -309,9 +415,9 @@ Direct/session attribution is not proven by the current organic MVI. Current org
 
 Phase 2A still needs a separately approved target DB identity, read-only access method, secret masking path, and review route.
 
-## Fable5 Design Review Draft Prompt
+## Historical Fable5 Design Review Prompt
 
-This prompt is prepared for later use. Do not route it to Fable5 until Leo/GPT explicitly authorizes Fable5 design review.
+This prompt was used as the basis for the completed Fable5 Design Review. Do not route it again unless Leo/GPT explicitly requests a re-review.
 
 ```text
 TARGET_ACTOR: Fable5 Design Reviewer
@@ -378,9 +484,12 @@ Current next actor:
 
 Required decision:
 
-`REVIEW_CANONICAL_DESIGN_DRAFT_BEFORE_FABLE5_ROUTING`
+`FINAL_DESIGN_APPROVAL_AFTER_FABLE5_RISK_PATCH`
 
-Leo/GPT should review this draft and decide whether Advisor may route the Fable5 Design Review prompt.
+Leo/GPT should review this patched design and choose one:
 
-Until then, Advisor must not send this to Fable5, Worker, Sentinel, Service Reviewer, or Cosmile.
+1. `APPROVE_DESIGN_WITH_ACCEPTED_RISKS`
+2. `REQUEST_ADDITIONAL_DESIGN_PATCH_BEFORE_APPROVAL`
+3. `REJECT_DESIGN_NEEDS_ARCHITECTURE_REWORK`
 
+Until then, Advisor must not send this to Worker, Sentinel, Service Reviewer, Cosmile, or any Phase 2A executor.

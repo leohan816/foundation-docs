@@ -4,7 +4,7 @@ Date: 2026-07-09
 
 ## Current Status
 
-`FABLE5_PASS_WITH_RISK_CONSOLIDATED_NEEDS_LEO_GPT_FINAL_DESIGN_APPROVAL`
+`DESIGN_PATCHED_AFTER_FABLE5_PASS_WITH_RISK_NEEDS_LEO_GPT_FINAL_APPROVAL`
 
 ## Completed
 
@@ -16,12 +16,14 @@ Date: 2026-07-09
 - Leo/GPT approved routing the design draft to Fable5 Design Review only.
 - Fable5 Design Reviewer returned `PASS_WITH_RISK`.
 - Advisor wrote review consolidation.
+- Leo/GPT selected `REQUEST_DESIGN_PATCH_BEFORE_APPROVAL`.
+- Advisor patched the canonical design doc with accepted review risks and carry-forward gates.
 
 ## Current Required Actor
 
 `Leo/GPT`
 
-Leo/GPT must decide whether to approve the canonical design with accepted risks, request a design patch, or reject for architecture rework.
+Leo/GPT must decide whether to approve the patched canonical design with accepted risks, request another design patch, or reject for architecture rework.
 
 ## Current Files For Leo/GPT To Use
 
@@ -74,7 +76,7 @@ Verdict:
 Choose one:
 
 1. `APPROVE_DESIGN_WITH_ACCEPTED_RISKS`
-2. `REQUEST_DESIGN_PATCH_BEFORE_APPROVAL`
+2. `REQUEST_ADDITIONAL_DESIGN_PATCH_BEFORE_APPROVAL`
 3. `REJECT_DESIGN_NEEDS_ARCHITECTURE_REWORK`
 
 ## Blocking Rules

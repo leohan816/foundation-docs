@@ -8,7 +8,7 @@ This Advisor job proposes canonical design-doc locations and mandatory design-re
 
 ## Verdict
 
-`NEEDS_LEO_GPT_FINAL_DESIGN_APPROVAL`
+`DESIGN_PATCHED_AFTER_FABLE5_PASS_WITH_RISK_NEEDS_LEO_GPT_FINAL_APPROVAL`
 
 ## Generated Artifacts
 
@@ -45,8 +45,16 @@ Advisor consolidation:
 
 `../foundation-docs/advisor/jobs/20260709_v3_11c2_design_doc_review_gate_setup/13_ADVISOR_REVIEW_CONSOLIDATION.md`
 
+## Design Patch
+
+Leo/GPT requested `REQUEST_DESIGN_PATCH_BEFORE_APPROVAL`.
+
+The canonical design doc was patched with accepted review risks and carry-forward gates:
+
+`../foundation-docs/설계문서/cosmile/COSMILE_V3_11C2_COMMERCE_MEMORY_DESIGN.md`
+
 ## Current Routing
 
-Return to Leo/GPT for final design approval decision.
+Return to Leo/GPT for final design approval decision after the design patch.
 
 Do not send anything to Worker, Cosmile Worker, Service Reviewer, Fable5, or Phase 2A executor.
