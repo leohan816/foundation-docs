@@ -1,24 +1,23 @@
+========
 TARGET_ACTOR: Worker
 TARGET_PROJECT: Cosmile
-TARGET_SESSION_NAME: cosmile
-TARGET_SESSION: separate role session, never Advisor session
 TARGET_REPO: ../Cosmile
-SOURCE_ADVISOR_JOB: ../foundation-docs/advisor/jobs/20260709_v3_11c2_worker_brief/
+TARGET_APP_ROOT: ../Cosmile/app
+TARGET_SESSION_NAME: cosmile
+TARGET_SESSION: existing or separate Cosmile Worker session, never Advisor session
+REQUIRED_SKILL: /fable-builder
 READ_AND_EXECUTE: ../foundation-docs/advisor/jobs/20260709_v3_11c2_worker_brief/06_WORKER_HANDOFF_PROMPT.md
-DO_NOT_PASTE_INTO: Advisor session
 RETURN_RESULT_TO: Advisor
-GPT_DIRECT_USE: inspect only, do not execute unless acting as the target session
-
-이 지시문을 붙여넣을 대상: Worker
-이 지시문을 붙여넣으면 안 되는 곳: Advisor 세션 / GPT 전략 세션
-작업 결과 반환 대상: Advisor
-
+DO_NOT_EXECUTE_FROM_MEMORY: true
+DO_NOT_BROADEN_SCOPE: true
 Worker 확인.
-
-Open and execute exactly:
-
-`../foundation-docs/advisor/jobs/20260709_v3_11c2_worker_brief/06_WORKER_HANDOFF_PROMPT.md`
-
-Do not execute from memory.
-Do not broaden scope.
-Return result to Advisor.
+필요 skill: /fable-builder
+이 작업은 Cosmile Worker 세션에서 실행한다.
+Advisor 세션, GPT 전략 세션, Sentinel 세션, Service Reviewer 세션에서 실행하지 말라.
+아래 파일을 직접 열고, 그 파일의 지시를 기준으로 작업하라:
+../foundation-docs/advisor/jobs/20260709_v3_11c2_worker_brief/06_WORKER_HANDOFF_PROMPT.md
+기억이나 요약만 보고 실행하지 말라.
+scope를 넓히지 말라.
+허용 파일 밖 수정이 필요하면 즉시 STOP하고 보고하라.
+작업 결과는 Advisor에게 반환할 수 있는 형식으로 보고하라.
+========

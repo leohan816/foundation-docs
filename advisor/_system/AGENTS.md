@@ -105,6 +105,39 @@ Until Hermes is introduced, Leo/GPT manually pastes short run prompts into targe
 
 Long instructions stay in full handoff prompt files. Do not require Leo/GPT to manually copy large full handoff prompt bodies when a short run prompt exists.
 
+Launcher/run prompts must be Korean-readable by default, while preserving paths, role names, skill prefixes, filenames, commands, environment variables, and code identifiers exactly.
+
+The actual prompt Leo/GPT should paste must appear between `========` delimiters:
+
+```text
+========
+<COPY-PASTE PROMPT>
+========
+```
+
+Launcher/run prompts must include:
+
+```text
+TARGET_ACTOR
+TARGET_PROJECT
+TARGET_REPO
+TARGET_APP_ROOT when applicable
+TARGET_SESSION_NAME
+REQUIRED_SKILL when a skill is required
+READ_AND_EXECUTE
+RETURN_RESULT_TO
+DO_NOT_EXECUTE_FROM_MEMORY
+DO_NOT_BROADEN_SCOPE
+```
+
+Required skill prefixes:
+
+- Worker implementation work: `/fable-builder`
+- Sentinel independent review work: `/fable-sentinel`
+- Debugger general debugging work: `/fable-debugger`
+
+Do not use `shared-reasoning-core` as a skill prefix because it is not an active skill.
+
 Every handoff prompt must start with this target header before the copy-paste prompt body:
 
 ```text
@@ -214,6 +247,7 @@ Routing rules:
 6. Always include the exact file path of the short run prompt when one exists; otherwise include the full handoff prompt path.
 7. Always state where the result must be returned.
 8. `NEXT ACTION ROUTING` should prioritize the short run prompt body over the full handoff prompt body.
+9. In `READY_TO_USE` status, output the full short run prompt inside `========` delimiters so Leo/GPT can copy it immediately.
 
 ## Instruction validation rule
 
