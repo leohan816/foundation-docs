@@ -4,7 +4,7 @@ Date: 2026-07-09
 
 ## Current Status
 
-`FABLE5_DESIGN_REVIEW_ROUTED`
+`FABLE5_PASS_WITH_RISK_CONSOLIDATED_NEEDS_LEO_GPT_FINAL_DESIGN_APPROVAL`
 
 ## Completed
 
@@ -14,14 +14,34 @@ Date: 2026-07-09
   - `../foundation-docs/설계문서/cosmile/COSMILE_V3_11C2_COMMERCE_MEMORY_DESIGN.md`
 - Advisor wrote and published the canonical design doc draft.
 - Leo/GPT approved routing the design draft to Fable5 Design Review only.
+- Fable5 Design Reviewer returned `PASS_WITH_RISK`.
+- Advisor wrote review consolidation.
 
 ## Current Required Actor
 
-`Fable5 Design Reviewer`
+`Leo/GPT`
 
-The review must run in a separate Fable5 review session, never the Advisor session and never the Worker session.
+Leo/GPT must decide whether to approve the canonical design with accepted risks, request a design patch, or reject for architecture rework.
 
-## Files For Leo To Use
+## Current Files For Leo/GPT To Use
+
+Advisor consolidation:
+
+`../foundation-docs/advisor/jobs/20260709_v3_11c2_design_doc_review_gate_setup/13_ADVISOR_REVIEW_CONSOLIDATION.md`
+
+Canonical design doc:
+
+`../foundation-docs/설계문서/cosmile/COSMILE_V3_11C2_COMMERCE_MEMORY_DESIGN.md`
+
+Fable5 review result:
+
+`../foundation-docs/runs/cosmile/20260709_v3_11c2_design_doc_review_gate_setup/FABLE5_DESIGN_REVIEW_RESULT.md`
+
+Fable5 pointer:
+
+`../foundation-docs/advisor/jobs/20260709_v3_11c2_design_doc_review_gate_setup/12_FABLE5_DESIGN_REVIEW_RESULT_POINTER.md`
+
+## Historical Fable5 Routing Files
 
 Short run prompt:
 
@@ -31,30 +51,32 @@ Full handoff prompt:
 
 `../foundation-docs/advisor/jobs/20260709_v3_11c2_design_doc_review_gate_setup/07_FABLE5_DESIGN_REVIEW_HANDOFF_PROMPT.md`
 
-## Blocking Rules
+## Fable5 Result
 
-Do not proceed to Phase 2A, Phase 2B, Worker implementation, runtime repo modification, DB access, query execution, or migration execution unless:
-
-1. Fable5 Design Review returns `PASS`, or returns `PASS_WITH_RISK` that Leo/GPT explicitly accepts;
-2. Advisor writes review consolidation;
-3. Leo/GPT gives final design approval.
-
-## Pending Result
-
-Expected full result:
+Full result:
 
 `../foundation-docs/runs/cosmile/20260709_v3_11c2_design_doc_review_gate_setup/FABLE5_DESIGN_REVIEW_RESULT.md`
 
-Expected pointer:
+Pointer:
 
 `../foundation-docs/advisor/jobs/20260709_v3_11c2_design_doc_review_gate_setup/12_FABLE5_DESIGN_REVIEW_RESULT_POINTER.md`
 
-## Next Advisor Action After Result
+Verdict:
 
-After the Fable5 pointer returns to Advisor:
+`PASS_WITH_RISK`
 
-1. read the pointer and full result file;
-2. compare findings against Leo/GPT intent and the canonical design doc;
-3. write Advisor Review Consolidation;
-4. return to Leo/GPT for Final Design Approval decision.
+## Advisor Consolidation
 
+`../foundation-docs/advisor/jobs/20260709_v3_11c2_design_doc_review_gate_setup/13_ADVISOR_REVIEW_CONSOLIDATION.md`
+
+## Required Leo/GPT Decision
+
+Choose one:
+
+1. `APPROVE_DESIGN_WITH_ACCEPTED_RISKS`
+2. `REQUEST_DESIGN_PATCH_BEFORE_APPROVAL`
+3. `REJECT_DESIGN_NEEDS_ARCHITECTURE_REWORK`
+
+## Blocking Rules
+
+Phase 2A, Phase 2B, Worker implementation, runtime repo modification, DB access, query execution, migration execution, flag ON, and main merge remain forbidden until Leo/GPT final design approval and separate execution approval.

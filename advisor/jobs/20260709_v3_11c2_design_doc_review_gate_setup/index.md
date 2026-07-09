@@ -8,7 +8,7 @@ This Advisor job proposes canonical design-doc locations and mandatory design-re
 
 ## Verdict
 
-`OPTION_C_DESIGN_REVIEW_GATE_PROPOSAL_READY_NEEDS_LEO_DECISION`
+`NEEDS_LEO_GPT_FINAL_DESIGN_APPROVAL`
 
 ## Generated Artifacts
 
@@ -17,6 +17,8 @@ This Advisor job proposes canonical design-doc locations and mandatory design-re
 - `07_FABLE5_DESIGN_REVIEW_HANDOFF_PROMPT.md`
 - `07_FABLE5_DESIGN_REVIEW_RUN_PROMPT.md`
 - `10_LOOP_STATE.md`
+- `12_FABLE5_DESIGN_REVIEW_RESULT_POINTER.md`
+- `13_ADVISOR_REVIEW_CONSOLIDATION.md`
 - `index.md`
 
 ## Required Gate
@@ -29,12 +31,22 @@ This Advisor job proposes canonical design-doc locations and mandatory design-re
 
 Codex/SOL review is not part of the current required gate because it is unavailable. It remains a future retrospective review candidate before production/main/flag ON.
 
+## Fable5 Review Result
+
+Fable5 Design Reviewer returned:
+
+`PASS_WITH_RISK`
+
+Pointer:
+
+`../foundation-docs/advisor/jobs/20260709_v3_11c2_design_doc_review_gate_setup/12_FABLE5_DESIGN_REVIEW_RESULT_POINTER.md`
+
+Advisor consolidation:
+
+`../foundation-docs/advisor/jobs/20260709_v3_11c2_design_doc_review_gate_setup/13_ADVISOR_REVIEW_CONSOLIDATION.md`
+
 ## Current Routing
 
-Leo/GPT approved the canonical design-doc location and approved Fable5 Design Review routing only.
+Return to Leo/GPT for final design approval decision.
 
-Send the short run prompt to a separate Fable5 review session:
-
-`../foundation-docs/advisor/jobs/20260709_v3_11c2_design_doc_review_gate_setup/07_FABLE5_DESIGN_REVIEW_RUN_PROMPT.md`
-
-Do not send anything to Worker, Cosmile Worker, Service Reviewer, or Phase 2A executor.
+Do not send anything to Worker, Cosmile Worker, Service Reviewer, Fable5, or Phase 2A executor.
