@@ -1,0 +1,12 @@
+- TARGET_PROJECT: Cosmile
+- ROLE_ACTOR: Worker
+- RESULT_FILE: ../foundation-docs/runs/cosmile/20260709_v3_11c2_d_o1_idempotency_gate_plan/WORKER_RESULT.md
+- RUNTIME_REPO: ../Cosmile
+- RUNTIME_BRANCH: shadow/m4-cosmile-memory
+- RUNTIME_BASE_COMMIT: caba8c6
+- RUNTIME_COMMIT_STATUS: not committed
+- RESULT: COMPLETED (DB rehearsal = infra-gated SKIP, not PASS)
+- DB_TEST_STATUS: SKIP (psycopg2 unavailable; live migration/duplicate-rejection not executed)
+- FLAG_STATUS: COSMILE_REC_OUTCOME_ENABLED OFF (unchanged)
+- RETURN_TO: Advisor
+- NEXT_ACTOR: Advisor
