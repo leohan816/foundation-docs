@@ -12,6 +12,10 @@ Handoff prompt documents must begin with a target header that states the target
 actor, separate target session, source Advisor job, forbidden Advisor-session
 destination, result return path, and GPT direct-use limitation.
 
+Advisor final responses must include a `NEXT ACTION ROUTING` block that states
+the next actor, target session, exact prompt file, Leo action, result return
+path, wrong sessions, and readiness status.
+
 The local cockpit is:
 
 `~/Project/foundation-advisor`

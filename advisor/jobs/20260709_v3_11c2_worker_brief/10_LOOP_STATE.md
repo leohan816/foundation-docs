@@ -62,3 +62,26 @@ Target header status:
 ## Next Required Action
 
 Leo/GPT should paste `06_WORKER_HANDOFF_PROMPT.md` into a separate Worker session.
+
+## NEXT ACTION ROUTING
+
+- Target actor:
+  Worker
+
+- Target session:
+  Separate Worker session
+
+- Prompt/file to use:
+  `../foundation-docs/advisor/jobs/20260709_v3_11c2_worker_brief/06_WORKER_HANDOFF_PROMPT.md`
+
+- Leo action:
+  Paste this into a separate Worker session.
+
+- Return result to:
+  Advisor
+
+- Do not send to:
+  Advisor session, Sentinel session, Service Reviewer session, GPT strategy session
+
+- Status:
+  READY_TO_USE

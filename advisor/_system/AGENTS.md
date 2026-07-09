@@ -161,6 +161,47 @@ Exceptions:
 - Runtime repo changes are present.
 - The report is HOLD/incomplete and publish is inappropriate.
 
+## Final response routing rule
+
+Every Advisor final response must include a `NEXT ACTION ROUTING` block so Leo/GPT can immediately identify who receives the result next.
+
+Required format:
+
+```text
+## NEXT ACTION ROUTING
+
+- Target actor:
+  Advisor | Worker | Sentinel | Service Reviewer | Leo/GPT | STOP
+
+- Target session:
+  Same Advisor session | Separate Worker session | Separate Sentinel session | Separate Service Reviewer session | GPT strategy session
+
+- Prompt/file to use:
+  <exact advisor file path>
+
+- Leo action:
+  <what Leo should do now>
+
+- Return result to:
+  Advisor | Leo/GPT
+
+- Do not send to:
+  <wrong sessions>
+
+- Status:
+  READY_TO_USE | WAIT_FOR_WORKER_RESULT | WAIT_FOR_SENTINEL_RESULT | BLOCKED | NEEDS_LEO_DECISION
+```
+
+Routing rules:
+
+1. If the next actor is Worker, state clearly: paste this into a separate Worker session.
+2. If the next actor is Sentinel, state clearly: do not use until Worker result has returned to Advisor.
+3. If the next actor is Service Reviewer, state clearly when it should be used.
+4. If no role session should be started, state `STOP` / `NEEDS_LEO_DECISION`.
+5. If multiple actors exist, list them separately.
+6. Always include the exact file path of the handoff prompt.
+7. Always state where the result must be returned.
+
 ## Instruction validation rule
 
 Before writing Worker briefs, decide:
