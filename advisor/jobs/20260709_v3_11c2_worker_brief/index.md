@@ -25,11 +25,12 @@
 - `10_LOOP_STATE.md`
 - `11_WORKER_RESULT_POINTER.md`
 - `12_SENTINEL_RESULT_POINTER.md`
+- `14_CLOSURE_RECORD.md`
 - `index.md`
 
 ## Verdict
 
-`PASS_WITH_RISK`
+`APPROVE_WITH_RISK`
 
 ## Links
 
@@ -40,7 +41,8 @@
 - [04 Service Review Brief](./04_SERVICE_REVIEW_BRIEF.md)
 - [05 Final Audit](./05_FINAL_AUDIT.md)
 - [10 Loop State](./10_LOOP_STATE.md)
+- [14 Closure Record](./14_CLOSURE_RECORD.md)
 
 ## Next Recommended Action
 
-Leo/GPT should review `05_FINAL_AUDIT.md` and decide final approval or next orchestration step.
+Leo/GPT should decide whether to ask Advisor to prepare runtime commit routing for the approved default-OFF shadow implementation.

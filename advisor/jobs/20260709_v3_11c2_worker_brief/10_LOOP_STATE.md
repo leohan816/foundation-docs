@@ -2,7 +2,7 @@
 
 ## Current State
 
-`FINAL_AUDIT_WRITTEN_PENDING_LEO_APPROVAL`
+`APPROVED_WITH_RISK_SHADOW_LOOP_CLOSED`
 
 ## Last Updated
 
@@ -14,7 +14,7 @@ Advisor
 
 ## Next Required Actor
 
-Advisor
+Leo/GPT
 
 ## Worker Result
 
@@ -80,7 +80,16 @@ Accepted service meaning:
 - Schema/migration/DB/prod/live/main/secret: forbidden
 - Final audit file: `../foundation-docs/advisor/jobs/20260709_v3_11c2_worker_brief/05_FINAL_AUDIT.md`
 - Final audit verdict: `PASS_WITH_RISK`
-- Final approval: pending Leo/GPT
+- Final approval: Leo/GPT approved with risk for default-OFF shadow implementation closure only
+
+## Closure Status
+
+- Closure record: `../foundation-docs/advisor/jobs/20260709_v3_11c2_worker_brief/14_CLOSURE_RECORD.md`
+- Closure verdict: `APPROVE_WITH_RISK`
+- Closure scope: default-OFF shadow implementation loop only
+- Runtime commit/push: not authorized in this loop-state update
+- Runtime commit routing: ready to prepare as a separate Advisor step for default-OFF shadow implementation only
+- Production/live/main/flag-ON: forbidden
 
 ## Rework State
 
@@ -101,18 +110,33 @@ Accepted service meaning:
 
 Note: `08_SERVICE_REVIEW_*` files remain historical/prepared artifacts, but they should not be executed for this V3-11C2 loop because Leo/GPT completed Service Review by direct decision.
 
+## Required Follow-Up Gate
+
+Next required mission:
+
+`V3-11C2-D-O1 Unique Index / Idempotency Hardening Gate`
+
+This gate must be completed before:
+
+- `COSMILE_REC_OUTCOME_ENABLED` flag ON
+- live/prod exposure
+- production rollout
+- any operational use of RecOutcomeEvent writes
+
+## Hard Restrictions
+
+- `COSMILE_REC_OUTCOME_ENABLED` remains default OFF.
+- Do not turn the flag ON.
+- Do not expose to live/prod.
+- Do not merge to main.
+- Do not access DB/prod/live/main/secret.
+- Do not claim concurrency risk is solved.
+- Do not claim group-buy outcome is covered.
+- Do not claim guest+login stitching is solved.
+
 ## Next Required Action
 
-Leo/GPT should review `05_FINAL_AUDIT.md` for V3-11C2. Final audit compares:
-
-- original Leo/GPT instruction
-- Advisor brief
-- Worker output
-- Sentinel findings
-- Leo/GPT direct Service Review decision
-- actual diff/result/evidence
-
-Final approval remains with Leo/GPT only.
+Leo/GPT should decide whether to ask Advisor to prepare runtime commit routing for the approved default-OFF shadow implementation.
 
 ## NEXT ACTION ROUTING
 
@@ -123,10 +147,10 @@ Final approval remains with Leo/GPT only.
   GPT strategy session
 
 - Prompt/file to use:
-  `../foundation-docs/advisor/jobs/20260709_v3_11c2_worker_brief/05_FINAL_AUDIT.md`
+  `../foundation-docs/advisor/jobs/20260709_v3_11c2_worker_brief/14_CLOSURE_RECORD.md`
 
 - Leo action:
-  Review the final audit and decide whether to approve, request a higher-grade review, request runtime commit preparation, or stop.
+  Decide whether to ask Advisor to prepare runtime commit routing for the approved default-OFF shadow implementation.
 
 - Return result to:
   Advisor
@@ -135,4 +159,4 @@ Final approval remains with Leo/GPT only.
   Worker session, Sentinel session, Service Reviewer session
 
 - Status:
-  FINAL_AUDIT_READY_FOR_LEO_GPT_REVIEW
+  SHADOW_LOOP_CLOSED_RUNTIME_COMMIT_ROUTING_READY_TO_PREPARE
