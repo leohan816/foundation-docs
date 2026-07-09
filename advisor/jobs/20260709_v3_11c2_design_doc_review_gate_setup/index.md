@@ -8,7 +8,7 @@ This Advisor job proposes canonical design-doc locations and mandatory design-re
 
 ## Verdict
 
-`DESIGN_PATCHED_AFTER_FABLE5_PASS_WITH_RISK_NEEDS_LEO_GPT_FINAL_APPROVAL`
+`DESIGN_APPROVED_WITH_ACCEPTED_RISKS__PHASE2A_NOT_APPROVED`
 
 ## Generated Artifacts
 
@@ -53,8 +53,24 @@ The canonical design doc was patched with accepted review risks and carry-forwar
 
 `../foundation-docs/설계문서/cosmile/COSMILE_V3_11C2_COMMERCE_MEMORY_DESIGN.md`
 
+## Final Design Decision
+
+Leo/GPT approved:
+
+`APPROVE_DESIGN_WITH_ACCEPTED_RISKS`
+
+Accepted carry-forward gates:
+
+- `FOUNDATION_SIGNAL_WHITELIST_CONTRACT_OWNER_GATE`
+- `REC_OUTCOME_RETENTION_ERASURE_POLICY_GATE`
+- `IDENTITY_STITCHING_AND_ATTRIBUTION_CHANGE_POLICY_GATE`
+
 ## Current Routing
 
-Return to Leo/GPT for final design approval decision after the design patch.
+Next gate:
+
+`DECIDE_PHASE2A_TARGET_DB_AND_READ_ONLY_ACCESS`
+
+Phase 2A remains not approved.
 
 Do not send anything to Worker, Cosmile Worker, Service Reviewer, Fable5, or Phase 2A executor.

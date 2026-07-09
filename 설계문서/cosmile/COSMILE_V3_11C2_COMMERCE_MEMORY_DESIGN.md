@@ -2,7 +2,7 @@
 
 Date: 2026-07-09
 
-Status: `DRAFT_PATCHED_AFTER_FABLE5_PASS_WITH_RISK_PENDING_LEO_FINAL_APPROVAL`
+Status: `APPROVED_WITH_ACCEPTED_RISKS`
 
 Canonical location:
 
@@ -10,7 +10,7 @@ Canonical location:
 
 ## Purpose
 
-This document records the canonical design draft for V3-11C2 Commerce Memory, `RecOutcomeEvent`, future commerce outcome event history, and the Cosmile/Foundation signal boundary.
+This document records the approved canonical design for V3-11C2 Commerce Memory, `RecOutcomeEvent`, future commerce outcome event history, and the Cosmile/Foundation signal boundary.
 
 This document is a design record only. It does not authorize implementation, runtime repository edits, DB access, query execution, migration execution, `COSMILE_REC_OUTCOME_ENABLED` flag ON, main merge, production exposure, or operational use.
 
@@ -29,13 +29,14 @@ Current review state:
 - Fable5 Design Review returned `PASS_WITH_RISK`.
 - Leo/GPT requested a design patch before final design approval.
 - This document has been patched with accepted review risks and carry-forward gates.
-- Leo/GPT final design approval is still pending.
+- Leo/GPT approved the patched design with accepted risks.
+- Phase 2A remains not approved and requires a separate decision.
 
 Codex/SOL design review is not part of the current required gate because Codex 5.6 SOL reviewer is unavailable. If Codex/SOL becomes available later, it remains a retrospective review candidate before production/main merge, flag ON, persistent migration rehearsal, or operational use.
 
 ## Evidence Links
 
-This draft is based on the following Advisor evidence and decision artifacts:
+This design is based on the following Advisor evidence and decision artifacts:
 
 - `../foundation-docs/advisor/jobs/20260709_v3_11c2_commerce_memory_schema_design_review/01_SCHEMA_DESIGN_REVIEW.md`
 - `../foundation-docs/advisor/jobs/20260709_v3_11c2_phase2a_readonly_preflight_approval_package/01_ADVISOR_BRIEF.md`
@@ -117,7 +118,7 @@ Carry-forward gate:
 
 ## Official Design Decisions
 
-Leo/GPT approved these decisions for the current design draft:
+Leo/GPT approved these decisions for the current design:
 
 1. `RecOutcomeEvent` is not an append-only event log.
 2. `RecOutcomeEvent` is one purchase outcome summary/current row per `OrderItem`.
@@ -476,20 +477,26 @@ Return result to Advisor with:
 ## POINTER BLOCK
 ```
 
-## Next Required Decision
+## Next Required Gate
 
 Current next actor:
 
 `Leo/GPT`
 
-Required decision:
+Next gate:
 
-`FINAL_DESIGN_APPROVAL_AFTER_FABLE5_RISK_PATCH`
+`DECIDE_PHASE2A_TARGET_DB_AND_READ_ONLY_ACCESS`
 
-Leo/GPT should review this patched design and choose one:
+Leo/GPT has approved this design with accepted risks. Phase 2A is still not approved.
 
-1. `APPROVE_DESIGN_WITH_ACCEPTED_RISKS`
-2. `REQUEST_ADDITIONAL_DESIGN_PATCH_BEFORE_APPROVAL`
-3. `REJECT_DESIGN_NEEDS_ARCHITECTURE_REWORK`
+Before any Phase 2A execution, Leo/GPT must separately decide:
+
+- exact target DB identity;
+- proof the target is not prod/live/customer-facing;
+- read-only access method;
+- secret masking path;
+- allowed read-only commands;
+- stop conditions;
+- review route after result.
 
 Until then, Advisor must not send this to Worker, Sentinel, Service Reviewer, Cosmile, or any Phase 2A executor.

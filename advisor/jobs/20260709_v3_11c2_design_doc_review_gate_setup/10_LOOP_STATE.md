@@ -4,7 +4,7 @@ Date: 2026-07-09
 
 ## Current Status
 
-`DESIGN_PATCHED_AFTER_FABLE5_PASS_WITH_RISK_NEEDS_LEO_GPT_FINAL_APPROVAL`
+`DESIGN_APPROVED_WITH_ACCEPTED_RISKS__PHASE2A_NOT_APPROVED`
 
 ## Completed
 
@@ -18,12 +18,14 @@ Date: 2026-07-09
 - Advisor wrote review consolidation.
 - Leo/GPT selected `REQUEST_DESIGN_PATCH_BEFORE_APPROVAL`.
 - Advisor patched the canonical design doc with accepted review risks and carry-forward gates.
+- Leo/GPT selected `APPROVE_DESIGN_WITH_ACCEPTED_RISKS`.
+- Advisor updated the canonical design doc status to `APPROVED_WITH_ACCEPTED_RISKS`.
 
 ## Current Required Actor
 
 `Leo/GPT`
 
-Leo/GPT must decide whether to approve the patched canonical design with accepted risks, request another design patch, or reject for architecture rework.
+Leo/GPT must decide the next gate inputs before any Phase 2A execution.
 
 ## Current Files For Leo/GPT To Use
 
@@ -71,14 +73,30 @@ Verdict:
 
 `../foundation-docs/advisor/jobs/20260709_v3_11c2_design_doc_review_gate_setup/13_ADVISOR_REVIEW_CONSOLIDATION.md`
 
-## Required Leo/GPT Decision
+## Current Design Decision
 
-Choose one:
+`APPROVE_DESIGN_WITH_ACCEPTED_RISKS`
 
-1. `APPROVE_DESIGN_WITH_ACCEPTED_RISKS`
-2. `REQUEST_ADDITIONAL_DESIGN_PATCH_BEFORE_APPROVAL`
-3. `REJECT_DESIGN_NEEDS_ARCHITECTURE_REWORK`
+Accepted carry-forward gates:
+
+- `FOUNDATION_SIGNAL_WHITELIST_CONTRACT_OWNER_GATE`
+- `REC_OUTCOME_RETENTION_ERASURE_POLICY_GATE`
+- `IDENTITY_STITCHING_AND_ATTRIBUTION_CHANGE_POLICY_GATE`
+
+## Next Gate
+
+`DECIDE_PHASE2A_TARGET_DB_AND_READ_ONLY_ACCESS`
+
+Phase 2A remains not approved. Before Advisor can write any Phase 2A execution prompt, Leo/GPT must decide:
+
+1. exact target DB identity;
+2. proof the target is not prod/live/customer-facing;
+3. read-only access method;
+4. secret masking path;
+5. allowed read-only commands;
+6. stop conditions;
+7. review route after result.
 
 ## Blocking Rules
 
-Phase 2A, Phase 2B, Worker implementation, runtime repo modification, DB access, query execution, migration execution, flag ON, and main merge remain forbidden until Leo/GPT final design approval and separate execution approval.
+Phase 2A, Phase 2B, Worker implementation, runtime repo modification, DB access, query execution, migration execution, flag ON, and main merge remain forbidden unless separately approved through the next gate and execution routing.
