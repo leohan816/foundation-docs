@@ -17,13 +17,15 @@ The runtime commit should capture exactly the approved migration move and should
 - `00_INTAKE.md`
 - `01_ADVISOR_BRIEF.md`
 - `02_WORKER_BRIEF.md`
+- `05_FINAL_AUDIT.md`
 - `06_WORKER_HANDOFF_PROMPT.md`
 - `06_WORKER_RUN_PROMPT.md`
 - `10_LOOP_STATE.md`
+- `11_WORKER_RESULT_POINTER.md`
 - `index.md`
 
 ## Next Recommended Action
 
-Paste `06_WORKER_RUN_PROMPT.md` into [cosmile Worker 세션].
+Prepare runtime push routing for commit `ac2ea4c02d4f648fc0b21aaf82f33c750b81fda9`.
 
-Do not send this prompt to GPT strategy session, Advisor session, Sentinel, or Service Reviewer.
+Do not route flag-ON, production migration, main merge, or operational use from this commit-routing job.
