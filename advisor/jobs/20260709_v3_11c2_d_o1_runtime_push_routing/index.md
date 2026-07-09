@@ -17,13 +17,17 @@ The only authorized runtime action is pushing commit `004c52df14da9b205159760257
 - `00_INTAKE.md`
 - `01_ADVISOR_BRIEF.md`
 - `02_WORKER_BRIEF.md`
+- `05_FINAL_AUDIT.md`
 - `06_WORKER_HANDOFF_PROMPT.md`
 - `06_WORKER_RUN_PROMPT.md`
 - `10_LOOP_STATE.md`
+- `11_WORKER_RESULT_POINTER.md`
 - `index.md`
 
 ## Next Recommended Action
 
-Paste `06_WORKER_RUN_PROMPT.md` into the separate Cosmile Worker session.
+No role-session handoff is required for this push routing loop.
 
-Do not send this prompt to GPT strategy session, Sentinel, or Service Reviewer.
+The approved commit `004c52df14da9b2051597602575d33eb0211cdbc` is pushed to `origin/shadow/m4-cosmile-memory` and audited with verdict `PASS_WITH_RISK`.
+
+If work continues, it must be scoped as a new Advisor instruction.
