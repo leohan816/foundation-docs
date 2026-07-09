@@ -13,16 +13,26 @@ Date: 2026-07-09
 
 - `00_INTAKE.md`
 - `01_ADVISOR_BRIEF.md`
+- `02_WORKER_BRIEF.md`
+- `03_SENTINEL_REVIEW_BRIEF.md`
+- `06_WORKER_HANDOFF_PROMPT.md`
+- `06_WORKER_RUN_PROMPT.md`
+- `10_LOOP_STATE.md`
 - `index.md`
 
 ## Verdict
 
-`D_O1_GATE_PLAN_READY_NEEDS_LEO_DECISION`
+`D_O1_WORKER_BRIEF_READY`
 
 ## Links
 
 - [00 Intake](./00_INTAKE.md)
 - [01 Advisor Brief / Decision Package](./01_ADVISOR_BRIEF.md)
+- [02 Worker Brief](./02_WORKER_BRIEF.md)
+- [03 Sentinel Review Brief](./03_SENTINEL_REVIEW_BRIEF.md)
+- [06 Worker Handoff Prompt](./06_WORKER_HANDOFF_PROMPT.md)
+- [06 Worker Run Prompt](./06_WORKER_RUN_PROMPT.md)
+- [10 Loop State](./10_LOOP_STATE.md)
 
 ## Recommended D-O1 Approach
 
@@ -32,4 +42,4 @@ Add DB-backed uniqueness for `RecOutcomeEvent.orderItemId`, retain code-level ex
 
 ## Next Recommended Action
 
-Leo/GPT should approve or reject the recommended D-O1 approach before Advisor writes a Worker brief.
+Leo should paste `06_WORKER_RUN_PROMPT.md` into a separate Cosmile Worker session.

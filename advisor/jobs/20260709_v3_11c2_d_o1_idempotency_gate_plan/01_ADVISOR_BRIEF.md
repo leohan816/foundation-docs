@@ -4,11 +4,47 @@ Date: 2026-07-09
 
 ## Verdict
 
-`D_O1_GATE_PLAN_READY_NEEDS_LEO_DECISION`
+`D_O1_WORKER_BRIEF_READY`
 
-Advisor recommends a full DB-level unique constraint on `RecOutcomeEvent.orderItemId`, with code-level existing-check retained and DB unique violations treated as duplicate skips.
+Advisor recommended a full DB-level unique constraint on `RecOutcomeEvent.orderItemId`, with code-level existing-check retained and DB unique violations treated as duplicate skips.
 
-This recommendation requires Leo/GPT decision before a Worker brief is written because it commits the current schema meaning to one `RecOutcomeEvent` row per `OrderItem`.
+Leo/GPT has approved that recommendation. Worker and Sentinel briefs may now be issued for D-O1 implementation and review.
+
+## Leo/GPT Decision
+
+Decision received: approved.
+
+Approved approach:
+
+`FULL_ORDER_ITEM_UNIQUE`
+
+Meaning:
+
+`RecOutcomeEvent` has at most one purchase outcome row per `OrderItem` in the current V3-11C2 model.
+
+Approved direction:
+
+- Implement DB-level uniqueness for `RecOutcomeEvent.orderItemId`.
+- Represent it in Prisma schema as `@@unique([orderItemId])`.
+- Keep the current code-level existing-check as a fast-path duplicate skip.
+- Treat DB unique conflict as duplicate/idempotent skip and fail-open, not as checkout failure.
+- Require duplicate preflight before applying the unique index in any target DB.
+- Require non-prod migration rehearsal and duplicate rejection tests.
+- Keep `COSMILE_REC_OUTCOME_ENABLED` OFF.
+
+Accepted limits:
+
+- Future refund/cancel as separate rows for the same `orderItemId` is out of scope and would require later schema redesign.
+- D-O1 does not solve group-buy, guest+login stitching, direct/session attribution, refund/reorder, semantic feedback, or V3-11D.
+
+Forbidden by Leo/GPT decision:
+
+- flag ON
+- live/prod/main/secret
+- production DB migration
+- operational use
+- group-buy/refund/reorder/direct/session/semantic expansion
+- SIASIU/foundation-control changes
 
 ## Executive Summary
 
@@ -320,23 +356,22 @@ Before flag ON, Advisor should still require:
 
 ## Worker Brief Readiness
 
-Worker brief is not yet ready to issue.
+Worker brief is ready to issue.
 
 Reason:
 
-Leo/GPT must first approve or reject the recommended D-O1 approach:
+Leo/GPT approved the recommended D-O1 approach:
 
 `FULL_ORDER_ITEM_UNIQUE` on `RecOutcomeEvent.orderItemId`, with existing-check retained and DB unique conflict mapped to duplicate skip/fail-open.
 
-After that decision, Advisor can write:
+Advisor has written:
 
 - `02_WORKER_BRIEF.md`
 - `03_SENTINEL_REVIEW_BRIEF.md`
-- reviewer routing decision
-- Worker short run prompt
+- reviewer routing decision in `10_LOOP_STATE.md`
+- `06_WORKER_HANDOFF_PROMPT.md`
+- `06_WORKER_RUN_PROMPT.md`
 
 ## Recommended Next Action
 
-Leo/GPT should approve or reject the recommended D-O1 approach:
-
-`FULL_ORDER_ITEM_UNIQUE` for `RecOutcomeEvent.orderItemId`.
+Leo should paste `06_WORKER_RUN_PROMPT.md` into the separate Cosmile Worker session.
