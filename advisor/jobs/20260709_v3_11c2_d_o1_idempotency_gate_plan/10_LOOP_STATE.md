@@ -4,7 +4,7 @@ Date: 2026-07-09
 
 ## Current Status
 
-`READY_FOR_SENTINEL`
+`FINAL_AUDIT_READY_FOR_LEO_DECISION`
 
 Leo/GPT approved the D-O1 recommended approach:
 
@@ -35,22 +35,24 @@ Leo/GPT approved the D-O1 recommended approach:
 - Advisor: decision package and gate plan complete.
 - Leo/GPT: approved `FULL_ORDER_ITEM_UNIQUE`.
 - Worker: D-O1 implementation reported complete; result archived at `../foundation-docs/runs/cosmile/20260709_v3_11c2_d_o1_idempotency_gate_plan/WORKER_RESULT.md`.
+- Sentinel: review returned `PASS`; result archived at `../foundation-docs/runs/cosmile/20260709_v3_11c2_d_o1_idempotency_gate_plan/SENTINEL_REVIEW_RESULT.md`.
+- Advisor: final audit written with verdict `PASS_WITH_RISK`.
 
 ## Current Required Actor
 
-Sentinel.
+Leo/GPT.
 
-Leo should paste:
+Leo/GPT should review:
 
-`../foundation-docs/advisor/jobs/20260709_v3_11c2_d_o1_idempotency_gate_plan/07_SENTINEL_RUN_PROMPT.md`
+`../foundation-docs/advisor/jobs/20260709_v3_11c2_d_o1_idempotency_gate_plan/05_FINAL_AUDIT.md`
 
-into a separate fable5 Sentinel session.
+and decide whether to accept the D-O1 final audit and authorize separate runtime commit routing.
 
 ## Pending Actors
 
-- Sentinel review: ready to run.
-- Service review: not required unless Worker proposes service semantic changes.
-- Advisor final audit: blocked until Worker and required Sentinel result exist.
+- Service review: not required; no new service semantic behavior was introduced beyond Leo/GPT-approved `FULL_ORDER_ITEM_UNIQUE`.
+- Runtime commit routing: not started; requires separate Leo/GPT instruction.
+- Flag-ON/live/prod: blocked.
 
 ## Reviewer Routing Decision
 
@@ -85,7 +87,7 @@ into a separate fable5 Sentinel session.
   Advisor
 
 - Status:
-  READY_TO_USE
+  COMPLETED
 
 ## Worker Result Received
 
@@ -98,7 +100,33 @@ into a separate fable5 Sentinel session.
 
 Advisor routing note:
 
-Worker result is sufficient to route Sentinel review, but not sufficient for D-O1 final closure because DB rehearsal was skipped. Sentinel must directly inspect implementation and attempt/verify non-prod DB rehearsal if possible. If DB rehearsal remains unavailable, Sentinel must not claim flag-ON readiness.
+Worker result was sufficient to route Sentinel review. Sentinel resolved the Worker DB rehearsal SKIP by executing ephemeral PostgreSQL rehearsal directly.
+
+## Sentinel Result Received
+
+- result: `../foundation-docs/runs/cosmile/20260709_v3_11c2_d_o1_idempotency_gate_plan/SENTINEL_REVIEW_RESULT.md`
+- pointer: `../foundation-docs/advisor/jobs/20260709_v3_11c2_d_o1_idempotency_gate_plan/12_SENTINEL_RESULT_POINTER.md`
+- foundation-docs commit: `419de76`
+- verdict: `PASS`
+- runtime commit status: read-only, no runtime changes by Sentinel
+- DB rehearsal: executed in ephemeral PostgreSQL; duplicate rejection, R-K2 preservation, rollback round trip, and preflight 0 verified
+
+## Advisor Final Audit
+
+- path: `../foundation-docs/advisor/jobs/20260709_v3_11c2_d_o1_idempotency_gate_plan/05_FINAL_AUDIT.md`
+- verdict: `PASS_WITH_RISK`
+- service review: not required for this D-O1 loop
+
+## Carry-Forward Restrictions
+
+- `COSMILE_REC_OUTCOME_ENABLED` remains OFF.
+- No flag ON.
+- No live/prod/main/secret access.
+- No production DB migration.
+- No operational use.
+- No runtime commit/push without separate Leo/GPT routing.
+- Real target DB deploy/preflight remains required before use.
+- F-2 sqlite migration directory cleanup remains required before fresh deploy/flag-ON.
 
 ## Result Pointers Expected
 
@@ -114,4 +142,4 @@ Sentinel:
 
 ## Next Required Action
 
-Run the Sentinel handoff via the short run prompt in a separate fable5 Sentinel session.
+Leo/GPT should decide whether to accept the D-O1 final audit and authorize separate runtime commit routing for the approved default-OFF C2+D-O1 shadow implementation.
