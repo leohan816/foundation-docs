@@ -4,7 +4,7 @@ Date: 2026-07-09
 
 ## Current Status
 
-`READY_FOR_WORKER`
+`READY_FOR_SENTINEL`
 
 Leo/GPT approved the D-O1 recommended approach:
 
@@ -34,20 +34,21 @@ Leo/GPT approved the D-O1 recommended approach:
 
 - Advisor: decision package and gate plan complete.
 - Leo/GPT: approved `FULL_ORDER_ITEM_UNIQUE`.
+- Worker: D-O1 implementation reported complete; result archived at `../foundation-docs/runs/cosmile/20260709_v3_11c2_d_o1_idempotency_gate_plan/WORKER_RESULT.md`.
 
 ## Current Required Actor
 
-Worker.
+Sentinel.
 
 Leo should paste:
 
-`../foundation-docs/advisor/jobs/20260709_v3_11c2_d_o1_idempotency_gate_plan/06_WORKER_RUN_PROMPT.md`
+`../foundation-docs/advisor/jobs/20260709_v3_11c2_d_o1_idempotency_gate_plan/07_SENTINEL_RUN_PROMPT.md`
 
-into a separate Cosmile Worker session.
+into a separate fable5 Sentinel session.
 
 ## Pending Actors
 
-- Sentinel review: waiting for Worker result.
+- Sentinel review: ready to run.
 - Service review: not required unless Worker proposes service semantic changes.
 - Advisor final audit: blocked until Worker and required Sentinel result exist.
 
@@ -84,7 +85,20 @@ into a separate Cosmile Worker session.
   Advisor
 
 - Status:
-  WAIT_FOR_WORKER_RESULT
+  READY_TO_USE
+
+## Worker Result Received
+
+- result: `../foundation-docs/runs/cosmile/20260709_v3_11c2_d_o1_idempotency_gate_plan/WORKER_RESULT.md`
+- pointer: `../foundation-docs/advisor/jobs/20260709_v3_11c2_d_o1_idempotency_gate_plan/11_WORKER_RESULT_POINTER.md`
+- foundation-docs commit: `fa84d33`
+- runtime commit status: not committed
+- DB test status: `SKIP (psycopg2 unavailable; live migration/duplicate-rejection not executed)`
+- flag status: `COSMILE_REC_OUTCOME_ENABLED OFF`
+
+Advisor routing note:
+
+Worker result is sufficient to route Sentinel review, but not sufficient for D-O1 final closure because DB rehearsal was skipped. Sentinel must directly inspect implementation and attempt/verify non-prod DB rehearsal if possible. If DB rehearsal remains unavailable, Sentinel must not claim flag-ON readiness.
 
 ## Result Pointers Expected
 
@@ -100,4 +114,4 @@ Sentinel:
 
 ## Next Required Action
 
-Run the Worker handoff via the short run prompt in a separate Cosmile Worker session.
+Run the Sentinel handoff via the short run prompt in a separate fable5 Sentinel session.

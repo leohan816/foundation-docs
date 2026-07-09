@@ -8,12 +8,14 @@ Date: 2026-07-09
 
 ## Review Timing
 
-Do not run this review yet.
+This review is now ready to run.
 
-This Sentinel brief becomes active only after Worker returns:
+Worker returned:
 
 - `../foundation-docs/runs/cosmile/20260709_v3_11c2_d_o1_idempotency_gate_plan/WORKER_RESULT.md`
 - `../foundation-docs/advisor/jobs/20260709_v3_11c2_d_o1_idempotency_gate_plan/11_WORKER_RESULT_POINTER.md`
+
+Use `07_SENTINEL_RUN_PROMPT.md` to start the Sentinel session.
 
 ## Sentinel Role
 
@@ -103,6 +105,15 @@ Run or verify Worker evidence for:
 
 If Sentinel cannot run a DB test because infra is unavailable, mark it as blocked/needs verification, not pass.
 
+Because Worker reported the D-O1 DB rehearsal as `SKIP (psycopg2 unavailable)`, Sentinel must pay special attention to whether DB rehearsal can be executed in the review environment.
+
+Verdict guidance:
+
+- `PASS` is allowed only if DB/schema/migration behavior is directly verified, including duplicate rejection.
+- `PASS_WITH_RISK` is allowed if implementation looks correct but DB rehearsal remains unavailable; it must explicitly state that D-O1 flag-ON readiness is still blocked by missing DB rehearsal.
+- `NEEDS_PATCH` is required for implementation, migration, rollback, or test defects within approved scope.
+- `NEEDS_LEO_DECISION` is required if closure depends on provisioning a DB review environment or accepting unexecuted DB evidence.
+
 ## Reviewer Routing Decision
 
 - Target actor:
@@ -136,7 +147,7 @@ If Sentinel cannot run a DB test because infra is unavailable, mark it as blocke
   Advisor
 
 - Status:
-  WAIT_FOR_WORKER_RESULT
+  READY_TO_USE
 
 ## Pass/Fail Verdict Options
 
