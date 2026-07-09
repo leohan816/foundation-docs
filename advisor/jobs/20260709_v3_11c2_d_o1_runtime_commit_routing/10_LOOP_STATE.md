@@ -4,7 +4,7 @@ Date: 2026-07-09
 
 ## Current Status
 
-`READY_FOR_WORKER_RUNTIME_COMMIT`
+`FINAL_AUDIT_READY_FOR_LEO_DECISION`
 
 ## Completed Inputs
 
@@ -13,16 +13,18 @@ Date: 2026-07-09
 - Worker implementation accepted.
 - Sentinel review accepted.
 - Advisor final audit accepted.
+- Worker runtime commit completed.
+- Advisor final audit written with verdict `PASS_WITH_RISK`.
 
 ## Current Required Actor
 
-Worker.
+Leo/GPT.
 
-Leo should paste:
+Leo/GPT should review:
 
-`../foundation-docs/advisor/jobs/20260709_v3_11c2_d_o1_runtime_commit_routing/06_WORKER_RUN_PROMPT.md`
+`../foundation-docs/advisor/jobs/20260709_v3_11c2_d_o1_runtime_commit_routing/05_FINAL_AUDIT.md`
 
-into a separate Cosmile Worker session.
+and decide whether to authorize runtime push routing for commit `004c52d`.
 
 ## Commit Scope
 
@@ -59,7 +61,22 @@ Exclude:
 
 ## Runtime Push
 
-Runtime push is not authorized.
+Runtime push is not authorized yet.
+
+## Worker Result Received
+
+- result: `../foundation-docs/runs/cosmile/20260709_v3_11c2_d_o1_runtime_commit_routing/WORKER_RESULT.md`
+- pointer: `../foundation-docs/advisor/jobs/20260709_v3_11c2_d_o1_runtime_commit_routing/11_WORKER_RESULT_POINTER.md`
+- foundation-docs commit: `e97e5d8`
+- runtime commit: `004c52df14da9b2051597602575d33eb0211cdbc`
+- runtime branch: `shadow/m4-cosmile-memory`
+- runtime push: not performed
+- runtime branch status: ahead 1 of `origin/shadow/m4-cosmile-memory`
+
+## Advisor Final Audit
+
+- path: `../foundation-docs/advisor/jobs/20260709_v3_11c2_d_o1_runtime_commit_routing/05_FINAL_AUDIT.md`
+- verdict: `PASS_WITH_RISK`
 
 ## Expected Result
 
@@ -73,4 +90,4 @@ Worker pointer:
 
 ## Next Required Action
 
-Run the Worker runtime commit handoff via the short run prompt in a separate Cosmile Worker session.
+Leo/GPT should decide whether to authorize runtime push routing for local commit `004c52d`.
