@@ -65,6 +65,21 @@ ACTION_TAKEN: Advisor directly verified exact schemas, Korean labels, diff, comm
 NEXT_OBSERVATION_DUE: same-Reviewer delta re-review
 ```
 
+## AO-M01-DESIGN-DELTA-REREVIEW-20260710T203608Z
+
+```text
+DISPATCH_ID: AO-M01-DESIGN-DELTA-REREVIEW-20260710T203608Z
+OBSERVED_AT: 2026-07-10T20:42:00Z
+PANE_ID: %5
+OUTPUT_FINGERPRINT: VERDICT PASS / F1 F2 F3 CLOSED / R-1 INFO / STOP
+LAST_PROGRESS_MARKER: Fable5 result and pointer commit 6c9d94f pushed
+STATE: COMPLETED_REPORTED
+INTERACTIVE_PROMPT_PRESENT: false
+SENSITIVE_OUTPUT_SUSPECTED: false
+ACTION_TAKEN: Advisor directly read result and accepted clean PASS for M01 batch routing
+NEXT_OBSERVATION_DUE: final implementation review after batches
+```
+
 ## One-Time Bootstrap Reload Observations
 
 Recorded: 2026-07-10T19:01:39Z

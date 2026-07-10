@@ -1,12 +1,12 @@
 # Loop State: Agent Office M01
 
-STATE: `DESIGN_REWORK_VALIDATED__FABLE5_DELTA_REREVIEW_READY`
+STATE: `DESIGN_REVIEW_PASS__BATCH_A_READY`
 
-CURRENT_WORK_UNIT: `AO-WU-06`
+CURRENT_WORK_UNIT: `AO-WU-07`
 
-WORKUNIT_PROGRESS: `5/15 COMPLETED`
+WORKUNIT_PROGRESS: `6/15 COMPLETED`
 
-REQUIRED_GATE_PROGRESS: `1/7 ENTRY_GATE_PASSED`
+REQUIRED_GATE_PROGRESS: `2/7 ENTRY_AND_DESIGN_REVIEW_PASSED`
 
 TRANSPORT: `ACTIVE`
 
@@ -20,13 +20,17 @@ REVIEWER_SESSION: `reviewer-fable5/$5/%5__IDLE`
 
 NEXT:
 
-1. route the exact four-file delta to the same Fable5 Reviewer;
-2. verify F-1/F-2/F-3 closure and regression coverage;
-3. authorize implementation only after a clean PASS.
+1. route exact implementation Batch A to the same Codex Ultra Worker;
+2. verify source, tests, commits, as-built docs, and result evidence;
+3. route Batch B only after Batch A acceptance.
 
-FABLE5_VERDICT: `NEEDS_PATCH`
+FABLE5_INITIAL_VERDICT: `NEEDS_PATCH`
 
 PATCH_SCOPE: `F-1_REQUIRED_STATE_CONFORMANCE / F-2_BLOCKER_ALERT_CONTRACT / F-3_KOREAN_LABELS`
+
+FABLE5_DELTA_VERDICT: `PASS`
+
+INFO_CARRY_FORWARD: `R-1_PRIMARY_ONLY_EXPIRED_ACTIVITY_FALLBACK__PIN_IN_BATCH_A_AND_B`
 
 BLOCKERS: none.
 
