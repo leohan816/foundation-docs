@@ -8,6 +8,42 @@ bootstrap delegation recorded later in this file.
 
 ## Active-Mode Product Dispatches
 
+### AO-M01-DESIGN-20260710T194125Z
+
+```text
+DISPATCH_ID: AO-M01-DESIGN-20260710T194125Z
+MISSION_ID: AGENT_OFFICE_M01_ADVISOR_MANAGED_OFFICE_WEB_CONTROL_PLANE
+AUTHORIZATION: LEO_GPT_APPROVED_AGENT_OFFICE_M01_PLUS_CANONICAL_DESIGN_ADDENDUM
+TARGET_ACTOR: Agent Office Worker
+TARGET_SESSION: agent-office
+TARGET_WINDOW: 0
+TARGET_PANE: 0
+OBSERVED_PANE_ID: %13
+WORKSPACE: /home/leo/Project/agent-office
+PROCESS: codex v0.144.1, gpt-5.6-sol ultra
+ROLE_EVIDENCE: bootstrap instructions commit 937f0c5 plus exact live pane banner
+READINESS_EVIDENCE: prior bootstrap returned STOP; empty Codex prompt; no approval or unrelated work
+SYNCHRONIZED_PANES_OFF: true
+LAUNCHER_ABSOLUTE_PATH: /home/leo/Project/foundation-docs/advisor/jobs/20260711_agent_office_m01_advisor_managed_office_web_control_plane/09_WORKER_DESIGN_RUN_PROMPT.md
+LAUNCHER_REPO_RELATIVE_PATH: advisor/jobs/20260711_agent_office_m01_advisor_managed_office_web_control_plane/09_WORKER_DESIGN_RUN_PROMPT.md
+LAUNCHER_COMMIT_SHA: 9259f58b9bce884fb8d9c3752433ef9f6a25446c
+LAUNCHER_GIT_BLOB: 9ab81a916d8008108275b354d7e2b5dff9a659cd
+LAUNCHER_SHA256_WORKTREE: e7b85585d6c8e383071f058a78fa811fd93dd79d317999b3f7a323e8e8f50331
+LAUNCHER_SHA256_COMMITTED: e7b85585d6c8e383071f058a78fa811fd93dd79d317999b3f7a323e8e8f50331
+UPSTREAM_EVIDENCE: foundation-docs main equals origin/main at 9259f58b9bce884fb8d9c3752433ef9f6a25446c
+RESULT_PATH: ../foundation-docs/runs/agent-office/20260711_agent_office_m01_advisor_managed_office_web_control_plane/WORKER_DESIGN_RESULT.md
+POINTER_PATH: ../foundation-docs/advisor/jobs/20260711_agent_office_m01_advisor_managed_office_web_control_plane/13_WORKER_DESIGN_RESULT_POINTER.md
+WRITE_REPO_BRANCHES: agent-office/shadow/agent-office-m01 then foundation-docs/main, serial
+DEPENDENCY_LOCKS: clear; bootstrap complete and verified; Reviewer not dispatched
+BLIND_INDEPENDENCE_RULE: Reviewer remains isolated until design result is complete
+PARALLEL_ISOLATION_EVIDENCE: not applicable; serial dispatch
+SOFT_STALL_SECONDS: 1800
+HARD_TIMEOUT_SECONDS_OR_NONE: 7200
+PREFLIGHT_VERDICT: PASS_READY_TO_SEND
+SENT_AT: PENDING_AFTER_LEDGER_COMMIT
+STATUS: READY_TO_SEND
+```
+
 ### AO-M01-BOOTSTRAP-20260710T192635Z
 
 ```text
