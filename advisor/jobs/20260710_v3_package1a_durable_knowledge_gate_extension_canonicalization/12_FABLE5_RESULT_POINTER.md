@@ -1,0 +1,16 @@
+# 12 Fable5 Result Pointer — V3 Package 1A Durable Knowledge Canonicalization Review
+
+- TARGET_PROJECT: shared (V3 canonical control surface: 설계문서/shared/v3/* + COSMILE_FEATURE_INDEX wiring)
+- ROLE_ACTOR: Fable5 Reviewer (Sentinel session)
+- PASS_TYPE: DESIGN_REVIEW (documentation/authority only; Level 3; /fable-sentinel + provenance-review loaded)
+- REVIEW_COMMIT: bebde69615cb37ff7ebb953d75eb75d8c50800f3 — verified ancestor of origin/main; +1301/-0 all-additive documentation-only; declared-scope exact; unrelated dirty files excluded
+- RESULT: **PASS_WITH_RISK**
+- COVERAGE: all 12 required items answered YES on substance — U-01..U-09 full fields/correct states; all addenda preserved with ADD-03 visibly SUPERSEDED (not erased) tracing to A-C3; facts evidence-bounded with deployed/DB/provider states UNVERIFIED; D1..D5-ii exact vs 28_FOUNDER_DECISION_RECORD with no expansion/hidden 1B design; 8 scenarios + modifications preserved; E-1..E-6 + 14 carry-forward gates + 11 global safe defaults visible; extension points additive with explicit forbidden-reinterpretation column; entry/exit checklist blocks handoff on OPEN_BLOCKER/guessed-legal/experiment-as-resolved/level-downgrade; Level A covers all listed risk classes with mandatory escalation; index findable from COSMILE_FEATURE_INDEX with historical-evidence-only rule; Package 1B NOT_STARTED_NOT_APPROVED + Control forbidden in all 7 documents
+- NAMED_RISK (C-1): gate-name continuity mapping absent between two ACTIVE canonical documents — still-active COSMILE_V3_11C2_COMMERCE_MEMORY_DESIGN.md names R-1 `FOUNDATION_SIGNAL_WHITELIST_CONTRACT_OWNER_GATE` and R-2 `REC_OUTCOME_RETENTION_ERASURE_POLICY_GATE`, which appear zero times in the new canonical set (R-3 gate carried verbatim); substance fully carried (R-1 -> D5-i + OUTBOX containment gate; R-2 -> RETENTION_ERASURE_AND_PROCESSOR_POLICY_GATE; flag-ON still blocked by U-03) and index precedence keeps conflicts decidable, but citation drift is untracked and ADD-07's hygiene gate as scoped (historical docs only) does not cover it. Recommended fix: 3-row mapping/supersession note in register or index, or extend the hygiene gate scope.
+- INFO: C-2 20260709 V3-11 implementation-layer risk register not linked from index (no bypass; pointer recommended) · C-3 checklist binds V3-labeled missions (mitigated by feature-index pointer + repo-local guards) · C-4 enforcement is declarative (V2 train is the backstop)
+- RESULT_FILE: ../foundation-docs/runs/shared/20260710_v3_package1a_durable_knowledge_gate_extension_canonicalization/FABLE5_DOCUMENTATION_DESIGN_REVIEW_RESULT.md
+- POINTER_FILE: ../foundation-docs/advisor/jobs/20260710_v3_package1a_durable_knowledge_gate_extension_canonicalization/12_FABLE5_RESULT_POINTER.md
+- PROCESS: no sub-agent/delegated context/temporary session; no Control/Worker invocation; no DB/secret/env access; no live calls; no patch outside result + pointer; no Package 1B work; no final approval
+- NEXT: PASS_WITH_RISK does not auto-advance — Leo/GPT accepts risk C-1 explicitly, or Advisor routes a small mapping addendum (fold into HISTORICAL_V3_DOC_STATUS_AND_SUPERSESSION_GATE scope) and re-touches
+- RETURN_TO: Advisor
+- NEXT_ACTOR: Advisor (route to Leo/GPT for risk acceptance)
