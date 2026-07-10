@@ -2,7 +2,7 @@
 
 Date: 2026-07-10
 
-Status: `DRAFT_PENDING_FABLE5_FOUNDER_PACKAGE_CHALLENGE`
+Status: `DRAFT_PATCHED_AFTER_FABLE5_NEEDS_PATCH_PENDING_DELTA_REREVIEW`
 
 Mission: `V3_PACKAGE1A_INDEPENDENT_UNKNOWN_RESOLUTION_AND_FOUNDER_DECISION_PACKAGE`
 
@@ -21,7 +21,7 @@ This package does not approve Package 1B design or implementation. It reduces th
 9. Cosmile memory-layer guest-to-login stitching is not implemented, while commerce cart/wishlist merge already records a guest/user relationship. That relationship is not approved for feedback attribution.
 10. Current authentication is a single mock user and cannot produce representative identity or pilot evidence.
 11. The Foundation signal whitelist owner is unresolved and multiple vocabularies conflict.
-12. Cosmile's mapper assumes consent from user-ID presence, writes a local user identifier into outbox payload state, and is reached without a dedicated feature-flag guard. No consumer/flush worker was found; deployed rows remain unverified.
+12. Cosmile's mapper assumes consent from user-ID presence and writes a local user identifier into the outbox row's `canonicalUserId` column; the `payloadJson` whitelist itself excludes user identifiers. The enqueue path is reached without a dedicated feature-flag guard. No consumer/flush worker was found; deployed rows remain unverified.
 13. C2 organic purchase outcomes cannot be used as recommendation-performance evidence.
 14. No measured product or learning value exists.
 15. The original Foundation and Fable5 first passes violated the no-sub-agent rule, disclosed the violation, and were replaced by direct same-session blind re-verification.
@@ -84,9 +84,10 @@ Exact retention periods and legal conclusions must not be guessed in Package 1B 
 
 ### E-3: Can the current feedback row represent mixed meaning?
 
-- Advisor/Foundation/Cosmile: separate adverse fields suggest a possible multi-axis direction.
+- Advisor/Foundation: separate adverse fields and the consultation safety pattern suggest a possible future multi-axis direction.
+- Cosmile: this is only conditionally feasible if an approved label-choice/coherence rule exists; none exists, so forced optimistic single-label writes must be rejected.
 - Fable5: a required exclusive label plus no coherence/provenance/version rules is currently lossy and unsafe.
-- Consolidation: current schema is not approved as a mixed-feedback contract.
+- Consolidation: current schema is not approved as a mixed-feedback contract; Cosmile's current-state conclusion aligns with the Fable5 challenge even though it recognizes a possible future structure.
 
 ### E-4: Does "no linking" describe current reality?
 
@@ -115,9 +116,22 @@ Exact retention periods and legal conclusions must not be guessed in Package 1B 
 5. No claim of end-to-end non-persistence.
 6. No Foundation feedback signal expansion or outbox flush; current enqueue governance remains a gate.
 7. No feedback-derived ranking, recommendation uplift claim, durable memory, evidence upgrade, safety downgrade, or automatic promotion.
-8. Existing consultation safety behavior remains consultation-scoped.
+8. Existing consultation safety behavior remains consultation-scoped. This package does not approve or resolve the existing consultation external-egress path; its owner, provider policy, and default-off/kill-switch requirements must be handled by a separate explicit gate.
 9. No human-review promise until an owner, queue, staffing model, and escalation policy are approved.
-10. Package 1B, Control design, schema/API changes, DB work, and implementation remain blocked.
+10. Do not migrate or populate the unmigrated M4 governance-overlay columns as a side effect of feedback work; their semantics remain unresolved.
+11. Package 1B, Control design, schema/API changes, DB work, and implementation remain blocked.
+
+## F.1 Pre-Package-1B Gates That Must Not Be Lost
+
+These are technical, review, legal, or documentation prerequisites. They are not additional founder product questions and do not start automatically.
+
+1. `OUTBOX_CONSENT_IDENTIFIER_CONTAINMENT_GATE`: after Decision 5, define no-flush containment, consent authority, identifier format, contract conformance, lifecycle, and deletion behavior before Package 1B relies on Foundation signals.
+2. `EXISTING_CONSULTATION_EXTERNAL_EGRESS_GATE`: separately review the currently coded consultation external-model path, ownership, provider terms, explicit default-off control, and kill switch. Package 1A feedback decisions do not resolve it.
+3. `HISTORICAL_V3_DOC_STATUS_AND_SUPERSESSION_GATE`: add status/supersession treatment so historical V3-0x documents cannot be mistaken for Package 1 implementation approval.
+4. `RETENTION_ERASURE_AND_PROCESSOR_POLICY_GATE`: establish lineage, legal/policy basis, provider/backup/log handling, correction, erasure, and no-reappearance expectations before collection.
+5. `REAL_AUTH_AND_IDENTITY_EVIDENCE_GATE`: representative identity or pilot claims require real auth and shared-device/wrong-account evidence; mock-single-user behavior is insufficient.
+6. `PILOT_METRIC_GOVERNANCE_GATE`: name an independent metric owner and freeze the denominator, horizon, stop rule, abuse controls, completeness reporting, and kill switch before collection.
+7. `M4_GOVERNANCE_OVERLAY_HOLD`: do not migrate or populate unresolved M4 governance-overlay fields as incidental feedback work.
 
 ## G. Only Five Leo/GPT Decisions
 
@@ -133,6 +147,8 @@ Options:
 - `D1-D CONSULTATION_DERIVED`: treat consultation or follow-up text as outcome evidence.
 
 Advisor recommendation: Do not approve D1-C or D1-D with current evidence. If strategic intent is to continue Package 1, D1-B is the lowest-risk design hypothesis; D1-A remains the safest operational choice. This is not implementation approval.
+
+Eligibility under any non-HOLD choice must explicitly address sensitive populations and health-adjacent cases, including pregnancy and minors, through the legal/safety review listed in section D. This package does not decide those rules.
 
 Do not ask Leo/GPT to decide route names, fields, enums, or timing constants.
 
@@ -179,15 +195,28 @@ The later pilot must have an independent metric owner, frozen denominator, horiz
 
 ### Decision 5 - Foundation Signal Governance And Current Outbox Boundary
 
-Plain-language question: Who owns the cross-repo signal contract, and must current enqueue governance be resolved before Package 1B design?
+This decision contains two independent founder choices. Selecting an ownership model must not silently remove the containment gate.
+
+#### D5-i - Contract Ownership Model
+
+Plain-language question: Who owns the cross-repo signal contract?
 
 Options:
 
-- `D5-A JOINT_GOVERNANCE_WITH_CONTAINMENT_GATE`: Cosmile owns raw commerce evidence and producer mapping; Foundation owns canonical acceptance constraints; contract changes require joint review and Leo/GPT approval. No flush. Open a separate design-only outbox/consent/identifier containment gate before Package 1B relies on signals.
-- `D5-B SINGLE_OWNER`: name either Foundation or Cosmile as sole owner.
-- `D5-C DEFER_WITH_CURRENT_ENQUEUE`: leave ownership unresolved and continue relying on no consumer.
+- `D5-i-A JOINT_GOVERNANCE`: Cosmile owns raw commerce evidence and producer mapping; Foundation owns canonical acceptance constraints; contract changes require joint review and Leo/GPT approval.
+- `D5-i-B SINGLE_OWNER`: name either Foundation or Cosmile as sole owner, while still applying the independent D5-ii containment decision below.
+- `D5-i-C DEFER_OWNERSHIP`: leave ownership unresolved; Package 1B may not rely on Foundation signals.
 
-Advisor recommendation: Approve D5-A. Do not approve D5-C. This decision does not authorize DB inspection, cleanup, runtime patching, or a flush worker.
+#### D5-ii - Outbox Containment Before Package 1B
+
+Plain-language question: Must the current enqueue/consent/identifier boundary be resolved before Package 1B may rely on Foundation signals?
+
+Options:
+
+- `D5-ii-A CONTAINMENT_GATE_REQUIRED`: no flush; require the separate design-only `OUTBOX_CONSENT_IDENTIFIER_CONTAINMENT_GATE` before Package 1B signal use, regardless of whether D5-i selects joint or single ownership.
+- `D5-ii-B RELY_ON_NO_CONSUMER`: continue relying on the absence of a flush worker without a containment gate.
+
+Advisor recommendation: Approve `D5-i-A JOINT_GOVERNANCE` and `D5-ii-A CONTAINMENT_GATE_REQUIRED`. Do not approve `D5-ii-B`. Choosing single ownership under D5-i-B does not waive containment. This decision does not authorize DB inspection, cleanup, runtime patching, or a flush worker.
 
 ## H. Founder Acceptance Sheet
 
@@ -213,6 +242,6 @@ It remains a draft until Fable5 completes `DESIGN_REVIEW__FOUNDER_PACKAGE_CHALLE
 
 ## Package Status
 
-`FOUNDER_PACKAGE_DRAFT_READY_FOR_FABLE5_CHALLENGE`
+`FOUNDER_PACKAGE_DRAFT_PATCHED_READY_FOR_FABLE5_DELTA_REREVIEW`
 
 No decision in this draft is final. No Package 1B work starts automatically.

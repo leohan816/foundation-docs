@@ -2,7 +2,7 @@
 
 Mission: `V3_PACKAGE1A_INDEPENDENT_UNKNOWN_RESOLUTION_AND_FOUNDER_DECISION_PACKAGE`
 
-Status: `PHASE3_FABLE5_FOUNDER_PACKAGE_CHALLENGE_READY`
+Status: `PHASE3_FOUNDER_PACKAGE_PATCHED_PENDING_FABLE5_DELTA_REREVIEW`
 
 ## Purpose
 
@@ -70,21 +70,35 @@ Freeze commit: `fab82c45f7e92ed2652dc6de9db55532fabb661b`
 - [FOUNDER_DECISION_PACKAGE.md](./FOUNDER_DECISION_PACKAGE.md)
 - [FOUNDER_ACCEPTANCE_SHEET.md](./FOUNDER_ACCEPTANCE_SHEET.md)
 
-Status: `DRAFT_PENDING_FABLE5_FOUNDER_PACKAGE_CHALLENGE`
+Status: `DRAFT_PATCHED_AFTER_FABLE5_NEEDS_PATCH_PENDING_DELTA_REREVIEW`
 
 ## Fable5 Founder-Package Challenge
 
 - [20_FABLE5_FOUNDER_PACKAGE_CHALLENGE_HANDOFF_PROMPT.md](./20_FABLE5_FOUNDER_PACKAGE_CHALLENGE_HANDOFF_PROMPT.md)
 - [20_FABLE5_FOUNDER_PACKAGE_CHALLENGE_RUN_PROMPT.md](./20_FABLE5_FOUNDER_PACKAGE_CHALLENGE_RUN_PROMPT.md)
-- Expected result: `../foundation-docs/runs/shared/20260710_v3_package1a_independent_unknown_resolution_founder_decision_package/FABLE5_FOUNDER_PACKAGE_CHALLENGE.md`
-- Expected pointer: `21_FABLE5_FOUNDER_PACKAGE_CHALLENGE_POINTER.md`
+- Result: `../foundation-docs/runs/shared/20260710_v3_package1a_independent_unknown_resolution_founder_decision_package/FABLE5_FOUNDER_PACKAGE_CHALLENGE.md`
+- [21_FABLE5_FOUNDER_PACKAGE_CHALLENGE_POINTER.md](./21_FABLE5_FOUNDER_PACKAGE_CHALLENGE_POINTER.md)
+
+Challenge result:
+
+- Foundation-docs commit: `362c331`
+- Verdict: `NEEDS_PATCH`
+- Required findings: P-1, P-2
+- Recommended/info findings patched in same edit: P-3 through P-9
+
+## Founder-Package Challenge Patch
+
+- [22_FOUNDER_PACKAGE_CHALLENGE_PATCH_RECORD.md](./22_FOUNDER_PACKAGE_CHALLENGE_PATCH_RECORD.md)
+- [23_FABLE5_FOUNDER_PACKAGE_DELTA_REREVIEW_HANDOFF_PROMPT.md](./23_FABLE5_FOUNDER_PACKAGE_DELTA_REREVIEW_HANDOFF_PROMPT.md)
+- [23_FABLE5_FOUNDER_PACKAGE_DELTA_REREVIEW_RUN_PROMPT.md](./23_FABLE5_FOUNDER_PACKAGE_DELTA_REREVIEW_RUN_PROMPT.md)
+- Expected delta result: `../foundation-docs/runs/shared/20260710_v3_package1a_independent_unknown_resolution_founder_decision_package/FABLE5_FOUNDER_PACKAGE_DELTA_REREVIEW.md`
+- Expected delta pointer: `24_FABLE5_FOUNDER_PACKAGE_DELTA_REREVIEW_POINTER.md`
 
 ## Required Later Artifacts
 
-- Fable5 founder-package challenge under `../foundation-docs/runs/shared/` - pending
-- `21_FABLE5_FOUNDER_PACKAGE_CHALLENGE_POINTER.md` - pending
-- final corrected founder package/acceptance sheet after challenge - pending
-- final mission pointer - pending
+- Fable5 founder-package delta re-review under `../foundation-docs/runs/shared/` - pending
+- `24_FABLE5_FOUNDER_PACKAGE_DELTA_REREVIEW_POINTER.md` - pending
+- final Advisor consolidation and mission pointer - pending
 
 ## Current Decision
 
@@ -94,4 +108,4 @@ No Package 1B design, Control invocation, runtime work, DB action, live model ca
 
 ## Next Actor
 
-Route the ASCII-only founder-package challenge run prompt to the same existing Fable5 Reviewer session. The result returns to Advisor. No Package 1B or founder approval is automatic.
+Route the ASCII-only delta re-review run prompt to the same existing Fable5 Reviewer session that issued `NEEDS_PATCH`. The result returns to Advisor. No Package 1B or founder approval is automatic.

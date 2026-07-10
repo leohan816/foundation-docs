@@ -2,7 +2,7 @@
 
 Date: 2026-07-10
 
-Status: `DRAFT_PENDING_FABLE5_FOUNDER_PACKAGE_CHALLENGE_AND_LEO_GPT_DECISIONS`
+Status: `DRAFT_PATCHED_AFTER_FABLE5_NEEDS_PATCH_PENDING_DELTA_REREVIEW_AND_LEO_GPT_DECISIONS`
 
 These scenarios describe proposed safe behavior. They are not approved product policy until Leo/GPT marks them accepted or modified.
 
@@ -58,10 +58,10 @@ Example: "It stings a little, but the effect is good."
 
 ## Scenario 5 - Raw Text Appears In A Log, Trace, Or Queue
 
-- Expected user-visible behavior: Do not claim non-persistence; follow the approved incident and user-notification policy.
+- Expected user-visible behavior: Do not claim non-persistence; follow a to-be-created and independently reviewed incident and user-notification policy. No such approved policy artifact exists today.
 - Stored data: Only incident metadata necessary for investigation, without copying the raw text further.
 - Deleted or blocked data: Stop the affected input/transport path; quarantine or remove raw copies where legally and technically permitted.
-- Automatic action allowed: Default-off kill switch and containment actions pre-approved by incident policy.
+- Automatic action allowed: Only a default-off kill switch and containment actions explicitly pre-approved by the future incident policy; until that policy exists, stop and require human security/privacy direction.
 - Automatic action forbidden: Silent log deletion, automatic credential rotation without authority, or continued collection while exposure is unresolved.
 - Human approval required: Security/privacy incident classification, provider/log handling, notification, credential action, and restart.
 - Rollback/recovery path: Disable collection/transport, rotate or revoke approved credentials if required, verify canary cleanup, and re-review before restart.
@@ -92,9 +92,21 @@ Example: "It stings a little, but the effect is good."
 - Evidence proving behavior: Frozen KPI/denominator/horizon, independent metric owner, completeness/bias report, kill-switch test, and final pilot audit.
 - Founder acceptance: `PENDING`
 
+## Scenario 8 - Fake, Incentivized, Replayed, Or Competitor Feedback
+
+- Expected user-visible behavior: Accept no product-level safety or learning conclusion from report volume alone. Clearly separate an individual user's conservative safety guidance from any claim about the product population.
+- Stored data: Only approved structured reports with source/provenance, deduplication identity, and abuse-review state under the retention policy. No unapproved raw text or hidden identity link.
+- Deleted or blocked data: Duplicate, replayed, unauthenticated, policy-ineligible, or quarantined reports are blocked from certainty escalation, aggregates, product-level action, ranking, and durable learning.
+- Automatic action allowed: Rate-limit or quarantine according to an approved abuse policy; provide conservative request-scoped guidance to the reporting user without asserting product causality.
+- Automatic action forbidden: Escalate `repeated`/`verified` certainty from duplicate volume; automatically block a product, alter ranking, promote memory, or publish a safety claim from unverified reports.
+- Human approval required: Product-level safety action, fraud/abuse disposition, privileged certainty transitions, and release of quarantined reports into aggregates or learning.
+- Rollback/recovery path: Quarantine the affected batch, remove its derived influence, recompute aggregates, restore the prior safe product state, and preserve an audit trail without retaining unnecessary raw content.
+- Evidence proving behavior: Threat model, dedup/replay fixtures, rate-limit and quarantine tests, provenance/authentication checks, blocked-certainty-escalation regression, aggregate recomputation, and independent safety/abuse review.
+- Founder acceptance: `PENDING`
+
 ## Acceptance Status
 
 - Accepted as written: `NO`
 - Modifications supplied by Leo/GPT: `NONE_YET`
-- Fable5 founder-package challenge: `PENDING`
+- Fable5 founder-package challenge: `NEEDS_PATCH_RECEIVED__DELTA_REREVIEW_PENDING`
 - Package 1B authorization: `NO`
