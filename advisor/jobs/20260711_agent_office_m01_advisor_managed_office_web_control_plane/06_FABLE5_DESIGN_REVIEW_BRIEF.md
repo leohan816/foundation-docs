@@ -30,6 +30,24 @@ Required coverage:
 - no public exposure, DB, secret, sub-agent, or next mission;
 - design is implementable without Worker product-policy invention.
 
+Exact mission conformance checks must include:
+
+- whether the required user-facing WorkUnit states `QUEUED`, `READY`,
+  `DISPATCHING`, `READING`, `WORKING`, `TESTING`, `WRITING_RESULT`,
+  `RETURNING_RESULT`, `REVIEWING`, `NEEDS_PATCH`, `WAITING_DEPENDENCY`,
+  `WAITING_LEO`, `BLOCKED`, `COMPLETED`, `FAILED`, and `CANCELLED` are truly
+  supported as required, rather than silently replaced by a different lifecycle;
+- whether a separate `RoleActivityChanged` projection is sufficient and preserves
+  one primary WorkUnit status, or creates an observable contract mismatch;
+- every required alert type, blocker reason, message state, Korean hierarchy label,
+  count/progress rule, and deterministic GPT copy-package field;
+- exact seven-file canonical ownership, no foundation-docs design mirror, and
+  final as-built traceability requirements from the addendum;
+- multi-host Linux/Mac extension design without hidden external access authority;
+- visual asset/icon licensing, responsive/mobile accessibility, stable dimensions,
+  overflow, and reduced-motion coverage;
+- no implementation authorization hidden in candidate paths or batch language.
+
 Verdict: `PASS | PASS_WITH_RISK | NEEDS_PATCH | FAIL`.
 
 Result returns to Advisor. Reviewer does not patch or activate implementation.

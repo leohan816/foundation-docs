@@ -32,6 +32,33 @@ NEXT_ACTOR: Agent Office Worker canonical design pass
 RECORDED_AT: 2026-07-10T19:40:47Z
 ```
 
+## AO-M01-DESIGN-20260710T194125Z
+
+```text
+DISPATCH_ID: AO-M01-DESIGN-20260710T194125Z
+MISSION_ID: AGENT_OFFICE_M01_ADVISOR_MANAGED_OFFICE_WEB_CONTROL_PLANE
+TARGET_ACTOR: Agent Office Worker
+PANE_COMPLETION_REPORTED: true
+RESULT_FILE: ../foundation-docs/runs/agent-office/20260711_agent_office_m01_advisor_managed_office_web_control_plane/WORKER_DESIGN_RESULT.md
+POINTER_FILE: ../foundation-docs/advisor/jobs/20260711_agent_office_m01_advisor_managed_office_web_control_plane/13_WORKER_DESIGN_RESULT_POINTER.md
+RESULT_FILE_EXISTS: true
+POINTER_FILE_EXISTS: true
+ALLOWED_FILES: exact seven Agent Office canonical candidate files plus result and pointer
+ACTUAL_CHANGED_FILES: exact allowed files only
+DIFF_VERIFIED: true; target fedf716, result c1ebf35, pointer 6800f59
+TEST_EVIDENCE_VERIFIED: documentation/link/traceability checks reproduced; no runtime tests applicable
+COMMIT_SHA: fedf716e780c760641d157cc9f4c08f698f41409
+BRANCH: shadow/agent-office-m01
+UPSTREAM: origin/shadow/agent-office-m01
+PUSH_AND_ANCESTRY_VERIFIED: true; local equals upstream and remote ref
+RUNTIME_STATUS_VERIFIED: no source/package/test/asset files
+REVIEW_VERDICT_AND_COVERAGE: pending independent Fable5 Level 3 design review
+CONTRADICTIONS: required WorkUnit lifecycle names differ from candidate primary-state names; explicitly routed to Fable5
+ADVISOR_RESULT_VERDICT: PASS_TO_INDEPENDENT_REVIEW_WITH_EXPLICIT_QUESTION
+NEXT_ACTOR: Fable5 Reviewer
+RECORDED_AT: 2026-07-10T20:06:00Z
+```
+
 ## One-Time Bootstrap Reload Results
 
 Recorded: 2026-07-10T19:01:39Z
