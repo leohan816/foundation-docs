@@ -1,6 +1,6 @@
 # Loop State
 
-Status: `MISSION_COMPLETE__RETURN_TO_LEO_GPT`
+Status: `FINAL_APPROVED_AND_CLOSED`
 
 ## Completed
 
@@ -15,11 +15,11 @@ Status: `MISSION_COMPLETE__RETURN_TO_LEO_GPT`
 
 ## Current Actor
 
-`Leo/GPT`
+`STOP`
 
 ## Current Required Action
 
-Review the final mission audit and issue final approval/acknowledgement.
+No action. Wait for a separate Leo/GPT mission.
 
 ## Reload Status
 
@@ -35,8 +35,10 @@ Review the final mission audit and issue final approval/acknowledgement.
 - Required reloads: complete.
 - Final audit: complete.
 - Advisor verdict: `MISSION_COMPLETE`.
-- Final approval: Leo/GPT only.
+- Leo/GPT final decision: `APPROVE_AND_CLOSE_MISSION`.
+- Final state: `MISSION_CLOSED__AWAITING_NEXT_LEO_GPT_MISSION`.
 
 ## Verdict Routing
 
-- Return the completed mission to Leo/GPT. Do not start a new mission automatically.
+- Mission closed. Do not start protocol maintenance, V3 work, or any runtime task
+  automatically.

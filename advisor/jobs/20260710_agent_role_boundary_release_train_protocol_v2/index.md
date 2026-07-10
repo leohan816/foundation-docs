@@ -1,6 +1,6 @@
 # Agent Role Boundary and Release Train Protocol V2
 
-Mission status: `MISSION_COMPLETE__RETURN_TO_LEO_GPT`
+Mission status: `FINAL_APPROVED_AND_CLOSED`
 
 ## Artifacts
 
@@ -22,14 +22,15 @@ Mission status: `MISSION_COMPLETE__RETURN_TO_LEO_GPT`
 - [Fable5 result pointer](12_FABLE5_REVIEW_RESULT_POINTER.md)
 - [Role reload status](14_ROLE_RELOAD_STATUS.md)
 - [Mission complete pointer](15_MISSION_COMPLETE_POINTER.md)
+- [Final closure record](16_FINAL_CLOSURE_RECORD.md)
 - [Canonical V2](../../../설계문서/shared/AGENT_ROLE_BOUNDARY_AND_RELEASE_TRAIN_PROTOCOL_V2.md)
 
 ## Current Verdict
 
-`MISSION_COMPLETE`
+`FINAL_APPROVED_AND_CLOSED`
 
 ## Next Actor
 
-Leo/GPT in the GPT strategy session for final approval/acknowledgement.
+`STOP` - wait for a separate Leo/GPT mission.
 
 Do not start a new mission automatically.

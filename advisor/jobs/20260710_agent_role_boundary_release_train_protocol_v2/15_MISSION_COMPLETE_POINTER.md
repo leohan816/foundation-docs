@@ -1,5 +1,10 @@
 # Mission Complete Pointer
 
+Status: `SUPERSEDED_BY_FINAL_CLOSURE_POINTER`
+
+Final closure authority:
+`17_FINAL_CLOSURE_POINTER.md`
+
 ```text
 MISSION_COMPLETE
 TARGET_PROJECT: shared agent role protocol
@@ -19,4 +24,3 @@ FINAL_APPROVER: Leo/GPT
 RETURN_TO: Leo/GPT
 NEXT_ACTOR: Leo/GPT
 ```
-
