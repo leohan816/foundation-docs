@@ -13,7 +13,7 @@ FOUNDER_ACCEPTANCE_SHEET: ../foundation-docs/advisor/jobs/20260710_v3_package1a_
 FABLE5_CHALLENGE_RESULT: ../foundation-docs/runs/shared/20260710_v3_package1a_independent_unknown_resolution_founder_decision_package/FABLE5_FOUNDER_PACKAGE_CHALLENGE.md
 FABLE5_DELTA_PASS_RESULT: ../foundation-docs/runs/shared/20260710_v3_package1a_independent_unknown_resolution_founder_decision_package/FABLE5_FOUNDER_PACKAGE_DELTA_REREVIEW.md
 FINAL_AUDIT: ../foundation-docs/advisor/jobs/20260710_v3_package1a_independent_unknown_resolution_founder_decision_package/25_ADVISOR_FINAL_MISSION_AUDIT.md
-FOUNDATION_DOCS_CLOSURE_COMMIT: PENDING_PUBLISH
+FOUNDATION_DOCS_CLOSURE_COMMIT: eba19ba
 RUNTIME_COMMIT_STATUS: no runtime changes
 PACKAGE1B_STATUS: NOT_STARTED_NOT_APPROVED
 RETURN_TO: Leo/GPT
