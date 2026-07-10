@@ -107,3 +107,32 @@ Return this completed package to Leo/GPT for the Phase 2A prerequisite decision.
 Do not create an execution launcher, connect to a DB, or start Option B
 automatically.
 
+## Leo/GPT Final Decision
+
+Decision: `ACCEPT_FINAL_AUDIT_AND_HOLD_PHASE2A`
+
+Final mission status:
+
+`FINAL_APPROVED_AND_CLOSED_WITH_PHASE2A_HOLD`
+
+Accepted conclusions:
+
+- mission audit `MISSION_COMPLETE`;
+- Fable5 design re-review `PASS` accepted;
+- Phase 2A decision `C_HOLD_PHASE2A_DUE_TO_UNPROVEN_BOUNDARY`;
+- Phase 2A execution remains `NOT_APPROVED`.
+
+The following prerequisites remain required before any new Phase 2A execution
+mission may be considered:
+
+1. exact approved target DB identity;
+2. approved schema;
+3. non-prod, non-live, non-customer-facing attestation;
+4. least-privilege read-only DB role and grant evidence;
+5. masked credential injection/access path;
+6. `.env.local` mode `664` hygiene resolution or explicit approval;
+7. approved execution and post-execution review route.
+
+No prerequisite preparation, Option B work, execution prompt, DB connection,
+query, migration, role provisioning, runtime/schema/flag change, Phase 2B, main
+merge, or production/live access may start without a separate Leo/GPT mission.

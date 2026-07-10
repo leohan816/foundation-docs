@@ -1,6 +1,6 @@
 # Loop State
 
-Status: `MISSION_AUDIT_COMPLETE__NEEDS_LEO_GPT_PHASE2A_EXECUTION_DECISION`
+Status: `FINAL_APPROVED_AND_CLOSED_WITH_PHASE2A_HOLD`
 
 ## Completed
 
@@ -21,16 +21,17 @@ Status: `MISSION_AUDIT_COMPLETE__NEEDS_LEO_GPT_PHASE2A_EXECUTION_DECISION`
 - F-1/F-2/F-3: closed.
 - Advisor final mission audit: `MISSION_COMPLETE`.
 - Recommended execution path: `C_HOLD_PHASE2A_DUE_TO_UNPROVEN_BOUNDARY`.
+- Leo/GPT accepted the final audit and selected Option C HOLD.
+- Final mission status: `FINAL_APPROVED_AND_CLOSED_WITH_PHASE2A_HOLD`.
 
 ## Current Actor
 
-`Leo/GPT`
+`STOP`
 
 ## Current Required Action
 
-Review `05_FINAL_AUDIT.md` and decide whether to retain Option C HOLD or provide
-the missing target/read-only/access prerequisites for a separately approved next
-mission. Do not execute Phase 2A from this package.
+Await a separate Leo/GPT mission. Do not prepare prerequisites, create a Phase 2A
+execution prompt, or start Option B automatically.
 
 ## Blocked
 
@@ -39,8 +40,11 @@ mission. Do not execute Phase 2A from this package.
 
 ## Next-State Rules
 
-- Option C accepted -> mission closes with Phase 2A still on HOLD.
-- Option A consideration -> Leo/GPT must first provide all exact identity,
-  attestation, read-only role, masked-access, hygiene, and review-route fields.
-- Option B selection -> create a separate non-prod preparation mission; do not
-  infer approval from this package.
+- No automatic next state is allowed.
+- A future target/read-only-boundary mission must be explicitly opened by Leo/GPT.
+- Until then, Phase 2A remains held and all execution/provisioning paths remain
+  forbidden.
+
+## Next State
+
+`PHASE2A_HELD__AWAITING_TARGET_AND_READONLY_BOUNDARY_MISSION`

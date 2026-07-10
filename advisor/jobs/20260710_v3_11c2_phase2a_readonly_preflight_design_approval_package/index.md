@@ -1,6 +1,6 @@
 # V3-11C2 Phase 2A Read-Only Preflight Design and Approval Package
 
-Mission status: `MISSION_AUDIT_COMPLETE__NEEDS_LEO_GPT_PHASE2A_EXECUTION_DECISION`
+Mission status: `FINAL_APPROVED_AND_CLOSED_WITH_PHASE2A_HOLD`
 
 Phase 2A execution status: `NOT_APPROVED`
 
@@ -27,13 +27,16 @@ Phase 2A execution status: `NOT_APPROVED`
 - [Fable5 design re-review result pointer](14_FABLE5_DESIGN_REREVIEW_RESULT_POINTER.md)
 - [Advisor rework-result validation](15_ADVISOR_REWORK_RESULT_VALIDATION.md)
 - [Final mission pointer](16_FINAL_MISSION_POINTER.md)
+- [Final closure pointer](17_FINAL_CLOSURE_POINTER.md)
 
 ## Current Decision
 
-`MISSION_COMPLETE__RECOMMEND_OPTION_C_HOLD`
+`FINAL_APPROVED_AND_CLOSED_WITH_PHASE2A_HOLD`
 
 ## Next Actor
 
-Leo/GPT in the GPT strategy session.
+STOP. Await a separate Leo/GPT target/read-only-boundary mission.
 
 No DB access, query, migration, execution prompt, or Phase 2A approval is allowed.
+
+Next state: `PHASE2A_HELD__AWAITING_TARGET_AND_READONLY_BOUNDARY_MISSION`.
