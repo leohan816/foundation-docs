@@ -32,4 +32,4 @@ Status: `PATCH_PUBLISHED__WAIT_FOR_FABLE5_DUAL_REVIEW`
 
 Manual routing remains mandatory. No tmux input has been sent.
 
-Next recipient: existing Fable5 Reviewer session `dev`.
+Next recipient: existing Fable5 Reviewer session `reviewer-fable5`.

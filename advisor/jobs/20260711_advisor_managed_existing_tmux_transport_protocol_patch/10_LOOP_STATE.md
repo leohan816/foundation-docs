@@ -24,7 +24,8 @@ COMPLETED:
 
 NEXT_REQUIRED:
 
-1. manually route dual review to existing Fable5 Reviewer session `dev`;
+1. manually route dual review to existing Fable5 Reviewer session
+   `reviewer-fable5`;
 2. wait for both `PASS` verdicts.
 
 FORBIDDEN_NEXT:

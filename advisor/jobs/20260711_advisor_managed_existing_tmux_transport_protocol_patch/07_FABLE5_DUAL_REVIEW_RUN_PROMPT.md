@@ -3,7 +3,7 @@
 TARGET_ACTOR: Fable5 Reviewer
 TARGET_PROJECT: Shared Advisor tmux transport protocol
 TARGET_REPO: ../foundation-docs plus read-only referenced workspaces
-TARGET_SESSION_NAME: dev
+TARGET_SESSION_NAME: reviewer-fable5
 REQUIRED_SKILL: /fable-sentinel
 MODEL_EFFORT: <Fable5:Max>
 READ_AND_EXECUTE: ../foundation-docs/advisor/jobs/20260711_advisor_managed_existing_tmux_transport_protocol_patch/07_FABLE5_DUAL_REVIEW_HANDOFF_PROMPT.md
@@ -13,7 +13,7 @@ DO_NOT_BROADEN_SCOPE: true
 
 ========
 TARGET_ACTOR: Fable5 Reviewer
-TARGET_SESSION_NAME: dev
+TARGET_SESSION_NAME: reviewer-fable5
 MODEL_EFFORT: <Fable5:Max>
 REQUIRED_SKILL: /fable-sentinel
 READ_AND_EXECUTE: ../foundation-docs/advisor/jobs/20260711_advisor_managed_existing_tmux_transport_protocol_patch/07_FABLE5_DUAL_REVIEW_HANDOFF_PROMPT.md

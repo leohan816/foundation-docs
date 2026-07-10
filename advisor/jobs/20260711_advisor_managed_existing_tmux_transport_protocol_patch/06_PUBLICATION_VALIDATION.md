@@ -31,6 +31,13 @@ Each commit was pushed to `origin/main`; local and upstream matched after each p
 - `MANUAL_ROUTING_FALLBACK: ACTIVE`;
 - `FINAL_ACTIVATION_RECORD: NOT_PRESENT`.
 
+## Reviewer Session Rename Evidence
+
+Leo renamed the existing Fable5 Reviewer tmux session from `dev` to
+`reviewer-fable5`. Read-only verification confirmed the same session ID `$5`, pane
+ID `%5`, workspace `/home/leo/Project/foundation-control`, `claude` process, and
+effective `synchronize-panes off`. No prompt input was sent by Advisor.
+
 ## Review Base
 
 Fable5 must review the actual diff beginning at parent commit

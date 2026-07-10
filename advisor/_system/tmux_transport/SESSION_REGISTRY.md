@@ -17,7 +17,7 @@ verification. Pane IDs and processes can change.
 | Foundation Worker | `foundation` | `$3` | 0 | 0 | `%3` | `/home/leo/Project/FOUNDATION` | `claude` | latest pane record declares Foundation Worker | eligible only after live verification |
 | Cosmile Worker | `cosmile` | `$1` | 0 | 0 | `%1` | `/home/leo/Project/Cosmile` | `claude` | latest pane record declares Cosmile Worker | eligible only after live verification |
 | Shashu Worker | `siasiu` | `$0` | 0 | 0 | `%0` | `/home/leo/Project/SIASIU` | `claude` | latest pane record declares Shashu Worker | eligible only after live verification |
-| Fable5 Reviewer | `dev` | `$5` | 0 | 0 | `%5` | `/home/leo/Project/foundation-control` | `claude` | latest pane record declares Fable5 Reviewer and `/fable-sentinel` review | eligible only after live verification; generic session name requires strict role-evidence check |
+| Fable5 Reviewer | `reviewer-fable5` | `$5` | 0 | 0 | `%5` | `/home/leo/Project/foundation-control` | `claude` | latest pane record declares Fable5 Reviewer and `/fable-sentinel` review | eligible only after live role-evidence verification |
 
 ## Required Live Checks
 

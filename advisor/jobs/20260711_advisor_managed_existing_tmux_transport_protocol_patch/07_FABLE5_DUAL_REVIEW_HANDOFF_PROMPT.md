@@ -1,7 +1,7 @@
 # Fable5 Dual Review Handoff
 
 TARGET_ACTOR: Fable5 Reviewer
-TARGET_SESSION: same existing independent Fable5 Reviewer session `dev`, never Advisor or author session
+TARGET_SESSION: same existing independent Fable5 Reviewer session `reviewer-fable5`, never Advisor or author session
 SOURCE_ADVISOR_JOB: ../foundation-docs/advisor/jobs/20260711_advisor_managed_existing_tmux_transport_protocol_patch
 DO_NOT_PASTE_INTO: Advisor, Control, Worker, or GPT strategy session
 RETURN_RESULT_TO: Advisor

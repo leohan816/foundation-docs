@@ -50,11 +50,12 @@ Read-only tmux metadata and pane context identified:
 - Foundation Worker: `foundation:0.0`, observed pane `%3`;
 - Cosmile Worker: `cosmile:0.0`, observed pane `%1`;
 - Shashu Worker: `siasiu:0.0`, observed pane `%0`;
-- Fable5 Reviewer: `dev:0.0`, observed pane `%5`.
+- Fable5 Reviewer: `reviewer-fable5:0.0`, observed pane `%5`.
 
 These are registry observations, not permanent identities. Every future dispatch
-must revalidate live state. The generic Fable5 session name `dev` requires strict
-role-evidence verification.
+must revalidate live state. The Fable5 session was renamed from `dev` to
+`reviewer-fable5` by Leo for clearer actor targeting; its session ID `$5`, pane
+`%5`, workspace, and process remained unchanged.
 
 ## Active Instruction Strategy
 
@@ -70,7 +71,8 @@ only for transport satisfying the new protocol.
 
 ## Review Route
 
-Selected reviewer: Fable5 Reviewer, same existing independent session `dev`.
+Selected reviewer: Fable5 Reviewer, same existing independent session
+`reviewer-fable5`.
 
 Required skill: `/fable-sentinel`.
 

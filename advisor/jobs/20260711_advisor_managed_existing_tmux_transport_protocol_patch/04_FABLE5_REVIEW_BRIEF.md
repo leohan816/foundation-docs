@@ -6,7 +6,7 @@ Status: `WAIT_FOR_PATCH_COMMIT`
 
 - Target actor: Fable5 Reviewer
 - Selected reviewer: existing Fable5 Reviewer session
-- Target session: `dev`
+- Target session: `reviewer-fable5`
 - Required skill: `/fable-sentinel`
 - Review level: Level 3
 - Return result to: Advisor
@@ -44,7 +44,7 @@ Verify actual files, diffs, commits, hashes, and live read-only metadata:
 1. every required control is represented in canonical/config files;
 2. `MODE_STATUS` is `NOT_ACTIVE` and `KILL_SWITCH` is `ENGAGED`;
 3. registry observations match current tmux metadata and include live revalidation;
-4. generic `dev` Reviewer session cannot be trusted without role evidence;
+4. `reviewer-fable5` still requires live role evidence despite its clear name;
 5. tmux buffer transport shape uses exact file loading and exact pane targeting;
 6. no shell interpolation, broadcast, synchronize, wildcard, or multi-pane path;
 7. ledger templates contain required dispatch, observation, timeout, stall, result,
