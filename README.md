@@ -14,8 +14,11 @@ Foundation 생태계(Foundation / SIASIU / Cosmile)의 **문서 전용 중앙 �
 
 Before executing Advisor handoff prompts, read:
 
+- `설계문서/shared/AGENT_ROLE_BOUNDARY_AND_RELEASE_TRAIN_PROTOCOL_V2.md`
 - `docs/agent/RUN_PROTOCOL.md`
 - `docs/agent/RESULT_REPORTING_PROTOCOL.md`
+
+The V2 protocol is canonical for actor authority, review separation, return-to-Advisor routing, and release-train sequencing. This repository remains a documentation/evidence archive and is not runtime behavior source-of-truth.
 
 Long role results must not be pasted into chat by default. Store role results under `../foundation-docs/runs/<target-project>/<job-id>/` and return only `RESULT SUMMARY`, `NEXT ACTION ROUTING`, and `POINTER BLOCK`, unless Advisor/Leo explicitly requests full text.
 
