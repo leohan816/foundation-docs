@@ -1,0 +1,19 @@
+- TARGET_PROJECT: Cosmile
+- ROLE_ACTOR: Cosmile Worker (DESIGN_ONLY_REWORK_ROUND2)
+- RESULT_FILE: ../foundation-docs/runs/cosmile/20260710_v3_11c2_phase2a_target_readonly_boundary_preparation/WORKER_REWORK_ROUND2_RESULT.md
+- DESIGN_DOC_REPO_LOCAL: ../Cosmile/app/docs/V3_11C2_PHASE2A_TARGET_AND_READONLY_BOUNDARY_PLAN.md
+- DESIGN_DOC_MIRROR: ../foundation-docs/[seolgye-munseo]/cosmile/V3_11C2_PHASE2A_TARGET_AND_READONLY_BOUNDARY_PLAN.md
+- MIRROR_PROOF: cmp IDENTICAL (27763 bytes, single sha256)
+- DOC_STATUS: DESIGN_DRAFT_PATCHED_AFTER_FABLE5_REREVIEW_NEEDS_PATCH_PENDING_ROUND3
+- FINDINGS_ADDRESSED: F-A (createuser --pwprompt removed from existing-role step; two-step path consistent; no combined-create), F-B (pre-provisioning statement-log verifier-safety gate + sensitive-incident STOP/Leo route; no auto logging/credential action)
+- CLOSED_UNCHANGED: P-1, P-3, NOINHERIT, catalog_read_verified
+- RUNTIME_REPO: ../Cosmile
+- RUNTIME_BRANCH: shadow/m4-cosmile-memory
+- RUNTIME_COMMIT_STATUS: round-2 patched design artifact committed e4ed668 and pushed (41e5394..e4ed668); no runtime source/schema/migration/test/pkg/flag change
+- DB_QUERY_MIGRATION_ROLE_PERMISSION_LOGGING_STATUS: not accessed
+- SECRET_ENV_VALUE_ACCESS: none
+- ADMIN_AND_PHASE2A_STATUS: NOT_APPROVED
+- PLAN_RECOMMENDATION: Option C (HOLD) unchanged
+- RESULT: COMPLETED
+- RETURN_TO: Advisor
+- NEXT_ACTOR: Advisor (validate diff, route same Fable5 session for round-3 re-review of the two fixed questions)

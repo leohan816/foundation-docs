@@ -2,7 +2,7 @@
 
 Date: 2026-07-10
 Author actor: Cosmile Worker (DESIGN_AND_ADMIN_PREPARATION_ONLY)
-Status: `DESIGN_DRAFT_PATCHED_AFTER_FABLE5_NEEDS_PATCH_PENDING_REREVIEW`
+Status: `DESIGN_DRAFT_PATCHED_AFTER_FABLE5_REREVIEW_NEEDS_PATCH_PENDING_ROUND3`
 
 Canonical mirror: `../foundation-docs/설계문서/cosmile/V3_11C2_PHASE2A_TARGET_AND_READONLY_BOUNDARY_PLAN.md`
 Canonical role authority: `../foundation-docs/설계문서/shared/AGENT_ROLE_BOUNDARY_AND_RELEASE_TRAIN_PROTOCOL_V2.md` (`ACTIVE_CANONICAL_V2`)
@@ -85,9 +85,11 @@ Inert admin SQL template (placeholders only; not to be run here):
 -- <ROLE>, <DB>, <APPROVED_SCHEMA> are placeholders; no real value here.
 -- P-2: role creation is SEPARATE from credential setting. NO password literal appears here.
 CREATE ROLE <ROLE> LOGIN NOSUPERUSER NOCREATEDB NOCREATEROLE NOREPLICATION NOBYPASSRLS NOINHERIT;
--- The login credential is set SEPARATELY by a reviewed no-echo client-side method that sends
--- only a SCRAM verifier (never a raw password as SQL): e.g. psql `\password <ROLE>` or
--- `createuser --pwprompt`. See "Provisioning credential channel (P-2)" below.
+-- The login credential is set SEPARATELY on this already-created role by a reviewed no-echo
+-- client-side method that sends only a SCRAM verifier (never a raw password as SQL):
+-- psql `\password <ROLE>` (or an independently verified existing-role equivalent).
+-- createuser --pwprompt is NOT used (it creates a role; cannot set credential on an existing role).
+-- See "Provisioning credential channel (P-2)" below.
 GRANT CONNECT ON DATABASE <DB> TO <ROLE>;
 GRANT USAGE ON SCHEMA <APPROVED_SCHEMA> TO <ROLE>;
 GRANT SELECT ON <APPROVED_SCHEMA>."RecOutcomeEvent"     TO <ROLE>;
@@ -119,11 +121,16 @@ Therefore a positive least-privilege role spec is **not sufficient proof** of a 
 
 ### Provisioning credential channel (P-2)
 
-Role creation and credential setting are **separate** steps. When the separately-approved admin mission sets `<ROLE>`'s login credential, it must use a reviewed **no-echo, client-side SCRAM** method so only a SCRAM verifier reaches the server and **no raw password** appears in SQL text, command argv, shell history, psql history, server statement logs, evidence, or result artifacts:
-- use `psql` `\password <ROLE>` (client computes the SCRAM verifier; only the verifier is sent) or `createuser --pwprompt`, or a verified equivalent;
+Role creation and credential setting are **separate** steps (two-step flow): first create the role **without** a password (section 3 template), then set the credential **on that already-created role**. When the separately-approved admin mission sets `<ROLE>`'s login credential, it must use a reviewed **no-echo, client-side SCRAM** method so only a SCRAM verifier reaches the server and **no raw password** appears in SQL text, command argv, shell history, psql history, server statement logs, evidence, or result artifacts:
+- use `psql` `\password <ROLE>` on the **already-created** role (the client computes the SCRAM verifier; only the verifier is sent), or another independently verified method that sets a credential on an **existing** role. `createuser --pwprompt` is **excluded** from this step because it *creates* a role and cannot set a credential on an already-created role; **no combined-create path is introduced** in this plan.
 - **never** `CREATE ROLE … PASSWORD '<literal>'` or `ALTER ROLE … PASSWORD '<literal>'` with a raw literal;
-- the SCRAM verifier is itself sensitive — it must not be printed, logged, or copied into evidence;
-- confirm `log_statement` / `log_min_duration_statement` did not capture credential material and that client (`psql`/shell) history did not record it (booleans in section 4). Any provisioning command is a separate approved admin step; none runs in this mission.
+- the SCRAM verifier is itself sensitive — it must not be printed, logged, or copied into evidence.
+
+**SCRAM verifier statement-log safety gate (F-B).** `\password` issues an `ALTER ROLE … PASSWORD 'SCRAM-…'`; on a server whose `log_statement` (or `log_min_duration_statement`) captures it, the **verifier** can land in server statement logs.
+- **Pre-provisioning gate:** before setting the credential, obtain non-secret evidence that the approved channel will **not** record raw password or SCRAM-verifier material in server statement logs. If this cannot be proven, **STOP before provisioning** — do not proceed.
+- **No auto logging change:** any logging-mode change, session-scoped suppression, or alternate provisioning channel is a **separate approved admin decision** with audit-policy and blast-radius review. This plan does **not** change, disable, or delete logging.
+- **Sensitive-incident route:** if raw password **or SCRAM verifier** material was, or may have been, captured (in statement logs, history, or evidence), **STOP**, classify the affected log/verifier as **sensitive**, and require **Leo/GPT** decisions for (i) log handling and (ii) credential **reset/rotation** before any continuation. **Never** auto-delete logs, auto-reset, or auto-rotate.
+- Evidence is count/boolean/status only (section 4); never print logging settings that contain sensitive material or any log content. Any provisioning command is a separate approved admin step; none runs in this mission.
 
 ## 4. Provisioning Evidence Contract
 
@@ -138,7 +145,7 @@ A later, separately approved admin mission must return **boolean / count / statu
 - `forbidden_privileges_absent` = true (no INSERT/UPDATE/DELETE/TRUNCATE/REFERENCES/TRIGGER/EXECUTE/DDL/CREATE/TEMP granted directly to the role);
 - effective-`PUBLIC` assessment (as **effective** privileges, not just role grants): `public_temp_assessed` = true; `public_connect_scope_assessed` = true (no unintended other-database CONNECT); `public_schema_create_assessed` = true (PG < 15 + `approved_schema = public` case); `public_write_path_resolution` = one of `none_found` | `stop_pending_leo_decision` (if any residual PUBLIC write path exists, status is `stop_pending_leo_decision` and provisioning does **not** proceed — see P-1);
 - `inherited_paths_assessed` = true; `default_privileges_assessed` = true (each = "no write path found");
-- provisioning credential channel (P-2): `role_created_without_password_literal` = true; `credential_set_via_no_echo_scram` = true; `raw_password_in_sql_absent` = true; `client_history_captured_credential` = false; `server_statement_log_captured_credential` = false; `scram_verifier_exposed_or_logged` = false;
+- provisioning credential channel (P-2): `role_created_without_password_literal` = true; `credential_set_on_existing_role_via_no_echo_scram` = true (existing-role `\password`; `createuser --pwprompt` not used); `raw_password_in_sql_absent` = true; `pre_provisioning_statement_log_verifier_safe` = true (proven before setting the credential; if not provable -> STOP before provisioning); `client_history_captured_credential` = false; `server_statement_log_captured_credential` = false; `scram_verifier_exposed_or_logged` = false; `credential_capture_incident_resolution` = `none` | `stop_sensitive_incident_pending_leo_decision`;
 - execution credential (P-3): `readonly_credential_source_created` = true; `credential_value_exposed` = false;
 - `evidence_contains_no_rows_or_credentials` = true.
 
@@ -194,7 +201,7 @@ STOP conditions (return to Advisor):
 - `.env.local` hygiene precondition unresolved;
 - provisioning-evidence contract would require DB rows, raw grants, or credential exposure;
 - effective `PUBLIC` `TEMP`, unintended other-database `CONNECT`, or public-schema `CREATE` (PG < 15 + `approved_schema = public`) is present -> STOP for a separately reviewed Leo/GPT remediation decision (no automatic or broad PUBLIC revoke);
-- provisioning would place a raw password in SQL text, command argv, shell/psql history, or server statement logs;
+- provisioning would place a raw password **or SCRAM verifier** in SQL text, command argv, shell/psql history, or server statement logs; or the pre-provisioning statement-log verifier-safety cannot be proven; or credential material was (or may have been) captured -> sensitive-incident STOP (Leo/GPT decides log handling and credential reset/rotation; no automatic logging or credential action);
 - an execution credential would appear in shell history, argv, or echo/trace, would persist beyond the command, or same-user/root process-environment visibility is unacceptable for the host trust boundary;
 - any write outside the four allowed files, any DB/query/migration/role/permission action, or any execution-launcher creation would be needed.
 
@@ -208,7 +215,7 @@ Before **(1) role/permission or hygiene admin preparation**:
 - read-only role alias + permission matrix (section 3) approved for a separate admin mission;
 - provisioning-evidence contract (section 4) approved, including the effective-`PUBLIC` assessment booleans;
 - **P-1 PUBLIC remediation decision** (option a/b/c/d) with blast-radius analysis + independent review — required only if a residual PUBLIC write path (`TEMP` / other-database `CONNECT` / public-schema `CREATE`) is found;
-- **P-2 provisioning credential channel** = no-echo client-side SCRAM (`psql \password` / `createuser --pwprompt`), with no raw password literal in SQL/argv/history/logs;
+- **P-2 provisioning credential channel** = two-step (create role without password, then set the credential on the existing role via `psql \password <ROLE>` or a verified existing-role equivalent; `createuser --pwprompt` excluded), with no raw password literal in SQL/argv/history/logs, plus the pre-provisioning statement-log verifier-safety gate and the sensitive-incident (log handling + credential reset/rotation) decision route;
 - dedicated read-only credential source label (section 5) approved for creation;
 - **P-3 execution credential injection method** = no shell-history / no argv / no echo-trace, minimal process scope + cleanup, and a same-user/root process-visibility decision;
 - `.env.local` `600` hardening approved as a separate step.
@@ -232,10 +239,16 @@ Before **(3) post-result routing**:
 ## Rework log — Fable5 `NEEDS_PATCH` (P-1 / P-2 / P-3 + minor)
 
 - **P-1 (effective PUBLIC privileges):** added the "Effective PUBLIC privileges" subsection stating `PUBLIC` grants are effective privileges not neutralized by `NOINHERIT`; documented default `PUBLIC` `CONNECT`+`TEMP` and PG<15 public-schema `CREATE`; defined a **non-automatic STOP/decision path** (options a-d each requiring blast-radius analysis + independent review + Leo/GPT approval) and explicitly forbade any automatic/broad PUBLIC revoke; added effective-`PUBLIC` assessment booleans + `public_write_path_resolution` to section 4; added the STOP condition and the §9 approval field.
-- **P-2 (provisioning secret channel):** removed the raw `PASSWORD '<literal>'` from the inert `CREATE ROLE` template; separated role creation from credential setting; required a no-echo client-side SCRAM method (`\password` / `createuser --pwprompt`) sending only a SCRAM verifier; prohibited raw passwords in SQL/argv/history/logs/evidence; added the "Provisioning credential channel (P-2)" subsection + section-4 booleans (`role_created_without_password_literal`, `credential_set_via_no_echo_scram`, `raw_password_in_sql_absent`, `*_captured_credential` = false, `scram_verifier_exposed_or_logged` = false).
+- **P-2 (provisioning secret channel):** removed the raw `PASSWORD '<literal>'` from the inert `CREATE ROLE` template; separated role creation from credential setting; required a no-echo client-side SCRAM method (`\password` on the already-created role) sending only a SCRAM verifier; prohibited raw passwords in SQL/argv/history/logs/evidence; added the "Provisioning credential channel (P-2)" subsection + section-4 booleans (`role_created_without_password_literal`, `credential_set_via_no_echo_scram`, `raw_password_in_sql_absent`, `*_captured_credential` = false, `scram_verifier_exposed_or_logged` = false).
 - **P-3 (execution credential injection):** added the four-plus-line injection rules to section 5 — no inline `VAR=value`, no argv URL, no echo/trace/output, minimal scope + `unset` cleanup — plus explicit same-user/root `/proc/<pid>/environ` visibility acknowledgment with a mitigate-or-STOP decision; added STOP condition and §9 approval field.
 - **Minor:** `NOINHERIT` promoted from *preferred* to **required**; `catalog_read_verified` boolean added to section 4.
 - Status -> `DESIGN_DRAFT_PATCHED_AFTER_FABLE5_NEEDS_PATCH_PENDING_REREVIEW`. No DB/query/migration/role/permission/secret access; no runtime/schema/migration/test/package/config/flag change; no execution launcher; scope limited to P-1/P-2/P-3 + the two minor precision items.
+
+### Round 2 (Fable5 re-review — F-A / F-B)
+
+- **F-A (`createuser --pwprompt` two-step conflict):** removed `createuser --pwprompt` from the separate credential-setting step wherever it was presented as an equivalent second step (section 3 template comment, the "Provisioning credential channel (P-2)" subsection, section 4 evidence, and the section 9 approval field). The existing-role credential-setting method is now limited to `psql \password <ROLE>` (or an independently verified existing-role equivalent); `createuser --pwprompt` is marked excluded because it creates a role and cannot set a credential on an already-created role. **No combined-create path was introduced.**
+- **F-B (SCRAM verifier statement-log decision route):** added the "SCRAM verifier statement-log safety gate" to the P-2 subsection: a **pre-provisioning gate** requiring proof that the channel will not record raw-password/verifier material in server statement logs (else STOP before provisioning); a rule that any logging-mode change/suppression/alternate channel is a separate approved admin decision (no auto logging change); and a **sensitive-incident STOP/Leo route** for raw-password-or-verifier capture (Leo/GPT decides log handling and credential reset/rotation; never auto-delete logs, auto-reset, or auto-rotate). Extended the STOP condition to raw password **or SCRAM verifier** capture and added section-4 booleans `pre_provisioning_statement_log_verifier_safe` and `credential_capture_incident_resolution` (`none` | `stop_sensitive_incident_pending_leo_decision`).
+- Closed P-1/P-3 mechanisms were not reopened or broadened (only references needed to keep F-B text consistent). Status -> `DESIGN_DRAFT_PATCHED_AFTER_FABLE5_REREVIEW_NEEDS_PATCH_PENDING_ROUND3`. No DB/query/migration/role/permission/logging/secret access; no runtime change; no execution launcher; scope limited to F-A/F-B.
 
 ## Boundaries reaffirmed
 
