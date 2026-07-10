@@ -5,6 +5,21 @@ Transport state: `ACTIVE`
 General active-mode execution observations: none. The one-time bootstrap reload
 observations are recorded below.
 
+## AO-M01-BATCH-B-20260710T214500Z
+
+```text
+DISPATCH_ID: AO-M01-BATCH-B-20260710T214500Z
+OBSERVED_AT: 2026-07-10T21:46:52Z
+PANE_ID: %13
+OUTPUT_FINGERPRINT: exact Batch B launcher displayed / Codex usage limit until 11:02 PM
+LAST_PROGRESS_MARKER: launcher accepted by the existing GPT-5.6-Sol Ultra session but execution did not start
+STATE: WAITING_EXPECTED
+INTERACTIVE_PROMPT_PRESENT: false; empty prompt after informational usage-limit response
+SENSITIVE_OUTPUT_SUSPECTED: false
+ACTION_TAKEN: no downgrade, retry, new context, or alternate Worker; preserve Ultra and wait for quota reset
+NEXT_OBSERVATION_DUE: at or after 2026-07-10T23:02:00Z before exact same-launcher resubmission
+```
+
 ## AO-M01-BATCH-A-20260710T204442Z
 
 ```text
