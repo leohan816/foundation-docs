@@ -13,7 +13,7 @@ Canonical status: `ACTIVE_CANONICAL_V2`
 | Foundation Worker | yes | `RELOADED` | recorded below; repo remained read-only at `f240867dd833` |
 | Shashu Worker | yes | `RELOADED` | recorded below; repo remained read-only at `0b59434dba43` |
 | Cosmile Worker | yes | `RELOADED` | recorded below; repo remained read-only at `029d489728e2` |
-| Fable5 Reviewer | yes | `PENDING_NEXT` | waiting for return |
+| Fable5 Reviewer | yes | `RELOADED` | recorded below; skill repo remained read-only at `d3a9342f45ed` |
 
 ## Advisor Confirmation
 
@@ -103,9 +103,25 @@ Advisor verification: `Cosmile` HEAD remained
 `029d489728e27abb3a6ea3d1a6831eefe7434d14`, upstream delta `0/0`, staged files
 `0`; only the six pre-existing untracked `app/docs/*.md` files remain.
 
-## Next Actor
+## Fable5 Reviewer Confirmation
 
-Fable5 Reviewer, using `08_FABLE5_REVIEWER_RELOAD_RUN_PROMPT.md` in the existing
-Fable5 Reviewer session.
+```text
+ROLE_PROTOCOL_RELOADED
+ACTOR: Fable5 Reviewer
+WORKSPACE: ../skill/fable-sentinel
+ENTRY_FILES_READ: ../skill/fable-sentinel/SKILL.md; ../skill/fable-sentinel/references/review-classification.md
+CANONICAL_FILE_READ: ../foundation-docs/설계문서/shared/AGENT_ROLE_BOUNDARY_AND_RELEASE_TRAIN_PROTOCOL_V2.md
+CANONICAL_STATUS: ACTIVE_CANONICAL_V2
+ROLE_SUMMARY: Fable5 performs separate independent DESIGN_REVIEW and IMPLEMENTATION_REVIEW passes with explicit coverage and returns every result to Advisor.
+FORBIDDEN_SUMMARY: Fable5 does not implement, patch, commit reviewed runtime work, self-review, share author/Advisor/Worker sessions, or grant final approval.
+RETURN_TO: Advisor
+```
 
-Final mission audit remains blocked until all six actor rows are `RELOADED`.
+Advisor verification: `skill` HEAD remained
+`d3a9342f45ed95f9d9a7d37396f026a8560558dc`, upstream delta `0/0`, staged files
+`0`.
+
+## Completion
+
+All six required existing actor sessions are `RELOADED`. The final mission audit
+is recorded in `05_FINAL_AUDIT.md`.

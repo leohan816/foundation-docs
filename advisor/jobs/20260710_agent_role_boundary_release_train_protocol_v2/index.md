@@ -1,11 +1,12 @@
 # Agent Role Boundary and Release Train Protocol V2
 
-Mission status: `ROLE_RELOAD_IN_PROGRESS__NEXT_FABLE5_REVIEWER`
+Mission status: `MISSION_COMPLETE__RETURN_TO_LEO_GPT`
 
 ## Artifacts
 
 - [Intake](00_INTAKE.md)
 - [Advisor brief](01_ADVISOR_BRIEF.md)
+- [Final mission audit](05_FINAL_AUDIT.md)
 - [Propagation commit register](02_PROPAGATION_COMMIT_REGISTER.md)
 - [Advisor self-check](03_ADVISOR_SELF_CHECK.md)
 - [Fable5 review brief](04_FABLE5_REVIEW_BRIEF.md)
@@ -24,10 +25,10 @@ Mission status: `ROLE_RELOAD_IN_PROGRESS__NEXT_FABLE5_REVIEWER`
 
 ## Current Verdict
 
-`FABLE5_DUAL_PASS__ROLE_RELOAD_PENDING`
+`MISSION_COMPLETE`
 
 ## Next Actor
 
-Fable5 Reviewer in the existing Fable5 Reviewer session.
+Leo/GPT in the GPT strategy session for final approval/acknowledgement.
 
-After each valid reload confirmation, Advisor routes the next existing actor.
+Do not start a new mission automatically.

@@ -1,6 +1,6 @@
 # Loop State
 
-Status: `ROLE_RELOAD_IN_PROGRESS__NEXT_FABLE5_REVIEWER`
+Status: `MISSION_COMPLETE__RETURN_TO_LEO_GPT`
 
 ## Completed
 
@@ -11,33 +11,32 @@ Status: `ROLE_RELOAD_IN_PROGRESS__NEXT_FABLE5_REVIEWER`
 - Phase 3 Advisor self-check: complete.
 - Phase 4 Fable5 `DESIGN_REVIEW`: PASS.
 - Phase 4 Fable5 `IMPLEMENTATION_REVIEW`: PASS.
-- Canonical status promoted to `ACTIVE_CANONICAL_V2` pending publish of this update.
+- Canonical status promoted to `ACTIVE_CANONICAL_V2` and pushed in `bd45091`.
 
 ## Current Actor
 
-`Fable5 Reviewer`
+`Leo/GPT`
 
 ## Current Required Action
 
-Reload the existing Fable5 Reviewer session with
-`08_FABLE5_REVIEWER_RELOAD_RUN_PROMPT.md` and return `ROLE_PROTOCOL_RELOADED` to
-Advisor.
+Review the final mission audit and issue final approval/acknowledgement.
 
-## Remaining Reload Actors
+## Reload Status
 
-- Advisor: reload confirmation to be recorded after active-status publish.
+- Advisor: reloaded.
 - Control: reloaded.
 - Foundation Worker: reloaded.
 - Shashu Worker: reloaded.
 - Cosmile Worker: reloaded.
-- Fable5 Reviewer: pending, next.
+- Fable5 Reviewer: reloaded.
 
-## Blocked Until All Reloads
+## Mission Audit
 
-- Final mission audit.
-- `MISSION_COMPLETE` report.
+- Required reloads: complete.
+- Final audit: complete.
+- Advisor verdict: `MISSION_COMPLETE`.
+- Final approval: Leo/GPT only.
 
 ## Verdict Routing
 
-- Reload confirmation valid -> Advisor records it and routes the next existing actor.
-- Missing file, conflict, wrong session, or non-active canonical status -> STOP and investigate.
+- Return the completed mission to Leo/GPT. Do not start a new mission automatically.
