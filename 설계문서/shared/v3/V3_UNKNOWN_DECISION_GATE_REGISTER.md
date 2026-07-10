@@ -320,19 +320,19 @@ This register promotes the reviewed Package 1A discovery record into a durable c
 - **Future design/test/result:** Enforced by the mission entry/exit checklist.
 - **Sources/updated:** Fable5 ADD-06; comparison dependency order; 2026-07-10.
 
-### ADD-07 Historical Document Status and Supersession
+### ADD-07 Historical and Active Canonical Document Status and Gate Reconciliation
 
-- **ID/title:** `ADD-07` - Historical V3 documents can be mistaken for current approval.
+- **ID/title:** `ADD-07` - Historical V3 documents can be mistaken for current approval, and still-active canonical designs can retain older gate names without a continuity map.
 - **Current state:** `OPEN_BLOCKER`.
-- **Confirmed facts:** Historical V3 documents contain `CANONICAL`, `DESIGN_APPROVED_WITH_LIMITS`, ownership claims, or missing HOLD banners that conflict with later decisions.
-- **Unresolved questions:** Per-document status/supersession treatment.
-- **Safe default:** This register, the founder ledger, and the V3 canonical index control current Package 1 authority; historical documents are evidence only when they conflict.
+- **Confirmed facts:** Historical V3 documents contain `CANONICAL`, `DESIGN_APPROVED_WITH_LIMITS`, ownership claims, or missing HOLD banners that conflict with later decisions. The still-active `COSMILE_V3_11C2_COMMERCE_MEMORY_DESIGN.md` also carries R-1/R-2 gate names whose current canonical disposition requires explicit mapping.
+- **Unresolved questions:** Per-document status/supersession treatment and any future gate-name reconciliation across still-active canonical designs.
+- **Safe default:** This register, the founder ledger, and the V3 canonical index control current Package 1 authority; historical documents are evidence only when they conflict, and active-design gate names must resolve through the continuity map below rather than inference.
 - **Cost if wrong:** Unauthorized Package 1B design or implementation.
-- **Blocked capabilities:** Package 1B reliance on historical V3-0x text until supersession is explicit.
-- **Resolution method/reopen condition:** Documentation-hygiene mission adding visible banners/pointers.
+- **Blocked capabilities:** Package 1B reliance on historical V3-0x text or unmapped active-design gate names until status and continuity are explicit.
+- **Resolution method/reopen condition:** Documentation-hygiene mission adding visible banners/pointers and reconciling renamed or expanded gates across still-active canonical documents.
 - **Related decisions/scenarios:** D1-D5-ii; scenarios 1-8.
-- **Future design/test/result:** Historical-doc pointer audit.
-- **Sources/updated:** Fable5 ADD-07; founder package F.1; 2026-07-10.
+- **Future design/test/result:** Historical-doc pointer audit plus active-canonical gate-name continuity audit.
+- **Sources/updated:** Fable5 ADD-07; founder package F.1; Fable5 C-1 continuity review; 2026-07-10.
 
 ### ADD-08 Outbox Enqueue Governance
 
@@ -402,6 +402,18 @@ These disagreements are facts about evidence interpretation and must not be eras
 11. Package 1B, Control design, schema/API work, DB action, implementation, flag activation, main merge, and production/live use remain unauthorized.
 
 ## Canonical Carry-Forward Gates
+
+### Active Canonical Gate Continuity Map
+
+The following mappings preserve searchability and meaning from the still-active `설계문서/cosmile/COSMILE_V3_11C2_COMMERCE_MEMORY_DESIGN.md`. A mapping does not close or implement the target gate.
+
+| Existing active-design gate | Current canonical disposition | Continuity rule |
+|---|---|---|
+| `FOUNDATION_SIGNAL_WHITELIST_CONTRACT_OWNER_GATE` | Ownership direction is founder-decided by `D5-i-A JOINT_GOVERNANCE`; operational reliance remains blocked by `OUTBOX_CONSENT_IDENTIFIER_CONTAINMENT_GATE` | Search and routing by the original R-1 name must land on D5-i plus the containment gate; no signal expansion or flush is authorized |
+| `REC_OUTCOME_RETENTION_ERASURE_POLICY_GATE` | Expanded into `RETENTION_ERASURE_AND_PROCESSOR_POLICY_GATE`; U-03 remains `LEGAL_POLICY_HOLD` | The broader gate preserves retention, erasure, processor/provider, log, queue, backup, aggregate, correction, and no-reappearance obligations; no flag-ON or operational use is authorized |
+| `IDENTITY_STITCHING_AND_ATTRIBUTION_CHANGE_POLICY_GATE` | Carried unchanged | `D2-A NO_LINK_EXPLICIT_ITEM` remains the current safe default; any D2-B additive-link option requires a separate Leo/GPT mission |
+
+`HISTORICAL_V3_DOC_STATUS_AND_SUPERSESSION_GATE` includes gate-name reconciliation across historical documents and still-active canonical design documents.
 
 - `STRUCTURED_FEEDBACK_TIMING_ELIGIBILITY_REFUND_CANCEL_GATE`
 - `SENSITIVE_POPULATION_LEGAL_SAFETY_GATE`

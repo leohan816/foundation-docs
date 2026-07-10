@@ -42,6 +42,11 @@ Evidence remains in the closed Advisor job and run archives:
 - Closure record and pointer: `advisor/jobs/20260710_v3_package1a_independent_unknown_resolution_founder_decision_package/29_PACKAGE1A_DECISION_CLOSURE_RECORD.md`, `30_FINAL_DECISION_CLOSURE_POINTER.md`
 - Fable5 founder-package PASS: `runs/shared/20260710_v3_package1a_independent_unknown_resolution_founder_decision_package/FABLE5_FOUNDER_PACKAGE_DELTA_REREVIEW.md`
 
+## Related Control Surfaces
+
+- Active Commerce Memory design and its original R-1/R-2/R-3 gate names: `설계문서/cosmile/COSMILE_V3_11C2_COMMERCE_MEMORY_DESIGN.md`. Use the continuity map in `V3_UNKNOWN_DECISION_GATE_REGISTER.md`.
+- V3-11 implementation-layer risk/gate register: `advisor/jobs/20260709_v3_11_risk_gate_register_audit/01_ADVISOR_BRIEF.md`. This is a related implementation evidence/control surface, not a replacement for this canonical index. Later implementation closures and actual runtime state supersede stale individual gate statuses in that 2026-07-09 snapshot.
+
 ## Authority and Precedence
 
 For Package 1 and later V3 work:
@@ -53,7 +58,7 @@ For Package 1 and later V3 work:
 5. Repo-local active instructions for local safety and implementation constraints.
 6. Historical V3 reports as evidence only.
 
-Historical documents under `docs/reports/control/COSMILE_MEMORY_V3_*`, including older `CANONICAL`, `DESIGN_APPROVED_WITH_LIMITS`, ownership, or proposed-threshold language, do not authorize Package 1B and do not override this index. When their content conflicts with Package 1A founder decisions or current runtime evidence, the current decision ledger and actual runtime state control. Per-document supersession banners remain tracked by `HISTORICAL_V3_DOC_STATUS_AND_SUPERSESSION_GATE`.
+Historical documents under `docs/reports/control/COSMILE_MEMORY_V3_*`, including older `CANONICAL`, `DESIGN_APPROVED_WITH_LIMITS`, ownership, or proposed-threshold language, do not authorize Package 1B and do not override this index. When their content conflicts with Package 1A founder decisions or current runtime evidence, the current decision ledger and actual runtime state control. Per-document supersession banners and gate-name reconciliation across still-active canonical designs remain tracked by `HISTORICAL_V3_DOC_STATUS_AND_SUPERSESSION_GATE`.
 
 ## Mandatory Mission Entry
 

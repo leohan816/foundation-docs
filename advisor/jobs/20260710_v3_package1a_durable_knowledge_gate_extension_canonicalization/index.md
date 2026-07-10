@@ -2,7 +2,7 @@
 
 Date: 2026-07-10
 
-Status: `NEEDS_LEO_GPT_DECISION_ON_FABLE5_C1`
+Status: `C1_PATCH_READY_FOR_FABLE5_DELTA_REVIEW`
 
 Canonical draft commit: `bebde69615cb37ff7ebb953d75eb75d8c50800f3`
 
@@ -31,4 +31,5 @@ Promote closed Package 1A knowledge into durable V3 canonical controls and requi
 - Fable5 verdict: `PASS_WITH_RISK`.
 - Named risk: C-1 gate-name continuity mapping between active canonical documents.
 - Advisor recommendation: `REQUEST_C1_MAPPING_PATCH_AND_FABLE5_DELTA_REREVIEW`.
-- No automatic patch or final audit before Leo/GPT decision.
+- Leo/GPT decision: recommendation approved.
+- C-1 patch changes documentation continuity only; no decision, safe default, authority, runtime scope, or Package 1B status changed.
