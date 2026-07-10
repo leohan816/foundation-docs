@@ -1,6 +1,6 @@
 # V3-11C2 Phase 2A Target and Read-Only Boundary Preparation
 
-Mission status: `WAIT_FOR_COSMILE_DESIGN_REWORK_ROUND2_RESULT`
+Mission status: `WAIT_FOR_FABLE5_DESIGN_REREVIEW_ROUND3_RESULT`
 
 Phase 2A execution status: `NOT_APPROVED`
 
@@ -17,6 +17,8 @@ Phase 2A execution status: `NOT_APPROVED`
 - [Fable5 ASCII run prompt](07_FABLE5_DESIGN_REVIEW_RUN_PROMPT.md)
 - [Fable5 design re-review handoff](07_FABLE5_DESIGN_REREVIEW_HANDOFF_PROMPT.md)
 - [Fable5 re-review ASCII run prompt](07_FABLE5_DESIGN_REREVIEW_RUN_PROMPT.md)
+- [Fable5 round-3 re-review handoff](07_FABLE5_DESIGN_REREVIEW_ROUND3_HANDOFF_PROMPT.md)
+- [Fable5 round-3 ASCII run prompt](07_FABLE5_DESIGN_REREVIEW_ROUND3_RUN_PROMPT.md)
 - [Design rework handoff](09_REWORK_HANDOFF_PROMPT.md)
 - [Design rework ASCII run prompt](09_REWORK_RUN_PROMPT.md)
 - [Design rework round-2 handoff](09_REWORK_ROUND2_HANDOFF_PROMPT.md)
@@ -29,14 +31,16 @@ Phase 2A execution status: `NOT_APPROVED`
 - [Fable5 re-review result pointer](14_FABLE5_DESIGN_REREVIEW_RESULT_POINTER.md)
 - [Advisor rework-result validation](15_ADVISOR_REWORK_RESULT_VALIDATION.md)
 - [Advisor round-2 finding classification](16_ADVISOR_REREVIEW_FINDING_CLASSIFICATION.md)
+- [Worker round-2 result pointer](17_WORKER_REWORK_ROUND2_RESULT_POINTER.md)
+- [Advisor round-2 validation](18_ADVISOR_REWORK_ROUND2_VALIDATION.md)
 
 ## Current Decision
 
-`FABLE5_REREVIEW_NEEDS_PATCH__P2_PRECISION_REWORK_READY`
+`ROUND2_REWORK_VALIDATED__FABLE5_ROUND3_REREVIEW_READY`
 
 ## Next Actor
 
-Cosmile Worker-Rework in the same existing Cosmile Worker session.
+Fable5 Reviewer in the same existing Fable5 Reviewer session.
 
 No DB connection, query, migration, role/permission change, secret access,
 runtime change, or Phase 2A execution prompt is allowed.
