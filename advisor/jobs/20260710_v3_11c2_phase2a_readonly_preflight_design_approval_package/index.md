@@ -1,6 +1,6 @@
 # V3-11C2 Phase 2A Read-Only Preflight Design and Approval Package
 
-Mission status: `WAIT_FOR_FABLE5_DESIGN_REVIEW_RESULT`
+Mission status: `WAIT_FOR_COSMILE_DESIGN_REWORK_RESULT`
 
 Phase 2A execution status: `NOT_APPROVED`
 
@@ -15,14 +15,18 @@ Phase 2A execution status: `NOT_APPROVED`
 - [Cosmile short run prompt](06_WORKER_DESIGN_RUN_PROMPT.md)
 - [Fable5 design review handoff](07_FABLE5_DESIGN_REVIEW_HANDOFF_PROMPT.md)
 - [Fable5 design review run prompt](07_FABLE5_DESIGN_REVIEW_RUN_PROMPT.md)
+- [Design rework handoff](09_REWORK_HANDOFF_PROMPT.md)
+- [Design rework run prompt](09_REWORK_RUN_PROMPT.md)
 - [Loop state](10_LOOP_STATE.md)
+- [Fable5 design review result pointer](12_FABLE5_DESIGN_REVIEW_RESULT_POINTER.md)
+- [Advisor finding classification](13_ADVISOR_FINDING_CLASSIFICATION.md)
 
 ## Current Decision
 
-`WORKER_DESIGN_VALIDATED__FABLE5_REVIEW_READY`
+`FABLE5_NEEDS_PATCH__IN_SCOPE_REWORK_READY`
 
 ## Next Actor
 
-Fable5 Reviewer in the existing Fable5 Reviewer session.
+Cosmile Worker-Rework in the existing Cosmile Worker session.
 
 No DB access, query, migration, execution prompt, or Phase 2A approval is allowed.
