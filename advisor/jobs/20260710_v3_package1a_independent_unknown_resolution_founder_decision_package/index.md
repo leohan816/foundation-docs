@@ -2,7 +2,7 @@
 
 Mission: `V3_PACKAGE1A_INDEPENDENT_UNKNOWN_RESOLUTION_AND_FOUNDER_DECISION_PACKAGE`
 
-Status: `PHASE0_REGISTER_AND_ADVISOR_FIRST_PASS_PREPARED_NOT_YET_FROZEN`
+Status: `PHASE1_BLIND_ASSESSMENTS_READY_FOR_ROUTING`
 
 ## Purpose
 
@@ -15,6 +15,20 @@ Collect four independent, evidence-grounded assessments of unresolved feedback, 
 - [V3_PACKAGE1A_UNKNOWN_REGISTER.md](./V3_PACKAGE1A_UNKNOWN_REGISTER.md)
 - [ADVISOR_INDEPENDENT_ASSESSMENT.md](./ADVISOR_INDEPENDENT_ASSESSMENT.md)
 - [10_LOOP_STATE.md](./10_LOOP_STATE.md)
+
+Freeze commit: `fab82c45f7e92ed2652dc6de9db55532fabb661b`
+
+## Blind Assessment Routing
+
+- [02_FOUNDATION_DISCOVERY_BRIEF.md](./02_FOUNDATION_DISCOVERY_BRIEF.md)
+- [06_FOUNDATION_DISCOVERY_HANDOFF_PROMPT.md](./06_FOUNDATION_DISCOVERY_HANDOFF_PROMPT.md)
+- [06_FOUNDATION_DISCOVERY_RUN_PROMPT.md](./06_FOUNDATION_DISCOVERY_RUN_PROMPT.md)
+- [03_COSMILE_DISCOVERY_BRIEF.md](./03_COSMILE_DISCOVERY_BRIEF.md)
+- [07_COSMILE_DISCOVERY_HANDOFF_PROMPT.md](./07_COSMILE_DISCOVERY_HANDOFF_PROMPT.md)
+- [07_COSMILE_DISCOVERY_RUN_PROMPT.md](./07_COSMILE_DISCOVERY_RUN_PROMPT.md)
+- [04_FABLE5_BLIND_DISCOVERY_REVIEW_BRIEF.md](./04_FABLE5_BLIND_DISCOVERY_REVIEW_BRIEF.md)
+- [08_FABLE5_BLIND_DISCOVERY_HANDOFF_PROMPT.md](./08_FABLE5_BLIND_DISCOVERY_HANDOFF_PROMPT.md)
+- [08_FABLE5_BLIND_DISCOVERY_RUN_PROMPT.md](./08_FABLE5_BLIND_DISCOVERY_RUN_PROMPT.md)
 
 ## Required Later Artifacts
 
@@ -35,4 +49,4 @@ No Package 1B design, Control invocation, runtime work, DB action, live model ca
 
 ## Next Actor
 
-Advisor must publish the frozen register first. No role-session prompt is ready until the freeze commit is confirmed.
+Route the three ASCII-only short run prompts to the existing Foundation Worker, Cosmile Worker, and Fable5 Reviewer sessions. All three results return to Advisor. Comparison remains forbidden until all three pointers are received and verified.
