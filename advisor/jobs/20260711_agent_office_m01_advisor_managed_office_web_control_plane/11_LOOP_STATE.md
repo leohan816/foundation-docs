@@ -1,6 +1,6 @@
 # Loop State: Agent Office M01
 
-STATE: `BATCH_A_ACCEPTED__BATCH_B_WAITING_CODEX_ULTRA_QUOTA_RESET`
+STATE: `BATCH_A_ACCEPTED__BATCH_B_RUNNING`
 
 CURRENT_WORK_UNIT: `AO-WU-08`
 
@@ -14,13 +14,13 @@ KILL_SWITCH: `DISENGAGED`
 
 WORKER_SESSION: `agent-office/$13/%13`
 
-WORKER_PROCESS: `codex_v0.144.1__gpt-5.6-sol_ultra__USAGE_LIMIT_UNTIL_23_02`
+WORKER_PROCESS: `codex_v0.144.1__gpt-5.6-sol_ultra__RUNNING_BATCH_B`
 
 REVIEWER_SESSION: `reviewer-fable5/$5/%5__IDLE`
 
 NEXT:
 
-1. revalidate the same session at or after quota reset and resubmit the exact committed Batch B launcher;
+1. observe Batch B without interference and collect its durable result;
 2. verify read-only boundaries, dashboard, tests, commits, and as-built docs;
 3. route Batch C only after Batch B acceptance.
 

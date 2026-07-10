@@ -20,6 +20,17 @@ ACTION_TAKEN: no downgrade, retry, new context, or alternate Worker; preserve Ul
 NEXT_OBSERVATION_DUE: at or after 2026-07-10T23:02:00Z before exact same-launcher resubmission
 ```
 
+Quota-reset continuation:
+
+```text
+OBSERVED_AT: 2026-07-10T23:02:38Z
+PANE_ID: %13
+REVALIDATION: same session/window/pane/workspace/process; synchronized panes off; target branch clean; launcher checksum unchanged
+ACTION_TAKEN: exact committed Batch B launcher resubmitted to the same pane with no edits
+STATE: RUNNING
+MODEL: gpt-5.6-sol ultra unchanged
+```
+
 ## AO-M01-BATCH-A-20260710T204442Z
 
 ```text
