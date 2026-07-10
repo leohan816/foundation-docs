@@ -21,6 +21,7 @@ Mission status: `MISSION_COMPLETE__RETURN_TO_LEO_GPT`
 - [Loop state](10_LOOP_STATE.md)
 - [Fable5 result pointer](12_FABLE5_REVIEW_RESULT_POINTER.md)
 - [Role reload status](14_ROLE_RELOAD_STATUS.md)
+- [Mission complete pointer](15_MISSION_COMPLETE_POINTER.md)
 - [Canonical V2](../../../설계문서/shared/AGENT_ROLE_BOUNDARY_AND_RELEASE_TRAIN_PROTOCOL_V2.md)
 
 ## Current Verdict
