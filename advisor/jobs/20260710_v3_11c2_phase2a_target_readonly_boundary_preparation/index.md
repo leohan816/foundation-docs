@@ -1,6 +1,6 @@
 # V3-11C2 Phase 2A Target and Read-Only Boundary Preparation
 
-Mission status: `WAIT_FOR_FABLE5_DESIGN_REREVIEW_ROUND3_RESULT`
+Mission status: `MISSION_AUDIT_COMPLETE__NEEDS_LEO_GPT_SECTION9_1_DECISION`
 
 Phase 2A execution status: `NOT_APPROVED`
 
@@ -11,6 +11,7 @@ Phase 2A execution status: `NOT_APPROVED`
 - [Cosmile Worker brief](02_WORKER_BRIEF.md)
 - [Fable5 design review brief](03_FABLE5_DESIGN_REVIEW_BRIEF.md)
 - [Advisor Worker-result validation](04_ADVISOR_WORKER_RESULT_VALIDATION.md)
+- [Final mission audit](05_FINAL_AUDIT.md)
 - [Worker design handoff](06_WORKER_DESIGN_HANDOFF_PROMPT.md)
 - [Worker ASCII run prompt](06_WORKER_DESIGN_RUN_PROMPT.md)
 - [Fable5 design review handoff](07_FABLE5_DESIGN_REVIEW_HANDOFF_PROMPT.md)
@@ -33,14 +34,16 @@ Phase 2A execution status: `NOT_APPROVED`
 - [Advisor round-2 finding classification](16_ADVISOR_REREVIEW_FINDING_CLASSIFICATION.md)
 - [Worker round-2 result pointer](17_WORKER_REWORK_ROUND2_RESULT_POINTER.md)
 - [Advisor round-2 validation](18_ADVISOR_REWORK_ROUND2_VALIDATION.md)
+- [Fable5 round-3 result pointer](19_FABLE5_DESIGN_REREVIEW_ROUND3_RESULT_POINTER.md)
+- [Final mission pointer](20_FINAL_MISSION_POINTER.md)
 
 ## Current Decision
 
-`ROUND2_REWORK_VALIDATED__FABLE5_ROUND3_REREVIEW_READY`
+`MISSION_COMPLETE__RECOMMEND_C_HOLD_PENDING_SECTION9_1`
 
 ## Next Actor
 
-Fable5 Reviewer in the same existing Fable5 Reviewer session.
+Leo/GPT in the GPT strategy session.
 
 No DB connection, query, migration, role/permission change, secret access,
 runtime change, or Phase 2A execution prompt is allowed.

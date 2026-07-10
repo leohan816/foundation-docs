@@ -1,6 +1,6 @@
 # Loop State
 
-Status: `WAIT_FOR_FABLE5_DESIGN_REREVIEW_ROUND3_RESULT`
+Status: `MISSION_AUDIT_COMPLETE__NEEDS_LEO_GPT_SECTION9_1_DECISION`
 
 Phase 2A execution status: `NOT_APPROVED`
 
@@ -35,26 +35,32 @@ Phase 2A execution status: `NOT_APPROVED`
   `d0aa1f430b30a95e24c2f9bb56f06b5cec45c1c3`.
 - Advisor round-2 validation:
   `VALIDATED_FOR_SAME_SESSION_FABLE5_ROUND3_REREVIEW`.
+- Fable5 round-3 re-review: `PASS` at foundation-docs commit
+  `966eb0cf830cd7c2860c53f88149f825e674042e`.
+- Design review loop: closed.
+- Advisor mission audit: `MISSION_COMPLETE`.
+- Current recommendation:
+  `C_HOLD_DUE_TO_UNRESOLVED_TARGET_OR_SECRET_BOUNDARY`.
 
 ## Current Actor
 
-`Fable5 Reviewer` in the same existing review session
+`Leo/GPT`
 
 ## Current Required Action
 
-Use `07_FABLE5_DESIGN_REREVIEW_ROUND3_RUN_PROMPT.md` in the same existing Fable5
-Reviewer session and return the round-3 result to Advisor.
+Review `05_FINAL_AUDIT.md` and decide the section-9(1) target/admin fields. Do not
+approve or execute admin work or Phase 2A implicitly.
 
 ## Blocked
 
 - Role provisioning or permission/hygiene changes.
 - Phase 2A execution prompt, approval, or execution.
 - DB/query/migration/secret/runtime/main/prod/live work.
-- Advisor final mission audit until Fable5 round-3 re-review completes.
+- Target/read-only admin preparation and Phase 2A execution.
 
 ## Next-State Rules
 
-- Round-3 `PASS` -> Advisor final mission audit and A/B/C recommendation.
-- Round-3 `PASS_WITH_RISK` or `FAIL` -> return to Leo/GPT.
-- Round-3 `NEEDS_PATCH` -> Advisor classifies only if still patchable in scope.
-- Any scope, DB, secret, logging, permission, credential, or runtime action -> STOP.
+- Accept C -> close this package mission with target/admin work still held.
+- Approve all section-9(1) fields -> open a separate admin provisioning/hardening
+  mission in state B; do not start it from this package automatically.
+- Missing or disputed target/secret evidence -> remain in C HOLD.
