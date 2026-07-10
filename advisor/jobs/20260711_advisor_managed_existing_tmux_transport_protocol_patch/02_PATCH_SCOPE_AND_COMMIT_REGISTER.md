@@ -71,4 +71,5 @@ The Fable5 handoff, local-instruction evidence record, and this commit metadata 
 published in a follow-up routing commit. Fable5 must review the full diff from
 parent of `2f5f99d` through the routing commit.
 
-ROUTING_AND_REFINEMENT_COMMIT: `PENDING`
+ROUTING_AND_REFINEMENT_COMMIT:
+`0c22c713d1fe173f1e6f0b4349af855f45956b77`

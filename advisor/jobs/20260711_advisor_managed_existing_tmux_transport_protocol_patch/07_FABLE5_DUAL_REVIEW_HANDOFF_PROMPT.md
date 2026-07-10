@@ -30,14 +30,18 @@ No sub-agent, delegated context, temporary session, or second reviewer session.
 - `../foundation-docs/advisor/jobs/20260711_advisor_managed_existing_tmux_transport_protocol_patch/03_ADVISOR_SELF_CHECK.md`
 - `../foundation-docs/advisor/jobs/20260711_advisor_managed_existing_tmux_transport_protocol_patch/04_FABLE5_REVIEW_BRIEF.md`
 - `../foundation-docs/advisor/jobs/20260711_advisor_managed_existing_tmux_transport_protocol_patch/05_LOCAL_ADVISOR_INSTRUCTION_EVIDENCE.md`
+- `../foundation-docs/advisor/jobs/20260711_advisor_managed_existing_tmux_transport_protocol_patch/06_PUBLICATION_VALIDATION.md`
 - `../foundation-docs/설계문서/shared/AGENT_ROLE_BOUNDARY_AND_RELEASE_TRAIN_PROTOCOL_V2.md`
 - every file under `../foundation-docs/advisor/_system/tmux_transport/`
 - actual local `/home/leo/Project/foundation-advisor/AGENTS.md`
 - actual local `/home/leo/Project/foundation-advisor/CLAUDE.md`
 - active role references for Control, Foundation, Cosmile, SIASIU, and Fable5
 
-Read the actual Git diff from parent of patch commit
-`2f5f99da35e4509ff535fc2818d4665245a59ade` through the latest routing commit.
+Read the actual Git diff from review base
+`997e7855c30a15fed82e3cd38db7cee8e3582660` through current `origin/main`.
+The load-bearing patch and routing commits are
+`2f5f99da35e4509ff535fc2818d4665245a59ade` and
+`0c22c713d1fe173f1e6f0b4349af855f45956b77`.
 Do not trust Advisor summaries or hashes without recomputing them.
 
 ## Read-Only tmux Validation
