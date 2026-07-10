@@ -1,6 +1,6 @@
 # Loop State
 
-Status: `WAIT_FOR_FABLE5_DESIGN_REREVIEW_RESULT`
+Status: `MISSION_AUDIT_COMPLETE__NEEDS_LEO_GPT_PHASE2A_EXECUTION_DECISION`
 
 ## Completed
 
@@ -17,28 +17,30 @@ Status: `WAIT_FOR_FABLE5_DESIGN_REREVIEW_RESULT`
 - Cosmile patched design commit: `453b6c94b6c72a19f0e5ea7848928be25583d4c6`.
 - foundation-docs rework result commit: `415436b6f752fbbee488a043d6b57efc0cb7b49b`.
 - Advisor direct rework validation: `VALIDATED_FOR_SAME_SESSION_FABLE5_REREVIEW`.
+- Same-session Fable5 design re-review: `PASS` at foundation-docs commit `75c50cf`.
+- F-1/F-2/F-3: closed.
+- Advisor final mission audit: `MISSION_COMPLETE`.
+- Recommended execution path: `C_HOLD_PHASE2A_DUE_TO_UNPROVEN_BOUNDARY`.
 
 ## Current Actor
 
-`Fable5 Reviewer` in the same existing review session
+`Leo/GPT`
 
 ## Current Required Action
 
-Use `07_FABLE5_DESIGN_REREVIEW_RUN_PROMPT.md` in the same Fable5 Reviewer session
-that issued the original `NEEDS_PATCH` verdict. Return the re-review result and
-pointer to Advisor.
+Review `05_FINAL_AUDIT.md` and decide whether to retain Option C HOLD or provide
+the missing target/read-only/access prerequisites for a separately approved next
+mission. Do not execute Phase 2A from this package.
 
 ## Blocked
 
-- Advisor mission audit until Fable5 re-review PASS exists.
 - Phase 2A execution approval and execution.
 - Phase 2B, runtime, DB, migration, flag, main, prod/live work.
 
 ## Next-State Rules
 
-- Re-review `PASS` -> Advisor completes mission audit and returns the execution-
-  approval recommendation to Leo/GPT.
-- Re-review `PASS_WITH_RISK` -> STOP and return the risk decision to Leo/GPT.
-- Re-review `NEEDS_PATCH` -> Advisor classifies findings and continues only if
-  patchable within approved design scope.
-- Re-review `FAIL` or any scope/DB/secret/runtime violation -> STOP.
+- Option C accepted -> mission closes with Phase 2A still on HOLD.
+- Option A consideration -> Leo/GPT must first provide all exact identity,
+  attestation, read-only role, masked-access, hygiene, and review-route fields.
+- Option B selection -> create a separate non-prod preparation mission; do not
+  infer approval from this package.
