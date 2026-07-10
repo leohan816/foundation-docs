@@ -5,6 +5,21 @@ Transport state: `ACTIVE`
 General active-mode execution observations: none. The one-time bootstrap reload
 observations are recorded below.
 
+## AO-M01-BOOTSTRAP-20260710T192635Z
+
+```text
+DISPATCH_ID: AO-M01-BOOTSTRAP-20260710T192635Z
+OBSERVED_AT: 2026-07-10T19:37:50Z
+PANE_ID: %13
+OUTPUT_FINGERPRINT: WORKER_RESULT_POINTER / TARGET_COMMIT 937f0c5 / STOP
+LAST_PROGRESS_MARKER: both target and foundation-docs pushes verified by Worker
+STATE: COMPLETED_REPORTED
+INTERACTIVE_PROMPT_PRESENT: false
+SENSITIVE_OUTPUT_SUSPECTED: false
+ACTION_TAKEN: Advisor directly verified files, diffs, commits, upstream equality, and result artifacts
+NEXT_OBSERVATION_DUE: before next exact design dispatch
+```
+
 ## One-Time Bootstrap Reload Observations
 
 Recorded: 2026-07-10T19:01:39Z
