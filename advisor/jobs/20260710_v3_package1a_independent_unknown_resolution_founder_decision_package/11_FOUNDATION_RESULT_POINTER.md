@@ -24,7 +24,7 @@ Status: `BLIND_FIRST_PASS_CORRECTED`
 - Blind independence: forbidden first-pass artifacts (Advisor/Cosmile/Fable5 assessments, comparison matrix, founder package/sheet, Cosmile pointer) not read in first pass, sub-agents, or rework.
 - Constraints: runtime/contract/API/design modification 0 · DB access 0 · secret/env-value access 0 · live model calls 0 · production/live 0 · vault re-investigation in rework 0 · product-policy decisions 0 · Package 1B design 0.
 - Repo pins: FOUNDATION `shadow/foundation-shared-memory-v0 @ f240867` · foundation-control `shadow/m5-ingress-gate @ c89b792`.
-- First-pass commit: `d07ebdd` (superseded by the correction commit recorded in git history of this file pair).
+- First-pass commit: `d07ebdd` (superseded). Correction commit: `1e03aa5` (corrected assessment + pointer; this hash-recording line added in a follow-up pointer-metadata commit).
 
 RETURN_TO: Advisor
 NEXT_ACTOR: Advisor
