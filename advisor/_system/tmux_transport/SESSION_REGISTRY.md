@@ -18,6 +18,7 @@ verification. Pane IDs and processes can change.
 | Cosmile Worker | `cosmile` | `$1` | 0 | 0 | `%1` | `/home/leo/Project/Cosmile` | `claude` | latest pane record declares Cosmile Worker | eligible only after live verification |
 | Shashu Worker | `siasiu` | `$0` | 0 | 0 | `%0` | `/home/leo/Project/SIASIU` | `claude` | latest pane record declares Shashu Worker | eligible only after live verification |
 | Fable5 Reviewer | `reviewer-fable5` | `$5` | 0 | 0 | `%5` | `/home/leo/Project/foundation-control` | `claude` | latest pane record declares Fable5 Reviewer and `/fable-sentinel` review | eligible only after live role-evidence verification |
+| Agent Office Worker | `agent-office` | `$13` | 0 | 0 | `%13` | `/home/leo/Project/agent-office` | `codex` v0.144.1, PID `2754606` at verification | Leo/GPT M01 assignment; exact tmux ancestry; pane banner confirms `gpt-5.6-sol ultra`, workspace, and YOLO mode | bootstrap dispatch eligible after exact launcher evidence; product work waits for bootstrap validation |
 
 ## Required Live Checks
 
