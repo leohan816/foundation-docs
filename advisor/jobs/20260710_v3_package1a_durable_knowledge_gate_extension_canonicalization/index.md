@@ -2,7 +2,7 @@
 
 Date: 2026-07-10
 
-Status: `AWAITING_FABLE5_DESIGN_REVIEW`
+Status: `NEEDS_LEO_GPT_DECISION_ON_FABLE5_C1`
 
 Canonical draft commit: `bebde69615cb37ff7ebb953d75eb75d8c50800f3`
 
@@ -24,4 +24,11 @@ Promote closed Package 1A knowledge into durable V3 canonical controls and requi
 - Package 1A: closed.
 - Package 1B: not started and not approved.
 - Runtime/schema/API/DB changes: zero and forbidden.
-- Next actor: same existing Fable5 Reviewer session.
+- Next actor: Leo/GPT for explicit `PASS_WITH_RISK` handling.
+
+## Review State
+
+- Fable5 verdict: `PASS_WITH_RISK`.
+- Named risk: C-1 gate-name continuity mapping between active canonical documents.
+- Advisor recommendation: `REQUEST_C1_MAPPING_PATCH_AND_FABLE5_DELTA_REREVIEW`.
+- No automatic patch or final audit before Leo/GPT decision.
