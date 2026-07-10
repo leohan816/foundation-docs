@@ -1,0 +1,14 @@
+- TARGET_PROJECT: Cosmile
+- ROLE_ACTOR: Cosmile Worker (DISCOVERY_ONLY_READ_ONLY, blind first pass)
+- RESULT_FILE: ../foundation-docs/runs/cosmile/20260710_v3_package1a_independent_unknown_resolution_founder_decision_package/COSMILE_INDEPENDENT_ASSESSMENT.md
+- REGISTER_FREEZE_VERIFIED: commit fab82c4 + blob 0eac3e2 + sha256 dab0ffa (exact match; register unedited)
+- EVIDENCE_BASE: ../Cosmile @ shadow/m4-cosmile-memory e4ed6680fee2a2e55117fb406cae8714e3680465
+- UNKNOWNS_ANSWERED: U-01..U-09 (all 14 required fields each)
+- ADDENDA: A-C1 (existing commerce-layer guest-login merge/link precedent), A-C2 (single mock-user auth blocks representative pilot identity evidence), A-C3 (/api/events client free-text persistence surface)
+- INDEPENDENCE: maintained (no Advisor/Foundation/Fable5 first-pass, no comparison/founder files read)
+- RUNTIME_ACCESS: read-only; no runtime/schema/migration/route/UI/API/test/config modification
+- DB_SECRET_ENV_PROD_LIVE_MODEL_ACCESS: none
+- RUNTIME_COMMIT_STATUS: no runtime changes
+- RESULT: COMPLETED
+- RETURN_TO: Advisor
+- NEXT_ACTOR: Advisor
