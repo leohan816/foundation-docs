@@ -8,6 +8,42 @@ bootstrap delegation recorded later in this file.
 
 ## Active-Mode Product Dispatches
 
+### AO-M01-DESIGN-DELTA-REREVIEW-20260710T203608Z
+
+```text
+DISPATCH_ID: AO-M01-DESIGN-DELTA-REREVIEW-20260710T203608Z
+MISSION_ID: AGENT_OFFICE_M01_ADVISOR_MANAGED_OFFICE_WEB_CONTROL_PLANE
+AUTHORIZATION: M01_SAME_REVIEWER_NEEDS_PATCH_DELTA_LOOP
+TARGET_ACTOR: Fable5 Reviewer Re-Review
+TARGET_SESSION: reviewer-fable5
+TARGET_WINDOW: 0
+TARGET_PANE: 0
+OBSERVED_PANE_ID: %5
+WORKSPACE: /home/leo/Project/foundation-control
+PROCESS: claude, Fable5 Max required by launcher
+ROLE_EVIDENCE: same session that issued original NEEDS_PATCH at commit 62dd994
+READINESS_EVIDENCE: original review returned STOP; empty Claude prompt; no other review
+SYNCHRONIZED_PANES_OFF: true
+LAUNCHER_ABSOLUTE_PATH: /home/leo/Project/foundation-docs/advisor/jobs/20260711_agent_office_m01_advisor_managed_office_web_control_plane/18_FABLE5_DESIGN_DELTA_REREVIEW_RUN_PROMPT.md
+LAUNCHER_REPO_RELATIVE_PATH: advisor/jobs/20260711_agent_office_m01_advisor_managed_office_web_control_plane/18_FABLE5_DESIGN_DELTA_REREVIEW_RUN_PROMPT.md
+LAUNCHER_COMMIT_SHA: e9d8bdb15067d54575b16d1c78f46e4370426764
+LAUNCHER_GIT_BLOB: d2245aee68a576782ecffb7a1b5cc2efaeced039
+LAUNCHER_SHA256_WORKTREE: 390ec81407d9760ddbf0d4c154b321237917e104e1223554bac23a1f5903f670
+LAUNCHER_SHA256_COMMITTED: 390ec81407d9760ddbf0d4c154b321237917e104e1223554bac23a1f5903f670
+UPSTREAM_EVIDENCE: foundation-docs main equals origin/main at e9d8bdb15067d54575b16d1c78f46e4370426764 when launcher published
+RESULT_PATH: ../foundation-docs/runs/agent-office/20260711_agent_office_m01_advisor_managed_office_web_control_plane/FABLE5_DESIGN_DELTA_REREVIEW_RESULT.md
+POINTER_PATH: ../foundation-docs/advisor/jobs/20260711_agent_office_m01_advisor_managed_office_web_control_plane/19_FABLE5_DESIGN_DELTA_REREVIEW_RESULT_POINTER.md
+WRITE_REPO_BRANCHES: foundation-docs/main result and pointer only; Agent Office read-only
+DEPENDENCY_LOCKS: clear; Worker rework complete; no other writer/reviewer dispatch
+BLIND_INDEPENDENCE_RULE: same Reviewer performs exact delta re-review without patching
+PARALLEL_ISOLATION_EVIDENCE: not applicable; serial dispatch
+SOFT_STALL_SECONDS: 1200
+HARD_TIMEOUT_SECONDS_OR_NONE: 5400
+PREFLIGHT_VERDICT: PASS_READY_TO_SEND
+SENT_AT: PENDING_AFTER_LEDGER_COMMIT
+STATUS: READY_TO_SEND
+```
+
 ### AO-M01-DESIGN-REWORK-20260710T202027Z
 
 ```text
