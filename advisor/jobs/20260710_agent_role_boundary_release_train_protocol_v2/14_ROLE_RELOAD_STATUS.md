@@ -10,8 +10,8 @@ Canonical status: `ACTIVE_CANONICAL_V2`
 |---|---|---|---|
 | Advisor | yes | `RELOADED` | recorded below |
 | Control | yes | `RELOADED` | recorded below; repo remained read-only at `c89b792bed17` |
-| Foundation Worker | yes | `PENDING_NEXT` | waiting for return |
-| Shashu Worker | yes | `PENDING` | not routed yet |
+| Foundation Worker | yes | `RELOADED` | recorded below; repo remained read-only at `f240867dd833` |
+| Shashu Worker | yes | `PENDING_NEXT` | waiting for return |
 | Cosmile Worker | yes | `PENDING` | not routed yet |
 | Fable5 Reviewer | yes | `PENDING` | not routed yet |
 
@@ -47,9 +47,29 @@ Advisor verification: `foundation-control` HEAD remained
 `c89b792bed177aad9322e09debecc76caab0c8a0`, upstream delta `0/0`, staged files
 `0`; only the pre-existing untracked inventory remains.
 
+## Foundation Worker Confirmation
+
+```text
+ROLE_PROTOCOL_RELOADED
+ACTOR: Foundation Worker
+WORKSPACE: ../FOUNDATION
+ENTRY_FILES_READ: ../FOUNDATION/CLAUDE.md; ../FOUNDATION/docs/agent/RUN_PROTOCOL.md; ../FOUNDATION/docs/agent/RESULT_REPORTING_PROTOCOL.md; ../foundation-docs/advisor/jobs/20260710_agent_role_boundary_release_train_protocol_v2/08_ROLE_PROTOCOL_RELOAD_INSTRUCTIONS.md
+CANONICAL_FILE_READ: ../foundation-docs/설계문서/shared/AGENT_ROLE_BOUNDARY_AND_RELEASE_TRAIN_PROTOCOL_V2.md
+CANONICAL_STATUS: ACTIVE_CANONICAL_V2
+ROLE_SUMMARY: Foundation Worker is a restored repo-local implementation actor that implements only approved Foundation designs and evidence, distinct from the canonical authority decision.
+FORBIDDEN_SUMMARY: Foundation Worker cannot make canonical authority decisions, implement SIASIU/Cosmile behavior, self-approve, or access unapproved high-risk surfaces.
+RETURN_TO: Advisor
+```
+
+Advisor verification: `FOUNDATION` HEAD remained
+`f240867dd83312e644b1ba520648da791c7733da`, upstream delta `0/0`, staged files
+`0`; only the two pre-existing untracked files remain. The inline
+`NEXT_ACTOR: Foundation Worker` field was not part of the required reload contract
+and is not used for routing; Advisor selects the next actor.
+
 ## Next Actor
 
-Foundation Worker, using `08_FOUNDATION_WORKER_RELOAD_RUN_PROMPT.md` in the
-existing Foundation Worker session.
+Shashu Worker, using `08_SHASHU_WORKER_RELOAD_RUN_PROMPT.md` in the existing
+Shashu Worker session.
 
 Final mission audit remains blocked until all six actor rows are `RELOADED`.

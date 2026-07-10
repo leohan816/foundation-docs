@@ -1,6 +1,6 @@
 # Loop State
 
-Status: `ROLE_RELOAD_IN_PROGRESS__NEXT_FOUNDATION_WORKER`
+Status: `ROLE_RELOAD_IN_PROGRESS__NEXT_SHASHU_WORKER`
 
 ## Completed
 
@@ -15,20 +15,20 @@ Status: `ROLE_RELOAD_IN_PROGRESS__NEXT_FOUNDATION_WORKER`
 
 ## Current Actor
 
-`Foundation Worker`
+`Shashu Worker`
 
 ## Current Required Action
 
-Reload the existing Foundation Worker session with
-`08_FOUNDATION_WORKER_RELOAD_RUN_PROMPT.md` and return
-`ROLE_PROTOCOL_RELOADED` to Advisor.
+Reload the existing Shashu Worker session with
+`08_SHASHU_WORKER_RELOAD_RUN_PROMPT.md` and return `ROLE_PROTOCOL_RELOADED` to
+Advisor.
 
 ## Remaining Reload Actors
 
 - Advisor: reload confirmation to be recorded after active-status publish.
 - Control: reloaded.
-- Foundation Worker: pending, next.
-- Shashu Worker: pending.
+- Foundation Worker: reloaded.
+- Shashu Worker: pending, next.
 - Cosmile Worker: pending.
 - Fable5 Reviewer: pending.
 
