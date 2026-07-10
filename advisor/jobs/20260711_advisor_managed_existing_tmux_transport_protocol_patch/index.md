@@ -1,6 +1,6 @@
 # Advisor-Managed Existing tmux Transport Protocol Patch
 
-Status: `PATCH_PUBLISHED__WAIT_FOR_FABLE5_DUAL_REVIEW`
+Status: `FABLE5_DUAL_PASS__ROLE_RELOAD_IN_PROGRESS`
 
 ## Core Artifacts
 
@@ -13,7 +13,16 @@ Status: `PATCH_PUBLISHED__WAIT_FOR_FABLE5_DUAL_REVIEW`
 - `06_PUBLICATION_VALIDATION.md`
 - `07_FABLE5_DUAL_REVIEW_HANDOFF_PROMPT.md`
 - `07_FABLE5_DUAL_REVIEW_RUN_PROMPT.md`
+- `08_ROLE_PROTOCOL_RELOAD_INSTRUCTIONS.md`
+- `08_CONTROL_RELOAD_RUN_PROMPT.md`
+- `08_FOUNDATION_WORKER_RELOAD_RUN_PROMPT.md`
+- `08_COSMILE_WORKER_RELOAD_RUN_PROMPT.md`
+- `08_SHASHU_WORKER_RELOAD_RUN_PROMPT.md`
+- `08_FABLE5_REVIEWER_RELOAD_RUN_PROMPT.md`
 - `10_LOOP_STATE.md`
+- `12_FABLE5_DESIGN_REVIEW_RESULT_POINTER.md`
+- `13_FABLE5_IMPLEMENTATION_CONFIG_REVIEW_RESULT_POINTER.md`
+- `14_ROLE_RELOAD_STATUS.md`
 
 ## Canonical and Config Files
 
@@ -32,4 +41,5 @@ Status: `PATCH_PUBLISHED__WAIT_FOR_FABLE5_DUAL_REVIEW`
 
 Manual routing remains mandatory. No tmux input has been sent.
 
-Next recipient: existing Fable5 Reviewer session `reviewer-fable5`.
+Next recipients: existing Control, Foundation Worker, Cosmile Worker, Shashu
+Worker, and Fable5 Reviewer sessions for read-only reload.

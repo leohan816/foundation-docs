@@ -2,7 +2,7 @@
 
 MISSION: `ADVISOR_MANAGED_EXISTING_TMUX_TRANSPORT_PROTOCOL_PATCH`
 
-STATE: `PATCH_PUBLISHED__WAIT_FOR_FABLE5_DUAL_REVIEW`
+STATE: `FABLE5_DUAL_PASS__ROLE_RELOAD_IN_PROGRESS`
 
 LEO_GPT_PATCH_AUTHORIZATION: `APPROVED`
 
@@ -21,16 +21,20 @@ COMPLETED:
 - Fable5 dual-review brief drafted.
 - patch commit `2f5f99d` pushed to origin/main;
 - Fable5 dual-review handoff and launcher prepared.
+- Fable5 `DESIGN_REVIEW: PASS`;
+- Fable5 `IMPLEMENTATION_OR_CONFIG_REVIEW: PASS`;
+- review result commit `3a55d2f` verified on origin/main;
+- Advisor existing-session reload completed;
+- five existing role-session reload launchers prepared.
 
 NEXT_REQUIRED:
 
-1. manually route dual review to existing Fable5 Reviewer session
-   `reviewer-fable5`;
-2. wait for both `PASS` verdicts.
+1. manually deliver the five read-only reload launchers while transport is inactive;
+2. Advisor captures and validates each response directly;
+3. complete Advisor final audit after all six reloads.
 
 FORBIDDEN_NEXT:
 
 - direct tmux launcher delivery;
-- role reload before both review passes `PASS`;
 - activation before reload and final audit;
 - product mission automation.
