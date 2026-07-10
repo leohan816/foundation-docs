@@ -1,6 +1,6 @@
 # Agent Role Boundary and Release Train Protocol V2
 
-Mission status: `ROLE_RELOAD_IN_PROGRESS__NEXT_COSMILE_WORKER`
+Mission status: `ROLE_RELOAD_IN_PROGRESS__NEXT_FABLE5_REVIEWER`
 
 ## Artifacts
 
@@ -28,6 +28,6 @@ Mission status: `ROLE_RELOAD_IN_PROGRESS__NEXT_COSMILE_WORKER`
 
 ## Next Actor
 
-Cosmile Worker in the existing Cosmile Worker session.
+Fable5 Reviewer in the existing Fable5 Reviewer session.
 
 After each valid reload confirmation, Advisor routes the next existing actor.
