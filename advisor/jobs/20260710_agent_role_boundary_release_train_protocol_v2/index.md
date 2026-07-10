@@ -1,6 +1,6 @@
 # Agent Role Boundary and Release Train Protocol V2
 
-Mission status: `ROLE_RELOAD_READY__NEXT_CONTROL`
+Mission status: `ROLE_RELOAD_IN_PROGRESS__NEXT_FOUNDATION_WORKER`
 
 ## Artifacts
 
@@ -28,6 +28,6 @@ Mission status: `ROLE_RELOAD_READY__NEXT_CONTROL`
 
 ## Next Actor
 
-Control in the existing Control session.
+Foundation Worker in the existing Foundation Worker session.
 
 After each valid reload confirmation, Advisor routes the next existing actor.

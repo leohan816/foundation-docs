@@ -1,6 +1,6 @@
 # Loop State
 
-Status: `ROLE_RELOAD_READY__NEXT_CONTROL`
+Status: `ROLE_RELOAD_IN_PROGRESS__NEXT_FOUNDATION_WORKER`
 
 ## Completed
 
@@ -15,18 +15,19 @@ Status: `ROLE_RELOAD_READY__NEXT_CONTROL`
 
 ## Current Actor
 
-`Control`
+`Foundation Worker`
 
 ## Current Required Action
 
-Reload the existing Control session with `08_CONTROL_RELOAD_RUN_PROMPT.md` and
-return `ROLE_PROTOCOL_RELOADED` to Advisor.
+Reload the existing Foundation Worker session with
+`08_FOUNDATION_WORKER_RELOAD_RUN_PROMPT.md` and return
+`ROLE_PROTOCOL_RELOADED` to Advisor.
 
 ## Remaining Reload Actors
 
 - Advisor: reload confirmation to be recorded after active-status publish.
-- Control: pending, next.
-- Foundation Worker: pending.
+- Control: reloaded.
+- Foundation Worker: pending, next.
 - Shashu Worker: pending.
 - Cosmile Worker: pending.
 - Fable5 Reviewer: pending.
