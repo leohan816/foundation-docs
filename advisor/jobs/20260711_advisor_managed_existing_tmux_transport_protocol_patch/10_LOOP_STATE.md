@@ -26,6 +26,11 @@ COMPLETED:
 - review result commit `3a55d2f` verified on origin/main;
 - Advisor existing-session reload completed;
 - five existing role-session reload launchers prepared.
+- Leo granted a one-time manual bootstrap delegation for the five exact committed
+  read-only reload launchers; general transport remains inactive;
+- Control and Cosmile passed live preflight and are ready to send;
+- Foundation is held for a prior running shell;
+- Shashu and Fable5 are held for pending prompt input.
 
 NEXT_REQUIRED:
 
