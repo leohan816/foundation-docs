@@ -2,7 +2,7 @@
 
 Date: 2026-07-10
 
-Status: `C1_PATCH_READY_FOR_FABLE5_DELTA_REVIEW`
+Status: `WAIT_FOR_FABLE5_C1_DELTA_RESULT`
 
 Mission: `V3_PACKAGE1A_DURABLE_KNOWLEDGE_GATE_AND_EXTENSION_CANONICALIZATION`
 
@@ -20,11 +20,12 @@ Mission: `V3_PACKAGE1A_DURABLE_KNOWLEDGE_GATE_AND_EXTENSION_CANONICALIZATION`
 - Review result commit pushed: `f5b5a3bc93f0622f22d02e6757bab9c29691ab64`.
 - Named risk: C-1 active-design R-1/R-2 gate-name continuity mapping.
 - Leo/GPT decision: `REQUEST_C1_MAPPING_PATCH_AND_FABLE5_DELTA_REREVIEW`.
-- C-1 documentation-only continuity patch prepared.
+- C-1 documentation-only continuity patch committed and pushed: `22530938ca68d261b0b2d09c95c93cfafea0f4e0`.
+- Same-session Fable5 delta-review handoff prepared.
 
 ## Pending
 
-- Publish the C-1 patch and route same-session Fable5 delta review.
+- Receive same-session Fable5 `DESIGN_REVIEW__C1_CONTINUITY_DELTA` result.
 - Advisor final audit after Fable5 result.
 - Leo/GPT final mission closure.
 
@@ -37,4 +38,4 @@ Mission: `V3_PACKAGE1A_DURABLE_KNOWLEDGE_GATE_AND_EXTENSION_CANONICALIZATION`
 
 ## Next Actor
 
-`Fable5 Reviewer` for same-session `DESIGN_REVIEW__C1_CONTINUITY_DELTA` after publication.
+`Fable5 Reviewer` for same-session `DESIGN_REVIEW__C1_CONTINUITY_DELTA`.
