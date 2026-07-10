@@ -1,6 +1,6 @@
 # Advisor-Managed Existing tmux Transport Protocol Patch
 
-Status: `PATCH_PREPARED__TRANSPORT_NOT_ACTIVE`
+Status: `PATCH_PUBLISHED__WAIT_FOR_FABLE5_DUAL_REVIEW`
 
 ## Core Artifacts
 
@@ -9,6 +9,9 @@ Status: `PATCH_PREPARED__TRANSPORT_NOT_ACTIVE`
 - `02_PATCH_SCOPE_AND_COMMIT_REGISTER.md`
 - `03_ADVISOR_SELF_CHECK.md`
 - `04_FABLE5_REVIEW_BRIEF.md`
+- `05_LOCAL_ADVISOR_INSTRUCTION_EVIDENCE.md`
+- `07_FABLE5_DUAL_REVIEW_HANDOFF_PROMPT.md`
+- `07_FABLE5_DUAL_REVIEW_RUN_PROMPT.md`
 - `10_LOOP_STATE.md`
 
 ## Canonical and Config Files
@@ -27,3 +30,5 @@ Status: `PATCH_PREPARED__TRANSPORT_NOT_ACTIVE`
 ## Current State
 
 Manual routing remains mandatory. No tmux input has been sent.
+
+Next recipient: existing Fable5 Reviewer session `dev`.

@@ -45,6 +45,11 @@ All checks must pass before input is sent:
 Any failed or uncertain check is a STOP. Advisor must not clear, interrupt, rename,
 or overwrite the target session to make the check pass.
 
+Before declaring locks clear, Advisor scans `DISPATCH_LEDGER.md` for every active
+`SENT` or `RUNNING` entry. Any dependency overlap or shared write repository/branch
+sets the new dispatch to `HOLD_DEPENDENCY_OR_WRITE_CONFLICT`. Ledger status may not
+be treated as complete until durable result and Git evidence are reconciled.
+
 ## 4. Exact Launcher Evidence
 
 Advisor records:

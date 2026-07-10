@@ -2,7 +2,7 @@
 
 MISSION: `ADVISOR_MANAGED_EXISTING_TMUX_TRANSPORT_PROTOCOL_PATCH`
 
-STATE: `PATCH_PREPARED__TRANSPORT_NOT_ACTIVE`
+STATE: `PATCH_PUBLISHED__WAIT_FOR_FABLE5_DUAL_REVIEW`
 
 LEO_GPT_PATCH_AUTHORIZATION: `APPROVED`
 
@@ -19,12 +19,13 @@ COMPLETED:
 - canonical/config patch drafted;
 - local Advisor instructions aligned;
 - Fable5 dual-review brief drafted.
+- patch commit `2f5f99d` pushed to origin/main;
+- Fable5 dual-review handoff and launcher prepared.
 
 NEXT_REQUIRED:
 
-1. validate and publish patch;
-2. manually route dual review to existing Fable5 Reviewer session;
-3. wait for both `PASS` verdicts.
+1. manually route dual review to existing Fable5 Reviewer session `dev`;
+2. wait for both `PASS` verdicts.
 
 FORBIDDEN_NEXT:
 

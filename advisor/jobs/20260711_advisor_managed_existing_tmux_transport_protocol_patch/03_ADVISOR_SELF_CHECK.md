@@ -43,4 +43,10 @@ Evidence:
 - tmux input delivery count for this mission: zero;
 - runtime repository modifications by this mission: zero.
 
-Commit, push, and staged-scope evidence remains to be added after publication.
+Publication evidence:
+
+- patch commit: `2f5f99da35e4509ff535fc2818d4665245a59ade`;
+- origin/main equals local HEAD after push;
+- staged set empty after push;
+- commit scope contains only canonical/config/Advisor documentation;
+- unrelated dirty files remain excluded.

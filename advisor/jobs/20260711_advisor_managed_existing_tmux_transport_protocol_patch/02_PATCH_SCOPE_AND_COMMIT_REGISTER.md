@@ -1,6 +1,6 @@
 # Patch Scope and Commit Register
 
-Status: `PATCH_CONTENT_PREPARED__COMMIT_PENDING`
+Status: `PATCH_PUBLISHED__REVIEW_ROUTING_PENDING`
 
 ## Foundation-Docs Patch Scope
 
@@ -29,9 +29,9 @@ diff evidence will be recorded before review.
 
 ## Commit Evidence
 
-PATCH_COMMIT: `PENDING`
+PATCH_COMMIT: `2f5f99da35e4509ff535fc2818d4665245a59ade`
 
-PATCH_PUSH_STATUS: `PENDING`
+PATCH_PUSH_STATUS: `PUSHED__LOCAL_EQUALS_ORIGIN_MAIN`
 
 LOCAL_ADVISOR_AGENTS_SHA256:
 `c6a3d58c23f9e7a5772ae573b3b78433ac7f9a9d516b6a9acf8a5804dfeb5846`
@@ -43,7 +43,7 @@ CANONICAL_V2_SHA256:
 `54df4cbed78aba282b4ee1d6f6abe66868bc0b562520ab724758076a85220b05`
 
 TRANSPORT_PROTOCOL_SHA256:
-`5cc14ac0d2ec84a3502c41024a41b453360120e8de841fc0f28cdb5d1f820846`
+`6c4fa59c74fe40a712027d5e8ee99bdf55649ed5c7d144aab83b1cac5a6fa35f`
 
 SESSION_REGISTRY_SHA256:
 `f31564bf5eeacbe8317812b1430b62bc265754aac7756d150db2df2757542bd0`
@@ -55,3 +55,20 @@ SESSION_REGISTRY_SHA256:
 - effective window option is `synchronize-panes off`;
 - no tmux input was sent;
 - no session, window, pane, agent, or sub-agent was created.
+
+## Patch Commit Scope
+
+- 19 files;
+- 975 insertions, 3 deletions;
+- canonical/config/Advisor artifacts only;
+- no runtime, schema, migration, API, test, package, flag, or secret file;
+- staged set empty after push;
+- unrelated dirty files preserved unstaged/untracked.
+
+## Follow-Up Routing Commit
+
+The Fable5 handoff, local-instruction evidence record, and this commit metadata are
+published in a follow-up routing commit. Fable5 must review the full diff from
+parent of `2f5f99d` through the routing commit.
+
+ROUTING_AND_REFINEMENT_COMMIT: `PENDING`
