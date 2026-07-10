@@ -2,7 +2,7 @@
 
 Mission: `V3_PACKAGE1A_INDEPENDENT_UNKNOWN_RESOLUTION_AND_FOUNDER_DECISION_PACKAGE`
 
-Status: `PHASE1_RESULTS_RECEIVED__CORRECTIONS_REQUIRED_BEFORE_COMPARISON`
+Status: `PHASE3_FABLE5_FOUNDER_PACKAGE_CHALLENGE_READY`
 
 ## Purpose
 
@@ -57,16 +57,34 @@ Freeze commit: `fab82c45f7e92ed2652dc6de9db55532fabb661b`
 - [09_FABLE5_BLIND_COMPLIANCE_REWORK_HANDOFF_PROMPT.md](./09_FABLE5_BLIND_COMPLIANCE_REWORK_HANDOFF_PROMPT.md)
 - [09_FABLE5_BLIND_COMPLIANCE_REWORK_RUN_PROMPT.md](./09_FABLE5_BLIND_COMPLIANCE_REWORK_RUN_PROMPT.md)
 
+## Corrected Result Revalidation
+
+- Cosmile correction: `d28307b`, accepted
+- Foundation corrections: `1e03aa5` + `9518bc6`, accepted
+- Fable5 correction: `99559f7`, accepted
+- [18_CORRECTED_RESULT_REVALIDATION.md](./18_CORRECTED_RESULT_REVALIDATION.md)
+
+## Comparison And Founder Drafts
+
+- [ACTOR_COMPARISON_MATRIX.md](./ACTOR_COMPARISON_MATRIX.md)
+- [FOUNDER_DECISION_PACKAGE.md](./FOUNDER_DECISION_PACKAGE.md)
+- [FOUNDER_ACCEPTANCE_SHEET.md](./FOUNDER_ACCEPTANCE_SHEET.md)
+
+Status: `DRAFT_PENDING_FABLE5_FOUNDER_PACKAGE_CHALLENGE`
+
+## Fable5 Founder-Package Challenge
+
+- [20_FABLE5_FOUNDER_PACKAGE_CHALLENGE_HANDOFF_PROMPT.md](./20_FABLE5_FOUNDER_PACKAGE_CHALLENGE_HANDOFF_PROMPT.md)
+- [20_FABLE5_FOUNDER_PACKAGE_CHALLENGE_RUN_PROMPT.md](./20_FABLE5_FOUNDER_PACKAGE_CHALLENGE_RUN_PROMPT.md)
+- Expected result: `../foundation-docs/runs/shared/20260710_v3_package1a_independent_unknown_resolution_founder_decision_package/FABLE5_FOUNDER_PACKAGE_CHALLENGE.md`
+- Expected pointer: `21_FABLE5_FOUNDER_PACKAGE_CHALLENGE_POINTER.md`
+
 ## Required Later Artifacts
 
-- Foundation Worker independent assessment under `../foundation-docs/runs/foundation/`
-- Cosmile Worker independent assessment under `../foundation-docs/runs/cosmile/`
-- Fable5 blind assessment under `../foundation-docs/runs/shared/`
-- `ACTOR_COMPARISON_MATRIX.md`
-- Fable5 founder-package challenge under `../foundation-docs/runs/shared/`
-- `FOUNDER_DECISION_PACKAGE.md`
-- `FOUNDER_ACCEPTANCE_SHEET.md`
-- final pointer
+- Fable5 founder-package challenge under `../foundation-docs/runs/shared/` - pending
+- `21_FABLE5_FOUNDER_PACKAGE_CHALLENGE_POINTER.md` - pending
+- final corrected founder package/acceptance sheet after challenge - pending
+- final mission pointer - pending
 
 ## Current Decision
 
@@ -74,6 +92,6 @@ Freeze commit: `fab82c45f7e92ed2652dc6de9db55532fabb661b`
 
 No Package 1B design, Control invocation, runtime work, DB action, live model call, or product-policy approval is authorized.
 
-## Next Actors
+## Next Actor
 
-Route the three ASCII-only correction run prompts to the same existing Cosmile Worker, Foundation Worker, and Fable5 Reviewer sessions. All corrected results return to Advisor. Comparison remains forbidden until all three correction pointers are received and directly revalidated.
+Route the ASCII-only founder-package challenge run prompt to the same existing Fable5 Reviewer session. The result returns to Advisor. No Package 1B or founder approval is automatic.
