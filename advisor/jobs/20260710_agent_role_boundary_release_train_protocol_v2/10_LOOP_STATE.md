@@ -1,6 +1,6 @@
 # Loop State
 
-Status: `WAIT_FOR_FABLE5_INDEPENDENT_REVIEW`
+Status: `ROLE_RELOAD_READY__NEXT_CONTROL`
 
 ## Completed
 
@@ -9,29 +9,34 @@ Status: `WAIT_FOR_FABLE5_INDEPENDENT_REVIEW`
 - Phase 2 active instruction propagation: complete and pushed for Git repos;
   foundation-advisor local active files updated.
 - Phase 3 Advisor self-check: complete.
+- Phase 4 Fable5 `DESIGN_REVIEW`: PASS.
+- Phase 4 Fable5 `IMPLEMENTATION_REVIEW`: PASS.
+- Canonical status promoted to `ACTIVE_CANONICAL_V2` pending publish of this update.
 
 ## Current Actor
 
-`Fable5 Reviewer`
+`Control`
 
 ## Current Required Action
 
-Run the existing Fable5 Reviewer session with
-`07_FABLE5_REVIEW_RUN_PROMPT.md` and return separate `DESIGN_REVIEW` and
-`IMPLEMENTATION_REVIEW` result pointers to Advisor.
+Reload the existing Control session with `08_CONTROL_RELOAD_RUN_PROMPT.md` and
+return `ROLE_PROTOCOL_RELOADED` to Advisor.
 
-## Blocked Until Fable5 PASS
+## Remaining Reload Actors
 
-- Role protocol status promotion from candidate to active canonical.
-- Session reload for Advisor, Control, Foundation Worker, Shashu Worker, Cosmile
-  Worker, and Fable5 Reviewer.
+- Advisor: reload confirmation to be recorded after active-status publish.
+- Control: pending, next.
+- Foundation Worker: pending.
+- Shashu Worker: pending.
+- Cosmile Worker: pending.
+- Fable5 Reviewer: pending.
+
+## Blocked Until All Reloads
+
 - Final mission audit.
 - `MISSION_COMPLETE` report.
 
 ## Verdict Routing
 
-- Both PASS -> Advisor prepares existing-session reload prompts.
-- PASS_WITH_RISK -> STOP and return to Leo/GPT.
-- NEEDS_PATCH -> Advisor patch and same Fable5 session re-review.
-- FAIL -> STOP and return to Leo/GPT.
-
+- Reload confirmation valid -> Advisor records it and routes the next existing actor.
+- Missing file, conflict, wrong session, or non-active canonical status -> STOP and investigate.

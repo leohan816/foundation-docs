@@ -1,11 +1,18 @@
 # Agent Role Boundary and Release Train Protocol V2
 
-Status: `ACTIVE_CANDIDATE_PENDING_FABLE5_INDEPENDENT_REVIEW`
+Status: `ACTIVE_CANONICAL_V2`
 
 Decision owner and final approver: Leo/GPT  
 Author and propagation owner: Advisor  
 Independent reviewer: Fable5 Reviewer  
 Canonical path: `../foundation-docs/설계문서/shared/AGENT_ROLE_BOUNDARY_AND_RELEASE_TRAIN_PROTOCOL_V2.md`
+
+Activation evidence:
+
+- Fable5 `DESIGN_REVIEW`: `PASS`
+- Fable5 `IMPLEMENTATION_REVIEW`: `PASS`
+- Review result commit: `80d2fd7c6e6b6f7de2d0502442b51fd26dfafe11`
+- Review pointer: `../foundation-docs/advisor/jobs/20260710_agent_role_boundary_release_train_protocol_v2/12_FABLE5_REVIEW_RESULT_POINTER.md`
 
 This protocol defines actor authority, mission routing, release-train sequencing,
 evidence requirements, and reload behavior across Foundation, foundation-control,
@@ -418,4 +425,3 @@ For the initial V2 authoring and propagation mission:
 - `PASS_WITH_RISK` returns to Leo/GPT and is not automatically accepted.
 - Runtime source, schema, migration, DB, flags, main merge, production/live, new
   sub-agents, unrelated staging, and force push remain forbidden.
-
