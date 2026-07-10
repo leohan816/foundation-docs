@@ -8,6 +8,42 @@ bootstrap delegation recorded later in this file.
 
 ## Active-Mode Product Dispatches
 
+### AO-M01-BATCH-A-20260710T204442Z
+
+```text
+DISPATCH_ID: AO-M01-BATCH-A-20260710T204442Z
+MISSION_ID: AGENT_OFFICE_M01_ADVISOR_MANAGED_OFFICE_WEB_CONTROL_PLANE
+AUTHORIZATION: LEO_GPT_APPROVED_M01_AFTER_FABLE5_DESIGN_PASS
+TARGET_ACTOR: Agent Office Worker
+TARGET_SESSION: agent-office
+TARGET_WINDOW: 0
+TARGET_PANE: 0
+OBSERVED_PANE_ID: %13
+WORKSPACE: /home/leo/Project/agent-office
+PROCESS: codex v0.144.1, gpt-5.6-sol ultra
+ROLE_EVIDENCE: active Agent Office Worker instructions and same existing implementation session
+READINESS_EVIDENCE: design rework returned STOP; clean branch; no approval or unrelated work
+SYNCHRONIZED_PANES_OFF: true
+LAUNCHER_ABSOLUTE_PATH: /home/leo/Project/foundation-docs/advisor/jobs/20260711_agent_office_m01_advisor_managed_office_web_control_plane/20_WORKER_BATCH_A_RUN_PROMPT.md
+LAUNCHER_REPO_RELATIVE_PATH: advisor/jobs/20260711_agent_office_m01_advisor_managed_office_web_control_plane/20_WORKER_BATCH_A_RUN_PROMPT.md
+LAUNCHER_COMMIT_SHA: 9649315a0c4f90a59152752b4ac70a9fd9da507b
+LAUNCHER_GIT_BLOB: ba5c169f22cc6e5aaa34a634f90c4b7346cc1efc
+LAUNCHER_SHA256_WORKTREE: 572a580ceb1ff13fa04f2aee7e49c99ce373e2383b3859ce9f35a46bad542d39
+LAUNCHER_SHA256_COMMITTED: 572a580ceb1ff13fa04f2aee7e49c99ce373e2383b3859ce9f35a46bad542d39
+UPSTREAM_EVIDENCE: foundation-docs main equals origin/main at 9649315a0c4f90a59152752b4ac70a9fd9da507b when launcher published
+RESULT_PATH: ../foundation-docs/runs/agent-office/20260711_agent_office_m01_advisor_managed_office_web_control_plane/WORKER_BATCH_A_RESULT.md
+POINTER_PATH: ../foundation-docs/advisor/jobs/20260711_agent_office_m01_advisor_managed_office_web_control_plane/21_WORKER_BATCH_A_RESULT_POINTER.md
+WRITE_REPO_BRANCHES: agent-office/shadow/agent-office-m01 then foundation-docs/main, serial
+DEPENDENCY_LOCKS: clear; design PASS verified; no Reviewer dispatch
+BLIND_INDEPENDENCE_RULE: final implementation review waits for all batches and exact Worker result
+PARALLEL_ISOLATION_EVIDENCE: not applicable; serial dispatch
+SOFT_STALL_SECONDS: 2700
+HARD_TIMEOUT_SECONDS_OR_NONE: 10800
+PREFLIGHT_VERDICT: PASS_READY_TO_SEND
+SENT_AT: PENDING_AFTER_LEDGER_COMMIT
+STATUS: READY_TO_SEND
+```
+
 ### AO-M01-DESIGN-DELTA-REREVIEW-20260710T203608Z
 
 ```text
