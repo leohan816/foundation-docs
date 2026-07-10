@@ -24,6 +24,10 @@ Status: `ENTRY_PASSED__ONBOARDING`
 - `18_FABLE5_DESIGN_DELTA_REREVIEW_RUN_PROMPT.md`
 - `20_WORKER_BATCH_A_HANDOFF_PROMPT.md`
 - `20_WORKER_BATCH_A_RUN_PROMPT.md`
+- `21_WORKER_BATCH_A_RESULT_POINTER.md`
+- `22_ADVISOR_BATCH_A_VALIDATION.md`
+- `23_WORKER_BATCH_B_HANDOFF_PROMPT.md`
+- `23_WORKER_BATCH_B_RUN_PROMPT.md`
 - `10_MISSION_MANIFEST.json`
 - `11_LOOP_STATE.md`
 
@@ -34,4 +38,5 @@ Status: `ENTRY_PASSED__ONBOARDING`
 - private remote: `https://github.com/leohan816/agent-office`
 - implementation branch: `shadow/agent-office-m01`
 
-No product code has been written yet.
+Batch A is implemented, directly validated, and accepted as the Batch B
+dependency. Batch B is ready for exact serial routing; Batch C is not authorized.

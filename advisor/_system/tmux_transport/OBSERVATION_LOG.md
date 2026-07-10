@@ -5,6 +5,21 @@ Transport state: `ACTIVE`
 General active-mode execution observations: none. The one-time bootstrap reload
 observations are recorded below.
 
+## AO-M01-BATCH-A-20260710T204442Z
+
+```text
+DISPATCH_ID: AO-M01-BATCH-A-20260710T204442Z
+OBSERVED_AT: 2026-07-10T21:41:59Z
+PANE_ID: %13
+OUTPUT_FINGERPRINT: WORKER_RESULT_POINTER / TARGET_COMMIT 4a2813a / STOP
+LAST_PROGRESS_MARKER: target and foundation-docs commits pushed and verified
+STATE: COMPLETED_REPORTED
+INTERACTIVE_PROMPT_PRESENT: true; non-sensitive post-completion model downgrade suggestion
+SENSITIVE_OUTPUT_SUSPECTED: false
+ACTION_TAKEN: no model downgrade accepted; Advisor reproduced npm ci/check/audit and Git equality
+NEXT_OBSERVATION_DUE: after dismissing the non-authoritative suggestion and before Batch B dispatch
+```
+
 ## AO-M01-BOOTSTRAP-20260710T192635Z
 
 ```text

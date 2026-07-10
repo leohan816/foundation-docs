@@ -5,6 +5,33 @@ Transport state: `ACTIVE`
 General active-mode results: none. The one-time bootstrap reload results are
 recorded below.
 
+## AO-M01-BATCH-A-20260710T204442Z
+
+```text
+DISPATCH_ID: AO-M01-BATCH-A-20260710T204442Z
+MISSION_ID: AGENT_OFFICE_M01_ADVISOR_MANAGED_OFFICE_WEB_CONTROL_PLANE
+TARGET_ACTOR: Agent Office Worker
+PANE_COMPLETION_REPORTED: true
+RESULT_FILE: ../foundation-docs/runs/agent-office/20260711_agent_office_m01_advisor_managed_office_web_control_plane/WORKER_BATCH_A_RESULT.md
+POINTER_FILE: ../foundation-docs/advisor/jobs/20260711_agent_office_m01_advisor_managed_office_web_control_plane/21_WORKER_BATCH_A_RESULT_POINTER.md
+RESULT_FILE_EXISTS: true
+POINTER_FILE_EXISTS: true
+ALLOWED_FILES: Batch A code/config/tests/fixtures plus materially affected canonical docs and exact result/pointer
+ACTUAL_CHANGED_FILES: exact Batch A scope; 59 target files plus result and pointer
+DIFF_VERIFIED: true; code 7edc8f7, as-built docs 4a2813a, result 1f2118b, pointer 207edcb
+TEST_EVIDENCE_VERIFIED: Advisor reran npm ci, lint, typecheck, 15 files/36 tests, build, and audit
+COMMIT_SHA: 4a2813a8b21269fe59bd26f7667d6983204e0eef
+BRANCH: shadow/agent-office-m01
+UPSTREAM: origin/shadow/agent-office-m01
+PUSH_AND_ANCESTRY_VERIFIED: true; local equals upstream and remote ref
+RUNTIME_STATUS_VERIFIED: Batch A local core only; no Batch B/UI/server/PWA/DB/secret/exposure
+REVIEW_VERDICT_AND_COVERAGE: final independent implementation review remains after all batches
+CONTRADICTIONS: none material; immutable manifest v1 stays historical and later progress requires events
+ADVISOR_RESULT_VERDICT: PASS__BATCH_A_ACCEPTED_AS_BATCH_B_DEPENDENCY
+NEXT_ACTOR: Agent Office Worker Batch B
+RECORDED_AT: 2026-07-10T21:41:59Z
+```
+
 ## AO-M01-BOOTSTRAP-20260710T192635Z
 
 ```text
