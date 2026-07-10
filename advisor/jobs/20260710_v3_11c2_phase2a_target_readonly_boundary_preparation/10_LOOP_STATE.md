@@ -1,6 +1,6 @@
 # Loop State
 
-Status: `MISSION_AUDIT_COMPLETE__NEEDS_LEO_GPT_SECTION9_1_DECISION`
+Status: `FINAL_APPROVED_AND_CLOSED_WITH_ADMIN_AND_PHASE2A_HOLD`
 
 Phase 2A execution status: `NOT_APPROVED`
 
@@ -41,15 +41,20 @@ Phase 2A execution status: `NOT_APPROVED`
 - Advisor mission audit: `MISSION_COMPLETE`.
 - Current recommendation:
   `C_HOLD_DUE_TO_UNRESOLVED_TARGET_OR_SECRET_BOUNDARY`.
+- Leo/GPT accepted the final audit and C HOLD.
+- Final mission status:
+  `FINAL_APPROVED_AND_CLOSED_WITH_ADMIN_AND_PHASE2A_HOLD`.
+- Target/read-only plan and Fable5 PASS result preserved as the reusable security
+  blueprint.
 
 ## Current Actor
 
-`Leo/GPT`
+`STOP`
 
 ## Current Required Action
 
-Review `05_FINAL_AUDIT.md` and decide the section-9(1) target/admin fields. Do not
-approve or execute admin work or Phase 2A implicitly.
+Await a separate Leo/GPT mission matching a documented reopen condition. Do not
+prepare admin work or Phase 2A automatically.
 
 ## Blocked
 
@@ -60,7 +65,11 @@ approve or execute admin work or Phase 2A implicitly.
 
 ## Next-State Rules
 
-- Accept C -> close this package mission with target/admin work still held.
-- Approve all section-9(1) fields -> open a separate admin provisioning/hardening
-  mission in state B; do not start it from this package automatically.
-- Missing or disputed target/secret evidence -> remain in C HOLD.
+- No automatic next actor or mission.
+- Reopen only for development DB diagnosis, staging authorization preparation,
+  production DB provisioning preparation, or a security-hardening release train.
+- Any reopened work requires a new Leo/GPT mission and fresh Advisor validation.
+
+## Next State
+
+`TARGET_READONLY_BLUEPRINT_APPROVED__ADMIN_AND_PHASE2A_HELD`

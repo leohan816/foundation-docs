@@ -144,3 +144,64 @@ operationally ready.
 Return to Leo/GPT for the section-9(1) target/admin decision. Do not create an
 admin or Phase 2A execution prompt automatically.
 
+## Leo/GPT Final Decision
+
+Decision: `ACCEPT_FINAL_AUDIT_AND_HOLD_ADMIN_AND_PHASE2A`
+
+Final mission status:
+
+`FINAL_APPROVED_AND_CLOSED_WITH_ADMIN_AND_PHASE2A_HOLD`
+
+Accepted conclusions:
+
+- mission audit `MISSION_COMPLETE`;
+- Fable5 design review `PASS_ACCEPTED`;
+- current path `C_HOLD_DUE_TO_UNRESOLVED_TARGET_OR_SECRET_BOUNDARY`;
+- admin work remains `NOT_APPROVED`;
+- Phase 2A execution remains `NOT_APPROVED`.
+
+## Authoritative Lifecycle Premise
+
+Leo/GPT establishes:
+
+1. The current Cosmile development DB is development-only state.
+2. Its data is not the source of truth to migrate into a future production DB.
+3. Future production starts on a new server and new DB.
+4. The durable blueprint is:
+   - `schema.prisma`;
+   - the approved migration graph;
+   - relations;
+   - table responsibilities;
+   - business invariants;
+   - contracts;
+   - additive evolution path.
+5. The reviewed target/read-only-boundary plan is an approved reusable security
+   blueprint for future development diagnosis, staging preparation, and
+   production security preparation.
+
+Canonical reusable blueprint references:
+
+- repo-local plan:
+  `../Cosmile/app/docs/V3_11C2_PHASE2A_TARGET_AND_READONLY_BOUNDARY_PLAN.md` at
+  Cosmile commit `e4ed6680fee2a2e55117fb406cae8714e3680465`;
+- foundation-docs mirror:
+  `../foundation-docs/설계문서/cosmile/V3_11C2_PHASE2A_TARGET_AND_READONLY_BOUNDARY_PLAN.md`;
+- independent final design review:
+  `../foundation-docs/runs/cosmile/20260710_v3_11c2_phase2a_target_readonly_boundary_preparation/FABLE5_DESIGN_REREVIEW_ROUND3_RESULT.md`.
+
+Preservation as an approved blueprint does not approve execution. No admin
+prompt, role/grant/revoke, credential source, chmod, Phase 2A query, Option B,
+runtime/schema/flag change, or production/live action may start automatically.
+
+## Reopen Conditions
+
+Reopen only through a separate Leo/GPT mission when one of these occurs:
+
+- the current development DB requires actual read-only diagnosis;
+- staging DB authorization is being prepared;
+- production DB provisioning is being prepared;
+- a security-hardening release train is opened.
+
+Next state:
+
+`TARGET_READONLY_BLUEPRINT_APPROVED__ADMIN_AND_PHASE2A_HELD`

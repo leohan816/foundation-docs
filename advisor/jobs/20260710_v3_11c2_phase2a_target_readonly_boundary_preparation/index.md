@@ -1,6 +1,6 @@
 # V3-11C2 Phase 2A Target and Read-Only Boundary Preparation
 
-Mission status: `MISSION_AUDIT_COMPLETE__NEEDS_LEO_GPT_SECTION9_1_DECISION`
+Mission status: `FINAL_APPROVED_AND_CLOSED_WITH_ADMIN_AND_PHASE2A_HOLD`
 
 Phase 2A execution status: `NOT_APPROVED`
 
@@ -36,14 +36,17 @@ Phase 2A execution status: `NOT_APPROVED`
 - [Advisor round-2 validation](18_ADVISOR_REWORK_ROUND2_VALIDATION.md)
 - [Fable5 round-3 result pointer](19_FABLE5_DESIGN_REREVIEW_ROUND3_RESULT_POINTER.md)
 - [Final mission pointer](20_FINAL_MISSION_POINTER.md)
+- [Final closure pointer](21_FINAL_CLOSURE_POINTER.md)
 
 ## Current Decision
 
-`MISSION_COMPLETE__RECOMMEND_C_HOLD_PENDING_SECTION9_1`
+`FINAL_APPROVED_AND_CLOSED_WITH_ADMIN_AND_PHASE2A_HOLD`
 
 ## Next Actor
 
-Leo/GPT in the GPT strategy session.
+STOP. Await a separate Leo/GPT reopen mission.
 
 No DB connection, query, migration, role/permission change, secret access,
 runtime change, or Phase 2A execution prompt is allowed.
+
+Next state: `TARGET_READONLY_BLUEPRINT_APPROVED__ADMIN_AND_PHASE2A_HELD`.
