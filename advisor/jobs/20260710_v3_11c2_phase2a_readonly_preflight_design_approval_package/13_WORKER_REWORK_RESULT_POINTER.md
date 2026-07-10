@@ -1,0 +1,18 @@
+- TARGET_PROJECT: Cosmile
+- ROLE_ACTOR: Cosmile Worker (DESIGN_ONLY_REWORK)
+- RESULT_FILE: ../foundation-docs/runs/cosmile/20260710_v3_11c2_phase2a_readonly_preflight_design_approval_package/WORKER_REWORK_RESULT.md
+- DESIGN_DOC_REPO_LOCAL: ../Cosmile/app/docs/V3_11C2_PHASE2A_READONLY_PREFLIGHT_EXECUTION_PLAN.md
+- DESIGN_DOC_MIRROR: ../foundation-docs/설계문서/cosmile/V3_11C2_PHASE2A_READONLY_PREFLIGHT_EXECUTION_PLAN.md
+- MIRROR_PROOF: cmp IDENTICAL (23539 bytes)
+- DOC_STATUS: DESIGN_DRAFT_PATCHED_AFTER_FABLE5_NEEDS_PATCH_PENDING_REREVIEW
+- FINDINGS_ADDRESSED: F-1 (exact index-shape via pg_index), F-2 (unexpected_migration_count drift), F-3 (explicit state map + local sha256 checksum constants)
+- RUNTIME_REPO: ../Cosmile
+- RUNTIME_BRANCH: shadow/m4-cosmile-memory
+- RUNTIME_COMMIT_STATUS: patched design artifact committed 453b6c9 and pushed (9e9ad28..453b6c9); no runtime source/schema/migration/test/pkg/flag change
+- DB_QUERY_MIGRATION_STATUS: not accessed
+- SECRET_ENV_VALUE_ACCESS: none
+- PHASE2A_EXECUTION_STATUS: NOT_APPROVED
+- PLAN_RECOMMENDATION: Option C (HOLD) unchanged
+- RESULT: COMPLETED
+- RETURN_TO: Advisor
+- NEXT_ACTOR: Advisor (validate diff, route same Fable5 session for re-review of the three fixed questions)

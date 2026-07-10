@@ -2,7 +2,7 @@
 
 Date: 2026-07-10
 Author actor: Cosmile Worker (DESIGN_ONLY)
-Status: `DESIGN_DRAFT_PENDING_FABLE5_REVIEW_AND_LEO_GPT_APPROVAL`
+Status: `DESIGN_DRAFT_PATCHED_AFTER_FABLE5_NEEDS_PATCH_PENDING_REREVIEW`
 
 Canonical mirror: `../foundation-docs/설계문서/cosmile/V3_11C2_PHASE2A_READONLY_PREFLIGHT_EXECUTION_PLAN.md`
 Canonical role authority: `../foundation-docs/설계문서/shared/AGENT_ROLE_BOUNDARY_AND_RELEASE_TRAIN_PROTOCOL_V2.md` (`ACTIVE_CANONICAL_V2`)
@@ -80,47 +80,102 @@ FROM (
 ) d;
 ```
 
-C-2 — D-O1 unique constraint / index presence:
+C-2 — exact D-O1 index-shape detection (catalog; F-1). Confirm the approved unique index by schema, table, **exact index name**, uniqueness, validity/readiness, non-partial, non-expression, and **exactly one key column `orderItemId`** — this rejects renamed, composite `(orderItemId, …)`, partial, expression, invalid, or not-ready unique indexes that a bare `ILIKE '%UNIQUE%…%orderItemId%'` would falsely accept:
 ```sql
-SELECT COUNT(*) AS unique_index_present
-FROM pg_indexes
-WHERE schemaname = '<APPROVED_SCHEMA>'
-  AND tablename = 'RecOutcomeEvent'
-  AND indexdef ILIKE '%UNIQUE%'
-  AND indexdef ILIKE '%orderItemId%';
+SELECT
+  (i.relname = 'RecOutcomeEvent_orderItemId_key') AS name_match,
+  ix.indisunique                                  AS is_unique,
+  ix.indisvalid                                   AS is_valid,
+  ix.indisready                                   AS is_ready,
+  (ix.indpred   IS NULL)                          AS non_partial,
+  (ix.indexprs  IS NULL)                          AS non_expression,
+  (ix.indnkeyatts = 1)                            AS single_key_column,
+  (a.attname = 'orderItemId')                     AS key_col_is_orderitemid
+FROM pg_index ix
+JOIN pg_class     i ON i.oid = ix.indexrelid
+JOIN pg_class     t ON t.oid = ix.indrelid
+JOIN pg_namespace n ON n.oid = t.relnamespace
+LEFT JOIN pg_attribute a ON a.attrelid = t.oid AND a.attnum = ix.indkey[0]
+WHERE n.nspname = '<APPROVED_SCHEMA>'
+  AND t.relname = 'RecOutcomeEvent'
+  AND i.relname = 'RecOutcomeEvent_orderItemId_key';
+```
+Interpretation:
+- **0 rows** → approved-name index absent (or renamed away) → `D_O1_INDEX_ABSENT_STOP`.
+- **1 row, all eight booleans TRUE** → `D_O1_INDEX_OK`.
+- **1 row, any boolean FALSE** (not unique / invalid / not ready / partial / expression / composite / wrong key column) → `D_O1_INDEX_SHAPE_MISMATCH_STOP`.
+Output = the eight booleans + derived `D_O1_INDEX_*` status + the constant approved index name. No `indexdef` text or catalog row is emitted.
+
+C-3 — full Prisma migration ledger comparison (F-2 / F-3). Two SELECTs; the checksum comparison is evaluated **inside** the query so only a boolean leaves the DB (raw DB checksum is never output).
+
+C-3a — per-migration state vs the exact approved three-migration set with locally-computed expected checksums:
+```sql
+SELECT
+  e.migration_name,
+  (m.migration_name IS NOT NULL)     AS row_present,
+  (m.finished_at    IS NOT NULL)     AS finished,
+  (m.rolled_back_at IS NOT NULL)     AS rolled_back,
+  (m.checksum = e.expected_checksum) AS checksum_match
+FROM (VALUES
+  ('00000000000000_init_postgres',
+     '0974edd392becaf9bd4f3a40a080a48f0a869b502b86dd0a714832f75a4adaab'),
+  ('20260706120000_v3_11b_learning_commerce_memory',
+     '53e97c27920db730e7a91218ee0e71ff7a37c4f107de260422f3166798970757'),
+  ('20260709120000_v3_11c2_d_o1_rec_outcome_orderitem_unique',
+     '6c927a699d4bc4b0dc323c6c44a10b3f29bf4f5deab7e71e7d0a1503b6f6b901')
+) AS e(migration_name, expected_checksum)
+LEFT JOIN "<APPROVED_SCHEMA>"."_prisma_migrations" m
+  ON m.migration_name = e.migration_name
+ORDER BY e.migration_name;
 ```
 
-C-3 — migration applied / pending / unknown (direct read of Prisma ledger):
+C-3b — unexpected/surplus migration drift count (migrations applied to the target that are NOT in the approved set — F-2):
 ```sql
-SELECT "migration_name", ("finished_at" IS NOT NULL) AS applied
+SELECT COUNT(*) AS unexpected_migration_count
 FROM "<APPROVED_SCHEMA>"."_prisma_migrations"
-WHERE "migration_name" IN (
+WHERE migration_name NOT IN (
   '00000000000000_init_postgres',
   '20260706120000_v3_11b_learning_commerce_memory',
   '20260709120000_v3_11c2_d_o1_rec_outcome_orderitem_unique'
-)
-ORDER BY "migration_name";
+);
 ```
-If `_prisma_migrations` does not exist, the query errors → report migration state `UNKNOWN` and STOP (do not create the table).
+
+Explicit state mapping (F-3):
+| Condition (from C-3a row / C-3b) | Status |
+|---|---|
+| expected row absent (`row_present = false`) | `PENDING` |
+| `rolled_back = true` | `ROLLED_BACK_STOP` |
+| present, not rolled back, `finished = false` | `INCOMPLETE_STOP` |
+| finished, not rolled back, `checksum_match = false` | `CHECKSUM_DRIFT_STOP` |
+| finished, not rolled back, `checksum_match = true` | `APPLIED_MATCH` |
+| `_prisma_migrations` absent / unreadable (query errors) | `UNKNOWN_STOP` (do not create the table) |
+| `unexpected_migration_count > 0` | `UNEXPECTED_MIGRATION_DRIFT_STOP` |
+
+Ledger overall = `MIGRATION_LEDGER_OK` only when all three names are `APPLIED_MATCH` **and** `unexpected_migration_count = 0`; otherwise the corresponding `*_STOP`.
+
+Expected checksums are **locally-computed `sha256` of the tracked `migration.sql` files** (non-secret design constants; Prisma stores the SHA-256 of the migration file content in `_prisma_migrations.checksum`). If Prisma's checksum normalization ever differs from a raw-file `sha256`, the execution step must recompute the expected constant with Prisma's exact algorithm from the same tracked files; the drift check still emits only the boolean `checksum_match`, never the raw DB checksum.
 
 **Excluded:** `prisma migrate status`, `prisma migrate deploy`, `prisma db execute`, and any Prisma/ORM command that opens its own connection using the full-privilege `DATABASE_URL`. Rationale in §7.
 
 ## 7. No-write justification per command
 
-- C-1, C-2, C-3 are pure `SELECT` statements (aggregate / catalog / ledger reads). Under the least-privilege read-only role they cannot write even if malformed, because no write privilege is granted. Additionally they can be wrapped in `SET TRANSACTION READ ONLY` + `ROLLBACK` as defense in depth.
+- C-1, C-2, C-3 are pure `SELECT` statements: C-1 an aggregate over `RecOutcomeEvent`; C-2 a read of system catalogs only (`pg_index`/`pg_class`/`pg_namespace`/`pg_attribute`); C-3 a read of `_prisma_migrations` where the checksum comparison is evaluated inside the query so only a boolean is returned. Under the least-privilege read-only role they cannot write even if malformed, because no write privilege is granted. Additionally they can be wrapped in `SET TRANSACTION READ ONLY` + `ROLLBACK` as defense in depth. None creates, alters, or drops any index, table, or migration row.
 - `prisma migrate status` / `migrate deploy` / any self-connecting command is **excluded** because its no-write behavior cannot be independently proven here and it would connect with the full-privilege `DATABASE_URL` (bypassing the read-only role and any transaction-level guard). Per the design rule, a command that opens its own connection whose no-write behavior is unproven must be excluded and marked STOP — so migration state is derived via the read-only SELECT C-3 instead.
 
 ## 8. Allowed output only
 
-- aggregate counts (e.g. `duplicate_group_count`, `unique_index_present`);
-- migration applied/pending/unknown **status** (boolean per named migration);
-- index/constraint presence **status**.
+- aggregate counts (e.g. `duplicate_group_count`, `unexpected_migration_count`);
+- C-2 index-shape booleans (`name_match`, `is_unique`, `is_valid`, `is_ready`, `non_partial`, `non_expression`, `single_key_column`, `key_col_is_orderitemid`) + derived `D_O1_INDEX_*` status + the constant approved index name;
+- per-migration status enum (`PENDING` / `APPLIED_MATCH` / `ROLLED_BACK_STOP` / `INCOMPLETE_STOP` / `CHECKSUM_DRIFT_STOP` / `UNKNOWN_STOP` / `UNEXPECTED_MIGRATION_DRIFT_STOP`) and the overall ledger status;
+- the boolean `checksum_match` only.
 
 ## 9. Forbidden output
 
 - table rows or row contents;
 - any customer / order / payment / subject / anonymous identifier;
 - raw env values, `DATABASE_URL`, host, username, password, token, or credential-bearing URL;
+- raw DB checksum values from `_prisma_migrations` (only the derived boolean `checksum_match` may leave the DB);
+- raw catalog rows or `indexdef` text (only the C-2 booleans + derived status);
 - raw hashes, PII, or full env dumps.
 (Per `docs/security/SECURITY_AND_SECRET_GUARDRAILS.md` §4 and `ENV_AND_MIGRATION_POLICY.md` §7 — verification output is boolean/count/status only.)
 
@@ -128,8 +183,8 @@ If `_prisma_migrations` does not exist, the query errors → report migration st
 
 Phase 2A read-only preflight is limited to exactly:
 1. duplicate `RecOutcomeEvent.orderItemId` group count (expect `0`);
-2. D-O1 unique constraint/index presence (`RecOutcomeEvent_orderItemId_key`);
-3. migration applied/pending/unknown for the three active migrations.
+2. exact D-O1 index-shape detection (`RecOutcomeEvent_orderItemId_key`: unique, valid/ready, non-partial, non-expression, single key column `orderItemId`);
+3. full migration-ledger comparison vs the exact three approved migrations — per-migration state (pending / applied-match / rolled-back / incomplete / checksum-drift / unknown) **and** unexpected-migration drift count.
 
 Nothing else. No table scan, no row export, no schema mutation, no data profiling beyond these counts/status. `RecOutcomeEvent` is preserved as the approved **one-row-per-`OrderItem` purchase-outcome summary/current row**; this plan designs no event-log, refund, cancel, reorder, direct/session attribution, or Phase 2B behavior.
 
@@ -139,18 +194,23 @@ STOP and return to Advisor if, at approval/execution time:
 - the exact target DB identity or its non-prod classification would have to be guessed;
 - no least-privilege read-only role artifact exists (would require the full-privilege `DATABASE_URL`);
 - any required fact would need a secret-value read or a self-connecting command whose no-write behavior is unproven;
-- `_prisma_migrations` is absent (migration state `UNKNOWN`);
+- `_prisma_migrations` is absent/unreadable (`UNKNOWN_STOP`);
 - duplicate group count returns non-zero (blocks any later unique enforcement on the real target);
+- C-2 returns 0 rows (`D_O1_INDEX_ABSENT_STOP`) or any C-2 boolean is FALSE (`D_O1_INDEX_SHAPE_MISMATCH_STOP` — renamed / composite / partial / expression / invalid / not-ready / wrong key column);
+- any migration maps to `ROLLED_BACK_STOP`, `INCOMPLETE_STOP`, or `CHECKSUM_DRIFT_STOP`;
+- `unexpected_migration_count > 0` (`UNEXPECTED_MIGRATION_DRIFT_STOP` — the target's ledger contains migrations outside the approved three-set);
 - `.env.local` secret-hygiene precondition (see §on hygiene) is unresolved;
 - any write, DDL, DML, role/permission change, flag change, main merge, or prod/live access would be required;
 - the target schema/host cannot be identified from non-secret metadata.
 
 ## 12. Routing per expected result
 
-- duplicate count `= 0` **and** unique index present **and** all three migrations applied → return status to **Advisor**; Advisor consolidates; **Leo/GPT** decides whether the real-target read-only boundary is satisfied to progress toward (still-separate) Phase 2B.
+- duplicate count `= 0` **and** `D_O1_INDEX_OK` **and** `MIGRATION_LEDGER_OK` (all three `APPLIED_MATCH`, `unexpected_migration_count = 0`) → return status to **Advisor**; Advisor consolidates; **Leo/GPT** decides whether the real-target boundary is satisfied to progress toward (still-separate) Phase 2B.
 - duplicate count `> 0` → **STOP → Advisor → Leo/GPT**; do not auto-delete/merge; a data-remediation decision is required before any unique enforcement on that target.
-- unique index absent or migration pending/unknown → **STOP → Advisor**; indicates the target does not match the approved migration graph (Phase 2B/deploy is a separate approval, not this preflight).
-- any secret/identity/read-only gap → **STOP → Advisor**; recommend §15 fallback.
+- `D_O1_INDEX_ABSENT_STOP` or `D_O1_INDEX_SHAPE_MISMATCH_STOP` → **STOP → Advisor**; the target's index does not match the approved D-O1 shape (renamed/composite/partial/expression/invalid); not a preflight pass.
+- any migration `PENDING` / `ROLLED_BACK_STOP` / `INCOMPLETE_STOP` / `CHECKSUM_DRIFT_STOP` / `UNKNOWN_STOP`, or `UNEXPECTED_MIGRATION_DRIFT_STOP` → **STOP → Advisor**; the target does not match the approved migration graph (deploy/remediation is a separate approval, not this preflight).
+- any secret / identity / read-only gap → **STOP → Advisor**; recommend §15 fallback.
+All routine results return to Advisor; only new scope / high-risk or authority decisions / risk acceptance / final closure reach Leo/GPT (V2 §15).
 All routine results return to Advisor; only new scope / high-risk or authority decisions / risk acceptance / final closure return to Leo/GPT (per V2 §15).
 
 ## 13. Rollback rationale
@@ -162,11 +222,14 @@ Because that read-only premise is currently **unproven**, protection is required
 ## 14. Evidence Fable5 must inspect
 
 - this design doc and its byte-identical foundation-docs mirror (cmp equality);
-- status header = `DESIGN_DRAFT_PENDING_FABLE5_REVIEW_AND_LEO_GPT_APPROVAL`;
+- status header = `DESIGN_DRAFT_PATCHED_AFTER_FABLE5_NEEDS_PATCH_PENDING_REREVIEW`;
+- **re-review Q1 (F-1):** C-2 matches the **exact** index name `RecOutcomeEvent_orderItemId_key` and full shape (unique, valid/ready, non-partial, non-expression, single key column `orderItemId`) via `pg_index` — a renamed / composite / partial / expression / invalid unique index does **not** pass;
+- **re-review Q2 (F-2):** C-3b returns `unexpected_migration_count` so migrations outside the approved three-set are detected (not silently passed);
+- **re-review Q3 (F-3):** absent expected row → `PENDING`; `rolled_back_at`, unfinished, and checksum drift are explicitly mapped (`ROLLED_BACK_STOP` / `INCOMPLETE_STOP` / `CHECKSUM_DRIFT_STOP`), with expected checksums as locally-computed non-secret constants and only a boolean `checksum_match` emitted;
 - canonical `AGENT_ROLE_BOUNDARY_AND_RELEASE_TRAIN_PROTOCOL_V2.md` (`ACTIVE_CANONICAL_V2`) and `COSMILE_V3_11C2_COMMERCE_MEMORY_DESIGN.md` Phase 2A boundary consistency;
-- `prisma/schema.prisma` `@@unique([orderItemId])`; D-O1 migration creating `RecOutcomeEvent_orderItemId_key` and dropping the prior non-unique index; V3-11B CHECK/FK preservation;
-- that §6 commands are pure `SELECT`, read-only-role-scoped, with `prisma migrate status` and all self-connecting commands excluded;
-- that no secret value / `DATABASE_URL` / identifier appears anywhere; evidence is count/status only;
+- `prisma/schema.prisma` `@@unique([orderItemId])`; D-O1 migration creating `RecOutcomeEvent_orderItemId_key` and dropping the prior non-unique index; V3-11B CHECK/FK preservation; and that the embedded expected checksums equal the `sha256` of the tracked `migration.sql` files;
+- that §6 commands are pure `SELECT` (aggregate / catalog / ledger), read-only-role-scoped, with the checksum comparison evaluated in-query, and `prisma migrate status` + all self-connecting commands excluded;
+- that no secret value / `DATABASE_URL` / identifier / raw DB checksum / catalog row appears anywhere; evidence is count/boolean/status only;
 - `.env.local` mode `664` handled as a precondition (no permission change, no value read);
 - the A/B/C recommendation authorizes nothing; execution remains `NOT_APPROVED`.
 
@@ -203,6 +266,13 @@ Limitation to state plainly: a separate/empty non-prod DB would trivially return
 - `.env.local` hygiene remediation;
 - selected option (A / B / C);
 - review route after any Phase 2A result.
+
+## Rework log — Fable5 `NEEDS_PATCH` (F-1 / F-2 / F-3)
+
+- **F-1 (C-2 index exactness):** replaced the `indexdef ILIKE '%UNIQUE%…%orderItemId%'` heuristic with a `pg_index`/`pg_class`/`pg_namespace`/`pg_attribute` query that matches the **exact** index name and full shape (unique, valid, ready, non-partial, non-expression, single key column `orderItemId`); renamed/composite/partial/expression/invalid unique indexes now map to `D_O1_INDEX_SHAPE_MISMATCH_STOP`, absence to `D_O1_INDEX_ABSENT_STOP`.
+- **F-2 (C-3 drift coverage):** added C-3b `unexpected_migration_count` (`migration_name NOT IN` the approved three-set) so surplus/unexpected migrations on the target trigger `UNEXPECTED_MIGRATION_DRIFT_STOP` instead of passing silently.
+- **F-3 (state/checksum mapping):** made absent-row → `PENDING` explicit; added `rolled_back_at`, unfinished, and checksum handling with the full status map (`APPLIED_MATCH` / `ROLLED_BACK_STOP` / `INCOMPLETE_STOP` / `CHECKSUM_DRIFT_STOP` / `UNKNOWN_STOP`); expected checksums embedded as locally-computed `sha256` constants of the tracked `migration.sql` files, compared in-query so only the boolean `checksum_match` is emitted.
+- Updated §7 no-write, §8/§9 output, §10 scope, §11 STOP, §12 routing, §14 Fable5 evidence; status → `DESIGN_DRAFT_PATCHED_AFTER_FABLE5_NEEDS_PATCH_PENDING_REREVIEW`. No DB/query/migration/secret access; no runtime/schema/migration/test/package/flag change; scope limited to F-1/F-2/F-3.
 
 ## Boundaries reaffirmed
 
