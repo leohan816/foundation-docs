@@ -2,6 +2,14 @@
 
 > Cosmile app 기능·운영 스크립트의 빠른 색인. "이 기능 어디 있더라?" 방지용. 새 기능 추가 시 여기 한 줄 남긴다.
 
+## V3 Canonical Control
+
+| 주제 | 정본 진입점 |
+|---|---|
+| V3 unknowns, founder decisions, extension roadmap, mission checklist, Packages 2/3/4 Big-Block Unknown Gate | [V3_CANONICAL_INDEX.md](../shared/v3/V3_CANONICAL_INDEX.md) |
+
+Package 1B is `NOT_STARTED_NOT_APPROVED`. Historical V3 reports are evidence only when they conflict with the canonical index.
+
 ## Analytics / 운영
 | 기능 | 실행 | 정본 문서 |
 |---|---|---|
