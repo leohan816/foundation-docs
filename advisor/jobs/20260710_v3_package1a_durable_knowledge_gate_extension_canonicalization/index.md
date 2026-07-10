@@ -2,7 +2,7 @@
 
 Date: 2026-07-10
 
-Status: `WAIT_FOR_FABLE5_C1_DELTA_RESULT`
+Status: `FINAL_APPROVED_AND_CLOSED`
 
 Canonical draft commit: `bebde69615cb37ff7ebb953d75eb75d8c50800f3`
 
@@ -26,14 +26,23 @@ Promote closed Package 1A knowledge into durable V3 canonical controls and requi
 - Package 1A: closed.
 - Package 1B: not started and not approved.
 - Runtime/schema/API/DB changes: zero and forbidden.
-- Next actor: same existing Fable5 Reviewer for C-1 delta review.
+- Next actor: `STOP`; a separate Leo/GPT mission is required to reopen work.
 
 ## Review State
 
-- Fable5 verdict: `PASS_WITH_RISK`.
-- Named risk: C-1 gate-name continuity mapping between active canonical documents.
+- Initial Fable5 verdict: `PASS_WITH_RISK`.
+- Initial named risk: C-1 gate-name continuity mapping between active canonical documents.
 - Advisor recommendation: `REQUEST_C1_MAPPING_PATCH_AND_FABLE5_DELTA_REREVIEW`.
 - Leo/GPT decision: recommendation approved.
 - C-1 patch changes documentation continuity only; no decision, safe default, authority, runtime scope, or Package 1B status changed.
 - Delta review pass: `DESIGN_REVIEW__C1_CONTINUITY_DELTA`.
-- Phase status: wait for Fable5 delta result; no automatic mission closure.
+- Delta review verdict: `PASS`; C-1 and C-2 closed with no regression.
+- Advisor final audit: `PASS`; mission audit: `MISSION_COMPLETE`.
+- Final state: `V3_DURABLE_KNOWLEDGE_AND_UNKNOWN_GATE_CANONICALIZED_CLEAN__AWAITING_PACKAGE1B_MISSION`.
+- Next actor: `STOP`; Package 1B requires a separate Leo/GPT mission.
+
+## Closure Artifacts
+
+- `05_FINAL_AUDIT.md`
+- `18_FINAL_CLOSURE_RECORD.md`
+- `19_FINAL_CLOSURE_POINTER.md`

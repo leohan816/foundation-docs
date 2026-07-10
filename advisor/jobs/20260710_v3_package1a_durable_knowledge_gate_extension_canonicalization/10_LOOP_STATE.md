@@ -2,7 +2,7 @@
 
 Date: 2026-07-10
 
-Status: `WAIT_FOR_FABLE5_C1_DELTA_RESULT`
+Status: `FINAL_APPROVED_AND_CLOSED`
 
 Mission: `V3_PACKAGE1A_DURABLE_KNOWLEDGE_GATE_AND_EXTENSION_CANONICALIZATION`
 
@@ -22,12 +22,15 @@ Mission: `V3_PACKAGE1A_DURABLE_KNOWLEDGE_GATE_AND_EXTENSION_CANONICALIZATION`
 - Leo/GPT decision: `REQUEST_C1_MAPPING_PATCH_AND_FABLE5_DELTA_REREVIEW`.
 - C-1 documentation-only continuity patch committed and pushed: `22530938ca68d261b0b2d09c95c93cfafea0f4e0`.
 - Same-session Fable5 delta-review handoff prepared.
+- Fable5 `DESIGN_REVIEW__C1_CONTINUITY_DELTA`: `PASS`.
+- Fable5 result commit pushed: `1201ee29aa8455c6397ebe9a1743b598b655ba63`.
+- Advisor final audit: `PASS`; mission audit: `MISSION_COMPLETE`.
+- C-1 and C-2: closed; no regression.
 
 ## Pending
 
-- Receive same-session Fable5 `DESIGN_REVIEW__C1_CONTINUITY_DELTA` result.
-- Advisor final audit after Fable5 result.
-- Leo/GPT final mission closure.
+- None inside this mission.
+- Package 1B requires a separate Leo/GPT mission.
 
 ## Hard Holds
 
@@ -38,4 +41,6 @@ Mission: `V3_PACKAGE1A_DURABLE_KNOWLEDGE_GATE_AND_EXTENSION_CANONICALIZATION`
 
 ## Next Actor
 
-`Fable5 Reviewer` for same-session `DESIGN_REVIEW__C1_CONTINUITY_DELTA`.
+`STOP`.
+
+Final state: `V3_DURABLE_KNOWLEDGE_AND_UNKNOWN_GATE_CANONICALIZED_CLEAN__AWAITING_PACKAGE1B_MISSION`.
