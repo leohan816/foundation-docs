@@ -1,6 +1,6 @@
 # Loop State
 
-Status: `WAIT_FOR_FABLE5_DESIGN_REREVIEW_RESULT`
+Status: `WAIT_FOR_COSMILE_DESIGN_REWORK_ROUND2_RESULT`
 
 Phase 2A execution status: `NOT_APPROVED`
 
@@ -25,27 +25,30 @@ Phase 2A execution status: `NOT_APPROVED`
 - foundation-docs rework result commit:
   `dccedbba017f903c80773ec58e15cc86eb18458e`.
 - Advisor rework validation: `VALIDATED_FOR_SAME_SESSION_FABLE5_REREVIEW`.
+- Fable5 round-2 re-review: `NEEDS_PATCH` at foundation-docs commit
+  `222993216e215ed0746932ae05f29ea6361b2747`.
+- P-1/P-3 and minor findings: closed.
+- F-A/F-B classified as narrow in-scope P-2 precision rework.
 
 ## Current Actor
 
-`Fable5 Reviewer` in the same existing review session
+`Cosmile Worker-Rework` in the same existing Worker session
 
 ## Current Required Action
 
-Use `07_FABLE5_DESIGN_REREVIEW_RUN_PROMPT.md` in the same existing Fable5 Reviewer
-session and return the re-review result to Advisor.
+Use `09_REWORK_ROUND2_RUN_PROMPT.md` in the same existing Cosmile Worker session
+and return the round-2 rework result to Advisor.
 
 ## Blocked
 
 - Role provisioning or permission/hygiene changes.
 - Phase 2A execution prompt, approval, or execution.
 - DB/query/migration/secret/runtime/main/prod/live work.
-- Advisor final mission audit until Fable5 re-review completes.
+- Fable5 round-3 re-review and Advisor audit until F-A/F-B rework completes.
 
 ## Next-State Rules
 
-- Re-review `PASS` -> Advisor mission audit and A/B/C recommendation.
-- Re-review `PASS_WITH_RISK` or `FAIL` -> return to Leo/GPT.
-- Re-review `NEEDS_PATCH` -> Advisor classifies findings and continues only when
-  patchable inside the approved design scope.
-- Any DB/secret/permission/runtime access -> STOP.
+- Valid round-2 rework -> Advisor validation -> same Fable5 session round-3
+  re-review of F-A/F-B only.
+- Any scope, DB, secret, logging, permission, credential, or runtime action ->
+  STOP.
