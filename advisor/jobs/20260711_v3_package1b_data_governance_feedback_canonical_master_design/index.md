@@ -2,13 +2,15 @@
 
 Date: 2026-07-11
 
-Status: `ENTRY_GATE_PASSED__QUESTION_REGISTER_READY_TO_FREEZE`
+Status: `WAIT_FOR_CONTROL_MASTER_DESIGN_RESULT`
 
 Mission type: `LEVEL_A_CANONICAL_DESIGN_ONLY__NO_IMPLEMENTATION`
 
 ## Entry Decision
 
 `DESIGN_ENTRY_GATE_PASSED`
+
+Frozen-register commit: `06198f2c1a002b82874465211cd120d3503ec463`
 
 The current Leo/GPT mission explicitly opens Package 1B canonical design only. Unresolved legal, experiment, safety-operations, identity, outbox, and pilot items remain visible blockers for dependent capabilities and are not treated as resolved.
 
@@ -21,6 +23,9 @@ The current Leo/GPT mission explicitly opens Package 1B canonical design only. U
 - `04_FOUNDATION_VALIDATION_BRIEF.md`
 - `05_COSMILE_VALIDATION_BRIEF.md`
 - `06_FABLE5_DESIGN_REVIEW_BRIEF.md`
+- `07_CONTROL_DESIGN_HANDOFF_PROMPT.md`
+- `07_CONTROL_DESIGN_RUN_PROMPT.md`
+- `08_ADVISOR_PHASE0_VALIDATION.md`
 - `10_LOOP_STATE.md`
 - `index.md`
 
@@ -35,7 +40,7 @@ All outputs remain candidates until repo-local validation, Fable5 review, Adviso
 
 ## Current Boundary
 
-- Control: not invoked before register publication.
+- Control: ready for same-existing-session design-only routing.
 - Foundation/Cosmile validation: wait for Control candidate.
 - Fable5 review: wait for reconciliation.
 - Implementation: `NOT_STARTED_NOT_APPROVED`.
@@ -44,4 +49,6 @@ All outputs remain candidates until repo-local validation, Fable5 review, Adviso
 
 ## Next Actor
 
-After frozen-register commit: same existing Control session in `CONTROL_MASTER_DESIGN_MODE`.
+Same existing Control session in `CONTROL_MASTER_DESIGN_MODE`.
+
+Run prompt: `07_CONTROL_DESIGN_RUN_PROMPT.md`.

@@ -4,7 +4,7 @@ Date: 2026-07-11
 
 Mission: `V3_PACKAGE1B_DATA_GOVERNANCE_FEEDBACK_CANONICAL_MASTER_DESIGN`
 
-Status: `ENTRY_GATE_PASSED__QUESTION_REGISTER_READY_TO_FREEZE`
+Status: `WAIT_FOR_CONTROL_MASTER_DESIGN_RESULT`
 
 ## Authority State
 
@@ -26,6 +26,9 @@ Status: `ENTRY_GATE_PASSED__QUESTION_REGISTER_READY_TO_FREEZE`
 - Entry verdict: `DESIGN_ENTRY_GATE_PASSED`.
 - Package 1B design-question register drafted with Q-01 through Q-29.
 - Control, Foundation validation, Cosmile validation, and Fable5 design-review briefs drafted.
+- Phase 0 artifacts and frozen register published: `06198f2c1a002b82874465211cd120d3503ec463`.
+- Register blob/SHA-256 recorded and unchanged after freeze.
+- Control handoff and short run prompt prepared.
 
 ## Preserved Holds
 
@@ -38,14 +41,14 @@ Status: `ENTRY_GATE_PASSED__QUESTION_REGISTER_READY_TO_FREEZE`
 
 ## Pending
 
-1. Publish/freeze the question register and Phase 0 artifacts.
-2. Publish the exact Control design handoff referencing the freeze commit.
-3. Receive Control candidate.
-4. Route independent Foundation and Cosmile validations.
-5. Compare and reconcile conflicts.
-6. Route Fable5 Level 3 design review.
-7. Advisor final design audit and Leo/GPT return.
+1. Receive Control candidate.
+2. Route independent Foundation and Cosmile validations.
+3. Compare and reconcile conflicts.
+4. Route Fable5 Level 3 design review.
+5. Advisor final design audit and Leo/GPT return.
 
 ## Next Actor
 
-After freeze publication: same existing Control session in `CONTROL_MASTER_DESIGN_MODE`.
+Same existing Control session in `CONTROL_MASTER_DESIGN_MODE`.
+
+Run prompt: `07_CONTROL_DESIGN_RUN_PROMPT.md`.
