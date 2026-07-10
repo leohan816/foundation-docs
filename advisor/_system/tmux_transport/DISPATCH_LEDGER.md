@@ -8,6 +8,42 @@ bootstrap delegation recorded later in this file.
 
 ## Active-Mode Product Dispatches
 
+### AO-M01-DESIGN-REWORK-20260710T202027Z
+
+```text
+DISPATCH_ID: AO-M01-DESIGN-REWORK-20260710T202027Z
+MISSION_ID: AGENT_OFFICE_M01_ADVISOR_MANAGED_OFFICE_WEB_CONTROL_PLANE
+AUTHORIZATION: M01_IN_SCOPE_NEEDS_PATCH_LOOP
+TARGET_ACTOR: Agent Office Worker Rework
+TARGET_SESSION: agent-office
+TARGET_WINDOW: 0
+TARGET_PANE: 0
+OBSERVED_PANE_ID: %13
+WORKSPACE: /home/leo/Project/agent-office
+PROCESS: codex v0.144.1, gpt-5.6-sol ultra
+ROLE_EVIDENCE: active repo-local Worker instructions and prior design result from same session
+READINESS_EVIDENCE: prior design pass returned STOP; empty Codex prompt; no approval or unrelated work
+SYNCHRONIZED_PANES_OFF: true
+LAUNCHER_ABSOLUTE_PATH: /home/leo/Project/foundation-docs/advisor/jobs/20260711_agent_office_m01_advisor_managed_office_web_control_plane/16_WORKER_DESIGN_REWORK_RUN_PROMPT.md
+LAUNCHER_REPO_RELATIVE_PATH: advisor/jobs/20260711_agent_office_m01_advisor_managed_office_web_control_plane/16_WORKER_DESIGN_REWORK_RUN_PROMPT.md
+LAUNCHER_COMMIT_SHA: 2183d41233bddba21aeb473f7f3d926a1bacc643
+LAUNCHER_GIT_BLOB: 6eb0b6cacef190bd029f9da99ff9c9e77b5f2c84
+LAUNCHER_SHA256_WORKTREE: 9b17dd271da0dbe39cc748f82e81aa2bb2d3332407a0d22d4587cda832f842b0
+LAUNCHER_SHA256_COMMITTED: 9b17dd271da0dbe39cc748f82e81aa2bb2d3332407a0d22d4587cda832f842b0
+UPSTREAM_EVIDENCE: foundation-docs main equals origin/main at 2183d41233bddba21aeb473f7f3d926a1bacc643
+RESULT_PATH: ../foundation-docs/runs/agent-office/20260711_agent_office_m01_advisor_managed_office_web_control_plane/WORKER_DESIGN_REWORK_RESULT.md
+POINTER_PATH: ../foundation-docs/advisor/jobs/20260711_agent_office_m01_advisor_managed_office_web_control_plane/17_WORKER_DESIGN_REWORK_RESULT_POINTER.md
+WRITE_REPO_BRANCHES: agent-office/shadow/agent-office-m01 then foundation-docs/main, serial
+DEPENDENCY_LOCKS: clear; Fable5 review complete; Reviewer idle and not writing
+BLIND_INDEPENDENCE_RULE: same Reviewer does not receive re-review until patch result verified
+PARALLEL_ISOLATION_EVIDENCE: not applicable; serial dispatch
+SOFT_STALL_SECONDS: 1200
+HARD_TIMEOUT_SECONDS_OR_NONE: 5400
+PREFLIGHT_VERDICT: PASS_READY_TO_SEND
+SENT_AT: PENDING_AFTER_LEDGER_COMMIT
+STATUS: READY_TO_SEND
+```
+
 ### AO-M01-DESIGN-REVIEW-20260710T200932Z
 
 ```text
