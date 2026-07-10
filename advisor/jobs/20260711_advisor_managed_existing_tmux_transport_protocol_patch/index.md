@@ -1,6 +1,6 @@
 # Advisor-Managed Existing tmux Transport Protocol Patch
 
-Status: `FABLE5_DUAL_PASS__ROLE_RELOAD_IN_PROGRESS`
+Status: `FINAL_AUDIT_PASS_WITH_RISK__AWAITING_LEO_GPT_FINAL_ACTIVATION`
 
 ## Core Artifacts
 
@@ -23,6 +23,9 @@ Status: `FABLE5_DUAL_PASS__ROLE_RELOAD_IN_PROGRESS`
 - `12_FABLE5_DESIGN_REVIEW_RESULT_POINTER.md`
 - `13_FABLE5_IMPLEMENTATION_CONFIG_REVIEW_RESULT_POINTER.md`
 - `14_ROLE_RELOAD_STATUS.md`
+- `15_LEO_ONE_TIME_BOOTSTRAP_RELOAD_AUTHORIZATION.md`
+- `16_FINAL_ACTIVATION_DECISION_PACKAGE.md`
+- `05_FINAL_AUDIT.md`
 
 ## Canonical and Config Files
 
@@ -41,5 +44,5 @@ Status: `FABLE5_DUAL_PASS__ROLE_RELOAD_IN_PROGRESS`
 
 Manual routing remains mandatory. No tmux input has been sent.
 
-Next recipients: existing Control, Foundation Worker, Cosmile Worker, Shashu
-Worker, and Fable5 Reviewer sessions for read-only reload.
+Next recipient: Leo/GPT for explicit bootstrap-risk acceptance and final activation
+decision.

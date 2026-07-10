@@ -2,7 +2,9 @@
 
 Transport state: `NOT_ACTIVE`
 
-No launcher has been dispatched under this protocol.
+No launcher has been dispatched under the generally active transport mode. Five
+read-only reload launchers were dispatched under the one-time Leo bootstrap
+delegation recorded below.
 
 The entries below are a one-time Leo-directed manual bootstrap delegation, not
 general transport activation. Global mode remains `NOT_ACTIVE` and the kill switch
@@ -172,3 +174,21 @@ Valid preflight verdicts:
 - `HOLD_LAUNCHER_EVIDENCE`
 - `HOLD_DEPENDENCY_OR_WRITE_CONFLICT`
 - `HOLD_INTERACTIVE_OR_AUTH_RISK`
+
+## Bootstrap Completion Reconciliation
+
+Recorded: 2026-07-10T19:01:39Z
+
+| Dispatch | Initial preflight | Resolution before send | Final status |
+|---|---|---|---|
+| Control | PASS | exact pane and launcher rechecked | `COMPLETED_REPORTED_AND_CAPTURED` |
+| Cosmile | PASS | exact pane and launcher rechecked | `COMPLETED_REPORTED_AND_CAPTURED` |
+| Foundation | HOLD: stale background shell | Foundation identified and stopped its stale read-only polling loop; process tree then showed no child shell | `COMPLETED_REPORTED_AND_CAPTURED` |
+| Shashu | HOLD: visible prior prompt text | Leo confirmed no active work; exact launcher was accepted and produced the required reload block | `COMPLETED_REPORTED_AND_CAPTURED` |
+| Fable5 | HOLD: visible prior prompt text | cursor evidence showed an empty editable position with history/ghost text; exact launcher replaced it and produced the required reload block | `COMPLETED_REPORTED_AND_CAPTURED` |
+
+Dispatch order was Control, Cosmile, Shashu, Foundation, Fable5. Exact seconds for
+each paste were not captured; all occurred between the committed bootstrap record
+and 2026-07-10T19:01:39Z. No dependent or write task ran in parallel.
+
+General mode remains `NOT_ACTIVE`; global kill switch remains `ENGAGED`.

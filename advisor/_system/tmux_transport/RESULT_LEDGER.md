@@ -2,7 +2,35 @@
 
 Transport state: `NOT_ACTIVE`
 
-No result has been collected under this protocol.
+General active-mode results: none. The one-time bootstrap reload results are
+recorded below.
+
+## One-Time Bootstrap Reload Results
+
+Recorded: 2026-07-10T19:01:39Z
+
+| Actor | Session/pane | Required state returned | File/runtime change | Advisor verdict |
+|---|---|---|---|---|
+| Advisor | `foundation-advisor/%9` | NOT_ACTIVE / ENGAGED / manual ACTIVE | none beyond approved local instruction patch | `PASS` |
+| Control | `foundation-control/%4` | NOT_ACTIVE / ENGAGED / manual ACTIVE | none | `PASS` |
+| Foundation Worker | `foundation/%3` | NOT_ACTIVE / ENGAGED / manual ACTIVE | none | `PASS` |
+| Cosmile Worker | `cosmile/%1` | NOT_ACTIVE / ENGAGED / manual ACTIVE | none | `PASS` |
+| Shashu Worker | `siasiu/%0` | NOT_ACTIVE / ENGAGED / manual ACTIVE | none | `PASS` |
+| Fable5 Reviewer | `reviewer-fable5/%5` | NOT_ACTIVE / ENGAGED / manual ACTIVE | none | `PASS` |
+
+All six role summaries preserved actor separation. All six transport summaries
+preserved exact-launcher transport, no authority transfer, no broadcast, serial
+default, sensitive-interaction STOP, durable-evidence priority, kill switch, manual
+fallback, and no activation from reload.
+
+Actual Git verification after reload:
+
+- foundation-control, FOUNDATION, Cosmile, SIASIU, and fable-sentinel: staged 0,
+  tracked diff 0;
+- foundation-docs: staged 0 before this record; only pre-existing unrelated tracked
+  dirty files and untracked job directories remained;
+- required tmux sessions: same six session IDs and one pane each;
+- no new tmux session, agent, sub-agent, or delegated context.
 
 ## Entry Template
 

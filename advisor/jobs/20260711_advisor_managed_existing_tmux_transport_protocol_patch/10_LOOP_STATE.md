@@ -2,7 +2,7 @@
 
 MISSION: `ADVISOR_MANAGED_EXISTING_TMUX_TRANSPORT_PROTOCOL_PATCH`
 
-STATE: `FABLE5_DUAL_PASS__ROLE_RELOAD_IN_PROGRESS`
+STATE: `FINAL_AUDIT_PASS_WITH_RISK__AWAITING_LEO_GPT_FINAL_ACTIVATION`
 
 LEO_GPT_PATCH_AUTHORIZATION: `APPROVED`
 
@@ -28,18 +28,19 @@ COMPLETED:
 - five existing role-session reload launchers prepared.
 - Leo granted a one-time manual bootstrap delegation for the five exact committed
   read-only reload launchers; general transport remains inactive;
-- Control and Cosmile passed live preflight and are ready to send;
-- Foundation is held for a prior running shell;
-- Shashu and Fable5 are held for pending prompt input.
+- all six existing role sessions reloaded successfully;
+- Advisor directly captured and validated all reload results;
+- final audit verdict `PASS_WITH_RISK` due the recorded one-time bootstrap and
+  unexecuted visibility-test exception;
+- no technical or actor-boundary blocker remains.
 
 NEXT_REQUIRED:
 
-1. manually deliver the five read-only reload launchers while transport is inactive;
-2. Advisor captures and validates each response directly;
-3. complete Advisor final audit after all six reloads.
+1. return final activation decision package to Leo/GPT;
+2. do not activate before explicit acceptance/approval.
 
 FORBIDDEN_NEXT:
 
-- direct tmux launcher delivery;
+- general autonomous tmux launcher delivery before final activation;
 - activation before reload and final audit;
 - product mission automation.
