@@ -1,0 +1,55 @@
+# FABLE5 DESIGN DELTA RE-REVIEW — Agent Office M01 (F-1/F-2/F-3 Closure)
+
+- Mission: `AGENT_OFFICE_M01_ADVISOR_MANAGED_OFFICE_WEB_CONTROL_PLANE` (AO-WU-06 loop)
+- Actor: **Fable5 Reviewer** (session `reviewer-fable5` — same session that issued NEEDS_PATCH at `62dd994`) · Pass: `DESIGN_REVIEW__AGENT_OFFICE_M01_DELTA_REREVIEW` · Level 3 delta · Skill: `/fable-sentinel` + delta-review protocol
+- Delta reviewed: `fedf716..82821af` — verified `82821af` = `origin/shadow/agent-office-m01` (fetched); 4 files, +350/-24, docs-only
+- Date: 2026-07-11 · Return to: **Advisor** (not final approval)
+- **VERDICT: `PASS`** — F-1, F-2, F-3 all **CLOSED**; no regression; one INFO residual (R-1). This closes the design loop; it is not final product approval and authorizes no batch without its exact Advisor handoff.
+
+## 1. Evidence base
+
+Actual `git diff fedf716..82821af` read in full (all four files); current patched files cross-checked; original review result/pointer at `62dd994` used as the finding baseline; Worker rework handoff (16) read as the requirement source for the pinned vocabularies (16 BlockerKinds, 9 AlertKinds, 13 GPT fields, Korean label sets); Worker rework result/pointer (17, foundation-docs commit `34a1b630`) cross-checked against the diff — accurate on every claim (files, base/target, non-force push). Byte-identical check on the three untouched documents run directly: `git diff --quiet` over master/security/operations = **BYTE_IDENTICAL: yes**. No Worker/Advisor closure claim was accepted without diff-level verification.
+
+## 2. Fixed delta questions — answers with evidence
+
+**F-1 (Q1-Q4): CLOSED.**
+1. Domain §6.3 (new) maps **all 16 exact required observable names** in one table with primary state, activity, structured trigger, end condition, persistence semantics, and rationale per row (verified name-by-name against the mission list). `requiredObservableName` is a deterministic projection field; silent rename is forbidden; incompatible primary/activity pairs are rejected before append.
+2. `WRITING_RESULT` is now an explicit structured activity: added to the §13 activity enum; pair-constrained to primary `RUNNING` or `TESTING` only; trigger `RoleActivityChanged(WRITING_RESULT, RESULT_DRAFT_STARTED)`; the row states the primary "remains unchanged until immutable result exists" and the rationale states it "cannot claim `RESULT_REPORTED` before durable evidence" — it occurs strictly before durable result reporting and cannot fabricate one.
+3. `DISPATCHING -> DISPATCHED + DELIVERY(reasonCode=WORKUNIT_DISPATCH)`, `WORKING -> RUNNING + WORKING`, `REVIEWING -> REVIEW_PENDING + REVIEW`, `RETURNING_RESULT -> RESULT_REPORTED + RESULT_RETURN` — each mapping is explicit with written rationale, and §13's pair constraints make each command-validated (DELIVERY-with-WORKUNIT_DISPATCH valid only with DISPATCHED, RESULT_RETURN only with RESULT_REPORTED, etc.). Semantically sound: lifecycle truth and in-progress observables stay separate, correlated by `correlationId`/causation links.
+4. Domain/UI/FEATURE_INDEX agree without flattening: §6.3 explicitly forbids flattening the two axes; UI §5 adds the WRITING_RESULT row consistent with §6.3 and updates DELIVERY's trigger/static cue for WorkUnit dispatch ("Dispatching") — which also closes my original INFO observation about DELIVERY's Advisor-only trigger wording; UI §6 precedence deterministically inserts `RESULT_RETURN > WRITING_RESULT > TESTING`; UI §3.4 requires the UI to obtain the exact name from §6.3 and forbids labeling `DISPATCHED`/`RUNNING`/`RESULT_REPORTED`/`REVIEW_PENDING` as renamed substitutes without the required activity pair; FEATURE_INDEX REQ-006/REQ-036 and the new §4.1 anchors plus test paths (`tests/contract/required-observable-conformance.test.ts`, `tests/domain/writing-result-activity.test.ts`) are consistent across all three documents.
+
+**F-2 (Q5-Q9): CLOSED.**
+5. `BlockerKind` is declared "the closed M01 vocabulary" and contains exactly the 16 required kinds (verified one-by-one against the rework handoff list).
+6. `BlockerOpened` defines every required field: blockerId, entityRefs[], kind, reasonCode, explanation, safeDefault, resolutionOwner, nextAction{actionCode, description, targetActor, requiresNewHandoff}, blockedSince, evidenceRefs[], priorWorkUnitState, resumeTo, requestId, manifestVersion, expectedStreamVersion, causationId, correlationId — with a closed safe-default set (`STOP_AND_HOLD`/`WAIT_FOR_LEO`/`NO_AUTOMATIC_ACTION`/`MANUAL_FALLBACK`/`READ_ONLY`), a stricter-only override rule, bounded owner values that grant no authority, per-kind default table, idempotent opening, optimistic concurrency, resolution requiring evidence + `ResumeProof`, and no auto-resolution by timeout/acknowledgement/reconnect. Envelope-field duplication is explicitly resolved ("serialized only once").
+7. `AlertKind` is closed with exactly the 9 required kinds, per-kind default severity and canonical action codes; the `AlertRaised` payload is exact; `deduplicationKey` is deterministic (SHA-256 of RFC 8785 canonical JSON of missionId/kind/primaryEntityRef/conditionKey/manifestVersion); occurrence folding via `occurrenceCount`/`lastObservedAt`; same request/hash idempotent; changed condition = new key; severity/action overrides stricter-only; lifecycle (§7.3 base) unchanged.
+8. UI and NotificationSink consume the canonical enums: UI §2 alert cards "consume only the canonical AlertKind and BlockerKind vocabularies"; Integration §10 rewritten — the sink "cannot define an adapter-local alert kind, severity, action code, or deduplication rule" and derives `notificationId` from the domain-supplied dedup key + triggering event ID + fixed channel; Batch D tests now include rejection of adapter-invented kinds and duplicate-notification suppression per open dedup key.
+9. The GPT decision package pins **exactly 13 fields in fixed order** (TARGET_ACTOR ... DO_NOT_START_ANOTHER_MISSION_AUTOMATICALLY), matching the required list verbatim; unknown/additional fields rejected in v1; `RETURN_RESULT_TO` = `Advisor`; `DO_NOT_START_ANOTHER_MISSION_AUTOMATICALLY` = boolean `true`; OPTIONS come only from the approved decision request ("the builder invents no option"); deterministic Markdown prints the exact uppercase headings in order with no added prose or automatic-execution field.
+
+**F-3 (Q10-Q12): CLOSED.**
+10. The 5 Korean hierarchy labels are exact: `활성 작업 묶음`, `패키지`, `현재 미션`, `단계`, `세부 작업` (byte-match to the rework requirement).
+11. All vocabulary tables are complete and deterministic: 16 observable status labels (incl. `WRITING_RESULT` = `결과 작성 중`), 9 alert labels, the exact 6 required action labels (`GPT용 패키지 복사`, `증거 열기`, `Advisor에게 답변`, `보류`, `미션 일시정지`, `미션 취소`), 16 blocker labels, a deterministic reasonCode fallback rule (reviewed locale entry `blocker.reason.<code>`, else kind label + stable code in parentheses, never machine-translated/invented), and two separate progress labels (`세부 작업 진행률`, `필수 게이트 진행률`) with an explicit never-merge rule. Implementation-ready without silent translation; Batch tests extended (`tests/ui/korean-vocabulary.test.ts`).
+12. `labelKo` is preserved byte-for-byte for dynamic entity names and cannot replace fixed system vocabulary; absent `labelKo` renders the canonical label plus a locale-missing indicator — no silent synthesis.
+
+**Regression and scope (Q13-Q16):**
+13. Master, security, and operations documents are **byte-identical** to the reviewed `fedf716` versions (direct `git diff --quiet` = yes).
+14. The four-file patch introduces no new architecture, product policy, runtime, or implementation authorization, and weakens none of the 17 previously passed questions: every addition is a closed vocabulary, exact payload, conformance table, label table, or traceability/test-path precision; behavioral additions are strictly tightening (pair validation, closed enums, stricter-only overrides). All four status headers remain `CANDIDATE__NOT_IMPLEMENTED__PENDING_FABLE5_DESIGN_REVIEW`; FEATURE_INDEX §5 honestly records "NEEDS_PATCH at fedf716; ... pending independent delta re-review" rather than claiming a verdict.
+15. The 50 master traceability rows remain 50 (rows amended in place, none removed; §4.1 F-1/F-2/F-3 anchors are additive, not new REQ rows); local matrices grew additively (DOM-007, UI-008) and stay consistent; links verified in the amended rows; canonical ownership, candidate statuses, and all forbidden/deferred gates intact.
+16. With this PASS the canonical design is ready for the already-approved M01 implementation sequence: Batch A may be routed next, each batch still requiring its exact Advisor handoff and the declared acceptance evidence (Master §11 unchanged).
+
+## 3. Residual (INFO — not blocking)
+
+- **R-1 Expired-activity display fallback.** When a pairing activity has expired but the primary state persists (`DISPATCHED`/`RUNNING`/`RESULT_REPORTED`/`REVIEW_PENDING` with no current activity), §6.3 defines no `requiredObservableName` row for the primary-only case, and the locale table intentionally has no Korean labels for those primary names or for the non-required additions (`WAITING_ADVISOR`, `HOLD`). The design's existing rules bound this safely (UI §4.2 UNKNOWN/STALE rendering; §3.4 forbids renamed substitutes), but Batch A's `required-observable-conformance.test.ts` should pin the exact fallback (retain-last-observable, primary-name display, or stale overlay) and Batch B may add reviewed locale entries for the remaining primary states. Resolvable inside the reviewed design's own rules; no product-policy invention required.
+
+## 4. Verdict rationale
+
+All three findings were re-judged empirically against the actual `fedf716..82821af` diff and current files — including recounting the 16 BlockerKinds, 9 AlertKinds, 13 GPT fields, 16 observable names, and every Korean label set against the rework requirement, and re-running the byte-identical check on the three untouched documents. The closures are exact, the additions are strictly tightening, the two-axis architecture is preserved as required, and the regression sweep found no new defect, no weakened control, and no scope creep. R-1 is an implementation-detail fallback already bounded by reviewed rules. Per the V2 verdict contract this is `PASS` — the design loop closes; final product approval and batch routing remain with Leo/GPT and Advisor respectively.
+
+**VERDICT: `PASS`**
+
+## 5. Self-review (Sentinel 6 rules)
+
+- Delta discipline followed: item-by-item closure judged from the diff (not the patch record); before/after fixed by commits `fedf716`/`82821af`; original findings' reproduction checks re-run in substance (name-by-name, field-by-field, label-by-label counts; byte-identical git check).
+- No agent/sub-agent/delegated context/temporary session; Agent Office read-only (zero modifications); no DB/secret/env/auth/production/tmux-input action; only this result + its pointer written and committed.
+- Not verified (stated): any runtime behavior (nothing is implemented); Worker session internals beyond committed outputs and git evidence.
+
+Return to: **Advisor**.
