@@ -2,9 +2,47 @@
 
 Transport state: `ACTIVE`
 
-No launcher has been dispatched under the generally active transport mode. Five
-read-only reload launchers were dispatched under the one-time Leo bootstrap
-delegation recorded below.
+The first product dispatch under generally active transport is prepared below.
+Five earlier read-only reload launchers were dispatched under the one-time Leo
+bootstrap delegation recorded later in this file.
+
+## Active-Mode Product Dispatches
+
+### AO-M01-BOOTSTRAP-20260710T192635Z
+
+```text
+DISPATCH_ID: AO-M01-BOOTSTRAP-20260710T192635Z
+MISSION_ID: AGENT_OFFICE_M01_ADVISOR_MANAGED_OFFICE_WEB_CONTROL_PLANE
+AUTHORIZATION: LEO_GPT_APPROVED_AGENT_OFFICE_M01
+TARGET_ACTOR: Agent Office Worker
+TARGET_SESSION: agent-office
+TARGET_WINDOW: 0
+TARGET_PANE: 0
+OBSERVED_PANE_ID: %13
+WORKSPACE: /home/leo/Project/agent-office
+PROCESS: codex v0.144.1, gpt-5.6-sol ultra
+ROLE_EVIDENCE: Leo/GPT M01 assignment plus exact existing tmux ancestry and pane banner
+READINESS_EVIDENCE: empty Codex prompt; no approval or unrelated work
+SYNCHRONIZED_PANES_OFF: true
+LAUNCHER_ABSOLUTE_PATH: /home/leo/Project/foundation-docs/advisor/jobs/20260711_agent_office_m01_advisor_managed_office_web_control_plane/07_WORKER_BOOTSTRAP_RUN_PROMPT.md
+LAUNCHER_REPO_RELATIVE_PATH: advisor/jobs/20260711_agent_office_m01_advisor_managed_office_web_control_plane/07_WORKER_BOOTSTRAP_RUN_PROMPT.md
+LAUNCHER_COMMIT_SHA: 38cbffcf3d1c2f91fb1990c999e93124cf493682
+LAUNCHER_GIT_BLOB: c89a4d8fcef9e4401da9ff05c3ba8b4042ee1152
+LAUNCHER_SHA256_WORKTREE: b1d971920649424be8f78b27c2411175241dc546f0c20264ea1a47d887af4a8c
+LAUNCHER_SHA256_COMMITTED: b1d971920649424be8f78b27c2411175241dc546f0c20264ea1a47d887af4a8c
+UPSTREAM_EVIDENCE: foundation-docs main equals origin/main at 38cbffcf3d1c2f91fb1990c999e93124cf493682
+RESULT_PATH: ../foundation-docs/runs/agent-office/20260711_agent_office_m01_advisor_managed_office_web_control_plane/WORKER_BOOTSTRAP_RESULT.md
+POINTER_PATH: ../foundation-docs/advisor/jobs/20260711_agent_office_m01_advisor_managed_office_web_control_plane/12_WORKER_BOOTSTRAP_RESULT_POINTER.md
+WRITE_REPO_BRANCHES: agent-office/shadow/agent-office-m01 then foundation-docs/main, serial
+DEPENDENCY_LOCKS: clear; no active product dispatch; bootstrap precedes design
+BLIND_INDEPENDENCE_RULE: Reviewer receives no dispatch until Worker bootstrap and design are validated
+PARALLEL_ISOLATION_EVIDENCE: not applicable; serial dispatch
+SOFT_STALL_SECONDS: 900
+HARD_TIMEOUT_SECONDS_OR_NONE: 3600
+PREFLIGHT_VERDICT: PASS_READY_TO_SEND
+SENT_AT: PENDING_AFTER_LEDGER_COMMIT
+STATUS: READY_TO_SEND
+```
 
 The entries below are a one-time Leo-directed manual bootstrap delegation, not
 general transport activation. Global mode remains `NOT_ACTIVE` and the kill switch
