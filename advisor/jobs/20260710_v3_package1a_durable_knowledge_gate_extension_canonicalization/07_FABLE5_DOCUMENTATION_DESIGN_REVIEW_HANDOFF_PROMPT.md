@@ -13,6 +13,8 @@ Review pass: `DESIGN_REVIEW`
 
 Review level: `LEVEL_3`
 
+Canonical draft commit: `bebde69615cb37ff7ebb953d75eb75d8c50800f3`
+
 Required skill: `/fable-sentinel`
 
 ## Mission
@@ -52,7 +54,7 @@ Authority and prior V3 state:
 - `../foundation-docs/docs/reports/control/COSMILE_MEMORY_V3_00_INDEX_AND_EXECUTIVE_SUMMARY_20260706.md`
 - `../foundation-docs/advisor/jobs/20260709_v3_11_risk_gate_register_audit/01_ADVISOR_BRIEF.md`
 
-Read the actual git diff and exact published commit. Do not trust Advisor summaries.
+Read the actual git diff for commit `bebde69615cb37ff7ebb953d75eb75d8c50800f3` and verify that it is on `origin/main`. Do not trust Advisor summaries.
 
 ## Required Coverage
 

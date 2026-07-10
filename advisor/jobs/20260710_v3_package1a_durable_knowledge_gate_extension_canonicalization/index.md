@@ -4,6 +4,8 @@ Date: 2026-07-10
 
 Status: `AWAITING_FABLE5_DESIGN_REVIEW`
 
+Canonical draft commit: `bebde69615cb37ff7ebb953d75eb75d8c50800f3`
+
 ## Objective
 
 Promote closed Package 1A knowledge into durable V3 canonical controls and require the Big-Block Unknown Gate for Packages 2, 3, and 4.

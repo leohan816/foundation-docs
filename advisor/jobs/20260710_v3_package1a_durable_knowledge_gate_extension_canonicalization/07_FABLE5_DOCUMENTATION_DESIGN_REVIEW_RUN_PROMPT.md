@@ -7,6 +7,7 @@ TARGET_REPO: ../foundation-docs
 TARGET_SESSION_NAME: existing Fable5 Reviewer
 TARGET_SESSION: same existing independent Fable5 Reviewer session, never Advisor or authoring session
 REQUIRED_SKILL: /fable-sentinel
+REVIEW_COMMIT: bebde69615cb37ff7ebb953d75eb75d8c50800f3
 READ_AND_EXECUTE: ../foundation-docs/advisor/jobs/20260710_v3_package1a_durable_knowledge_gate_extension_canonicalization/07_FABLE5_DOCUMENTATION_DESIGN_REVIEW_HANDOFF_PROMPT.md
 RETURN_RESULT_TO: Advisor
 DO_NOT_EXECUTE_FROM_MEMORY: true
