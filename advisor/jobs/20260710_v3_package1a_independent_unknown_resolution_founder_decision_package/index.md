@@ -2,7 +2,7 @@
 
 Mission: `V3_PACKAGE1A_INDEPENDENT_UNKNOWN_RESOLUTION_AND_FOUNDER_DECISION_PACKAGE`
 
-Status: `PHASE1_BLIND_ASSESSMENTS_READY_FOR_ROUTING`
+Status: `PHASE1_RESULTS_RECEIVED__CORRECTIONS_REQUIRED_BEFORE_COMPARISON`
 
 ## Purpose
 
@@ -39,6 +39,24 @@ Freeze commit: `fab82c45f7e92ed2652dc6de9db55532fabb661b`
 - [09_COSMILE_DISCOVERY_REWORK_HANDOFF_PROMPT.md](./09_COSMILE_DISCOVERY_REWORK_HANDOFF_PROMPT.md)
 - [09_COSMILE_DISCOVERY_REWORK_RUN_PROMPT.md](./09_COSMILE_DISCOVERY_REWORK_RUN_PROMPT.md)
 
+## Foundation First-Pass Validation
+
+- Result commit: `d07ebdd`
+- Status: `RECEIVED_NEEDS_PROCESS_AND_FORMAT_CORRECTION`
+- [11_FOUNDATION_RESULT_POINTER.md](./11_FOUNDATION_RESULT_POINTER.md)
+- [16_FOUNDATION_RESULT_VALIDATION.md](./16_FOUNDATION_RESULT_VALIDATION.md)
+- [09_FOUNDATION_DISCOVERY_COMPLIANCE_REWORK_HANDOFF_PROMPT.md](./09_FOUNDATION_DISCOVERY_COMPLIANCE_REWORK_HANDOFF_PROMPT.md)
+- [09_FOUNDATION_DISCOVERY_COMPLIANCE_REWORK_RUN_PROMPT.md](./09_FOUNDATION_DISCOVERY_COMPLIANCE_REWORK_RUN_PROMPT.md)
+
+## Fable5 Blind-Pass Validation
+
+- Result commit: `47ed9df`
+- Status: `RECEIVED_NEEDS_PROCESS_AND_EVIDENCE_CORRECTION`
+- [13_FABLE5_BLIND_RESULT_POINTER.md](./13_FABLE5_BLIND_RESULT_POINTER.md)
+- [17_FABLE5_BLIND_RESULT_VALIDATION.md](./17_FABLE5_BLIND_RESULT_VALIDATION.md)
+- [09_FABLE5_BLIND_COMPLIANCE_REWORK_HANDOFF_PROMPT.md](./09_FABLE5_BLIND_COMPLIANCE_REWORK_HANDOFF_PROMPT.md)
+- [09_FABLE5_BLIND_COMPLIANCE_REWORK_RUN_PROMPT.md](./09_FABLE5_BLIND_COMPLIANCE_REWORK_RUN_PROMPT.md)
+
 ## Required Later Artifacts
 
 - Foundation Worker independent assessment under `../foundation-docs/runs/foundation/`
@@ -56,6 +74,6 @@ Freeze commit: `fab82c45f7e92ed2652dc6de9db55532fabb661b`
 
 No Package 1B design, Control invocation, runtime work, DB action, live model call, or product-policy approval is authorized.
 
-## Next Actor
+## Next Actors
 
-Route the three ASCII-only short run prompts to the existing Foundation Worker, Cosmile Worker, and Fable5 Reviewer sessions. All three results return to Advisor. Comparison remains forbidden until all three pointers are received and verified.
+Route the three ASCII-only correction run prompts to the same existing Cosmile Worker, Foundation Worker, and Fable5 Reviewer sessions. All corrected results return to Advisor. Comparison remains forbidden until all three correction pointers are received and directly revalidated.
