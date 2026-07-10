@@ -14,12 +14,14 @@ Mission status: `PHASE1_BLIND_ASSESSMENTS_READY_FOR_ROUTING`
 - Advisor blind first-pass assessment drafted before receiving any other actor result.
 - Frozen register and Advisor first pass committed and pushed.
 - Foundation Worker, Cosmile Worker, and Fable5 blind discovery briefs/handoffs prepared.
+- Cosmile blind first pass received at foundation-docs commit `1b44760`.
+- Advisor direct validation found material evidence error `C-F1` in U-05/A-C3; narrow same-session rework is required before comparison.
 
 ## Blindness State
 
 - Advisor assessment: complete.
 - Foundation Worker assessment: not started.
-- Cosmile Worker assessment: not started.
+- Cosmile Worker assessment: `RECEIVED_NEEDS_CORRECTION_C_F1`.
 - Fable5 blind assessment: not started.
 - Cross-actor comparison: forbidden until all four first passes are complete.
 
@@ -33,12 +35,13 @@ Mission status: `PHASE1_BLIND_ASSESSMENTS_READY_FOR_ROUTING`
 
 ## Next Required Action
 
-Publish the blind actor handoffs. Leo must paste each short launcher into the existing Foundation Worker, Cosmile Worker, and Fable5 Reviewer sessions. The three first-pass assessments may run independently in any order, but every actor is forbidden from reading the other assessments. Return all three pointers to Advisor.
+Route `09_COSMILE_DISCOVERY_REWORK_RUN_PROMPT.md` to the same Cosmile Worker session. Foundation Worker and Fable5 blind assessments may continue independently. Return all corrected/result pointers to Advisor.
 
 ## Hard Stops
 
 - Do not modify the frozen register; use an explicit addendum for newly discovered unknowns.
 - Do not let an actor read another first-pass assessment.
+- Do not compare actor positions until Cosmile C-F1 is closed and Foundation/Fable5 first passes are received.
 - Do not call Control.
 - Do not create canonical Package 1 design.
 - Do not implement or access DB/secrets/live models.
