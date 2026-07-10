@@ -59,6 +59,33 @@ NEXT_ACTOR: Fable5 Reviewer
 RECORDED_AT: 2026-07-10T20:06:00Z
 ```
 
+## AO-M01-DESIGN-REVIEW-20260710T200932Z
+
+```text
+DISPATCH_ID: AO-M01-DESIGN-REVIEW-20260710T200932Z
+MISSION_ID: AGENT_OFFICE_M01_ADVISOR_MANAGED_OFFICE_WEB_CONTROL_PLANE
+TARGET_ACTOR: Fable5 Reviewer
+PANE_COMPLETION_REPORTED: true
+RESULT_FILE: ../foundation-docs/runs/agent-office/20260711_agent_office_m01_advisor_managed_office_web_control_plane/FABLE5_DESIGN_REVIEW_RESULT.md
+POINTER_FILE: ../foundation-docs/advisor/jobs/20260711_agent_office_m01_advisor_managed_office_web_control_plane/15_FABLE5_DESIGN_REVIEW_RESULT_POINTER.md
+RESULT_FILE_EXISTS: true
+POINTER_FILE_EXISTS: true
+ALLOWED_FILES: exact Fable5 result and pointer only
+ACTUAL_CHANGED_FILES: exact allowed files only
+DIFF_VERIFIED: true; foundation-docs commit 62dd994
+TEST_EVIDENCE_VERIFIED: Reviewer directly read all seven files and reproduced Git evidence
+COMMIT_SHA: 62dd994
+BRANCH: foundation-docs/main
+UPSTREAM: origin/main
+PUSH_AND_ANCESTRY_VERIFIED: true
+RUNTIME_STATUS_VERIFIED: Agent Office read-only and unchanged at fedf716
+REVIEW_VERDICT_AND_COVERAGE: NEEDS_PATCH; 20/20 questions, F-1/F-2 required, F-3 recommended
+CONTRADICTIONS: none; findings match Advisor pre-review concern and direct file evidence
+ADVISOR_RESULT_VERDICT: ACCEPT_NEEDS_PATCH_AND_ROUTE_IN_SCOPE_REWORK
+NEXT_ACTOR: same Agent Office Worker
+RECORDED_AT: 2026-07-10T20:18:00Z
+```
+
 ## One-Time Bootstrap Reload Results
 
 Recorded: 2026-07-10T19:01:39Z

@@ -1,10 +1,10 @@
 # Loop State: Agent Office M01
 
-STATE: `DESIGN_CANDIDATE_VALIDATED__FABLE5_REVIEW_READY`
+STATE: `FABLE5_DESIGN_NEEDS_PATCH__WORKER_REWORK_READY`
 
-CURRENT_WORK_UNIT: `AO-WU-05`
+CURRENT_WORK_UNIT: `AO-WU-06`
 
-WORKUNIT_PROGRESS: `4/15 COMPLETED`
+WORKUNIT_PROGRESS: `5/15 COMPLETED`
 
 REQUIRED_GATE_PROGRESS: `1/7 ENTRY_GATE_PASSED`
 
@@ -20,9 +20,13 @@ REVIEWER_SESSION: `reviewer-fable5/$5/%5__IDLE`
 
 NEXT:
 
-1. publish the exact Level 3 Fable5 review launcher;
-2. deliver it to the existing independent Reviewer session;
-3. route only after the exact verdict and coverage are verified.
+1. route F-1/F-2/F-3 document rework to the same Worker;
+2. verify the exact design delta and result evidence;
+3. route same-session Fable5 delta re-review before implementation.
+
+FABLE5_VERDICT: `NEEDS_PATCH`
+
+PATCH_SCOPE: `F-1_REQUIRED_STATE_CONFORMANCE / F-2_BLOCKER_ALERT_CONTRACT / F-3_KOREAN_LABELS`
 
 BLOCKERS: none.
 
