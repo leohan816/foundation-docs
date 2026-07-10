@@ -8,6 +8,42 @@ bootstrap delegation recorded later in this file.
 
 ## Active-Mode Product Dispatches
 
+### AO-M01-DESIGN-REVIEW-20260710T200932Z
+
+```text
+DISPATCH_ID: AO-M01-DESIGN-REVIEW-20260710T200932Z
+MISSION_ID: AGENT_OFFICE_M01_ADVISOR_MANAGED_OFFICE_WEB_CONTROL_PLANE
+AUTHORIZATION: LEO_GPT_APPROVED_AGENT_OFFICE_M01_INDEPENDENT_DESIGN_REVIEW
+TARGET_ACTOR: Fable5 Reviewer
+TARGET_SESSION: reviewer-fable5
+TARGET_WINDOW: 0
+TARGET_PANE: 0
+OBSERVED_PANE_ID: %5
+WORKSPACE: /home/leo/Project/foundation-control
+PROCESS: claude, Fable5 Max required by launcher
+ROLE_EVIDENCE: prior ROLE_PROTOCOL_RELOADED block declares independent Fable5 Reviewer and /fable-sentinel boundary
+READINESS_EVIDENCE: empty Claude prompt; prior reload stopped; no approval or unrelated running work
+SYNCHRONIZED_PANES_OFF: true
+LAUNCHER_ABSOLUTE_PATH: /home/leo/Project/foundation-docs/advisor/jobs/20260711_agent_office_m01_advisor_managed_office_web_control_plane/14_FABLE5_DESIGN_REVIEW_RUN_PROMPT.md
+LAUNCHER_REPO_RELATIVE_PATH: advisor/jobs/20260711_agent_office_m01_advisor_managed_office_web_control_plane/14_FABLE5_DESIGN_REVIEW_RUN_PROMPT.md
+LAUNCHER_COMMIT_SHA: b659f591c3454d5b7c31f87c4f5fb2220af84d21
+LAUNCHER_GIT_BLOB: 3fc342e758d5ea34479247b6b774837ea89f2bcc
+LAUNCHER_SHA256_WORKTREE: f139da4c4225cb05ca10376f81b7dc549d710583ae063991c9b9dd6ece065f62
+LAUNCHER_SHA256_COMMITTED: f139da4c4225cb05ca10376f81b7dc549d710583ae063991c9b9dd6ece065f62
+UPSTREAM_EVIDENCE: foundation-docs main equals origin/main at b659f591c3454d5b7c31f87c4f5fb2220af84d21 when launcher published
+RESULT_PATH: ../foundation-docs/runs/agent-office/20260711_agent_office_m01_advisor_managed_office_web_control_plane/FABLE5_DESIGN_REVIEW_RESULT.md
+POINTER_PATH: ../foundation-docs/advisor/jobs/20260711_agent_office_m01_advisor_managed_office_web_control_plane/15_FABLE5_DESIGN_REVIEW_RESULT_POINTER.md
+WRITE_REPO_BRANCHES: foundation-docs/main result and pointer only; Agent Office read-only
+DEPENDENCY_LOCKS: clear; Worker design complete; no other reviewer dispatch
+BLIND_INDEPENDENCE_RULE: Reviewer reads candidate and Worker evidence but does not share Worker session or patch files
+PARALLEL_ISOLATION_EVIDENCE: not applicable; serial dispatch
+SOFT_STALL_SECONDS: 1800
+HARD_TIMEOUT_SECONDS_OR_NONE: 7200
+PREFLIGHT_VERDICT: PASS_READY_TO_SEND
+SENT_AT: PENDING_AFTER_LEDGER_COMMIT
+STATUS: READY_TO_SEND
+```
+
 ### AO-M01-DESIGN-20260710T194125Z
 
 ```text
