@@ -23,6 +23,7 @@ Mission status: `FINAL_APPROVED_AND_CLOSED`
 - [Role reload status](14_ROLE_RELOAD_STATUS.md)
 - [Mission complete pointer](15_MISSION_COMPLETE_POINTER.md)
 - [Final closure record](16_FINAL_CLOSURE_RECORD.md)
+- [Final closure pointer](17_FINAL_CLOSURE_POINTER.md)
 - [Canonical V2](../../../설계문서/shared/AGENT_ROLE_BOUNDARY_AND_RELEASE_TRAIN_PROTOCOL_V2.md)
 
 ## Current Verdict
