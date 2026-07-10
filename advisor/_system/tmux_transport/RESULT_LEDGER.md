@@ -86,6 +86,33 @@ NEXT_ACTOR: same Agent Office Worker
 RECORDED_AT: 2026-07-10T20:18:00Z
 ```
 
+## AO-M01-DESIGN-REWORK-20260710T202027Z
+
+```text
+DISPATCH_ID: AO-M01-DESIGN-REWORK-20260710T202027Z
+MISSION_ID: AGENT_OFFICE_M01_ADVISOR_MANAGED_OFFICE_WEB_CONTROL_PLANE
+TARGET_ACTOR: Agent Office Worker Rework
+PANE_COMPLETION_REPORTED: true
+RESULT_FILE: ../foundation-docs/runs/agent-office/20260711_agent_office_m01_advisor_managed_office_web_control_plane/WORKER_DESIGN_REWORK_RESULT.md
+POINTER_FILE: ../foundation-docs/advisor/jobs/20260711_agent_office_m01_advisor_managed_office_web_control_plane/17_WORKER_DESIGN_REWORK_RESULT_POINTER.md
+RESULT_FILE_EXISTS: true
+POINTER_FILE_EXISTS: true
+ALLOWED_FILES: four exact canonical design docs plus result and pointer
+ACTUAL_CHANGED_FILES: exact allowed files only
+DIFF_VERIFIED: true; target 82821af, result 34a1b63, pointer 66a9588
+TEST_EVIDENCE_VERIFIED: F-1/F-2/F-3 reproduction checks and regression anchors verified
+COMMIT_SHA: 82821afe48b08f70b6888e3ebf12dee3095cd2bb
+BRANCH: shadow/agent-office-m01
+UPSTREAM: origin/shadow/agent-office-m01
+PUSH_AND_ANCESTRY_VERIFIED: true
+RUNTIME_STATUS_VERIFIED: docs-only four-file delta
+REVIEW_VERDICT_AND_COVERAGE: pending same-session Fable5 delta re-review
+CONTRADICTIONS: none found by Advisor; Reviewer decides closure
+ADVISOR_RESULT_VERDICT: PASS_TO_DELTA_REREVIEW
+NEXT_ACTOR: same Fable5 Reviewer
+RECORDED_AT: 2026-07-10T20:34:00Z
+```
+
 ## One-Time Bootstrap Reload Results
 
 Recorded: 2026-07-10T19:01:39Z

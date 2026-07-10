@@ -50,6 +50,21 @@ ACTION_TAKEN: Advisor directly read full result, reproduced findings, and prepar
 NEXT_OBSERVATION_DUE: same-Reviewer delta re-review after patch
 ```
 
+## AO-M01-DESIGN-REWORK-20260710T202027Z
+
+```text
+DISPATCH_ID: AO-M01-DESIGN-REWORK-20260710T202027Z
+OBSERVED_AT: 2026-07-10T20:34:00Z
+PANE_ID: %13
+OUTPUT_FINGERPRINT: TARGET_COMMIT 82821af / F1 F2 F3 PATCHED / STOP
+LAST_PROGRESS_MARKER: four-file design delta and both result artifacts pushed
+STATE: COMPLETED_REPORTED
+INTERACTIVE_PROMPT_PRESENT: false
+SENSITIVE_OUTPUT_SUSPECTED: false
+ACTION_TAKEN: Advisor directly verified exact schemas, Korean labels, diff, commits, and upstream equality
+NEXT_OBSERVATION_DUE: same-Reviewer delta re-review
+```
+
 ## One-Time Bootstrap Reload Observations
 
 Recorded: 2026-07-10T19:01:39Z

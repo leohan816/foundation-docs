@@ -1,6 +1,6 @@
 # Loop State: Agent Office M01
 
-STATE: `FABLE5_DESIGN_NEEDS_PATCH__WORKER_REWORK_READY`
+STATE: `DESIGN_REWORK_VALIDATED__FABLE5_DELTA_REREVIEW_READY`
 
 CURRENT_WORK_UNIT: `AO-WU-06`
 
@@ -20,9 +20,9 @@ REVIEWER_SESSION: `reviewer-fable5/$5/%5__IDLE`
 
 NEXT:
 
-1. route F-1/F-2/F-3 document rework to the same Worker;
-2. verify the exact design delta and result evidence;
-3. route same-session Fable5 delta re-review before implementation.
+1. route the exact four-file delta to the same Fable5 Reviewer;
+2. verify F-1/F-2/F-3 closure and regression coverage;
+3. authorize implementation only after a clean PASS.
 
 FABLE5_VERDICT: `NEEDS_PATCH`
 
