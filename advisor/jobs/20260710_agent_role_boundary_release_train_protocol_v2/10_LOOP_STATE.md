@@ -1,6 +1,6 @@
 # Loop State
 
-Status: `ROLE_RELOAD_IN_PROGRESS__NEXT_SHASHU_WORKER`
+Status: `ROLE_RELOAD_IN_PROGRESS__NEXT_COSMILE_WORKER`
 
 ## Completed
 
@@ -15,12 +15,12 @@ Status: `ROLE_RELOAD_IN_PROGRESS__NEXT_SHASHU_WORKER`
 
 ## Current Actor
 
-`Shashu Worker`
+`Cosmile Worker`
 
 ## Current Required Action
 
-Reload the existing Shashu Worker session with
-`08_SHASHU_WORKER_RELOAD_RUN_PROMPT.md` and return `ROLE_PROTOCOL_RELOADED` to
+Reload the existing Cosmile Worker session with
+`08_COSMILE_WORKER_RELOAD_RUN_PROMPT.md` and return `ROLE_PROTOCOL_RELOADED` to
 Advisor.
 
 ## Remaining Reload Actors
@@ -28,8 +28,8 @@ Advisor.
 - Advisor: reload confirmation to be recorded after active-status publish.
 - Control: reloaded.
 - Foundation Worker: reloaded.
-- Shashu Worker: pending, next.
-- Cosmile Worker: pending.
+- Shashu Worker: reloaded.
+- Cosmile Worker: pending, next.
 - Fable5 Reviewer: pending.
 
 ## Blocked Until All Reloads

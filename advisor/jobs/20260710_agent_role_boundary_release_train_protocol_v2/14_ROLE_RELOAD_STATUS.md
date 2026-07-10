@@ -11,8 +11,8 @@ Canonical status: `ACTIVE_CANONICAL_V2`
 | Advisor | yes | `RELOADED` | recorded below |
 | Control | yes | `RELOADED` | recorded below; repo remained read-only at `c89b792bed17` |
 | Foundation Worker | yes | `RELOADED` | recorded below; repo remained read-only at `f240867dd833` |
-| Shashu Worker | yes | `PENDING_NEXT` | waiting for return |
-| Cosmile Worker | yes | `PENDING` | not routed yet |
+| Shashu Worker | yes | `RELOADED` | recorded below; repo remained read-only at `0b59434dba43` |
+| Cosmile Worker | yes | `PENDING_NEXT` | waiting for return |
 | Fable5 Reviewer | yes | `PENDING` | not routed yet |
 
 ## Advisor Confirmation
@@ -67,9 +67,27 @@ Advisor verification: `FOUNDATION` HEAD remained
 `NEXT_ACTOR: Foundation Worker` field was not part of the required reload contract
 and is not used for routing; Advisor selects the next actor.
 
+## Shashu Worker Confirmation
+
+```text
+ROLE_PROTOCOL_RELOADED
+ACTOR: Shashu Worker
+WORKSPACE: ../SIASIU
+ENTRY_FILES_READ: ../SIASIU/CLAUDE.md; ../SIASIU/docs/agent/RUN_PROTOCOL.md; ../SIASIU/docs/agent/RESULT_REPORTING_PROTOCOL.md; ../foundation-docs/advisor/jobs/20260710_agent_role_boundary_release_train_protocol_v2/08_ROLE_PROTOCOL_RELOAD_INSTRUCTIONS.md
+CANONICAL_FILE_READ: ../foundation-docs/설계문서/shared/AGENT_ROLE_BOUNDARY_AND_RELEASE_TRAIN_PROTOCOL_V2.md
+CANONICAL_STATUS: ACTIVE_CANONICAL_V2
+ROLE_SUMMARY: Shashu Worker implements only approved repo-local SIASIU consultation/service work and returns evidence to Advisor.
+FORBIDDEN_SUMMARY: Shashu Worker does not own Cosmile commerce or Foundation canonical judgment, self-review, self-approve, route around Advisor, or access unapproved high-risk surfaces.
+RETURN_TO: Advisor
+```
+
+Advisor verification: `SIASIU` HEAD remained
+`0b59434dba43741f56d4497f8d5d723f2f0227c2`, upstream delta `0/0`, staged files
+`0`; only the three pre-existing untracked docs remain.
+
 ## Next Actor
 
-Shashu Worker, using `08_SHASHU_WORKER_RELOAD_RUN_PROMPT.md` in the existing
-Shashu Worker session.
+Cosmile Worker, using `08_COSMILE_WORKER_RELOAD_RUN_PROMPT.md` in the existing
+Cosmile Worker session.
 
 Final mission audit remains blocked until all six actor rows are `RELOADED`.

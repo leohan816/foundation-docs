@@ -1,6 +1,6 @@
 # Agent Role Boundary and Release Train Protocol V2
 
-Mission status: `ROLE_RELOAD_IN_PROGRESS__NEXT_SHASHU_WORKER`
+Mission status: `ROLE_RELOAD_IN_PROGRESS__NEXT_COSMILE_WORKER`
 
 ## Artifacts
 
@@ -28,6 +28,6 @@ Mission status: `ROLE_RELOAD_IN_PROGRESS__NEXT_SHASHU_WORKER`
 
 ## Next Actor
 
-Shashu Worker in the existing Shashu Worker session.
+Cosmile Worker in the existing Cosmile Worker session.
 
 After each valid reload confirmation, Advisor routes the next existing actor.
