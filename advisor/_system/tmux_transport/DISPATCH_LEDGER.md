@@ -8,6 +8,42 @@ bootstrap delegation recorded later in this file.
 
 ## Active-Mode Product Dispatches
 
+### AO-M01-BATCH-B-20260710T214500Z
+
+```text
+DISPATCH_ID: AO-M01-BATCH-B-20260710T214500Z
+MISSION_ID: AGENT_OFFICE_M01_ADVISOR_MANAGED_OFFICE_WEB_CONTROL_PLANE
+AUTHORIZATION: LEO_GPT_APPROVED_M01_AFTER_ADVISOR_BATCH_A_ACCEPTANCE
+TARGET_ACTOR: Agent Office Worker
+TARGET_SESSION: agent-office
+TARGET_WINDOW: 0
+TARGET_PANE: 0
+OBSERVED_PANE_ID: %13
+WORKSPACE: /home/leo/Project/agent-office
+PROCESS: codex v0.144.1, gpt-5.6-sol ultra
+ROLE_EVIDENCE: active Agent Office Worker instructions and same existing implementation session
+READINESS_EVIDENCE: Batch A returned STOP; post-completion downgrade suggestion dismissed with Escape and model remains Ultra; empty prompt; clean branch
+SYNCHRONIZED_PANES_OFF: true
+LAUNCHER_ABSOLUTE_PATH: /home/leo/Project/foundation-docs/advisor/jobs/20260711_agent_office_m01_advisor_managed_office_web_control_plane/23_WORKER_BATCH_B_RUN_PROMPT.md
+LAUNCHER_REPO_RELATIVE_PATH: advisor/jobs/20260711_agent_office_m01_advisor_managed_office_web_control_plane/23_WORKER_BATCH_B_RUN_PROMPT.md
+LAUNCHER_COMMIT_SHA: 6fe054130600ab6b3f6b3670256c3488f2826106
+LAUNCHER_GIT_BLOB: dc33e4f4581c96b036885e9da6c020be53d3188d
+LAUNCHER_SHA256_WORKTREE: ddb6245dd029600a84d8d9c77ef512da5191f91df50705f3aa8e80fc021e67e2
+LAUNCHER_SHA256_COMMITTED: ddb6245dd029600a84d8d9c77ef512da5191f91df50705f3aa8e80fc021e67e2
+UPSTREAM_EVIDENCE: foundation-docs main equals origin/main at 6fe054130600ab6b3f6b3670256c3488f2826106 before ledger publication
+RESULT_PATH: ../foundation-docs/runs/agent-office/20260711_agent_office_m01_advisor_managed_office_web_control_plane/WORKER_BATCH_B_RESULT.md
+POINTER_PATH: ../foundation-docs/advisor/jobs/20260711_agent_office_m01_advisor_managed_office_web_control_plane/24_WORKER_BATCH_B_RESULT_POINTER.md
+WRITE_REPO_BRANCHES: agent-office/shadow/agent-office-m01 then foundation-docs/main, serial
+DEPENDENCY_LOCKS: clear; Batch A accepted; no Reviewer or other foundation-docs write dispatch active
+BLIND_INDEPENDENCE_RULE: final Fable5 implementation review waits for complete implementation result
+PARALLEL_ISOLATION_EVIDENCE: not applicable; serial dispatch
+SOFT_STALL_SECONDS: 3600
+HARD_TIMEOUT_SECONDS_OR_NONE: 14400
+PREFLIGHT_VERDICT: PASS_READY_TO_SEND
+SENT_AT: PENDING_AFTER_COMMITTED_LEDGER
+STATUS: READY_TO_SEND
+```
+
 ### AO-M01-BATCH-A-20260710T204442Z
 
 ```text
