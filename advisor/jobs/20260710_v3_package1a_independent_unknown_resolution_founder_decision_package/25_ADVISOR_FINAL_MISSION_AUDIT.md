@@ -6,9 +6,9 @@ Mission: `V3_PACKAGE1A_INDEPENDENT_UNKNOWN_RESOLUTION_AND_FOUNDER_DECISION_PACKA
 
 Mission type: `DISCOVERY_ONLY__NO_DESIGN_APPROVAL__NO_IMPLEMENTATION`
 
-Mission audit verdict: `MISSION_COMPLETE`
+Mission audit verdict: `MISSION_COMPLETE_ACCEPTED`
 
-Next state: `PACKAGE1A_DISCOVERY_COMPLETE__AWAITING_LEO_DECISIONS`
+Next state: `PACKAGE1A_FOUNDER_DECISIONS_RECORDED__PACKAGE1B_AWAITING_SEPARATE_LEO_GPT_MISSION`
 
 ## Objective Audit
 
@@ -188,8 +188,8 @@ Pre-existing unrelated untracked documentation and foundation-docs dirty files w
 
 ## Final Verdict
 
-`MISSION_COMPLETE`
+`MISSION_COMPLETE_ACCEPTED`
 
-The discovery package is review-complete and ready for Leo/GPT to record founder decisions and scenario acceptance. This is not Package 1B design approval or implementation authorization.
+The discovery package is review-complete. Leo/GPT founder decisions and scenario acceptance are recorded in `28_FOUNDER_DECISION_RECORD.md`. This is not Package 1B design approval or implementation authorization.
 
-Next actor: `Leo/GPT`.
+Next actor: `STOP_AFTER_CLOSURE`.

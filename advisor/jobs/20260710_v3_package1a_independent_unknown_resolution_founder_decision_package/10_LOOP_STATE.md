@@ -2,7 +2,7 @@
 
 Date: 2026-07-10
 
-Mission status: `PACKAGE1A_DISCOVERY_COMPLETE__AWAITING_LEO_DECISIONS`
+Mission status: `PACKAGE1A_FOUNDER_DECISIONS_RECORDED__PACKAGE1B_AWAITING_SEPARATE_LEO_GPT_MISSION`
 
 ## Completed
 
@@ -36,6 +36,11 @@ Mission status: `PACKAGE1A_DISCOVERY_COMPLETE__AWAITING_LEO_DECISIONS`
 - Founder package and acceptance sheet marked review-complete and awaiting Leo/GPT decisions.
 - Advisor final mission audit completed with verdict `MISSION_COMPLETE`.
 - Final pointer and GPT strategy decision prompt prepared.
+- Leo/GPT accepted mission audit verdict `MISSION_COMPLETE_ACCEPTED`.
+- D1-D4 and D5-i/D5-ii founder decisions recorded.
+- Founder Acceptance Sheet accepted with recorded modifications for scenarios 1-8.
+- Unresolved legal, policy, operations, identity, provider, outbox, calibration, and pilot gates preserved.
+- Package 1A decision closure record and final closure pointer prepared.
 
 ## Blindness State
 
@@ -45,9 +50,11 @@ Mission status: `PACKAGE1A_DISCOVERY_COMPLETE__AWAITING_LEO_DECISIONS`
 - Fable5 blind assessment: `CORRECTED_AND_ACCEPTED_FOR_COMPARISON`.
 - Cross-actor comparison: complete as draft.
 - Fable5 founder-package challenge: `NEEDS_PATCH_CLOSED_BY_PATCH_AND_DELTA_PASS`.
-- Founder package: `REVIEW_COMPLETE__AWAITING_LEO_GPT_DECISIONS`.
+- Founder package: `FOUNDER_DECISIONS_RECORDED__PACKAGE1B_NOT_STARTED`.
 - Fable5 delta re-review: `PASS`.
-- Advisor mission audit: `MISSION_COMPLETE`.
+- Advisor mission audit: `MISSION_COMPLETE_ACCEPTED`.
+- Founder decisions: `RECORDED`.
+- Package 1B: `NOT_STARTED_NOT_APPROVED`.
 
 ## Freeze State
 
@@ -60,7 +67,7 @@ Mission status: `PACKAGE1A_DISCOVERY_COMPLETE__AWAITING_LEO_DECISIONS`
 
 ## Next Required Action
 
-Route `27_GPT_STRATEGY_DECISION_PROMPT.md` to the GPT strategy session. Leo/GPT records D1-D4, D5-i/D5-ii, and acceptance or modification of scenarios 1-8. Return the decisions to Advisor. Do not start Package 1B automatically.
+STOP after publishing the decision closure artifacts. Wait for a separate Leo/GPT mission before Package 1B, Control, Worker, Reviewer, runtime, DB, or design work.
 
 ## Hard Stops
 

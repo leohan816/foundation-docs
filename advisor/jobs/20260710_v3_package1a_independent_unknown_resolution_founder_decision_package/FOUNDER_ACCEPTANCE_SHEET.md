@@ -2,23 +2,22 @@
 
 Date: 2026-07-10
 
-Status: `REVIEW_COMPLETE__AWAITING_LEO_GPT_DECISIONS`
+Status: `ACCEPTED_WITH_MODIFICATIONS__PACKAGE1B_NOT_STARTED`
 
-These scenarios describe proposed safe behavior. They are not approved product policy until Leo/GPT marks them accepted or modified.
+These scenarios record Leo/GPT's accepted behavior boundaries for future design. They do not authorize Package 1B design or implementation.
 
 ## Scenario 1 - Mixed Positive And Adverse Feedback
 
-Example: "It stings a little, but the effect is good."
-
-- Expected user-visible behavior: Today, no Package 1 feedback input exists. In a future approved flow, preserve both meanings and show conservative, non-diagnostic adverse guidance without claiming causality.
-- Stored data: None today. A future approved contract may store separate structured positive/adverse axes with provenance and classifier version.
-- Deleted or blocked data: Ambiguous text must not be forced into an optimistic single label. Unapproved raw text is not stored or transmitted.
-- Automatic action allowed: Raise request-scoped caution when the approved safety authority detects risk.
+- Initial-scope interpretation: users select separate structured positive/satisfaction and adverse/discomfort answers for an explicitly selected purchased line item. No free-text input or initial semantic API path exists.
+- Expected user-visible behavior: Preserve the separate positive and adverse structured axes. Do not imply that a positive answer cancels an adverse answer or that the system has diagnosed causality.
+- Stored data: Approved structured-axis answers with explicit purchased-item provenance under the future retention policy. No feedback raw text.
+- Deleted or blocked data: Free text, consultation-derived outcome evidence, inferred OrderItem linkage, and forced optimistic single-label collapse are blocked.
+- Automatic action allowed: Observation-only recording under approved constraints; any later safety response remains separately gated.
 - Automatic action forbidden: Positive learning, recommendation boost, evidence upgrade, causal diagnosis, or safety downgrade.
 - Human approval required: Any durable safety state, verified/contradicted transition, or correction that could lower caution.
 - Rollback/recovery path: Disable the future input/semantic path; retract or supersede derived labels using an audit link; preserve no-reappearance rules.
-- Evidence proving behavior: Mixed-input contract fixtures, adverse-priority invariant tests, classifier-version trace, blocked-demotion regression, and implementation review.
-- Founder acceptance: `PENDING`
+- Evidence proving behavior: Separate-axis contract fixtures, explicit-purchased-item provenance tests, no-free-text/no-consultation-source tests, blocked-demotion regression, and implementation review.
+- Founder acceptance: `ACCEPTED_WITH_STRUCTURED_ONLY_MODIFICATION`
 
 ## Scenario 2 - Feedback Deletion Request
 
@@ -30,7 +29,7 @@ Example: "It stings a little, but the effect is good."
 - Human approval required: Legal retention exceptions, provider handling, aggregate treatment, and any non-PII tombstone/reuse-block retention.
 - Rollback/recovery path: Recompute aggregates, deactivate derived learning, stop signal transmission, and document unresolved processors.
 - Evidence proving behavior: Complete lineage map, deletion propagation test, no-reappearance test, provider/backup evidence, and legal/policy approval.
-- Founder acceptance: `PENDING`
+- Founder acceptance: `ACCEPTED_AS_WRITTEN`
 
 ## Scenario 3 - Guest Purchase Followed By Login On A Shared Device
 
@@ -42,9 +41,11 @@ Example: "It stings a little, but the effect is good."
 - Human approval required: Any future explicit additive link, unlink, correction, or consent-revocation behavior.
 - Rollback/recovery path: Keep anonymous and subject records separate; revoke an additive link without rewriting original evidence.
 - Evidence proving behavior: Real-auth shared-device threat tests, wrong-account recovery, consent/revocation tests, and link audit trail.
-- Founder acceptance: `PENDING`
+- Founder acceptance: `ACCEPTED_AS_WRITTEN`
 
 ## Scenario 4 - Foundation Semantic API Failure
+
+Decision scope: `ACCEPTED_AS_FUTURE_GATED_BEHAVIOR`; Foundation semantic processing is outside the initial structured-only scope.
 
 - Expected user-visible behavior: Do not show an optimistic semantic result. Report temporary inability to process the feedback if an approved feedback flow later exists; purchase/order completion remains independent.
 - Stored data: No inferred semantic label. Structured user input may be retained only if the approved retention policy permits it.
@@ -54,9 +55,11 @@ Example: "It stings a little, but the effect is good."
 - Human approval required: Replay/reprocessing after contract/model changes and any safety-relevant override.
 - Rollback/recovery path: Disable semantic processing, retain no-learning state, and reprocess only from approved retained evidence with versioned provenance.
 - Evidence proving behavior: Failure-injection tests, no-write-on-failure assertions, no-raw-retry evidence, and versioned replay test.
-- Founder acceptance: `PENDING`
+- Founder acceptance: `ACCEPTED_AS_FUTURE_GATED_BEHAVIOR`
 
 ## Scenario 5 - Raw Text Appears In A Log, Trace, Or Queue
+
+Decision scope: `ACCEPTED_AS_FUTURE_GATED_BEHAVIOR`; feedback raw text is outside the initial scope.
 
 - Expected user-visible behavior: Do not claim non-persistence; follow a to-be-created and independently reviewed incident and user-notification policy. No such approved policy artifact exists today.
 - Stored data: Only incident metadata necessary for investigation, without copying the raw text further.
@@ -66,9 +69,11 @@ Example: "It stings a little, but the effect is good."
 - Human approval required: Security/privacy incident classification, provider/log handling, notification, credential action, and restart.
 - Rollback/recovery path: Disable collection/transport, rotate or revoke approved credentials if required, verify canary cleanup, and re-review before restart.
 - Evidence proving behavior: Synthetic canary, log/trace/queue inventory, provider evidence, incident record, and independent security review.
-- Founder acceptance: `PENDING`
+- Founder acceptance: `ACCEPTED_AS_FUTURE_GATED_BEHAVIOR`
 
 ## Scenario 6 - Semantic Result Is Later Proven Wrong
+
+Decision scope: `ACCEPTED_AS_FUTURE_GATED_BEHAVIOR`; any future correction requires versioned supersession.
 
 - Expected user-visible behavior: Correct the result transparently where product policy requires it; never hide the prior error behind an in-place rewrite.
 - Stored data: Versioned correction/supersession provenance, actor/authority, reason, and links to the affected derived state. Raw text remains governed separately.
@@ -78,19 +83,20 @@ Example: "It stings a little, but the effect is good."
 - Human approval required: Safety-lowering corrections and privileged certainty transitions.
 - Rollback/recovery path: Supersede the correction, restore the prior safe state, recompute affected aggregates, and retain audit lineage.
 - Evidence proving behavior: Authorization tests, append/supersede tests, blocked-demotion regression, aggregate recomputation, and audit review.
-- Founder acceptance: `PENDING`
+- Founder acceptance: `ACCEPTED_AS_FUTURE_GATED_BEHAVIOR_WITH_VERSIONED_SUPERSESSION`
 
-## Scenario 7 - Feature Produces No Measurable Recommendation Improvement
+## Scenario 7 - Feature Produces No Measurable Improvement On The Frozen Primary Pilot KPI
 
-- Expected user-visible behavior: Stop or remove the pilot without claiming success from participation volume or organic purchases.
+- Current primary pilot KPI domain: `POST_PURCHASE_SATISFACTION_SERVICE_UX`.
+- Expected user-visible behavior: Stop or remove the pilot if it does not improve the frozen post-purchase satisfaction/service UX KPI; do not claim success from participation volume, organic purchases, or unrelated recommendation metrics.
 - Stored data: Observation-only pilot evidence retained only under the approved policy and horizon.
 - Deleted or blocked data: No promotion to ranking/memory; data is deleted or deactivated according to the pre-approved stop/retention rule.
 - Automatic action allowed: Trigger the pre-approved kill switch when the frozen stop condition is met.
-- Automatic action forbidden: Change denominators, relabel organic purchases as recommendation wins, extend the pilot indefinitely, or enable learning to manufacture uplift.
+- Automatic action forbidden: Change the frozen KPI/denominator after launch, substitute recommendation uplift or organic purchases as success, extend the pilot indefinitely, or enable learning to manufacture improvement.
 - Human approval required: Metric definition changes, pilot extension, or a new value hypothesis.
 - Rollback/recovery path: Disable collection, remove pilot UI, deactivate derived state, and publish the null result.
 - Evidence proving behavior: Frozen KPI/denominator/horizon, independent metric owner, completeness/bias report, kill-switch test, and final pilot audit.
-- Founder acceptance: `PENDING`
+- Founder acceptance: `ACCEPTED_WITH_PRIMARY_KPI_MODIFICATION`
 
 ## Scenario 8 - Fake, Incentivized, Replayed, Or Competitor Feedback
 
@@ -102,11 +108,13 @@ Example: "It stings a little, but the effect is good."
 - Human approval required: Product-level safety action, fraud/abuse disposition, privileged certainty transitions, and release of quarantined reports into aggregates or learning.
 - Rollback/recovery path: Quarantine the affected batch, remove its derived influence, recompute aggregates, restore the prior safe product state, and preserve an audit trail without retaining unnecessary raw content.
 - Evidence proving behavior: Threat model, dedup/replay fixtures, rate-limit and quarantine tests, provenance/authentication checks, blocked-certainty-escalation regression, aggregate recomputation, and independent safety/abuse review.
-- Founder acceptance: `PENDING`
+- Founder acceptance: `ACCEPTED_AS_WRITTEN`
 
 ## Acceptance Status
 
-- Accepted as written: `NO`
-- Modifications supplied by Leo/GPT: `NONE_YET`
+- Accepted as written: `SCENARIOS_2_3_8`
+- Accepted as future-gated behavior: `SCENARIOS_4_5_6`
+- Accepted with modifications: `SCENARIOS_1_7`
+- Modifications supplied by Leo/GPT: `RECORDED`
 - Fable5 founder-package challenge: `PASS_AFTER_DELTA_REREVIEW`
 - Package 1B authorization: `NO`

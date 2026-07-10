@@ -2,11 +2,20 @@
 
 Date: 2026-07-10
 
-Status: `REVIEW_COMPLETE__AWAITING_LEO_GPT_DECISIONS`
+Status: `FOUNDER_DECISIONS_RECORDED__PACKAGE1B_NOT_STARTED`
 
 Mission: `V3_PACKAGE1A_INDEPENDENT_UNKNOWN_RESOLUTION_AND_FOUNDER_DECISION_PACKAGE`
 
 This package does not approve Package 1B design or implementation. It reduces the discovery evidence to five founder-level decisions. Technical details remain delegated to a later design mission.
+
+## Founder Decision Status
+
+- Final decision authority: `Leo/GPT`
+- Mission audit acceptance: `MISSION_COMPLETE_ACCEPTED`
+- Founder decision record: `28_FOUNDER_DECISION_RECORD.md`
+- Acceptance sheet status: `ACCEPTED_WITH_MODIFICATIONS`
+- Package 1B authorization: `NO`
+- Next state: `PACKAGE1A_FOUNDER_DECISIONS_RECORDED__PACKAGE1B_AWAITING_SEPARATE_LEO_GPT_MISSION`
 
 ## A. Facts We Now Know
 
@@ -133,9 +142,20 @@ These are technical, review, legal, or documentation prerequisites. They are not
 6. `PILOT_METRIC_GOVERNANCE_GATE`: name an independent metric owner and freeze the denominator, horizon, stop rule, abuse controls, completeness reporting, and kill switch before collection.
 7. `M4_GOVERNANCE_OVERLAY_HOLD`: do not migrate or populate unresolved M4 governance-overlay fields as incidental feedback work.
 
-## G. Only Five Leo/GPT Decisions
+## G. Five Leo/GPT Decisions - Recorded
 
 ### Decision 1 - Initial Feedback Product Scope
+
+Leo/GPT decision: `D1-B STRUCTURED_PURCHASED_ITEM`
+
+Approved boundary:
+
+- explicit purchased line-item selection;
+- structured answers only;
+- no free text;
+- no consultation-derived outcome evidence;
+- no inferred OrderItem provenance;
+- timing, eligibility, refund/cancel, and sensitive-population rules remain future design/legal gates.
 
 Plain-language question: What, if anything, should users be able to report first, and when?
 
@@ -154,6 +174,15 @@ Do not ask Leo/GPT to decide route names, fields, enums, or timing constants.
 
 ### Decision 2 - Identity And Provenance Default
 
+Leo/GPT decision: `D2-A NO_LINK_EXPLICIT_ITEM`
+
+Approved boundary:
+
+- no guest-to-login feedback or memory stitching;
+- no destructive re-keying;
+- existing cart/wishlist merge is not feedback consent or identity evidence;
+- D2-B remains a future separately approved threat-reviewed option only.
+
 Plain-language question: Must feedback always be explicitly attached to a purchased item without later guest-to-login stitching?
 
 Options:
@@ -166,6 +195,16 @@ Advisor recommendation: Approve D2-A as the Package 1 default. Preserve D2-B onl
 Do not ask Leo/GPT to choose an identity algorithm, HMAC field, or mapper implementation.
 
 ### Decision 3 - Raw Text, External Provider, And Deletion Promise
+
+Leo/GPT decision: `D3-A STRUCTURED_ONLY_NO_PROVIDER`
+
+Approved boundary:
+
+- no feedback free text in the initial scope;
+- no Foundation or external-provider processing of feedback;
+- D3-B remains a future gated option and D3-C is rejected;
+- user-linkable raw and derived feedback must be correctable, erasable, and reusable only under approved policy;
+- exact periods and legal/processor obligations remain unresolved.
 
 Plain-language question: May the first Package 1 experience collect or externally process free text before a reviewed retention/erasure policy exists?
 
@@ -181,6 +220,23 @@ Proposed product promise for later legal review: user-linkable raw and derived f
 
 ### Decision 4 - Value Hypothesis And Automatic Action Boundary
 
+Leo/GPT decision: `POST_PURCHASE_SATISFACTION_SERVICE_UX`
+
+Approved pilot question:
+
+> Can users understand and submit low-friction structured purchased-item feedback, and does it measurably improve the post-purchase service experience?
+
+Approved automation boundary:
+
+- observation only;
+- no automatic ranking change;
+- no automatic durable-memory promotion;
+- no canonical-evidence upgrade;
+- no automatic safety downgrade;
+- no recommendation-uplift claim;
+- no unstaffed human-review promise;
+- pilot blocked until metric owner, denominator, horizon, stop rule, abuse controls, retention gates, representative auth, and kill switch exist.
+
 Plain-language question: What single value should a future pilot test, and what must it never change automatically?
 
 Candidate hypotheses:
@@ -194,6 +250,26 @@ Advisor recommendation: Select exactly one or hold the pilot. Repository evidenc
 The later pilot must have an independent metric owner, frozen denominator, horizon, stop rule, abuse controls, and kill switch before collection.
 
 ### Decision 5 - Foundation Signal Governance And Current Outbox Boundary
+
+Leo/GPT decisions:
+
+- `D5-i-A JOINT_GOVERNANCE`
+- `D5-ii-A CONTAINMENT_GATE_REQUIRED`
+
+Approved authority split:
+
+- Cosmile owns raw commerce evidence, provenance, and producer mapping;
+- Foundation owns semantic authority and canonical acceptance constraints;
+- shared contract changes require both-side review and Leo/GPT approval;
+- joint governance does not transfer raw commerce ownership to Foundation.
+
+Approved containment boundary:
+
+- no flush;
+- do not rely on absence of a consumer;
+- current enqueue/consent/identifier shape is not an approved signal contract;
+- `OUTBOX_CONSENT_IDENTIFIER_CONTAINMENT_GATE` is required before Package 1B may rely on Foundation signals;
+- no DB inspection, cleanup, runtime patch, or flush worker is approved here.
 
 This decision contains two independent founder choices. Selecting an ownership model must not silently remove the containment gate.
 
@@ -224,7 +300,7 @@ The scenario-based acceptance sheet is in:
 
 `FOUNDER_ACCEPTANCE_SHEET.md`
 
-Fable5 challenge and delta re-review are complete with final review verdict `PASS`. The sheet remains a decision draft until Leo/GPT records final choices.
+Fable5 challenge and delta re-review are complete with final review verdict `PASS`. Leo/GPT accepted the sheet with the modifications recorded in `FOUNDER_ACCEPTANCE_SHEET.md` and `28_FOUNDER_DECISION_RECORD.md`.
 
 ## I. Traceability
 
@@ -242,6 +318,6 @@ Fable5 challenge and delta re-review are complete with final review verdict `PAS
 
 ## Package Status
 
-`FOUNDER_PACKAGE_REVIEW_COMPLETE__AWAITING_LEO_GPT_DECISIONS`
+`FOUNDER_DECISIONS_RECORDED__PACKAGE1B_AWAITING_SEPARATE_MISSION`
 
 No decision in this draft is final. No Package 1B work starts automatically.

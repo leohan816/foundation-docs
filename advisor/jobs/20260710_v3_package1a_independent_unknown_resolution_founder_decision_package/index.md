@@ -2,7 +2,7 @@
 
 Mission: `V3_PACKAGE1A_INDEPENDENT_UNKNOWN_RESOLUTION_AND_FOUNDER_DECISION_PACKAGE`
 
-Status: `PACKAGE1A_DISCOVERY_COMPLETE__AWAITING_LEO_DECISIONS`
+Status: `PACKAGE1A_FOUNDER_DECISIONS_RECORDED__PACKAGE1B_AWAITING_SEPARATE_LEO_GPT_MISSION`
 
 ## Purpose
 
@@ -70,7 +70,7 @@ Freeze commit: `fab82c45f7e92ed2652dc6de9db55532fabb661b`
 - [FOUNDER_DECISION_PACKAGE.md](./FOUNDER_DECISION_PACKAGE.md)
 - [FOUNDER_ACCEPTANCE_SHEET.md](./FOUNDER_ACCEPTANCE_SHEET.md)
 
-Status: `REVIEW_COMPLETE__AWAITING_LEO_GPT_DECISIONS`
+Status: `FOUNDER_DECISIONS_RECORDED__PACKAGE1B_NOT_STARTED`
 
 ## Fable5 Founder-Package Challenge
 
@@ -105,21 +105,28 @@ Delta re-review result:
 - [25_ADVISOR_FINAL_MISSION_AUDIT.md](./25_ADVISOR_FINAL_MISSION_AUDIT.md)
 - [26_FINAL_POINTER.md](./26_FINAL_POINTER.md)
 - [27_GPT_STRATEGY_DECISION_PROMPT.md](./27_GPT_STRATEGY_DECISION_PROMPT.md)
-- Verdict: `MISSION_COMPLETE`
-- Next state: `PACKAGE1A_DISCOVERY_COMPLETE__AWAITING_LEO_DECISIONS`
+- Verdict: `MISSION_COMPLETE_ACCEPTED`
+- Next state: `PACKAGE1A_FOUNDER_DECISIONS_RECORDED__PACKAGE1B_AWAITING_SEPARATE_LEO_GPT_MISSION`
 
-## Required Later Decision
+## Founder Decisions And Closure
 
-- Leo/GPT records D1-D4 and D5-i/D5-ii.
-- Leo/GPT accepts or modifies acceptance scenarios 1-8.
-- Package 1B remains unstarted until a separate decision returns to Advisor.
+- [28_FOUNDER_DECISION_RECORD.md](./28_FOUNDER_DECISION_RECORD.md)
+- [29_PACKAGE1A_DECISION_CLOSURE_RECORD.md](./29_PACKAGE1A_DECISION_CLOSURE_RECORD.md)
+- [30_FINAL_DECISION_CLOSURE_POINTER.md](./30_FINAL_DECISION_CLOSURE_POINTER.md)
+- Mission audit verdict: `MISSION_COMPLETE_ACCEPTED`
+- Founder Acceptance Sheet: `ACCEPTED_WITH_MODIFICATIONS`
+- Package 1B: `NOT_STARTED_NOT_APPROVED`
+
+## Required Later Mission
+
+- A separate Leo/GPT instruction is required before Package 1B, Control design, implementation, DB work, or any preserved gate execution.
 
 ## Current Decision
 
-`MISSION_COMPLETE__AWAITING_LEO_GPT_DECISIONS`
+`PACKAGE1A_FINAL_APPROVED_AND_CLOSED__PACKAGE1B_NOT_STARTED`
 
 No Package 1B design, Control invocation, runtime work, DB action, live model call, or product-policy approval is authorized.
 
 ## Next Actor
 
-Route `27_GPT_STRATEGY_DECISION_PROMPT.md` to the GPT strategy session. Final founder decisions return to Advisor. No Package 1B work starts automatically.
+`STOP_AFTER_CLOSURE`. Do not route to any Worker, Reviewer, Control, or GPT strategy session. Await a separate Leo/GPT mission.
