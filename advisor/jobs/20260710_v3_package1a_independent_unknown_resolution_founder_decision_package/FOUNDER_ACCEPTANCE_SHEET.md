@@ -2,7 +2,7 @@
 
 Date: 2026-07-10
 
-Status: `DRAFT_PATCHED_AFTER_FABLE5_NEEDS_PATCH_PENDING_DELTA_REREVIEW_AND_LEO_GPT_DECISIONS`
+Status: `REVIEW_COMPLETE__AWAITING_LEO_GPT_DECISIONS`
 
 These scenarios describe proposed safe behavior. They are not approved product policy until Leo/GPT marks them accepted or modified.
 
@@ -108,5 +108,5 @@ Example: "It stings a little, but the effect is good."
 
 - Accepted as written: `NO`
 - Modifications supplied by Leo/GPT: `NONE_YET`
-- Fable5 founder-package challenge: `NEEDS_PATCH_RECEIVED__DELTA_REREVIEW_PENDING`
+- Fable5 founder-package challenge: `PASS_AFTER_DELTA_REREVIEW`
 - Package 1B authorization: `NO`

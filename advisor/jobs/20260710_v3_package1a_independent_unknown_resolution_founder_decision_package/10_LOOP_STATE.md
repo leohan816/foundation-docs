@@ -2,7 +2,7 @@
 
 Date: 2026-07-10
 
-Mission status: `PHASE3_FOUNDER_PACKAGE_PATCHED_PENDING_FABLE5_DELTA_REREVIEW`
+Mission status: `PACKAGE1A_DISCOVERY_COMPLETE__AWAITING_LEO_DECISIONS`
 
 ## Completed
 
@@ -31,6 +31,11 @@ Mission status: `PHASE3_FOUNDER_PACKAGE_PATCHED_PENDING_FABLE5_DELTA_REREVIEW`
 - Required P-1/P-2 and recommended/informational P-3 through P-9 patched in founder package/acceptance sheet.
 - Patch closure recorded in `22_FOUNDER_PACKAGE_CHALLENGE_PATCH_RECORD.md`.
 - Same-session Fable5 delta re-review handoff/run prompt prepared.
+- Same-session Fable5 delta re-review received at foundation-docs commit `01891b8` with verdict `PASS`.
+- P-1 through P-9 closed with no regression.
+- Founder package and acceptance sheet marked review-complete and awaiting Leo/GPT decisions.
+- Advisor final mission audit completed with verdict `MISSION_COMPLETE`.
+- Final pointer and GPT strategy decision prompt prepared.
 
 ## Blindness State
 
@@ -39,9 +44,10 @@ Mission status: `PHASE3_FOUNDER_PACKAGE_PATCHED_PENDING_FABLE5_DELTA_REREVIEW`
 - Cosmile Worker assessment: `CORRECTED_AND_ACCEPTED_FOR_COMPARISON`.
 - Fable5 blind assessment: `CORRECTED_AND_ACCEPTED_FOR_COMPARISON`.
 - Cross-actor comparison: complete as draft.
-- Fable5 founder-package challenge: `NEEDS_PATCH_RECEIVED`.
-- Founder package: `PATCHED_PENDING_DELTA_REREVIEW__NOT_APPROVED`.
-- Fable5 delta re-review: `READY_TO_ROUTE`.
+- Fable5 founder-package challenge: `NEEDS_PATCH_CLOSED_BY_PATCH_AND_DELTA_PASS`.
+- Founder package: `REVIEW_COMPLETE__AWAITING_LEO_GPT_DECISIONS`.
+- Fable5 delta re-review: `PASS`.
+- Advisor mission audit: `MISSION_COMPLETE`.
 
 ## Freeze State
 
@@ -54,7 +60,7 @@ Mission status: `PHASE3_FOUNDER_PACKAGE_PATCHED_PENDING_FABLE5_DELTA_REREVIEW`
 
 ## Next Required Action
 
-Route `23_FABLE5_FOUNDER_PACKAGE_DELTA_REREVIEW_RUN_PROMPT.md` to the same existing Fable5 Reviewer session that issued `NEEDS_PATCH`. Return the delta-review pointer to Advisor. Do not send the patched founder package to Leo/GPT for decision before the delta verdict is consolidated.
+Route `27_GPT_STRATEGY_DECISION_PROMPT.md` to the GPT strategy session. Leo/GPT records D1-D4, D5-i/D5-ii, and acceptance or modification of scenarios 1-8. Return the decisions to Advisor. Do not start Package 1B automatically.
 
 ## Hard Stops
 

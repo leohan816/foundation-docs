@@ -2,7 +2,7 @@
 
 Mission: `V3_PACKAGE1A_INDEPENDENT_UNKNOWN_RESOLUTION_AND_FOUNDER_DECISION_PACKAGE`
 
-Status: `PHASE3_FOUNDER_PACKAGE_PATCHED_PENDING_FABLE5_DELTA_REREVIEW`
+Status: `PACKAGE1A_DISCOVERY_COMPLETE__AWAITING_LEO_DECISIONS`
 
 ## Purpose
 
@@ -70,7 +70,7 @@ Freeze commit: `fab82c45f7e92ed2652dc6de9db55532fabb661b`
 - [FOUNDER_DECISION_PACKAGE.md](./FOUNDER_DECISION_PACKAGE.md)
 - [FOUNDER_ACCEPTANCE_SHEET.md](./FOUNDER_ACCEPTANCE_SHEET.md)
 
-Status: `DRAFT_PATCHED_AFTER_FABLE5_NEEDS_PATCH_PENDING_DELTA_REREVIEW`
+Status: `REVIEW_COMPLETE__AWAITING_LEO_GPT_DECISIONS`
 
 ## Fable5 Founder-Package Challenge
 
@@ -91,21 +91,35 @@ Challenge result:
 - [22_FOUNDER_PACKAGE_CHALLENGE_PATCH_RECORD.md](./22_FOUNDER_PACKAGE_CHALLENGE_PATCH_RECORD.md)
 - [23_FABLE5_FOUNDER_PACKAGE_DELTA_REREVIEW_HANDOFF_PROMPT.md](./23_FABLE5_FOUNDER_PACKAGE_DELTA_REREVIEW_HANDOFF_PROMPT.md)
 - [23_FABLE5_FOUNDER_PACKAGE_DELTA_REREVIEW_RUN_PROMPT.md](./23_FABLE5_FOUNDER_PACKAGE_DELTA_REREVIEW_RUN_PROMPT.md)
-- Expected delta result: `../foundation-docs/runs/shared/20260710_v3_package1a_independent_unknown_resolution_founder_decision_package/FABLE5_FOUNDER_PACKAGE_DELTA_REREVIEW.md`
-- Expected delta pointer: `24_FABLE5_FOUNDER_PACKAGE_DELTA_REREVIEW_POINTER.md`
 
-## Required Later Artifacts
+Delta re-review result:
 
-- Fable5 founder-package delta re-review under `../foundation-docs/runs/shared/` - pending
-- `24_FABLE5_FOUNDER_PACKAGE_DELTA_REREVIEW_POINTER.md` - pending
-- final Advisor consolidation and mission pointer - pending
+- Foundation-docs commit: `01891b8`
+- Verdict: `PASS`
+- P-1 through P-9: closed
+- Regressions: none
+- [24_FABLE5_FOUNDER_PACKAGE_DELTA_REREVIEW_POINTER.md](./24_FABLE5_FOUNDER_PACKAGE_DELTA_REREVIEW_POINTER.md)
+
+## Final Mission Audit
+
+- [25_ADVISOR_FINAL_MISSION_AUDIT.md](./25_ADVISOR_FINAL_MISSION_AUDIT.md)
+- [26_FINAL_POINTER.md](./26_FINAL_POINTER.md)
+- [27_GPT_STRATEGY_DECISION_PROMPT.md](./27_GPT_STRATEGY_DECISION_PROMPT.md)
+- Verdict: `MISSION_COMPLETE`
+- Next state: `PACKAGE1A_DISCOVERY_COMPLETE__AWAITING_LEO_DECISIONS`
+
+## Required Later Decision
+
+- Leo/GPT records D1-D4 and D5-i/D5-ii.
+- Leo/GPT accepts or modifies acceptance scenarios 1-8.
+- Package 1B remains unstarted until a separate decision returns to Advisor.
 
 ## Current Decision
 
-`PROCEED_WITH_LIMITS`
+`MISSION_COMPLETE__AWAITING_LEO_GPT_DECISIONS`
 
 No Package 1B design, Control invocation, runtime work, DB action, live model call, or product-policy approval is authorized.
 
 ## Next Actor
 
-Route the ASCII-only delta re-review run prompt to the same existing Fable5 Reviewer session that issued `NEEDS_PATCH`. The result returns to Advisor. No Package 1B or founder approval is automatic.
+Route `27_GPT_STRATEGY_DECISION_PROMPT.md` to the GPT strategy session. Final founder decisions return to Advisor. No Package 1B work starts automatically.

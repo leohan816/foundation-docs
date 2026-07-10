@@ -2,7 +2,7 @@
 
 Date: 2026-07-10
 
-Status: `DRAFT_PATCHED_AFTER_FABLE5_NEEDS_PATCH_PENDING_DELTA_REREVIEW`
+Status: `REVIEW_COMPLETE__AWAITING_LEO_GPT_DECISIONS`
 
 Mission: `V3_PACKAGE1A_INDEPENDENT_UNKNOWN_RESOLUTION_AND_FOUNDER_DECISION_PACKAGE`
 
@@ -224,7 +224,7 @@ The scenario-based acceptance sheet is in:
 
 `FOUNDER_ACCEPTANCE_SHEET.md`
 
-It remains a draft until Fable5 completes `DESIGN_REVIEW__FOUNDER_PACKAGE_CHALLENGE` and Leo/GPT records final choices.
+Fable5 challenge and delta re-review are complete with final review verdict `PASS`. The sheet remains a decision draft until Leo/GPT records final choices.
 
 ## I. Traceability
 
@@ -242,6 +242,6 @@ It remains a draft until Fable5 completes `DESIGN_REVIEW__FOUNDER_PACKAGE_CHALLE
 
 ## Package Status
 
-`FOUNDER_PACKAGE_DRAFT_PATCHED_READY_FOR_FABLE5_DELTA_REREVIEW`
+`FOUNDER_PACKAGE_REVIEW_COMPLETE__AWAITING_LEO_GPT_DECISIONS`
 
 No decision in this draft is final. No Package 1B work starts automatically.
