@@ -302,6 +302,56 @@ Hermes may not:
 - accept risk, patch code, review work, or approve closure;
 - alter a prompt, result, pointer, or verdict to keep a train moving.
 
+## 12A. Advisor-Managed Existing tmux Transport
+
+The transport mode `ADVISOR_MANAGED_EXISTING_TMUX_TRANSPORT` is an
+activation-gated implementation of the same pointer-and-routing boundary. It does
+not add an actor and does not transfer Worker, Control, Reviewer, risk-acceptance,
+or final-approval authority to Advisor.
+
+Canonical transport control:
+
+`../foundation-docs/advisor/_system/tmux_transport/TRANSPORT_PROTOCOL.md`
+
+Activation state:
+
+`../foundation-docs/advisor/_system/tmux_transport/ACTIVATION_STATE.md`
+
+The mode is `NOT_ACTIVE` unless the activation state and a committed final
+activation record both explicitly say it is active. Until then, Leo/GPT manual
+copy/paste is the safe default. Approval to author, review, or reload the transport
+configuration is not activation permission.
+
+When active, Advisor may use verified existing tmux role sessions to:
+
+- deliver the exact committed launcher selected by Advisor;
+- observe execution and STOP conditions without changing actor decisions;
+- collect result artifacts and pointers;
+- verify actual files, diffs, tests, commits, pushes, and upstream state;
+- route only steps already authorized inside the active mission.
+
+The transport must enforce:
+
+- existing named sessions only and no new session, agent, sub-agent, or delegated
+  context;
+- persistent session/window/pane registry plus pre-dispatch actor, workspace,
+  readiness, job-ID, and target verification;
+- exact launcher commit, blob, and checksum evidence;
+- tmux buffer or equivalent exact-paste delivery with no shell interpolation;
+- no broadcast, synchronized panes, wildcard target, or multi-pane send;
+- serial execution by default, mandatory dependency serialization, and mandatory
+  same-repository or same-branch write serialization;
+- parallel dispatch only for independently isolated tasks with distinct result and
+  pointer paths and an explicit dispatch matrix;
+- no automatic response to unexpected approval, authentication, privilege, DB,
+  secret, protected-branch, production, or live prompts;
+- dispatch, observation, and result ledgers with timeout and stall detection;
+- immediate transport kill switch and manual-routing fallback.
+
+`PASS_WITH_RISK`, new scope, material risk, authority decisions, final closure,
+and next-mission selection continue to return to Leo/GPT. If transport execution
+would require judgment rather than exact routing or evidence collection, STOP.
+
 ## 13. Actor and Model Separation
 
 Actor names describe authority and behavior, not model brands. The same model may
@@ -334,6 +384,9 @@ approved authority, if any of the following occurs:
   approved mission;
 - result pointers, commits, branches, or artifact versions cannot be verified;
 - Hermes would need judgment rather than pointer/routing execution.
+- Advisor-managed tmux transport is inactive, its kill switch is engaged, the
+  registry does not match the live pane, the target is busy or ambiguous, or the
+  exact committed launcher cannot be verified.
 
 ## 15. Return-to-Advisor Routing
 
@@ -367,6 +420,11 @@ A more narrowly scoped file applies within its directory, but it cannot expand t
 actor's V2 authority. If either file conflicts with V2 on actor/release-train
 authority, V2 controls and the active file must be patched. If repo-local safety or
 domain rules conflict with a handoff, STOP; do not silently weaken the local rule.
+
+After final tmux transport activation, older Advisor-local wording that requires
+Leo/GPT to paste every launcher manually is superseded only for exact transport
+covered by Section 12A. Manual routing remains the mandatory fallback whenever the
+activation state, registry, preflight, isolation, or evidence requirements fail.
 
 ## 17. Superseded Instruction Handling
 
@@ -413,6 +471,15 @@ RETURN_TO: Advisor
 Advisor records all confirmations and does not close the mission while any required
 actor reload is missing or inconsistent.
 
+For a tmux transport protocol reload, each required existing session must also read
+the transport protocol and activation state and return its understanding of:
+
+- exact-prompt transport versus actor judgment;
+- existing-session-only operation;
+- no-broadcast and serial-by-default rules;
+- STOP behavior and manual fallback;
+- the current activation state.
+
 ## 19. Current Mission-Specific Review Requirement
 
 For the initial V2 authoring and propagation mission:
@@ -425,3 +492,23 @@ For the initial V2 authoring and propagation mission:
 - `PASS_WITH_RISK` returns to Leo/GPT and is not automatically accepted.
 - Runtime source, schema, migration, DB, flags, main merge, production/live, new
   sub-agents, unrelated staging, and force push remain forbidden.
+
+## 20. Current tmux Transport Maintenance Requirement
+
+Leo/GPT decision:
+`APPROVE_PROTOCOL_PATCH_FOR_ADVISOR_MANAGED_EXISTING_TMUX_TRANSPORT`.
+
+This decision authorizes documentation/configuration maintenance only. Direct tmux
+transport remains `NOT_ACTIVE` until all of the following exist:
+
+1. published canonical and active configuration;
+2. Fable5 `DESIGN_REVIEW` verdict `PASS`;
+3. Fable5 `IMPLEMENTATION_OR_CONFIG_REVIEW` verdict `PASS`;
+4. reload confirmations from the existing Advisor, Control, Foundation Worker,
+   Cosmile Worker, Shashu Worker, and Fable5 Reviewer sessions;
+5. Advisor final audit verdict `PASS`;
+6. a separate Leo/GPT final activation approval;
+7. committed activation state and final activation record that identify the exact
+   reviewed commits and reload evidence.
+
+No product mission is authorized by this maintenance decision.

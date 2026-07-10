@@ -1,6 +1,6 @@
 # Advisor Existing tmux Session Orchestration Authority
 
-Status: `NEEDS_LEO_GPT_DECISION`
+Status: `PATCH_AUTHORIZED__TRANSPORT_NOT_ACTIVE`
 
 ## Files
 
@@ -12,8 +12,13 @@ Status: `NEEDS_LEO_GPT_DECISION`
 ## Current State
 
 - Capability: available on the shared host, subject to session access.
-- Active authority: manual copy/paste remains required.
-- Requested next actor: Leo/GPT.
+- Leo/GPT decision:
+  `APPROVE_PROTOCOL_PATCH_FOR_ADVISOR_MANAGED_EXISTING_TMUX_TRANSPORT`.
+- Active authority: manual copy/paste remains required until separate final
+  activation.
+- Protocol maintenance job:
+  `../foundation-docs/advisor/jobs/20260711_advisor_managed_existing_tmux_transport_protocol_patch/`.
+- Requested next actor after patch publication: existing Fable5 Reviewer session.
 - No tmux command or role-session dispatch has been executed by this job.
 - No runtime, schema, DB, secret, production, or active protocol change has been
   made.
