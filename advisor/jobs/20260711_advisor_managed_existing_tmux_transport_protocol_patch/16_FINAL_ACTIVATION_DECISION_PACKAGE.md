@@ -2,6 +2,8 @@
 
 MISSION: `ADVISOR_MANAGED_EXISTING_TMUX_TRANSPORT_PROTOCOL_PATCH`
 
+DECISION_STATUS: `APPROVED`
+
 ADVISOR_FINAL_AUDIT: `PASS_WITH_RISK`
 
 FABLE5_DESIGN_REVIEW: `PASS`
@@ -51,3 +53,7 @@ Advisor will only:
 5. return the final activation pointer and STOP.
 
 No next product mission starts automatically.
+
+## Decision Received
+
+`ACCEPT_BOOTSTRAP_EXCEPTION_AND_APPROVE_FINAL_TMUX_TRANSPORT_ACTIVATION`

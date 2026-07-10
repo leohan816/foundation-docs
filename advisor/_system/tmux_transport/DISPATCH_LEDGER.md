@@ -1,6 +1,6 @@
 # tmux Dispatch Ledger
 
-Transport state: `NOT_ACTIVE`
+Transport state: `ACTIVE`
 
 No launcher has been dispatched under the generally active transport mode. Five
 read-only reload launchers were dispatched under the one-time Leo bootstrap
@@ -191,4 +191,6 @@ Dispatch order was Control, Cosmile, Shashu, Foundation, Fable5. Exact seconds f
 each paste were not captured; all occurred between the committed bootstrap record
 and 2026-07-10T19:01:39Z. No dependent or write task ran in parallel.
 
-General mode remains `NOT_ACTIVE`; global kill switch remains `ENGAGED`.
+At the time of these bootstrap reloads, general mode was `NOT_ACTIVE` and the
+global kill switch was `ENGAGED`. Final activation occurred later and is recorded
+in `FINAL_ACTIVATION_RECORD.md`.

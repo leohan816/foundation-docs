@@ -1,6 +1,6 @@
 # tmux Observation Log
 
-Transport state: `NOT_ACTIVE`
+Transport state: `ACTIVE`
 
 General active-mode execution observations: none. The one-time bootstrap reload
 observations are recorded below.

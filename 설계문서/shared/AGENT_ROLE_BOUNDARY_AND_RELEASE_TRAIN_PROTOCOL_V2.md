@@ -512,3 +512,13 @@ transport remains `NOT_ACTIVE` until all of the following exist:
    reviewed commits and reload evidence.
 
 No product mission is authorized by this maintenance decision.
+
+Final activation decision:
+`ACCEPT_BOOTSTRAP_EXCEPTION_AND_APPROVE_FINAL_TMUX_TRANSPORT_ACTIVATION`.
+
+Activation evidence is recorded at:
+`../foundation-docs/advisor/_system/tmux_transport/FINAL_ACTIVATION_RECORD.md`.
+
+The transport mode is active only while that record, the activation state, the
+registry, and live preflight remain mutually consistent. Manual routing remains the
+fallback and every STOP condition above remains enforceable.

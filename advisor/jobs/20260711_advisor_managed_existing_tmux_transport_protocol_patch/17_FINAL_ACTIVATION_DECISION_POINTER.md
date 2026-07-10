@@ -1,6 +1,6 @@
 # Final Activation Decision Pointer
 
-STATUS: `READY_FOR_LEO_GPT_DECISION`
+STATUS: `LEO_GPT_FINAL_ACTIVATION_APPROVED`
 
 MISSION: `ADVISOR_MANAGED_EXISTING_TMUX_TRANSPORT_PROTOCOL_PATCH`
 
@@ -29,4 +29,4 @@ KILL_SWITCH: `ENGAGED`
 
 RETURN_TO: Leo/GPT
 
-NEXT_ACTOR: Leo/GPT
+NEXT_ACTOR: Advisor for exact activation-record publication and closure

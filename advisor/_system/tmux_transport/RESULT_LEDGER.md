@@ -1,6 +1,6 @@
 # tmux Result Ledger
 
-Transport state: `NOT_ACTIVE`
+Transport state: `ACTIVE`
 
 General active-mode results: none. The one-time bootstrap reload results are
 recorded below.

@@ -1,6 +1,6 @@
 # Advisor-Managed Existing tmux Transport Protocol
 
-Status: `CANDIDATE_REVIEW_REQUIRED__NOT_ACTIVE`
+Status: `ACTIVE__FABLE5_DUAL_PASS__LEO_GPT_FINAL_APPROVED`
 
 ## 1. Purpose and Boundary
 

@@ -1,8 +1,11 @@
 # tmux Transport Kill Switch and Manual Fallback
 
-Current kill-switch state: `ENGAGED`
+Current kill-switch state: `DISENGAGED`
 
 Current fallback: `MANUAL_ROUTING_ACTIVE`
+
+Final activation approval does not remove the kill switch. Advisor must engage it
+immediately on any trigger below.
 
 ## Engage Immediately When
 
@@ -39,5 +42,6 @@ Transport may resume only when:
 - the activation record is still valid;
 - Advisor records `KILL_SWITCH_DISENGAGED_AFTER_REVALIDATION`.
 
-Leo/GPT final activation is required for the initial transition from the current
-engaged state.
+The initial Leo/GPT final activation was approved on 2026-07-10 UTC. Any future
+re-enable after a kill-switch event still requires the revalidation conditions
+above and any escalation required by the triggering event.

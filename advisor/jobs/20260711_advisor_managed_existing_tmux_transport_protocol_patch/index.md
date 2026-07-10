@@ -1,6 +1,6 @@
 # Advisor-Managed Existing tmux Transport Protocol Patch
 
-Status: `FINAL_AUDIT_PASS_WITH_RISK__AWAITING_LEO_GPT_FINAL_ACTIVATION`
+Status: `FINAL_APPROVED_AND_ACTIVATED`
 
 ## Core Artifacts
 
@@ -27,6 +27,8 @@ Status: `FINAL_AUDIT_PASS_WITH_RISK__AWAITING_LEO_GPT_FINAL_ACTIVATION`
 - `16_FINAL_ACTIVATION_DECISION_PACKAGE.md`
 - `17_GPT_FINAL_ACTIVATION_RUN_PROMPT.md`
 - `17_FINAL_ACTIVATION_DECISION_POINTER.md`
+- `18_FINAL_ACTIVATION_CLOSURE_RECORD.md`
+- `19_FINAL_ACTIVATION_POINTER.md`
 - `05_FINAL_AUDIT.md`
 
 ## Canonical and Config Files
@@ -46,5 +48,5 @@ Status: `FINAL_AUDIT_PASS_WITH_RISK__AWAITING_LEO_GPT_FINAL_ACTIVATION`
 
 Manual routing remains mandatory. No tmux input has been sent.
 
-Next recipient: Leo/GPT for explicit bootstrap-risk acceptance and final activation
-decision.
+Mission closed. General transport is active under the reviewed protocol. Await the
+next Leo/GPT mission; do not start product work automatically.

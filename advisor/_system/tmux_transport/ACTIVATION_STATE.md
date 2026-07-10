@@ -2,35 +2,40 @@
 
 MODE: `ADVISOR_MANAGED_EXISTING_TMUX_TRANSPORT`
 
-MODE_STATUS: `NOT_ACTIVE`
+MODE_STATUS: `ACTIVE`
 
-KILL_SWITCH: `ENGAGED`
+KILL_SWITCH: `DISENGAGED`
 
 MANUAL_ROUTING_FALLBACK: `ACTIVE`
 
-FINAL_ACTIVATION_RECORD: `NOT_PRESENT`
+FINAL_ACTIVATION_RECORD:
+`../foundation-docs/advisor/_system/tmux_transport/FINAL_ACTIVATION_RECORD.md`
 
 LAST_DECISION:
-`APPROVE_PROTOCOL_PATCH_FOR_ADVISOR_MANAGED_EXISTING_TMUX_TRANSPORT`
+`ACCEPT_BOOTSTRAP_EXCEPTION_AND_APPROVE_FINAL_TMUX_TRANSPORT_ACTIVATION`
 
-DECISION_SCOPE: `DOCUMENTATION_AND_CONFIGURATION_ONLY`
+DECISION_SCOPE: `FINAL_TRANSPORT_ACTIVATION__NO_PRODUCT_MISSION`
 
-## Required Before Activation
+## Activation Evidence
 
-- canonical protocol/config patch published;
+- canonical protocol/config patch: published;
 - Fable5 `DESIGN_REVIEW`: `PASS`;
 - Fable5 `IMPLEMENTATION_OR_CONFIG_REVIEW`: `PASS`;
-- required existing-session reload confirmations complete;
-- Advisor final audit: `PASS`;
-- separate Leo/GPT final activation approval;
-- committed `FINAL_ACTIVATION_RECORD.md` identifying exact reviewed commits,
-  reload evidence, and approval.
+- required existing-session reload confirmations: complete 6/6;
+- Advisor final audit: `PASS_WITH_RISK`, explicitly accepted by Leo/GPT;
+- separate Leo/GPT final activation approval: received;
+- final activation record: present in this commit.
 
 ## Current Behavior
 
-Do not send any launcher through tmux under this mode. Use manual copy/paste.
-Read-only tmux metadata and pane-output inspection for configuration validation is
-allowed when the active mission permits it, but no input may be delivered.
+Advisor may transport exact committed launchers to verified existing registered
+role sessions under canonical V2 Section 12A and `TRANSPORT_PROTOCOL.md`. Every
+dispatch requires live preflight, ledger evidence, exact pane targeting, no
+broadcast, serialization/isolation checks, observation, durable result validation,
+and canonical STOP handling.
+
+Manual routing remains active as the mandatory fallback whenever a transport
+precondition fails or the kill switch is engaged.
 
 ## Fail-Closed Rule
 

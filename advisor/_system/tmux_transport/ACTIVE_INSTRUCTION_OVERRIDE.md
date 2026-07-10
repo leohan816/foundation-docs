@@ -1,6 +1,6 @@
 # Advisor tmux Transport Active-Instruction Override
 
-Status: `CANDIDATE_NOT_ACTIVE`
+Status: `ACTIVE_AFTER_LEO_GPT_FINAL_APPROVAL`
 
 This file provides the GitHub-visible transport-specific instruction that is
 mirrored in the local Advisor `AGENTS.md` and `CLAUDE.md`.

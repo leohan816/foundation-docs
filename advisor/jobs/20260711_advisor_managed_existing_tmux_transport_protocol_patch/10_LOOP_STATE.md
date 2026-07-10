@@ -2,13 +2,13 @@
 
 MISSION: `ADVISOR_MANAGED_EXISTING_TMUX_TRANSPORT_PROTOCOL_PATCH`
 
-STATE: `FINAL_AUDIT_PASS_WITH_RISK__AWAITING_LEO_GPT_FINAL_ACTIVATION`
+STATE: `FINAL_ACTIVATED__MISSION_CLOSED__AWAITING_NEXT_LEO_GPT_MISSION`
 
 LEO_GPT_PATCH_AUTHORIZATION: `APPROVED`
 
-TMUX_TRANSPORT_STATUS: `NOT_ACTIVE`
+TMUX_TRANSPORT_STATUS: `ACTIVE`
 
-KILL_SWITCH: `ENGAGED`
+KILL_SWITCH: `DISENGAGED`
 
 MANUAL_ROUTING_FALLBACK: `ACTIVE`
 
@@ -33,14 +33,17 @@ COMPLETED:
 - final audit verdict `PASS_WITH_RISK` due the recorded one-time bootstrap and
   unexecuted visibility-test exception;
 - no technical or actor-boundary blocker remains.
+- Leo/GPT accepted the bootstrap exception and approved final activation;
+- final activation record and active state prepared for publication;
+- no product mission started.
 
 NEXT_REQUIRED:
 
-1. return final activation decision package to Leo/GPT;
-2. do not activate before explicit acceptance/approval.
+1. publish exact activation record and state;
+2. return final activation pointer and STOP;
+3. await the next Leo/GPT mission.
 
 FORBIDDEN_NEXT:
 
-- general autonomous tmux launcher delivery before final activation;
-- activation before reload and final audit;
+- product work without a new approved mission;
 - product mission automation.

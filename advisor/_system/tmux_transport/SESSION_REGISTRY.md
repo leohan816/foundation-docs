@@ -1,6 +1,6 @@
 # Existing tmux Role Session Registry
 
-Registry status: `CANDIDATE_SNAPSHOT__REVALIDATE_BEFORE_EVERY_DISPATCH`
+Registry status: `ACTIVE_LOCATOR__REVALIDATE_BEFORE_EVERY_DISPATCH`
 
 Observed: 2026-07-10 UTC
 

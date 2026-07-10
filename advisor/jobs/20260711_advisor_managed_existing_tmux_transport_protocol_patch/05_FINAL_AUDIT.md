@@ -1,6 +1,6 @@
 # Final Audit: Advisor-Managed Existing tmux Transport Protocol Patch
 
-Status: `PASS_WITH_RISK__NEEDS_LEO_GPT_FINAL_ACTIVATION_DECISION`
+Status: `PASS_WITH_RISK__RISK_ACCEPTED__FINAL_ACTIVATION_APPROVED`
 
 ## Audit Inputs
 
@@ -98,3 +98,10 @@ Either:
 - hold activation and request a specific remediation.
 
 Advisor must not activate transport from this audit alone.
+
+## Leo/GPT Final Decision
+
+`ACCEPT_BOOTSTRAP_EXCEPTION_AND_APPROVE_FINAL_TMUX_TRANSPORT_ACTIVATION`
+
+The recorded risk is accepted. Advisor is authorized to publish the reviewed final
+activation record and state transition only. No product mission is authorized.

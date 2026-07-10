@@ -1,6 +1,6 @@
 # Advisor-Managed Existing tmux Transport
 
-Status: `CANDIDATE_CONFIG_PUBLISHED__TRANSPORT_NOT_ACTIVE`
+Status: `ACTIVE__FINAL_LEO_GPT_APPROVAL_RECORDED`
 
 Canonical authority:
 `../../../설계문서/shared/AGENT_ROLE_BOUNDARY_AND_RELEASE_TRAIN_PROTOCOL_V2.md`
