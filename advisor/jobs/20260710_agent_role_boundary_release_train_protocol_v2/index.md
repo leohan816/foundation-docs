@@ -19,6 +19,7 @@ Mission status: `ROLE_RELOAD_READY__NEXT_CONTROL`
 - [Fable5 Reviewer reload run prompt](08_FABLE5_REVIEWER_RELOAD_RUN_PROMPT.md)
 - [Loop state](10_LOOP_STATE.md)
 - [Fable5 result pointer](12_FABLE5_REVIEW_RESULT_POINTER.md)
+- [Role reload status](14_ROLE_RELOAD_STATUS.md)
 - [Canonical V2](../../../설계문서/shared/AGENT_ROLE_BOUNDARY_AND_RELEASE_TRAIN_PROTOCOL_V2.md)
 
 ## Current Verdict
