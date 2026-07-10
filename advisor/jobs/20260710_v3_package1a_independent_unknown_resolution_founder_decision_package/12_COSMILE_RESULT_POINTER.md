@@ -1,14 +1,16 @@
 - TARGET_PROJECT: Cosmile
-- ROLE_ACTOR: Cosmile Worker (DISCOVERY_ONLY_READ_ONLY, blind first pass)
+- ROLE_ACTOR: Cosmile Worker (DISCOVERY_ONLY_READ_ONLY, blind first pass + C-F1 correction)
 - RESULT_FILE: ../foundation-docs/runs/cosmile/20260710_v3_package1a_independent_unknown_resolution_founder_decision_package/COSMILE_INDEPENDENT_ASSESSMENT.md
 - REGISTER_FREEZE_VERIFIED: commit fab82c4 + blob 0eac3e2 + sha256 dab0ffa (exact match; register unedited)
 - EVIDENCE_BASE: ../Cosmile @ shadow/m4-cosmile-memory e4ed6680fee2a2e55117fb406cae8714e3680465
 - UNKNOWNS_ANSWERED: U-01..U-09 (all 14 required fields each)
-- ADDENDA: A-C1 (existing commerce-layer guest-login merge/link precedent), A-C2 (single mock-user auth blocks representative pilot identity evidence), A-C3 (/api/events client free-text persistence surface)
-- INDEPENDENCE: maintained (no Advisor/Foundation/Fable5 first-pass, no comparison/founder files read)
+- ADDENDA: A-C1 (existing commerce-layer guest-login merge/link precedent), A-C2 (single mock-user auth blocks representative pilot identity evidence), A-C3 (narrowed: unlisted-key prose residual on multi-layer-sanitized /api/events path; code-path possibility only)
+- C-F1: CLOSED (correction commit = this pointer's commit; root cause = token-narrow first-pass grep missing isForbiddenKey/scanValueForPii; corrected via full-file read + piiPolicy + test evidence; correction log appended to assessment)
+- FIRST_PASS_COMMIT: 1b44760 (superseded for U-05/A-C3 evidence by this correction)
+- INDEPENDENCE: maintained (correction read only 15_COSMILE_RESULT_VALIDATION.md, own assessment, and Cosmile code; no other actor assessment/comparison/founder files)
 - RUNTIME_ACCESS: read-only; no runtime/schema/migration/route/UI/API/test/config modification
 - DB_SECRET_ENV_PROD_LIVE_MODEL_ACCESS: none
 - RUNTIME_COMMIT_STATUS: no runtime changes
-- RESULT: COMPLETED
+- RESULT: COMPLETED (corrected)
 - RETURN_TO: Advisor
-- NEXT_ACTOR: Advisor
+- NEXT_ACTOR: Advisor (revalidate corrected result, then include in cross-actor comparison)
