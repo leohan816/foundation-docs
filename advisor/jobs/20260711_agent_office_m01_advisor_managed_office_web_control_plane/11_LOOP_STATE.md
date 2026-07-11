@@ -1,12 +1,12 @@
 # Loop State: Agent Office M01
 
-STATE: `FINAL_DUAL_REVIEW_PASS__AO_WU14_LOCALBOOTSTRAP_GATE_AUTHORIZED_AND_OPEN`
+STATE: `AO_WU_21_COMPLETE__AO_WU_15_FINAL_AUDIT_READY`
 
-CURRENT_WORK_UNIT: `AO-WU-14_PRIVATE_RUN_VERIFY`
+CURRENT_WORK_UNIT: `AO-WU-15_FINAL_AUDIT`
 
-WORKUNIT_PROGRESS: `13/15 COMPLETED__1_WAITING_LEO__1_WAITING_DEPENDENCY`
+WORKUNIT_PROGRESS: `20/21 COMPLETED__1_READY`
 
-REQUIRED_GATE_PROGRESS: `IMPLEMENTATION_AND_REQUIRED_REVIEWS_PASSED__PRIVATE_RUN_AND_FINAL_APPROVAL_OPEN`
+REQUIRED_GATE_PROGRESS: `DESIGN_AND_IMPLEMENTATION_REVIEWS_PASS__LOCALBOOTSTRAP_PASS__EXACT_DELIVERY_REHEARSAL_COMPLETE__FINAL_AUDIT_OPEN`
 
 TRANSPORT: `ACTIVE`
 
@@ -14,17 +14,16 @@ KILL_SWITCH: `DISENGAGED`
 
 WORKER_SESSION: `agent-office/$13/%13`
 
-WORKER_PROCESS: `codex_v0.144.1__gpt-5.6-sol_ultra__FINAL_PATCH_RESULT_RETURNED__IDLE`
+WORKER_PROCESS: `gpt-5.6-sol_ultra__EXACT_HISTORY_FIX_PUSHED__IDLE`
 
-REVIEWER_SESSION: `reviewer-fable5/$5/%5__FINAL_ROUND2_DUAL_PASS_RETURNED__IDLE`
+REVIEWER_SESSION: `reviewer-fable5/$5/%5__HISTORY_FIX_DELTA_PASS__IDLE`
 
 NEXT:
 
-1. Leo/GPT chooses the AO-WU-14 auth posture in
-   `60_AO_WU14_PRIVATE_RUN_AUTH_DECISION_REQUEST.md`;
-2. do not dispatch Worker or Reviewer while waiting;
-3. preserve `AUTH_BLOCKED / READ_ONLY`, manual fallback, and no real delivery;
-4. final mission closure remains dependent on the Leo/GPT decision.
+1. Advisor verifies disposal of every one-use delivery artifact;
+2. Advisor completes AO-WU-15 final mission audit;
+3. return the final closure pointer to Leo/GPT;
+4. do not start M1.2 or another product mission.
 
 FABLE5_INITIAL_VERDICT: `NEEDS_PATCH`
 
@@ -72,7 +71,7 @@ FINAL_REVIEWED_HEAD: `abff45c9925962be29be535685e3efbccd587528`
 
 OPEN_AUTHORITY_DECISION: `CLOSED__OPTION_B_SELECTED`
 
-ACTIVE_DEPENDENCY_MISSION: `AGENT_OFFICE_M01_LOCALBOOTSTRAP_PRIVATE_RUN_GATE`
+ACTIVE_DEPENDENCY_MISSION: `NONE__ALL_M01_DEPENDENCY_GATES_COMPLETE`
 
 HISTORICAL_REVIEW_FINDINGS__CLOSED:
 
@@ -82,8 +81,7 @@ HISTORICAL_REVIEW_FINDINGS__CLOSED:
 - `AO-E-R3`: synthetic/fail-closed shell not yet an operational projection - closed;
 - `AO-E-R4`: operational config accepted group/other-writable mode - closed.
 
-OPEN_BLOCKER: AO-WU-14 requires the Leo/GPT auth-posture decision. There is no
-open Worker or Reviewer defect.
+OPEN_BLOCKER: none; final approval remains Leo/GPT.
 
 PUBLIC_EXPOSURE: forbidden.
 
