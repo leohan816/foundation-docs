@@ -1,6 +1,6 @@
 # Loop State - Agent Office Exact Advisor Delivery Activation
 
-STATE: `AO_WU_21_REHEARSAL_FOUND_CODE_DEFECT__WORKER_REWORK_REQUIRED`
+STATE: `WORKER_REWORK_COMPLETE__FABLE5_HISTORY_FIX_DELTA_READY`
 
 MANIFEST_VERSION: `5`
 
@@ -8,7 +8,7 @@ WORKUNIT_TOTAL_CHANGE: `15 -> 21`, Leo/GPT approved
 
 CURRENT_WORKUNIT: `AO-WU-21`
 
-WORKER: `agent-office/$13/@13/%13__REWORK_READY`
+WORKER: `agent-office/$13/@13/%13__REWORK_COMPLETE_STOPPED`
 
 REVIEWER: `reviewer-fable5/$5/@5/%5__IMPLEMENTATION_SECURITY_PASS_STOPPED`
 
@@ -42,4 +42,8 @@ REHEARSAL_FINDING: `GIT_FOLLOW_FALSE_POSITIVE_ACROSS_DISTINCT_DECISION_EVIDENCE_
 
 SECURITY_EFFECT: `FAIL_CLOSED__NO_UNAUTHORIZED_DECISION_OR_RESUME`
 
-NEXT: Existing Agent Office Worker patches the exact-path history reader and adds regression coverage; same Fable5 session performs implementation/security delta review before AO-WU-21 resumes.
+WORKER_REWORK_COMMIT: `73157613345ad3046e45b99b145f5400c8dc5428`
+
+WORKER_REWORK_VERIFICATION: `FOCUSED_46_OF_46__FULL_296_OF_296__LINT_TYPECHECK_BUILD_PASS`
+
+NEXT: Same existing Fable5 Reviewer session performs implementation/security delta review before AO-WU-21 resumes.
