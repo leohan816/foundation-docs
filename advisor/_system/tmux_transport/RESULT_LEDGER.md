@@ -1,5 +1,22 @@
 # tmux Result Ledger
 
+## AO-M01-BATCH-D-REWORK-20260711T041851Z
+
+```text
+DISPATCH_ID: AO-M01-BATCH-D-REWORK-20260711T041851Z
+MISSION_ID: AGENT_OFFICE_M01_ADVISOR_MANAGED_OFFICE_WEB_CONTROL_PLANE
+TARGET_ACTOR: Agent Office Worker-Rework
+RESULT_STATUS: RETURNED__ADVISOR_VALIDATED_PASS
+RESULT_PATH: ../foundation-docs/runs/agent-office/20260711_agent_office_m01_advisor_managed_office_web_control_plane/WORKER_BATCH_D_REWORK_RESULT.md
+POINTER_PATH: ../foundation-docs/advisor/jobs/20260711_agent_office_m01_advisor_managed_office_web_control_plane/37_WORKER_BATCH_D_REWORK_RESULT_POINTER.md
+TARGET_COMMIT: 31c59ccdd0aed080f45d95195fb4c289eb48b24c
+TARGET_PUSH: verified local equals origin/shadow/agent-office-m01
+FOUNDATION_DOCS_POINTER_COMMIT: 65807b5d0019386a0bc1fd3480df132074ae16c8
+ADVISOR_VALIDATION: ../foundation-docs/advisor/jobs/20260711_agent_office_m01_advisor_managed_office_web_control_plane/38_ADVISOR_BATCH_D_FINAL_VALIDATION.md
+VERDICT: PASS__AO-D-R1_CLOSED__BATCH_D_ACCEPTED_AS_BATCH_E_DEPENDENCY
+NEXT_DISPATCH: AO-M01-BATCH-E-20260711T044141Z
+```
+
 ## AO-M01-BATCH-D-20260711T030920Z
 
 ```text
