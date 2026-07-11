@@ -1,5 +1,21 @@
 # tmux Observation Log
 
+## AO-M01-BATCH-D-REWORK-20260711T042003Z
+
+```text
+DISPATCH_ID: AO-M01-BATCH-D-REWORK-20260711T041851Z
+OBSERVED_AT: 2026-07-11T04:20:03Z
+TARGET_SESSION: agent-office
+TARGET_PANE: %13
+OBSERVED_WORKSPACE: /home/leo/Project/agent-office
+OBSERVED_PROCESS: codex v0.144.1, gpt-5.6-sol ultra
+TRANSPORT: exact committed tmux buffer to one prevalidated pane; Enter sent separately
+READ_AND_EXECUTE_ACKNOWLEDGED: true
+SCOPE_ACKNOWLEDGED: AO-D-R1 only; Batch E unauthorized
+APPROVAL_OR_AUTH_PROMPT: none
+STATUS: RUNNING
+```
+
 Transport state: `ACTIVE`
 
 General active-mode execution observations: none. The one-time bootstrap reload
