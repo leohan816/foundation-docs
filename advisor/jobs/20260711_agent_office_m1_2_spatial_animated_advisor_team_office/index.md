@@ -1,8 +1,8 @@
 # Agent Office M1.2 Spatial Office Design Mission
 
-Status: `DESIGN_FROZEN__AO12_A_IMPLEMENTED_VALIDATED__FABLE5_REVIEW_READY`
+Status: `AO12_A_FABLE5_PASS_REPORTED__FACTUAL_CORRECTION_REREVIEW_REQUIRED`
 
-Implementation: `AO12_A_IMPLEMENTED_VALIDATED_REVIEWING__AO12_B_C_D_WAITING_DEPENDENCY`
+Implementation: `AO12_A_NOT_YET_ACCEPTED__AO12_B_C_D_WAITING_DEPENDENCY`
 
 ## Entry Artifacts
 
@@ -42,6 +42,10 @@ Implementation: `AO12_A_IMPLEMENTED_VALIDATED_REVIEWING__AO12_B_C_D_WAITING_DEPE
 - [27_FABLE5_AO12_A_IMPLEMENTATION_REVIEW_BRIEF.md](27_FABLE5_AO12_A_IMPLEMENTATION_REVIEW_BRIEF.md)
 - [27_FABLE5_AO12_A_IMPLEMENTATION_REVIEW_HANDOFF_PROMPT.md](27_FABLE5_AO12_A_IMPLEMENTATION_REVIEW_HANDOFF_PROMPT.md)
 - [27_FABLE5_AO12_A_IMPLEMENTATION_REVIEW_RUN_PROMPT.md](27_FABLE5_AO12_A_IMPLEMENTATION_REVIEW_RUN_PROMPT.md)
+- [28_FABLE5_AO12_A_IMPLEMENTATION_REVIEW_RESULT_POINTER.md](28_FABLE5_AO12_A_IMPLEMENTATION_REVIEW_RESULT_POINTER.md)
+- [29_ADVISOR_FABLE5_AO12_A_RESULT_VALIDATION.md](29_ADVISOR_FABLE5_AO12_A_RESULT_VALIDATION.md)
+- [30_FABLE5_AO12_A_REVIEW_CORRECTION_HANDOFF_PROMPT.md](30_FABLE5_AO12_A_REVIEW_CORRECTION_HANDOFF_PROMPT.md)
+- [30_FABLE5_AO12_A_REVIEW_CORRECTION_RUN_PROMPT.md](30_FABLE5_AO12_A_REVIEW_CORRECTION_RUN_PROMPT.md)
 
 ## Current Routing
 
@@ -49,5 +53,7 @@ The narrow patch at `b7d8cdb21183bf909a13b902cffc95bf15c68dd9`
 received a clean same-context Fable5 Level-3 `PASS`. Advisor froze the design and
 published implementation manifest v1 with 14 approved WorkUnits. AO12-A is
 implemented at `ecd2652501df55aba0aa0f55c236b1933c6dc1e3` and Advisor direct
-validation passed. The same existing Fable5 session is next for the independent
-Level-3 implementation review; AO12-B/C/D remain dependency-gated.
+validation passed and Fable5 reported `PASS`. Advisor found one factual mismatch
+in the review artifact about removed legacy alias normalization. The same Fable5
+session must correct and recheck that item before AO12-A dependency acceptance;
+AO12-B/C/D remain dependency-gated.
