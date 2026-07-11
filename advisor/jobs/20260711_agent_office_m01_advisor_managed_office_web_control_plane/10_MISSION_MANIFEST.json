@@ -35,8 +35,8 @@
     {"id":"AO-WU-17","phase":"DELIVERY_DESIGN","actor":"Agent Office Worker","title":"Author exact pointer-only Advisor delivery bridge design","status":"COMPLETED","dependsOn":["AO-WU-16"]},
     {"id":"AO-WU-18","phase":"DELIVERY_DESIGN_REVIEW","actor":"Fable5 Reviewer","title":"Independent Level 3 delivery bridge design review","status":"COMPLETED","dependsOn":["AO-WU-17"]},
     {"id":"AO-WU-19","phase":"DELIVERY_IMPLEMENTATION","actor":"Agent Office Worker","title":"Implement and test reviewed exact Advisor delivery bridge","status":"COMPLETED","dependsOn":["AO-WU-18"]},
-    {"id":"AO-WU-20","phase":"DELIVERY_IMPLEMENTATION_REVIEW","actor":"Fable5 Reviewer","title":"Independent Level 3 delivery implementation and security review","status":"READY","dependsOn":["AO-WU-19"]},
-    {"id":"AO-WU-21","phase":"DELIVERY_REHEARSAL","actor":"Advisor","title":"Execute synthetic exact Advisor delivery and acknowledgement rehearsal","status":"WAITING_DEPENDENCY","dependsOn":["AO-WU-20"]},
+    {"id":"AO-WU-20","phase":"DELIVERY_IMPLEMENTATION_REVIEW","actor":"Fable5 Reviewer","title":"Independent Level 3 delivery implementation and security review","status":"COMPLETED","dependsOn":["AO-WU-19"]},
+    {"id":"AO-WU-21","phase":"DELIVERY_REHEARSAL","actor":"Advisor","title":"Execute synthetic exact Advisor delivery and acknowledgement rehearsal","status":"READY","dependsOn":["AO-WU-20"]},
     {"id":"AO-WU-15","phase":"FINAL_AUDIT","actor":"Advisor","title":"Final mission audit and Leo/GPT pointer","status":"WAITING_DEPENDENCY","dependsOn":["AO-WU-21"]}
   ],
   "futureUnapprovedWork": ["public exposure", "real production credentials", "Hermes implementation", "database-backed multi-user deployment"]
