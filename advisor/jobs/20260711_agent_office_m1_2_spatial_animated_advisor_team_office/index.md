@@ -1,8 +1,8 @@
 # Agent Office M1.2 Spatial Office Design Mission
 
-Status: `PACKAGE_REVIEWED__AWAITING_LEO_GPT_DESIGN_APPROVAL`
+Status: `CHAINED_DESIGN_PATCH_READY_FOR_WORKER`
 
-Implementation: `NOT_STARTED_NOT_APPROVED`
+Implementation: `NOT_STARTED_NOT_AUTHORIZED_PENDING_CLEAN_FABLE5_DELTA_PASS`
 
 ## Entry Artifacts
 
@@ -22,12 +22,17 @@ Implementation: `NOT_STARTED_NOT_APPROVED`
 - [14_FABLE5_M1_2_DESIGN_REVIEW_RESULT_POINTER.md](14_FABLE5_M1_2_DESIGN_REVIEW_RESULT_POINTER.md)
 - [05_FINAL_AUDIT.md](05_FINAL_AUDIT.md)
 - [15_FINAL_DESIGN_PACKAGE_POINTER.md](15_FINAL_DESIGN_PACKAGE_POINTER.md)
+- [16_LEO_GPT_CHAINED_DECISION_RECORD.md](16_LEO_GPT_CHAINED_DECISION_RECORD.md)
+- [16_CHAINED_DESIGN_PATCH_MANIFEST.json](16_CHAINED_DESIGN_PATCH_MANIFEST.json)
+- [17_WORKER_NARROW_DESIGN_PATCH_HANDOFF_PROMPT.md](17_WORKER_NARROW_DESIGN_PATCH_HANDOFF_PROMPT.md)
+- [17_WORKER_NARROW_DESIGN_PATCH_RUN_PROMPT.md](17_WORKER_NARROW_DESIGN_PATCH_RUN_PROMPT.md)
 
 ## Current Routing
 
-The docs-only canonical candidate is published at Agent Office commit
-`3ba65e0092a7c0cebf546c6baecf5bb007314897`, directly validated by Advisor, and
-independently reviewed by Fable5 Level 3 with verdict `PASS`. Leo/GPT design
-approval is the next and only active gate.
+Leo/GPT approved the reviewed architecture with the exact narrow product-intent
+patch recorded in `16_LEO_GPT_CHAINED_DECISION_RECORD.md`. The existing Agent
+Office Worker must patch only the five design documents. Advisor validation and
+the same Fable5 Reviewer's clean Level-3 delta `PASS` are mandatory before the
+conditional implementation authority becomes active.
 
-No implementation launcher exists or is authorized.
+No implementation launcher exists yet. Runtime implementation remains blocked.

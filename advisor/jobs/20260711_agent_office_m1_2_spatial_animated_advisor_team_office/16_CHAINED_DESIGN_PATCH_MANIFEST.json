@@ -1,0 +1,14 @@
+{
+  "schemaVersion": "agent-office.m1.2.design-patch-manifest.v1",
+  "missionId": "AGENT_OFFICE_M1_2_SPATIAL_ANIMATED_ADVISOR_TEAM_OFFICE",
+  "status": "DESIGN_PATCH_AUTHORIZED__IMPLEMENTATION_CONDITIONAL",
+  "designBaseCommit": "3ba65e0092a7c0cebf546c6baecf5bb007314897",
+  "implementationStatus": "NOT_STARTED_NOT_AUTHORIZED_PENDING_CLEAN_DELTA_PASS",
+  "workUnits": [
+    {"id": "AO12-PWU-01", "title": "Record chained Leo/GPT decision", "status": "COMPLETED", "actor": "Advisor"},
+    {"id": "AO12-PWU-02", "title": "Apply narrow design patch", "status": "READY", "actor": "Agent Office Worker"},
+    {"id": "AO12-PWU-03", "title": "Validate exact documentation delta", "status": "WAITING_DEPENDENCY", "actor": "Advisor", "dependsOn": ["AO12-PWU-02"]},
+    {"id": "AO12-PWU-04", "title": "Level-3 Fable5 narrow delta review", "status": "WAITING_DEPENDENCY", "actor": "Fable5 Reviewer", "dependsOn": ["AO12-PWU-03"]},
+    {"id": "AO12-PWU-05", "title": "Evaluate conditional implementation gate", "status": "WAITING_DEPENDENCY", "actor": "Advisor", "dependsOn": ["AO12-PWU-04"]}
+  ]
+}
