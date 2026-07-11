@@ -669,6 +669,41 @@ SENT_AT:
 STATUS:
 ```
 
+## AO-M01-FINAL-DUAL-REVIEW-20260711T062124Z
+
+```text
+DISPATCH_ID: AO-M01-FINAL-DUAL-REVIEW-20260711T062124Z
+MISSION_ID: AGENT_OFFICE_M01_ADVISOR_MANAGED_OFFICE_WEB_CONTROL_PLANE
+TARGET_ACTOR: Fable5 Reviewer
+TARGET_SESSION: reviewer-fable5
+TARGET_WINDOW: 0
+TARGET_PANE: 0
+OBSERVED_PANE_ID: %5
+WORKSPACE: /home/leo/Project/foundation-control
+PROCESS: claude PID 764416
+ROLE_EVIDENCE: same existing Fable5 Reviewer session; prior independent M01 design delta PASS visible; /fable-sentinel role evidence present
+READINESS_EVIDENCE: empty Claude prompt; no task, approval, auth, or interactive prompt active
+SYNCHRONIZED_PANES_OFF: true
+LAUNCHER_ABSOLUTE_PATH: /home/leo/Project/foundation-docs/advisor/jobs/20260711_agent_office_m01_advisor_managed_office_web_control_plane/42_FABLE5_FINAL_DUAL_REVIEW_RUN_PROMPT.md
+LAUNCHER_REPO_RELATIVE_PATH: advisor/jobs/20260711_agent_office_m01_advisor_managed_office_web_control_plane/42_FABLE5_FINAL_DUAL_REVIEW_RUN_PROMPT.md
+LAUNCHER_COMMIT_SHA: 00a216e7ef8f423a17626a83ff321c5c567d3185
+LAUNCHER_GIT_BLOB: d1d4dcff32b226f2d9a6194d38fc2694427b34e1
+LAUNCHER_SHA256_WORKTREE: 9e39c81061e675815532919d97db31328f9f0b0e6d11bda3fe0ab84a5f196a3e
+LAUNCHER_SHA256_COMMITTED: 9e39c81061e675815532919d97db31328f9f0b0e6d11bda3fe0ab84a5f196a3e
+UPSTREAM_EVIDENCE: foundation-docs 00a216e pushed to origin/main; Agent Office 72c24fe equals origin/shadow/agent-office-m01
+RESULT_PATH: ../foundation-docs/runs/agent-office/20260711_agent_office_m01_advisor_managed_office_web_control_plane/FABLE5_FINAL_DESIGN_REVIEW_RESULT.md + FABLE5_FINAL_IMPLEMENTATION_REVIEW_RESULT.md
+POINTER_PATH: ../foundation-docs/advisor/jobs/20260711_agent_office_m01_advisor_managed_office_web_control_plane/43_FABLE5_FINAL_DUAL_REVIEW_RESULT_POINTER.md
+WRITE_REPO_BRANCHES: foundation-docs/main, exact three review files only
+DEPENDENCY_LOCKS: Worker final result returned; target repo clean; no concurrent foundation-docs write mission observed
+BLIND_INDEPENDENCE_RULE: distrust Worker and Advisor conclusions; direct source/diff/test/evidence review; no patch
+PARALLEL_ISOLATION_EVIDENCE: serial dispatch; no other Reviewer task active
+SOFT_STALL_SECONDS: 180
+HARD_TIMEOUT_SECONDS_OR_NONE: none; capacity errors are observed and retried only after readiness revalidation
+PREFLIGHT_VERDICT: PASS_READY_TO_SEND
+SENT_AT: pending exact committed buffer transport
+STATUS: READY_TO_SEND
+```
+
 Valid preflight verdicts:
 
 - `PASS_READY_TO_SEND`
