@@ -535,3 +535,33 @@ SENSITIVE_OUTPUT_SUSPECTED: false
 ACTION_TAKEN: exact committed launcher sent through one named tmux buffer; execution confirmed; no other input sent
 NEXT_OBSERVATION_DUE: 180 seconds or on progress/result/interactive/capacity signal
 ```
+
+### AO-M1.2-A-REVIEW-CORRECTION-20260711T195241Z - completion
+
+```text
+DISPATCH_ID: AO-M1.2-A-REVIEW-CORRECTION-20260711T195241Z
+OBSERVED_AT: 2026-07-11T19:57:00Z
+PANE_ID: %5
+OUTPUT_FINGERPRINT: corrected PASS pointer commit edd7929 and STOP
+LAST_PROGRESS_MARKER: corrected result/pointer pushed; unsupported runtime replay claim retracted
+STATE: COMPLETED_REPORTED
+INTERACTIVE_PROMPT_PRESENT: false
+SENSITIVE_OUTPUT_SUSPECTED: false
+ACTION_TAKEN: captured correction; directly validated exact two-file commit and corrected evidence; Advisor accepted AO12-A dependency
+NEXT_OBSERVATION_DUE: none; AO12-B Worker preflight follows
+```
+
+## AO-M1.2-B-IMPLEMENTATION-20260711T200005Z
+
+```text
+DISPATCH_ID: AO-M1.2-B-IMPLEMENTATION-20260711T200005Z
+OBSERVED_AT: 2026-07-11T20:00:05Z
+PANE_ID: %13
+OUTPUT_FINGERPRINT: AO12-A Worker result pointer and STOP; idle Codex prompt with gpt-5.6-sol ultra footer
+LAST_PROGRESS_MARKER: Agent Office ecd2652 clean and upstream-equal; no newer task active
+STATE: WAITING_EXPECTED
+INTERACTIVE_PROMPT_PRESENT: false
+SENSITIVE_OUTPUT_SUSPECTED: false
+ACTION_TAKEN: verified exact session/pane/workspace/process/model/role, synchronized panes off, launcher commit/blob/checksum, clean target branch, accepted AO12-A dependency, and upstream state; no input sent yet
+NEXT_OBSERVATION_DUE: immediately after exact launcher transport
+```

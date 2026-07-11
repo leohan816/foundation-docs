@@ -1221,3 +1221,51 @@ PREFLIGHT_VERDICT: PASS_READY_TO_SEND
 SENT_AT: 2026-07-11T19:53:43Z via exact tmux buffer to reviewer-fable5/%5
 STATUS: RUNNING
 ```
+
+### AO-M1.2-A-REVIEW-CORRECTION-20260711T195241Z - reconciled completion
+
+```text
+STATUS: COMPLETED_VERIFIED
+COMPLETED_AT: 2026-07-11T19:57:00Z
+CORRECTED_RESULT_COMMIT: edd7929ddac80b613f789c1ec348836abfab039e
+VERDICT: PASS_CORRECTED
+ADVISOR_ACCEPTANCE: AO12_A_ACCEPTED
+NEXT_DEPENDENCY: AO12_B_IMPLEMENTATION
+```
+
+## AO-M1.2-B-IMPLEMENTATION-20260711T200005Z
+
+```text
+DISPATCH_ID: AO-M1.2-B-IMPLEMENTATION-20260711T200005Z
+MISSION_ID: AGENT_OFFICE_M1_2_SPATIAL_ANIMATED_ADVISOR_TEAM_OFFICE
+TARGET_ACTOR: Agent Office Worker
+TARGET_SESSION: agent-office
+TARGET_WINDOW: 0
+TARGET_PANE: 0
+OBSERVED_PANE_ID: %13
+WORKSPACE: /home/leo/Project/agent-office
+PROCESS: codex child PID 2754606 under pane shell PID 2703903
+MODEL_EFFORT_EVIDENCE: pane footer gpt-5.6-sol ultra
+ROLE_EVIDENCE: same existing Agent Office Worker; AO12-A pointer and STOP visible
+READINESS_EVIDENCE: idle Codex prompt; no task, approval, auth, privilege, DB, secret, production, or interactive prompt active
+SYNCHRONIZED_PANES_OFF: true
+LAUNCHER_ABSOLUTE_PATH: /home/leo/Project/foundation-docs/advisor/jobs/20260711_agent_office_m1_2_spatial_animated_advisor_team_office/32_AO12_B_WORKER_RUN_PROMPT.md
+LAUNCHER_REPO_RELATIVE_PATH: advisor/jobs/20260711_agent_office_m1_2_spatial_animated_advisor_team_office/32_AO12_B_WORKER_RUN_PROMPT.md
+LAUNCHER_COMMIT_SHA: 4c49c3baee21eb2deef6865162ad31801b4ae283
+LAUNCHER_GIT_BLOB: 9199c49763a91c76d9af25c37e8906c51c5bb541
+LAUNCHER_SHA256_WORKTREE: 5e36a8b32091600ab342d1713d35a4c8df32bebf07012465679eee507a050bd2
+LAUNCHER_SHA256_COMMITTED: 5e36a8b32091600ab342d1713d35a4c8df32bebf07012465679eee507a050bd2
+UPSTREAM_EVIDENCE: foundation-docs 4c49c3b published launcher and is ancestor of origin/main; Agent Office clean ecd2652 equals origin branch, left/right 0/0
+IMPLEMENTATION_TARGET: AO12-B / AO12-IWU-05..08 from manifest v1 denominator 14
+RESULT_PATH: ../foundation-docs/runs/agent-office/20260711_agent_office_m1_2_spatial_animated_advisor_team_office/WORKER_AO12_B_RESULT.md
+POINTER_PATH: ../foundation-docs/advisor/jobs/20260711_agent_office_m1_2_spatial_animated_advisor_team_office/33_WORKER_AO12_B_RESULT_POINTER.md
+WRITE_REPO_BRANCHES: exact allowed Agent Office AO12-B paths on shadow branch, then foundation-docs/main exact result/pointer only
+DEPENDENCY_LOCKS: corrected Fable5 AO12-A PASS verified and Advisor accepted; AO12-C/D waiting; Reviewer idle; no concurrent Agent Office or foundation-docs mission writer
+BLIND_INDEPENDENCE_RULE: Worker cannot self-review or edit Fable5 artifacts; focused UI/accessibility/asset review follows Worker return
+PARALLEL_ISOLATION_EVIDENCE: one exact Worker pane; serial implementation; no broadcast or synchronized panes
+SOFT_STALL_SECONDS: 180
+HARD_TIMEOUT_SECONDS_OR_NONE: none; transient capacity/API errors require readiness revalidation before one idempotent continue
+PREFLIGHT_VERDICT: PASS_READY_TO_SEND
+SENT_AT: PENDING_EXACT_TRANSPORT
+STATUS: PREFLIGHT_PASSED
+```

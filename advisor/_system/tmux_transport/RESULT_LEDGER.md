@@ -444,6 +444,33 @@ NEXT_ACTOR: same Fable5 Reviewer
 RECORDED_AT: 2026-07-11T19:52:41Z
 ```
 
+## AO-M1.2-A-REVIEW-CORRECTION-20260711T195241Z
+
+```text
+DISPATCH_ID: AO-M1.2-A-REVIEW-CORRECTION-20260711T195241Z
+MISSION_ID: AGENT_OFFICE_M1_2_SPATIAL_ANIMATED_ADVISOR_TEAM_OFFICE
+TARGET_ACTOR: Fable5 Sentinel-ReReview
+PANE_COMPLETION_REPORTED: true
+RESULT_FILE: ../foundation-docs/runs/agent-office/20260711_agent_office_m1_2_spatial_animated_advisor_team_office/FABLE5_AO12_A_IMPLEMENTATION_REVIEW_RESULT.md
+POINTER_FILE: ../foundation-docs/advisor/jobs/20260711_agent_office_m1_2_spatial_animated_advisor_team_office/28_FABLE5_AO12_A_IMPLEMENTATION_REVIEW_RESULT_POINTER.md
+RESULT_FILE_EXISTS: true
+POINTER_FILE_EXISTS: true
+ALLOWED_FILES: corrected Fable5 result and pointer only
+ACTUAL_CHANGED_FILES: exact allowed files only
+DIFF_VERIFIED: foundation-docs edd7929 contains exact corrected result/pointer; Agent Office remained read-only at ecd2652
+TEST_EVIDENCE_VERIFIED: corrected evidence identifies alias removal/rejection; persistence/replay paths untouched; prior full suite green
+COMMIT_SHA: edd7929ddac80b613f789c1ec348836abfab039e
+BRANCH: foundation-docs/main
+UPSTREAM: origin/main
+PUSH_AND_ANCESTRY_VERIFIED: true
+RUNTIME_STATUS_VERIFIED: Agent Office read-only; no runtime change by re-review
+REVIEW_VERDICT_AND_COVERAGE: PASS_CORRECTED; all 14 original items retained, question 8 corrected, no regression
+CONTRADICTIONS: none after correction
+ADVISOR_RESULT_VERDICT: ACCEPT_AO12_A__AUTHORIZE_AO12_B
+NEXT_ACTOR: Agent Office Worker
+RECORDED_AT: 2026-07-11T20:00:05Z
+```
+
 ## AO-M01-FINAL-DUAL-REVIEW-20260711T062124Z
 
 ```text
