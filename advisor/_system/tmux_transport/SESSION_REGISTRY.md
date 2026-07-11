@@ -18,7 +18,7 @@ verification. Pane IDs and processes can change.
 | Cosmile Worker | `cosmile` | `$1` | 0 | `@1` | 0 | `%1` | `/home/leo/Project/Cosmile` | `claude` | latest pane record declares Cosmile Worker | eligible only after live verification |
 | SIASIU Worker | `siasiu` | `$0` | 0 | `@0` | 0 | `%0` | `/home/leo/Project/SIASIU` | `claude` | latest pane record declares SIASIU Worker | eligible only after live verification |
 | Fable5 Reviewer | `reviewer-fable5` | `$5` | 0 | `@5` | 0 | `%5` | `/home/leo/Project/foundation-control` | `claude` | latest pane record declares Fable5 Reviewer and `/fable-sentinel` review | eligible only after live role-evidence verification |
-| Agent Office Worker | `agent-office` | `$13` | 0 | `@13` | 0 | `%13` | `/home/leo/Project/agent-office` | `codex` v0.144.1, PID `2754606` at verification | Leo/GPT M01 assignment; exact tmux ancestry; pane banner confirms `gpt-5.6-sol ultra`; repo-local role instructions at `937f0c5` | eligible for exact M01 dispatch after live verification; branch `shadow/agent-office-m01` |
+| Agent Office Worker | `agent-office` | `$13` | 0 | `@13` | 0 | `%13` | `/home/leo/Project/agent-office` | `codex` (live PID and version revalidated before each dispatch) | Leo/GPT Agent Office assignment; exact tmux ancestry; pane history confirms `gpt-5.6-sol ultra`; active repo-local role instructions | eligible for exact committed Agent Office mission dispatch after live verification; mission branch is specified by each handoff |
 
 ## Required Live Checks
 

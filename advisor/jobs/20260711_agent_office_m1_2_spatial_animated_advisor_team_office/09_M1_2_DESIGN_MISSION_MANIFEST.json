@@ -1,0 +1,44 @@
+{
+  "schemaVersion": "advisor.design-mission-manifest.v1",
+  "missionId": "AGENT_OFFICE_M1_2_SPATIAL_ANIMATED_ADVISOR_TEAM_OFFICE",
+  "scope": "DESIGN_ONLY",
+  "denominator": 5,
+  "workUnits": [
+    {
+      "id": "AO12-DWU-01",
+      "actor": "Advisor",
+      "title": "Repository inventory, entry gate, and frozen unknown register",
+      "status": "COMPLETED",
+      "dependsOn": []
+    },
+    {
+      "id": "AO12-DWU-02",
+      "actor": "Agent Office Worker",
+      "title": "Canonical spatial-office design package",
+      "status": "READY",
+      "dependsOn": ["AO12-DWU-01"]
+    },
+    {
+      "id": "AO12-DWU-03",
+      "actor": "Advisor",
+      "title": "Design result and evidence validation",
+      "status": "WAITING_DEPENDENCY",
+      "dependsOn": ["AO12-DWU-02"]
+    },
+    {
+      "id": "AO12-DWU-04",
+      "actor": "Fable5 Reviewer",
+      "title": "Independent Level-3 canonical design review",
+      "status": "WAITING_DEPENDENCY",
+      "dependsOn": ["AO12-DWU-03"]
+    },
+    {
+      "id": "AO12-DWU-05",
+      "actor": "Advisor",
+      "title": "Final design audit and Leo/GPT decision package",
+      "status": "WAITING_DEPENDENCY",
+      "dependsOn": ["AO12-DWU-04"]
+    }
+  ],
+  "implementationStatus": "NOT_STARTED_NOT_APPROVED"
+}

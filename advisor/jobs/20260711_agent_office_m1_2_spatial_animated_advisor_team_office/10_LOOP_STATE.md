@@ -1,0 +1,13 @@
+# Agent Office M1.2 Design Loop State
+
+```text
+STATE: DESIGN_ENTRY_GATE_PASSED
+WORKUNIT_PROGRESS: 1_OF_5_COMPLETED
+CURRENT_WORK_UNIT: AO12-DWU-02_READY
+IMPLEMENTATION_STATUS: NOT_STARTED_NOT_APPROVED
+TARGET_BASE: 2f663304a88c432f19fe56055641b66e57f18ef2
+TARGET_DESIGN_BRANCH: shadow/agent-office-m1-2-spatial-office
+NEXT_ACTOR: Agent Office Worker
+NEXT_PROMPT: ../foundation-docs/advisor/jobs/20260711_agent_office_m1_2_spatial_animated_advisor_team_office/06_WORKER_DESIGN_RUN_PROMPT.md
+RETURN_TO: Advisor
+```
