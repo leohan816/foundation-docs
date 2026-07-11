@@ -1,6 +1,6 @@
 # Loop State - Agent Office Exact Advisor Delivery Activation
 
-STATE: `AO_WU_21_CLEANUP_COMPLETE__FINAL_AUDIT_FOUND_TEST_FIXTURE_DEFECT`
+STATE: `MANIFEST_FIXTURE_REWORK_COMPLETE__FABLE5_DELTA_READY`
 
 MANIFEST_VERSION: `5`
 
@@ -52,4 +52,6 @@ AO_WU_21_RESULT: `ONE_EXACT_DELIVERY__DUPLICATE_NON_EXECUTION__FAIL_CLOSED_TARGE
 
 FINAL_AUDIT_FINDING: `OBSERVATION_COORDINATOR_TEST_FIXTURE_DEPENDS_ON_LIVE_AO_WU_15_STATUS`
 
-NEXT: Existing Agent Office Worker patches only the deterministic test fixture, then the same Fable5 Reviewer performs a narrow delta review before final audit resumes.
+MANIFEST_FIXTURE_REWORK_COMMIT: `2f663304a88c432f19fe56055641b66e57f18ef2`
+
+NEXT: Same Fable5 Reviewer performs the narrow test-fixture delta review before final audit resumes.
