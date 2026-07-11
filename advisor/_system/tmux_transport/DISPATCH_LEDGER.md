@@ -1491,3 +1491,10 @@ HARD_TIMEOUT_SECONDS_OR_NONE: none; capacity/API errors require same-session rea
 PREFLIGHT_VERDICT: PASS_READY_TO_SEND
 STATUS: WAITING_EXPECTED
 ```
+### AO-M1.2-D-IMPLEMENTATION-20260711T234120Z - sent
+
+```text
+SENT_AT: 2026-07-11T23:43:09Z
+TRANSPORT: exact named tmux buffer to agent-office/%13; initial exact paste remained unsubmitted, live pane revalidated, one Enter submitted the existing exact payload without re-paste
+STATUS: RUNNING
+```
