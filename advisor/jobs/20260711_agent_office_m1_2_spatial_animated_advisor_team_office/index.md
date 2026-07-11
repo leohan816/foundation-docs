@@ -1,8 +1,8 @@
 # Agent Office M1.2 Spatial Office Design Mission
 
-Status: `NARROW_DESIGN_DELTA_READY_FOR_FABLE5_LEVEL3`
+Status: `DESIGN_FROZEN__AO12_A_READY_FOR_WORKER`
 
-Implementation: `NOT_STARTED_NOT_AUTHORIZED_PENDING_CLEAN_FABLE5_DELTA_PASS`
+Implementation: `AO12_A_AUTHORIZED__AO12_B_C_D_WAITING_DEPENDENCY`
 
 ## Entry Artifacts
 
@@ -31,12 +31,16 @@ Implementation: `NOT_STARTED_NOT_AUTHORIZED_PENDING_CLEAN_FABLE5_DELTA_PASS`
 - [20_FABLE5_NARROW_DESIGN_DELTA_REVIEW_BRIEF.md](20_FABLE5_NARROW_DESIGN_DELTA_REVIEW_BRIEF.md)
 - [20_FABLE5_NARROW_DESIGN_DELTA_REVIEW_HANDOFF_PROMPT.md](20_FABLE5_NARROW_DESIGN_DELTA_REVIEW_HANDOFF_PROMPT.md)
 - [20_FABLE5_NARROW_DESIGN_DELTA_REVIEW_RUN_PROMPT.md](20_FABLE5_NARROW_DESIGN_DELTA_REVIEW_RUN_PROMPT.md)
+- [21_FABLE5_M1_2_NARROW_DESIGN_DELTA_REVIEW_RESULT_POINTER.md](21_FABLE5_M1_2_NARROW_DESIGN_DELTA_REVIEW_RESULT_POINTER.md)
+- [22_DESIGN_FREEZE_AND_IMPLEMENTATION_GATE.md](22_DESIGN_FREEZE_AND_IMPLEMENTATION_GATE.md)
+- [23_M1_2_IMPLEMENTATION_MANIFEST.json](23_M1_2_IMPLEMENTATION_MANIFEST.json)
+- [24_AO12_A_WORKER_BRIEF.md](24_AO12_A_WORKER_BRIEF.md)
+- [24_AO12_A_WORKER_HANDOFF_PROMPT.md](24_AO12_A_WORKER_HANDOFF_PROMPT.md)
+- [24_AO12_A_WORKER_RUN_PROMPT.md](24_AO12_A_WORKER_RUN_PROMPT.md)
 
 ## Current Routing
 
-The existing Agent Office Worker published the exact five-document narrow patch
-at `b7d8cdb21183bf909a13b902cffc95bf15c68dd9`. Advisor direct validation passed.
-The same Fable5 Reviewer's clean Level-3 delta `PASS` is now the active mandatory
-gate before conditional implementation authority becomes active.
-
-No implementation launcher exists yet. Runtime implementation remains blocked.
+The narrow patch at `b7d8cdb21183bf909a13b902cffc95bf15c68dd9`
+received a clean same-context Fable5 Level-3 `PASS`. Advisor froze the design and
+published implementation manifest v1 with 14 approved WorkUnits. AO12-A is the
+only ready batch; AO12-B/C/D remain dependency-gated.
