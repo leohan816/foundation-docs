@@ -1,6 +1,6 @@
 # Agent Office M01 Advisor Job
 
-Status: `ENTRY_PASSED__ONBOARDING`
+Status: `BATCH_C_VISUAL_BASELINE_REWORK_READY`
 
 ## Initial Artifacts
 
@@ -32,6 +32,10 @@ Status: `ENTRY_PASSED__ONBOARDING`
 - `25_ADVISOR_BATCH_B_VALIDATION.md`
 - `26_WORKER_BATCH_C_HANDOFF_PROMPT.md`
 - `26_WORKER_BATCH_C_RUN_PROMPT.md`
+- `27_WORKER_BATCH_C_RESULT_POINTER.md`
+- `28_ADVISOR_BATCH_C_VALIDATION.md`
+- `29_WORKER_BATCH_C_VISUAL_BASELINE_REWORK_HANDOFF_PROMPT.md`
+- `29_WORKER_BATCH_C_VISUAL_BASELINE_REWORK_RUN_PROMPT.md`
 - `10_MISSION_MANIFEST.json`
 - `11_LOOP_STATE.md`
 
@@ -42,5 +46,6 @@ Status: `ENTRY_PASSED__ONBOARDING`
 - private remote: `https://github.com/leohan816/agent-office`
 - implementation branch: `shadow/agent-office-m01`
 
-Batch B is implemented, directly validated, and accepted as the Batch C
-dependency. Batch C is ready for exact serial routing; Batch D is not authorized.
+Batch C returned, but direct Advisor execution reproduced three stale visual
+baseline failures against the effective final code. The narrow same-session
+rework is ready. Batch D remains unauthorized.

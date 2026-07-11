@@ -1,6 +1,6 @@
 # Loop State: Agent Office M01
 
-STATE: `BATCH_B_ACCEPTED__BATCH_C_RUNNING`
+STATE: `BATCH_C_VISUAL_BASELINE_REWORK_READY_FOR_DISPATCH`
 
 CURRENT_WORK_UNIT: `AO-WU-09`
 
@@ -14,15 +14,15 @@ KILL_SWITCH: `DISENGAGED`
 
 WORKER_SESSION: `agent-office/$13/%13`
 
-WORKER_PROCESS: `codex_v0.144.1__gpt-5.6-sol_ultra__RUNNING_BATCH_C`
+WORKER_PROCESS: `codex_v0.144.1__gpt-5.6-sol_ultra__READY_FOR_BATCH_C_REWORK`
 
 REVIEWER_SESSION: `reviewer-fable5/$5/%5__IDLE`
 
 NEXT:
 
-1. route exact implementation Batch C to the same Codex Ultra Worker;
-2. verify structured mapping, visual screenshots, accessibility, tests, commits, and as-built docs;
-3. route Batch D only after Batch C acceptance.
+1. route exact visual baseline rework to the same Codex Ultra Worker;
+2. require reproduction, direct image inspection, 10/10 Playwright, and full regression;
+3. route Batch D only after corrected Batch C acceptance.
 
 FABLE5_INITIAL_VERDICT: `NEEDS_PATCH`
 
@@ -44,7 +44,7 @@ BATCH_B_TARGET: `85e66d856e33a0df73041cb4b33aba30a8f9f96d / 927c05875803fa321d39
 
 BATCH_B_TESTS: `23_FILES__84_TESTS_PASS__READ_ONLY_SMOKE_BUILD_AUDIT_PASS`
 
-BLOCKERS: none.
+BLOCKERS: final Batch C code and all three committed visual baselines diverge.
 
 PUBLIC_EXPOSURE: forbidden.
 
