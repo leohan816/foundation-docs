@@ -291,11 +291,11 @@ OBSERVED_AT: 2026-07-11T10:04:12Z
 PANE_ID: %13
 OUTPUT_FINGERPRINT: prior Agent Office Worker result and STOP; idle Codex prompt
 LAST_PROGRESS_MARKER: target abff45c equals origin; no newer task active
-STATE: WAITING_EXPECTED
+STATE: RUNNING
 INTERACTIVE_PROMPT_PRESENT: false
 SENSITIVE_OUTPUT_SUSPECTED: false
-ACTION_TAKEN: verified exact session/pane/workspace/process, role continuity, synchronized panes off, launcher commit/blob/checksum, clean target branch, and upstream equality; no input sent yet
-NEXT_OBSERVATION_DUE: immediately after exact launcher transport
+ACTION_TAKEN: verified exact session/pane/workspace/process, role continuity, synchronized panes off, launcher commit/blob/checksum, clean target branch, and upstream equality; delivered the committed launcher to the exact pane with no broadcast
+NEXT_OBSERVATION_DUE: 180 seconds or on progress/result/interactive signal
 ```
 
 ```text

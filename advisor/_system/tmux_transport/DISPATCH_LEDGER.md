@@ -912,8 +912,8 @@ PARALLEL_ISOLATION_EVIDENCE: one exact pane target only; no broadcast; no synchr
 SOFT_STALL_SECONDS: 180
 HARD_TIMEOUT_SECONDS_OR_NONE: none; capacity response requires readiness revalidation before retry
 PREFLIGHT_VERDICT: PASS_READY_TO_SEND
-SENT_AT: pending exact committed buffer transport
-STATUS: READY_TO_SEND
+SENT_AT: 2026-07-11T10:05:00Z via exact tmux buffer to agent-office/%13
+STATUS: RUNNING
 ```
 
 - `PASS_READY_TO_SEND`
