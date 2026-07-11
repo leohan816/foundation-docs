@@ -29,7 +29,7 @@
       "id": "AO12-DWU-04",
       "actor": "Fable5 Reviewer",
       "title": "Independent Level-3 canonical design review",
-      "status": "READY",
+      "status": "REVIEWING",
       "dependsOn": ["AO12-DWU-03"]
     },
     {
