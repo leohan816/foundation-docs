@@ -1084,6 +1084,6 @@ PARALLEL_ISOLATION_EVIDENCE: one exact Reviewer pane; serial after Worker comple
 SOFT_STALL_SECONDS: 180
 HARD_TIMEOUT_SECONDS_OR_NONE: none; capacity/API errors require readiness revalidation before continuation
 PREFLIGHT_VERDICT: PASS_READY_TO_SEND
-SENT_AT: pending exact tmux buffer transport
-STATUS: READY_TO_SEND
+SENT_AT: 2026-07-11T18:27:33Z via exact tmux buffer to reviewer-fable5/%5
+STATUS: RUNNING
 ```

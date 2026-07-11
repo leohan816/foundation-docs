@@ -409,9 +409,9 @@ OBSERVED_AT: 2026-07-11T18:26:15Z
 PANE_ID: %5
 OUTPUT_FINGERPRINT: prior M1.2 Fable5 PASS and STOP; idle Claude prompt
 LAST_PROGRESS_MARKER: prior review ea8fbd5 complete; no newer Reviewer task active
-STATE: WAITING_EXPECTED
+STATE: RUNNING
 INTERACTIVE_PROMPT_PRESENT: false
 SENSITIVE_OUTPUT_SUSPECTED: false
-ACTION_TAKEN: verified exact session/pane/workspace/process, same Reviewer continuity, synchronized panes off, launcher commit/blob/checksum, review target cleanliness, and upstream equality; no input sent yet
-NEXT_OBSERVATION_DUE: immediately after exact launcher transport
+ACTION_TAKEN: verified exact session/pane/workspace/process, same Reviewer continuity, synchronized panes off, launcher commit/blob/checksum, review target cleanliness, and upstream equality; exact committed launcher sent through one named tmux buffer and execution confirmed
+NEXT_OBSERVATION_DUE: 180 seconds or on progress/result/interactive signal
 ```
