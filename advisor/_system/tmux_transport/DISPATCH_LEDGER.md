@@ -8,6 +8,42 @@ bootstrap delegation recorded later in this file.
 
 ## Active-Mode Product Dispatches
 
+### AO-M01-BATCH-D-20260711T030920Z
+
+```text
+DISPATCH_ID: AO-M01-BATCH-D-20260711T030920Z
+MISSION_ID: AGENT_OFFICE_M01_ADVISOR_MANAGED_OFFICE_WEB_CONTROL_PLANE
+AUTHORIZATION: LEO_GPT_APPROVED_M01_AFTER_ADVISOR_BATCH_C_ACCEPTANCE
+TARGET_ACTOR: Agent Office Worker
+TARGET_SESSION: agent-office
+TARGET_WINDOW: 0
+TARGET_PANE: 0
+OBSERVED_PANE_ID: %13
+WORKSPACE: /home/leo/Project/agent-office
+PROCESS: codex v0.144.1, gpt-5.6-sol ultra
+ROLE_EVIDENCE: same existing Agent Office implementation session and active repo instructions
+READINESS_EVIDENCE: Batch C returned STOP; target clean at b94c2a0; Advisor direct checks passed; empty prompt
+SYNCHRONIZED_PANES_OFF: true
+LAUNCHER_ABSOLUTE_PATH: /home/leo/Project/foundation-docs/advisor/jobs/20260711_agent_office_m01_advisor_managed_office_web_control_plane/33_WORKER_BATCH_D_RUN_PROMPT.md
+LAUNCHER_REPO_RELATIVE_PATH: advisor/jobs/20260711_agent_office_m01_advisor_managed_office_web_control_plane/33_WORKER_BATCH_D_RUN_PROMPT.md
+LAUNCHER_COMMIT_SHA: 3edcf7914715463e0ec793527c963c1847260b0f
+LAUNCHER_GIT_BLOB: 004ab8e135623195204e0c720af242146d951ff0
+LAUNCHER_SHA256_WORKTREE: 733c2d79e5c7338ffb2d22b6ebe141940d1f14aecf7bb9f176c13856639c1ad3
+LAUNCHER_SHA256_COMMITTED: 733c2d79e5c7338ffb2d22b6ebe141940d1f14aecf7bb9f176c13856639c1ad3
+UPSTREAM_EVIDENCE: foundation-docs main equals origin/main at 3edcf7914715463e0ec793527c963c1847260b0f before ledger publication
+RESULT_PATH: ../foundation-docs/runs/agent-office/20260711_agent_office_m01_advisor_managed_office_web_control_plane/WORKER_BATCH_D_RESULT.md
+POINTER_PATH: ../foundation-docs/advisor/jobs/20260711_agent_office_m01_advisor_managed_office_web_control_plane/34_WORKER_BATCH_D_RESULT_POINTER.md
+WRITE_REPO_BRANCHES: agent-office/shadow/agent-office-m01 then foundation-docs/main, serial
+DEPENDENCY_LOCKS: clear; Batch C accepted; Reviewer idle; no other approved foundation-docs write dispatch active
+BLIND_INDEPENDENCE_RULE: Fable5 implementation review waits for complete Batch E and Worker result
+PARALLEL_ISOLATION_EVIDENCE: not applicable; serial dispatch
+SOFT_STALL_SECONDS: 3600
+HARD_TIMEOUT_SECONDS_OR_NONE: 14400
+PREFLIGHT_VERDICT: PASS_READY_TO_SEND
+SENT_AT: PENDING_AFTER_COMMITTED_LEDGER
+STATUS: READY_TO_SEND
+```
+
 ### AO-M01-BATCH-C-LOCALE-REWORK-20260711T013000Z
 
 ```text
@@ -41,7 +77,7 @@ SOFT_STALL_SECONDS: 1800
 HARD_TIMEOUT_SECONDS_OR_NONE: 7200
 PREFLIGHT_VERDICT: PASS_READY_TO_SEND
 SENT_AT: 2026-07-11T01:31:00Z
-STATUS: WAITING_EXPECTED__CODEX_ULTRA_USAGE_LIMIT_UNTIL_04_02_AM
+STATUS: COMPLETED_REPORTED__ADVISOR_VALIDATED_PASS
 ```
 
 ### AO-M01-BATCH-C-VISUAL-CLARIFICATION-20260711T011700Z

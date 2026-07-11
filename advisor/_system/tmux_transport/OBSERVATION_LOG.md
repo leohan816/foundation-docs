@@ -5,6 +5,21 @@ Transport state: `ACTIVE`
 General active-mode execution observations: none. The one-time bootstrap reload
 observations are recorded below.
 
+## AO-M01-BATCH-C-LOCALE-COMPLETION-20260711T030920Z
+
+```text
+DISPATCH_ID: AO-M01-BATCH-C-LOCALE-REWORK-20260711T013000Z
+OBSERVED_AT: 2026-07-11T03:09:20Z
+PANE_ID: %13
+OUTPUT_FINGERPRINT: corrected Batch C pointer / target b94c2a0 / STOP
+LAST_PROGRESS_MARKER: config/test, docs, result, and pointer pushed
+STATE: COMPLETED_REPORTED__ADVISOR_VALIDATED_PASS
+INTERACTIVE_PROMPT_PRESENT: false
+SENSITIVE_OUTPUT_SUSPECTED: false
+ACTION_TAKEN: Advisor reproduced 124 tests, build, C-locale Playwright 10/10, audit, diff and commit isolation; Batch C accepted
+NEXT_OBSERVATION_DUE: immediately after exact Batch D dispatch
+```
+
 ## AO-M01-BATCH-C-LOCALE-REWORK-QUOTA-20260711T013100Z
 
 ```text
