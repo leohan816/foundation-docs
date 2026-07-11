@@ -1,6 +1,6 @@
 {
   "schemaVersion": "agent-office.advisor-delivery-readiness.v1",
-  "leaseId": "019f51cd-2b8e-78b8-8db6-e69fd92b7a17",
+  "leaseId": "019f51d0-44b0-7de3-8ede-3d972882bdc7",
   "activationMissionId": "AGENT_OFFICE_M01_EXACT_ADVISOR_DELIVERY_ACTIVATION",
   "governedMissionId": "AGENT_OFFICE_M01_ADVISOR_MANAGED_OFFICE_WEB_CONTROL_PLANE",
   "issuerRole": "Advisor",
@@ -17,12 +17,12 @@
   },
   "readiness": "IDLE_FOR_ONE_POINTER",
   "useLimit": 1,
-  "observedAt": "2026-07-11T15:30:28.366Z",
-  "issuedAt": "2026-07-11T15:30:28.366Z",
-  "expiresAt": "2026-07-11T15:30:57.366Z",
-  "registrySnapshotHash": "sha256:f9c245867c59c836d682af5092d4eb06412f51118e5e3fa4e9c000bf1a914f6a",
-  "authoritySnapshotHash": "sha256:f6286c8a2468196a782a9f9d7a14770197c1edcd9e559ecfc8b57765723b89b7",
-  "activationSnapshotHash": "sha256:19ade5c7be015bc42abd42e148e04bcf362b082a4e19ef4eb1a591de6f6e1e1e",
+  "observedAt": "2026-07-11T15:33:51.408Z",
+  "issuedAt": "2026-07-11T15:33:51.408Z",
+  "expiresAt": "2026-07-11T15:34:20.408Z",
+  "registrySnapshotHash": "sha256:11834113c88550cced818dd4a2a29714294bf753a67bd23e34c88b4dcf22858f",
+  "authoritySnapshotHash": "sha256:e1930bcad23adbc1f0903fc5f23944725a1d6ae2fd6ddc678a00643b938c7ad0",
+  "activationSnapshotHash": "sha256:29f31deb27f7f17a6ceb58a8477c3fb5c92a73bc53383a7d1aab0dc3cdf6c88f",
   "evidenceRefs": [
     "advisor-preflight-ao-wu-21",
     "registry-window-id-at9"
