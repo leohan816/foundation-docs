@@ -728,3 +728,32 @@ SENSITIVE_OUTPUT_SUSPECTED: false
 ACTION_TAKEN: exact committed launcher sent through one named tmux buffer; execution confirmed; no other input sent
 NEXT_OBSERVATION_DUE: at most 60 seconds or on progress/result/interactive/capacity signal
 ```
+### AO-M1.2-C-EVENT-A11Y-PERFORMANCE-REVIEW-20260711T231511Z - completion
+
+```text
+DISPATCH_ID: AO-M1.2-C-EVENT-A11Y-PERFORMANCE-REVIEW-20260711T231511Z
+OBSERVED_AT: 2026-07-11T23:41:20Z
+PANE_ID: %5
+OUTPUT_FINGERPRINT: Fable5 AO12-C PASS, result/pointer commit 3dbd89f, STOP
+LAST_PROGRESS_MARKER: independent tests, benchmark, seven-image inspection, result and pointer pushed; Agent Office restored clean
+STATE: COMPLETED_REPORTED
+INTERACTIVE_PROMPT_PRESENT: false
+SENSITIVE_OUTPUT_SUSPECTED: false
+ACTION_TAKEN: captured completion; Advisor directly read result/pointer, verified exact two-file commit/upstream and Agent Office cleanliness, accepted clean PASS, and carried UTC slice validation into AO12-D
+NEXT_OBSERVATION_DUE: none; AO12-D Worker preflight follows
+```
+
+## AO-M1.2-D-IMPLEMENTATION-20260711T234120Z
+
+```text
+DISPATCH_ID: AO-M1.2-D-IMPLEMENTATION-20260711T234120Z
+OBSERVED_AT: 2026-07-11T23:41:20Z
+PANE_ID: %13
+OUTPUT_FINGERPRINT: AO12-C Worker result pointer and STOP; idle Codex prompt with gpt-5.6-sol ultra footer
+LAST_PROGRESS_MARKER: Agent Office f9d0533 clean and upstream-equal; no newer task active
+STATE: WAITING_EXPECTED
+INTERACTIVE_PROMPT_PRESENT: false
+SENSITIVE_OUTPUT_SUSPECTED: false
+ACTION_TAKEN: verified exact session/pane/workspace/process/model/role, synchronized panes off, launcher commit/blob/checksum, clean target branch, accepted AO12-C dependency, and upstream state; no input sent yet
+NEXT_OBSERVATION_DUE: immediately after exact launcher transport
+```
