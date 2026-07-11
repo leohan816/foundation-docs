@@ -415,3 +415,33 @@ SENSITIVE_OUTPUT_SUSPECTED: false
 ACTION_TAKEN: verified exact session/pane/workspace/process, same Reviewer continuity, synchronized panes off, launcher commit/blob/checksum, review target cleanliness, and upstream equality; exact committed launcher sent through one named tmux buffer and execution confirmed
 NEXT_OBSERVATION_DUE: 180 seconds or on progress/result/interactive signal
 ```
+
+## AO-M1.2-NARROW-DESIGN-DELTA-REVIEW-20260711T182615Z — completion
+
+```text
+DISPATCH_ID: AO-M1.2-NARROW-DESIGN-DELTA-REVIEW-20260711T182615Z
+OBSERVED_AT: 2026-07-11T18:34:00Z
+PANE_ID: %5
+OUTPUT_FINGERPRINT: Fable5 clean PASS, 12/12, result/pointer commit 2ddd95a, STOP
+LAST_PROGRESS_MARKER: exact result and pointer pushed; Agent Office remained read-only at b7d8cdb
+STATE: COMPLETED_REPORTED
+INTERACTIVE_PROMPT_PRESENT: false
+SENSITIVE_OUTPUT_SUSPECTED: false
+ACTION_TAKEN: captured result, read exact artifacts, verified result commit scope/upstream and clean PASS continuation conditions
+NEXT_OBSERVATION_DUE: none; design freeze and AO12-A preflight follow
+```
+
+## AO-M1.2-A-IMPLEMENTATION-20260711T183528Z
+
+```text
+DISPATCH_ID: AO-M1.2-A-IMPLEMENTATION-20260711T183528Z
+OBSERVED_AT: 2026-07-11T18:35:28Z
+PANE_ID: %13
+OUTPUT_FINGERPRINT: prior Worker patch pointer and STOP; idle Codex prompt with gpt-5.6-sol ultra footer
+LAST_PROGRESS_MARKER: Agent Office b7d8cdb equals upstream; no newer task active
+STATE: WAITING_EXPECTED
+INTERACTIVE_PROMPT_PRESENT: false
+SENSITIVE_OUTPUT_SUSPECTED: false
+ACTION_TAKEN: verified exact session/pane/workspace/process, model/role continuity, synchronized panes off, launcher commit/blob/checksum, clean target branch, frozen design and manifest dependencies; no input sent yet
+NEXT_OBSERVATION_DUE: immediately after exact launcher transport
+```

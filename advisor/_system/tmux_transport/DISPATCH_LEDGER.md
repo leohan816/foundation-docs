@@ -1087,3 +1087,40 @@ PREFLIGHT_VERDICT: PASS_READY_TO_SEND
 SENT_AT: 2026-07-11T18:27:33Z via exact tmux buffer to reviewer-fable5/%5
 STATUS: RUNNING
 ```
+
+## AO-M1.2-A-IMPLEMENTATION-20260711T183528Z
+
+```text
+DISPATCH_ID: AO-M1.2-A-IMPLEMENTATION-20260711T183528Z
+MISSION_ID: AGENT_OFFICE_M1_2_SPATIAL_ANIMATED_ADVISOR_TEAM_OFFICE
+TARGET_ACTOR: Agent Office Worker
+TARGET_SESSION: agent-office
+TARGET_WINDOW: 0
+TARGET_PANE: 0
+OBSERVED_PANE_ID: %13
+WORKSPACE: /home/leo/Project/agent-office
+PROCESS: codex child PID 2754606 under pane shell PID 2703903
+MODEL_EFFORT_EVIDENCE: pane footer gpt-5.6-sol ultra
+ROLE_EVIDENCE: same existing Agent Office Worker; prior design-patch result and STOP visible
+READINESS_EVIDENCE: idle Codex prompt; no task, approval, auth, privilege, or interactive prompt active
+SYNCHRONIZED_PANES_OFF: true
+LAUNCHER_ABSOLUTE_PATH: /home/leo/Project/foundation-docs/advisor/jobs/20260711_agent_office_m1_2_spatial_animated_advisor_team_office/24_AO12_A_WORKER_RUN_PROMPT.md
+LAUNCHER_REPO_RELATIVE_PATH: advisor/jobs/20260711_agent_office_m1_2_spatial_animated_advisor_team_office/24_AO12_A_WORKER_RUN_PROMPT.md
+LAUNCHER_COMMIT_SHA: 7b8780ce9c1e6010fe7bb6248735ebe8154184c7
+LAUNCHER_GIT_BLOB: 2c6f84d57243156cc6ca68ecae9383ac02d1152d
+LAUNCHER_SHA256_WORKTREE: 8ab89a64db5ab4134646369ac318915209a82291515426f5f0c55ed65b2fa909
+LAUNCHER_SHA256_COMMITTED: 8ab89a64db5ab4134646369ac318915209a82291515426f5f0c55ed65b2fa909
+UPSTREAM_EVIDENCE: foundation-docs 7b8780c equals origin/main; Agent Office clean b7d8cdb equals origin/shadow/agent-office-m1-2-spatial-office, left/right 0/0
+IMPLEMENTATION_TARGET: AO12-A / AO12-IWU-01..04 from manifest v1 denominator 14
+RESULT_PATH: ../foundation-docs/runs/agent-office/20260711_agent_office_m1_2_spatial_animated_advisor_team_office/WORKER_AO12_A_RESULT.md
+POINTER_PATH: ../foundation-docs/advisor/jobs/20260711_agent_office_m1_2_spatial_animated_advisor_team_office/25_WORKER_AO12_A_RESULT_POINTER.md
+WRITE_REPO_BRANCHES: exact allowed Agent Office paths on shadow branch, then foundation-docs/main exact result/pointer only
+DEPENDENCY_LOCKS: clean Fable5 design delta PASS verified; design frozen; manifest v1 AO12-A ready; AO12-B/C/D waiting; Reviewer idle; no concurrent Agent Office or foundation-docs writer
+BLIND_INDEPENDENCE_RULE: Worker cannot self-review or edit Fable5 artifacts; focused independent review follows Worker return
+PARALLEL_ISOLATION_EVIDENCE: one exact Worker pane; serial implementation; no broadcast/synchronized panes
+SOFT_STALL_SECONDS: 180
+HARD_TIMEOUT_SECONDS_OR_NONE: none; capacity/API errors require readiness revalidation before continuation
+PREFLIGHT_VERDICT: PASS_READY_TO_SEND
+SENT_AT: pending exact tmux buffer transport
+STATUS: READY_TO_SEND
+```
