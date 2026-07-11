@@ -1,0 +1,24 @@
+{
+  "schemaVersion": "agent-office.advisor-intake-evidence.v1",
+  "missionId": "AGENT_OFFICE_M01_ADVISOR_MANAGED_OFFICE_WEB_CONTROL_PLANE",
+  "requestId": "019f51d2-b57b-7b27-9d88-6f145a20a90b",
+  "messageId": "019f51d0-5252-7cd2-8326-657a923df180",
+  "notificationId": "019f51d0-525d-75e5-ae78-0d71520ebec4",
+  "intakeId": "019f51d2-b57b-72e5-9424-abe0d03a3709",
+  "classification": "ROUTINE_ROUTE",
+  "recordedAt": "2026-07-11T15:36:31.355Z",
+  "acknowledgementArtifact": {
+    "repository": "foundation-docs",
+    "commit": "17bd43c30a3767d71a66243bc326cb49c440e951",
+    "path": "advisor/jobs/20260711_agent_office_m01_exact_advisor_delivery_activation/advisor-evidence/019f51d0-5252-7cd2-8326-657a923df180/01_ACKNOWLEDGEMENT.json",
+    "sha256": "sha256:803c0050302b0bf01263700c8d655f7e922f674216dcb10c37545dbeb531cb39"
+  },
+  "messageArtifactHash": "sha256:b7c987f084aad65e6ec935909dde732f0bade7f393df6a0feb1b0957ef0d1beb",
+  "referencedWorkUnitIds": [
+    "AO-WU-21"
+  ],
+  "evidenceRefs": [
+    "advisor-routine-intake",
+    "ao-wu-21-option-a"
+  ]
+}
