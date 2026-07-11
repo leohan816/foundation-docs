@@ -1,10 +1,10 @@
 # Loop State: Agent Office M01
 
-STATE: `BATCH_C_ACCEPTED__BATCH_D_READY_FOR_DISPATCH`
+STATE: `BATCH_D_ACCEPTED__BATCH_E_READY_FOR_DISPATCH`
 
-CURRENT_WORK_UNIT: `AO-WU-09`
+CURRENT_WORK_UNIT: `AO-WU-10`
 
-WORKUNIT_PROGRESS: `9/15 COMPLETED`
+WORKUNIT_PROGRESS: `10/15 COMPLETED`
 
 REQUIRED_GATE_PROGRESS: `2/7 ENTRY_AND_DESIGN_REVIEW_PASSED`
 
@@ -14,15 +14,15 @@ KILL_SWITCH: `DISENGAGED`
 
 WORKER_SESSION: `agent-office/$13/%13`
 
-WORKER_PROCESS: `codex_v0.144.1__gpt-5.6-sol_ultra__READY_FOR_BATCH_D`
+WORKER_PROCESS: `codex_v0.144.1__gpt-5.6-sol_ultra__READY_FOR_BATCH_E`
 
 REVIEWER_SESSION: `reviewer-fable5/$5/%5__IDLE`
 
 NEXT:
 
-1. route exact Batch D handoff to the same Codex Ultra Worker;
-2. validate Inbox/gateway/alert/GPT-package/idempotency/UI evidence directly;
-3. route Batch E only after Batch D acceptance.
+1. route exact Batch E handoff to the same Codex Ultra Worker;
+2. validate loopback server/auth/CSRF/SSE/PWA/recovery evidence directly;
+3. route full implementation review only after Batch E and final Worker result.
 
 FABLE5_INITIAL_VERDICT: `NEEDS_PATCH`
 
@@ -49,6 +49,14 @@ BATCH_C_VERDICT: `PASS__ACCEPTED_AS_BATCH_D_DEPENDENCY`
 BATCH_C_TARGET: `b94c2a06ec064ed0cc659bac8b9ef7555d7aea73`
 
 BATCH_C_TESTS: `27_FILES__124_TESTS__C_AND_KO_CALLER_PLAYWRIGHT_10_OF_10__BUILD_AUDIT_PASS`
+
+BATCH_D_VERDICT: `PASS__ACCEPTED_AS_BATCH_E_DEPENDENCY`
+
+BATCH_D_TARGET: `31c59ccdd0aed080f45d95195fb4c289eb48b24c`
+
+BATCH_D_TESTS: `35_FILES__155_TESTS__PLAYWRIGHT_15_OF_15__BUILD_AUDIT_PASS`
+
+BATCH_D_REWORK: `AO-D-R1_CLOSED__INVALID_CAPABILITY_FAILS_CLOSED`
 
 BLOCKERS: none.
 
