@@ -1,8 +1,8 @@
 # Agent Office M1.2 Spatial Office Design Mission
 
-Status: `DESIGN_FROZEN__AO12_A_READY_FOR_WORKER`
+Status: `DESIGN_FROZEN__AO12_A_IMPLEMENTED_VALIDATED__FABLE5_REVIEW_READY`
 
-Implementation: `AO12_A_AUTHORIZED__AO12_B_C_D_WAITING_DEPENDENCY`
+Implementation: `AO12_A_IMPLEMENTED_VALIDATED_REVIEWING__AO12_B_C_D_WAITING_DEPENDENCY`
 
 ## Entry Artifacts
 
@@ -37,10 +37,17 @@ Implementation: `AO12_A_AUTHORIZED__AO12_B_C_D_WAITING_DEPENDENCY`
 - [24_AO12_A_WORKER_BRIEF.md](24_AO12_A_WORKER_BRIEF.md)
 - [24_AO12_A_WORKER_HANDOFF_PROMPT.md](24_AO12_A_WORKER_HANDOFF_PROMPT.md)
 - [24_AO12_A_WORKER_RUN_PROMPT.md](24_AO12_A_WORKER_RUN_PROMPT.md)
+- [25_WORKER_AO12_A_RESULT_POINTER.md](25_WORKER_AO12_A_RESULT_POINTER.md)
+- [26_ADVISOR_AO12_A_VALIDATION.md](26_ADVISOR_AO12_A_VALIDATION.md)
+- [27_FABLE5_AO12_A_IMPLEMENTATION_REVIEW_BRIEF.md](27_FABLE5_AO12_A_IMPLEMENTATION_REVIEW_BRIEF.md)
+- [27_FABLE5_AO12_A_IMPLEMENTATION_REVIEW_HANDOFF_PROMPT.md](27_FABLE5_AO12_A_IMPLEMENTATION_REVIEW_HANDOFF_PROMPT.md)
+- [27_FABLE5_AO12_A_IMPLEMENTATION_REVIEW_RUN_PROMPT.md](27_FABLE5_AO12_A_IMPLEMENTATION_REVIEW_RUN_PROMPT.md)
 
 ## Current Routing
 
 The narrow patch at `b7d8cdb21183bf909a13b902cffc95bf15c68dd9`
 received a clean same-context Fable5 Level-3 `PASS`. Advisor froze the design and
-published implementation manifest v1 with 14 approved WorkUnits. AO12-A is the
-only ready batch; AO12-B/C/D remain dependency-gated.
+published implementation manifest v1 with 14 approved WorkUnits. AO12-A is
+implemented at `ecd2652501df55aba0aa0f55c236b1933c6dc1e3` and Advisor direct
+validation passed. The same existing Fable5 session is next for the independent
+Level-3 implementation review; AO12-B/C/D remain dependency-gated.
