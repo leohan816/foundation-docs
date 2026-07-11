@@ -669,6 +669,41 @@ SENT_AT:
 STATUS:
 ```
 
+## AO-M01-FINAL-REWORK-20260711T063218Z
+
+```text
+DISPATCH_ID: AO-M01-FINAL-REWORK-20260711T063218Z
+MISSION_ID: AGENT_OFFICE_M01_ADVISOR_MANAGED_OFFICE_WEB_CONTROL_PLANE
+TARGET_ACTOR: Agent Office Worker-Rework
+TARGET_SESSION: agent-office
+TARGET_WINDOW: 0
+TARGET_PANE: 0
+OBSERVED_PANE_ID: %13
+WORKSPACE: /home/leo/Project/agent-office
+PROCESS: codex PID 2703903, gpt-5.6-sol ultra
+ROLE_EVIDENCE: same existing Agent Office Worker session that implemented Batches A-E; final result and STOP visible
+READINESS_EVIDENCE: prior task completed and STOP returned; Codex prompt is idle with only default placeholder text; no task, approval, auth, or interactive request active
+SYNCHRONIZED_PANES_OFF: true
+LAUNCHER_ABSOLUTE_PATH: /home/leo/Project/foundation-docs/advisor/jobs/20260711_agent_office_m01_advisor_managed_office_web_control_plane/45_WORKER_FINAL_REWORK_RUN_PROMPT.md
+LAUNCHER_REPO_RELATIVE_PATH: advisor/jobs/20260711_agent_office_m01_advisor_managed_office_web_control_plane/45_WORKER_FINAL_REWORK_RUN_PROMPT.md
+LAUNCHER_COMMIT_SHA: 59fb39f2a4c84697562caae9175380601966b8b1
+LAUNCHER_GIT_BLOB: 1bc7edea05035b74905f0aef84f3cdcb654b3148
+LAUNCHER_SHA256_WORKTREE: e2c057774b412da55f4753354da52720ddf018db59c1d1139c57e2a874243e12
+LAUNCHER_SHA256_COMMITTED: e2c057774b412da55f4753354da52720ddf018db59c1d1139c57e2a874243e12
+UPSTREAM_EVIDENCE: foundation-docs 59fb39f pushed to origin/main; Agent Office clean HEAD=upstream=72c24fe
+RESULT_PATH: ../foundation-docs/runs/agent-office/20260711_agent_office_m01_advisor_managed_office_web_control_plane/WORKER_FINAL_REWORK_RESULT.md
+POINTER_PATH: ../foundation-docs/advisor/jobs/20260711_agent_office_m01_advisor_managed_office_web_control_plane/46_WORKER_FINAL_REWORK_RESULT_POINTER.md
+WRITE_REPO_BRANCHES: agent-office/shadow/agent-office-m01 then foundation-docs/main exact result/pointer only
+DEPENDENCY_LOCKS: final dual review complete; reviewer idle; serial same-repo write; no concurrent foundation-docs write mission observed
+BLIND_INDEPENDENCE_RULE: Worker patches exact findings only and must not edit Reviewer artifacts or verdicts
+PARALLEL_ISOLATION_EVIDENCE: serial dispatch; no Agent Office or foundation-docs writer active
+SOFT_STALL_SECONDS: 180
+HARD_TIMEOUT_SECONDS_OR_NONE: none; capacity errors observed and retried only after readiness revalidation
+PREFLIGHT_VERDICT: PASS_READY_TO_SEND
+SENT_AT: pending exact committed buffer transport
+STATUS: READY_TO_SEND
+```
+
 ## AO-M01-FINAL-DUAL-REVIEW-20260711T062124Z
 
 ```text
