@@ -1,6 +1,6 @@
 # Loop State - Agent Office Exact Advisor Delivery Activation
 
-STATE: `AO_WU_21_REHEARSAL_COMPLETE__CLEANUP_PENDING`
+STATE: `AO_WU_21_CLEANUP_COMPLETE__FINAL_AUDIT_FOUND_TEST_FIXTURE_DEFECT`
 
 MANIFEST_VERSION: `5`
 
@@ -50,4 +50,6 @@ FABLE5_HISTORY_FIX_DELTA_VERDICT: `PASS`
 
 AO_WU_21_RESULT: `ONE_EXACT_DELIVERY__DUPLICATE_NON_EXECUTION__FAIL_CLOSED_TARGET_CHANGE__ACK_INTAKE_DECISION_RESUME_CHAIN_COMPLETE`
 
-NEXT: Remove every disposable lease/config/state/auth/buffer/listener artifact and perform AO-WU-15 final audit.
+FINAL_AUDIT_FINDING: `OBSERVATION_COORDINATOR_TEST_FIXTURE_DEPENDS_ON_LIVE_AO_WU_15_STATUS`
+
+NEXT: Existing Agent Office Worker patches only the deterministic test fixture, then the same Fable5 Reviewer performs a narrow delta review before final audit resumes.
