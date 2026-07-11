@@ -18,6 +18,7 @@ Status: `LOCALBOOTSTRAP_PRIVATE_RUN_PASS__AWAITING_REAL_ADVISOR_DELIVERY_ACTIVAT
 - [15_PRIVATE_RUN_EVIDENCE.md](15_PRIVATE_RUN_EVIDENCE.md)
 - [05_FINAL_AUDIT.md](05_FINAL_AUDIT.md)
 - [16_REAL_ADVISOR_DELIVERY_ACTIVATION_DECISION_PACKAGE.md](16_REAL_ADVISOR_DELIVERY_ACTIVATION_DECISION_PACKAGE.md)
+- [17_FINAL_GATE_POINTER.md](17_FINAL_GATE_POINTER.md)
 
 Worker implementation, independent dual review, and the actual owner-only
 loopback private-run verification passed. Real tmux delivery remains inactive;
