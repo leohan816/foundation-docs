@@ -1,6 +1,6 @@
 # Agent Office M1.2 Spatial Office Design Mission
 
-Status: `CHAINED_DESIGN_PATCH_READY_FOR_WORKER`
+Status: `NARROW_DESIGN_DELTA_READY_FOR_FABLE5_LEVEL3`
 
 Implementation: `NOT_STARTED_NOT_AUTHORIZED_PENDING_CLEAN_FABLE5_DELTA_PASS`
 
@@ -26,13 +26,17 @@ Implementation: `NOT_STARTED_NOT_AUTHORIZED_PENDING_CLEAN_FABLE5_DELTA_PASS`
 - [16_CHAINED_DESIGN_PATCH_MANIFEST.json](16_CHAINED_DESIGN_PATCH_MANIFEST.json)
 - [17_WORKER_NARROW_DESIGN_PATCH_HANDOFF_PROMPT.md](17_WORKER_NARROW_DESIGN_PATCH_HANDOFF_PROMPT.md)
 - [17_WORKER_NARROW_DESIGN_PATCH_RUN_PROMPT.md](17_WORKER_NARROW_DESIGN_PATCH_RUN_PROMPT.md)
+- [18_WORKER_NARROW_DESIGN_PATCH_RESULT_POINTER.md](18_WORKER_NARROW_DESIGN_PATCH_RESULT_POINTER.md)
+- [19_ADVISOR_NARROW_DESIGN_PATCH_VALIDATION.md](19_ADVISOR_NARROW_DESIGN_PATCH_VALIDATION.md)
+- [20_FABLE5_NARROW_DESIGN_DELTA_REVIEW_BRIEF.md](20_FABLE5_NARROW_DESIGN_DELTA_REVIEW_BRIEF.md)
+- [20_FABLE5_NARROW_DESIGN_DELTA_REVIEW_HANDOFF_PROMPT.md](20_FABLE5_NARROW_DESIGN_DELTA_REVIEW_HANDOFF_PROMPT.md)
+- [20_FABLE5_NARROW_DESIGN_DELTA_REVIEW_RUN_PROMPT.md](20_FABLE5_NARROW_DESIGN_DELTA_REVIEW_RUN_PROMPT.md)
 
 ## Current Routing
 
-Leo/GPT approved the reviewed architecture with the exact narrow product-intent
-patch recorded in `16_LEO_GPT_CHAINED_DECISION_RECORD.md`. The existing Agent
-Office Worker must patch only the five design documents. Advisor validation and
-the same Fable5 Reviewer's clean Level-3 delta `PASS` are mandatory before the
-conditional implementation authority becomes active.
+The existing Agent Office Worker published the exact five-document narrow patch
+at `b7d8cdb21183bf909a13b902cffc95bf15c68dd9`. Advisor direct validation passed.
+The same Fable5 Reviewer's clean Level-3 delta `PASS` is now the active mandatory
+gate before conditional implementation authority becomes active.
 
 No implementation launcher exists yet. Runtime implementation remains blocked.
