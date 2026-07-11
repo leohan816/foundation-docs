@@ -1,6 +1,6 @@
 # Agent Office M01 Exact Advisor Delivery Activation
 
-Status: `WORKER_DESIGN_COMPLETE__FABLE5_DESIGN_REVIEW_READY`
+Status: `AO_WU_21_REHEARSAL_REWORK_REQUIRED`
 
 - [00_INTAKE.md](00_INTAKE.md)
 - [01_ADVISOR_BRIEF.md](01_ADVISOR_BRIEF.md)
@@ -27,6 +27,11 @@ Status: `WORKER_DESIGN_COMPLETE__FABLE5_DESIGN_REVIEW_READY`
 - [13_WORKER_IMPLEMENTATION_RESULT_POINTER.md](13_WORKER_IMPLEMENTATION_RESULT_POINTER.md)
 - [14_FABLE5_DELIVERY_IMPLEMENTATION_SECURITY_REVIEW_RESULT_POINTER.md](14_FABLE5_DELIVERY_IMPLEMENTATION_SECURITY_REVIEW_RESULT_POINTER.md)
 - [15_OPTION_A_ACTIVATION_AUTHORITY.md](15_OPTION_A_ACTIVATION_AUTHORITY.md)
+- [16_AO_WU_21_REHEARSAL_REWORK_BRIEF.md](16_AO_WU_21_REHEARSAL_REWORK_BRIEF.md)
+- [16_WORKER_REWORK_HANDOFF_PROMPT.md](16_WORKER_REWORK_HANDOFF_PROMPT.md)
+- [16_WORKER_REWORK_RUN_PROMPT.md](16_WORKER_REWORK_RUN_PROMPT.md)
 
-No delivery capability or tmux input is active. Design review precedes any
-implementation.
+The initial exact delivery succeeded once, while later fail-closed rehearsal
+attempts exposed an exact Git history false positive. No delivery capability is
+active now. Worker rework and same-reviewer delta review precede rehearsal
+resumption.
