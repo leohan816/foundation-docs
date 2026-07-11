@@ -1,6 +1,6 @@
 # Loop State: Agent Office M01
 
-STATE: `BATCH_C_VISUAL_BASELINE_REWORK_READY_FOR_DISPATCH`
+STATE: `BATCH_C_LOCALE_DETERMINISM_REWORK_READY_FOR_DISPATCH`
 
 CURRENT_WORK_UNIT: `AO-WU-09`
 
@@ -14,14 +14,14 @@ KILL_SWITCH: `DISENGAGED`
 
 WORKER_SESSION: `agent-office/$13/%13`
 
-WORKER_PROCESS: `codex_v0.144.1__gpt-5.6-sol_ultra__READY_FOR_BATCH_C_REWORK`
+WORKER_PROCESS: `codex_v0.144.1__gpt-5.6-sol_ultra__READY_FOR_BATCH_C_LOCALE_REWORK`
 
 REVIEWER_SESSION: `reviewer-fable5/$5/%5__IDLE`
 
 NEXT:
 
-1. route exact visual baseline rework to the same Codex Ultra Worker;
-2. require reproduction, direct image inspection, 10/10 Playwright, and full regression;
+1. route exact process-locale determinism rework to the same Codex Ultra Worker;
+2. require ordinary-command 10/10 under both C.UTF-8 and ko_KR.UTF-8 callers;
 3. route Batch D only after corrected Batch C acceptance.
 
 FABLE5_INITIAL_VERDICT: `NEEDS_PATCH`
@@ -44,7 +44,7 @@ BATCH_B_TARGET: `85e66d856e33a0df73041cb4b33aba30a8f9f96d / 927c05875803fa321d39
 
 BATCH_B_TESTS: `23_FILES__84_TESTS_PASS__READ_ONLY_SMOKE_BUILD_AUDIT_PASS`
 
-BLOCKERS: final Batch C code and all three committed visual baselines diverge.
+BLOCKERS: Playwright visual output inherits the caller shell locale.
 
 PUBLIC_EXPOSURE: forbidden.
 

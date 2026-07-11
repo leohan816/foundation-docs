@@ -1,6 +1,6 @@
 # Agent Office M01 Advisor Job
 
-Status: `BATCH_C_VISUAL_BASELINE_REWORK_READY`
+Status: `BATCH_C_LOCALE_DETERMINISM_REWORK_READY`
 
 ## Initial Artifacts
 
@@ -36,6 +36,10 @@ Status: `BATCH_C_VISUAL_BASELINE_REWORK_READY`
 - `28_ADVISOR_BATCH_C_VALIDATION.md`
 - `29_WORKER_BATCH_C_VISUAL_BASELINE_REWORK_HANDOFF_PROMPT.md`
 - `29_WORKER_BATCH_C_VISUAL_BASELINE_REWORK_RUN_PROMPT.md`
+- `29A_WORKER_BATCH_C_VISUAL_REWORK_CLARIFICATION.md`
+- `30_ADVISOR_BATCH_C_LOCALE_ROOT_CAUSE.md`
+- `31_WORKER_BATCH_C_LOCALE_REWORK_HANDOFF_PROMPT.md`
+- `31_WORKER_BATCH_C_LOCALE_REWORK_RUN_PROMPT.md`
 - `10_MISSION_MANIFEST.json`
 - `11_LOOP_STATE.md`
 
@@ -46,6 +50,6 @@ Status: `BATCH_C_VISUAL_BASELINE_REWORK_READY`
 - private remote: `https://github.com/leohan816/agent-office`
 - implementation branch: `shadow/agent-office-m01`
 
-Batch C returned, but direct Advisor execution reproduced three stale visual
-baseline failures against the effective final code. The narrow same-session
+The baseline bytes now match final code, but direct Advisor execution proved the
+visual suite inherits the caller process locale. The narrow locale-determinism
 rework is ready. Batch D remains unauthorized.
