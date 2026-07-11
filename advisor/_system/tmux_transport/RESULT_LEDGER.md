@@ -578,3 +578,29 @@ ADVISOR_RESULT_VERDICT: REVIEW_COVERAGE_INSUFFICIENT__SAME_REVIEWER_VISUAL_CORRE
 NEXT_ACTOR: same Fable5 Reviewer
 RECORDED_AT: 2026-07-11T21:13:44Z
 ```
+## AO-M1.2-C-IMPLEMENTATION-20260711T222500Z
+
+```text
+DISPATCH_ID: AO-M1.2-C-IMPLEMENTATION-20260711T222500Z
+MISSION_ID: AGENT_OFFICE_M1_2_SPATIAL_ANIMATED_ADVISOR_TEAM_OFFICE
+TARGET_ACTOR: Agent Office Worker
+PANE_COMPLETION_REPORTED: true
+RESULT_FILE: ../foundation-docs/runs/agent-office/20260711_agent_office_m1_2_spatial_animated_advisor_team_office/WORKER_AO12_C_RESULT.md
+POINTER_FILE: ../foundation-docs/advisor/jobs/20260711_agent_office_m1_2_spatial_animated_advisor_team_office/41_WORKER_AO12_C_RESULT_POINTER.md
+RESULT_FILE_EXISTS: true
+POINTER_FILE_EXISTS: true
+ALLOWED_FILES: exact 30 Agent Office AO12-C paths plus exact Foundation Docs result/pointer
+ACTUAL_CHANGED_FILES: exact allowed files only
+DIFF_VERIFIED: Agent Office 4b751c6..f9d0533 is 30 paths +4035/-106; Foundation Docs result eed8ad7 and pointer 108b579 exact
+TEST_EVIDENCE_VERIFIED: Advisor reran lint, typecheck, full Vitest, build, focused Playwright 15, full demo 43, composed 3, dependency audit 0, naming and production-boundary gates; directly viewed all 7 PNGs
+COMMIT_SHA: f9d0533437c0cf9efa7be76650ad79f0cb0d9353
+BRANCH: shadow/agent-office-m1-2-spatial-office
+UPSTREAM: origin/shadow/agent-office-m1-2-spatial-office
+PUSH_AND_ANCESTRY_VERIFIED: true; parent 4b751c6 and left/right 0/0
+RUNTIME_STATUS_VERIFIED: explicit test/demo spatial cue layer only; production bundle excludes AO12-C fixture/schema markers; no M1 auth/transport/delivery/DB/network/deployment change
+REVIEW_VERDICT_AND_COVERAGE: pending independent Fable5 Level-3 event/accessibility/performance review
+CONTRADICTIONS: none found by Advisor; AO12-D remains unauthorized
+ADVISOR_RESULT_VERDICT: PASS_TO_FABLE5_LEVEL3_EVENT_ACCESSIBILITY_PERFORMANCE_REVIEW
+NEXT_ACTOR: Fable5 Reviewer
+RECORDED_AT: 2026-07-11T23:15:11Z
+```

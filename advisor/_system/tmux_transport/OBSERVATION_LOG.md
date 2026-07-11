@@ -685,3 +685,32 @@ SENSITIVE_OUTPUT_SUSPECTED: false
 ACTION_TAKEN: exact committed launcher sent through one named tmux buffer; execution confirmed; no other input sent
 NEXT_OBSERVATION_DUE: 180 seconds or on progress/result/interactive/capacity signal
 ```
+## AO-M1.2-C-IMPLEMENTATION-20260711T222500Z - completion
+
+```text
+DISPATCH_ID: AO-M1.2-C-IMPLEMENTATION-20260711T222500Z
+OBSERVED_AT: 2026-07-11T23:15:11Z
+PANE_ID: %13
+OUTPUT_FINGERPRINT: Worker AO12-C pointer, Agent Office f9d0533, Foundation Docs result/pointer, STOP
+LAST_PROGRESS_MARKER: target and result/pointer pushed upstream-equal; full test/build/visual/performance package reported
+STATE: COMPLETED_REPORTED
+INTERACTIVE_PROMPT_PRESENT: false
+SENSITIVE_OUTPUT_SUSPECTED: false
+ACTION_TAKEN: captured completion; Advisor directly validated code, diff, all 7 PNGs, focused/full tests, build, E2E, dependency audit, naming, production boundary, paths, commits, pushes, and artifacts
+NEXT_OBSERVATION_DUE: none; dependent Fable5 Level-3 review preflight follows
+```
+
+## AO-M1.2-C-EVENT-A11Y-PERFORMANCE-REVIEW-20260711T231511Z
+
+```text
+DISPATCH_ID: AO-M1.2-C-EVENT-A11Y-PERFORMANCE-REVIEW-20260711T231511Z
+OBSERVED_AT: 2026-07-11T23:15:11Z
+PANE_ID: %5
+OUTPUT_FINGERPRINT: prior AO12-B corrected visual PASS and STOP; idle Claude prompt
+LAST_PROGRESS_MARKER: no newer Reviewer task active; exact AO12-C review launcher published
+STATE: WAITING_EXPECTED
+INTERACTIVE_PROMPT_PRESENT: false
+SENSITIVE_OUTPUT_SUSPECTED: false
+ACTION_TAKEN: verified exact session/pane/workspace/process/role, synchronization off, launcher commit/blob/checksum, clean review target, dependency serialization, and upstream state; no input sent yet
+NEXT_OBSERVATION_DUE: immediately after exact launcher transport
+```
