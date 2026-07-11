@@ -5,6 +5,21 @@ Transport state: `ACTIVE`
 General active-mode execution observations: none. The one-time bootstrap reload
 observations are recorded below.
 
+## AO-M01-BATCH-C-LOCALE-REWORK-QUOTA-20260711T013100Z
+
+```text
+DISPATCH_ID: AO-M01-BATCH-C-LOCALE-REWORK-20260711T013000Z
+OBSERVED_AT: 2026-07-11T01:31:00Z
+PANE_ID: %13
+OUTPUT_FINGERPRINT: exact locale rework launcher displayed / Codex usage limit until 4:02 AM
+LAST_PROGRESS_MARKER: launcher accepted by the same GPT-5.6-Sol Ultra pane but execution did not start
+STATE: WAITING_EXPECTED
+INTERACTIVE_PROMPT_PRESENT: false
+SENSITIVE_OUTPUT_SUSPECTED: false
+ACTION_TAKEN: no downgrade, alternate model, new session, or retry loop; preserve Ultra and same context
+NEXT_OBSERVATION_DUE: at or after the displayed 4:02 AM reset before exact launcher resubmission
+```
+
 ## AO-M01-BATCH-C-VISUAL-REWORK-COMPLETION-20260711T013000Z
 
 ```text
