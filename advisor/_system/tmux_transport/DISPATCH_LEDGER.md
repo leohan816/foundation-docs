@@ -700,8 +700,8 @@ PARALLEL_ISOLATION_EVIDENCE: serial dispatch; no other Reviewer task active
 SOFT_STALL_SECONDS: 180
 HARD_TIMEOUT_SECONDS_OR_NONE: none; capacity errors are observed and retried only after readiness revalidation
 PREFLIGHT_VERDICT: PASS_READY_TO_SEND
-SENT_AT: pending exact committed buffer transport
-STATUS: READY_TO_SEND
+SENT_AT: 2026-07-11T06:22:00Z via exact tmux buffer to reviewer-fable5/%5
+STATUS: COMPLETED_REPORTED_AND_CAPTURED
 ```
 
 Valid preflight verdicts:

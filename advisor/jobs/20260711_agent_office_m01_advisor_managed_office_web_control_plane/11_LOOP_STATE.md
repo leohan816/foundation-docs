@@ -1,8 +1,8 @@
 # Loop State: Agent Office M01
 
-STATE: `BATCH_E_WORKER_RESULT_VALIDATED__FINAL_DUAL_REVIEW_READY`
+STATE: `FINAL_DUAL_REVIEW_NEEDS_PATCH__SAME_WORKER_REWORK_READY`
 
-CURRENT_WORK_UNIT: `AO-WU-13`
+CURRENT_WORK_UNIT: `AO-WU-13_REWORK`
 
 WORKUNIT_PROGRESS: `12/15 COMPLETED`
 
@@ -16,14 +16,15 @@ WORKER_SESSION: `agent-office/$13/%13`
 
 WORKER_PROCESS: `codex_v0.144.1__gpt-5.6-sol_ultra__FINAL_RESULT_RETURNED__IDLE`
 
-REVIEWER_SESSION: `reviewer-fable5/$5/%5__IDLE`
+REVIEWER_SESSION: `reviewer-fable5/$5/%5__DUAL_NEEDS_PATCH_RETURNED__IDLE`
 
 NEXT:
 
-1. route exact final dual-review handoff to the same Fable5 Reviewer;
-2. require independent classification of AO-E-R1 and AO-E-R2;
-3. patch through the same Worker/Reviewer loop or return a material security and
-   scope decision to Leo/GPT according to the exact verdict.
+1. route exact R1/R2 and D-1/D-2/D-3 rework to the same Codex Ultra Worker;
+2. directly validate the integrated loopback composition and authority evidence;
+3. route the exact delta to the same Fable5 Reviewer;
+4. after delta PASS, return the AO-WU-14 private-run auth posture decision to
+   Leo/GPT before private-run closure.
 
 FABLE5_INITIAL_VERDICT: `NEEDS_PATCH`
 
@@ -59,14 +60,18 @@ BATCH_D_TESTS: `35_FILES__155_TESTS__PLAYWRIGHT_15_OF_15__BUILD_AUDIT_PASS`
 
 BATCH_D_REWORK: `AO-D-R1_CLOSED__INVALID_CAPABILITY_FAILS_CLOSED`
 
+FABLE5_FINAL_DESIGN_VERDICT: `NEEDS_PATCH`
+
+FABLE5_FINAL_IMPLEMENTATION_VERDICT: `NEEDS_PATCH`
+
 OPEN_REVIEW_FINDINGS:
 
 - `AO-E-R1`: fixture-only browser composition and no integrated executable
   private runtime;
 - `AO-E-R2`: decision `authorityRole` parsed but not durably linked.
 
-BLOCKERS: final mission closure is blocked pending independent review and the
-resulting patch or Leo/GPT decision route.
+BLOCKERS: AO-E-R1/AO-E-R2 and D-1/D-2/D-3 require same-Worker patch and
+same-Reviewer delta PASS. AO-WU-14 then requires Leo/GPT auth-posture decision.
 
 PUBLIC_EXPOSURE: forbidden.
 
