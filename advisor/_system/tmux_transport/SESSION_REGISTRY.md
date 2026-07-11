@@ -2,7 +2,7 @@
 
 Registry status: `ACTIVE_LOCATOR__REVALIDATE_BEFORE_EVERY_DISPATCH`
 
-Observed: 2026-07-10 UTC
+Observed: 2026-07-11 UTC
 
 Observed effective tmux window option: `synchronize-panes off` for the registered
 sessions. This must be checked again before every dispatch.
@@ -10,15 +10,15 @@ sessions. This must be checked again before every dispatch.
 This registry records current locators. It never replaces live pre-dispatch
 verification. Pane IDs and processes can change.
 
-| Actor | Session | Observed session ID | Window | Pane | Observed pane ID | Workspace | Observed process | Role evidence | Dispatch status |
-|---|---|---|---:|---:|---|---|---|---|---|
-| Advisor | `foundation-advisor` | `$9` | 0 | 0 | `%9` | `/home/leo/Project/foundation-advisor` | `codex` | active Advisor conversation and local `AGENTS.md` | never a target for its own routed work |
-| Control | `foundation-control` | `$4` | 0 | 0 | `%4` | `/home/leo/Project/foundation-control` | `claude` | latest pane record declares `ACTOR: Control` and Control mode separation | eligible only after live verification |
-| Foundation Worker | `foundation` | `$3` | 0 | 0 | `%3` | `/home/leo/Project/FOUNDATION` | `claude` | latest pane record declares Foundation Worker | eligible only after live verification |
-| Cosmile Worker | `cosmile` | `$1` | 0 | 0 | `%1` | `/home/leo/Project/Cosmile` | `claude` | latest pane record declares Cosmile Worker | eligible only after live verification |
-| Shashu Worker | `siasiu` | `$0` | 0 | 0 | `%0` | `/home/leo/Project/SIASIU` | `claude` | latest pane record declares Shashu Worker | eligible only after live verification |
-| Fable5 Reviewer | `reviewer-fable5` | `$5` | 0 | 0 | `%5` | `/home/leo/Project/foundation-control` | `claude` | latest pane record declares Fable5 Reviewer and `/fable-sentinel` review | eligible only after live role-evidence verification |
-| Agent Office Worker | `agent-office` | `$13` | 0 | 0 | `%13` | `/home/leo/Project/agent-office` | `codex` v0.144.1, PID `2754606` at verification | Leo/GPT M01 assignment; exact tmux ancestry; pane banner confirms `gpt-5.6-sol ultra`; repo-local role instructions at `937f0c5` | eligible for exact M01 dispatch after live verification; branch `shadow/agent-office-m01` |
+| Actor | Session | Observed session ID | Window index | Observed window ID | Pane index | Observed pane ID | Workspace | Observed process | Role evidence | Dispatch status |
+|---|---|---|---:|---|---:|---|---|---|---|---|
+| Advisor | `foundation-advisor` | `$9` | 0 | `@9` | 0 | `%9` | `/home/leo/Project/foundation-advisor` | `codex` | active Advisor conversation and local `AGENTS.md` | fixed Agent Office pointer destination only under the separately reviewed exact-delivery activation; otherwise never a target for its own routed work |
+| Control | `foundation-control` | `$4` | 0 | `@4` | 0 | `%4` | `/home/leo/Project/foundation-control` | `claude` | latest pane record declares `ACTOR: Control` and Control mode separation | eligible only after live verification |
+| Foundation Worker | `foundation` | `$3` | 0 | `@3` | 0 | `%3` | `/home/leo/Project/FOUNDATION` | `claude` | latest pane record declares Foundation Worker | eligible only after live verification |
+| Cosmile Worker | `cosmile` | `$1` | 0 | `@1` | 0 | `%1` | `/home/leo/Project/Cosmile` | `claude` | latest pane record declares Cosmile Worker | eligible only after live verification |
+| SIASIU Worker | `siasiu` | `$0` | 0 | `@0` | 0 | `%0` | `/home/leo/Project/SIASIU` | `claude` | latest pane record declares SIASIU Worker | eligible only after live verification |
+| Fable5 Reviewer | `reviewer-fable5` | `$5` | 0 | `@5` | 0 | `%5` | `/home/leo/Project/foundation-control` | `claude` | latest pane record declares Fable5 Reviewer and `/fable-sentinel` review | eligible only after live role-evidence verification |
+| Agent Office Worker | `agent-office` | `$13` | 0 | `@13` | 0 | `%13` | `/home/leo/Project/agent-office` | `codex` v0.144.1, PID `2754606` at verification | Leo/GPT M01 assignment; exact tmux ancestry; pane banner confirms `gpt-5.6-sol ultra`; repo-local role instructions at `937f0c5` | eligible for exact M01 dispatch after live verification; branch `shadow/agent-office-m01` |
 
 ## Required Live Checks
 

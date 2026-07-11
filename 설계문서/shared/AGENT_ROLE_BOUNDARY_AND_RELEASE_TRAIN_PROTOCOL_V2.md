@@ -51,7 +51,7 @@ flag changes, protected-branch merges, or live rollout by itself.
 | Control in `CONTROL_MASTER_DESIGN_MODE` | Cross-project design coordination, contract alignment, release-train plan, regression/readiness coordination | Product runtime implementation, unilateral canonical decisions, Worker or Reviewer work in the same pass | Advisor |
 | foundation-control Worker in `FOUNDATION_CONTROL_IMPLEMENTATION_MODE` | Approved repo-local foundation-control code, contract harness, HTTP/control runtime, tests | Cross-project authority, Foundation/Cosmile/SIASIU product implementation, master-design approval | Advisor |
 | Foundation Worker | Approved repo-local Foundation implementation and evidence | Canonical authority decisions, service-specific UI/commerce behavior, final approval | Advisor |
-| Shashu Worker | Approved repo-local SIASIU consultation/service implementation and evidence | Cosmile commerce implementation, Foundation canonical judgment, final approval | Advisor |
+| SIASIU Worker | Approved repo-local SIASIU consultation/service implementation and evidence | Cosmile commerce implementation, Foundation canonical judgment, final approval | Advisor |
 | Cosmile Worker | Approved repo-local commerce implementation and evidence | SIASIU consultation ownership, Foundation canonical judgment, final approval | Advisor |
 | Fable5 Reviewer | Independent `DESIGN_REVIEW` and `IMPLEMENTATION_REVIEW` passes with explicit coverage | Implementation, patching, committing runtime code, self-review, final approval | Advisor |
 | Dedicated SOL Reviewer | Fable5 fallback review in a separate Reviewer-SOL session | Advisor work, implementation, patching, self-review, final approval | Advisor |
@@ -196,7 +196,7 @@ contracts, Foundation runtime, and Foundation-owned adapters. The Foundation
 Worker may implement an approved Foundation design, but cannot make the canonical
 authority decision that approves that design.
 
-### SIASIU / Shashu
+### SIASIU / SIASIU Worker
 
 SIASIU owns consultation API/chat flow, service semantic and response adapters,
 consultation service memory, and SIASIU presentation. It consumes Foundation
@@ -505,7 +505,7 @@ transport remains `NOT_ACTIVE` until all of the following exist:
 2. Fable5 `DESIGN_REVIEW` verdict `PASS`;
 3. Fable5 `IMPLEMENTATION_OR_CONFIG_REVIEW` verdict `PASS`;
 4. reload confirmations from the existing Advisor, Control, Foundation Worker,
-   Cosmile Worker, Shashu Worker, and Fable5 Reviewer sessions;
+   Cosmile Worker, SIASIU Worker, and Fable5 Reviewer sessions;
 5. Advisor final audit verdict `PASS`;
 6. a separate Leo/GPT final activation approval;
 7. committed activation state and final activation record that identify the exact

@@ -33,8 +33,8 @@
     {"id":"AO-WU-14","phase":"PRIVATE_RUN_VERIFY","actor":"Advisor","title":"Verify private server, desktop/mobile UI, PWA, and evidence","status":"COMPLETED","dependsOn":["AO-WU-13"]},
     {"id":"AO-WU-16","phase":"DELIVERY_ENTRY","actor":"Advisor","title":"Freeze exact Advisor delivery activation scope and evidence gate","status":"COMPLETED","dependsOn":["AO-WU-14"]},
     {"id":"AO-WU-17","phase":"DELIVERY_DESIGN","actor":"Agent Office Worker","title":"Author exact pointer-only Advisor delivery bridge design","status":"COMPLETED","dependsOn":["AO-WU-16"]},
-    {"id":"AO-WU-18","phase":"DELIVERY_DESIGN_REVIEW","actor":"Fable5 Reviewer","title":"Independent Level 3 delivery bridge design review","status":"READY","dependsOn":["AO-WU-17"]},
-    {"id":"AO-WU-19","phase":"DELIVERY_IMPLEMENTATION","actor":"Agent Office Worker","title":"Implement and test reviewed exact Advisor delivery bridge","status":"WAITING_DEPENDENCY","dependsOn":["AO-WU-18"]},
+    {"id":"AO-WU-18","phase":"DELIVERY_DESIGN_REVIEW","actor":"Fable5 Reviewer","title":"Independent Level 3 delivery bridge design review","status":"COMPLETED","dependsOn":["AO-WU-17"]},
+    {"id":"AO-WU-19","phase":"DELIVERY_IMPLEMENTATION","actor":"Agent Office Worker","title":"Implement and test reviewed exact Advisor delivery bridge","status":"READY","dependsOn":["AO-WU-18"]},
     {"id":"AO-WU-20","phase":"DELIVERY_IMPLEMENTATION_REVIEW","actor":"Fable5 Reviewer","title":"Independent Level 3 delivery implementation and security review","status":"WAITING_DEPENDENCY","dependsOn":["AO-WU-19"]},
     {"id":"AO-WU-21","phase":"DELIVERY_REHEARSAL","actor":"Advisor","title":"Execute synthetic exact Advisor delivery and acknowledgement rehearsal","status":"WAITING_DEPENDENCY","dependsOn":["AO-WU-20"]},
     {"id":"AO-WU-15","phase":"FINAL_AUDIT","actor":"Advisor","title":"Final mission audit and Leo/GPT pointer","status":"WAITING_DEPENDENCY","dependsOn":["AO-WU-21"]}
