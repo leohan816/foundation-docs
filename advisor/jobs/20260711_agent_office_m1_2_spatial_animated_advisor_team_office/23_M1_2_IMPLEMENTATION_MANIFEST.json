@@ -2,7 +2,7 @@
   "schemaVersion": "agent-office.m1.2.implementation-manifest.v1",
   "manifestVersion": 1,
   "missionId": "AGENT_OFFICE_M1_2_SPATIAL_ANIMATED_ADVISOR_TEAM_OFFICE",
-  "status": "IMPLEMENTATION_ACTIVE_SERIAL__AO12_A_REVIEWING",
+  "status": "IMPLEMENTATION_ACTIVE_SERIAL__AO12_A_ACCEPTED__AO12_B_READY",
   "designCommit": "b7d8cdb21183bf909a13b902cffc95bf15c68dd9",
   "designReview": {
     "reviewer": "Fable5 Reviewer",
@@ -13,17 +13,17 @@
   },
   "denominator": 14,
   "batches": [
-    {"id": "AO12-A", "workUnits": ["AO12-IWU-01", "AO12-IWU-02", "AO12-IWU-03", "AO12-IWU-04"], "status": "REVIEWING", "implementationCommit": "ecd2652501df55aba0aa0f55c236b1933c6dc1e3", "reviewGate": "FABLE5_AO12_A_IMPLEMENTATION_REVIEW"},
-    {"id": "AO12-B", "workUnits": ["AO12-IWU-05", "AO12-IWU-06", "AO12-IWU-07", "AO12-IWU-08"], "status": "WAITING_DEPENDENCY", "dependsOn": ["FABLE5_AO12_A_IMPLEMENTATION_REVIEW_PASS"], "reviewGate": "FABLE5_AO12_B_UI_ACCESSIBILITY_ASSET_REVIEW"},
+    {"id": "AO12-A", "workUnits": ["AO12-IWU-01", "AO12-IWU-02", "AO12-IWU-03", "AO12-IWU-04"], "status": "COMPLETED", "implementationCommit": "ecd2652501df55aba0aa0f55c236b1933c6dc1e3", "reviewResultCommit": "edd7929ddac80b613f789c1ec348836abfab039e", "reviewVerdict": "PASS_CORRECTED", "advisorAccepted": true, "reviewGate": "FABLE5_AO12_A_IMPLEMENTATION_REVIEW"},
+    {"id": "AO12-B", "workUnits": ["AO12-IWU-05", "AO12-IWU-06", "AO12-IWU-07", "AO12-IWU-08"], "status": "READY", "dependsOn": ["FABLE5_AO12_A_IMPLEMENTATION_REVIEW_PASS"], "reviewGate": "FABLE5_AO12_B_UI_ACCESSIBILITY_ASSET_REVIEW"},
     {"id": "AO12-C", "workUnits": ["AO12-IWU-09", "AO12-IWU-10", "AO12-IWU-11"], "status": "WAITING_DEPENDENCY", "dependsOn": ["FABLE5_AO12_B_UI_ACCESSIBILITY_ASSET_REVIEW_PASS"], "reviewGate": "FABLE5_AO12_C_EVENT_ACCESSIBILITY_PERFORMANCE_REVIEW"},
     {"id": "AO12-D", "workUnits": ["AO12-IWU-12", "AO12-IWU-13", "AO12-IWU-14"], "status": "WAITING_DEPENDENCY", "dependsOn": ["FABLE5_AO12_C_EVENT_ACCESSIBILITY_PERFORMANCE_REVIEW_PASS"], "reviewGate": "FABLE5_FINAL_IMPLEMENTATION_SECURITY_VISUAL_REVIEW"}
   ],
   "workUnits": [
-    {"id": "AO12-IWU-01", "batch": "AO12-A", "title": "Spatial projection types and validators", "status": "REVIEWING", "actor": "Agent Office Worker", "dependencies": []},
-    {"id": "AO12-IWU-02", "batch": "AO12-A", "title": "M1 fixed-station compatibility adapter", "status": "REVIEWING", "actor": "Agent Office Worker", "dependencies": ["AO12-IWU-01"]},
-    {"id": "AO12-IWU-03", "batch": "AO12-A", "title": "Dynamic Team Pod projector", "status": "REVIEWING", "actor": "Agent Office Worker", "dependencies": ["AO12-IWU-01"]},
-    {"id": "AO12-IWU-04", "batch": "AO12-A", "title": "Assignment, Single Advisor, and SIASIU current-name invariants", "status": "REVIEWING", "actor": "Agent Office Worker", "dependencies": ["AO12-IWU-01", "AO12-IWU-02", "AO12-IWU-03"]},
-    {"id": "AO12-IWU-05", "batch": "AO12-B", "title": "Project identity and collision-safe palette", "status": "WAITING_DEPENDENCY", "actor": "Agent Office Worker", "dependencies": ["FABLE5_AO12_A_IMPLEMENTATION_REVIEW_PASS"]},
+    {"id": "AO12-IWU-01", "batch": "AO12-A", "title": "Spatial projection types and validators", "status": "COMPLETED", "actor": "Agent Office Worker", "dependencies": []},
+    {"id": "AO12-IWU-02", "batch": "AO12-A", "title": "M1 fixed-station compatibility adapter", "status": "COMPLETED", "actor": "Agent Office Worker", "dependencies": ["AO12-IWU-01"]},
+    {"id": "AO12-IWU-03", "batch": "AO12-A", "title": "Dynamic Team Pod projector", "status": "COMPLETED", "actor": "Agent Office Worker", "dependencies": ["AO12-IWU-01"]},
+    {"id": "AO12-IWU-04", "batch": "AO12-A", "title": "Assignment, Single Advisor, and SIASIU current-name invariants", "status": "COMPLETED", "actor": "Agent Office Worker", "dependencies": ["AO12-IWU-01", "AO12-IWU-02", "AO12-IWU-03"]},
+    {"id": "AO12-IWU-05", "batch": "AO12-B", "title": "Project identity and collision-safe palette", "status": "READY", "actor": "Agent Office Worker", "dependencies": ["FABLE5_AO12_A_IMPLEMENTATION_REVIEW_PASS"]},
     {"id": "AO12-IWU-06", "batch": "AO12-B", "title": "Code-native actor and Channy placeholder inventory", "status": "WAITING_DEPENDENCY", "actor": "Agent Office Worker", "dependencies": ["AO12-IWU-05"]},
     {"id": "AO12-IWU-07", "batch": "AO12-B", "title": "Shared static floor, Team Pods, and mission boards", "status": "WAITING_DEPENDENCY", "actor": "Agent Office Worker", "dependencies": ["AO12-IWU-05", "AO12-IWU-06"]},
     {"id": "AO12-IWU-08", "batch": "AO12-B", "title": "Responsive, keyboard, screen-reader, reduced/static structure", "status": "WAITING_DEPENDENCY", "actor": "Agent Office Worker", "dependencies": ["AO12-IWU-07"]},
@@ -34,6 +34,6 @@
     {"id": "AO12-IWU-13", "batch": "AO12-D", "title": "M1 compatibility, degradation tiers, and rollback proof", "status": "WAITING_DEPENDENCY", "actor": "Agent Office Worker", "dependencies": ["AO12-IWU-12"]},
     {"id": "AO12-IWU-14", "batch": "AO12-D", "title": "As-built docs, final evidence, and closure package", "status": "WAITING_DEPENDENCY", "actor": "Agent Office Worker", "dependencies": ["AO12-IWU-13"]}
   ],
-  "implementationStatus": "AO12_A_IMPLEMENTED_AND_VALIDATED__FABLE5_REVIEW_PENDING__AO12_B_C_D_WAITING_DEPENDENCY",
+  "implementationStatus": "AO12_A_COMPLETED_ACCEPTED__AO12_B_READY__AO12_C_D_WAITING_DEPENDENCY",
   "finalApprovalAuthority": "Leo/GPT"
 }

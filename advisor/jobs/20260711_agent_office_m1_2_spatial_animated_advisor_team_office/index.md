@@ -1,8 +1,8 @@
 # Agent Office M1.2 Spatial Office Design Mission
 
-Status: `AO12_A_FABLE5_PASS_REPORTED__FACTUAL_CORRECTION_REREVIEW_REQUIRED`
+Status: `AO12_A_ACCEPTED__AO12_B_READY_FOR_WORKER`
 
-Implementation: `AO12_A_NOT_YET_ACCEPTED__AO12_B_C_D_WAITING_DEPENDENCY`
+Implementation: `AO12_A_COMPLETED_ACCEPTED__AO12_B_READY__AO12_C_D_WAITING_DEPENDENCY`
 
 ## Entry Artifacts
 
@@ -46,6 +46,10 @@ Implementation: `AO12_A_NOT_YET_ACCEPTED__AO12_B_C_D_WAITING_DEPENDENCY`
 - [29_ADVISOR_FABLE5_AO12_A_RESULT_VALIDATION.md](29_ADVISOR_FABLE5_AO12_A_RESULT_VALIDATION.md)
 - [30_FABLE5_AO12_A_REVIEW_CORRECTION_HANDOFF_PROMPT.md](30_FABLE5_AO12_A_REVIEW_CORRECTION_HANDOFF_PROMPT.md)
 - [30_FABLE5_AO12_A_REVIEW_CORRECTION_RUN_PROMPT.md](30_FABLE5_AO12_A_REVIEW_CORRECTION_RUN_PROMPT.md)
+- [31_ADVISOR_AO12_A_ACCEPTANCE_AND_AO12_B_GATE.md](31_ADVISOR_AO12_A_ACCEPTANCE_AND_AO12_B_GATE.md)
+- [32_AO12_B_WORKER_BRIEF.md](32_AO12_B_WORKER_BRIEF.md)
+- [32_AO12_B_WORKER_HANDOFF_PROMPT.md](32_AO12_B_WORKER_HANDOFF_PROMPT.md)
+- [32_AO12_B_WORKER_RUN_PROMPT.md](32_AO12_B_WORKER_RUN_PROMPT.md)
 
 ## Current Routing
 
@@ -53,7 +57,6 @@ The narrow patch at `b7d8cdb21183bf909a13b902cffc95bf15c68dd9`
 received a clean same-context Fable5 Level-3 `PASS`. Advisor froze the design and
 published implementation manifest v1 with 14 approved WorkUnits. AO12-A is
 implemented at `ecd2652501df55aba0aa0f55c236b1933c6dc1e3` and Advisor direct
-validation passed and Fable5 reported `PASS`. Advisor found one factual mismatch
-in the review artifact about removed legacy alias normalization. The same Fable5
-session must correct and recheck that item before AO12-A dependency acceptance;
-AO12-B/C/D remain dependency-gated.
+validation passed. Fable5 corrected its factual alias description and returned a
+clean corrected `PASS` at `edd7929`; Advisor accepted AO12-A. AO12-B is now the
+only ready batch, while AO12-C/D remain dependency-gated.
