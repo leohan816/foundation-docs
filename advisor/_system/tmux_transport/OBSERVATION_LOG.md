@@ -5,6 +5,21 @@ Transport state: `ACTIVE`
 General active-mode execution observations: none. The one-time bootstrap reload
 observations are recorded below.
 
+## AO-M01-BATCH-C-VALIDATION-20260711T010544Z
+
+```text
+DISPATCH_ID: AO-M01-BATCH-C-20260711T000500Z
+OBSERVED_AT: 2026-07-11T01:05:44Z
+PANE_ID: %13
+OUTPUT_FINGERPRINT: Batch C pointer / target 6d53b493 / STOP
+LAST_PROGRESS_MARKER: target/result/pointer pushed and Worker stopped
+STATE: COMPLETED_REPORTED__ADVISOR_VALIDATION_NEEDS_PATCH
+INTERACTIVE_PROMPT_PRESENT: false
+SENSITIVE_OUTPUT_SUSPECTED: false
+ACTION_TAKEN: Advisor reran final checks; 123 tests/build passed and Playwright returned 7/10 with three stale-baseline failures; exact narrow rework prepared
+NEXT_OBSERVATION_DUE: immediately after exact rework dispatch
+```
+
 ## AO-M01-BATCH-B-COMPLETION-20260711T000000Z
 
 ```text

@@ -8,6 +8,42 @@ bootstrap delegation recorded later in this file.
 
 ## Active-Mode Product Dispatches
 
+### AO-M01-BATCH-C-VISUAL-REWORK-20260711T010544Z
+
+```text
+DISPATCH_ID: AO-M01-BATCH-C-VISUAL-REWORK-20260711T010544Z
+MISSION_ID: AGENT_OFFICE_M01_ADVISOR_MANAGED_OFFICE_WEB_CONTROL_PLANE
+AUTHORIZATION: IN_SCOPE_ADVISOR_REWORK_AFTER_DIRECT_BATCH_C_VALIDATION_FAILURE
+TARGET_ACTOR: Agent Office Worker-Rework
+TARGET_SESSION: agent-office
+TARGET_WINDOW: 0
+TARGET_PANE: 0
+OBSERVED_PANE_ID: %13
+WORKSPACE: /home/leo/Project/agent-office
+PROCESS: codex v0.144.1, gpt-5.6-sol ultra
+ROLE_EVIDENCE: same existing Agent Office Worker session that implemented Batch C
+READINESS_EVIDENCE: prior Batch C returned STOP; empty prompt; clean target branch; no listener or child browser process
+SYNCHRONIZED_PANES_OFF: true
+LAUNCHER_ABSOLUTE_PATH: /home/leo/Project/foundation-docs/advisor/jobs/20260711_agent_office_m01_advisor_managed_office_web_control_plane/29_WORKER_BATCH_C_VISUAL_BASELINE_REWORK_RUN_PROMPT.md
+LAUNCHER_REPO_RELATIVE_PATH: advisor/jobs/20260711_agent_office_m01_advisor_managed_office_web_control_plane/29_WORKER_BATCH_C_VISUAL_BASELINE_REWORK_RUN_PROMPT.md
+LAUNCHER_COMMIT_SHA: 89f8422b6ba3303c2fe2fc9afb1c6016704c9da5
+LAUNCHER_GIT_BLOB: 80c54ce9a80ca04f006632b79de9c3bdcfa0debf
+LAUNCHER_SHA256_WORKTREE: 0d3d09c5bd667310119e0ca56060956880076260a79349736deef5def6b36565
+LAUNCHER_SHA256_COMMITTED: 0d3d09c5bd667310119e0ca56060956880076260a79349736deef5def6b36565
+UPSTREAM_EVIDENCE: launcher ancestor and validation current at foundation-docs origin/main c60e713ed3326c3221a848daabb179ffad9f86e4
+RESULT_PATH: ../foundation-docs/runs/agent-office/20260711_agent_office_m01_advisor_managed_office_web_control_plane/WORKER_BATCH_C_RESULT.md
+POINTER_PATH: ../foundation-docs/advisor/jobs/20260711_agent_office_m01_advisor_managed_office_web_control_plane/27_WORKER_BATCH_C_RESULT_POINTER.md
+WRITE_REPO_BRANCHES: agent-office/shadow/agent-office-m01 then foundation-docs/main, serial
+DEPENDENCY_LOCKS: clear; prior Batch C stopped; Reviewer idle; no other approved foundation-docs write dispatch active
+BLIND_INDEPENDENCE_RULE: final Fable5 implementation review waits for complete M01 implementation
+PARALLEL_ISOLATION_EVIDENCE: not applicable; serial dispatch
+SOFT_STALL_SECONDS: 1800
+HARD_TIMEOUT_SECONDS_OR_NONE: 7200
+PREFLIGHT_VERDICT: PASS_READY_TO_SEND
+SENT_AT: PENDING_AFTER_COMMITTED_LEDGER
+STATUS: READY_TO_SEND
+```
+
 ### AO-M01-BATCH-C-20260711T000500Z
 
 ```text
@@ -41,7 +77,7 @@ SOFT_STALL_SECONDS: 3600
 HARD_TIMEOUT_SECONDS_OR_NONE: 14400
 PREFLIGHT_VERDICT: PASS_READY_TO_SEND
 SENT_AT: 2026-07-11T00:03:17Z
-STATUS: RUNNING
+STATUS: COMPLETED_REPORTED__ADVISOR_VALIDATION_NEEDS_PATCH
 ```
 
 ### AO-M01-BATCH-B-20260710T214500Z
