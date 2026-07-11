@@ -1,6 +1,6 @@
 # Agent Office M1.2 Spatial Office Design Mission
 
-Status: `WORKER_CANONICAL_DESIGN_RUNNING`
+Status: `WORKER_DESIGN_VALIDATED__FABLE5_REVIEW_READY`
 
 Implementation: `NOT_STARTED_NOT_APPROVED`
 
@@ -15,12 +15,16 @@ Implementation: `NOT_STARTED_NOT_APPROVED`
 - [06_WORKER_DESIGN_RUN_PROMPT.md](06_WORKER_DESIGN_RUN_PROMPT.md)
 - [09_M1_2_DESIGN_MISSION_MANIFEST.json](09_M1_2_DESIGN_MISSION_MANIFEST.json)
 - [10_LOOP_STATE.md](10_LOOP_STATE.md)
+- [11_WORKER_DESIGN_RESULT_POINTER.md](11_WORKER_DESIGN_RESULT_POINTER.md)
+- [12_ADVISOR_WORKER_DESIGN_VALIDATION.md](12_ADVISOR_WORKER_DESIGN_VALIDATION.md)
+- [13_FABLE5_DESIGN_REVIEW_HANDOFF_PROMPT.md](13_FABLE5_DESIGN_REVIEW_HANDOFF_PROMPT.md)
+- [13_FABLE5_DESIGN_REVIEW_RUN_PROMPT.md](13_FABLE5_DESIGN_REVIEW_RUN_PROMPT.md)
 
 ## Current Routing
 
-Existing Agent Office Worker `agent-office/$13/%13` creates the docs-only
-canonical candidate with `GPT-5.6 SOL / Ultra`. Advisor validates the result.
-Only then may the existing `reviewer-fable5/$5/%5` session perform the independent
-Level-3 review with `Fable5 / Max`.
+The docs-only canonical candidate is published at Agent Office commit
+`3ba65e0092a7c0cebf546c6baecf5bb007314897` and directly validated by Advisor.
+The existing `reviewer-fable5/$5/%5` session now performs independent Level-3
+review with `Fable5 / Max`, including explicit challenge `A-V1`.
 
 No implementation launcher exists or is authorized.

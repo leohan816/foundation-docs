@@ -15,21 +15,21 @@
       "id": "AO12-DWU-02",
       "actor": "Agent Office Worker",
       "title": "Canonical spatial-office design package",
-      "status": "WORKING",
+      "status": "COMPLETED",
       "dependsOn": ["AO12-DWU-01"]
     },
     {
       "id": "AO12-DWU-03",
       "actor": "Advisor",
       "title": "Design result and evidence validation",
-      "status": "WAITING_DEPENDENCY",
+      "status": "COMPLETED",
       "dependsOn": ["AO12-DWU-02"]
     },
     {
       "id": "AO12-DWU-04",
       "actor": "Fable5 Reviewer",
       "title": "Independent Level-3 canonical design review",
-      "status": "WAITING_DEPENDENCY",
+      "status": "READY",
       "dependsOn": ["AO12-DWU-03"]
     },
     {
