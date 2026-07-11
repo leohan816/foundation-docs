@@ -1,21 +1,26 @@
 # Agent Office M01 Advisor Job
 
-Current state: `FINAL_DUAL_REVIEW_PASS__AO_WU14_WAITING_LEO_AUTH_POSTURE_DECISION`
+Current state: `AGENT_OFFICE_M01_CLOSED`
 
-## Final Round-Two Status
+## Final Status
 
-- Final reviewed Agent Office HEAD: `abff45c9925962be29be535685e3efbccd587528`
-- Fable5 design delta verdict: `PASS`
-- Fable5 implementation delta verdict: `PASS`
-- Implementation/documentation status: reviewed complete
-- Operational private-run status: not verified; safe default is `AUTH_BLOCKED / READ_ONLY`
-- Next authority: Leo/GPT AO-WU-14 auth-posture decision
+- Final Agent Office HEAD: `2f663304a88c432f19fe56055641b66e57f18ef2`
+- WorkUnits: `21/21 COMPLETED`
+- Fable5 design verdict: `PASS`
+- Fable5 implementation and security verdict: `PASS`
+- LocalBootstrap private run: `PASS`
+- Exact Advisor delivery rehearsal: `PASS`
+- Final verification: `296/296 PASS`
+- Runtime state: stopped safely with no exposure
+- Leo/GPT final approval: `APPROVED__AGENT_OFFICE_M01_COMPLETE`
+- Next actor: `STOP`
 
 Current artifacts:
 
 - [62_AO_WU21_REHEARSAL_POINTER.md](62_AO_WU21_REHEARSAL_POINTER.md)
 - [63_ADVISOR_M01_FINAL_AUDIT.md](63_ADVISOR_M01_FINAL_AUDIT.md)
 - [64_FINAL_CLOSURE_POINTER.md](64_FINAL_CLOSURE_POINTER.md)
+- [65_LEO_GPT_FINAL_APPROVAL.md](65_LEO_GPT_FINAL_APPROVAL.md)
 - [05_FINAL_AUDIT.md](05_FINAL_AUDIT.md)
 - [56_ADVISOR_FINAL_ROUND2_VALIDATION.md](56_ADVISOR_FINAL_ROUND2_VALIDATION.md)
 - [57_FABLE5_FINAL_ROUND2_DUAL_DELTA_HANDOFF_PROMPT.md](57_FABLE5_FINAL_ROUND2_DUAL_DELTA_HANDOFF_PROMPT.md)
@@ -38,7 +43,7 @@ as-built documentation. Rework route:
 - [45_WORKER_FINAL_REWORK_HANDOFF_PROMPT.md](45_WORKER_FINAL_REWORK_HANDOFF_PROMPT.md)
 - [45_WORKER_FINAL_REWORK_RUN_PROMPT.md](45_WORKER_FINAL_REWORK_RUN_PROMPT.md)
 
-Status: `AGENT_OFFICE_M01_COMPLETE__AWAITING_LEO_GPT_FINAL_APPROVAL`
+Status: `AGENT_OFFICE_M01_CLOSED`
 
 ## Initial Artifacts
 
@@ -91,5 +96,5 @@ Status: `AGENT_OFFICE_M01_COMPLETE__AWAITING_LEO_GPT_FINAL_APPROVAL`
 - private remote: `https://github.com/leohan816/agent-office`
 - implementation branch: `shadow/agent-office-m01`
 
-Batch C is directly validated and accepted at `b94c2a0`. Batch D is authorized
-for exact serial routing. Batch E remains unauthorized.
+All approved M01 batches and gates are complete. M1.2 is a candidate only and
+remains `NOT_STARTED_NOT_AUTHORIZED` until a separate Leo/GPT mission opens it.

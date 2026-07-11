@@ -1,12 +1,12 @@
 # Loop State: Agent Office M01
 
-STATE: `AGENT_OFFICE_M01_COMPLETE__AWAITING_LEO_GPT_FINAL_APPROVAL`
+STATE: `AGENT_OFFICE_M01_CLOSED`
 
-CURRENT_WORK_UNIT: `NONE__ALL_21_COMPLETE`
+CURRENT_WORK_UNIT: `NONE__MISSION_CLOSED`
 
 WORKUNIT_PROGRESS: `21/21 COMPLETED`
 
-REQUIRED_GATE_PROGRESS: `ALL_REQUIRED_GATES_PASS__FINAL_APPROVAL_LEO_GPT_ONLY`
+REQUIRED_GATE_PROGRESS: `ALL_REQUIRED_GATES_PASS__LEO_GPT_FINAL_APPROVAL_RECORDED`
 
 TRANSPORT: `ACTIVE`
 
@@ -20,9 +20,9 @@ REVIEWER_SESSION: `reviewer-fable5/$5/%5__HISTORY_FIX_DELTA_PASS__IDLE`
 
 NEXT:
 
-1. return the final closure pointer to Leo/GPT;
-2. await Leo/GPT final approval;
-3. do not start M1.2 or another product mission.
+1. STOP;
+2. preserve the reviewed M01 evidence and authority boundaries;
+3. do not start M1.2 or another product mission without a separate Leo/GPT mission.
 
 FABLE5_INITIAL_VERDICT: `NEEDS_PATCH`
 
