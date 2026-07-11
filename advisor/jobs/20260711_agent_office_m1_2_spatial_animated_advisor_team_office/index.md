@@ -1,8 +1,8 @@
 # Agent Office M1.2 Spatial Office Design Mission
 
-Status: `AO12_C_IMPLEMENTED_AND_ADVISOR_VALIDATED__FABLE5_REVIEW_READY`
+Status: `AO12_C_FABLE5_PASS_ACCEPTED__AO12_D_READY`
 
-Implementation: `AO12_A_B_IMPLEMENTED_AND_ACCEPTED__AO12_C_IMPLEMENTED_PENDING_REVIEW__AO12_D_WAITING_DEPENDENCY`
+Implementation: `AO12_A_B_C_IMPLEMENTED_AND_ACCEPTED__AO12_D_READY`
 
 ## Entry Artifacts
 
@@ -68,6 +68,11 @@ Implementation: `AO12_A_B_IMPLEMENTED_AND_ACCEPTED__AO12_C_IMPLEMENTED_PENDING_R
 - [43_FABLE5_AO12_C_EVENT_ACCESSIBILITY_PERFORMANCE_REVIEW_BRIEF.md](43_FABLE5_AO12_C_EVENT_ACCESSIBILITY_PERFORMANCE_REVIEW_BRIEF.md)
 - [43_FABLE5_AO12_C_EVENT_ACCESSIBILITY_PERFORMANCE_REVIEW_HANDOFF_PROMPT.md](43_FABLE5_AO12_C_EVENT_ACCESSIBILITY_PERFORMANCE_REVIEW_HANDOFF_PROMPT.md)
 - [43_FABLE5_AO12_C_EVENT_ACCESSIBILITY_PERFORMANCE_REVIEW_RUN_PROMPT.md](43_FABLE5_AO12_C_EVENT_ACCESSIBILITY_PERFORMANCE_REVIEW_RUN_PROMPT.md)
+- [44_FABLE5_AO12_C_EVENT_ACCESSIBILITY_PERFORMANCE_REVIEW_RESULT_POINTER.md](44_FABLE5_AO12_C_EVENT_ACCESSIBILITY_PERFORMANCE_REVIEW_RESULT_POINTER.md)
+- [45_ADVISOR_AO12_C_ACCEPTANCE_AND_AO12_D_GATE.md](45_ADVISOR_AO12_C_ACCEPTANCE_AND_AO12_D_GATE.md)
+- [46_AO12_D_WORKER_BRIEF.md](46_AO12_D_WORKER_BRIEF.md)
+- [46_AO12_D_WORKER_HANDOFF_PROMPT.md](46_AO12_D_WORKER_HANDOFF_PROMPT.md)
+- [46_AO12_D_WORKER_RUN_PROMPT.md](46_AO12_D_WORKER_RUN_PROMPT.md)
 
 ## Current Routing
 
@@ -85,4 +90,7 @@ upstream-equal. Advisor directly inspected the source and all seven PNG
 baselines, reran lint/typecheck/full Vitest/build, 15 focused browser cases, 43
 default demo cases, 3 composed cases, dependency audit, naming, production
 boundary, and Git checks, and found no defect. The exact Level-3 Fable5 review
-is ready. AO12-D remains dependency-gated and unauthorized.
+returned a clean `PASS` at `3dbd89f` after independently reproducing all test,
+visual, performance, source, Git, and boundary evidence. Advisor accepted
+AO12-C and carried the validated-UTC expiry input check into AO12-D. The final
+serial batch AO12-D (`AO12-IWU-12..14`) is ready on exact base `f9d0533`.
