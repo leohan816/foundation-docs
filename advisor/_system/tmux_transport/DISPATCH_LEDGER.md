@@ -704,6 +704,41 @@ SENT_AT: 2026-07-11T16:44:42Z via exact tmux buffer to agent-office/%13
 STATUS: COMPLETED_REPORTED_AND_CAPTURED
 ```
 
+## AO-M1.2-DESIGN-REVIEW-20260711T171210Z
+
+```text
+DISPATCH_ID: AO-M1.2-DESIGN-REVIEW-20260711T171210Z
+MISSION_ID: AGENT_OFFICE_M1_2_SPATIAL_ANIMATED_ADVISOR_TEAM_OFFICE
+TARGET_ACTOR: Fable5 Reviewer
+TARGET_SESSION: reviewer-fable5
+TARGET_WINDOW: 0
+TARGET_PANE: 0
+OBSERVED_PANE_ID: %5
+WORKSPACE: /home/leo/Project/foundation-control
+PROCESS: claude PID 765045, Fable5 Max
+ROLE_EVIDENCE: same existing independent Fable5 Reviewer; prior Agent Office PASS and STOP visible; /fable-sentinel review history present
+READINESS_EVIDENCE: empty Reviewer prompt; no active task, approval, auth, privilege, or interactive request
+SYNCHRONIZED_PANES_OFF: true (window option unset, tmux default off)
+LAUNCHER_ABSOLUTE_PATH: /home/leo/Project/foundation-docs/advisor/jobs/20260711_agent_office_m1_2_spatial_animated_advisor_team_office/13_FABLE5_DESIGN_REVIEW_RUN_PROMPT.md
+LAUNCHER_REPO_RELATIVE_PATH: advisor/jobs/20260711_agent_office_m1_2_spatial_animated_advisor_team_office/13_FABLE5_DESIGN_REVIEW_RUN_PROMPT.md
+LAUNCHER_COMMIT_SHA: c30062b267e43fd96cb3be4884d0178ff80ca0f0
+LAUNCHER_GIT_BLOB: 6a7b29f4715bd5ae1533ee922e28aed96d80c825
+LAUNCHER_SHA256_WORKTREE: 1250f4da260477ee40ff55ec06bfa4cb9d55bb497676004da66a6b807eb5054e
+LAUNCHER_SHA256_COMMITTED: 1250f4da260477ee40ff55ec06bfa4cb9d55bb497676004da66a6b807eb5054e
+UPSTREAM_EVIDENCE: foundation-docs c30062b equals origin/main; Agent Office design 3ba65e0 equals origin/shadow/agent-office-m1-2-spatial-office
+RESULT_PATH: ../foundation-docs/runs/agent-office/20260711_agent_office_m1_2_spatial_animated_advisor_team_office/FABLE5_M1_2_DESIGN_REVIEW_RESULT.md
+POINTER_PATH: ../foundation-docs/advisor/jobs/20260711_agent_office_m1_2_spatial_animated_advisor_team_office/14_FABLE5_M1_2_DESIGN_REVIEW_RESULT_POINTER.md
+WRITE_REPO_BRANCHES: foundation-docs/main exact review result and pointer only; Agent Office read-only
+DEPENDENCY_LOCKS: Worker design complete and clean; Advisor validation complete; Worker idle; no concurrent Reviewer or foundation-docs writer
+BLIND_INDEPENDENCE_RULE: Reviewer distrusts summaries, reads actual design/source/tests/baselines, does not patch, and answers Advisor challenge A-V1
+PARALLEL_ISOLATION_EVIDENCE: serial one-pane dispatch; no broadcast, synchronized panes, agents, or sub-agents
+SOFT_STALL_SECONDS: 180
+HARD_TIMEOUT_SECONDS_OR_NONE: none; capacity errors require idle/readiness revalidation before exact continuation
+PREFLIGHT_VERDICT: PASS_READY_TO_SEND
+SENT_AT: pending exact committed buffer transport
+STATUS: READY_TO_SEND
+```
+
 ## AO-M01-FINAL-REWORK-DELTA-REVIEW-20260711T074301Z
 
 ```text

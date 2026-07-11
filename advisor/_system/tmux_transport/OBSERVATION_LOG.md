@@ -313,6 +313,21 @@ FOUNDATION_DOCS: launcher commit 498f2f5 equals origin/main; unrelated dirty pat
 VERDICT: PASS_READY_TO_SEND
 ```
 
+## 2026-07-11T17:12:10Z — Agent Office M1.2 design-review pre-dispatch
+
+```text
+DISPATCH_ID: AO-M1.2-DESIGN-REVIEW-20260711T171210Z
+TARGET: reviewer-fable5/$5/@5/%5
+WORKSPACE: /home/leo/Project/foundation-control
+PROCESS: claude child PID 765045 under pane shell PID 764416
+MODEL_EFFORT_EVIDENCE: existing Reviewer session configured Fable5 Max
+READINESS: idle prompt; prior Agent Office PASS and STOP visible; no interactive approval or unrelated input
+SYNC_PANES: off by default/unset
+REVIEW_TARGET: Agent Office 3ba65e0 docs-only candidate, clean and upstream equal
+FOUNDATION_DOCS: launcher commit c30062b equals origin/main; unrelated dirty paths preserved
+VERDICT: PASS_READY_TO_SEND
+```
+
 ```text
 DISPATCH_ID:
 OBSERVED_AT:
