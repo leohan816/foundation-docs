@@ -1,10 +1,10 @@
 # Loop State: Agent Office M01
 
-STATE: `BATCH_D_ACCEPTED__BATCH_E_READY_FOR_DISPATCH`
+STATE: `BATCH_E_WORKER_RESULT_VALIDATED__FINAL_DUAL_REVIEW_READY`
 
-CURRENT_WORK_UNIT: `AO-WU-10`
+CURRENT_WORK_UNIT: `AO-WU-13`
 
-WORKUNIT_PROGRESS: `10/15 COMPLETED`
+WORKUNIT_PROGRESS: `12/15 COMPLETED`
 
 REQUIRED_GATE_PROGRESS: `2/7 ENTRY_AND_DESIGN_REVIEW_PASSED`
 
@@ -14,15 +14,16 @@ KILL_SWITCH: `DISENGAGED`
 
 WORKER_SESSION: `agent-office/$13/%13`
 
-WORKER_PROCESS: `codex_v0.144.1__gpt-5.6-sol_ultra__READY_FOR_BATCH_E`
+WORKER_PROCESS: `codex_v0.144.1__gpt-5.6-sol_ultra__FINAL_RESULT_RETURNED__IDLE`
 
 REVIEWER_SESSION: `reviewer-fable5/$5/%5__IDLE`
 
 NEXT:
 
-1. route exact Batch E handoff to the same Codex Ultra Worker;
-2. validate loopback server/auth/CSRF/SSE/PWA/recovery evidence directly;
-3. route full implementation review only after Batch E and final Worker result.
+1. route exact final dual-review handoff to the same Fable5 Reviewer;
+2. require independent classification of AO-E-R1 and AO-E-R2;
+3. patch through the same Worker/Reviewer loop or return a material security and
+   scope decision to Leo/GPT according to the exact verdict.
 
 FABLE5_INITIAL_VERDICT: `NEEDS_PATCH`
 
@@ -58,7 +59,14 @@ BATCH_D_TESTS: `35_FILES__155_TESTS__PLAYWRIGHT_15_OF_15__BUILD_AUDIT_PASS`
 
 BATCH_D_REWORK: `AO-D-R1_CLOSED__INVALID_CAPABILITY_FAILS_CLOSED`
 
-BLOCKERS: none.
+OPEN_REVIEW_FINDINGS:
+
+- `AO-E-R1`: fixture-only browser composition and no integrated executable
+  private runtime;
+- `AO-E-R2`: decision `authorityRole` parsed but not durably linked.
+
+BLOCKERS: final mission closure is blocked pending independent review and the
+resulting patch or Leo/GPT decision route.
 
 PUBLIC_EXPOSURE: forbidden.
 

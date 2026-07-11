@@ -27,9 +27,9 @@
     {"id":"AO-WU-08","phase":"IMPLEMENTATION_B","actor":"Agent Office Worker","title":"Read-only tmux, Git, artifact adapters, and dashboard","status":"COMPLETED","dependsOn":["AO-WU-07"]},
     {"id":"AO-WU-09","phase":"IMPLEMENTATION_C","actor":"Agent Office Worker","title":"Structured event-driven animated office scene","status":"COMPLETED","dependsOn":["AO-WU-08"]},
     {"id":"AO-WU-10","phase":"IMPLEMENTATION_D","actor":"Agent Office Worker","title":"Advisor Inbox, alerts, GPT package, and acknowledgement","status":"COMPLETED","dependsOn":["AO-WU-09"]},
-    {"id":"AO-WU-11","phase":"IMPLEMENTATION_E","actor":"Agent Office Worker","title":"Responsive PWA, security, recovery, and end-to-end tests","status":"READY","dependsOn":["AO-WU-10"]},
-    {"id":"AO-WU-12","phase":"WORKER_RESULT","actor":"Agent Office Worker","title":"Publish evidence-bearing implementation result","status":"WAITING_DEPENDENCY","dependsOn":["AO-WU-11"]},
-    {"id":"AO-WU-13","phase":"IMPLEMENTATION_REVIEW","actor":"Fable5 Reviewer","title":"Independent Level 3 implementation review","status":"WAITING_DEPENDENCY","dependsOn":["AO-WU-12"]},
+    {"id":"AO-WU-11","phase":"IMPLEMENTATION_E","actor":"Agent Office Worker","title":"Responsive PWA, security, recovery, and end-to-end tests","status":"COMPLETED","dependsOn":["AO-WU-10"]},
+    {"id":"AO-WU-12","phase":"WORKER_RESULT","actor":"Agent Office Worker","title":"Publish evidence-bearing implementation result","status":"COMPLETED","dependsOn":["AO-WU-11"]},
+    {"id":"AO-WU-13","phase":"IMPLEMENTATION_REVIEW","actor":"Fable5 Reviewer","title":"Independent Level 3 implementation review","status":"READY","dependsOn":["AO-WU-12"]},
     {"id":"AO-WU-14","phase":"PRIVATE_RUN_VERIFY","actor":"Advisor","title":"Verify private server, desktop/mobile UI, PWA, and evidence","status":"WAITING_DEPENDENCY","dependsOn":["AO-WU-13"]},
     {"id":"AO-WU-15","phase":"FINAL_AUDIT","actor":"Advisor","title":"Final mission audit and Leo/GPT pointer","status":"WAITING_DEPENDENCY","dependsOn":["AO-WU-14"]}
   ],
