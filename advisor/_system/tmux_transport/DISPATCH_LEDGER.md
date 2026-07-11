@@ -1266,6 +1266,6 @@ PARALLEL_ISOLATION_EVIDENCE: one exact Worker pane; serial implementation; no br
 SOFT_STALL_SECONDS: 180
 HARD_TIMEOUT_SECONDS_OR_NONE: none; transient capacity/API errors require readiness revalidation before one idempotent continue
 PREFLIGHT_VERDICT: PASS_READY_TO_SEND
-SENT_AT: PENDING_EXACT_TRANSPORT
-STATUS: PREFLIGHT_PASSED
+SENT_AT: 2026-07-11T20:01:13Z via exact tmux buffer to agent-office/%13
+STATUS: RUNNING
 ```
