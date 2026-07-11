@@ -1,6 +1,6 @@
 # Agent Office M01 LocalBootstrap Private-Run Gate
 
-Status: `FABLE5_DUAL_REVIEW_RUNNING`
+Status: `FABLE5_DUAL_PASS__PRIVATE_RUN_PREPARATION_AUTHORIZED`
 
 - [00_INTAKE.md](00_INTAKE.md)
 - [01_ADVISOR_BRIEF.md](01_ADVISOR_BRIEF.md)
@@ -14,6 +14,8 @@ Status: `FABLE5_DUAL_REVIEW_RUNNING`
 - [13_FABLE5_DUAL_REVIEW_HANDOFF_PROMPT.md](13_FABLE5_DUAL_REVIEW_HANDOFF_PROMPT.md)
 - [13_FABLE5_DUAL_REVIEW_RUN_PROMPT.md](13_FABLE5_DUAL_REVIEW_RUN_PROMPT.md)
 - [13_FABLE5_DUAL_REVIEW_DISPATCH_RECORD.md](13_FABLE5_DUAL_REVIEW_DISPATCH_RECORD.md)
+- [14_FABLE5_DUAL_REVIEW_RESULT_POINTER.md](14_FABLE5_DUAL_REVIEW_RESULT_POINTER.md)
 
-Worker implementation is validated and ready for independent dual review. No
-real credential, private run, or tmux delivery is active at this stage.
+Worker implementation and independent dual review passed. The authorized
+owner-only loopback private-run verification is next. Real tmux delivery remains
+inactive and forbidden.
