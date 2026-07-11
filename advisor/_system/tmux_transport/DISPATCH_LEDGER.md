@@ -669,6 +669,41 @@ SENT_AT:
 STATUS:
 ```
 
+## AO-M1.2-DESIGN-20260711T164328Z
+
+```text
+DISPATCH_ID: AO-M1.2-DESIGN-20260711T164328Z
+MISSION_ID: AGENT_OFFICE_M1_2_SPATIAL_ANIMATED_ADVISOR_TEAM_OFFICE
+TARGET_ACTOR: Agent Office Worker
+TARGET_SESSION: agent-office
+TARGET_WINDOW: 0
+TARGET_PANE: 0
+OBSERVED_PANE_ID: %13
+WORKSPACE: /home/leo/Project/agent-office
+PROCESS: codex PID 2754606, gpt-5.6-sol ultra
+ROLE_EVIDENCE: same existing Agent Office Worker session; prior M01 result and STOP visible; active repo-local role instructions
+READINESS_EVIDENCE: idle Codex prompt with default placeholder; no active task, approval, auth, privilege, or interactive request
+SYNCHRONIZED_PANES_OFF: true (window option unset, tmux default off)
+LAUNCHER_ABSOLUTE_PATH: /home/leo/Project/foundation-docs/advisor/jobs/20260711_agent_office_m1_2_spatial_animated_advisor_team_office/06_WORKER_DESIGN_RUN_PROMPT.md
+LAUNCHER_REPO_RELATIVE_PATH: advisor/jobs/20260711_agent_office_m1_2_spatial_animated_advisor_team_office/06_WORKER_DESIGN_RUN_PROMPT.md
+LAUNCHER_COMMIT_SHA: 498f2f5823796571c97ab217d658d2480f045970
+LAUNCHER_GIT_BLOB: 2a9ac08d86fa4305b26bb14b9425e96a3ef89b7a
+LAUNCHER_SHA256_WORKTREE: 0590c5968d58bb5aedb9a2a5ef1c9824e9e69d360e5b312830bd9338e125f4c3
+LAUNCHER_SHA256_COMMITTED: 0590c5968d58bb5aedb9a2a5ef1c9824e9e69d360e5b312830bd9338e125f4c3
+UPSTREAM_EVIDENCE: foundation-docs 498f2f5 equals origin/main; Agent Office clean base 2f663304 equals origin/shadow/agent-office-m01
+RESULT_PATH: ../foundation-docs/runs/agent-office/20260711_agent_office_m1_2_spatial_animated_advisor_team_office/WORKER_DESIGN_RESULT.md
+POINTER_PATH: ../foundation-docs/advisor/jobs/20260711_agent_office_m1_2_spatial_animated_advisor_team_office/11_WORKER_DESIGN_RESULT_POINTER.md
+WRITE_REPO_BRANCHES: agent-office/shadow/agent-office-m1-2-spatial-office docs-only then foundation-docs/main exact result and pointer only
+DEPENDENCY_LOCKS: M01 closed; M1.2 design explicitly opened; no Agent Office or Reviewer task active; no concurrent foundation-docs write mission observed
+BLIND_INDEPENDENCE_RULE: Worker must not read or write future Fable5 verdict artifacts and may not self-review
+PARALLEL_ISOLATION_EVIDENCE: serial one-pane dispatch; no broadcast, synchronized panes, agents, or sub-agents
+SOFT_STALL_SECONDS: 180
+HARD_TIMEOUT_SECONDS_OR_NONE: none; capacity errors require idle/readiness revalidation before exact continuation
+PREFLIGHT_VERDICT: PASS_READY_TO_SEND
+SENT_AT: pending exact committed buffer transport
+STATUS: READY_TO_SEND
+```
+
 ## AO-M01-FINAL-REWORK-DELTA-REVIEW-20260711T074301Z
 
 ```text

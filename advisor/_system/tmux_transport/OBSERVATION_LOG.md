@@ -298,6 +298,21 @@ ACTION_TAKEN: verified exact session/pane/workspace/process, role continuity, sy
 NEXT_OBSERVATION_DUE: 180 seconds or on progress/result/interactive signal
 ```
 
+## 2026-07-11T16:43:28Z — Agent Office M1.2 design pre-dispatch
+
+```text
+DISPATCH_ID: AO-M1.2-DESIGN-20260711T164328Z
+TARGET: agent-office/$13/@13/%13
+WORKSPACE: /home/leo/Project/agent-office
+PROCESS: codex child PID 2754606 under pane shell PID 2703903
+MODEL_EFFORT_EVIDENCE: pane footer gpt-5.6-sol ultra
+READINESS: idle prompt; prior M01 STOP visible; no interactive approval or unrelated input
+SYNC_PANES: off by default/unset
+REPO: clean shadow/agent-office-m01 at 2f663304, upstream equal 0/0
+FOUNDATION_DOCS: launcher commit 498f2f5 equals origin/main; unrelated dirty paths preserved
+VERDICT: PASS_READY_TO_SEND
+```
+
 ```text
 DISPATCH_ID:
 OBSERVED_AT:
