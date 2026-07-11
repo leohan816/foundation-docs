@@ -536,6 +536,36 @@ ACTION_TAKEN: exact committed launcher sent through one named tmux buffer; execu
 NEXT_OBSERVATION_DUE: 180 seconds or on progress/result/interactive/capacity signal
 ```
 
+### AO-M1.2-B-UI-A11Y-ASSET-REVIEW-20260711T210430Z - completion with coverage defect
+
+```text
+DISPATCH_ID: AO-M1.2-B-UI-A11Y-ASSET-REVIEW-20260711T210430Z
+OBSERVED_AT: 2026-07-11T21:11:00Z
+PANE_ID: %5
+OUTPUT_FINGERPRINT: Fable5 PASS pointer commit 3e29df7 and STOP
+LAST_PROGRESS_MARKER: result/pointer pushed; desktop directly viewed; five PNGs disclosed as mechanically verified only
+STATE: COMPLETED_REPORTED__ADVISOR_REVIEW_COVERAGE_CORRECTION_REQUIRED
+INTERACTIVE_PROMPT_PRESENT: false
+SENSITIVE_OUTPUT_SUSPECTED: false
+ACTION_TAKEN: captured and read exact result; rejected incomplete direct-visual coverage; prepared same-reviewer narrow correction
+NEXT_OBSERVATION_DUE: correction preflight
+```
+
+## AO-M1.2-B-VISUAL-COVERAGE-CORRECTION-20260711T211344Z
+
+```text
+DISPATCH_ID: AO-M1.2-B-VISUAL-COVERAGE-CORRECTION-20260711T211344Z
+OBSERVED_AT: 2026-07-11T21:13:44Z
+PANE_ID: %5
+OUTPUT_FINGERPRINT: AO12-B PASS/STOP and idle Claude prompt
+LAST_PROGRESS_MARKER: no newer Reviewer task active; exact correction launcher published
+STATE: WAITING_EXPECTED
+INTERACTIVE_PROMPT_PRESENT: false
+SENSITIVE_OUTPUT_SUSPECTED: false
+ACTION_TAKEN: verified same session/pane/workspace/process/role, synchronization off, exact launcher commit/blob/checksum, correction scope, and upstream state; no input sent yet
+NEXT_OBSERVATION_DUE: immediately after exact launcher transport
+```
+
 ### AO-M1.2-A-IMPLEMENTATION-REVIEW-20260711T194558Z - completion
 
 ```text

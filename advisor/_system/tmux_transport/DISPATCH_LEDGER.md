@@ -44,6 +44,42 @@ SENT_AT: 2026-07-11T04:43:13Z
 STATUS: RUNNING
 ```
 
+## AO-M1.2-B-VISUAL-COVERAGE-CORRECTION-20260711T211344Z
+
+```text
+DISPATCH_ID: AO-M1.2-B-VISUAL-COVERAGE-CORRECTION-20260711T211344Z
+MISSION_ID: AGENT_OFFICE_M1_2_SPATIAL_ANIMATED_ADVISOR_TEAM_OFFICE
+TARGET_ACTOR: Fable5 Sentinel-ReReview
+TARGET_SESSION: reviewer-fable5
+TARGET_WINDOW: 0
+TARGET_PANE: 0
+OBSERVED_PANE_ID: %5
+WORKSPACE: /home/leo/Project/foundation-control
+PROCESS: claude child PID 765045 under pane shell PID 764416
+MODEL_EFFORT_EVIDENCE: same Fable5 Max / Level 3 session that wrote result 3e29df7
+ROLE_EVIDENCE: AO12-B PASS result and STOP visible; same independent Reviewer context
+READINESS_EVIDENCE: idle Claude prompt; no task, approval, auth, privilege, DB, secret, production, or interactive prompt active
+SYNCHRONIZED_PANES_OFF: true; pane_synchronized=0
+LAUNCHER_ABSOLUTE_PATH: /home/leo/Project/foundation-docs/advisor/jobs/20260711_agent_office_m1_2_spatial_animated_advisor_team_office/38_FABLE5_AO12_B_VISUAL_COVERAGE_CORRECTION_RUN_PROMPT.md
+LAUNCHER_REPO_RELATIVE_PATH: advisor/jobs/20260711_agent_office_m1_2_spatial_animated_advisor_team_office/38_FABLE5_AO12_B_VISUAL_COVERAGE_CORRECTION_RUN_PROMPT.md
+LAUNCHER_COMMIT_SHA: da816f9
+LAUNCHER_GIT_BLOB: 8f2f2f0ff43043e87a265468c44b1e5ff6b5fc78
+LAUNCHER_SHA256_WORKTREE: fed077a1bfae7c919798647e1256924a6bf2158611830e9d1b24e547bf3d007a
+LAUNCHER_SHA256_COMMITTED: fed077a1bfae7c919798647e1256924a6bf2158611830e9d1b24e547bf3d007a
+UPSTREAM_EVIDENCE: foundation-docs da816f9 equals origin/main; Agent Office clean 4b751c6 equals upstream
+REVIEW_TARGET: directly inspect five previously unviewed PNGs and correct review question 13/result basis only
+RESULT_PATH: existing AO12-B Fable5 result, corrected in place
+POINTER_PATH: existing AO12-B Fable5 pointer, corrected in place
+WRITE_REPO_BRANCHES: foundation-docs/main corrected result/pointer only; Agent Office read-only
+DEPENDENCY_LOCKS: AO12-B not accepted; AO12-C/D blocked; Worker idle; same-reviewer correction serialized
+PARALLEL_ISOLATION_EVIDENCE: one exact Reviewer pane; no broadcast or synchronized panes
+SOFT_STALL_SECONDS: 180
+HARD_TIMEOUT_SECONDS_OR_NONE: none; transient capacity/API errors require same-session readiness revalidation before one idempotent continue
+PREFLIGHT_VERDICT: PASS_READY_TO_SEND
+SENT_AT: pending exact tmux buffer transport
+STATUS: PREFLIGHT_COMPLETE_NOT_SENT
+```
+
 ### AO-M1.2-B-IMPLEMENTATION-20260711T200005Z - verified completion
 
 ```text
