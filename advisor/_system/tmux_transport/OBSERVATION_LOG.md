@@ -5,6 +5,21 @@ Transport state: `ACTIVE`
 General active-mode execution observations: none. The one-time bootstrap reload
 observations are recorded below.
 
+## AO-M01-BATCH-C-VISUAL-REWORK-COMPLETION-20260711T013000Z
+
+```text
+DISPATCH_ID: AO-M01-BATCH-C-VISUAL-REWORK-20260711T010544Z
+OBSERVED_AT: 2026-07-11T01:30:00Z
+PANE_ID: %13
+OUTPUT_FINGERPRINT: corrected Batch C pointer / target ad74b9e / STOP
+LAST_PROGRESS_MARKER: three baselines and corrected result/pointer pushed
+STATE: COMPLETED_REPORTED__ADVISOR_LOCALE_REVALIDATION_NEEDS_PATCH
+INTERACTIVE_PROMPT_PRESENT: false
+SENSITIVE_OUTPUT_SUSPECTED: false
+ACTION_TAKEN: Advisor reproduced caller-locale split and prepared exact locale-normalization rework
+NEXT_OBSERVATION_DUE: after exact locale rework dispatch
+```
+
 ## AO-M01-BATCH-C-VALIDATION-20260711T010544Z
 
 ```text
