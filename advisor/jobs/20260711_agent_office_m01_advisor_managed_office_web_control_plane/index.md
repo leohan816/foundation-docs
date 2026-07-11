@@ -28,6 +28,10 @@ Status: `ENTRY_PASSED__ONBOARDING`
 - `22_ADVISOR_BATCH_A_VALIDATION.md`
 - `23_WORKER_BATCH_B_HANDOFF_PROMPT.md`
 - `23_WORKER_BATCH_B_RUN_PROMPT.md`
+- `24_WORKER_BATCH_B_RESULT_POINTER.md`
+- `25_ADVISOR_BATCH_B_VALIDATION.md`
+- `26_WORKER_BATCH_C_HANDOFF_PROMPT.md`
+- `26_WORKER_BATCH_C_RUN_PROMPT.md`
 - `10_MISSION_MANIFEST.json`
 - `11_LOOP_STATE.md`
 
@@ -38,5 +42,5 @@ Status: `ENTRY_PASSED__ONBOARDING`
 - private remote: `https://github.com/leohan816/agent-office`
 - implementation branch: `shadow/agent-office-m01`
 
-Batch A is implemented, directly validated, and accepted as the Batch B
-dependency. Batch B is ready for exact serial routing; Batch C is not authorized.
+Batch B is implemented, directly validated, and accepted as the Batch C
+dependency. Batch C is ready for exact serial routing; Batch D is not authorized.

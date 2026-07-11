@@ -1,10 +1,10 @@
 # Loop State: Agent Office M01
 
-STATE: `BATCH_A_ACCEPTED__BATCH_B_RUNNING`
+STATE: `BATCH_B_ACCEPTED__BATCH_C_READY`
 
-CURRENT_WORK_UNIT: `AO-WU-08`
+CURRENT_WORK_UNIT: `AO-WU-09`
 
-WORKUNIT_PROGRESS: `7/15 COMPLETED`
+WORKUNIT_PROGRESS: `8/15 COMPLETED`
 
 REQUIRED_GATE_PROGRESS: `2/7 ENTRY_AND_DESIGN_REVIEW_PASSED`
 
@@ -14,15 +14,15 @@ KILL_SWITCH: `DISENGAGED`
 
 WORKER_SESSION: `agent-office/$13/%13`
 
-WORKER_PROCESS: `codex_v0.144.1__gpt-5.6-sol_ultra__RUNNING_BATCH_B`
+WORKER_PROCESS: `codex_v0.144.1__gpt-5.6-sol_ultra__BATCH_B_COMPLETE`
 
 REVIEWER_SESSION: `reviewer-fable5/$5/%5__IDLE`
 
 NEXT:
 
-1. observe Batch B without interference and collect its durable result;
-2. verify read-only boundaries, dashboard, tests, commits, and as-built docs;
-3. route Batch C only after Batch B acceptance.
+1. route exact implementation Batch C to the same Codex Ultra Worker;
+2. verify structured mapping, visual screenshots, accessibility, tests, commits, and as-built docs;
+3. route Batch D only after Batch C acceptance.
 
 FABLE5_INITIAL_VERDICT: `NEEDS_PATCH`
 
@@ -37,6 +37,12 @@ BATCH_A_VERDICT: `PASS__ACCEPTED_AS_BATCH_B_DEPENDENCY`
 BATCH_A_TARGET: `7edc8f79bedb059ab6697e64ddaf57fbebde2c87 / 4a2813a8b21269fe59bd26f7667d6983204e0eef`
 
 BATCH_A_TESTS: `15_FILES__36_TESTS_PASS__LINT_TYPECHECK_BUILD_AUDIT_PASS`
+
+BATCH_B_VERDICT: `PASS__ACCEPTED_AS_BATCH_C_DEPENDENCY`
+
+BATCH_B_TARGET: `85e66d856e33a0df73041cb4b33aba30a8f9f96d / 927c05875803fa321d391ecf62f322015e54d37b`
+
+BATCH_B_TESTS: `23_FILES__84_TESTS_PASS__READ_ONLY_SMOKE_BUILD_AUDIT_PASS`
 
 BLOCKERS: none.
 

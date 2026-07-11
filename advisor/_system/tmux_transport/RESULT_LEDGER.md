@@ -5,6 +5,33 @@ Transport state: `ACTIVE`
 General active-mode results: none. The one-time bootstrap reload results are
 recorded below.
 
+## AO-M01-BATCH-B-20260710T214500Z
+
+```text
+DISPATCH_ID: AO-M01-BATCH-B-20260710T214500Z
+MISSION_ID: AGENT_OFFICE_M01_ADVISOR_MANAGED_OFFICE_WEB_CONTROL_PLANE
+TARGET_ACTOR: Agent Office Worker
+PANE_COMPLETION_REPORTED: true
+RESULT_FILE: ../foundation-docs/runs/agent-office/20260711_agent_office_m01_advisor_managed_office_web_control_plane/WORKER_BATCH_B_RESULT.md
+POINTER_FILE: ../foundation-docs/advisor/jobs/20260711_agent_office_m01_advisor_managed_office_web_control_plane/24_WORKER_BATCH_B_RESULT_POINTER.md
+RESULT_FILE_EXISTS: true
+POINTER_FILE_EXISTS: true
+ALLOWED_FILES: Batch B observation/dashboard/tests/assets plus materially affected canonical docs and exact result/pointer
+ACTUAL_CHANGED_FILES: exact Batch B scope; 45 target files plus result and pointer
+DIFF_VERIFIED: true; code 85e66d8, as-built docs 927c058, result 4619eae, pointer 4c3693c
+TEST_EVIDENCE_VERIFIED: Advisor reran npm ci, lint, typecheck, 23 files/84 tests, core/dashboard build, audit, and loopback response
+COMMIT_SHA: 927c05875803fa321d391ecf62f322015e54d37b
+BRANCH: shadow/agent-office-m01
+UPSTREAM: origin/shadow/agent-office-m01
+PUSH_AND_ANCESTRY_VERIFIED: true; local equals upstream and remote ref
+RUNTIME_STATUS_VERIFIED: read-only adapters and static dashboard only; no mutation/server authority/PWA/DB/secret/exposure
+REVIEW_VERDICT_AND_COVERAGE: final independent implementation review remains after all batches
+CONTRADICTIONS: none material; disclosed early Unicode progress glyph is non-behavioral
+ADVISOR_RESULT_VERDICT: PASS__BATCH_B_ACCEPTED_AS_BATCH_C_DEPENDENCY
+NEXT_ACTOR: Agent Office Worker Batch C
+RECORDED_AT: 2026-07-11T00:00:02Z
+```
+
 ## AO-M01-BATCH-A-20260710T204442Z
 
 ```text
