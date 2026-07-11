@@ -89,8 +89,8 @@ PARALLEL_ISOLATION_EVIDENCE: one exact Reviewer pane; serialized review; no broa
 SOFT_STALL_SECONDS: 180
 HARD_TIMEOUT_SECONDS_OR_NONE: none; transient capacity/API errors require same-session readiness revalidation before one idempotent continue
 PREFLIGHT_VERDICT: PASS_READY_TO_SEND
-SENT_AT: pending exact tmux buffer transport
-STATUS: PREFLIGHT_COMPLETE_NOT_SENT
+SENT_AT: 2026-07-11T21:07:29Z via exact tmux buffer to reviewer-fable5/%5
+STATUS: RUNNING
 ```
 
 ### AO-M01-BATCH-D-REWORK-20260711T041851Z
