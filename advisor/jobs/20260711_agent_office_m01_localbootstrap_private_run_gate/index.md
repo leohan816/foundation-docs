@@ -1,6 +1,6 @@
 # Agent Office M01 LocalBootstrap Private-Run Gate
 
-Status: `FABLE5_DUAL_PASS__PRIVATE_RUN_PREPARATION_AUTHORIZED`
+Status: `LOCALBOOTSTRAP_PRIVATE_RUN_PASS__AWAITING_REAL_ADVISOR_DELIVERY_ACTIVATION_DECISION`
 
 - [00_INTAKE.md](00_INTAKE.md)
 - [01_ADVISOR_BRIEF.md](01_ADVISOR_BRIEF.md)
@@ -15,7 +15,10 @@ Status: `FABLE5_DUAL_PASS__PRIVATE_RUN_PREPARATION_AUTHORIZED`
 - [13_FABLE5_DUAL_REVIEW_RUN_PROMPT.md](13_FABLE5_DUAL_REVIEW_RUN_PROMPT.md)
 - [13_FABLE5_DUAL_REVIEW_DISPATCH_RECORD.md](13_FABLE5_DUAL_REVIEW_DISPATCH_RECORD.md)
 - [14_FABLE5_DUAL_REVIEW_RESULT_POINTER.md](14_FABLE5_DUAL_REVIEW_RESULT_POINTER.md)
+- [15_PRIVATE_RUN_EVIDENCE.md](15_PRIVATE_RUN_EVIDENCE.md)
+- [05_FINAL_AUDIT.md](05_FINAL_AUDIT.md)
+- [16_REAL_ADVISOR_DELIVERY_ACTIVATION_DECISION_PACKAGE.md](16_REAL_ADVISOR_DELIVERY_ACTIVATION_DECISION_PACKAGE.md)
 
-Worker implementation and independent dual review passed. The authorized
-owner-only loopback private-run verification is next. Real tmux delivery remains
-inactive and forbidden.
+Worker implementation, independent dual review, and the actual owner-only
+loopback private-run verification passed. Real tmux delivery remains inactive;
+the next action is a separate Leo/GPT decision.

@@ -1,6 +1,6 @@
 # Loop State - Agent Office LocalBootstrap Gate
 
-STATE: `FABLE5_DUAL_PASS__PRIVATE_RUN_PREPARATION_AUTHORIZED`
+STATE: `LOCALBOOTSTRAP_PRIVATE_RUN_PASS__AWAITING_REAL_ADVISOR_DELIVERY_ACTIVATION_DECISION`
 
 PARENT_WORK_UNIT: `AO-WU-14_PRIVATE_RUN_VERIFY`
 
@@ -12,7 +12,7 @@ REVIEWER: `reviewer-fable5/$5/%5__DESIGN_PASS__IMPLEMENTATION_SECURITY_PASS`
 
 SAFE_DEFAULT: `AUTH_BLOCKED_READ_ONLY__NO_REAL_DELIVERY`
 
-REAL_CREDENTIAL_STATUS: `NOT_CREATED`
+REAL_CREDENTIAL_STATUS: `CREATED_ONCE_PER_RUN__CONSUMED_OR_RECOVERED__NO_VALUE_REMAINS`
 
 WORKER_RESULT: `../foundation-docs/runs/agent-office/20260711_agent_office_m01_localbootstrap_private_run_gate/WORKER_RESULT.md`
 
@@ -20,5 +20,11 @@ ADVISOR_VALIDATION: `12_ADVISOR_WORKER_VALIDATION.md`
 
 FABLE5_RESULT: `../foundation-docs/advisor/jobs/20260711_agent_office_m01_localbootstrap_private_run_gate/14_FABLE5_DUAL_REVIEW_RESULT_POINTER.md`
 
-NEXT: perform the authorized owner-only LocalBootstrap loopback private-run
-verification. Real Advisor delivery remains inactive and forbidden.
+PRIVATE_RUN_EVIDENCE: `15_PRIVATE_RUN_EVIDENCE.md`
+
+FINAL_GATE_AUDIT: `05_FINAL_AUDIT.md`
+
+DECISION_PACKAGE: `16_REAL_ADVISOR_DELIVERY_ACTIVATION_DECISION_PACKAGE.md`
+
+NEXT: return the decision package to Leo/GPT. Real Advisor delivery remains
+inactive and forbidden until a separate explicit decision and reviewed mission.
