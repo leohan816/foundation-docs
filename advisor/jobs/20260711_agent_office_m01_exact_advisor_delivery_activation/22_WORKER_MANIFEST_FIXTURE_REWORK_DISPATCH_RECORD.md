@@ -1,0 +1,22 @@
+# Manifest Fixture Rework Dispatch Record
+
+```text
+DISPATCH_STATUS: PREPARED
+MISSION_ID: AGENT_OFFICE_M01_EXACT_ADVISOR_DELIVERY_ACTIVATION
+TARGET_ACTOR: Agent Office Worker-Rework
+TARGET_SESSION: agent-office
+TARGET_SESSION_ID: $13
+TARGET_WINDOW_ID: @13
+TARGET_PANE_ID: %13
+TARGET_WORKSPACE: /home/leo/Project/agent-office
+TARGET_PROCESS: codex
+MODEL: Codex 5.6 SOL
+EFFORT: Ultra
+LAUNCHER_PATH: advisor/jobs/20260711_agent_office_m01_exact_advisor_delivery_activation/22_WORKER_MANIFEST_FIXTURE_REWORK_RUN_PROMPT.md
+LAUNCHER_COMMIT: 19ddcfc38fed9464c489b4ea8bfecf450a69f5fb
+LAUNCHER_BLOB: 15a79e13876d6d6c7de0193625e5a9e3cc843b89
+LAUNCHER_SHA256: 72b678b0d402fe473f56efde05aae2064112cbf529e6685b1b88bf19fc569df0
+TRANSPORT: exact tmux buffer paste to one verified pane
+BROADCAST: forbidden
+RETURN_TO: Advisor
+```
