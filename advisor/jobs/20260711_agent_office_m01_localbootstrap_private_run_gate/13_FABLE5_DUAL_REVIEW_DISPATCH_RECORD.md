@@ -1,6 +1,6 @@
 # Fable5 Dual Review Dispatch Record
 
-STATUS: `PREPARED_NOT_SENT`
+STATUS: `DISPATCHED_RUNNING`
 
 - MISSION_ID: `AGENT_OFFICE_M01_LOCALBOOTSTRAP_PRIVATE_RUN_GATE`
 - TARGET_ACTOR: `Fable5 Reviewer`
@@ -23,6 +23,10 @@ STATUS: `PREPARED_NOT_SENT`
 - POINTER_PATH:
   `../foundation-docs/advisor/jobs/20260711_agent_office_m01_localbootstrap_private_run_gate/14_FABLE5_DUAL_REVIEW_RESULT_POINTER.md`
 - PREPARED_AT: `2026-07-11T11:28:14Z`
+- SENT_AT: `2026-07-11T11:28:59Z`
+- TRANSPORT_RESULT: exact checksum reverified and the committed launcher was
+  delivered once through unique tmux buffer `ao-localbootstrap-fable5-20260711`
+  to exact pane `%5`; the pane began reading the new task.
 - TIMEOUT_POLICY: observe at bounded intervals; do not auto-answer approvals,
   authentication, privilege, secret, DB, protected-branch, production, live, or
   scope-expansion prompts.
