@@ -1,28 +1,36 @@
 # Agent Office Worker Batch C Result
 
-Status: `BATCH_C_IMPLEMENTED_TESTED_PUSHED__PENDING_ADVISOR_ACCEPTANCE__RETURN_TO_ADVISOR`
+Status: `BATCH_C_VISUAL_BASELINES_CORRECTED_TESTED_PUSHED__PENDING_ADVISOR_REVALIDATION__RETURN_TO_ADVISOR`
 
-This is a factual Worker implementation report. It is not an independent review,
-Batch D authorization, risk acceptance, private-run verification, final approval,
-or permission to start another mission.
+This factual Worker record preserves the original Batch C implementation history
+and adds the authorized visual-baseline rework after Advisor invalidated the
+original screenshot evidence. It is not an independent review, Batch D
+authorization, risk acceptance, private-run verification, final approval, or
+permission to start another mission.
 
 ## 1. Identity and Exact Authority
 
 - MISSION_ID: `AGENT_OFFICE_M01_ADVISOR_MANAGED_OFFICE_WEB_CONTROL_PLANE`
 - WORK_UNIT: `AO-WU-09`
-- ACTOR: `Agent Office Worker`
-- WORK_MODE: `IMPLEMENTATION_BATCH_C__STRUCTURED_EVENT_OFFICE_SCENE`
+- ACTOR: `Agent Office Worker-Rework` in the same existing Worker session
+- WORK_MODE:
+  `IMPLEMENTATION_BATCH_C_REWORK__VISUAL_BASELINE_CONFORMANCE_ONLY`
 - TARGET_PROJECT: `Agent Office`
 - TARGET_REPO: `/home/leo/Project/agent-office`
 - TARGET_BRANCH: `shadow/agent-office-m01`
-- STARTING_BASE: `927c05875803fa321d391ecf62f322015e54d37b`
+- ORIGINAL_BATCH_C_STARTING_BASE:
+  `927c05875803fa321d391ecf62f322015e54d37b`
+- REWORK_STARTING_BASE:
+  `6d53b493652c5e149d0ebfc2b2e6163b08986b24`
 - BATCH_B_DEPENDENCY_VERDICT:
   `PASS__BATCH_B_ACCEPTED_AS_BATCH_C_DEPENDENCY`
 - EFFECTIVE_CODE_CONFIG_TEST_ASSET_COMMIT:
   `e30a6cda52e14a4bf30b2d1b7445fa26645496e5`
 - FINAL_AS_BUILT_DOCS_COMMIT:
   `6d53b493652c5e149d0ebfc2b2e6163b08986b24`
-- RESULTING_HEAD: `6d53b493652c5e149d0ebfc2b2e6163b08986b24`
+- VISUAL_BASELINE_CORRECTION_COMMIT:
+  `ad74b9e8f98298269534676237a66cfaac055e00`
+- RESULTING_HEAD: `ad74b9e8f98298269534676237a66cfaac055e00`
 - EXISTING_SESSION: same existing `agent-office` Worker session/context
 - ASSIGNED_MODEL_EFFORT: `gpt-5.6-sol / ultra`
 - AGENT_SUBAGENT_DELEGATION_STATUS: `NONE`
@@ -34,12 +42,13 @@ or permission to start another mission.
 - FOUNDATION_DOCS_RESULT_COMMIT: recorded in the committed pointer after this
   result-only commit is created.
 
-The exact committed Batch C handoff, current repository instructions, all seven
-canonical documents, Batch A/B code and evidence, both Advisor validations,
-current mission manifest, Fable5 design PASS, branch/upstream, foundation entry
-and pointer records, and actual source tree were read directly. Terminal pane
-prose was not read or used as authority. No agent, sub-agent, delegated model
-context, temporary session, new Worker, or reviewer context was created.
+The exact committed Batch C handoff, visual-rework handoff, Advisor validation,
+committed visual-rework clarification, current repository instructions, all
+seven canonical documents, Batch A/B code and evidence, current mission
+manifest, Fable5 design PASS, branch/upstream, foundation entry and pointer
+records, and actual source tree were read directly. Terminal pane prose was not
+read or used as authority. No agent, sub-agent, delegated model context,
+temporary session, new Worker, or reviewer context was created.
 
 ## 2. Authorized Scope Delivered
 
@@ -92,7 +101,7 @@ completion and browser preference state cannot alter durable domain state.
 ## 3. Exact Changed Files
 
 The target diff from base `927c05875803fa321d391ecf62f322015e54d37b`
-through final HEAD `6d53b493652c5e149d0ebfc2b2e6163b08986b24`
+through corrected final HEAD `ad74b9e8f98298269534676237a66cfaac055e00`
 contains exactly 35 files (`3576 insertions`, `127 deletions`):
 
 ### Package/config
@@ -193,20 +202,31 @@ order/duration. All spatial sequences are 1200 ms or less.
 - Component/browser checks cover status text+icon+shape, semantic list,
   roving keyboard focus, visible outline, 44px controls, live regions, motion
   preference, visibility pause, and static resume.
-- The three committed baselines contain deterministic fixture data only, never
-  system/user state:
+- At `6d53b493652c5e149d0ebfc2b2e6163b08986b24`, the three original
+  committed baselines contained deterministic fixture data only, never
+  system/user state. Their stale historical SHA-256 values were:
   - desktop SHA-256:
     `6fd498959b750e5f728cb2a4ae7641ab52680e3e0bf8b2c381f56b227afdd675`;
   - mobile SHA-256:
     `fe53c3a884fc8962b1c376786506f6d63fc5efcedc194a8f080b83e0d09cfe8c`;
   - reduced-motion SHA-256:
     `9204e74ea5961aab80dcee29a973ff63a2d2981669ee0db3eef70c70dc499a32`.
+  These historical hashes are preserved because Advisor later proved that the
+  images did not portably conform to the effective code/runtime. Section 13
+  records the corrected hashes.
 - Code-native scene asset source SHA-256:
   `abdeeae29cb351a7739684f7e059130e3e1c11cf02f42dd8f8caccb63db5de72`.
 - No CDN, remote image, tracking pixel, user SVG execution, model/provider logo,
   raster claim, or unrecorded third-party visual asset exists.
 
-## 6. Verification Commands and Outcomes
+## 6. Original Verification Record and Advisor Invalidation
+
+The table below preserves the original Worker verification record at
+`6d53b493652c5e149d0ebfc2b2e6163b08986b24`. Advisor's later direct
+validation invalidated its screenshot-comparison row: only 7/10 browser checks
+passed in that runtime because all three baselines diverged. Section 13
+supersedes the visual and final verification evidence while retaining this
+history.
 
 Final checks on the exact committed target tree:
 
@@ -278,15 +298,18 @@ weakened.
 - Separate corrected as-built docs commit:
   `6d53b493652c5e149d0ebfc2b2e6163b08986b24`
   (`Document refined Batch C actor cues`).
+- Visual-baseline evidence correction:
+  `ad74b9e8f98298269534676237a66cfaac055e00`
+  (`Refresh Batch C visual baselines`).
 - Both implementation passes used explicit-path staging and code/assets preceded
   the matching as-built documentation.
 - Pushes were non-force updates on `shadow/agent-office-m01`; no main/protected
   target action occurred.
-- Base -> initial code -> initial docs -> cue correction -> corrected docs is a
-  strict ancestor chain.
+- Base -> initial code -> initial docs -> cue correction -> corrected docs ->
+  visual-baseline correction is a strict ancestor chain.
 - Final target staged: `0`; unstaged: `0`; untracked: `0`.
 - Local HEAD, configured upstream, remote-tracking branch, and direct remote ref
-  are exactly `6d53b493652c5e149d0ebfc2b2e6163b08986b24`.
+  are exactly `ad74b9e8f98298269534676237a66cfaac055e00`.
 - Ignored `node_modules/`, `dist/`, browser cache, `test-results/`, and
   `playwright-report/` are not committed evidence.
 - No force push, rebase, history rewrite, main push/merge, destructive Git, or
@@ -301,10 +324,20 @@ weakened.
   keyboard/checklist/document/tool motion, persistent Leo decision evidence, and
   new assertions. Final unresolved code defects:
   `NONE_KNOWN_AFTER_FINAL_VERIFICATION`.
+- `TEST_EVIDENCE_STALE`: Advisor reproduced three screenshot failures at
+  `6d53b493652c5e149d0ebfc2b2e6163b08986b24` and directly confirmed
+  that fallback font metrics dominated the runtime-dependent divergence. The
+  original baselines came from `22baff7cf0d1cb6ccd41d1c9f810af37a53e1413`,
+  while effective cue code was later refined in
+  `e30a6cda52e14a4bf30b2d1b7445fa26645496e5`. The three images were
+  regenerated under the configured local runtime and corrected in
+  `ad74b9e8f98298269534676237a66cfaac055e00`. No product source,
+  config, dependency, or test logic changed.
 - `DOCUMENTATION_STALE`: Batch-B-pending, Batch-C-not-implemented, old asset hash,
   test-count, and initial cue evidence became stale. Only README and the seven
   materially affected canonical documents were updated in separate docs commits.
-- `DEFERRED_WITH_GATE`: Batch D/E, Advisor Inbox/gateway, HTTP authority/server,
+- `DEFERRED_WITH_GATE`: Batch D/E, including Batch E browser/font runtime
+  operations and portability verification, Advisor Inbox/gateway, HTTP authority/server,
   auth/SSE/PWA/service worker, recovery operations, remote hosts/private network,
   real credentials, Hermes, DB, public/production/live/deployment, backup, and
   restore remain at their named gates.
@@ -343,7 +376,7 @@ requirement; no credential was requested from the user, supplied, read, or
 stored. Browser libraries/fonts were instead extracted into the existing local
 Playwright cache and were not committed.
 
-## 11. Foundation-Docs Publication Discipline
+## 11. Original Foundation-Docs Publication Discipline
 
 - Foundation-docs starting branch: `main`.
 - Starting HEAD and upstream:
@@ -373,9 +406,12 @@ Playwright cache and were not committed.
   exact Ubuntu runtime libraries/fonts were extracted under
   `$HOME/.cache/ms-playwright/local-runtime`; `playwright.config.ts` detects that
   cache. Browser binaries/runtime libraries are not committed.
-- The committed baselines are deterministic for the authorized Chromium/UTC/
-  Korean-locale configuration; unrelated browser/font/platform changes may
-  require an explicitly reviewed baseline update.
+- The corrected baselines are deterministic only for the pinned Playwright
+  Chromium/UTC/Korean-locale configuration plus the local browser/font runtime
+  detected by `playwright.config.ts`. Portable visual determinism is not
+  claimed. Alternate HOME, fontconfig, browser, or platform environments require
+  Batch E operations/portability verification and may require an explicitly
+  reviewed baseline procedure.
 - Dependency audit reports known registry advisories, not proof of absence of all
   supply-chain risk.
 - The concurrent ESLint/Playwright output-directory race described in Section 6
@@ -384,6 +420,145 @@ Playwright cache and were not committed.
 - Advisor must validate this result and decide whether Batch C is accepted as the
   dependency for any separately authorized Batch D handoff. This Worker does not
   route or start Batch D.
+
+## 13. Visual-Baseline Rework Evidence
+
+### 13.1 Authority, Starting State, and Reproduction
+
+- Rework authority:
+  `29_WORKER_BATCH_C_VISUAL_BASELINE_REWORK_HANDOFF_PROMPT.md`.
+- Committed clarification:
+  `29A_WORKER_BATCH_C_VISUAL_REWORK_CLARIFICATION.md`.
+- Target branch, local HEAD, and upstream all started at
+  `6d53b493652c5e149d0ebfc2b2e6163b08986b24` with a clean target
+  worktree.
+- Advisor's direct unmodified validation passed 7/10 browser checks and failed
+  all three visual comparisons:
+  - desktop: `44,206` pixels / `4 percent`;
+  - mobile: `22,409` pixels / `7 percent`;
+  - reduced motion: `43,159` pixels / `4 percent`.
+- Advisor directly inspected the failed received images and, in the committed
+  clarification, identified fallback font metrics as the dominant divergence,
+  not an accepted final cue baseline.
+- The first unmodified run under the configured local runtime passed 10/10
+  because its smaller stale-image differences remained below the unchanged
+  `0.005` ratio. Fresh final-code captures compared exactly against the
+  committed images still reproduced divergence in all three cases:
+  `1,916` desktop pixels, `222` mobile pixels, and
+  `1,216` reduced-motion pixels.
+- An isolated-HOME run with the same pinned browser and extracted shared
+  libraries failed all three selected visual cases with browser/runtime binding
+  errors. Per the committed clarification, this diagnostic plus Advisor's
+  inspected image failures is sufficient reproduction evidence for the local
+  browser/font prerequisite. No tracked test, threshold, source, or config was
+  changed to obtain it.
+
+### 13.2 Exact Correction and Hashes
+
+The explicit command
+`npm run test:e2e -- --update-snapshots=all` regenerated the three
+snapshots under the current authorized local runtime and passed all 10 browser
+tests. The target worktree then contained exactly these three modified paths:
+
+1. `tests/e2e/baselines/office-scene.spec.ts/office-desktop-1440x900.png`
+2. `tests/e2e/baselines/office-scene.spec.ts/office-mobile-390x844.png`
+3. `tests/e2e/baselines/office-scene.spec.ts/office-reduced-motion-1440x900.png`
+
+No other tracked path changed. Corrected dimensions and SHA-256 values:
+
+- desktop: `1440x900`,
+  `9f83ba833daf4fc3cc23c50904414f6275da1d44e63cc5e51310193703851071`;
+- mobile: `390x844`,
+  `5f7ab9bc93c732d38aef20da4e04b2ef33c7815ba25eac40702dc7dcf6f758e4`;
+- reduced motion: `1440x900`,
+  `bbd429f46fd611906cc29465d1ca4d0fc2464fda81b71d07fcbb40d152dc2f30`.
+
+### 13.3 Direct Visual Inspection
+
+- Desktop activity fixture: all eight stations are visible inside the office
+  floor with no overlap, clipping, horizontal loss, or unreadable label. The
+  final reading, working, testing/document, result-writing, review, dependency,
+  and ready states are coherent with the effective cue code.
+- Mobile safety fixture: exactly the intentional page `4 / 4` pair is
+  visible; Cosmile remains stale and Agent Office remains
+  `WAITING_LEO` with `DECISION-AO-WU-09 -> LEO_OFFICE`. Previous
+  is available, next is disabled, selected detail is readable, and there is no
+  horizontal loss or clipping.
+- Reduced-motion delivery fixture: all eight stations remain visible, Agent
+  Office shows the dispatch state and work document, and the spatial route layer
+  is suppressed while state/evidence text remains present.
+- All three images contain only deterministic fixture/product labels and IDs.
+  No system path, username, secret, credential, terminal prose, live state, or
+  user data is visible.
+- No product visual defect was found; therefore no product source patch was
+  authorized or made.
+
+### 13.4 Final Sequential Verification
+
+| Command/check | Rework outcome |
+|---|---|
+| `npm run lint` | Passed, no findings |
+| `npm run typecheck` | Passed under strict TypeScript |
+| `npm test` | 27 files / 123 tests passed |
+| `npm run build` | Core TypeScript and dashboard production builds passed; 1784 modules transformed |
+| `npm run test:e2e` | 2 files / 10 Chromium tests passed against a fresh loopback Vite server |
+| automated axe analysis | Current and safety fixtures: 0 WCAG A/AA violations within the passing suite |
+| `npm audit --audit-level=high` | Passed; 0 vulnerabilities |
+| `git diff --check` | Passed |
+| canonical forbidden-scope scan | Passed; no Batch D/E server/network/SSE/PWA/gateway/inbox/tmux-input/capture/buffer surface and no `src/server`, `src/pwa`, or `src/gateway` |
+| exact changed-path gate | Passed; only the three authorized PNGs changed |
+
+One diagnostic forbidden scan was initially broader than the canonical scope
+gate and matched the existing approved Batch B read-only
+`node:child_process` adapter. The scan was corrected to the exact
+canonical forbidden patterns and passed. No file or assertion changed, and this
+was not a product or verification failure.
+
+### 13.5 Target Commit, Push, Scope, and Runtime Boundary
+
+- Correction commit:
+  `ad74b9e8f98298269534676237a66cfaac055e00`
+  (`Refresh Batch C visual baselines`).
+- The commit has parent
+  `6d53b493652c5e149d0ebfc2b2e6163b08986b24` and contains only the
+  three authorized baseline PNGs.
+- Push was non-force to `shadow/agent-office-m01`.
+- Local HEAD, configured upstream, and direct remote ref all equal
+  `ad74b9e8f98298269534676237a66cfaac055e00`; the target worktree is
+  clean.
+- Product source, CSS, state machine, fixture, component, config, dependency,
+  lockfile, test logic, thresholds, and as-built product documents were
+  unchanged. Batch D was not started.
+- Playwright `1.61.1` uses pinned Chromium revision `1228`.
+  On this minimal host, `playwright.config.ts` detects browser shared
+  libraries and fonts under
+  `$HOME/.cache/ms-playwright/local-runtime/root`. That configured
+  local runtime is a prerequisite for these baseline bytes. Cross-HOME,
+  fontconfig, browser, and platform portability remains an explicit Batch E
+  operations/portability verification item.
+- No DB, schema, migration, secret, credential, auth, privilege, deployment,
+  production/live, public/private-network, main/protected-branch, force-push,
+  reviewer, self-review, risk-acceptance, final-approval, new-session,
+  agent/sub-agent, delegation, tmux-input, observed-repository mutation, or
+  automatic-next-mission action occurred.
+
+### 13.6 Rework Foundation-Docs Publication
+
+- Foundation-docs was `main` and initially equal to upstream at rework
+  dispatch commit `e6fe6275ca7b6a3e108d593f01eb042d8daf16a6`.
+- Before result editing, committed dispatch/clarification transport updates had
+  advanced both local HEAD and upstream to
+  `80b13a0203c4c3c8741e1cd08f1497367c10b441`. They did not overlap
+  this result or pointer.
+- Pre-existing unrelated dirt remained and was preserved:
+  - modified `advisor/_system/AGENTS.md`;
+  - modified `advisor/_system/README.md`;
+  - modified
+    `advisor/jobs/20260709_v3_11c2_worker_brief/06_WORKER_RUN_PROMPT.md`;
+  - untracked `advisor/jobs/20260709_reviewer_selection_protocol/`;
+  - untracked `advisor/jobs/20260709_role_result_storage_protocol/`.
+- Only this existing result is committed first; only the exact existing pointer
+  is committed afterward so it can identify the immutable result commit.
 
 RETURN_TO: `Advisor`
 
