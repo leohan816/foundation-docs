@@ -1,12 +1,13 @@
 # Agent Office Worker Batch C Result
 
-Status: `BATCH_C_VISUAL_BASELINES_CORRECTED_TESTED_PUSHED__PENDING_ADVISOR_REVALIDATION__RETURN_TO_ADVISOR`
+Status: `BATCH_C_LOCALE_DETERMINISM_CORRECTED_TESTED_PUSHED__PENDING_ADVISOR_REVALIDATION__RETURN_TO_ADVISOR`
 
 This factual Worker record preserves the original Batch C implementation history
-and adds the authorized visual-baseline rework after Advisor invalidated the
-original screenshot evidence. It is not an independent review, Batch D
-authorization, risk acceptance, private-run verification, final approval, or
-permission to start another mission.
+and adds the authorized visual-baseline and caller-locale determinism reworks
+after Advisor invalidated the original screenshot evidence and then proved that
+the visual runtime inherited the invoking shell locale. It is not an independent
+review, Batch D authorization, risk acceptance, private-run verification, final
+approval, or permission to start another mission.
 
 ## 1. Identity and Exact Authority
 
@@ -14,23 +15,29 @@ permission to start another mission.
 - WORK_UNIT: `AO-WU-09`
 - ACTOR: `Agent Office Worker-Rework` in the same existing Worker session
 - WORK_MODE:
-  `IMPLEMENTATION_BATCH_C_REWORK__VISUAL_BASELINE_CONFORMANCE_ONLY`
+  `IMPLEMENTATION_BATCH_C_REWORK__PLAYWRIGHT_LOCALE_DETERMINISM_ONLY`
 - TARGET_PROJECT: `Agent Office`
 - TARGET_REPO: `/home/leo/Project/agent-office`
 - TARGET_BRANCH: `shadow/agent-office-m01`
 - ORIGINAL_BATCH_C_STARTING_BASE:
   `927c05875803fa321d391ecf62f322015e54d37b`
-- REWORK_STARTING_BASE:
+- VISUAL_REWORK_STARTING_BASE:
   `6d53b493652c5e149d0ebfc2b2e6163b08986b24`
+- LOCALE_REWORK_STARTING_BASE:
+  `ad74b9e8f98298269534676237a66cfaac055e00`
 - BATCH_B_DEPENDENCY_VERDICT:
   `PASS__BATCH_B_ACCEPTED_AS_BATCH_C_DEPENDENCY`
 - EFFECTIVE_CODE_CONFIG_TEST_ASSET_COMMIT:
   `e30a6cda52e14a4bf30b2d1b7445fa26645496e5`
-- FINAL_AS_BUILT_DOCS_COMMIT:
+- ORIGINAL_FINAL_AS_BUILT_DOCS_COMMIT:
   `6d53b493652c5e149d0ebfc2b2e6163b08986b24`
 - VISUAL_BASELINE_CORRECTION_COMMIT:
   `ad74b9e8f98298269534676237a66cfaac055e00`
-- RESULTING_HEAD: `ad74b9e8f98298269534676237a66cfaac055e00`
+- LOCALE_CONFIG_TEST_COMMIT:
+  `243d3a5731a6b22c29caeaba6567aed505f78d59`
+- LOCALE_AS_BUILT_DOCS_COMMIT:
+  `b94c2a06ec064ed0cc659bac8b9ef7555d7aea73`
+- RESULTING_HEAD: `b94c2a06ec064ed0cc659bac8b9ef7555d7aea73`
 - EXISTING_SESSION: same existing `agent-office` Worker session/context
 - ASSIGNED_MODEL_EFFORT: `gpt-5.6-sol / ultra`
 - AGENT_SUBAGENT_DELEGATION_STATUS: `NONE`
@@ -42,13 +49,14 @@ permission to start another mission.
 - FOUNDATION_DOCS_RESULT_COMMIT: recorded in the committed pointer after this
   result-only commit is created.
 
-The exact committed Batch C handoff, visual-rework handoff, Advisor validation,
-committed visual-rework clarification, current repository instructions, all
-seven canonical documents, Batch A/B code and evidence, current mission
-manifest, Fable5 design PASS, branch/upstream, foundation entry and pointer
-records, and actual source tree were read directly. Terminal pane prose was not
-read or used as authority. No agent, sub-agent, delegated model context,
-temporary session, new Worker, or reviewer context was created.
+The exact committed Batch C handoff, visual-rework handoff and clarification,
+Advisor visual validation, Advisor locale root-cause record, locale-rework
+handoff, current repository instructions, materially affected canonical
+documents, prior result/pointer, Batch A/B code and evidence, current mission
+manifest, Fable5 design PASS, branch/upstream, foundation entry records, and
+actual source tree were read directly. Terminal pane prose was not read or used
+as authority. No agent, sub-agent, delegated model context, temporary session,
+new Worker, or reviewer context was created.
 
 ## 2. Authorized Scope Delivered
 
@@ -101,8 +109,8 @@ completion and browser preference state cannot alter durable domain state.
 ## 3. Exact Changed Files
 
 The target diff from base `927c05875803fa321d391ecf62f322015e54d37b`
-through corrected final HEAD `ad74b9e8f98298269534676237a66cfaac055e00`
-contains exactly 35 files (`3576 insertions`, `127 deletions`):
+through corrected final HEAD `b94c2a06ec064ed0cc659bac8b9ef7555d7aea73`
+contains exactly 35 files (`3692 insertions`, `128 deletions`):
 
 ### Package/config
 
@@ -301,15 +309,22 @@ weakened.
 - Visual-baseline evidence correction:
   `ad74b9e8f98298269534676237a66cfaac055e00`
   (`Refresh Batch C visual baselines`).
+- Playwright process-locale config/test correction:
+  `243d3a5731a6b22c29caeaba6567aed505f78d59`
+  (`Normalize Playwright process locale`).
+- Separate locale-aware as-built docs commit:
+  `b94c2a06ec064ed0cc659bac8b9ef7555d7aea73`
+  (`Document deterministic Playwright locale`).
 - Both implementation passes used explicit-path staging and code/assets preceded
   the matching as-built documentation.
 - Pushes were non-force updates on `shadow/agent-office-m01`; no main/protected
   target action occurred.
 - Base -> initial code -> initial docs -> cue correction -> corrected docs ->
-  visual-baseline correction is a strict ancestor chain.
+  visual-baseline correction -> locale config/test correction -> locale-aware
+  docs is a strict ancestor chain.
 - Final target staged: `0`; unstaged: `0`; untracked: `0`.
 - Local HEAD, configured upstream, remote-tracking branch, and direct remote ref
-  are exactly `ad74b9e8f98298269534676237a66cfaac055e00`.
+  are exactly `b94c2a06ec064ed0cc659bac8b9ef7555d7aea73`.
 - Ignored `node_modules/`, `dist/`, browser cache, `test-results/`, and
   `playwright-report/` are not committed evidence.
 - No force push, rebase, history rewrite, main push/merge, destructive Git, or
@@ -322,8 +337,12 @@ weakened.
   work/test/review cues were too abstract for the handoff wording. This was fixed
   in `e30a6cda52e14a4bf30b2d1b7445fa26645496e5` with visible courier actors,
   keyboard/checklist/document/tool motion, persistent Leo decision evidence, and
-  new assertions. Final unresolved code defects:
-  `NONE_KNOWN_AFTER_FINAL_VERIFICATION`.
+  new assertions. Advisor later found a separate test-configuration defect:
+  Playwright, Chromium/fontconfig, and its loopback server inherited the caller
+  locale. That defect was fixed in
+  `243d3a5731a6b22c29caeaba6567aed505f78d59` without changing
+  product behavior. Final unresolved code defects after both-locale verification:
+  `NONE_KNOWN`.
 - `TEST_EVIDENCE_STALE`: Advisor reproduced three screenshot failures at
   `6d53b493652c5e149d0ebfc2b2e6163b08986b24` and directly confirmed
   that fallback font metrics dominated the runtime-dependent divergence. The
@@ -336,8 +355,8 @@ weakened.
 - `DOCUMENTATION_STALE`: Batch-B-pending, Batch-C-not-implemented, old asset hash,
   test-count, and initial cue evidence became stale. Only README and the seven
   materially affected canonical documents were updated in separate docs commits.
-- `DEFERRED_WITH_GATE`: Batch D/E, including Batch E browser/font runtime
-  operations and portability verification, Advisor Inbox/gateway, HTTP authority/server,
+- `DEFERRED_WITH_GATE`: Batch D/E, including cross-host/browser/font
+  runtime operations and portability verification, Advisor Inbox/gateway, HTTP authority/server,
   auth/SSE/PWA/service worker, recovery operations, remote hosts/private network,
   real credentials, Hermes, DB, public/production/live/deployment, backup, and
   restore remain at their named gates.
@@ -406,12 +425,14 @@ Playwright cache and were not committed.
   exact Ubuntu runtime libraries/fonts were extracted under
   `$HOME/.cache/ms-playwright/local-runtime`; `playwright.config.ts` detects that
   cache. Browser binaries/runtime libraries are not committed.
-- The corrected baselines are deterministic only for the pinned Playwright
-  Chromium/UTC/Korean-locale configuration plus the local browser/font runtime
-  detected by `playwright.config.ts`. Portable visual determinism is not
-  claimed. Alternate HOME, fontconfig, browser, or platform environments require
-  Batch E operations/portability verification and may require an explicitly
-  reviewed baseline procedure.
+- The corrected baselines are deterministic for the pinned Playwright
+  Chromium/UTC/Korean-browser-locale configuration plus the local browser/font
+  runtime detected by `playwright.config.ts`. The invoking shell's
+  `C.UTF-8` versus `ko_KR.UTF-8` locale no longer changes the
+  result because the configuration normalizes Playwright, Chromium, and the
+  loopback web server to `ko_KR.UTF-8`. Cross-HOME, fontconfig, browser,
+  host, and platform portability remains a Batch E operations verification item;
+  portable determinism beyond the configured host is not claimed.
 - Dependency audit reports known registry advisories, not proof of absence of all
   supply-chain risk.
 - The concurrent ESLint/Playwright output-directory race described in Section 6
@@ -559,6 +580,153 @@ was not a product or verification failure.
   - untracked `advisor/jobs/20260709_role_result_storage_protocol/`.
 - Only this existing result is committed first; only the exact existing pointer
   is committed afterward so it can identify the immutable result commit.
+
+## 14. Caller-Locale Determinism Rework Evidence
+
+### 14.1 Authority, Starting State, and Exact Reproduction
+
+- Root-cause authority:
+  `30_ADVISOR_BATCH_C_LOCALE_ROOT_CAUSE.md`.
+- Rework authority:
+  `31_WORKER_BATCH_C_LOCALE_REWORK_HANDOFF_PROMPT.md`.
+- Target branch, local HEAD, and upstream all started at
+  `ad74b9e8f98298269534676237a66cfaac055e00` with a clean target
+  worktree.
+- Before the patch, the ordinary command from a caller with
+  `LANG=C.UTF-8 LC_ALL=C.UTF-8` passed the seven non-image browser tests
+  but failed all three snapshots:
+  - desktop: `44,576` pixels / `4 percent`;
+  - mobile: `22,540` pixels / `7 percent`;
+  - reduced motion: `43,688` pixels / `4 percent`.
+- The same unmodified target and ordinary command from
+  `LANG=ko_KR.UTF-8 LC_ALL=ko_KR.UTF-8` passed 10/10.
+- The same pinned Playwright/Chromium, local runtime root, tests, and PNG bytes
+  were used. This reproduces that external caller locale, not product state or
+  fixture data, selected different fallback font metrics.
+
+### 14.2 Exact Patch and Contract
+
+Code/config/test commit
+`243d3a5731a6b22c29caeaba6567aed505f78d59` changes exactly:
+
+1. `playwright.config.ts`;
+2. `tests/acceptance/batch-gates.test.ts`.
+
+The configuration:
+
+- defines one `ko_KR.UTF-8` Playwright process locale;
+- normalizes `process.env.LANG` and `process.env.LC_ALL` at the
+  Node/Playwright configuration boundary;
+- explicitly supplies the normalized full process environment to Chromium
+  `launchOptions.env`, including the configured local runtime library and
+  fontconfig paths; and
+- explicitly supplies `LANG` and `LC_ALL` to the loopback Vite
+  `webServer.env`.
+
+The focused acceptance test begins with synthetic `C.UTF-8` values,
+imports the configuration without spawning the browser suite, verifies the pure
+normalizer preserves unrelated environment entries, verifies the Playwright
+process is normalized, and verifies both Chromium and web-server environment
+contracts. It restores all touched test-process values afterward.
+
+No package script prefix, product UI/domain/application source, CSS, threshold,
+baseline, dependency, lockfile, browser test, or fixture changed.
+
+### 14.3 Final Both-Locale Proof and Baselines
+
+On the exact final code/config/test tree:
+
+- `LANG=C.UTF-8 LC_ALL=C.UTF-8 npm run test:e2e`:
+  2 files / 10 tests passed;
+- `LANG=ko_KR.UTF-8 LC_ALL=ko_KR.UTF-8 npm run test:e2e`:
+  2 files / 10 tests passed.
+
+Each invocation used the ordinary repository command, one worker, a fresh
+non-reused loopback Vite server, the pinned Chromium, UTC timezone, and the
+configured Korean browser locale. No shell-only locale prefix is required for
+correctness because the repository configuration overrides either caller.
+
+The normalized final runtime did not change any PNG byte, so no baseline was
+regenerated or committed. Direct inspection again found the desktop eight-role
+activity fixture, mobile safety page `4 / 4`, and reduced-motion
+delivery fixture coherent, readable, unclipped, and free of route leakage or
+non-fixture data. Final hashes remain:
+
+- desktop:
+  `9f83ba833daf4fc3cc23c50904414f6275da1d44e63cc5e51310193703851071`;
+- mobile:
+  `5f7ab9bc93c732d38aef20da4e04b2ef33c7815ba25eac40702dc7dcf6f758e4`;
+- reduced motion:
+  `bbd429f46fd611906cc29465d1ca4d0fc2464fda81b71d07fcbb40d152dc2f30`.
+
+### 14.4 Full Regression and Diagnostic History
+
+| Command/check | Locale-rework outcome |
+|---|---|
+| `npm run lint` | Final pass, no findings |
+| `npm run typecheck` | Passed under strict TypeScript |
+| `npm test` | 27 files / 124 tests passed, including the new locale contract |
+| `npm run build` | Core TypeScript and dashboard production builds passed; 1784 modules transformed |
+| both ordinary caller-locale browser runs | 10/10 under `C.UTF-8` and 10/10 under `ko_KR.UTF-8` |
+| automated axe analysis | Current and safety fixtures: 0 WCAG A/AA violations within each passing browser suite |
+| `npm audit --audit-level=high` | Passed; 0 vulnerabilities |
+| `git diff --check` | Passed |
+| canonical forbidden-scope scan | Passed; no Batch D/E server/network/SSE/PWA/gateway/inbox/tmux-input/capture/buffer surface and no `src/server`, `src/pwa`, or `src/gateway` |
+
+The first full lint run rejected one dynamic `delete` expression in the
+new test's environment-restoration branch. The test-only expression was changed
+to `Reflect.deleteProperty`, after which lint and every required check
+were rerun and passed. A targeted preflight also emitted an npm option-forwarding
+warning while its one file / four tests passed; the authoritative ordinary
+`npm test` command subsequently passed all 124 tests.
+
+### 14.5 As-Built Docs, Git, Push, and Scope
+
+Separate materially affected as-built docs commit
+`b94c2a06ec064ed0cc659bac8b9ef7555d7aea73` updates exactly:
+
+1. `docs/FEATURE_INDEX.md`;
+2. `docs/architecture/AGENT_OFFICE_MASTER_DESIGN.md`;
+3. `docs/operations/AGENT_OFFICE_OPERATIONS_RECOVERY.md`;
+4. `docs/ui/AGENT_OFFICE_UI_ANIMATION_MAPPING.md`.
+
+Domain, integration, security, product UI, and all other docs were materially
+unaffected and unchanged. The docs record 124 tests, the two caller-locale
+proofs, exact commits, unchanged baselines, and cross-host/browser/font
+portability as a Batch E operations verification item.
+
+Both target commits were pushed non-force to
+`shadow/agent-office-m01`. Local HEAD, configured upstream, and direct
+remote ref all equal `b94c2a06ec064ed0cc659bac8b9ef7555d7aea73`,
+with `ad74b9e8f98298269534676237a66cfaac055e00` ->
+`243d3a5731a6b22c29caeaba6567aed505f78d59` ->
+`b94c2a06ec064ed0cc659bac8b9ef7555d7aea73` as a strict ancestor
+chain. The target worktree is clean.
+
+The installed `ko_KR.UTF-8` locale and configured local browser/font
+root remain required on this approved host. Alternate callers on that host are
+now deterministic; alternate HOME, browser/font bundle, host OS, or platform
+remains outside this patch and deferred to Batch E portability verification.
+
+No Batch D/E feature, DB, schema, migration, secret, credential, auth, privilege,
+external exposure, production/live, public/private deployment, main/protected
+branch, force-push, reviewer, self-review, risk acceptance, final approval,
+new-session, agent/sub-agent, delegation, tmux input, observed-repository
+mutation, or automatic-next-mission action occurred.
+
+### 14.6 Locale-Rework Foundation-Docs Publication
+
+- Foundation-docs was `main` with local HEAD and upstream equal to
+  `937bf25c6792330c1029a89b498907a1b1fca146` before this result edit.
+- Pre-existing unrelated dirt remained and was preserved:
+  - modified `advisor/_system/AGENTS.md`;
+  - modified `advisor/_system/README.md`;
+  - modified
+    `advisor/jobs/20260709_v3_11c2_worker_brief/06_WORKER_RUN_PROMPT.md`;
+  - untracked `advisor/jobs/20260709_reviewer_selection_protocol/`;
+  - untracked `advisor/jobs/20260709_role_result_storage_protocol/`.
+- Only this exact existing result is committed first; only the exact existing
+  pointer is committed afterward so it identifies the immutable result commit.
 
 RETURN_TO: `Advisor`
 
