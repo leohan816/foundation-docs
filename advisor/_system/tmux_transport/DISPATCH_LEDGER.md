@@ -881,6 +881,41 @@ STATUS: COMPLETED_REPORTED_AND_CAPTURED
 
 Valid preflight verdicts:
 
+## AO-M01-LOCALBOOTSTRAP-IMPLEMENTATION-20260711T100412Z
+
+```text
+DISPATCH_ID: AO-M01-LOCALBOOTSTRAP-IMPLEMENTATION-20260711T100412Z
+MISSION_ID: AGENT_OFFICE_M01_LOCALBOOTSTRAP_PRIVATE_RUN_GATE
+TARGET_ACTOR: Agent Office Worker
+TARGET_SESSION: agent-office
+TARGET_WINDOW: 0
+TARGET_PANE: 0
+OBSERVED_PANE_ID: %13
+WORKSPACE: /home/leo/Project/agent-office
+PROCESS: codex PID 2703903, gpt-5.6-sol ultra
+ROLE_EVIDENCE: same existing Agent Office Worker session; prior M01 Worker result and STOP visible
+READINESS_EVIDENCE: idle Codex prompt; no active task, approval, auth, privilege, or interactive request
+SYNCHRONIZED_PANES_OFF: true
+LAUNCHER_ABSOLUTE_PATH: /home/leo/Project/foundation-docs/advisor/jobs/20260711_agent_office_m01_localbootstrap_private_run_gate/06_WORKER_RUN_PROMPT.md
+LAUNCHER_REPO_RELATIVE_PATH: advisor/jobs/20260711_agent_office_m01_localbootstrap_private_run_gate/06_WORKER_RUN_PROMPT.md
+LAUNCHER_COMMIT_SHA: 58b41adc2d0f525419c3667bf2d86067721a063e
+LAUNCHER_GIT_BLOB: edcd8e145f0b167db6f078fa6b9a252dabac45aa
+LAUNCHER_SHA256_WORKTREE: 95a556e614e572d6d0de5b422f40845f12c35d73909ffab47a9c0604d7ec0356
+LAUNCHER_SHA256_COMMITTED: 95a556e614e572d6d0de5b422f40845f12c35d73909ffab47a9c0604d7ec0356
+UPSTREAM_EVIDENCE: foundation-docs 58b41ad equals origin/main; Agent Office clean HEAD=upstream=abff45c
+RESULT_PATH: ../foundation-docs/runs/agent-office/20260711_agent_office_m01_localbootstrap_private_run_gate/WORKER_RESULT.md
+POINTER_PATH: ../foundation-docs/advisor/jobs/20260711_agent_office_m01_localbootstrap_private_run_gate/11_WORKER_RESULT_POINTER.md
+WRITE_REPO_BRANCHES: agent-office/shadow/agent-office-m01 then foundation-docs/main exact result and pointer only
+DEPENDENCY_LOCKS: M01 dual review complete; Option B authorized; Reviewer idle; no parallel Agent Office or foundation-docs writer
+BLIND_INDEPENDENCE_RULE: Worker may not read or write future Fable5 verdict artifacts
+PARALLEL_ISOLATION_EVIDENCE: one exact pane target only; no broadcast; no synchronized panes; serial write mission
+SOFT_STALL_SECONDS: 180
+HARD_TIMEOUT_SECONDS_OR_NONE: none; capacity response requires readiness revalidation before retry
+PREFLIGHT_VERDICT: PASS_READY_TO_SEND
+SENT_AT: pending exact committed buffer transport
+STATUS: READY_TO_SEND
+```
+
 - `PASS_READY_TO_SEND`
 - `HOLD_MODE_INACTIVE`
 - `HOLD_KILL_SWITCH`
