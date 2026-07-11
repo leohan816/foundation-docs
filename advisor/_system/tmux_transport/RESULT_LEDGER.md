@@ -336,6 +336,33 @@ NEXT_ACTOR: Leo/GPT
 RECORDED_AT: 2026-07-11T17:18:00Z
 ```
 
+## AO-M1.2-NARROW-DESIGN-PATCH-20260711T175248Z
+
+```text
+DISPATCH_ID: AO-M1.2-NARROW-DESIGN-PATCH-20260711T175248Z
+MISSION_ID: AGENT_OFFICE_M1_2_SPATIAL_ANIMATED_ADVISOR_TEAM_OFFICE
+TARGET_ACTOR: Agent Office Worker-Rework
+PANE_COMPLETION_REPORTED: true
+RESULT_FILE: ../foundation-docs/runs/agent-office/20260711_agent_office_m1_2_spatial_animated_advisor_team_office/WORKER_NARROW_DESIGN_PATCH_RESULT.md
+POINTER_FILE: ../foundation-docs/advisor/jobs/20260711_agent_office_m1_2_spatial_animated_advisor_team_office/18_WORKER_NARROW_DESIGN_PATCH_RESULT_POINTER.md
+RESULT_FILE_EXISTS: true
+POINTER_FILE_EXISTS: true
+ALLOWED_FILES: five exact Agent Office M1.2 docs plus exact Foundation Docs result/pointer
+ACTUAL_CHANGED_FILES: exact allowed files only
+DIFF_VERIFIED: Agent Office 3ba65e0..b7d8cdb is five docs paths, +842/-367; Foundation Docs result 8879750 and pointer 49ac987 exact
+TEST_EVIDENCE_VERIFIED: 22/22 scoped doc/path/token checks; links and diff check pass; runtime tests correctly not claimed
+COMMIT_SHA: b7d8cdb21183bf909a13b902cffc95bf15c68dd9
+BRANCH: shadow/agent-office-m1-2-spatial-office
+UPSTREAM: origin/shadow/agent-office-m1-2-spatial-office
+PUSH_AND_ANCESTRY_VERIFIED: true; parent 3ba65e0 and left/right 0/0
+RUNTIME_STATUS_VERIFIED: zero runtime/source/test/config/dependency/asset/auth/authority/transport change
+REVIEW_VERDICT_AND_COVERAGE: pending same-context Fable5 Level-3 narrow delta review
+CONTRADICTIONS: legacy current-name compatibility tokens remain in three runtime/test paths and are explicitly deferred to AO12-A; no false current gate PASS
+ADVISOR_RESULT_VERDICT: PASS_TO_SAME_CONTEXT_FABLE5_LEVEL3_DELTA_REVIEW
+NEXT_ACTOR: Fable5 Reviewer
+RECORDED_AT: 2026-07-11T18:26:15Z
+```
+
 ## AO-M01-FINAL-DUAL-REVIEW-20260711T062124Z
 
 ```text

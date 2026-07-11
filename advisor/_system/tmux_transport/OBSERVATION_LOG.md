@@ -385,3 +385,33 @@ SENSITIVE_OUTPUT_SUSPECTED: false
 ACTION_TAKEN: verified exact session/pane/workspace/process, role continuity, synchronized panes off, launcher commit/blob/checksum, clean target branch, and upstream equality; exact committed launcher sent through one named tmux buffer and execution confirmed
 NEXT_OBSERVATION_DUE: 180 seconds or on progress/result/interactive signal
 ```
+
+## AO-M1.2-NARROW-DESIGN-PATCH-20260711T175248Z — completion
+
+```text
+DISPATCH_ID: AO-M1.2-NARROW-DESIGN-PATCH-20260711T175248Z
+OBSERVED_AT: 2026-07-11T18:25:00Z
+PANE_ID: %13
+OUTPUT_FINGERPRINT: Worker result pointer with target b7d8cdb, result commit 8879750, and STOP
+LAST_PROGRESS_MARKER: Agent Office b7d8cdb and Foundation Docs pointer 49ac987 both pushed and upstream-equal
+STATE: COMPLETED_REPORTED
+INTERACTIVE_PROMPT_PRESENT: false
+SENSITIVE_OUTPUT_SUSPECTED: false
+ACTION_TAKEN: captured completion, read result/pointer, and directly validated exact five-file delta, ancestry, decision tokens, historical naming boundary, clean worktree, and upstream equality
+NEXT_OBSERVATION_DUE: none; dependent Fable5 delta preflight follows
+```
+
+## AO-M1.2-NARROW-DESIGN-DELTA-REVIEW-20260711T182615Z
+
+```text
+DISPATCH_ID: AO-M1.2-NARROW-DESIGN-DELTA-REVIEW-20260711T182615Z
+OBSERVED_AT: 2026-07-11T18:26:15Z
+PANE_ID: %5
+OUTPUT_FINGERPRINT: prior M1.2 Fable5 PASS and STOP; idle Claude prompt
+LAST_PROGRESS_MARKER: prior review ea8fbd5 complete; no newer Reviewer task active
+STATE: WAITING_EXPECTED
+INTERACTIVE_PROMPT_PRESENT: false
+SENSITIVE_OUTPUT_SUSPECTED: false
+ACTION_TAKEN: verified exact session/pane/workspace/process, same Reviewer continuity, synchronized panes off, launcher commit/blob/checksum, review target cleanliness, and upstream equality; no input sent yet
+NEXT_OBSERVATION_DUE: immediately after exact launcher transport
+```

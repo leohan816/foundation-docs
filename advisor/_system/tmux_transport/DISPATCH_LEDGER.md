@@ -1050,3 +1050,40 @@ PREFLIGHT_VERDICT: PASS_READY_TO_SEND
 SENT_AT: 2026-07-11T17:54:05Z via exact tmux buffer to agent-office/%13
 STATUS: RUNNING
 ```
+
+## AO-M1.2-NARROW-DESIGN-DELTA-REVIEW-20260711T182615Z
+
+```text
+DISPATCH_ID: AO-M1.2-NARROW-DESIGN-DELTA-REVIEW-20260711T182615Z
+MISSION_ID: AGENT_OFFICE_M1_2_SPATIAL_ANIMATED_ADVISOR_TEAM_OFFICE
+TARGET_ACTOR: Fable5 Sentinel-ReReview
+TARGET_SESSION: reviewer-fable5
+TARGET_WINDOW: 0
+TARGET_PANE: 0
+OBSERVED_PANE_ID: %5
+WORKSPACE: /home/leo/Project/foundation-control
+PROCESS: claude child PID 765045 under pane shell PID 764416
+MODEL_EFFORT_EVIDENCE: same existing Fable5 Reviewer session, Fable5 Max
+ROLE_EVIDENCE: prior independent M1.2 design PASS and STOP visible; same Reviewer context
+READINESS_EVIDENCE: idle Claude prompt; no task, approval, auth, privilege, or interactive prompt active
+SYNCHRONIZED_PANES_OFF: true
+LAUNCHER_ABSOLUTE_PATH: /home/leo/Project/foundation-docs/advisor/jobs/20260711_agent_office_m1_2_spatial_animated_advisor_team_office/20_FABLE5_NARROW_DESIGN_DELTA_REVIEW_RUN_PROMPT.md
+LAUNCHER_REPO_RELATIVE_PATH: advisor/jobs/20260711_agent_office_m1_2_spatial_animated_advisor_team_office/20_FABLE5_NARROW_DESIGN_DELTA_REVIEW_RUN_PROMPT.md
+LAUNCHER_COMMIT_SHA: 0d1431efb45295a71250e2bc54e62921b5e3d452
+LAUNCHER_GIT_BLOB: c3e77d30cd4dbf0d070c85025fdc83bac40b6167
+LAUNCHER_SHA256_WORKTREE: bd00e73e438eeb193e221fd5be842a06b6a394e16906144a83e8ef2e7e68e222
+LAUNCHER_SHA256_COMMITTED: bd00e73e438eeb193e221fd5be842a06b6a394e16906144a83e8ef2e7e68e222
+UPSTREAM_EVIDENCE: foundation-docs 0d1431e equals origin/main; Agent Office clean b7d8cdb equals origin/shadow/agent-office-m1-2-spatial-office, left/right 0/0
+REVIEW_TARGET: Agent Office 3ba65e0..b7d8cdb, exact five-document delta
+RESULT_PATH: ../foundation-docs/runs/agent-office/20260711_agent_office_m1_2_spatial_animated_advisor_team_office/FABLE5_M1_2_NARROW_DESIGN_DELTA_REVIEW_RESULT.md
+POINTER_PATH: ../foundation-docs/advisor/jobs/20260711_agent_office_m1_2_spatial_animated_advisor_team_office/21_FABLE5_M1_2_NARROW_DESIGN_DELTA_REVIEW_RESULT_POINTER.md
+WRITE_REPO_BRANCHES: foundation-docs/main exact result/pointer only; Agent Office read-only
+DEPENDENCY_LOCKS: Worker patch returned and directly validated; Agent Office clean; Worker idle; no concurrent Reviewer or foundation-docs writer observed
+BLIND_INDEPENDENCE_RULE: distrust Worker/Advisor conclusions; inspect actual delta/current files; Reviewer cannot patch or implement
+PARALLEL_ISOLATION_EVIDENCE: one exact Reviewer pane; serial after Worker completion; no broadcast/synchronized panes
+SOFT_STALL_SECONDS: 180
+HARD_TIMEOUT_SECONDS_OR_NONE: none; capacity/API errors require readiness revalidation before continuation
+PREFLIGHT_VERDICT: PASS_READY_TO_SEND
+SENT_AT: pending exact tmux buffer transport
+STATUS: READY_TO_SEND
+```
