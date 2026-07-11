@@ -736,7 +736,7 @@ SOFT_STALL_SECONDS: 180
 HARD_TIMEOUT_SECONDS_OR_NONE: none; capacity errors require idle/readiness revalidation before exact continuation
 PREFLIGHT_VERDICT: PASS_READY_TO_SEND
 SENT_AT: 2026-07-11T17:13:12Z via exact tmux buffer to reviewer-fable5/%5
-STATUS: RUNNING
+STATUS: COMPLETED_REPORTED_AND_CAPTURED
 ```
 
 ## AO-M01-FINAL-REWORK-DELTA-REVIEW-20260711T074301Z

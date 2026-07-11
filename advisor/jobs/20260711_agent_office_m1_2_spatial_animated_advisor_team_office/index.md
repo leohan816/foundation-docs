@@ -1,6 +1,6 @@
 # Agent Office M1.2 Spatial Office Design Mission
 
-Status: `FABLE5_LEVEL3_DESIGN_REVIEW_RUNNING`
+Status: `PACKAGE_REVIEWED__AWAITING_LEO_GPT_DESIGN_APPROVAL`
 
 Implementation: `NOT_STARTED_NOT_APPROVED`
 
@@ -19,12 +19,15 @@ Implementation: `NOT_STARTED_NOT_APPROVED`
 - [12_ADVISOR_WORKER_DESIGN_VALIDATION.md](12_ADVISOR_WORKER_DESIGN_VALIDATION.md)
 - [13_FABLE5_DESIGN_REVIEW_HANDOFF_PROMPT.md](13_FABLE5_DESIGN_REVIEW_HANDOFF_PROMPT.md)
 - [13_FABLE5_DESIGN_REVIEW_RUN_PROMPT.md](13_FABLE5_DESIGN_REVIEW_RUN_PROMPT.md)
+- [14_FABLE5_M1_2_DESIGN_REVIEW_RESULT_POINTER.md](14_FABLE5_M1_2_DESIGN_REVIEW_RESULT_POINTER.md)
+- [05_FINAL_AUDIT.md](05_FINAL_AUDIT.md)
+- [15_FINAL_DESIGN_PACKAGE_POINTER.md](15_FINAL_DESIGN_PACKAGE_POINTER.md)
 
 ## Current Routing
 
 The docs-only canonical candidate is published at Agent Office commit
-`3ba65e0092a7c0cebf546c6baecf5bb007314897` and directly validated by Advisor.
-The existing `reviewer-fable5/$5/%5` session now performs independent Level-3
-review with `Fable5 / Max`, including explicit challenge `A-V1`.
+`3ba65e0092a7c0cebf546c6baecf5bb007314897`, directly validated by Advisor, and
+independently reviewed by Fable5 Level 3 with verdict `PASS`. Leo/GPT design
+approval is the next and only active gate.
 
 No implementation launcher exists or is authorized.

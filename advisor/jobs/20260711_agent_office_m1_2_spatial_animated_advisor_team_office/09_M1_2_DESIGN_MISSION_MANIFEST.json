@@ -29,14 +29,14 @@
       "id": "AO12-DWU-04",
       "actor": "Fable5 Reviewer",
       "title": "Independent Level-3 canonical design review",
-      "status": "REVIEWING",
+      "status": "COMPLETED",
       "dependsOn": ["AO12-DWU-03"]
     },
     {
       "id": "AO12-DWU-05",
       "actor": "Advisor",
       "title": "Final design audit and Leo/GPT decision package",
-      "status": "WAITING_DEPENDENCY",
+      "status": "COMPLETED",
       "dependsOn": ["AO12-DWU-04"]
     }
   ],
