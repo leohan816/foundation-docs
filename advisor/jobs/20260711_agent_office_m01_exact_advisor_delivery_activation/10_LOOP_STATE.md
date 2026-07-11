@@ -1,14 +1,14 @@
 # Loop State - Agent Office Exact Advisor Delivery Activation
 
-STATE: `FABLE5_DESIGN_PASS__WORKER_IMPLEMENTATION_READY`
+STATE: `WORKER_IMPLEMENTATION_COMPLETE__FABLE5_IMPLEMENTATION_SECURITY_REVIEW_READY`
 
 MANIFEST_VERSION: `5`
 
 WORKUNIT_TOTAL_CHANGE: `15 -> 21`, Leo/GPT approved
 
-CURRENT_WORKUNIT: `AO-WU-19`
+CURRENT_WORKUNIT: `AO-WU-20`
 
-WORKER: `agent-office/$13/%13__DESIGN_COMPLETE_STOPPED`
+WORKER: `agent-office/$13/@13/%13__IMPLEMENTATION_COMPLETE_STOPPED`
 
 REVIEWER: `reviewer-fable5/$5/@5/%5__DESIGN_PASS_STOPPED`
 
@@ -30,4 +30,8 @@ P_A_REGISTRY_WINDOW_ID: `RECORDED`
 
 P_B_ADVISOR_INBOX_READ_RULE: `PUBLISHED_AND_RELOADED`
 
-NEXT: transport the exact committed implementation launcher to the existing Agent Office Worker session.
+WORKER_IMPLEMENTATION_COMMIT: `889a29b3e75da086a32ac76909a0ce9f4848ddfa`
+
+WORKER_RESULT_COMMIT: `2073eddf22bf58368204e78091c3147b9c36f753`
+
+NEXT: transport the exact committed implementation/security review launcher to the existing Fable5 Reviewer session.
