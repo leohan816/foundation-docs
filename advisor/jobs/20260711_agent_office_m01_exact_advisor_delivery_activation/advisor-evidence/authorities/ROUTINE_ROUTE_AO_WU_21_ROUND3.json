@@ -1,0 +1,22 @@
+{
+  "schemaVersion": "agent-office.decision-authority-evidence.v2",
+  "decisionId": "019f51d2-e170-7384-9505-62475af81356",
+  "missionId": "AGENT_OFFICE_M01_ADVISOR_MANAGED_OFFICE_WEB_CONTROL_PLANE",
+  "authorityRole": "Advisor",
+  "authoritySubjectId": "foundation-advisor",
+  "scope": {
+    "kind": "WORK_UNIT_SET",
+    "workUnitIds": [
+      "AO-WU-21"
+    ]
+  },
+  "decidedAt": "2026-07-11T15:36:42.608Z",
+  "decisionKind": "ROUTINE_ROUTE",
+  "governingLeoAuthorityArtifact": {
+    "repository": "foundation-docs",
+    "commit": "ece774c10e8974382dc187d55693bfa5bb0172eb",
+    "path": "advisor/jobs/20260711_agent_office_m01_exact_advisor_delivery_activation/15_OPTION_A_ACTIVATION_AUTHORITY.md",
+    "sha256": "sha256:d61a6a4b8b882687726fe39b1cc636244d69976b2cb14f75fc9753c35a286bc3"
+  },
+  "decisionCode": "ROUTE_ALREADY_AUTHORIZED_WORK"
+}
