@@ -1,12 +1,12 @@
 # Loop State: Agent Office M01
 
-STATE: `FINAL_DUAL_REVIEW_NEEDS_PATCH__SAME_WORKER_REWORK_READY`
+STATE: `FINAL_DUAL_REVIEW_PASS__AO_WU14_WAITING_LEO_AUTH_POSTURE_DECISION`
 
-CURRENT_WORK_UNIT: `AO-WU-13_REWORK`
+CURRENT_WORK_UNIT: `AO-WU-14_PRIVATE_RUN_VERIFY`
 
-WORKUNIT_PROGRESS: `12/15 COMPLETED`
+WORKUNIT_PROGRESS: `13/15 COMPLETED__1_WAITING_LEO__1_WAITING_DEPENDENCY`
 
-REQUIRED_GATE_PROGRESS: `2/7 ENTRY_AND_DESIGN_REVIEW_PASSED`
+REQUIRED_GATE_PROGRESS: `IMPLEMENTATION_AND_REQUIRED_REVIEWS_PASSED__PRIVATE_RUN_AND_FINAL_APPROVAL_OPEN`
 
 TRANSPORT: `ACTIVE`
 
@@ -14,17 +14,17 @@ KILL_SWITCH: `DISENGAGED`
 
 WORKER_SESSION: `agent-office/$13/%13`
 
-WORKER_PROCESS: `codex_v0.144.1__gpt-5.6-sol_ultra__FINAL_RESULT_RETURNED__IDLE`
+WORKER_PROCESS: `codex_v0.144.1__gpt-5.6-sol_ultra__FINAL_PATCH_RESULT_RETURNED__IDLE`
 
-REVIEWER_SESSION: `reviewer-fable5/$5/%5__DUAL_NEEDS_PATCH_RETURNED__IDLE`
+REVIEWER_SESSION: `reviewer-fable5/$5/%5__FINAL_ROUND2_DUAL_PASS_RETURNED__IDLE`
 
 NEXT:
 
-1. route exact R1/R2 and D-1/D-2/D-3 rework to the same Codex Ultra Worker;
-2. directly validate the integrated loopback composition and authority evidence;
-3. route the exact delta to the same Fable5 Reviewer;
-4. after delta PASS, return the AO-WU-14 private-run auth posture decision to
-   Leo/GPT before private-run closure.
+1. Leo/GPT chooses the AO-WU-14 auth posture in
+   `60_AO_WU14_PRIVATE_RUN_AUTH_DECISION_REQUEST.md`;
+2. do not dispatch Worker or Reviewer while waiting;
+3. preserve `AUTH_BLOCKED / READ_ONLY`, manual fallback, and no real delivery;
+4. final mission closure remains dependent on the Leo/GPT decision.
 
 FABLE5_INITIAL_VERDICT: `NEEDS_PATCH`
 
@@ -60,18 +60,28 @@ BATCH_D_TESTS: `35_FILES__155_TESTS__PLAYWRIGHT_15_OF_15__BUILD_AUDIT_PASS`
 
 BATCH_D_REWORK: `AO-D-R1_CLOSED__INVALID_CAPABILITY_FAILS_CLOSED`
 
-FABLE5_FINAL_DESIGN_VERDICT: `NEEDS_PATCH`
+FABLE5_FIRST_FINAL_DESIGN_VERDICT: `NEEDS_PATCH__SUPERSEDED_BY_FINAL_ROUND2_PASS`
 
-FABLE5_FINAL_IMPLEMENTATION_VERDICT: `NEEDS_PATCH`
+FABLE5_FIRST_FINAL_IMPLEMENTATION_VERDICT: `NEEDS_PATCH__SUPERSEDED_BY_FINAL_ROUND2_PASS`
 
-OPEN_REVIEW_FINDINGS:
+FABLE5_FINAL_ROUND2_DESIGN_VERDICT: `PASS`
+
+FABLE5_FINAL_ROUND2_IMPLEMENTATION_VERDICT: `PASS`
+
+FINAL_REVIEWED_HEAD: `abff45c9925962be29be535685e3efbccd587528`
+
+OPEN_AUTHORITY_DECISION: `AO-WU-14-PRIVATE-RUN-AUTH-POSTURE`
+
+HISTORICAL_REVIEW_FINDINGS__CLOSED:
 
 - `AO-E-R1`: fixture-only browser composition and no integrated executable
-  private runtime;
-- `AO-E-R2`: decision `authorityRole` parsed but not durably linked.
+  private runtime - closed by the reviewed rework chain;
+- `AO-E-R2`: decision `authorityRole` parsed but not durably linked - closed;
+- `AO-E-R3`: synthetic/fail-closed shell not yet an operational projection - closed;
+- `AO-E-R4`: operational config accepted group/other-writable mode - closed.
 
-BLOCKERS: AO-E-R1/AO-E-R2 and D-1/D-2/D-3 require same-Worker patch and
-same-Reviewer delta PASS. AO-WU-14 then requires Leo/GPT auth-posture decision.
+OPEN_BLOCKER: AO-WU-14 requires the Leo/GPT auth-posture decision. There is no
+open Worker or Reviewer defect.
 
 PUBLIC_EXPOSURE: forbidden.
 

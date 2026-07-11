@@ -1,6 +1,25 @@
 # Agent Office M01 Advisor Job
 
-Current state: `FINAL_DUAL_REVIEW_NEEDS_PATCH__SAME_WORKER_REWORK_READY`
+Current state: `FINAL_DUAL_REVIEW_PASS__AO_WU14_WAITING_LEO_AUTH_POSTURE_DECISION`
+
+## Final Round-Two Status
+
+- Final reviewed Agent Office HEAD: `abff45c9925962be29be535685e3efbccd587528`
+- Fable5 design delta verdict: `PASS`
+- Fable5 implementation delta verdict: `PASS`
+- Implementation/documentation status: reviewed complete
+- Operational private-run status: not verified; safe default is `AUTH_BLOCKED / READ_ONLY`
+- Next authority: Leo/GPT AO-WU-14 auth-posture decision
+
+Current artifacts:
+
+- [05_FINAL_AUDIT.md](05_FINAL_AUDIT.md)
+- [56_ADVISOR_FINAL_ROUND2_VALIDATION.md](56_ADVISOR_FINAL_ROUND2_VALIDATION.md)
+- [57_FABLE5_FINAL_ROUND2_DUAL_DELTA_HANDOFF_PROMPT.md](57_FABLE5_FINAL_ROUND2_DUAL_DELTA_HANDOFF_PROMPT.md)
+- [58_FABLE5_FINAL_ROUND2_DUAL_DELTA_RESULT_POINTER.md](58_FABLE5_FINAL_ROUND2_DUAL_DELTA_RESULT_POINTER.md)
+- [59_ADVISOR_FINAL_REVIEW_CONSOLIDATION.md](59_ADVISOR_FINAL_REVIEW_CONSOLIDATION.md)
+- [60_AO_WU14_PRIVATE_RUN_AUTH_DECISION_REQUEST.md](60_AO_WU14_PRIVATE_RUN_AUTH_DECISION_REQUEST.md)
+- [61_ADVISOR_DECISION_POINTER.md](61_ADVISOR_DECISION_POINTER.md)
 
 Final implementation review routing:
 
