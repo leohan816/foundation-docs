@@ -1,8 +1,8 @@
 # Agent Office M1.2 Spatial Office Design Mission
 
-Status: `AO12_A_ACCEPTED__AO12_B_READY_FOR_WORKER`
+Status: `AO12_B_ADVISOR_VALIDATED__WAITING_FABLE5_UI_ACCESSIBILITY_ASSET_REVIEW`
 
-Implementation: `AO12_A_COMPLETED_ACCEPTED__AO12_B_READY__AO12_C_D_WAITING_DEPENDENCY`
+Implementation: `AO12_B_IMPLEMENTED_AND_ADVISOR_VALIDATED__INDEPENDENT_REVIEW_PENDING__AO12_C_D_WAITING_DEPENDENCY`
 
 ## Entry Artifacts
 
@@ -50,6 +50,11 @@ Implementation: `AO12_A_COMPLETED_ACCEPTED__AO12_B_READY__AO12_C_D_WAITING_DEPEN
 - [32_AO12_B_WORKER_BRIEF.md](32_AO12_B_WORKER_BRIEF.md)
 - [32_AO12_B_WORKER_HANDOFF_PROMPT.md](32_AO12_B_WORKER_HANDOFF_PROMPT.md)
 - [32_AO12_B_WORKER_RUN_PROMPT.md](32_AO12_B_WORKER_RUN_PROMPT.md)
+- [33_WORKER_AO12_B_RESULT_POINTER.md](33_WORKER_AO12_B_RESULT_POINTER.md)
+- [34_ADVISOR_AO12_B_VALIDATION.md](34_ADVISOR_AO12_B_VALIDATION.md)
+- [35_FABLE5_AO12_B_UI_ACCESSIBILITY_ASSET_REVIEW_BRIEF.md](35_FABLE5_AO12_B_UI_ACCESSIBILITY_ASSET_REVIEW_BRIEF.md)
+- [35_FABLE5_AO12_B_UI_ACCESSIBILITY_ASSET_REVIEW_HANDOFF_PROMPT.md](35_FABLE5_AO12_B_UI_ACCESSIBILITY_ASSET_REVIEW_HANDOFF_PROMPT.md)
+- [35_FABLE5_AO12_B_UI_ACCESSIBILITY_ASSET_REVIEW_RUN_PROMPT.md](35_FABLE5_AO12_B_UI_ACCESSIBILITY_ASSET_REVIEW_RUN_PROMPT.md)
 
 ## Current Routing
 
@@ -58,5 +63,7 @@ received a clean same-context Fable5 Level-3 `PASS`. Advisor froze the design an
 published implementation manifest v1 with 14 approved WorkUnits. AO12-A is
 implemented at `ecd2652501df55aba0aa0f55c236b1933c6dc1e3` and Advisor direct
 validation passed. Fable5 corrected its factual alias description and returned a
-clean corrected `PASS` at `edd7929`; Advisor accepted AO12-A. AO12-B is now the
-only ready batch, while AO12-C/D remain dependency-gated.
+clean corrected `PASS` at `edd7929`; Advisor accepted AO12-A. AO12-B is
+implemented at `4b751c6`, directly validated by Advisor, and waiting for the
+independent Fable5 Max Level-3 UI/accessibility/asset review. AO12-C/D remain
+dependency-gated and unauthorized.
