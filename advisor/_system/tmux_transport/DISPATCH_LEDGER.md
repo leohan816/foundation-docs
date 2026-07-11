@@ -8,6 +8,42 @@ bootstrap delegation recorded later in this file.
 
 ## Active-Mode Product Dispatches
 
+### AO-M01-BATCH-C-VISUAL-CLARIFICATION-20260711T011700Z
+
+```text
+DISPATCH_ID: AO-M01-BATCH-C-VISUAL-CLARIFICATION-20260711T011700Z
+MISSION_ID: AGENT_OFFICE_M01_ADVISOR_MANAGED_OFFICE_WEB_CONTROL_PLANE
+AUTHORIZATION: SAME_REWORK_IN_SCOPE_ADVISOR_CLARIFICATION
+TARGET_ACTOR: Agent Office Worker-Rework
+TARGET_SESSION: agent-office
+TARGET_WINDOW: 0
+TARGET_PANE: 0
+OBSERVED_PANE_ID: %13
+WORKSPACE: /home/leo/Project/agent-office
+PROCESS: codex v0.144.1, gpt-5.6-sol ultra
+ROLE_EVIDENCE: same active Agent Office Worker rework session
+READINESS_EVIDENCE: Worker reproduced the three failures under isolated HOME and was investigating the same authorized defect
+SYNCHRONIZED_PANES_OFF: true
+LAUNCHER_ABSOLUTE_PATH: /home/leo/Project/foundation-docs/advisor/jobs/20260711_agent_office_m01_advisor_managed_office_web_control_plane/29A_WORKER_BATCH_C_VISUAL_REWORK_CLARIFICATION.md
+LAUNCHER_REPO_RELATIVE_PATH: advisor/jobs/20260711_agent_office_m01_advisor_managed_office_web_control_plane/29A_WORKER_BATCH_C_VISUAL_REWORK_CLARIFICATION.md
+LAUNCHER_COMMIT_SHA: eddba5d7af10455610b0e644ca104f34fc86a468
+LAUNCHER_GIT_BLOB: 73b22d3d26964a527f879f4a082157b695e89f5e
+LAUNCHER_SHA256_WORKTREE: 86fe68212183846ea60698d2dae960d2df17c2cca46e6d6c6805795c620a1e7d
+LAUNCHER_SHA256_COMMITTED: 86fe68212183846ea60698d2dae960d2df17c2cca46e6d6c6805795c620a1e7d
+UPSTREAM_EVIDENCE: foundation-docs main equals origin/main at eddba5d7af10455610b0e644ca104f34fc86a468
+RESULT_PATH: same Batch C result path
+POINTER_PATH: same Batch C pointer path
+WRITE_REPO_BRANCHES: unchanged from parent rework dispatch
+DEPENDENCY_LOCKS: parent rework active; clarification narrows and does not create concurrent work
+BLIND_INDEPENDENCE_RULE: unchanged
+PARALLEL_ISOLATION_EVIDENCE: same serial task steering only
+SOFT_STALL_SECONDS: inherited
+HARD_TIMEOUT_SECONDS_OR_NONE: inherited
+PREFLIGHT_VERDICT: PASS_READY_TO_SEND
+SENT_AT: PENDING_AFTER_COMMITTED_LEDGER
+STATUS: READY_TO_SEND
+```
+
 ### AO-M01-BATCH-C-VISUAL-REWORK-20260711T010544Z
 
 ```text
