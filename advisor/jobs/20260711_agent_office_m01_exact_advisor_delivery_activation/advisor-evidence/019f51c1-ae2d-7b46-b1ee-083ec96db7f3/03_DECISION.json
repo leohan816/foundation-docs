@@ -1,0 +1,40 @@
+{
+  "schemaVersion": "agent-office.advisor-decision-evidence.v1",
+  "missionId": "AGENT_OFFICE_M01_ADVISOR_MANAGED_OFFICE_WEB_CONTROL_PLANE",
+  "requestId": "019f51c7-2334-7fb8-ad2e-2e22be23778f",
+  "messageId": "019f51c1-ae2d-7b46-b1ee-083ec96db7f3",
+  "decisionId": "019f51c6-e775-70e2-84ae-dbd38711ea15",
+  "decisionKind": "ROUTINE_ROUTE",
+  "authorityRole": "Advisor",
+  "authoritySubjectId": "foundation-advisor",
+  "scope": {
+    "kind": "WORK_UNIT_SET",
+    "workUnitIds": [
+      "AO-WU-21"
+    ]
+  },
+  "decidedAt": "2026-07-11T15:23:37.717Z",
+  "intakeArtifact": {
+    "repository": "foundation-docs",
+    "commit": "1c6abef7df7c5334cca21c6724b51e3374d49623",
+    "path": "advisor/jobs/20260711_agent_office_m01_exact_advisor_delivery_activation/advisor-evidence/019f51c1-ae2d-7b46-b1ee-083ec96db7f3/02_INTAKE.json",
+    "sha256": "sha256:d775d42a9437de29cb9293949aea10f3d5fef34b90f4e183c51b17c66fc996a8"
+  },
+  "governingLeoAuthorityArtifact": {
+    "repository": "foundation-docs",
+    "commit": "961e619374b6659766a0542ba0f9e49459dc34ff",
+    "path": "advisor/jobs/20260711_agent_office_m01_exact_advisor_delivery_activation/15_OPTION_A_ACTIVATION_AUTHORITY.md",
+    "sha256": "sha256:d61a6a4b8b882687726fe39b1cc636244d69976b2cb14f75fc9753c35a286bc3"
+  },
+  "decisionAuthorityArtifact": {
+    "repository": "foundation-docs",
+    "commit": "1c6abef7df7c5334cca21c6724b51e3374d49623",
+    "path": "advisor/jobs/20260711_agent_office_m01_exact_advisor_delivery_activation/advisor-evidence/authorities/ROUTINE_ROUTE_AO_WU_21.json",
+    "sha256": "sha256:741aec60299a8890d42bff19bd895a2a6d5632fe86b05a2e35a8e44231397b2e"
+  },
+  "decisionCode": "ROUTE_ALREADY_AUTHORIZED_WORK",
+  "evidenceRefs": [
+    "already-authorized-option-a-route",
+    "ao-wu-21-only"
+  ]
+}
