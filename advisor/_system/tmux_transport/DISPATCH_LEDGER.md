@@ -669,6 +669,41 @@ SENT_AT:
 STATUS:
 ```
 
+## AO-M01-FINAL-REWORK-DELTA-REVIEW-20260711T074301Z
+
+```text
+DISPATCH_ID: AO-M01-FINAL-REWORK-DELTA-REVIEW-20260711T074301Z
+MISSION_ID: AGENT_OFFICE_M01_ADVISOR_MANAGED_OFFICE_WEB_CONTROL_PLANE
+TARGET_ACTOR: Fable5 Reviewer Re-Review
+TARGET_SESSION: reviewer-fable5
+TARGET_WINDOW: 0
+TARGET_PANE: 0
+OBSERVED_PANE_ID: %5
+WORKSPACE: /home/leo/Project/foundation-control
+PROCESS: claude PID 764416, Fable5 Max review role
+ROLE_EVIDENCE: same existing independent Reviewer session; prior Agent Office dual NEEDS_PATCH result and /fable-sentinel review context visible
+READINESS_EVIDENCE: empty Claude input prompt after prior STOP; no active task, approval, auth, privilege, or interactive request
+SYNCHRONIZED_PANES_OFF: true
+LAUNCHER_ABSOLUTE_PATH: /home/leo/Project/foundation-docs/advisor/jobs/20260711_agent_office_m01_advisor_managed_office_web_control_plane/48_FABLE5_FINAL_REWORK_DELTA_RUN_PROMPT.md
+LAUNCHER_REPO_RELATIVE_PATH: advisor/jobs/20260711_agent_office_m01_advisor_managed_office_web_control_plane/48_FABLE5_FINAL_REWORK_DELTA_RUN_PROMPT.md
+LAUNCHER_COMMIT_SHA: baf6854fe34ca1f222d1c4c57bc8cd2b378cb7f2
+LAUNCHER_GIT_BLOB: 6d3870bb64e79fd36072f0200514b17536620215
+LAUNCHER_SHA256_WORKTREE: a3e87fb3c9b447b9d4c53602f08fded927e60b401688a37e86a1899c15dc6994
+LAUNCHER_SHA256_COMMITTED: a3e87fb3c9b447b9d4c53602f08fded927e60b401688a37e86a1899c15dc6994
+UPSTREAM_EVIDENCE: foundation-docs baf6854 equals origin/main; Agent Office clean HEAD=upstream=3bd0e8f
+RESULT_PATH: two FABLE5_FINAL_*_DELTA_REREVIEW_RESULT.md files under the Agent Office M01 run directory
+POINTER_PATH: ../foundation-docs/advisor/jobs/20260711_agent_office_m01_advisor_managed_office_web_control_plane/49_FABLE5_FINAL_REWORK_DELTA_RESULT_POINTER.md
+WRITE_REPO_BRANCHES: foundation-docs/main, exact two review files and one pointer only
+DEPENDENCY_LOCKS: Worker final rework returned; Agent Office clean; no concurrent Agent Office or Reviewer task; serial review
+BLIND_INDEPENDENCE_RULE: Reviewer distrusts Worker and Advisor claims, reads actual code/diffs/tests/docs, and does not patch
+PARALLEL_ISOLATION_EVIDENCE: one exact pane target only; no broadcast; no synchronized panes; no other reviewer dispatch
+SOFT_STALL_SECONDS: 180
+HARD_TIMEOUT_SECONDS_OR_NONE: none; capacity response requires readiness revalidation before retry
+PREFLIGHT_VERDICT: PASS_READY_TO_SEND
+SENT_AT: pending exact committed buffer transport
+STATUS: READY_TO_SEND
+```
+
 ## AO-M01-FINAL-REWORK-20260711T063218Z
 
 ```text
