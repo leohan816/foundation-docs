@@ -1,5 +1,22 @@
 # tmux Result Ledger
 
+## AO-M01-BATCH-D-20260711T030920Z
+
+```text
+DISPATCH_ID: AO-M01-BATCH-D-20260711T030920Z
+MISSION_ID: AGENT_OFFICE_M01_ADVISOR_MANAGED_OFFICE_WEB_CONTROL_PLANE
+TARGET_ACTOR: Agent Office Worker
+RESULT_STATUS: RETURNED__ADVISOR_VALIDATED_NEEDS_PATCH
+RESULT_PATH: ../foundation-docs/runs/agent-office/20260711_agent_office_m01_advisor_managed_office_web_control_plane/WORKER_BATCH_D_RESULT.md
+POINTER_PATH: ../foundation-docs/advisor/jobs/20260711_agent_office_m01_advisor_managed_office_web_control_plane/34_WORKER_BATCH_D_RESULT_POINTER.md
+TARGET_COMMIT: 6f93dcd209da6219f9c8f240470034cb639db3d7
+TARGET_PUSH: verified local equals origin/shadow/agent-office-m01
+FOUNDATION_DOCS_POINTER_COMMIT: dc50698be52ade1a7eab24e1be62561347841c09
+ADVISOR_VALIDATION: ../foundation-docs/advisor/jobs/20260711_agent_office_m01_advisor_managed_office_web_control_plane/35_ADVISOR_BATCH_D_VALIDATION.md
+VERDICT: AO-D-R1_CAPABILITY_RUNTIME_VOCABULARY_FAIL_CLOSED_PATCH_REQUIRED
+NEXT_DISPATCH: AO-M01-BATCH-D-REWORK-20260711T041851Z
+```
+
 Transport state: `ACTIVE`
 
 General active-mode results: none. The one-time bootstrap reload results are

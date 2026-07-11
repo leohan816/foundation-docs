@@ -8,6 +8,41 @@ bootstrap delegation recorded later in this file.
 
 ## Active-Mode Product Dispatches
 
+### AO-M01-BATCH-D-REWORK-20260711T041851Z
+
+```text
+DISPATCH_ID: AO-M01-BATCH-D-REWORK-20260711T041851Z
+MISSION_ID: AGENT_OFFICE_M01_ADVISOR_MANAGED_OFFICE_WEB_CONTROL_PLANE
+AUTHORIZATION: ROUTINE_IN_SCOPE_REWORK_AFTER_ADVISOR_DIRECT_VALIDATION
+TARGET_ACTOR: Agent Office Worker-Rework
+TARGET_SESSION: agent-office
+TARGET_WINDOW: 0
+TARGET_PANE: 0
+OBSERVED_PANE_ID: %13
+WORKSPACE: /home/leo/Project/agent-office
+PROCESS: codex v0.144.1, gpt-5.6-sol ultra
+ROLE_EVIDENCE: same existing Agent Office implementation session and active repo instructions
+READINESS_EVIDENCE: Batch D returned STOP; target clean at 6f93dcd; empty Codex prompt; no approval/auth prompt
+SYNCHRONIZED_PANES_OFF: true
+LAUNCHER_ABSOLUTE_PATH: /home/leo/Project/foundation-docs/advisor/jobs/20260711_agent_office_m01_advisor_managed_office_web_control_plane/36_WORKER_BATCH_D_REWORK_RUN_PROMPT.md
+LAUNCHER_REPO_RELATIVE_PATH: advisor/jobs/20260711_agent_office_m01_advisor_managed_office_web_control_plane/36_WORKER_BATCH_D_REWORK_RUN_PROMPT.md
+LAUNCHER_COMMIT_SHA: 5e59cee6ae974205357a6b1169e69078ac310ae1
+LAUNCHER_GIT_BLOB: f506f38ca2419bfbed861513f278a71da26657c5
+LAUNCHER_SHA256_WORKTREE: 465306a1882d6bafd4e20dc6f07be16d5c61ba459d41d3c5b36146f273cffef0
+LAUNCHER_SHA256_COMMITTED: 465306a1882d6bafd4e20dc6f07be16d5c61ba459d41d3c5b36146f273cffef0
+UPSTREAM_EVIDENCE: foundation-docs main equals origin/main at 5e59cee6ae974205357a6b1169e69078ac310ae1 before ledger publication
+RESULT_PATH: ../foundation-docs/runs/agent-office/20260711_agent_office_m01_advisor_managed_office_web_control_plane/WORKER_BATCH_D_REWORK_RESULT.md
+POINTER_PATH: ../foundation-docs/advisor/jobs/20260711_agent_office_m01_advisor_managed_office_web_control_plane/37_WORKER_BATCH_D_REWORK_RESULT_POINTER.md
+WRITE_REPO_BRANCHES: agent-office/shadow/agent-office-m01 then foundation-docs/main, serial
+DEPENDENCY_LOCKS: clear; Batch E not authorized; reviewer idle
+PARALLEL_ISOLATION_EVIDENCE: not applicable; serial dispatch
+SOFT_STALL_SECONDS: 1800
+HARD_TIMEOUT_SECONDS_OR_NONE: 7200
+PREFLIGHT_VERDICT: PASS_READY_TO_SEND
+SENT_AT: PENDING_EXACT_TRANSPORT
+STATUS: PREPARED
+```
+
 ### AO-M01-BATCH-D-20260711T030920Z
 
 ```text
