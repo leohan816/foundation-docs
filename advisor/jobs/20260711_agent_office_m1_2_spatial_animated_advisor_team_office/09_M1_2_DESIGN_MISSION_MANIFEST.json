@@ -15,7 +15,7 @@
       "id": "AO12-DWU-02",
       "actor": "Agent Office Worker",
       "title": "Canonical spatial-office design package",
-      "status": "READY",
+      "status": "WORKING",
       "dependsOn": ["AO12-DWU-01"]
     },
     {

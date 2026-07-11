@@ -700,8 +700,8 @@ PARALLEL_ISOLATION_EVIDENCE: serial one-pane dispatch; no broadcast, synchronize
 SOFT_STALL_SECONDS: 180
 HARD_TIMEOUT_SECONDS_OR_NONE: none; capacity errors require idle/readiness revalidation before exact continuation
 PREFLIGHT_VERDICT: PASS_READY_TO_SEND
-SENT_AT: pending exact committed buffer transport
-STATUS: READY_TO_SEND
+SENT_AT: 2026-07-11T16:44:42Z via exact tmux buffer to agent-office/%13
+STATUS: RUNNING
 ```
 
 ## AO-M01-FINAL-REWORK-DELTA-REVIEW-20260711T074301Z

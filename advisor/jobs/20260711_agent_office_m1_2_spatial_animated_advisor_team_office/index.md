@@ -1,6 +1,6 @@
 # Agent Office M1.2 Spatial Office Design Mission
 
-Status: `DESIGN_ENTRY_GATE_PASSED`
+Status: `WORKER_CANONICAL_DESIGN_RUNNING`
 
 Implementation: `NOT_STARTED_NOT_APPROVED`
 
