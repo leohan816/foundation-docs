@@ -1,10 +1,10 @@
 # Loop State: Agent Office M01
 
-STATE: `BATCH_C_LOCALE_DETERMINISM_REWORK_READY_FOR_DISPATCH`
+STATE: `BATCH_C_ACCEPTED__BATCH_D_READY_FOR_DISPATCH`
 
 CURRENT_WORK_UNIT: `AO-WU-09`
 
-WORKUNIT_PROGRESS: `8/15 COMPLETED`
+WORKUNIT_PROGRESS: `9/15 COMPLETED`
 
 REQUIRED_GATE_PROGRESS: `2/7 ENTRY_AND_DESIGN_REVIEW_PASSED`
 
@@ -14,15 +14,15 @@ KILL_SWITCH: `DISENGAGED`
 
 WORKER_SESSION: `agent-office/$13/%13`
 
-WORKER_PROCESS: `codex_v0.144.1__gpt-5.6-sol_ultra__READY_FOR_BATCH_C_LOCALE_REWORK`
+WORKER_PROCESS: `codex_v0.144.1__gpt-5.6-sol_ultra__READY_FOR_BATCH_D`
 
 REVIEWER_SESSION: `reviewer-fable5/$5/%5__IDLE`
 
 NEXT:
 
-1. route exact process-locale determinism rework to the same Codex Ultra Worker;
-2. require ordinary-command 10/10 under both C.UTF-8 and ko_KR.UTF-8 callers;
-3. route Batch D only after corrected Batch C acceptance.
+1. route exact Batch D handoff to the same Codex Ultra Worker;
+2. validate Inbox/gateway/alert/GPT-package/idempotency/UI evidence directly;
+3. route Batch E only after Batch D acceptance.
 
 FABLE5_INITIAL_VERDICT: `NEEDS_PATCH`
 
@@ -44,7 +44,13 @@ BATCH_B_TARGET: `85e66d856e33a0df73041cb4b33aba30a8f9f96d / 927c05875803fa321d39
 
 BATCH_B_TESTS: `23_FILES__84_TESTS_PASS__READ_ONLY_SMOKE_BUILD_AUDIT_PASS`
 
-BLOCKERS: Playwright visual output inherits the caller shell locale.
+BATCH_C_VERDICT: `PASS__ACCEPTED_AS_BATCH_D_DEPENDENCY`
+
+BATCH_C_TARGET: `b94c2a06ec064ed0cc659bac8b9ef7555d7aea73`
+
+BATCH_C_TESTS: `27_FILES__124_TESTS__C_AND_KO_CALLER_PLAYWRIGHT_10_OF_10__BUILD_AUDIT_PASS`
+
+BLOCKERS: none.
 
 PUBLIC_EXPOSURE: forbidden.
 

@@ -1,6 +1,6 @@
 # Agent Office M01 Advisor Job
 
-Status: `BATCH_C_LOCALE_DETERMINISM_REWORK_READY`
+Status: `BATCH_C_ACCEPTED__BATCH_D_READY`
 
 ## Initial Artifacts
 
@@ -40,6 +40,9 @@ Status: `BATCH_C_LOCALE_DETERMINISM_REWORK_READY`
 - `30_ADVISOR_BATCH_C_LOCALE_ROOT_CAUSE.md`
 - `31_WORKER_BATCH_C_LOCALE_REWORK_HANDOFF_PROMPT.md`
 - `31_WORKER_BATCH_C_LOCALE_REWORK_RUN_PROMPT.md`
+- `32_ADVISOR_BATCH_C_FINAL_VALIDATION.md`
+- `33_WORKER_BATCH_D_HANDOFF_PROMPT.md`
+- `33_WORKER_BATCH_D_RUN_PROMPT.md`
 - `10_MISSION_MANIFEST.json`
 - `11_LOOP_STATE.md`
 
@@ -50,6 +53,5 @@ Status: `BATCH_C_LOCALE_DETERMINISM_REWORK_READY`
 - private remote: `https://github.com/leohan816/agent-office`
 - implementation branch: `shadow/agent-office-m01`
 
-The baseline bytes now match final code, but direct Advisor execution proved the
-visual suite inherits the caller process locale. The narrow locale-determinism
-rework is ready. Batch D remains unauthorized.
+Batch C is directly validated and accepted at `b94c2a0`. Batch D is authorized
+for exact serial routing. Batch E remains unauthorized.
