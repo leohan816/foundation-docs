@@ -1,0 +1,33 @@
+{
+  "schemaVersion": "agent-office.advisor-acknowledgement-evidence.v1",
+  "missionId": "AGENT_OFFICE_M01_ADVISOR_MANAGED_OFFICE_WEB_CONTROL_PLANE",
+  "activationMissionId": "AGENT_OFFICE_M01_EXACT_ADVISOR_DELIVERY_ACTIVATION",
+  "requestId": "019f51d1-5e72-7e48-afbb-66378e74569c",
+  "messageId": "019f51d0-5252-7cd2-8326-657a923df180",
+  "notificationId": "019f51d0-525d-75e5-ae78-0d71520ebec4",
+  "acknowledgementId": "019f51d1-5e72-74af-b3d9-c741938db2a7",
+  "acknowledgedAt": "2026-07-11T15:35:03.538Z",
+  "advisorRole": "Advisor",
+  "advisorSubjectId": "foundation-advisor",
+  "destination": {
+    "sessionName": "foundation-advisor",
+    "sessionId": "$9",
+    "windowId": "@9",
+    "windowIndex": 0,
+    "paneIndex": 0,
+    "paneId": "%9",
+    "workspace": "/home/leo/Project/foundation-advisor",
+    "currentCommand": "codex"
+  },
+  "readinessLeaseId": "019f51d0-44b0-7de3-8ede-3d972882bdc7",
+  "pointerEnvelopeHash": "sha256:6e6658f08377b17ebcea8c6c9a997c4142c77defe10f50025187fc86eca654c3",
+  "messageArtifactRef": "artifacts/inbox/AGENT_OFFICE_M01_ADVISOR_MANAGED_OFFICE_WEB_CONTROL_PLANE/019f51d0-5221-7bf1-8c9b-68d87697fa12/b7c987f084aad65e6ec935909dde732f0bade7f393df6a0feb1b0957ef0d1beb.json",
+  "messageArtifactHash": "sha256:b7c987f084aad65e6ec935909dde732f0bade7f393df6a0feb1b0957ef0d1beb",
+  "transportReceiptHash": "sha256:ceea2f3bcc445ad6537534021d17ff83a0517db3e0df719f5696e4e02814aeda",
+  "artifactReadStatus": "VERIFIED",
+  "evidenceRefs": [
+    "advisor-message-read",
+    "exact-pointer-received",
+    "artifact-hash-verified"
+  ]
+}
