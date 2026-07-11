@@ -490,3 +490,33 @@ SENSITIVE_OUTPUT_SUSPECTED: false
 ACTION_TAKEN: exact committed launcher sent through one named tmux buffer; execution confirmed; no other input sent
 NEXT_OBSERVATION_DUE: 180 seconds or on progress/result/interactive/capacity signal
 ```
+
+### AO-M1.2-A-IMPLEMENTATION-REVIEW-20260711T194558Z - completion
+
+```text
+DISPATCH_ID: AO-M1.2-A-IMPLEMENTATION-REVIEW-20260711T194558Z
+OBSERVED_AT: 2026-07-11T19:51:00Z
+PANE_ID: %5
+OUTPUT_FINGERPRINT: Fable5 AO12-A PASS pointer commit 331c26d and STOP
+LAST_PROGRESS_MARKER: result/pointer pushed; Agent Office remained read-only
+STATE: COMPLETED_REPORTED
+INTERACTIVE_PROMPT_PRESENT: false
+SENSITIVE_OUTPUT_SUSPECTED: false
+ACTION_TAKEN: captured result and directly validated artifacts; found unsupported legacy-alias replay claim; prepared same-reviewer correction
+NEXT_OBSERVATION_DUE: correction preflight
+```
+
+## AO-M1.2-A-REVIEW-CORRECTION-20260711T195241Z
+
+```text
+DISPATCH_ID: AO-M1.2-A-REVIEW-CORRECTION-20260711T195241Z
+OBSERVED_AT: 2026-07-11T19:52:41Z
+PANE_ID: %5
+OUTPUT_FINGERPRINT: prior AO12-A PASS result and STOP; idle Claude prompt
+LAST_PROGRESS_MARKER: review result 331c26d complete; no newer Reviewer task active
+STATE: WAITING_EXPECTED
+INTERACTIVE_PROMPT_PRESENT: false
+SENSITIVE_OUTPUT_SUSPECTED: false
+ACTION_TAKEN: verified same session/pane/workspace/process, Reviewer continuity, synchronized panes off, exact launcher commit/blob/checksum, correction scope, and upstream state; no input sent yet
+NEXT_OBSERVATION_DUE: immediately after exact launcher transport
+```

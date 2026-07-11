@@ -1173,3 +1173,51 @@ PREFLIGHT_VERDICT: PASS_READY_TO_SEND
 SENT_AT: 2026-07-11T19:47:21Z via exact tmux buffer to reviewer-fable5/%5
 STATUS: RUNNING
 ```
+
+### AO-M1.2-A-IMPLEMENTATION-REVIEW-20260711T194558Z - result requires correction
+
+```text
+STATUS: COMPLETED_REPORTED__ADVISOR_REVIEW_COVERAGE_CORRECTION_REQUIRED
+COMPLETED_AT: 2026-07-11T19:51:00Z
+RESULT_COMMIT: 331c26d09430ed2389aa889c7d5463d55f40edfc
+VERDICT_REPORTED: PASS
+ADVISOR_VALIDATION: unsupported legacy-alias replay claim contradicts actual naming diff; AO12-A not accepted
+NEXT_DEPENDENCY: SAME_REVIEWER_FACTUAL_CORRECTION_REREVIEW
+```
+
+## AO-M1.2-A-REVIEW-CORRECTION-20260711T195241Z
+
+```text
+DISPATCH_ID: AO-M1.2-A-REVIEW-CORRECTION-20260711T195241Z
+MISSION_ID: AGENT_OFFICE_M1_2_SPATIAL_ANIMATED_ADVISOR_TEAM_OFFICE
+TARGET_ACTOR: Fable5 Sentinel-ReReview
+TARGET_SESSION: reviewer-fable5
+TARGET_WINDOW: 0
+TARGET_PANE: 0
+OBSERVED_PANE_ID: %5
+WORKSPACE: /home/leo/Project/foundation-control
+PROCESS: claude child PID 765045 under pane shell PID 764416
+MODEL_EFFORT_EVIDENCE: same existing Fable5 Reviewer session; Fable5 Max / Level 3 narrow recheck
+ROLE_EVIDENCE: same session that authored AO12-A result 331c26d; result and STOP visible
+READINESS_EVIDENCE: idle Claude prompt; no task, approval, auth, privilege, DB, secret, production, or interactive prompt active
+SYNCHRONIZED_PANES_OFF: true
+LAUNCHER_ABSOLUTE_PATH: /home/leo/Project/foundation-docs/advisor/jobs/20260711_agent_office_m1_2_spatial_animated_advisor_team_office/30_FABLE5_AO12_A_REVIEW_CORRECTION_RUN_PROMPT.md
+LAUNCHER_REPO_RELATIVE_PATH: advisor/jobs/20260711_agent_office_m1_2_spatial_animated_advisor_team_office/30_FABLE5_AO12_A_REVIEW_CORRECTION_RUN_PROMPT.md
+LAUNCHER_COMMIT_SHA: c6255b01b47b3290d89a3b29ced31673a0c9bdac
+LAUNCHER_GIT_BLOB: 08e8ce34375b82ea848ca188992e4b03e71c5883
+LAUNCHER_SHA256_WORKTREE: 906266f5f4d7914fb743bc2ae0b9d547b7aa8214311ed9b99015c38ce66aca10
+LAUNCHER_SHA256_COMMITTED: 906266f5f4d7914fb743bc2ae0b9d547b7aa8214311ed9b99015c38ce66aca10
+UPSTREAM_EVIDENCE: foundation-docs c6255b0 equals origin/main at launcher publication; Agent Office clean ecd2652 equals upstream, left/right 0/0
+REVIEW_TARGET: exact naming correction and prior AO12-A result/pointer only
+RESULT_PATH: ../foundation-docs/runs/agent-office/20260711_agent_office_m1_2_spatial_animated_advisor_team_office/FABLE5_AO12_A_IMPLEMENTATION_REVIEW_RESULT.md
+POINTER_PATH: ../foundation-docs/advisor/jobs/20260711_agent_office_m1_2_spatial_animated_advisor_team_office/28_FABLE5_AO12_A_IMPLEMENTATION_REVIEW_RESULT_POINTER.md
+WRITE_REPO_BRANCHES: foundation-docs/main corrected result/pointer only; Agent Office read-only
+DEPENDENCY_LOCKS: initial review returned; Advisor validation requires same-reviewer correction; Worker idle; AO12-B/C/D blocked; no concurrent foundation-docs writer observed
+BLIND_INDEPENDENCE_RULE: directly inspect actual diff and frozen design; remove unsupported claim; Reviewer cannot patch Agent Office
+PARALLEL_ISOLATION_EVIDENCE: one exact Reviewer pane; serialized correction; no broadcast or synchronized panes
+SOFT_STALL_SECONDS: 180
+HARD_TIMEOUT_SECONDS_OR_NONE: none; transient capacity/API errors require same-session readiness revalidation before one idempotent continue
+PREFLIGHT_VERDICT: PASS_READY_TO_SEND
+SENT_AT: PENDING_EXACT_TRANSPORT
+STATUS: PREFLIGHT_PASSED
+```
