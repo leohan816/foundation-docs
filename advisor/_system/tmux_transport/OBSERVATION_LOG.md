@@ -379,9 +379,9 @@ OBSERVED_AT: 2026-07-11T17:52:48Z
 PANE_ID: %13
 OUTPUT_FINGERPRINT: prior M1.2 Worker design pointer, STOP, idle Codex prompt, gpt-5.6-sol ultra footer
 LAST_PROGRESS_MARKER: target 3ba65e0 equals upstream; no newer task active
-STATE: WAITING_EXPECTED
+STATE: RUNNING
 INTERACTIVE_PROMPT_PRESENT: false
 SENSITIVE_OUTPUT_SUSPECTED: false
-ACTION_TAKEN: verified exact session/pane/workspace/process, role continuity, synchronized panes off, launcher commit/blob/checksum, clean target branch, and upstream equality; no input sent yet
-NEXT_OBSERVATION_DUE: immediately after exact launcher transport
+ACTION_TAKEN: verified exact session/pane/workspace/process, role continuity, synchronized panes off, launcher commit/blob/checksum, clean target branch, and upstream equality; exact committed launcher sent through one named tmux buffer and execution confirmed
+NEXT_OBSERVATION_DUE: 180 seconds or on progress/result/interactive signal
 ```

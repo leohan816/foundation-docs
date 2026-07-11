@@ -1047,6 +1047,6 @@ PARALLEL_ISOLATION_EVIDENCE: one exact pane target; serial design write; no broa
 SOFT_STALL_SECONDS: 180
 HARD_TIMEOUT_SECONDS_OR_NONE: none; capacity/API errors require readiness revalidation before continuation
 PREFLIGHT_VERDICT: PASS_READY_TO_SEND
-SENT_AT: pending exact tmux buffer transport
-STATUS: READY_TO_SEND
+SENT_AT: 2026-07-11T17:54:05Z via exact tmux buffer to agent-office/%13
+STATUS: RUNNING
 ```
