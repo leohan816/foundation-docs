@@ -1,12 +1,12 @@
 # Loop State: Agent Office M01
 
-STATE: `AO_WU_21_COMPLETE__AO_WU_15_FINAL_AUDIT_READY`
+STATE: `AGENT_OFFICE_M01_COMPLETE__AWAITING_LEO_GPT_FINAL_APPROVAL`
 
-CURRENT_WORK_UNIT: `AO-WU-15_FINAL_AUDIT`
+CURRENT_WORK_UNIT: `NONE__ALL_21_COMPLETE`
 
-WORKUNIT_PROGRESS: `20/21 COMPLETED__1_READY`
+WORKUNIT_PROGRESS: `21/21 COMPLETED`
 
-REQUIRED_GATE_PROGRESS: `DESIGN_AND_IMPLEMENTATION_REVIEWS_PASS__LOCALBOOTSTRAP_PASS__EXACT_DELIVERY_REHEARSAL_COMPLETE__FINAL_AUDIT_OPEN`
+REQUIRED_GATE_PROGRESS: `ALL_REQUIRED_GATES_PASS__FINAL_APPROVAL_LEO_GPT_ONLY`
 
 TRANSPORT: `ACTIVE`
 
@@ -20,10 +20,9 @@ REVIEWER_SESSION: `reviewer-fable5/$5/%5__HISTORY_FIX_DELTA_PASS__IDLE`
 
 NEXT:
 
-1. Advisor verifies disposal of every one-use delivery artifact;
-2. Advisor completes AO-WU-15 final mission audit;
-3. return the final closure pointer to Leo/GPT;
-4. do not start M1.2 or another product mission.
+1. return the final closure pointer to Leo/GPT;
+2. await Leo/GPT final approval;
+3. do not start M1.2 or another product mission.
 
 FABLE5_INITIAL_VERDICT: `NEEDS_PATCH`
 
