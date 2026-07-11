@@ -1,8 +1,8 @@
 # Agent Office M1.2 Spatial Office Design Mission
 
-Status: `AO12_B_CORRECTED_FABLE5_PASS_ACCEPTED__AO12_C_READY`
+Status: `AO12_C_IMPLEMENTED_AND_ADVISOR_VALIDATED__FABLE5_REVIEW_READY`
 
-Implementation: `AO12_A_B_IMPLEMENTED_AND_ACCEPTED__AO12_C_READY__AO12_D_WAITING_DEPENDENCY`
+Implementation: `AO12_A_B_IMPLEMENTED_AND_ACCEPTED__AO12_C_IMPLEMENTED_PENDING_REVIEW__AO12_D_WAITING_DEPENDENCY`
 
 ## Entry Artifacts
 
@@ -63,6 +63,11 @@ Implementation: `AO12_A_B_IMPLEMENTED_AND_ACCEPTED__AO12_C_READY__AO12_D_WAITING
 - [40_AO12_C_WORKER_BRIEF.md](40_AO12_C_WORKER_BRIEF.md)
 - [40_AO12_C_WORKER_HANDOFF_PROMPT.md](40_AO12_C_WORKER_HANDOFF_PROMPT.md)
 - [40_AO12_C_WORKER_RUN_PROMPT.md](40_AO12_C_WORKER_RUN_PROMPT.md)
+- [41_WORKER_AO12_C_RESULT_POINTER.md](41_WORKER_AO12_C_RESULT_POINTER.md)
+- [42_ADVISOR_AO12_C_VALIDATION.md](42_ADVISOR_AO12_C_VALIDATION.md)
+- [43_FABLE5_AO12_C_EVENT_ACCESSIBILITY_PERFORMANCE_REVIEW_BRIEF.md](43_FABLE5_AO12_C_EVENT_ACCESSIBILITY_PERFORMANCE_REVIEW_BRIEF.md)
+- [43_FABLE5_AO12_C_EVENT_ACCESSIBILITY_PERFORMANCE_REVIEW_HANDOFF_PROMPT.md](43_FABLE5_AO12_C_EVENT_ACCESSIBILITY_PERFORMANCE_REVIEW_HANDOFF_PROMPT.md)
+- [43_FABLE5_AO12_C_EVENT_ACCESSIBILITY_PERFORMANCE_REVIEW_RUN_PROMPT.md](43_FABLE5_AO12_C_EVENT_ACCESSIBILITY_PERFORMANCE_REVIEW_RUN_PROMPT.md)
 
 ## Current Routing
 
@@ -75,5 +80,9 @@ clean corrected `PASS` at `edd7929`; Advisor accepted AO12-A. AO12-B is
 implemented at `4b751c6` and directly validated by Advisor. The same Fable5
 Reviewer session corrected the visual-coverage defect, directly inspected all
 six baselines, and retained a clean `PASS` at `6e2a231`; Advisor accepted
-AO12-B. AO12-C (`AO12-IWU-09..11`) is ready on exact base `4b751c6a`. AO12-D
-remains dependency-gated and unauthorized.
+AO12-B. AO12-C (`AO12-IWU-09..11`) is implemented at `f9d0533`, pushed and
+upstream-equal. Advisor directly inspected the source and all seven PNG
+baselines, reran lint/typecheck/full Vitest/build, 15 focused browser cases, 43
+default demo cases, 3 composed cases, dependency audit, naming, production
+boundary, and Git checks, and found no defect. The exact Level-3 Fable5 review
+is ready. AO12-D remains dependency-gated and unauthorized.
