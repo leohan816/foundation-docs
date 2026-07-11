@@ -1014,3 +1014,39 @@ and 2026-07-10T19:01:39Z. No dependent or write task ran in parallel.
 At the time of these bootstrap reloads, general mode was `NOT_ACTIVE` and the
 global kill switch was `ENGAGED`. Final activation occurred later and is recorded
 in `FINAL_ACTIVATION_RECORD.md`.
+
+## AO-M1.2-NARROW-DESIGN-PATCH-20260711T175248Z
+
+```text
+DISPATCH_ID: AO-M1.2-NARROW-DESIGN-PATCH-20260711T175248Z
+MISSION_ID: AGENT_OFFICE_M1_2_SPATIAL_ANIMATED_ADVISOR_TEAM_OFFICE
+TARGET_ACTOR: Agent Office Worker-Rework
+TARGET_SESSION: agent-office
+TARGET_WINDOW: 0
+TARGET_PANE: 0
+OBSERVED_PANE_ID: %13
+WORKSPACE: /home/leo/Project/agent-office
+PROCESS: codex child PID 2754606 under pane shell PID 2703903
+MODEL_EFFORT_EVIDENCE: pane footer gpt-5.6-sol ultra
+ROLE_EVIDENCE: same existing Agent Office Worker session; prior M1.2 design result and STOP visible
+READINESS_EVIDENCE: idle Codex prompt; no task, approval, auth, privilege, or interactive prompt active
+SYNCHRONIZED_PANES_OFF: true
+LAUNCHER_ABSOLUTE_PATH: /home/leo/Project/foundation-docs/advisor/jobs/20260711_agent_office_m1_2_spatial_animated_advisor_team_office/17_WORKER_NARROW_DESIGN_PATCH_RUN_PROMPT.md
+LAUNCHER_REPO_RELATIVE_PATH: advisor/jobs/20260711_agent_office_m1_2_spatial_animated_advisor_team_office/17_WORKER_NARROW_DESIGN_PATCH_RUN_PROMPT.md
+LAUNCHER_COMMIT_SHA: afab2f6823464555fafde7e86565301f2f13c6e9
+LAUNCHER_GIT_BLOB: 88b26cb7b81d1d3873fd29c927f9e9bd7a2db266
+LAUNCHER_SHA256_WORKTREE: 09045e057017c243eaf9a255ca70b869e2250ddcf3448b1e75bc862346ae4c21
+LAUNCHER_SHA256_COMMITTED: 09045e057017c243eaf9a255ca70b869e2250ddcf3448b1e75bc862346ae4c21
+UPSTREAM_EVIDENCE: foundation-docs afab2f6 equals origin/main; Agent Office clean 3ba65e0 equals origin/shadow/agent-office-m1-2-spatial-office, left/right 0/0
+RESULT_PATH: ../foundation-docs/runs/agent-office/20260711_agent_office_m1_2_spatial_animated_advisor_team_office/WORKER_NARROW_DESIGN_PATCH_RESULT.md
+POINTER_PATH: ../foundation-docs/advisor/jobs/20260711_agent_office_m1_2_spatial_animated_advisor_team_office/18_WORKER_NARROW_DESIGN_PATCH_RESULT_POINTER.md
+WRITE_REPO_BRANCHES: agent-office/shadow/agent-office-m1-2-spatial-office five exact docs paths, then foundation-docs/main exact result/pointer only
+DEPENDENCY_LOCKS: prior design PASS accepted; Leo/GPT narrow patch authorized; Reviewer idle; design delta review depends on Worker return; no concurrent Agent Office or foundation-docs writer observed
+BLIND_INDEPENDENCE_RULE: Worker may read prior review but must not write Reviewer artifacts or verdict; Fable5 independently reviews the resulting delta
+PARALLEL_ISOLATION_EVIDENCE: one exact pane target; serial design write; no broadcast or synchronized panes
+SOFT_STALL_SECONDS: 180
+HARD_TIMEOUT_SECONDS_OR_NONE: none; capacity/API errors require readiness revalidation before continuation
+PREFLIGHT_VERDICT: PASS_READY_TO_SEND
+SENT_AT: pending exact tmux buffer transport
+STATUS: READY_TO_SEND
+```
