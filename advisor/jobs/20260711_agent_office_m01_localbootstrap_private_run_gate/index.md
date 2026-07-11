@@ -1,6 +1,6 @@
 # Agent Office M01 LocalBootstrap Private-Run Gate
 
-Status: `WORKER_IMPLEMENTATION_READY_FOR_DISPATCH`
+Status: `WORKER_VALIDATED__FABLE5_DUAL_REVIEW_READY_FOR_DISPATCH`
 
 - [00_INTAKE.md](00_INTAKE.md)
 - [01_ADVISOR_BRIEF.md](01_ADVISOR_BRIEF.md)
@@ -9,5 +9,10 @@ Status: `WORKER_IMPLEMENTATION_READY_FOR_DISPATCH`
 - [06_WORKER_HANDOFF_PROMPT.md](06_WORKER_HANDOFF_PROMPT.md)
 - [06_WORKER_RUN_PROMPT.md](06_WORKER_RUN_PROMPT.md)
 - [10_LOOP_STATE.md](10_LOOP_STATE.md)
+- [11_WORKER_RESULT_POINTER.md](11_WORKER_RESULT_POINTER.md)
+- [12_ADVISOR_WORKER_VALIDATION.md](12_ADVISOR_WORKER_VALIDATION.md)
+- [13_FABLE5_DUAL_REVIEW_HANDOFF_PROMPT.md](13_FABLE5_DUAL_REVIEW_HANDOFF_PROMPT.md)
+- [13_FABLE5_DUAL_REVIEW_RUN_PROMPT.md](13_FABLE5_DUAL_REVIEW_RUN_PROMPT.md)
 
-No real credential, private run, or tmux delivery is active at this stage.
+Worker implementation is validated and ready for independent dual review. No
+real credential, private run, or tmux delivery is active at this stage.
