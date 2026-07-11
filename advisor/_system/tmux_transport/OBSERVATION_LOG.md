@@ -20,6 +20,21 @@ ACTION_TAKEN: Advisor reran final checks; 123 tests/build passed and Playwright 
 NEXT_OBSERVATION_DUE: immediately after exact rework dispatch
 ```
 
+## AO-M01-BATCH-C-VISUAL-REWORK-20260711T010730Z
+
+```text
+DISPATCH_ID: AO-M01-BATCH-C-VISUAL-REWORK-20260711T010544Z
+OBSERVED_AT: 2026-07-11T01:07:33Z
+PANE_ID: %13
+OUTPUT_FINGERPRINT: exact committed rework launcher visible / Working
+LAST_PROGRESS_MARKER: launcher accepted by same GPT-5.6-Sol Ultra session
+STATE: RUNNING
+INTERACTIVE_PROMPT_PRESENT: false
+SENSITIVE_OUTPUT_SUSPECTED: false
+ACTION_TAKEN: none; exact serial dispatch confirmed
+NEXT_OBSERVATION_DUE: 2026-07-11T01:37:33Z or on result return
+```
+
 ## AO-M01-BATCH-B-COMPLETION-20260711T000000Z
 
 ```text
