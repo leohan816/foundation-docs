@@ -1,0 +1,31 @@
+{
+  "schemaVersion": "agent-office.advisor-resume-evidence.v1",
+  "missionId": "AGENT_OFFICE_M01_ADVISOR_MANAGED_OFFICE_WEB_CONTROL_PLANE",
+  "requestId": "019f51e2-9309-7f9d-97f3-4cae24d23966",
+  "messageId": "019f51d0-5252-7cd2-8326-657a923df180",
+  "workUnitId": "AO-WU-21",
+  "decisionArtifact": {
+    "repository": "foundation-docs",
+    "commit": "6b48bd7251b26ebb3b81b02f9284acd55c020222",
+    "path": "advisor/jobs/20260711_agent_office_m01_exact_advisor_delivery_activation/advisor-evidence/authorities/ROUTINE_ROUTE_AO_WU_21_ROUND3.json",
+    "sha256": "sha256:29c0876f5ef608634634ff17de4a448c6438100238916277a5e9eaae91ef35d3"
+  },
+  "intakeArtifact": {
+    "repository": "foundation-docs",
+    "commit": "23d9d5b8a12746a7059dae66de1fbe38c5412de8",
+    "path": "advisor/jobs/20260711_agent_office_m01_exact_advisor_delivery_activation/advisor-evidence/019f51d0-5252-7cd2-8326-657a923df180/02_INTAKE.json",
+    "sha256": "sha256:d349a397b41fdcde7c815a0f31b0fa272e9ffa60f131df578bf6602efe561935"
+  },
+  "recordedAt": "2026-07-11T15:53:51.113Z",
+  "resumeProof": {
+    "workUnitId": "AO-WU-21",
+    "waitingEventId": "019f51d0-0fa2-7ac5-b39b-492092bd3125",
+    "previousState": "READY",
+    "resumeTo": "READY",
+    "decisionId": "019f51d2-e170-7384-9505-62475af81356",
+    "decisionArtifactHash": "sha256:29c0876f5ef608634634ff17de4a448c6438100238916277a5e9eaae91ef35d3",
+    "intakeArtifactHash": "sha256:d349a397b41fdcde7c815a0f31b0fa272e9ffa60f131df578bf6602efe561935",
+    "resolvedBlockerIds": [],
+    "expectedStreamVersion": 11
+  }
+}
