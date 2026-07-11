@@ -520,3 +520,18 @@ SENSITIVE_OUTPUT_SUSPECTED: false
 ACTION_TAKEN: verified same session/pane/workspace/process, Reviewer continuity, synchronized panes off, exact launcher commit/blob/checksum, correction scope, and upstream state; no input sent yet
 NEXT_OBSERVATION_DUE: immediately after exact launcher transport
 ```
+
+### AO-M1.2-A-REVIEW-CORRECTION-20260711T195241Z - sent
+
+```text
+DISPATCH_ID: AO-M1.2-A-REVIEW-CORRECTION-20260711T195241Z
+OBSERVED_AT: 2026-07-11T19:53:43Z
+PANE_ID: %5
+OUTPUT_FINGERPRINT: exact factual-correction launcher visible; Fable5 processing indicator active
+LAST_PROGRESS_MARKER: exact committed correction launcher submitted once to same existing Reviewer session
+STATE: RUNNING
+INTERACTIVE_PROMPT_PRESENT: false
+SENSITIVE_OUTPUT_SUSPECTED: false
+ACTION_TAKEN: exact committed launcher sent through one named tmux buffer; execution confirmed; no other input sent
+NEXT_OBSERVATION_DUE: 180 seconds or on progress/result/interactive/capacity signal
+```

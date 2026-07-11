@@ -1218,6 +1218,6 @@ PARALLEL_ISOLATION_EVIDENCE: one exact Reviewer pane; serialized correction; no 
 SOFT_STALL_SECONDS: 180
 HARD_TIMEOUT_SECONDS_OR_NONE: none; transient capacity/API errors require same-session readiness revalidation before one idempotent continue
 PREFLIGHT_VERDICT: PASS_READY_TO_SEND
-SENT_AT: PENDING_EXACT_TRANSPORT
-STATUS: PREFLIGHT_PASSED
+SENT_AT: 2026-07-11T19:53:43Z via exact tmux buffer to reviewer-fable5/%5
+STATUS: RUNNING
 ```
