@@ -704,6 +704,41 @@ SENT_AT: pending exact committed buffer transport
 STATUS: READY_TO_SEND
 ```
 
+## AO-M01-FINAL-REWORK-ROUND2-20260711T075132Z
+
+```text
+DISPATCH_ID: AO-M01-FINAL-REWORK-ROUND2-20260711T075132Z
+MISSION_ID: AGENT_OFFICE_M01_ADVISOR_MANAGED_OFFICE_WEB_CONTROL_PLANE
+TARGET_ACTOR: Agent Office Worker-Rework
+TARGET_SESSION: agent-office
+TARGET_WINDOW: 0
+TARGET_PANE: 0
+OBSERVED_PANE_ID: %13
+WORKSPACE: /home/leo/Project/agent-office
+PROCESS: codex PID 2703903, gpt-5.6-sol ultra
+ROLE_EVIDENCE: same existing Agent Office Worker session; prior M01 rework pointer and STOP visible; repo-local role remains loaded
+READINESS_EVIDENCE: prior task completed; idle Codex prompt with default placeholder; no active task, approval, auth, privilege, or interactive request
+SYNCHRONIZED_PANES_OFF: true
+LAUNCHER_ABSOLUTE_PATH: /home/leo/Project/foundation-docs/advisor/jobs/20260711_agent_office_m01_advisor_managed_office_web_control_plane/51_WORKER_FINAL_REWORK_ROUND2_RUN_PROMPT.md
+LAUNCHER_REPO_RELATIVE_PATH: advisor/jobs/20260711_agent_office_m01_advisor_managed_office_web_control_plane/51_WORKER_FINAL_REWORK_ROUND2_RUN_PROMPT.md
+LAUNCHER_COMMIT_SHA: 85aa0d66ae13df0ea4b4389da986a30256786bd8
+LAUNCHER_GIT_BLOB: 0026c25b3df9fb7a3e40b2ffbfee4e532946fbbe
+LAUNCHER_SHA256_WORKTREE: d918bbd700e259f40978e96adda8da50551aabdfa8d8152e608f4027e98bb616
+LAUNCHER_SHA256_COMMITTED: d918bbd700e259f40978e96adda8da50551aabdfa8d8152e608f4027e98bb616
+UPSTREAM_EVIDENCE: foundation-docs 85aa0d6 equals origin/main; Agent Office clean HEAD=upstream=3bd0e8f
+RESULT_PATH: ../foundation-docs/runs/agent-office/20260711_agent_office_m01_advisor_managed_office_web_control_plane/WORKER_FINAL_REWORK_ROUND2_RESULT.md
+POINTER_PATH: ../foundation-docs/advisor/jobs/20260711_agent_office_m01_advisor_managed_office_web_control_plane/52_WORKER_FINAL_REWORK_ROUND2_RESULT_POINTER.md
+WRITE_REPO_BRANCHES: agent-office/shadow/agent-office-m01 then foundation-docs/main exact result and pointer only
+DEPENDENCY_LOCKS: Fable5 dual delta review complete; Reviewer idle; serial same-repo patch; no concurrent Agent Office or foundation-docs writer observed
+BLIND_INDEPENDENCE_RULE: Worker patches exact R3 findings only and must not edit Reviewer artifacts or verdicts
+PARALLEL_ISOLATION_EVIDENCE: one exact pane target only; no broadcast; no synchronized panes; no parallel writer
+SOFT_STALL_SECONDS: 180
+HARD_TIMEOUT_SECONDS_OR_NONE: none; capacity response requires readiness revalidation before retry
+PREFLIGHT_VERDICT: PASS_READY_TO_SEND
+SENT_AT: pending exact committed buffer transport
+STATUS: READY_TO_SEND
+```
+
 ## AO-M01-FINAL-REWORK-20260711T063218Z
 
 ```text
