@@ -1,8 +1,8 @@
 # Agent Office M1.2 Spatial Office Design Mission
 
-Status: `AO12_B_ADVISOR_VALIDATED__WAITING_FABLE5_UI_ACCESSIBILITY_ASSET_REVIEW`
+Status: `AO12_B_FABLE5_PASS_REPORTED__VISUAL_COVERAGE_CORRECTION_REQUIRED`
 
-Implementation: `AO12_B_IMPLEMENTED_AND_ADVISOR_VALIDATED__INDEPENDENT_REVIEW_PENDING__AO12_C_D_WAITING_DEPENDENCY`
+Implementation: `AO12_B_IMPLEMENTED__FABLE5_DIRECT_VISUAL_COVERAGE_INCOMPLETE__AO12_C_D_WAITING_DEPENDENCY`
 
 ## Entry Artifacts
 
@@ -55,6 +55,10 @@ Implementation: `AO12_B_IMPLEMENTED_AND_ADVISOR_VALIDATED__INDEPENDENT_REVIEW_PE
 - [35_FABLE5_AO12_B_UI_ACCESSIBILITY_ASSET_REVIEW_BRIEF.md](35_FABLE5_AO12_B_UI_ACCESSIBILITY_ASSET_REVIEW_BRIEF.md)
 - [35_FABLE5_AO12_B_UI_ACCESSIBILITY_ASSET_REVIEW_HANDOFF_PROMPT.md](35_FABLE5_AO12_B_UI_ACCESSIBILITY_ASSET_REVIEW_HANDOFF_PROMPT.md)
 - [35_FABLE5_AO12_B_UI_ACCESSIBILITY_ASSET_REVIEW_RUN_PROMPT.md](35_FABLE5_AO12_B_UI_ACCESSIBILITY_ASSET_REVIEW_RUN_PROMPT.md)
+- [36_FABLE5_AO12_B_UI_ACCESSIBILITY_ASSET_REVIEW_RESULT_POINTER.md](36_FABLE5_AO12_B_UI_ACCESSIBILITY_ASSET_REVIEW_RESULT_POINTER.md)
+- [37_ADVISOR_FABLE5_AO12_B_RESULT_VALIDATION.md](37_ADVISOR_FABLE5_AO12_B_RESULT_VALIDATION.md)
+- [38_FABLE5_AO12_B_VISUAL_COVERAGE_CORRECTION_HANDOFF_PROMPT.md](38_FABLE5_AO12_B_VISUAL_COVERAGE_CORRECTION_HANDOFF_PROMPT.md)
+- [38_FABLE5_AO12_B_VISUAL_COVERAGE_CORRECTION_RUN_PROMPT.md](38_FABLE5_AO12_B_VISUAL_COVERAGE_CORRECTION_RUN_PROMPT.md)
 
 ## Current Routing
 
@@ -65,5 +69,7 @@ implemented at `ecd2652501df55aba0aa0f55c236b1933c6dc1e3` and Advisor direct
 validation passed. Fable5 corrected its factual alias description and returned a
 clean corrected `PASS` at `edd7929`; Advisor accepted AO12-A. AO12-B is
 implemented at `4b751c6`, directly validated by Advisor, and waiting for the
-independent Fable5 Max Level-3 UI/accessibility/asset review. AO12-C/D remain
-dependency-gated and unauthorized.
+independent Fable5 Max Level-3 UI/accessibility/asset review. Fable5 reported
+`PASS`, but disclosed that five of six required PNGs were not directly viewed.
+Advisor therefore requires a same-session visual-coverage correction before
+acceptance. AO12-C/D remain dependency-gated and unauthorized.
