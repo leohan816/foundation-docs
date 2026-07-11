@@ -1,8 +1,8 @@
 # Agent Office M1.2 Spatial Office Design Mission
 
-Status: `AO12_B_FABLE5_PASS_REPORTED__VISUAL_COVERAGE_CORRECTION_REQUIRED`
+Status: `AO12_B_CORRECTED_FABLE5_PASS_ACCEPTED__AO12_C_READY`
 
-Implementation: `AO12_B_IMPLEMENTED__FABLE5_DIRECT_VISUAL_COVERAGE_INCOMPLETE__AO12_C_D_WAITING_DEPENDENCY`
+Implementation: `AO12_A_B_IMPLEMENTED_AND_ACCEPTED__AO12_C_READY__AO12_D_WAITING_DEPENDENCY`
 
 ## Entry Artifacts
 
@@ -59,6 +59,10 @@ Implementation: `AO12_B_IMPLEMENTED__FABLE5_DIRECT_VISUAL_COVERAGE_INCOMPLETE__A
 - [37_ADVISOR_FABLE5_AO12_B_RESULT_VALIDATION.md](37_ADVISOR_FABLE5_AO12_B_RESULT_VALIDATION.md)
 - [38_FABLE5_AO12_B_VISUAL_COVERAGE_CORRECTION_HANDOFF_PROMPT.md](38_FABLE5_AO12_B_VISUAL_COVERAGE_CORRECTION_HANDOFF_PROMPT.md)
 - [38_FABLE5_AO12_B_VISUAL_COVERAGE_CORRECTION_RUN_PROMPT.md](38_FABLE5_AO12_B_VISUAL_COVERAGE_CORRECTION_RUN_PROMPT.md)
+- [39_ADVISOR_AO12_B_ACCEPTANCE_AND_AO12_C_GATE.md](39_ADVISOR_AO12_B_ACCEPTANCE_AND_AO12_C_GATE.md)
+- [40_AO12_C_WORKER_BRIEF.md](40_AO12_C_WORKER_BRIEF.md)
+- [40_AO12_C_WORKER_HANDOFF_PROMPT.md](40_AO12_C_WORKER_HANDOFF_PROMPT.md)
+- [40_AO12_C_WORKER_RUN_PROMPT.md](40_AO12_C_WORKER_RUN_PROMPT.md)
 
 ## Current Routing
 
@@ -68,8 +72,8 @@ published implementation manifest v1 with 14 approved WorkUnits. AO12-A is
 implemented at `ecd2652501df55aba0aa0f55c236b1933c6dc1e3` and Advisor direct
 validation passed. Fable5 corrected its factual alias description and returned a
 clean corrected `PASS` at `edd7929`; Advisor accepted AO12-A. AO12-B is
-implemented at `4b751c6`, directly validated by Advisor, and waiting for the
-independent Fable5 Max Level-3 UI/accessibility/asset review. Fable5 reported
-`PASS`, but disclosed that five of six required PNGs were not directly viewed.
-Advisor therefore requires a same-session visual-coverage correction before
-acceptance. AO12-C/D remain dependency-gated and unauthorized.
+implemented at `4b751c6` and directly validated by Advisor. The same Fable5
+Reviewer session corrected the visual-coverage defect, directly inspected all
+six baselines, and retained a clean `PASS` at `6e2a231`; Advisor accepted
+AO12-B. AO12-C (`AO12-IWU-09..11`) is ready on exact base `4b751c6a`. AO12-D
+remains dependency-gated and unauthorized.
