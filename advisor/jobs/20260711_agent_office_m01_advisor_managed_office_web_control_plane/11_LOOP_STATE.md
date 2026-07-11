@@ -1,6 +1,6 @@
 # Loop State: Agent Office M01
 
-STATE: `BATCH_B_ACCEPTED__BATCH_C_READY`
+STATE: `BATCH_B_ACCEPTED__BATCH_C_RUNNING`
 
 CURRENT_WORK_UNIT: `AO-WU-09`
 
@@ -14,7 +14,7 @@ KILL_SWITCH: `DISENGAGED`
 
 WORKER_SESSION: `agent-office/$13/%13`
 
-WORKER_PROCESS: `codex_v0.144.1__gpt-5.6-sol_ultra__BATCH_B_COMPLETE`
+WORKER_PROCESS: `codex_v0.144.1__gpt-5.6-sol_ultra__RUNNING_BATCH_C`
 
 REVIEWER_SESSION: `reviewer-fable5/$5/%5__IDLE`
 
