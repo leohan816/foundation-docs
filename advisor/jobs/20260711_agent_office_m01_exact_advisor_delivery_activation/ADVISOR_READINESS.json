@@ -1,0 +1,30 @@
+{
+  "schemaVersion": "agent-office.advisor-delivery-readiness.v1",
+  "leaseId": "019f51c1-a6fb-73ee-8ec9-bfb84f0af66d",
+  "activationMissionId": "AGENT_OFFICE_M01_EXACT_ADVISOR_DELIVERY_ACTIVATION",
+  "governedMissionId": "AGENT_OFFICE_M01_ADVISOR_MANAGED_OFFICE_WEB_CONTROL_PLANE",
+  "issuerRole": "Advisor",
+  "issuerSubjectId": "foundation-advisor",
+  "destination": {
+    "sessionName": "foundation-advisor",
+    "sessionId": "$9",
+    "windowIndex": 0,
+    "paneIndex": 0,
+    "paneId": "%9",
+    "workspace": "/home/leo/Project/foundation-advisor",
+    "currentCommand": "codex",
+    "windowId": "@9"
+  },
+  "readiness": "IDLE_FOR_ONE_POINTER",
+  "useLimit": 1,
+  "observedAt": "2026-07-11T15:17:53.531Z",
+  "issuedAt": "2026-07-11T15:17:53.531Z",
+  "expiresAt": "2026-07-11T15:18:22.531Z",
+  "registrySnapshotHash": "sha256:ba9d8f129739b1aacaeaf881246a4c86afe28f195346bd9c7b0b192d6b5f3717",
+  "authoritySnapshotHash": "sha256:0bc6ff085ed6c91bde473bbc827365959a745eb51f5cf57f4ab5091b49c8e552",
+  "activationSnapshotHash": "sha256:7ec66ae0df874a08dfda613e9664a6ecfca8a82006bd79efec82fa70d733f9e0",
+  "evidenceRefs": [
+    "advisor-preflight-ao-wu-21",
+    "registry-window-id-at9"
+  ]
+}
