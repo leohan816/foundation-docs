@@ -8,6 +8,42 @@ bootstrap delegation recorded later in this file.
 
 ## Active-Mode Product Dispatches
 
+### AO-M01-BATCH-C-20260711T000500Z
+
+```text
+DISPATCH_ID: AO-M01-BATCH-C-20260711T000500Z
+MISSION_ID: AGENT_OFFICE_M01_ADVISOR_MANAGED_OFFICE_WEB_CONTROL_PLANE
+AUTHORIZATION: LEO_GPT_APPROVED_M01_AFTER_ADVISOR_BATCH_B_ACCEPTANCE
+TARGET_ACTOR: Agent Office Worker
+TARGET_SESSION: agent-office
+TARGET_WINDOW: 0
+TARGET_PANE: 0
+OBSERVED_PANE_ID: %13
+WORKSPACE: /home/leo/Project/agent-office
+PROCESS: codex v0.144.1, gpt-5.6-sol ultra
+ROLE_EVIDENCE: active Agent Office Worker instructions and same existing implementation session
+READINESS_EVIDENCE: Batch B returned STOP; empty prompt; clean branch; Advisor preview server stopped
+SYNCHRONIZED_PANES_OFF: true
+LAUNCHER_ABSOLUTE_PATH: /home/leo/Project/foundation-docs/advisor/jobs/20260711_agent_office_m01_advisor_managed_office_web_control_plane/26_WORKER_BATCH_C_RUN_PROMPT.md
+LAUNCHER_REPO_RELATIVE_PATH: advisor/jobs/20260711_agent_office_m01_advisor_managed_office_web_control_plane/26_WORKER_BATCH_C_RUN_PROMPT.md
+LAUNCHER_COMMIT_SHA: 869a8a2312dc1d2c14bd9b6ca1f9444b54488492
+LAUNCHER_GIT_BLOB: 096f0c5a7bda280c4ea5b3f9a023d8098ab8765f
+LAUNCHER_SHA256_WORKTREE: 3a24ddb1cec9f44e1a8211769ba21b291ac2ae0dfcccf58dc01d4bf5196c1f00
+LAUNCHER_SHA256_COMMITTED: 3a24ddb1cec9f44e1a8211769ba21b291ac2ae0dfcccf58dc01d4bf5196c1f00
+UPSTREAM_EVIDENCE: foundation-docs main equals origin/main at 869a8a2312dc1d2c14bd9b6ca1f9444b54488492 before ledger publication
+RESULT_PATH: ../foundation-docs/runs/agent-office/20260711_agent_office_m01_advisor_managed_office_web_control_plane/WORKER_BATCH_C_RESULT.md
+POINTER_PATH: ../foundation-docs/advisor/jobs/20260711_agent_office_m01_advisor_managed_office_web_control_plane/27_WORKER_BATCH_C_RESULT_POINTER.md
+WRITE_REPO_BRANCHES: agent-office/shadow/agent-office-m01 then foundation-docs/main, serial
+DEPENDENCY_LOCKS: clear; Batch B accepted; no Reviewer or other foundation-docs write dispatch active
+BLIND_INDEPENDENCE_RULE: final Fable5 implementation review waits for complete implementation result
+PARALLEL_ISOLATION_EVIDENCE: not applicable; serial dispatch
+SOFT_STALL_SECONDS: 3600
+HARD_TIMEOUT_SECONDS_OR_NONE: 14400
+PREFLIGHT_VERDICT: PASS_READY_TO_SEND
+SENT_AT: PENDING_AFTER_COMMITTED_LEDGER
+STATUS: READY_TO_SEND
+```
+
 ### AO-M01-BATCH-B-20260710T214500Z
 
 ```text
