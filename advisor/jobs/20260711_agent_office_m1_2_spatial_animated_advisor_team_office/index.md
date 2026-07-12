@@ -1,8 +1,8 @@
 # Agent Office M1.2 Spatial Office Design Mission
 
-Status: `AO12_C_FABLE5_PASS_ACCEPTED__AO12_D_READY`
+Status: `AO12_D_ADVISOR_VALIDATION_NEEDS_IN_SCOPE_REWORK`
 
-Implementation: `AO12_A_B_C_IMPLEMENTED_AND_ACCEPTED__AO12_D_READY`
+Implementation: `AO12_A_B_C_ACCEPTED__AO12_D_IMPLEMENTED_WITH_A1_REWORK_REQUIRED`
 
 ## Entry Artifacts
 
@@ -73,6 +73,11 @@ Implementation: `AO12_A_B_C_IMPLEMENTED_AND_ACCEPTED__AO12_D_READY`
 - [46_AO12_D_WORKER_BRIEF.md](46_AO12_D_WORKER_BRIEF.md)
 - [46_AO12_D_WORKER_HANDOFF_PROMPT.md](46_AO12_D_WORKER_HANDOFF_PROMPT.md)
 - [46_AO12_D_WORKER_RUN_PROMPT.md](46_AO12_D_WORKER_RUN_PROMPT.md)
+- [47_WORKER_AO12_D_RESULT_POINTER.md](47_WORKER_AO12_D_RESULT_POINTER.md)
+- [48_ADVISOR_AO12_D_VALIDATION.md](48_ADVISOR_AO12_D_VALIDATION.md)
+- [49_AO12_D_WORKER_REWORK_BRIEF.md](49_AO12_D_WORKER_REWORK_BRIEF.md)
+- [49_AO12_D_WORKER_REWORK_HANDOFF_PROMPT.md](49_AO12_D_WORKER_REWORK_HANDOFF_PROMPT.md)
+- [49_AO12_D_WORKER_REWORK_RUN_PROMPT.md](49_AO12_D_WORKER_REWORK_RUN_PROMPT.md)
 
 ## Current Routing
 
@@ -92,5 +97,10 @@ default demo cases, 3 composed cases, dependency audit, naming, production
 boundary, and Git checks, and found no defect. The exact Level-3 Fable5 review
 returned a clean `PASS` at `3dbd89f` after independently reproducing all test,
 visual, performance, source, Git, and boundary evidence. Advisor accepted
-AO12-C and carried the validated-UTC expiry input check into AO12-D. The final
-serial batch AO12-D (`AO12-IWU-12..14`) is ready on exact base `f9d0533`.
+AO12-C and carried the validated-UTC expiry input check into AO12-D. AO12-D was
+implemented at `da5ecc9`, pushed, and returned with complete Worker evidence.
+Advisor direct validation accepted the session-expiry and visual evidence but
+reproduced `AO12-D-A1`: synthetic spatial fixtures are present in the production
+dashboard bundle despite the exact no-fixture acceptance criterion. A narrow
+same-Worker rework is required before the final Fable5 Level-3 implementation,
+security, accessibility, and visual review.
