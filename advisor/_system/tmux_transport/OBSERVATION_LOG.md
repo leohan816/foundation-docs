@@ -46,6 +46,36 @@ ACTION_TAKEN: exact committed launcher sent through one named tmux buffer; execu
 NEXT_OBSERVATION_DUE: at most 60 seconds or on progress/result/interactive/capacity signal
 ```
 
+### AO-M1.2-PIXEL-PROTOTYPE-CORRECTION-RESUME-20260712T065949Z - blocker completion
+
+```text
+DISPATCH_ID: AO-M1.2-PIXEL-PROTOTYPE-CORRECTION-RESUME-20260712T065949Z
+OBSERVED_AT: 2026-07-12T07:30:50Z
+PANE_ID: %13
+OUTPUT_FINGERPRINT: Worker returned 16-baseline browser blocker, exact restoration/cleanup, result 101087b, pointer 2de0e6d, and STOP
+LAST_PROGRESS_MARKER: focused 24/24, lint/typecheck, 505/505, builds/audit passed; unfiltered browser found stale current-product evidence
+STATE: BLOCKED_RETURNED
+INTERACTIVE_PROMPT_PRESENT: false
+SENSITIVE_OUTPUT_SUSPECTED: false
+ACTION_TAKEN: Advisor read actual result, inspected old/actual images, verified no source/CSS/baseline delta from reviewed 48c8dbd to 56385b8, classified exact 16-image reconciliation with no behavior changes
+NEXT_OBSERVATION_DUE: immediately after final resume transport
+```
+
+## AO-M1.2-PIXEL-PROTOTYPE-FINAL-RESUME-20260712T073332Z
+
+```text
+DISPATCH_ID: AO-M1.2-PIXEL-PROTOTYPE-FINAL-RESUME-20260712T073332Z
+OBSERVED_AT: 2026-07-12T07:34:20Z
+PANE_ID: %13
+OUTPUT_FINGERPRINT: exact committed final-resume launcher visible; same Codex Worker processing
+LAST_PROGRESS_MARKER: exact current-source baseline reconciliation launcher f56d7fe submitted once
+STATE: RUNNING
+INTERACTIVE_PROMPT_PRESENT: false
+SENSITIVE_OUTPUT_SUSPECTED: false
+ACTION_TAKEN: exact committed launcher sent through one named tmux buffer after role/workspace/readiness/upstream/checksum verification; no other input sent
+NEXT_OBSERVATION_DUE: at most 60 seconds or on progress/result/interactive/capacity signal
+```
+
 ### AO-M1.2-C-IMPLEMENTATION-20260711T222500Z - sent
 
 ```text

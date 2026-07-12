@@ -1447,6 +1447,57 @@ TRANSPORT: exact named tmux buffer to agent-office/%13
 STATUS: RUNNING
 ```
 
+### AO-M1.2-PIXEL-PROTOTYPE-CORRECTION-RESUME-20260712T065949Z - reconciled blocker
+
+```text
+STATUS: BLOCKED_RETURNED_AND_RESTORED
+COMPLETED_AT: 2026-07-12T07:30:50Z
+RESULT_COMMIT: 101087bd07a3318542217de1abd2ed8e5806663f
+POINTER_COMMIT: 2de0e6dc9902743e9779d91f7bd874f55e4e3b04
+BLOCKER: 16 current-source browser comparisons fail against stale historical PNGs outside the prior allowlist
+RESTORATION: 69-entry prepared prototype/media state restored; Agent Office commit none; processes/listener cleaned
+ADVISOR_CLASSIFICATION: stale evidence reconciliation required; exact existing 16 PNGs only, with source/CSS/test/config/threshold immutable and Fable5 direct visual review mandatory
+NEXT_DEPENDENCY: AO-M1.2-PIXEL-PROTOTYPE-FINAL-RESUME-20260712T073332Z
+```
+
+## AO-M1.2-PIXEL-PROTOTYPE-FINAL-RESUME-20260712T073332Z
+
+```text
+DISPATCH_ID: AO-M1.2-PIXEL-PROTOTYPE-FINAL-RESUME-20260712T073332Z
+MISSION_ID: AGENT_OFFICE_M1_2_SPATIAL_ANIMATED_ADVISOR_TEAM_OFFICE
+TARGET_ACTOR: Agent Office Worker
+TARGET_SESSION: agent-office
+TARGET_WINDOW: 0
+TARGET_PANE: 0
+OBSERVED_PANE_ID: %13
+WORKSPACE: /home/leo/Project/agent-office
+PROCESS: codex PID 2754606 under pane shell PID 2703903
+MODEL_EFFORT_EVIDENCE: live pane footer gpt-5.6-sol ultra; launcher requires Codex 5.6 SOL Ultra
+ROLE_EVIDENCE: same existing Agent Office Worker that returned and restored both bounded correction attempts
+READINESS_EVIDENCE: idle Codex prompt after exact second blocker result and STOP; no unrelated or interactive prompt active
+SYNCHRONIZED_PANES_OFF: true
+LAUNCHER_ABSOLUTE_PATH: /home/leo/Project/foundation-docs/advisor/jobs/20260711_agent_office_m1_2_spatial_animated_advisor_team_office/83_LIVING_PIXEL_OFFICE_PROTOTYPE_FINAL_RESUME_WORKER_RUN_PROMPT.md
+LAUNCHER_REPO_RELATIVE_PATH: advisor/jobs/20260711_agent_office_m1_2_spatial_animated_advisor_team_office/83_LIVING_PIXEL_OFFICE_PROTOTYPE_FINAL_RESUME_WORKER_RUN_PROMPT.md
+LAUNCHER_COMMIT_SHA: f56d7febbade8ed9aa46b8e9e6f0b7380bec8086
+LAUNCHER_GIT_BLOB: a5c99abdc81ca931aa5ee9e793ecd8c136c2481e
+LAUNCHER_SHA256_WORKTREE: 7c1402caeb31f8316433777076eebcc76523ef7bed6928f54d855f4475754fbb
+LAUNCHER_SHA256_COMMITTED: 7c1402caeb31f8316433777076eebcc76523ef7bed6928f54d855f4475754fbb
+UPSTREAM_EVIDENCE: foundation-docs f56d7fe equals origin/main at launcher publication; Agent Office HEAD 56385b8 equals origin/shadow/agent-office-m1-2-spatial-office, left/right 0/0
+PREPARED_WORKTREE_EVIDENCE: restored 69-entry state with porcelain SHA-256 436165ba89cde6d14650893ce7f0190697aee875cb2ae132981a5f626e01e80f and empty index
+WORK_SCOPE: prior exact correction scope plus exact existing 16 historical PNGs only; no source/CSS/test/config/threshold mutation for baseline reconciliation
+RESULT_PATH: ../foundation-docs/runs/agent-office/20260711_agent_office_m1_2_spatial_animated_advisor_team_office/WORKER_LIVING_PIXEL_OFFICE_PROTOTYPE_FINAL_RESUME_RESULT.md
+POINTER_PATH: ../foundation-docs/advisor/jobs/20260711_agent_office_m1_2_spatial_animated_advisor_team_office/84_WORKER_LIVING_PIXEL_OFFICE_PROTOTYPE_FINAL_RESUME_RESULT_POINTER.md
+WRITE_REPO_BRANCHES: Agent Office shadow branch then foundation-docs/main exact result/pointer, serial
+DEPENDENCY_LOCKS: two prior attempts stopped/restored; Fable5 design PASS clean; Reviewer idle; same Worker owns preserved dirt
+PARALLEL_ISOLATION_EVIDENCE: one exact Worker pane; serialized before independent implementation/security/accessibility/visual review
+SOFT_STALL_SECONDS: 60
+HARD_TIMEOUT_SECONDS_OR_NONE: none
+PREFLIGHT_VERDICT: PASS_READY_TO_SEND
+STATUS: RUNNING
+SENT_AT: 2026-07-12T07:34:20Z
+TRANSPORT: exact named tmux buffer to agent-office/%13
+```
+
 ### AO-M1.2-C-EVENT-A11Y-PERFORMANCE-REVIEW-20260711T231511Z - sent
 
 ```text
