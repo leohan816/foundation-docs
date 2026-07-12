@@ -2667,3 +2667,42 @@ SENT_AT: 2026-07-12T21:22:00Z
 TRANSPORT: exact named tmux buffer ao_batch_a_control_scope_20260712 to foundation-control/%4; one Enter submitted unchanged content
 STATUS: RUNNING
 ```
+
+### AO-BATCH-A-CONTROL-SCOPE-GAP-20260712T212000Z - reconciled completion
+
+```text
+STATUS: COMPLETED_VERIFIED
+COMPLETED_AT: 2026-07-12T21:27:00Z
+TARGET_COMMIT: 453c661c4f4243c77b2f53089ec599561876b06f
+RESULT_COMMIT: df712e2
+CONTROL_RESULT: four docs only; actor-overlay and two coupled test paths added; WU-03/04 ownership corrected; preserved boundaries
+ADVISOR_VALIDATION: exact 381b411..453c661 diff, source/test ownership, target/upstream equality, and zero non-doc changes verified
+NEXT_DEPENDENCY: same independent SOL Sentinel narrow delta review
+```
+
+## AO-BATCH-A-DESIGN-SCOPE-CORRECTION-REVIEW-20260712T212900Z
+
+```text
+DISPATCH_ID: AO-BATCH-A-DESIGN-SCOPE-CORRECTION-REVIEW-20260712T212900Z
+MISSION_ID: AGENT_OFFICE_BATCH_A_MODERN_OFFICE_IDENTITY_COMPLETION_001
+TARGET_ACTOR: Sentinel-ReReview
+TARGET_SESSION: foundation-reviewer-sol/$20/@20/%20
+WORKSPACE: /home/leo/Project/foundation-reviewer
+PROCESS_MODEL: codex; live footer GPT-5.6 SOL xhigh
+ROLE_SKILL_READINESS: same independent Sentinel; /fable-sentinel required; prior PASS and STOP visible; idle; no interactive/auth/security prompt
+SYNCHRONIZED_PANES_OFF: true
+LAUNCHER_PATH: /home/leo/Project/foundation-docs/advisor/jobs/20260712_agent_office_batch_a_modern_office_identity_completion_001/07F_SENTINEL_SCOPE_CORRECTION_DELTA_REVIEW_RUN_PROMPT.md
+LAUNCHER_COMMIT: 7747c04d72bc61fbd0d98f2523d18482bac3852c
+LAUNCHER_BLOB: b01f3e0d03e02c26c28517a78a659112a755902f
+LAUNCHER_SHA256: 28487f7a628a7f7b0be81d1ec000d94a58e7e154cf529f631a703b50eb55fc60
+TARGET_EVIDENCE: Agent Office 453c661 clean/upstream-equal; exact docs-only 381b411..453c661; foundation-docs launcher upstream-equal
+REVIEW_SCOPE: actor-overlay source, two coupled tests, WU-03/04 ownership, closed paths, preserved U1-U3/S3/R2/T3 and accepted boundaries
+RESULT_PATH: ../foundation-docs/runs/agent-office/20260712_agent_office_batch_a_modern_office_identity_completion_001/SENTINEL_SCOPE_CORRECTION_DELTA_REVIEW_RESULT.md
+POINTER_PATH: ../foundation-docs/advisor/jobs/20260712_agent_office_batch_a_modern_office_identity_completion_001/31_SENTINEL_SCOPE_CORRECTION_DELTA_REVIEW_RESULT_POINTER.md
+WRITE_SCOPE: foundation-docs exact result/pointer only; Agent Office read-only
+DEPENDENCY_LOCKS: Control stopped; Worker stopped clean; no concurrent writer
+SOFT_STALL_SECONDS: 60
+HARD_TIMEOUT_SECONDS_OR_NONE: none
+PREFLIGHT_VERDICT: PASS_READY_TO_SEND
+STATUS: WAITING_EXPECTED
+```

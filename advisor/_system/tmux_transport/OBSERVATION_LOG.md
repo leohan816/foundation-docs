@@ -1640,3 +1640,29 @@ SENSITIVE_OUTPUT_SUSPECTED: false
 ACTION_TAKEN: exact committed buffer pasted once and submitted unchanged; no other pane input
 NEXT_OBSERVATION_DUE: at most 60 seconds or on progress/result signal
 ```
+
+### AO-BATCH-A-CONTROL-SCOPE-GAP-20260712T212000Z - completion
+
+```text
+OBSERVED_AT: 2026-07-12T21:27:00Z
+PANE_ID: %4
+STATE: COMPLETED_REPORTED
+OUTPUT_FINGERPRINT: Control returned 453c661/df712e2, exact actor-overlay scope correction, four docs only, and STOP
+INTERACTIVE_PROMPT_PRESENT: false
+SENSITIVE_OUTPUT_SUSPECTED: false
+ACTION_TAKEN: Advisor verified actual diff, source/test ownership, target cleanliness, and upstream equality; candidate accepted for narrow review only
+NEXT_OBSERVATION_DUE: none; Reviewer preflight follows
+```
+
+## AO-BATCH-A-DESIGN-SCOPE-CORRECTION-REVIEW-20260712T212900Z
+
+```text
+OBSERVED_AT: 2026-07-12T21:29:00Z
+PANE_ID: %20
+STATE: WAITING_EXPECTED
+OUTPUT_FINGERPRINT: prior design PASS and STOP; idle GPT-5.6 SOL xhigh Reviewer
+INTERACTIVE_PROMPT_PRESENT: false
+SENSITIVE_OUTPUT_SUSPECTED: false
+ACTION_TAKEN: verified pane/workspace/process/model/effort/role/readiness, exact launcher identity, target/upstream, and serialized read-only scope; no input sent yet
+NEXT_OBSERVATION_DUE: immediately after transport
+```
