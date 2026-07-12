@@ -1321,3 +1321,17 @@ SENSITIVE_OUTPUT_SUSPECTED: false
 ACTION_TAKEN: verified active transport, exact registered Worker pane/workspace/process/model/role/readiness, synchronization off, launcher commit/blob/checksum, target/upstream equality, empty index, restored worktree fingerprint, owner-only artifact root, free port, and serialized write scope; no input sent yet
 NEXT_OBSERVATION_DUE: immediately after exact launcher transport
 ```
+## AO-BATCH-A-CONTROL-DESIGN-REWORK-R4-20260712T195750Z
+
+```text
+DISPATCH_ID: AO-BATCH-A-CONTROL-DESIGN-REWORK-R4-20260712T195750Z
+OBSERVED_AT: 2026-07-12T19:57:50Z
+PANE_ID: %4
+OUTPUT_FINGERPRINT: prior Control P1-P4 result, exact commits, return to Advisor, and STOP; idle Control prompt
+LAST_PROGRESS_MARKER: SOL Sentinel delta re-review returned NEEDS_PATCH R1-R4; Advisor validated exact result and committed bounded second rework launcher
+STATE: WAITING_EXPECTED
+INTERACTIVE_PROMPT_PRESENT: false
+SENSITIVE_OUTPUT_SUSPECTED: false
+ACTION_TAKEN: verified active registered pane/workspace/process/role/readiness, synchronization off, launcher commit/blob/checksum equality, target branch/upstream equality, serialized write scope, and no Worker dispatch; no input sent yet
+NEXT_OBSERVATION_DUE: immediately after exact launcher transport
+```

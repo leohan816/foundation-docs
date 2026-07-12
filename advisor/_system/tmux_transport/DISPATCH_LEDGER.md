@@ -2277,3 +2277,39 @@ SUBAGENT_EVIDENCE: launcher forbids agent/subagent/delegated context/new session
 PREFLIGHT_VERDICT: PASS_READY_TO_SEND
 STATUS: WAITING_EXPECTED
 ```
+## AO-BATCH-A-CONTROL-DESIGN-REWORK-R4-20260712T195750Z
+
+```text
+DISPATCH_ID: AO-BATCH-A-CONTROL-DESIGN-REWORK-R4-20260712T195750Z
+MISSION_ID: AGENT_OFFICE_BATCH_A_MODERN_OFFICE_IDENTITY_COMPLETION_001
+TARGET_ACTOR: Control-Rework
+TARGET_SESSION: foundation-control
+TARGET_SESSION_ID: $4
+TARGET_WINDOW: 0
+TARGET_WINDOW_ID: @4
+TARGET_PANE: 0
+OBSERVED_PANE_ID: %4
+WORKSPACE: /home/leo/Project/foundation-control
+PROCESS: claude under pane PID 298059
+MODEL_EFFORT_EVIDENCE: live same-session prior result declares Opus 4.8 (1M) xhigh; actual Claude process and idle Control prompt reverified; launcher does not infer identity from session name
+ROLE_EVIDENCE: prior CONTROL_MASTER_DESIGN_MODE result and STOP visible; same existing Control session
+READINESS_EVIDENCE: idle prompt after exact prior result; no unrelated task, approval, auth, privilege, DB, secret, production, or interactive prompt active
+SYNCHRONIZED_PANES_OFF: true
+LAUNCHER_ABSOLUTE_PATH: /home/leo/Project/foundation-docs/advisor/jobs/20260712_agent_office_batch_a_modern_office_identity_completion_001/09D_CONTROL_DESIGN_REWORK_AFTER_DELTA_REREVIEW_RUN_PROMPT.md
+LAUNCHER_REPO_RELATIVE_PATH: advisor/jobs/20260712_agent_office_batch_a_modern_office_identity_completion_001/09D_CONTROL_DESIGN_REWORK_AFTER_DELTA_REREVIEW_RUN_PROMPT.md
+LAUNCHER_COMMIT_SHA: 201db90
+LAUNCHER_GIT_BLOB: 387579b01354fe2c777196a444a2ee3ebc38b884
+LAUNCHER_SHA256_WORKTREE: d94dd6270901659716703f02214e7baf010cea2c923c9931a13b3f334c726a4a
+LAUNCHER_SHA256_COMMITTED: d94dd6270901659716703f02214e7baf010cea2c923c9931a13b3f334c726a4a
+UPSTREAM_EVIDENCE: foundation-docs 201db90 equals origin/main at launcher publication; Agent Office 60a5a72 equals origin/batch-a/modern-office-identity-001, left/right 0/0
+DESIGN_SCOPE: exact same four design documents; R1-R4 only; no source/test/package/config/media/runtime change
+RESULT_PATH: ../foundation-docs/runs/agent-office/20260712_agent_office_batch_a_modern_office_identity_completion_001/CONTROL_DESIGN_RESULT.md
+POINTER_PATH: ../foundation-docs/advisor/jobs/20260712_agent_office_batch_a_modern_office_identity_completion_001/11_CONTROL_DESIGN_RESULT_POINTER.md
+WRITE_REPO_BRANCHES: Agent Office batch-a/modern-office-identity-001 exact four docs, then foundation-docs/main exact result/pointer, serial
+DEPENDENCY_LOCKS: same Sentinel stopped after NEEDS_PATCH; Worker not dispatched; no concurrent Agent Office writer; excluded historical session untouched
+PARALLEL_ISOLATION_EVIDENCE: one exact Control pane; serialized before same-Sentinel delta re-review; no broadcast or synchronized panes
+SOFT_STALL_SECONDS: 60
+HARD_TIMEOUT_SECONDS_OR_NONE: none; transient capacity/API error permits one same-session idempotent continue after readiness check
+PREFLIGHT_VERDICT: PASS_READY_TO_SEND
+STATUS: WAITING_EXPECTED
+```
