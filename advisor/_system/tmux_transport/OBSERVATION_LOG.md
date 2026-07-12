@@ -1809,3 +1809,29 @@ SENSITIVE_OUTPUT_SUSPECTED: false
 ACTION_TAKEN: verified same session/model/effort/workspace, target cleanliness, launcher identity, and serialized docs-only scope; sent exact launcher once
 NEXT_OBSERVATION_DUE: at most 60 seconds or on progress/result signal
 ```
+
+### AO-BATCH-A-CONTROL-PRODUCTION-RENDER-CONTRACT-20260712T224700Z - completion
+
+```text
+OBSERVED_AT: 2026-07-12T23:06:00Z
+PANE_ID: %4
+STATE: COMPLETED_REPORTED
+OUTPUT_FINGERPRINT: Control returned candidate 2e0dddf and result 619f6f9; PR-1/2/3/4 correction summary; STOP
+INTERACTIVE_PROMPT_PRESENT: false
+SENSITIVE_OUTPUT_SUSPECTED: false
+ACTION_TAKEN: Advisor verified exact docs-only diff, target/upstream, source consistency, and prepared narrow Sentinel challenge with explicit residual questions
+NEXT_OBSERVATION_DUE: none; Sentinel preflight follows
+```
+
+## AO-BATCH-A-PRODUCTION-RENDER-CONTRACT-REVIEW-20260712T231000Z
+
+```text
+OBSERVED_AT: 2026-07-12T23:10:00Z
+PANE_ID: %20
+STATE: RUNNING
+OUTPUT_FINGERPRINT: exact 07G launcher visible and submitted; Reviewer entered Working state; GPT-5.6 SOL xhigh footer visible
+INTERACTIVE_PROMPT_PRESENT: false
+SENSITIVE_OUTPUT_SUSPECTED: false
+ACTION_TAKEN: exact buffer pasted once; first delayed Enter did not submit; verified unchanged input then sent one Enter; no duplicate or other pane input
+NEXT_OBSERVATION_DUE: at most 60 seconds or on progress/result signal
+```
