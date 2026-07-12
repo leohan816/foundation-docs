@@ -14,6 +14,9 @@
 - [Control design rework handoff](09_CONTROL_DESIGN_REWORK_HANDOFF_PROMPT.md)
 - [Control design rework launcher](09_CONTROL_DESIGN_REWORK_RUN_PROMPT.md)
 - [Control design rework round-2 launcher](09B_CONTROL_DESIGN_REWORK_ROUND2_RUN_PROMPT.md)
+- [Advisor design acceptance](16_ADVISOR_CONTROL_DESIGN_ACCEPTANCE.md)
+- [SOL Sentinel design-review handoff](07_SENTINEL_DESIGN_REVIEW_HANDOFF_PROMPT.md)
+- [SOL Sentinel design-review launcher](07_SENTINEL_DESIGN_REVIEW_RUN_PROMPT.md)
 
 Pending: Control result, Advisor design validation, exact Worker handoff,
 Worker result, Advisor candidate validation, SOL Sentinel result, patch loops,
