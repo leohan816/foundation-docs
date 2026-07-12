@@ -905,3 +905,33 @@ SENSITIVE_OUTPUT_SUSPECTED: false
 ACTION_TAKEN: exact launcher sent through one named tmux buffer; execution confirmed; no duplicate input
 NEXT_OBSERVATION_DUE: at most 60 seconds or on result, prompt, or capacity signal
 ```
+
+### AO-M1.2-PIXEL-DESIGN-20260712T024242Z - completion and Advisor validation
+
+```text
+DISPATCH_ID: AO-M1.2-PIXEL-DESIGN-20260712T024242Z
+OBSERVED_AT: 2026-07-12T03:10:00Z
+PANE_ID: %13
+OUTPUT_FINGERPRINT: Worker design pointer, Agent Office 9611d0d, Foundation Docs result/pointer, STOP
+LAST_PROGRESS_MARKER: five-document design package and immutable result/pointer pushed; target clean and upstream-equal
+STATE: COMPLETED_VERIFIED
+INTERACTIVE_PROMPT_PRESENT: false
+SENSITIVE_OUTPUT_SUSPECTED: false
+ACTION_TAKEN: Advisor read actual five-file diff, canonical documents, result and pointer; reproduced scope, 13-scene, media, fallback, gate, hash, commit, push, and clean-target evidence; no runtime action
+NEXT_OBSERVATION_DUE: immediately after exact Fable5 launcher transport
+```
+
+## AO-M1.2-PIXEL-DESIGN-REVIEW-20260712T031305Z
+
+```text
+DISPATCH_ID: AO-M1.2-PIXEL-DESIGN-REVIEW-20260712T031305Z
+OBSERVED_AT: 2026-07-12T03:13:05Z
+PANE_ID: %5
+OUTPUT_FINGERPRINT: prior AO12-D Fable5 PASS and STOP; idle independent Reviewer prompt
+LAST_PROGRESS_MARKER: exact living pixel-office Level-3 design review launcher published at Foundation Docs 8da55d0
+STATE: WAITING_EXPECTED
+INTERACTIVE_PROMPT_PRESENT: false
+SENSITIVE_OUTPUT_SUSPECTED: false
+ACTION_TAKEN: verified exact existing session/pane/workspace/process/role, synchronized panes off, launcher commit/blob/checksum, clean read-only target, serialization, and upstream state; no input sent yet
+NEXT_OBSERVATION_DUE: immediately after exact launcher transport
+```
