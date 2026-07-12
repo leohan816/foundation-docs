@@ -1335,3 +1335,18 @@ SENSITIVE_OUTPUT_SUSPECTED: false
 ACTION_TAKEN: verified active registered pane/workspace/process/role/readiness, synchronization off, launcher commit/blob/checksum equality, target branch/upstream equality, serialized write scope, and no Worker dispatch; no input sent yet
 NEXT_OBSERVATION_DUE: immediately after exact launcher transport
 ```
+
+### AO-BATCH-A-CONTROL-DESIGN-REWORK-R4-20260712T195750Z - sent
+
+```text
+DISPATCH_ID: AO-BATCH-A-CONTROL-DESIGN-REWORK-R4-20260712T195750Z
+OBSERVED_AT: 2026-07-12T19:59:09Z
+PANE_ID: %4
+OUTPUT_FINGERPRINT: exact committed 09D launcher visible; Control accepted it and entered active processing
+LAST_PROGRESS_MARKER: exact second design-rework launcher submitted once to the same existing Control session
+STATE: RUNNING
+INTERACTIVE_PROMPT_PRESENT: false
+SENSITIVE_OUTPUT_SUSPECTED: false
+ACTION_TAKEN: exact committed launcher sent through one named tmux buffer; execution confirmed; no other input sent
+NEXT_OBSERVATION_DUE: at most 60 seconds or on progress/result/interactive/capacity signal
+```
