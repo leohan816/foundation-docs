@@ -31,7 +31,8 @@ ACTION_TAKEN: verified existing session/window/pane/workspace/process/auth/model
 EFFORT_COMMAND_RESULT: current model does not support reasoning effort
 QUALIFICATION_OR_IMPLEMENTATION_INPUT_SENT: false
 ACTION_TAKEN_AFTER_RESULT: held all further transport; created exact Leo/GPT decision request; no model switch or inference
-NEXT_OBSERVATION_DUE: after Leo/GPT selects provider-default pilot or hold
+PROVIDER_DEFAULT_DECISION: accepted; retain grok-build and exact unsupported-effort label; do not switch to Composer
+NEXT_OBSERVATION_DUE: immediately after exact qualification launcher transport
 ```
 
 ## AO-M1.2-C-IMPLEMENTATION-20260711T222500Z
