@@ -6,7 +6,7 @@ PROJECT: Agent Office
 REPOSITORY: /home/leo/Project/agent-office-grok-pilot-001
 BRANCH: pilot/grok-tmux-runtime-classification
 STARTING_BASE: ac8ba75d3a128385beaeeac58ae5bf54c03d23f2
-RESULTING_HEAD: 2378b28de2975f3cf00ba9922ea2f14d7af0fd30
+RESULTING_HEAD: bc143e3 (rework commit)
 EXISTING_SESSION: agent-office-grok (qualified existing TUI session)
 MODEL: grok-build
 EFFORT: NOT_CONFIGURABLE_BY_MODEL__USE_PROVIDER_DEFAULT
@@ -33,15 +33,22 @@ Added:
 - tests/domain/runtime-observation.test.ts
 - tests/adapters/tmux-runtime-discovery.test.ts
 
-Modified:
+Modified (in rework):
 - src/adapters/observations/index.ts
 - src/adapters/observations/ports.ts
 - src/adapters/observations/process-runner.ts
-- tests/helpers/fake-tool-runner.ts
+- src/adapters/observations/tmux/source.ts
+- src/adapters/observations/tmux/discovery.ts
+- src/domain/observations/runtime-classification.ts
+- tests/adapters/tmux-readonly.test.ts
+- tests/adapters/tmux-runtime-discovery.test.ts
+- tests/domain/runtime-observation.test.ts
 - tests/helpers/operational-runtime.ts
 - tests/integration/observation-coordinator.test.ts
 - docs/integration/AGENT_OFFICE_GATEWAY_MULTI_HOST_DESIGN.md
 - docs/FEATURE_INDEX.md
+
+(Note: helpers and integration test were edited for compatibility as approved in rework allowlist; original implementation had unreported scope but now documented.)
 
 ## Forbidden/Excluded Files Confirmation
 - No changes to src/runtime/* , src/adapters/gateways/* , UI, main agent-office, or excluded files.
