@@ -44,6 +44,48 @@ SENT_AT: 2026-07-11T04:43:13Z
 STATUS: RUNNING
 ```
 
+## AO-GROK-PILOT-001-EFFORT-AND-QUALIFICATION-20260712T152114Z
+
+```text
+DISPATCH_ID: AO-GROK-PILOT-001-EFFORT-AND-QUALIFICATION-20260712T152114Z
+MISSION_ID: AGENT_OFFICE_GROK_WORKER_PILOT_001
+TARGET_ACTOR: Agent Office Grok Pilot Worker
+TARGET_SESSION: agent-office-grok
+TARGET_WINDOW: 0
+TARGET_PANE: 0
+OBSERVED_SESSION_ID: $16
+OBSERVED_WINDOW_ID: @16
+OBSERVED_PANE_ID: %16
+OBSERVED_WORKSPACE: /home/leo/Project/agent-office
+TARGET_WORKTREE: /home/leo/Project/agent-office-grok-pilot-001
+PROCESS: grok PID 576823 under pane shell PID 575878
+CLI_VERSION: grok 0.2.93 (f00f96316d)
+AUTHENTICATION_EVIDENCE: grok models reports logged in with grok.com
+MODEL_EVIDENCE: exact exposed and selected slug grok-build
+INITIAL_EFFORT_EVIDENCE: process argv --reasoning-effort high
+REQUIRED_EFFORT: medium; exact committed TUI command must be applied and visibly verified before launcher transport
+ROLE_EVIDENCE: Leo/GPT bounded candidate Worker assignment; active Agent Office instructions exist in target worktree and must be directly re-read during qualification
+READINESS_EVIDENCE: idle Grok prompt after completed user inquiry; no unrelated task or interactive approval active
+SYNCHRONIZED_PANES_OFF: true
+EFFORT_COMMAND_PATH: /home/leo/Project/foundation-docs/advisor/jobs/20260712_agent_office_grok_worker_pilot_001/05_GROK_MEDIUM_EFFORT_COMMAND.txt
+EFFORT_COMMAND_COMMIT: 73920aa594629adc72224580f89810f33cdd6b9c
+EFFORT_COMMAND_BLOB: b7f39f76071eebbf30f5ee10dca3daa6bedc2d7e
+EFFORT_COMMAND_SHA256: 5a71a2cc29842a27e86aacde52bd63487a14b2a6622cb16aef847c28bf839787
+LAUNCHER_ABSOLUTE_PATH: /home/leo/Project/foundation-docs/advisor/jobs/20260712_agent_office_grok_worker_pilot_001/06_GROK_QUALIFICATION_RUN_PROMPT.md
+LAUNCHER_COMMIT_SHA: 73920aa594629adc72224580f89810f33cdd6b9c
+LAUNCHER_GIT_BLOB: 3cdf473e7d4eb043ed4f1f0025bf1db815174e25
+LAUNCHER_SHA256_WORKTREE: 879c41e7867636f45c07a73bb5ff9fdd8f048f03577eb74165a874aba9101d8a
+LAUNCHER_SHA256_COMMITTED: 879c41e7867636f45c07a73bb5ff9fdd8f048f03577eb74165a874aba9101d8a
+UPSTREAM_EVIDENCE: foundation-docs 73920aa equals origin/main; Agent Office isolated branch starts at ac8ba75d
+DEPENDENCY_LOCKS: excluded agent-office Worker idle and receives no input; reviewer-fable5 idle; no active Agent Office or Foundation Docs pilot writer
+RESULT_PATH: ../foundation-docs/runs/agent-office/20260712_agent_office_grok_worker_pilot_001/GROK_QUALIFICATION_RESULT.md
+POINTER_PATH: ../foundation-docs/advisor/jobs/20260712_agent_office_grok_worker_pilot_001/11_GROK_QUALIFICATION_RESULT_POINTER.md
+SOFT_STALL_SECONDS: 60
+HARD_TIMEOUT_SECONDS_OR_NONE: none; transient capacity/API error permits one same-session idempotent continue after readiness revalidation
+PREFLIGHT_VERDICT: PASS_READY_TO_SET_EFFORT_THEN_SEND
+STATUS: WAITING_EXPECTED
+```
+
 ## AO-M1.2-C-IMPLEMENTATION-20260711T222500Z
 
 ```text

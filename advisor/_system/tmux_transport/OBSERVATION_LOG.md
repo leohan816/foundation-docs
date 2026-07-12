@@ -16,6 +16,21 @@ APPROVAL_OR_AUTH_PROMPT: none
 STATUS: RUNNING
 ```
 
+## AO-GROK-PILOT-001-EFFORT-AND-QUALIFICATION-20260712T152114Z
+
+```text
+DISPATCH_ID: AO-GROK-PILOT-001-EFFORT-AND-QUALIFICATION-20260712T152114Z
+OBSERVED_AT: 2026-07-12T15:21:14Z
+PANE_ID: %16
+OUTPUT_FINGERPRINT: idle Grok Build prompt; prior user model inquiry complete
+LAST_PROGRESS_MARKER: registry, isolated worktree, exact effort control, qualification launcher, and pilot briefs committed/pushed
+STATE: WAITING_EXPECTED
+INTERACTIVE_PROMPT_PRESENT: false
+SENSITIVE_OUTPUT_SUSPECTED: false
+ACTION_TAKEN: verified existing session/window/pane/workspace/process/auth/model/readiness, synchronization off, isolated branch, excluded Worker idle, Reviewer idle, launcher commit/blob/checksum, and Foundation Docs upstream equality; no input sent yet
+NEXT_OBSERVATION_DUE: immediately after exact medium-effort command transport
+```
+
 ## AO-M1.2-C-IMPLEMENTATION-20260711T222500Z
 
 ```text
