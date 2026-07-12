@@ -1,8 +1,8 @@
 # Agent Office M1.2 Spatial Office Design Mission
 
-Status: `AO12_D_ADVISOR_VALIDATION_NEEDS_IN_SCOPE_REWORK`
+Status: `AO12_D_A1_REWORK_ADVISOR_VALIDATED__FABLE5_FINAL_REVIEW_READY`
 
-Implementation: `AO12_A_B_C_ACCEPTED__AO12_D_IMPLEMENTED_WITH_A1_REWORK_REQUIRED`
+Implementation: `AO12_A_B_C_ACCEPTED__AO12_D_CORRECTED_AND_ADVISOR_VALIDATED__FINAL_REVIEW_PENDING`
 
 ## Entry Artifacts
 
@@ -78,6 +78,11 @@ Implementation: `AO12_A_B_C_ACCEPTED__AO12_D_IMPLEMENTED_WITH_A1_REWORK_REQUIRED
 - [49_AO12_D_WORKER_REWORK_BRIEF.md](49_AO12_D_WORKER_REWORK_BRIEF.md)
 - [49_AO12_D_WORKER_REWORK_HANDOFF_PROMPT.md](49_AO12_D_WORKER_REWORK_HANDOFF_PROMPT.md)
 - [49_AO12_D_WORKER_REWORK_RUN_PROMPT.md](49_AO12_D_WORKER_REWORK_RUN_PROMPT.md)
+- [50_WORKER_AO12_D_REWORK_RESULT_POINTER.md](50_WORKER_AO12_D_REWORK_RESULT_POINTER.md)
+- [51_ADVISOR_AO12_D_REWORK_VALIDATION.md](51_ADVISOR_AO12_D_REWORK_VALIDATION.md)
+- [52_FABLE5_AO12_D_FINAL_REVIEW_BRIEF.md](52_FABLE5_AO12_D_FINAL_REVIEW_BRIEF.md)
+- [52_FABLE5_AO12_D_FINAL_REVIEW_HANDOFF_PROMPT.md](52_FABLE5_AO12_D_FINAL_REVIEW_HANDOFF_PROMPT.md)
+- [52_FABLE5_AO12_D_FINAL_REVIEW_RUN_PROMPT.md](52_FABLE5_AO12_D_FINAL_REVIEW_RUN_PROMPT.md)
 
 ## Current Routing
 
@@ -102,5 +107,9 @@ implemented at `da5ecc9`, pushed, and returned with complete Worker evidence.
 Advisor direct validation accepted the session-expiry and visual evidence but
 reproduced `AO12-D-A1`: synthetic spatial fixtures are present in the production
 dashboard bundle despite the exact no-fixture acceptance criterion. A narrow
-same-Worker rework is required before the final Fable5 Level-3 implementation,
-security, accessibility, and visual review.
+same-Worker rework at `48c8dbd` removed the production fixture dependency and
+added a fresh-build zero-marker gate. Advisor independently reran 77/452 Vitest,
+13/13 composition, 43/43 demo and 3/3 composed Playwright, build, audit, marker,
+Git, cleanup, and visual checks. The cumulative AO12-D implementation is ready
+for the final independent Fable5 Level-3 implementation, security,
+accessibility, and visual review.
