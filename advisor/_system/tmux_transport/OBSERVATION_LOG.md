@@ -1070,3 +1070,33 @@ SENSITIVE_OUTPUT_SUSPECTED: false
 ACTION_TAKEN: exact committed launcher sent through one named tmux buffer; execution and skill load confirmed; no other input sent
 NEXT_OBSERVATION_DUE: at most 60 seconds or on progress/result/interactive/capacity signal
 ```
+
+### AO-M1.2-PIXI-BRIDGE-DESIGN-REVIEW-20260712T061846Z - completion
+
+```text
+DISPATCH_ID: AO-M1.2-PIXI-BRIDGE-DESIGN-REVIEW-20260712T061846Z
+OBSERVED_AT: 2026-07-12T06:35:35Z
+PANE_ID: %5
+OUTPUT_FINGERPRINT: Fable5 clean PASS, result/pointer commit 0108295, and STOP
+LAST_PROGRESS_MARKER: 20/20 questions answered; 52-diagnostic problem and zero-diagnostic bounded solution reproduced; zero defects
+STATE: COMPLETED_REPORTED
+INTERACTIVE_PROMPT_PRESENT: false
+SENSITIVE_OUTPUT_SUSPECTED: false
+ACTION_TAKEN: Advisor read exact result/pointer/commit, verified two-file scope and upstream equality, accepted clean PASS for implementation correction only, and published exact Worker launcher
+NEXT_OBSERVATION_DUE: none for Reviewer; Worker correction preflight follows
+```
+
+## AO-M1.2-PIXEL-PROTOTYPE-CORRECTION-20260712T063535Z
+
+```text
+DISPATCH_ID: AO-M1.2-PIXEL-PROTOTYPE-CORRECTION-20260712T063535Z
+OBSERVED_AT: 2026-07-12T06:35:35Z
+PANE_ID: %13
+OUTPUT_FINGERPRINT: prior bridge design result and STOP; idle GPT-5.6 SOL Ultra prompt
+LAST_PROGRESS_MARKER: clean Fable5 design PASS validated; exact implementation-correction launcher committed and pushed
+STATE: WAITING_EXPECTED
+INTERACTIVE_PROMPT_PRESENT: false
+SENSITIVE_OUTPUT_SUSPECTED: false
+ACTION_TAKEN: verified active transport, disengaged kill switch, exact registered Worker pane/workspace/process/model/role/readiness, synchronization off, launcher commit/blob/checksum equality, target/upstream, prepared worktree identity, pins/compiler, write locks, and serialized scope; no input sent yet
+NEXT_OBSERVATION_DUE: immediately after exact launcher transport
+```
