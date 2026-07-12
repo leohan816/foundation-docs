@@ -2321,3 +2321,15 @@ SENT_AT: 2026-07-12T19:59:09Z
 TRANSPORT: exact named tmux buffer to foundation-control/%4
 STATUS: RUNNING
 ```
+
+### AO-BATCH-A-CONTROL-DESIGN-REWORK-R4-20260712T195750Z - reconciled completion
+
+```text
+STATUS: COMPLETED_VERIFIED
+COMPLETED_AT: 2026-07-12T20:12:30Z
+TARGET_COMMIT: 77681d9ed5dae3567115082945508f8474308812
+RESULT_COMMIT: 8a65e503bc31a4e84c15fe29cb96b018bf76e08a
+CONTROL_RESULT: R1-R4 closure claimed; four documentation paths only; implementation remains unauthorized
+ADVISOR_VALIDATION: exact branch/upstream, four-file diff, no non-doc changes, and source-grounded R1-R3 changes verified; R4 exact-path closure reserved for same-Sentinel judgment
+NEXT_DEPENDENCY: same foundation-reviewer-sol second design delta re-review
+```

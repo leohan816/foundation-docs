@@ -1350,3 +1350,18 @@ SENSITIVE_OUTPUT_SUSPECTED: false
 ACTION_TAKEN: exact committed launcher sent through one named tmux buffer; execution confirmed; no other input sent
 NEXT_OBSERVATION_DUE: at most 60 seconds or on progress/result/interactive/capacity signal
 ```
+
+### AO-BATCH-A-CONTROL-DESIGN-REWORK-R4-20260712T195750Z - completion
+
+```text
+DISPATCH_ID: AO-BATCH-A-CONTROL-DESIGN-REWORK-R4-20260712T195750Z
+OBSERVED_AT: 2026-07-12T20:12:30Z
+PANE_ID: %4
+OUTPUT_FINGERPRINT: Control returned commit 77681d9, Foundation Docs result 8a65e50, R1-R4 closure table, and STOP
+LAST_PROGRESS_MARKER: same four design documents patched and non-force pushed; no implementation or Batch B-E work
+STATE: COMPLETED_REPORTED
+INTERACTIVE_PROMPT_PRESENT: false
+SENSITIVE_OUTPUT_SUSPECTED: false
+ACTION_TAKEN: Advisor read actual result/pointer/diff, verified exact branch/upstream and documentation-only scope, and prepared same-Sentinel second delta review
+NEXT_OBSERVATION_DUE: none for Control; Reviewer preflight follows
+```

@@ -711,3 +711,17 @@ ADVISOR_RESULT_VERDICT: ACCEPT_AO12_PWU_06__HOLD_AO12_PWU_07_FOR_MEDIA_TOOL_AUTH
 NEXT_ACTOR: Leo/GPT
 RECORDED_AT: 2026-07-12T03:24:00Z
 ```
+## AO-BATCH-A-CONTROL-DESIGN-REWORK-R4-20260712T195750Z
+
+```text
+DISPATCH_ID: AO-BATCH-A-CONTROL-DESIGN-REWORK-R4-20260712T195750Z
+MISSION_ID: AGENT_OFFICE_BATCH_A_MODERN_OFFICE_IDENTITY_COMPLETION_001
+ACTOR: Control-Rework
+STATUS: COMPLETED_VERIFIED
+TARGET_COMMIT: 77681d9ed5dae3567115082945508f8474308812
+RESULT_COMMIT: 8a65e503bc31a4e84c15fe29cb96b018bf76e08a
+RESULT_PATH: ../foundation-docs/runs/agent-office/20260712_agent_office_batch_a_modern_office_identity_completion_001/CONTROL_DESIGN_RESULT.md
+POINTER_PATH: ../foundation-docs/advisor/jobs/20260712_agent_office_batch_a_modern_office_identity_completion_001/11_CONTROL_DESIGN_RESULT_POINTER.md
+SCOPE_EVIDENCE: four Agent Office design docs only; no runtime/source/test/config/media change; pushed upstream-equal
+NEXT_ACTOR: same independent Sentinel for exact 60a5a72..77681d9 delta re-review
+```
