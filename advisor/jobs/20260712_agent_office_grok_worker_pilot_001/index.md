@@ -10,6 +10,8 @@
 - [Qualification launcher](06_GROK_QUALIFICATION_RUN_PROMPT.md)
 - [Implementation handoff](07_GROK_IMPLEMENTATION_HANDOFF_PROMPT.md)
 - [Implementation launcher](07_GROK_IMPLEMENTATION_RUN_PROMPT.md)
+- [Qualification correction handoff](09_GROK_QUALIFICATION_CORRECTION_HANDOFF_PROMPT.md)
+- [Qualification correction launcher](09_GROK_QUALIFICATION_CORRECTION_RUN_PROMPT.md)
 - [Loop state](10_LOOP_STATE.md)
 
 Current state: `ENTRY_VALIDATED__PROVIDER_DEFAULT_ACCEPTED__QUALIFICATION_READY`.
