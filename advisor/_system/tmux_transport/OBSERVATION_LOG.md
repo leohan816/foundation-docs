@@ -1507,3 +1507,17 @@ SENSITIVE_OUTPUT_SUSPECTED: false
 ACTION_TAKEN: verified pane/workspace/process/model/effort/role/readiness, exact launcher identity, target/upstream, and serialized read-only review; no input sent yet
 NEXT_OBSERVATION_DUE: immediately after transport
 ```
+
+### AO-BATCH-A-DESIGN-THIRD-DELTA-REVIEW-20260712T204521Z - sent
+
+```text
+DISPATCH_ID: AO-BATCH-A-DESIGN-THIRD-DELTA-REVIEW-20260712T204521Z
+OBSERVED_AT: 2026-07-12T20:46:12Z
+PANE_ID: %20
+OUTPUT_FINGERPRINT: exact 07D launcher submitted; Codex entered Working state
+STATE: RUNNING
+INTERACTIVE_PROMPT_PRESENT: false
+SENSITIVE_OUTPUT_SUSPECTED: false
+ACTION_TAKEN: exact committed buffer pasted once; one delayed Enter submitted the unchanged prompt; no duplicate or other input
+NEXT_OBSERVATION_DUE: at most 60 seconds or on progress/result signal
+```
