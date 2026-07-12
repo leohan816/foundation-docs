@@ -1,6 +1,6 @@
 # Control Design Result — Agent Office Batch A Application-Integration Design Delta
 
-Result: `CONTROL_MASTER_DESIGN_DELTA_REWORKED_CD_1_TO_CD_10_AND_SENTINEL_P1_P4__PENDING_INDEPENDENT_SENTINEL_DELTA_REVIEW` (stale `FABLE5` header corrected per Sentinel non-blocking finding §3)
+Result: `CONTROL_MASTER_DESIGN_DELTA_REWORKED_CD_1_TO_CD_10_SENTINEL_P1_P4_AND_R1_R4__PENDING_INDEPENDENT_SENTINEL_DELTA_REREVIEW`
 
 Actor: Control (`foundation-control` session). Mode: `CONTROL_MASTER_DESIGN_MODE` (design coordination only — no implementation, no review, no risk acceptance, no final approval, no agents/sub-agents).
 
@@ -120,3 +120,24 @@ Driver: independent-Sentinel `SENTINEL_DESIGN_REVIEW_RESULT.md` = `NEEDS_PATCH` 
 ### Rework boundaries
 
 Same four Agent Office documentation paths only; no runtime/source/test/package/config/media/DB/secret/auth/transport/PWA-code change; no `main`/force push; no agents/sub-agents/new sessions; no self-review; Batch B–E untouched; accepted architecture + 17-item traceability + CD-1..CD-10 closures preserved. `RETURN_TO: Advisor`; implementation unauthorized until a clean independent-Sentinel delta re-review.
+
+---
+
+## Sentinel delta re-review R1–R4 rework (Agent Office design commit — see pointer)
+
+Driver: `SENTINEL_DESIGN_DELTA_REREVIEW_RESULT.md` = `NEEDS_PATCH` (candidate `60a5a72`; P1/P2/P3 `NOT_CLOSED`, P4 `PARTIAL__BLOCKING`), validated by `19_ADVISOR_SENTINEL_DELTA_REREVIEW_VALIDATION.md`. Patched in the same four design paths; semantics resolved from actual source, not from preserving the prior closure claim.
+
+### R1–R4 closure table
+
+| Finding | Closure (exact, from actual source) |
+|---|---|
+| **R1** missing/unverified process falsely labelled offline; `AI_READY` non-exact | Contract §2.3 adds a **distinct** `SESSION_PROCESS_UNKNOWN` sentinel; `SESSION_OFFLINE`/`NO_AI_PROCESS`/`AI_PROCESS_DETECTED` each require their own accepted process-fact; every runtime state names its exact accepted structured fact/cue; `AI_READY` needs an accepted `ai_ready` fact (attached-metadata removed as proof). Grounded in `src/runtime/observation-coordinator.ts:39-50` (no process/ready field). |
+| **R2** mapping elevates and is incomplete | Contract §2.4 + delta §4: `operationalState` = **total function of `projectRequiredObservable(...).requiredObservableName`** (`src/domain/activity/index.ts:115-151`), not raw `WorkUnitState`; exhaustive `ObservableProjectionName`(16 + `UNKNOWN_OR_STALE`)→`PixelOperationalState` table, default `UNKNOWN`; un-evidenced `RUNNING`/`HOLD`/`WAITING_ADVISOR` → `UNKNOWN` (projector already returns `UNKNOWN_OR_STALE`, `:199-205`); all 11 `ROLE_ACTIVITIES` route through the existing compatibility gate (`:58-113,153-181`). |
+| **R3** static ownership/join cannot implement runtime rules | Contract §2.5/§3: **(A)** immutable identity/organization registry (stable + allowed-token metadata) vs **(B)** accepted-evidence records; projector computes changing facts from (B) validated vs (A); **full outer join (union) on `roleInstanceId`** makes registry-only (→ sentinels) and evidence-only (→ `UNKNOWN`+`UNASSIGNED`) both producible; changing facts never stored in (A); reversed "registry derived from runtime" removed; broken §2.6→§2.5 pointer fixed. |
+| **R4** source proposal still wildcarded | Delta §9 + WorkUnit plan §2 give a **closed enumerated** file list per area/WorkUnit (exact `src/ui/pixel/*` files, `src/application/organization/{index,types,registry,evidence,projector}.ts` + `fixtures/organization-registry.ts`, exact test paths, exact scripts); no `src/ui/*`/`tests/`/`scripts/ + docs`/`fixtures/` globs; any unnamed path returns to Advisor. Failure/PWA matrix (already closed) preserved. |
+
+### Direct reads this pass (Sentinel-cited source, no agents)
+
+`SENTINEL_DESIGN_DELTA_REREVIEW_RESULT.md`, `19_ADVISOR_SENTINEL_DELTA_REREVIEW_VALIDATION.md`, `src/domain/activity/index.ts` (`:1-18` `ROLE_ACTIVITIES`, `:21-41` observable names, `:58-207` compatibility gate + `projectRequiredObservable` + `deriveObservable`), `src/domain/state-machines/work-unit.ts` (`:3-20`), `src/ui/pixel/contracts.ts` (`:6-11`, `:24-38`), `src/runtime/observation-coordinator.ts` (`:39-50`), `src/application/spatial-office/authenticated-projection.ts` (`:53-68`), `docs/operations/AGENT_OFFICE_M1_2_LIVING_PIXEL_OFFICE_IMPLEMENTATION_PLAN.md` §6.2 (exact production file surfaces).
+
+`RETURN_TO: Advisor`; implementation unauthorized until a clean independent-Sentinel delta re-review of the new candidate.
