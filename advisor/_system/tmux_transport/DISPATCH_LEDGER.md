@@ -83,7 +83,10 @@ POINTER_PATH: ../foundation-docs/advisor/jobs/20260712_agent_office_grok_worker_
 SOFT_STALL_SECONDS: 60
 HARD_TIMEOUT_SECONDS_OR_NONE: none; transient capacity/API error permits one same-session idempotent continue after readiness revalidation
 PREFLIGHT_VERDICT: PASS_READY_TO_SET_EFFORT_THEN_SEND
-STATUS: WAITING_EXPECTED
+EFFORT_COMMAND_SENT_AT: 2026-07-12T15:23:00Z
+EFFORT_COMMAND_RESULT: current model does not support reasoning effort
+QUALIFICATION_LAUNCHER_SENT: false
+STATUS: HOLD_NEEDS_LEO_DECISION
 ```
 
 ## AO-M1.2-C-IMPLEMENTATION-20260711T222500Z

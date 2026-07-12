@@ -28,7 +28,10 @@ STATE: WAITING_EXPECTED
 INTERACTIVE_PROMPT_PRESENT: false
 SENSITIVE_OUTPUT_SUSPECTED: false
 ACTION_TAKEN: verified existing session/window/pane/workspace/process/auth/model/readiness, synchronization off, isolated branch, excluded Worker idle, Reviewer idle, launcher commit/blob/checksum, and Foundation Docs upstream equality; no input sent yet
-NEXT_OBSERVATION_DUE: immediately after exact medium-effort command transport
+EFFORT_COMMAND_RESULT: current model does not support reasoning effort
+QUALIFICATION_OR_IMPLEMENTATION_INPUT_SENT: false
+ACTION_TAKEN_AFTER_RESULT: held all further transport; created exact Leo/GPT decision request; no model switch or inference
+NEXT_OBSERVATION_DUE: after Leo/GPT selects provider-default pilot or hold
 ```
 
 ## AO-M1.2-C-IMPLEMENTATION-20260711T222500Z
