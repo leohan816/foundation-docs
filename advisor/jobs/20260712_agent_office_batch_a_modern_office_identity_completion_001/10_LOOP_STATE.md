@@ -5,10 +5,10 @@
 - Control design: `ACCEPTED_CANDIDATE_381B411`
 - Advisor design validation: `PASS__IMPLEMENTATION_HANDOFF_AUTHORIZED`
 - Sentinel design review: `PASS_AT_381B411__NO_RESIDUAL_RISK`
-- Opus Worker: `READY_FOR_EXACT_COMMITTED_HANDOFF`
+- Opus Worker: `STOPPED_CLEAN_AT_ENTRY_MAPPING__SCOPE_GAP_FOUND`
 - Advisor candidate validation: `WAITING`
 - SOL Sentinel: `WAITING_FOR_ACCEPTED_CANDIDATE`
-- Patch attempts: `7_CONTROL_FINAL_NARROW_CORRECTION__CLOSED`
+- Patch attempts: `8_CONTROL_SCOPE_GAP_CORRECTION_PENDING`
 - Final audit: `WAITING`
-- Next actor: `agent-office-opus` implementation Worker
+- Next actor: `foundation-control` exact three-path scope correction
 - Batch B: `NOT_STARTED_NOT_AUTHORIZED`

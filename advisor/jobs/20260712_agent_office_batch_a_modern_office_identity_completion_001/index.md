@@ -51,9 +51,16 @@
 - [Advisor final design acceptance](28_ADVISOR_FINAL_DESIGN_ACCEPTANCE.md)
 - [Opus Worker implementation handoff](06B_WORKER_IMPLEMENTATION_HANDOFF_PROMPT.md)
 - [Opus Worker implementation launcher](06B_WORKER_IMPLEMENTATION_RUN_PROMPT.md)
+- [Advisor Worker scope-exception validation](29_ADVISOR_WORKER_SCOPE_EXCEPTION_VALIDATION.md)
+- [Control scope-gap correction handoff](09H_CONTROL_DESIGN_SCOPE_GAP_CORRECTION_HANDOFF_PROMPT.md)
+- [Control scope-gap correction launcher](09H_CONTROL_DESIGN_SCOPE_GAP_CORRECTION_RUN_PROMPT.md)
 
 Design: accepted at `381b411`; independent Sentinel design verdict `PASS`.
 
-Pending: Worker implementation/result, Advisor candidate validation, SOL
-Sentinel implementation review, any routine patch loops, direct local rehearsal,
-final audit, and Founder Acceptance Sheet.
+The first Worker entry pass stopped cleanly because the closed scope omitted the
+existing actor-overlay host and two coupled tests. A narrow Control documentation
+correction and same-Sentinel delta review precede Worker resume.
+
+Pending: scope correction/review, Worker implementation/result, Advisor candidate
+validation, SOL Sentinel implementation review, routine patch loops, direct local
+rehearsal, final audit, and Founder Acceptance Sheet.
