@@ -60,6 +60,7 @@
 - [SOL Sentinel scope-correction result pointer](31_SENTINEL_SCOPE_CORRECTION_DELTA_REVIEW_RESULT_POINTER.md)
 - [Advisor scope-correction review validation](32_ADVISOR_SCOPE_CORRECTION_REVIEW_VALIDATION.md)
 - [Opus Worker implementation resume launcher](06C_WORKER_IMPLEMENTATION_RESUME_RUN_PROMPT.md)
+- [Opus Worker continue-full-build launcher](06D_WORKER_CONTINUE_FULL_BUILD_RUN_PROMPT.md)
 
 Design: accepted at `381b411`; independent Sentinel design verdict `PASS`.
 
