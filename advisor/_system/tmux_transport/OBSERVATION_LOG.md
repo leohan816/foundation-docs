@@ -1601,3 +1601,29 @@ SENSITIVE_OUTPUT_SUSPECTED: false
 ACTION_TAKEN: exact committed buffer pasted once and submitted unchanged; no duplicate or other pane input
 NEXT_OBSERVATION_DUE: at most 60 seconds or on entry/progress/result signal
 ```
+
+### AO-BATCH-A-WORKER-IMPLEMENTATION-20260712T210756Z - clean scope stop
+
+```text
+OBSERVED_AT: 2026-07-12T21:18:40Z
+PANE_ID: %16
+STATE: BLOCKED
+OUTPUT_FINGERPRINT: Worker loaded /fable-builder, passed entry gate, mapped contract to code, identified omitted actor-overlay and two coupled tests, returned STOP with no changes
+INTERACTIVE_PROMPT_PRESENT: false
+SENSITIVE_OUTPUT_SUSPECTED: false
+ACTION_TAKEN: Advisor directly verified actual source/import/test coupling and classified a narrow Control documentation correction; no Worker input sent
+NEXT_OBSERVATION_DUE: after corrected design PASS and amended Worker launcher
+```
+
+## AO-BATCH-A-CONTROL-SCOPE-GAP-20260712T212000Z
+
+```text
+OBSERVED_AT: 2026-07-12T21:20:00Z
+PANE_ID: %4
+STATE: WAITING_EXPECTED
+OUTPUT_FINGERPRINT: prior U1-U3 Control result and STOP; idle prompt
+INTERACTIVE_PROMPT_PRESENT: false
+SENSITIVE_OUTPUT_SUSPECTED: false
+ACTION_TAKEN: verified pane/workspace/process/role/readiness, target cleanliness, exact launcher identity, and serialized docs-only scope; no input sent yet
+NEXT_OBSERVATION_DUE: immediately after transport
+```

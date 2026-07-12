@@ -2621,3 +2621,41 @@ SENT_AT: 2026-07-12T21:09:30Z
 TRANSPORT: exact named tmux buffer ao_batch_a_worker_20260712 to agent-office-opus/%16; one Enter submitted unchanged content
 STATUS: RUNNING
 ```
+
+### AO-BATCH-A-WORKER-IMPLEMENTATION-20260712T210756Z - clean scope stop
+
+```text
+STATUS: BLOCKED_CLEAN_NO_CODE_CHANGED
+COMPLETED_AT: 2026-07-12T21:18:40Z
+TARGET_COMMIT: 381b41184994da161db3f5e80f0952f82450925e
+BLOCKER: closed design scope omits the existing actor-overlay implementation host and two coupled UI tests required by BA-WU-03/04
+WORKTREE_STATUS: clean; upstream-equal; zero source/test/doc changes
+ADVISOR_CLASSIFICATION: narrow technical design/file-scope defect; patchable without Founder decision
+NEXT_DEPENDENCY: same Control docs-only scope correction, then same Sentinel delta review
+```
+
+## AO-BATCH-A-CONTROL-SCOPE-GAP-20260712T212000Z
+
+```text
+DISPATCH_ID: AO-BATCH-A-CONTROL-SCOPE-GAP-20260712T212000Z
+MISSION_ID: AGENT_OFFICE_BATCH_A_MODERN_OFFICE_IDENTITY_COMPLETION_001
+TARGET_ACTOR: Control-Rework
+TARGET_SESSION: foundation-control/$4/@4/%4
+WORKSPACE: /home/leo/Project/foundation-control
+PROCESS_MODEL: claude; same verified Opus 4.8 (1M) xhigh Control context
+ROLE_READINESS: prior 381b411 result and STOP; idle CONTROL_MASTER_DESIGN_MODE prompt; no interactive/auth/security prompt
+SYNCHRONIZED_PANES_OFF: true
+LAUNCHER_PATH: /home/leo/Project/foundation-docs/advisor/jobs/20260712_agent_office_batch_a_modern_office_identity_completion_001/09H_CONTROL_DESIGN_SCOPE_GAP_CORRECTION_RUN_PROMPT.md
+LAUNCHER_COMMIT: 702a2c0808331e4532589cc2d1b8d925ce5f2aed
+LAUNCHER_BLOB: dcfcfa2a7c8ebd3f2c216c763999f8b7bd310cdc
+LAUNCHER_SHA256: f06f52abedb46fa61c2499a98be3d42e97de11bd3086e0f3a284dbe1d818aef7
+TARGET_EVIDENCE: Agent Office 381b411 clean/upstream-equal; Worker stopped clean; foundation-docs launcher upstream-equal
+SCOPE: same four design docs only; add exact actor-overlay source and two coupled test paths; define WU-03/WU-04 ownership; no implementation
+RESULT_PATH: ../foundation-docs/runs/agent-office/20260712_agent_office_batch_a_modern_office_identity_completion_001/CONTROL_DESIGN_RESULT.md
+POINTER_PATH: ../foundation-docs/advisor/jobs/20260712_agent_office_batch_a_modern_office_identity_completion_001/11_CONTROL_DESIGN_RESULT_POINTER.md
+DEPENDENCY_LOCKS: Worker stopped clean; Reviewer idle; no concurrent Agent Office writer
+SOFT_STALL_SECONDS: 60
+HARD_TIMEOUT_SECONDS_OR_NONE: none
+PREFLIGHT_VERDICT: PASS_READY_TO_SEND
+STATUS: WAITING_EXPECTED
+```
