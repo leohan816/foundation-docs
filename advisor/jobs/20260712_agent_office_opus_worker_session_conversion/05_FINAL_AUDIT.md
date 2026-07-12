@@ -15,6 +15,8 @@ Verdict: `PASS__SESSION_CONVERTED_AND_GROK_PILOT_ROLLED_BACK`
   `<Opus 4.8 (1M context): Max>`;
 - independent Reviewer session renamed from `reviewer-fable5` to the
   model-neutral `foundation-reviewer`, preserving `$5/@5/%5`;
+- existing Codex SOL Worker session renamed from `agent-office` to
+  `agent-office-sol`, preserving `$13/@13/%13`;
 - Worker and Reviewer remain separate sessions and contexts.
 
 ## Rollback

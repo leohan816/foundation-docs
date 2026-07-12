@@ -26,6 +26,7 @@ Verdict: `PROCEED_WITH_LIMITS`
 - the model-neutral Reviewer session name never determines model provenance;
 - result provenance must identify the actual model, currently Opus 4.8;
 - a future mission must create a fresh isolated worktree and branch;
-- `agent-office` Codex session remains excluded unless a future mission says
+- `agent-office-sol/$13/@13/%13` is the same existing Codex SOL session formerly
+  named `agent-office` and remains excluded unless a future mission says
   otherwise;
 - final approval remains Leo/GPT.
