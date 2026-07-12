@@ -1,0 +1,60 @@
+{
+  "schemaVersion": "agent-office.m1.2.living-pixel-office-visual-patch-manifest.v1",
+  "manifestVersion": 1,
+  "missionId": "AGENT_OFFICE_M1_2_SPATIAL_ANIMATED_ADVISOR_TEAM_OFFICE",
+  "status": "FOUNDER_VISUAL_PATCH_AUTHORIZED__FULL_INTEGRATION_BLOCKED",
+  "authority": "97_LEO_GPT_LIVING_PIXEL_OFFICE_VISUAL_PATCH_DECISION.md",
+  "baseCommit": "c535877b61ad8a1e3d74dca5c6fec0ada4cac3f8",
+  "scopeChange": {
+    "oldTotal": 27,
+    "newTotal": 30,
+    "addedWorkUnits": 3,
+    "reason": "Founder requested a bounded visual patch after the reviewed prototype",
+    "approvingAuthority": "Leo/GPT"
+  },
+  "workUnits": [
+    {
+      "id": "AO12-PWU-11-P1",
+      "actor": "Agent Office Worker",
+      "phase": "VISUAL_PATCH",
+      "title": "Actor session labels, Channy motion/appearance, and modern palette",
+      "status": "READY",
+      "dependencies": ["AO12-PWU-10"]
+    },
+    {
+      "id": "AO12-PWU-11-R1",
+      "actor": "Fable5 Reviewer",
+      "phase": "NARROW_VISUAL_ACCESSIBILITY_DELTA_REVIEW",
+      "title": "Independent review of exact Founder visual patch",
+      "status": "WAITING_DEPENDENCY",
+      "dependencies": ["AO12-PWU-11-P1"]
+    },
+    {
+      "id": "AO12-PWU-11-D2",
+      "actor": "Leo/GPT",
+      "phase": "FOUNDER_GATE",
+      "title": "Founder visual-direction decision on patched candidate",
+      "status": "WAITING_DEPENDENCY",
+      "dependencies": ["AO12-PWU-11-R1"]
+    }
+  ],
+  "allowedBaselineDelta": {
+    "livingPrototypePaths": 13,
+    "historicalReconciledPaths": 0,
+    "rule": "EXACT_13_LIVING_PATHS_ONLY__26_RECONCILED_BYTE_IDENTICAL_TO_BASE"
+  },
+  "mediaContract": {
+    "artifactRoot": "/home/leo/Project/agent-office/artifacts/m1-2-visual-prototype/",
+    "requiredFileCount": 8,
+    "largeMediaPolicy": "IGNORED_NOT_COMMITTED",
+    "requiredVisualSubjects": [
+      "actor-session-labels",
+      "channy-close-up",
+      "modern-full-office",
+      "mobile",
+      "lounge"
+    ]
+  },
+  "fullIntegrationAuthorization": "NOT_GRANTED",
+  "nextMissionAuthorization": "NOT_GRANTED"
+}

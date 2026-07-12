@@ -78,6 +78,11 @@ Implementation: `AO12_A_B_C_D_PRESERVED__LIVING_PIXEL_OFFICE_IMPLEMENTATION_PEND
 - [94_ADVISOR_LIVING_PIXEL_OFFICE_PROTOTYPE_FINAL_AUDIT.md](94_ADVISOR_LIVING_PIXEL_OFFICE_PROTOTYPE_FINAL_AUDIT.md)
 - [95_FOUNDER_LIVING_PIXEL_OFFICE_VISUAL_ACCEPTANCE_SHEET.md](95_FOUNDER_LIVING_PIXEL_OFFICE_VISUAL_ACCEPTANCE_SHEET.md)
 - [96_LIVING_PIXEL_OFFICE_PROTOTYPE_DECISION_POINTER.md](96_LIVING_PIXEL_OFFICE_PROTOTYPE_DECISION_POINTER.md)
+- [97_LEO_GPT_LIVING_PIXEL_OFFICE_VISUAL_PATCH_DECISION.md](97_LEO_GPT_LIVING_PIXEL_OFFICE_VISUAL_PATCH_DECISION.md)
+- [97_LIVING_PIXEL_OFFICE_VISUAL_PATCH_MANIFEST.json](97_LIVING_PIXEL_OFFICE_VISUAL_PATCH_MANIFEST.json)
+- [98_LIVING_PIXEL_OFFICE_VISUAL_PATCH_WORKER_BRIEF.md](98_LIVING_PIXEL_OFFICE_VISUAL_PATCH_WORKER_BRIEF.md)
+- [98_LIVING_PIXEL_OFFICE_VISUAL_PATCH_WORKER_HANDOFF_PROMPT.md](98_LIVING_PIXEL_OFFICE_VISUAL_PATCH_WORKER_HANDOFF_PROMPT.md)
+- [98_LIVING_PIXEL_OFFICE_VISUAL_PATCH_WORKER_RUN_PROMPT.md](98_LIVING_PIXEL_OFFICE_VISUAL_PATCH_WORKER_RUN_PROMPT.md)
 
 ## Final Artifacts
 
@@ -193,6 +198,10 @@ media artifacts. Advisor direct validation passed. The same existing Fable5
 Reviewer completed the Level-3 implementation/security/accessibility/visual
 review with a clean `PASS` at `50b043f`, after directly inspecting all 39
 baselines and actual media frames. The technical prototype gate is complete.
-The next gate is Leo/GPT `AO12-PWU-11` visual-direction acceptance. Full
-authenticated integration remains `DEFERRED_WITH_GATE` and does not start
+Leo/GPT returned `REQUEST_VISUAL_PATCH` at `AO12-PWU-11`, requiring actor
+role/model/session/state visibility, slower and more natural Channy behavior,
+recognizable Bedlington appearance, and a modern light office palette. The
+bounded patch is routed to the existing Agent Office Worker and must receive a
+same-session Fable5 narrow visual/accessibility delta review before returning to
+Leo/GPT. Full authenticated integration remains unauthorized and does not start
 automatically.
