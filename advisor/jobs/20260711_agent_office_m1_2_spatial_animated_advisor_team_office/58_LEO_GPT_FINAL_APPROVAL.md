@@ -1,5 +1,11 @@
 # Leo/GPT Final Approval - Agent Office M1.2
 
+Status: `SUPERSEDED_BY_59_LEO_GPT_LIVING_PIXEL_OFFICE_FINAL_PATCH_DECISION`
+
+This record remains immutable historical evidence. A later Leo/GPT decision
+reclassified the reviewed implementation as `EVIDENCE_BACKED_SPATIAL_DASHBOARD`
+and withdrew final product acceptance pending the living pixel-office patch.
+
 ```text
 MISSION_ID: AGENT_OFFICE_M1_2_SPATIAL_ANIMATED_ADVISOR_TEAM_OFFICE
 DECISION: APPROVE_M1_2_IMPLEMENTATION_COMPLETE

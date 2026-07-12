@@ -1,0 +1,33 @@
+{
+  "schemaVersion": "agent-office.m1.2.living-pixel-office-patch-manifest.v1",
+  "manifestVersion": 2,
+  "missionId": "AGENT_OFFICE_M1_2_SPATIAL_ANIMATED_ADVISOR_TEAM_OFFICE",
+  "status": "FINAL_VISUAL_PATCH_DESIGN_AUTHORIZED__PROTOTYPE_REQUIRED__FULL_IMPLEMENTATION_BLOCKED",
+  "authority": "59_LEO_GPT_LIVING_PIXEL_OFFICE_FINAL_PATCH_DECISION.md",
+  "scopeChange": {
+    "oldTotal": 14,
+    "newTotal": 27,
+    "preservedCompleted": 14,
+    "addedWorkUnits": 13,
+    "reason": "Founder accepted the technical foundation but rejected the visual product experience and required a reviewed animated prototype before full reimplementation",
+    "approvingAuthority": "Leo/GPT"
+  },
+  "workUnits": [
+    {"id":"AO12-PWU-01","actor":"Agent Office Worker","phase":"DESIGN","title":"Renderer technology evaluation and decision","status":"READY","dependencies":[]},
+    {"id":"AO12-PWU-02","actor":"Agent Office Worker","phase":"DESIGN","title":"Pixel office world, camera, and Team Pod architecture","status":"WAITING_DEPENDENCY","dependencies":["AO12-PWU-01"]},
+    {"id":"AO12-PWU-03","actor":"Agent Office Worker","phase":"DESIGN","title":"Actor sprite, Channy, and evidence-backed animation contracts","status":"WAITING_DEPENDENCY","dependencies":["AO12-PWU-01"]},
+    {"id":"AO12-PWU-04","actor":"Agent Office Worker","phase":"DESIGN","title":"HUD, detail drawer, accessibility mirror, static and M1 fallback design","status":"WAITING_DEPENDENCY","dependencies":["AO12-PWU-01","AO12-PWU-02"]},
+    {"id":"AO12-PWU-05","actor":"Agent Office Worker","phase":"DESIGN","title":"Prototype and future implementation batches, visual matrix, performance and rollback plan","status":"WAITING_DEPENDENCY","dependencies":["AO12-PWU-02","AO12-PWU-03","AO12-PWU-04"]},
+    {"id":"AO12-PWU-06","actor":"Fable5 Reviewer","phase":"DESIGN_REVIEW","title":"Level-3 product-intent and renderer architecture review","status":"WAITING_DEPENDENCY","dependencies":["AO12-PWU-01","AO12-PWU-02","AO12-PWU-03","AO12-PWU-04","AO12-PWU-05"]},
+    {"id":"AO12-PWU-07","actor":"Agent Office Worker","phase":"PROTOTYPE","title":"Isolated animated office-world renderer and camera prototype","status":"WAITING_DEPENDENCY","dependencies":["AO12-PWU-06"]},
+    {"id":"AO12-PWU-08","actor":"Agent Office Worker","phase":"PROTOTYPE","title":"Prototype actor and Channy sprites, props, cycles, HUD and detail overlay","status":"WAITING_DEPENDENCY","dependencies":["AO12-PWU-07"]},
+    {"id":"AO12-PWU-09","actor":"Agent Office Worker","phase":"PROTOTYPE_EVIDENCE","title":"Directly viewable prototype, required scenes, and 20-to-30-second recording","status":"WAITING_DEPENDENCY","dependencies":["AO12-PWU-08"]},
+    {"id":"AO12-PWU-10","actor":"Fable5 Reviewer","phase":"PROTOTYPE_REVIEW","title":"Level-3 visual and product-intent prototype review","status":"WAITING_DEPENDENCY","dependencies":["AO12-PWU-09"]},
+    {"id":"AO12-PWU-11","actor":"Leo/GPT","phase":"FOUNDER_GATE","title":"Founder visual-direction acceptance decision","status":"WAITING_DEPENDENCY","dependencies":["AO12-PWU-10"]},
+    {"id":"AO12-PWU-12","actor":"Agent Office Worker","phase":"FULL_IMPLEMENTATION","title":"Full reviewed renderer integration, evidence choreography, accessibility and fallback","status":"BLOCKED","dependencies":["AO12-PWU-11"],"blocker":"Explicit Leo/GPT prototype visual-direction approval required"},
+    {"id":"AO12-PWU-13","actor":"Fable5 Reviewer and Advisor","phase":"FINAL_REVIEW","title":"Independent implementation review and final Founder package","status":"BLOCKED","dependencies":["AO12-PWU-12"],"blocker":"Full implementation is not authorized"}
+  ],
+  "prototypeAuthorization": "CONDITIONAL_ON_CLEAN_FABLE5_DESIGN_PASS",
+  "fullImplementationAuthorization": "NOT_GRANTED__REQUIRES_LEO_GPT_PROTOTYPE_APPROVAL",
+  "finalApprovalAuthority": "Leo/GPT"
+}

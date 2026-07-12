@@ -1,8 +1,18 @@
 # Agent Office M1.2 Spatial Office Design Mission
 
-Status: `AGENT_OFFICE_M1_2_CLOSED`
+Status: `M1_2_LIVING_PIXEL_OFFICE_FINAL_PATCH__DESIGN_HANDOFF_READY`
 
-Implementation: `AO12_A_B_C_D_COMPLETED__FABLE5_PASS__LEO_GPT_FINAL_APPROVED`
+Implementation: `AO12_A_B_C_D_PRESERVED__LIVING_PIXEL_OFFICE_IMPLEMENTATION_PENDING_REVIEWED_DESIGN`
+
+## Living Pixel-Office Final Patch
+
+- [59_LEO_GPT_LIVING_PIXEL_OFFICE_FINAL_PATCH_DECISION.md](59_LEO_GPT_LIVING_PIXEL_OFFICE_FINAL_PATCH_DECISION.md)
+- [59_M1_2_LIVING_PIXEL_OFFICE_PATCH_MANIFEST.json](59_M1_2_LIVING_PIXEL_OFFICE_PATCH_MANIFEST.json)
+- [60_ADVISOR_LIVING_PIXEL_OFFICE_REOPEN_AUDIT.md](60_ADVISOR_LIVING_PIXEL_OFFICE_REOPEN_AUDIT.md)
+- [61_PIXEL_OFFICE_DESIGN_BRIEF.md](61_PIXEL_OFFICE_DESIGN_BRIEF.md)
+- [61_PIXEL_OFFICE_DESIGN_HANDOFF_PROMPT.md](61_PIXEL_OFFICE_DESIGN_HANDOFF_PROMPT.md)
+- [61_PIXEL_OFFICE_DESIGN_RUN_PROMPT.md](61_PIXEL_OFFICE_DESIGN_RUN_PROMPT.md)
+- [62_FABLE5_PIXEL_OFFICE_DESIGN_REVIEW_BRIEF.md](62_FABLE5_PIXEL_OFFICE_DESIGN_REVIEW_BRIEF.md)
 
 ## Final Artifacts
 
@@ -98,7 +108,8 @@ Implementation: `AO12_A_B_C_D_COMPLETED__FABLE5_PASS__LEO_GPT_FINAL_APPROVED`
 All 14 approved WorkUnits are complete. AO12-D-A1 was corrected at `48c8dbd`,
 Advisor directly revalidated the implementation, and the same independent
 Fable5 Reviewer returned a clean Level-3 `PASS` at Foundation Docs `cef2d39`.
-The final audit and Founder Acceptance Sheet are published. Leo/GPT accepted the
-package as `APPROVE_M1_2_IMPLEMENTATION_COMPLETE`; M1.2 is closed. No accepted
-risk or unresolved defect remains, and no next mission is authorized. The next
-actor is `STOP`.
+The prior reviewed implementation is preserved as
+`EVIDENCE_BACKED_SPATIAL_DASHBOARD`, but its final product acceptance was
+superseded by `REQUEST_M1_2_FINAL_PATCH`. The active gate is a design-only Agent
+Office Worker pass for the `LIVING_PIXEL_GAME_STYLE_AI_OFFICE` renderer. A clean
+same-session Fable5 Level-3 design PASS is required before implementation.
