@@ -4,6 +4,7 @@
 - [Advisor brief](01_ADVISOR_BRIEF.md)
 - [Worker brief](02_WORKER_BRIEF.md)
 - [Fable5 review brief](03_SENTINEL_REVIEW_BRIEF.md)
+- [Exact medium-effort control](05_GROK_MEDIUM_EFFORT_COMMAND.txt)
 - [Qualification handoff](06_GROK_QUALIFICATION_HANDOFF_PROMPT.md)
 - [Qualification launcher](06_GROK_QUALIFICATION_RUN_PROMPT.md)
 - [Implementation handoff](07_GROK_IMPLEMENTATION_HANDOFF_PROMPT.md)
