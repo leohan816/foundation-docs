@@ -2481,3 +2481,15 @@ SENT_AT: 2026-07-12T20:36:18Z
 TRANSPORT: exact named tmux buffer to foundation-control/%4
 STATUS: RUNNING
 ```
+
+### AO-BATCH-A-CONTROL-PRE-REVIEW-CORRECTION-20260712T203543Z - reconciled completion
+
+```text
+STATUS: COMPLETED_VERIFIED
+COMPLETED_AT: 2026-07-12T20:43:30Z
+TARGET_COMMIT: 5f8ffd102f8344c5b34e1d97f00cdca578871c3c
+RESULT_COMMIT: a517c5e5dfd4a0ab04151356a6b1520184d0a4e9
+CONTROL_RESULT: T1-T3 corrected; R2/S3 preserved; four docs only
+ADVISOR_VALIDATION: exact schema identity/version/reference/dedup/order fields, literal baseline/script paths, and supersession markers verified from after snapshots
+NEXT_DEPENDENCY: same independent Sentinel third delta re-review of 77681d9..5f8ffd1
+```

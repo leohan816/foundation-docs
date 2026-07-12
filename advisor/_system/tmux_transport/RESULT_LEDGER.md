@@ -755,3 +755,17 @@ POINTER_PATH: ../foundation-docs/advisor/jobs/20260712_agent_office_batch_a_mode
 ADVISOR_PRE_REVIEW_FINDINGS: evidence schema identity/version/reference/dedup omitted; baseline placeholder remains; conditional script wording remains; stale closure rows contradict current contract
 NEXT_ACTOR: same Control session for narrow correction before independent review
 ```
+## AO-BATCH-A-CONTROL-PRE-REVIEW-CORRECTION-20260712T203543Z
+
+```text
+DISPATCH_ID: AO-BATCH-A-CONTROL-PRE-REVIEW-CORRECTION-20260712T203543Z
+MISSION_ID: AGENT_OFFICE_BATCH_A_MODERN_OFFICE_IDENTITY_COMPLETION_001
+ACTOR: Control-Rework
+STATUS: COMPLETED_VERIFIED
+TARGET_COMMIT: 5f8ffd102f8344c5b34e1d97f00cdca578871c3c
+RESULT_COMMIT: a517c5e5dfd4a0ab04151356a6b1520184d0a4e9
+RESULT_PATH: ../foundation-docs/runs/agent-office/20260712_agent_office_batch_a_modern_office_identity_completion_001/CONTROL_DESIGN_RESULT.md
+POINTER_PATH: ../foundation-docs/advisor/jobs/20260712_agent_office_batch_a_modern_office_identity_completion_001/11_CONTROL_DESIGN_RESULT_POINTER.md
+SCOPE_EVIDENCE: four Agent Office design docs only; branch clean/upstream-equal; no implementation
+NEXT_ACTOR: same independent Sentinel for combined S1/S3/S4/T1-T3 delta review
+```

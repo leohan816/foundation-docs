@@ -1480,3 +1480,17 @@ SENSITIVE_OUTPUT_SUSPECTED: false
 ACTION_TAKEN: exact committed launcher sent through one named tmux buffer; no other input sent
 NEXT_OBSERVATION_DUE: at most 60 seconds or on progress/result signal
 ```
+
+### AO-BATCH-A-CONTROL-PRE-REVIEW-CORRECTION-20260712T203543Z - completion
+
+```text
+DISPATCH_ID: AO-BATCH-A-CONTROL-PRE-REVIEW-CORRECTION-20260712T203543Z
+OBSERVED_AT: 2026-07-12T20:43:30Z
+PANE_ID: %4
+OUTPUT_FINGERPRINT: Control returned 5f8ffd1/a517c5e, T1-T3 closure, R2/S3 preservation, and STOP
+STATE: COMPLETED_REPORTED
+INTERACTIVE_PROMPT_PRESENT: false
+SENSITIVE_OUTPUT_SUSPECTED: false
+ACTION_TAKEN: Advisor verified actual four-file diff and exact after text; candidate accepted for same-Sentinel review, not implementation
+NEXT_OBSERVATION_DUE: none; Reviewer preflight follows
+```
