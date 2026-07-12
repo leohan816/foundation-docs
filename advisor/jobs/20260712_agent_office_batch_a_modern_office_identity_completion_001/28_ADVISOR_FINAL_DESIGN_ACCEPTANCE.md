@@ -8,7 +8,7 @@ The Batch A Control design candidate is accepted for the implementation pass at:
 
 - repository: `/home/leo/Project/agent-office-batch-a-001`
 - branch: `batch-a/modern-office-identity-001`
-- commit: `381b41184994da161db3f5e80f0952f82450925e`
+- commit: `453c661c4f4243c77b2f53089ec599561876b06f`
 - upstream: `origin/batch-a/modern-office-identity-001`, equal at validation
 - worktree: clean at validation
 
@@ -29,6 +29,13 @@ Batch B-E.
 
 The Reviewer directly closed U1-U3, preserved S3/R2/T3, found no accepted-boundary
 regression, and identified no residual risk requiring Leo/GPT acceptance.
+
+The later actor-overlay scope correction at `453c661` added one literal source
+path and two literal coupled tests, clarified WU-03/WU-04 ownership, and received
+the same independent Sentinel's `PASS` in
+`SENTINEL_SCOPE_CORRECTION_DELTA_REVIEW_RESULT.md` (result `24dbe4d`, pointer
+`597d1ad`). This correction supersedes `381b411` as the implementation base and
+does not alter the accepted architecture or boundaries.
 
 ## Accepted Implementation Contract
 

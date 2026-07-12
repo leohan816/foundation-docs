@@ -22,7 +22,7 @@ Mission: `AGENT_OFFICE_BATCH_A_MODERN_OFFICE_IDENTITY_COMPLETION_001`
 
 - worktree: `/home/leo/Project/agent-office-batch-a-001`
 - branch: `batch-a/modern-office-identity-001`
-- accepted design commit and implementation base: `381b41184994da161db3f5e80f0952f82450925e`
+- accepted design commit and implementation base: `453c661c4f4243c77b2f53089ec599561876b06f`
 - upstream: `origin/batch-a/modern-office-identity-001`
 - reviewed historical base: `ac8ba75d3a128385beaeeac58ae5bf54c03d23f2`
 
@@ -39,11 +39,12 @@ Read directly, in this order:
 4. `/home/leo/Project/agent-office-batch-a-001/docs/agent/RUN_PROTOCOL.md`;
 5. `/home/leo/Project/agent-office-batch-a-001/docs/agent/RESULT_REPORTING_PROTOCOL.md`;
 6. `28_ADVISOR_FINAL_DESIGN_ACCEPTANCE.md` in this Advisor job;
-7. `docs/architecture/AGENT_OFFICE_BATCH_A_APPLICATION_INTEGRATION_DESIGN_DELTA.md`;
-8. `docs/contracts/AGENT_OFFICE_BATCH_A_IDENTITY_ORGANIZATION_CONTRACT.md`;
-9. `docs/operations/AGENT_OFFICE_BATCH_A_IMPLEMENTATION_WORKUNIT_PLAN.md`;
-10. `docs/FEATURE_INDEX.md`;
-11. the actual source and tests named by those documents.
+7. `32_ADVISOR_SCOPE_CORRECTION_REVIEW_VALIDATION.md` in this Advisor job;
+8. `docs/architecture/AGENT_OFFICE_BATCH_A_APPLICATION_INTEGRATION_DESIGN_DELTA.md`;
+9. `docs/contracts/AGENT_OFFICE_BATCH_A_IDENTITY_ORGANIZATION_CONTRACT.md`;
+10. `docs/operations/AGENT_OFFICE_BATCH_A_IMPLEMENTATION_WORKUNIT_PLAN.md`;
+11. `docs/FEATURE_INDEX.md`;
+12. the actual source and tests named by those documents.
 
 Use `/fable-builder` for the implementation. Do not execute from memory.
 
@@ -62,7 +63,7 @@ Before editing, verify and record:
 - failed Grok pilot branch/worktree is isolated and not merged;
 - no Grok pilot code is present in the candidate ancestry or diff;
 - no concurrent Agent Office writer exists;
-- rollback to `381b411` is available;
+- rollback to `453c661` is available;
 - actual session/model/effort: `agent-office-opus`, Opus 4.8 (1M), Ultracode;
 - `/fable-builder` loaded;
 - no unexpected auth, privilege, secret, DB, production, or approval prompt.
@@ -102,16 +103,24 @@ BA-WU-08 of the accepted WorkUnit plan. No wildcard is authorization.
 This includes only the exact named:
 
 - pixel renderer files and eight existing code-native asset files;
+- `src/ui/pixel/living-office-actor-overlay.tsx` as the exact compact-label and
+  actor-specific 17-field dialog host;
 - authenticated shell/navigation/projection files;
 - new `src/application/organization/` files and exact organization fixture;
 - conditional PWA/static-shell files only under the written condition;
 - exact existing/new test paths and exact new baseline directories;
+- `tests/ui/pixel-actor-overlay.test.tsx` and
+  `tests/ui/pixel-world-semantic-parity.test.tsx` as exact coupled tests;
 - `scripts/runtime-smoke.mjs` and new `scripts/local-office-rehearsal.mjs`;
 - four literal canonical documentation paths.
 
 Any unnamed file, dependency, package, configuration, test, baseline, script,
 fixture, or documentation path requires an Advisor handoff amendment before edit.
 Do not silently broaden scope.
+
+`npm ci` is authorized only to install the existing committed lockfile dependency
+tree. Do not change `package.json`, `package-lock.json`, dependency versions, or
+toolchain rules. Do not use `npm exec` to fetch an unpinned substitute tool.
 
 ## Required Invariants
 

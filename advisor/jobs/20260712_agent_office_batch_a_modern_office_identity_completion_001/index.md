@@ -57,12 +57,15 @@
 - [Advisor Control scope-correction validation](30_ADVISOR_CONTROL_SCOPE_CORRECTION_VALIDATION.md)
 - [SOL Sentinel scope-correction delta handoff](07F_SENTINEL_SCOPE_CORRECTION_DELTA_REVIEW_HANDOFF_PROMPT.md)
 - [SOL Sentinel scope-correction delta launcher](07F_SENTINEL_SCOPE_CORRECTION_DELTA_REVIEW_RUN_PROMPT.md)
+- [SOL Sentinel scope-correction result pointer](31_SENTINEL_SCOPE_CORRECTION_DELTA_REVIEW_RESULT_POINTER.md)
+- [Advisor scope-correction review validation](32_ADVISOR_SCOPE_CORRECTION_REVIEW_VALIDATION.md)
+- [Opus Worker implementation resume launcher](06C_WORKER_IMPLEMENTATION_RESUME_RUN_PROMPT.md)
 
 Design: accepted at `381b411`; independent Sentinel design verdict `PASS`.
 
 The first Worker entry pass stopped cleanly because the closed scope omitted the
-existing actor-overlay host and two coupled tests. A narrow Control documentation
-correction and same-Sentinel delta review precede Worker resume.
+existing actor-overlay host and two coupled tests. Control corrected the exact
+scope at `453c661`; the same Sentinel returned `PASS`. Worker resume is ready.
 
 Pending: scope correction/review, Worker implementation/result, Advisor candidate
 validation, SOL Sentinel implementation review, routine patch loops, direct local
