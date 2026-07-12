@@ -801,3 +801,18 @@ SENSITIVE_OUTPUT_SUSPECTED: false
 ACTION_TAKEN: verified exact existing session/pane/workspace/process/model/role, synchronized panes off, launcher commit/blob/checksum, clean target branch, serialized dependency and upstream state; no input sent yet
 NEXT_OBSERVATION_DUE: immediately after exact launcher transport
 ```
+
+### AO-M1.2-D-A1-REWORK-20260712T005547Z - sent
+
+```text
+DISPATCH_ID: AO-M1.2-D-A1-REWORK-20260712T005547Z
+OBSERVED_AT: 2026-07-12T00:57:00Z
+PANE_ID: %13
+OUTPUT_FINGERPRINT: exact AO12-D-A1 Worker rework launcher visible; GPT-5.6 SOL Ultra Working indicator active
+LAST_PROGRESS_MARKER: exact committed launcher submitted once to the same existing Agent Office Worker session
+STATE: RUNNING
+INTERACTIVE_PROMPT_PRESENT: false
+SENSITIVE_OUTPUT_SUSPECTED: false
+ACTION_TAKEN: exact committed launcher sent through one named tmux buffer; execution confirmed; no other input sent
+NEXT_OBSERVATION_DUE: at most 60 seconds or on progress/result/interactive/capacity signal
+```

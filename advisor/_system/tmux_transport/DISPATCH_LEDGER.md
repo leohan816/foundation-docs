@@ -1438,6 +1438,7 @@ HARD_TIMEOUT_SECONDS_OR_NONE: none; transient capacity/API errors require same-s
 PREFLIGHT_VERDICT: PASS_READY_TO_SEND
 STATUS: WAITING_EXPECTED
 ```
+
 ### AO-M1.2-C-EVENT-A11Y-PERFORMANCE-REVIEW-20260711T231511Z - sent
 
 ```text
@@ -1545,4 +1546,12 @@ SOFT_STALL_SECONDS: 60
 HARD_TIMEOUT_SECONDS_OR_NONE: none; transient capacity/API errors require same-session readiness revalidation before one idempotent continue
 PREFLIGHT_VERDICT: PASS_READY_TO_SEND
 STATUS: WAITING_EXPECTED
+```
+
+### AO-M1.2-D-A1-REWORK-20260712T005547Z - sent
+
+```text
+SENT_AT: 2026-07-12T00:57:00Z
+TRANSPORT: exact named tmux buffer to agent-office/%13
+STATUS: RUNNING
 ```
