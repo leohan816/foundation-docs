@@ -2,12 +2,14 @@
 
 ## Instruction Verdict
 
-`PROCEED_WITH_LIMITS`
+`PROCEED_WITH_LIMITS__PROVIDER_DEFAULT_EFFORT_ACCEPTED`
 
-The existing Grok session is authenticated and exposes `grok-build`, but it was
-launched at `high` effort. The exact pilot requires `medium`; Advisor must change
-and reverify that setting before accepting qualification. Existing main-checkout
-Grok files are unrelated dirt and are excluded through a dedicated worktree.
+The existing Grok session is authenticated and exposes `grok-build`. That model
+rejects explicit reasoning-effort selection. Leo accepted the exact evidence
+label `NOT_CONFIGURABLE_BY_MODEL__USE_PROVIDER_DEFAULT` for this pilot and chose
+the strongest exposed coding model over the faster Composer model. Existing
+main-checkout Grok files are unrelated dirt and are excluded through a dedicated
+worktree.
 
 ## Objective
 

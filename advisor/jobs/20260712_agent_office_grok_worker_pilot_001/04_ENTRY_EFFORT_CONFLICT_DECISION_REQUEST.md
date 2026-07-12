@@ -1,6 +1,12 @@
 # Grok Pilot Entry Effort Conflict Decision Request
 
-Status: `DESIGN_ENTRY_GATE_NEEDS_LEO_DECISION`
+Status: `DECIDED__APPROVE_GROK_BUILD_PROVIDER_DEFAULT_FOR_PILOT_001`
+
+Decision recorded from Leo on 2026-07-12: performance is preferred over speed.
+Use the strongest coding model exposed to the authenticated account,
+`grok-build`, without switching to the faster Composer model. Because
+`grok-build` rejects reasoning-effort configuration, record effort exactly as
+`NOT_CONFIGURABLE_BY_MODEL__USE_PROVIDER_DEFAULT`.
 
 ## Confirmed Facts
 
@@ -55,3 +61,7 @@ Return one of:
 - `HOLD_GROK_PILOT_UNTIL_MEDIUM_EFFORT_IS_SUPPORTED`
 
 No larger Worker promotion is requested or implied.
+
+## Recorded Decision
+
+`APPROVE_GROK_BUILD_PROVIDER_DEFAULT_FOR_PILOT_001`

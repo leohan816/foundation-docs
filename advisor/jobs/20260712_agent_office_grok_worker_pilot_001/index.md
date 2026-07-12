@@ -12,7 +12,7 @@
 - [Implementation launcher](07_GROK_IMPLEMENTATION_RUN_PROMPT.md)
 - [Loop state](10_LOOP_STATE.md)
 
-Current state: `DESIGN_ENTRY_GATE_NEEDS_LEO_DECISION__EFFORT_UNSUPPORTED`.
+Current state: `ENTRY_VALIDATED__PROVIDER_DEFAULT_ACCEPTED__QUALIFICATION_READY`.
 
 The implementation launcher is committed for deterministic evidence but is not
 eligible for dispatch until Advisor accepts the read-only qualification.

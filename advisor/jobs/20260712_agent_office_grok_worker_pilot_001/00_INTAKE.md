@@ -1,6 +1,6 @@
 # Agent Office Grok Worker Pilot 001 Intake
 
-Status: `ENTRY_VALIDATED__QUALIFICATION_PENDING`
+Status: `ENTRY_VALIDATED__PROVIDER_DEFAULT_ACCEPTED__QUALIFICATION_READY`
 
 ## Mission
 
@@ -24,8 +24,9 @@ larger batch, or alter Agent Office authority.
 - Exact exposed coding model: `grok-build`; official xAI documentation maps the
   current Grok Build default to Grok 4.5, while the durable runtime identity used
   for evidence remains the exact slug `grok-build`.
-- Initial process effort was `high`, not the requested `medium`; Advisor must set
-  and verify `medium` before qualification work is accepted.
+- The CLI rejects effort selection for `grok-build`. Leo accepted
+  `NOT_CONFIGURABLE_BY_MODEL__USE_PROVIDER_DEFAULT` for this pilot, prioritizing
+  the strongest exposed coding model over the faster Composer model.
 - Main Agent Office base: `ac8ba75d3a128385beaeeac58ae5bf54c03d23f2`,
   upstream-equal on `shadow/agent-office-m1-2-spatial-office`.
 - Main checkout contains pre-existing untracked `.grok/`, `grok-max`, and `grokx`.

@@ -13,7 +13,7 @@ TARGET_APP_ROOT: /home/leo/Project/agent-office-grok-pilot-001
 TARGET_SESSION_NAME: agent-office-grok
 REQUIRED_SKILL: none
 MODEL: grok-build
-MODEL_EFFORT: medium
+MODEL_EFFORT: NOT_CONFIGURABLE_BY_MODEL__USE_PROVIDER_DEFAULT
 READ_AND_EXECUTE: ../foundation-docs/advisor/jobs/20260712_agent_office_grok_worker_pilot_001/06_GROK_QUALIFICATION_HANDOFF_PROMPT.md
 RETURN_RESULT_TO: Advisor
 DO_NOT_EXECUTE_FROM_MEMORY: true
