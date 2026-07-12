@@ -17,6 +17,9 @@ Verdict: `PASS__SESSION_CONVERTED_AND_GROK_PILOT_ROLLED_BACK`
   model-neutral `foundation-reviewer`, preserving `$5/@5/%5`;
 - existing Codex SOL Worker session renamed from `agent-office` to
   `agent-office-sol`, preserving `$13/@13/%13`;
+- Leo subsequently assigned `agent-office-sol` as reviewer-only for future
+  Opus-authored changes; required review configuration is
+  `<GPT-5.6 SOL: Max>`;
 - Worker and Reviewer remain separate sessions and contexts.
 
 ## Rollback
@@ -33,6 +36,10 @@ Verdict: `PASS__SESSION_CONVERTED_AND_GROK_PILOT_ROLLED_BACK`
 - no Agent Office implementation mission is active;
 - no Worker or Reviewer input was sent after conversion;
 - future Worker route requires `/fable-builder`;
-- future Reviewer route requires `/fable-sentinel`;
+- primary future Reviewer route is SOL Max under the Sentinel contract;
+- `foundation-reviewer` remains the `<Opus 4.8: Max>` fallback and requires
+  `/fable-sentinel`;
 - exact model and effort must be revalidated before every dispatch;
+- start/end token, context, elapsed-time, and cost evidence must be recorded when
+  exposed and never invented;
 - next product mission must come from Leo/GPT.

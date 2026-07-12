@@ -27,6 +27,11 @@ Verdict: `PROCEED_WITH_LIMITS`
 - result provenance must identify the actual model, currently Opus 4.8;
 - a future mission must create a fresh isolated worktree and branch;
 - `agent-office-sol/$13/@13/%13` is the same existing Codex SOL session formerly
-  named `agent-office` and remains excluded unless a future mission says
-  otherwise;
+  named `agent-office` and is now assigned as reviewer-only for future
+  Opus-authored Agent Office changes;
+- the required SOL review effort is `max`, not `ultra`; live effort must be
+  revalidated and corrected before any review dispatch;
+- the SOL Reviewer must not implement, patch, or self-approve the candidate;
+- future review results must record actual context/token/cost evidence when the
+  tool exposes it and must label unavailable values as unavailable;
 - final approval remains Leo/GPT.
