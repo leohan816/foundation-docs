@@ -1887,3 +1887,29 @@ SENSITIVE_OUTPUT_SUSPECTED: false
 ACTION_TAKEN: exact buffer pasted once; first Enter did not submit; verified unchanged input then sent one Enter; no duplicate or other input
 NEXT_OBSERVATION_DUE: at most 60 seconds or on progress/result signal
 ```
+
+### AO-BATCH-A-PRC1-PRC8-REREVIEW-20260712T234000Z - completion
+
+```text
+OBSERVED_AT: 2026-07-12T23:46:00Z
+PANE_ID: %20
+STATE: COMPLETED_REPORTED
+OUTPUT_FINGERPRINT: Sentinel returned NEEDS_PATCH; PRC-2/3/4 closed and PRC-1/5/6/7/8 remained partial/blocking; result 6852b378, pointer 7e3d326, then STOP
+INTERACTIVE_PROMPT_PRESENT: false
+SENSITIVE_OUTPUT_SUSPECTED: false
+ACTION_TAKEN: Advisor read the full result and published one exact final-five same-Control correction handoff
+NEXT_OBSERVATION_DUE: none; Control preflight follows
+```
+
+## AO-BATCH-A-CONTROL-FINAL-FIVE-20260712T234800Z
+
+```text
+OBSERVED_AT: 2026-07-12T23:49:00Z
+PANE_ID: %4
+STATE: RUNNING
+OUTPUT_FINGERPRINT: exact 09L launcher submitted; Control read the handoff and Sentinel result and began direct evidence inspection under Opus 4.8 (1M) xhigh
+INTERACTIVE_PROMPT_PRESENT: false
+SENSITIVE_OUTPUT_SUSPECTED: false
+ACTION_TAKEN: verified same session/workspace/model/effort and serialized scope; cleared stale unsubmitted suggestion only; pasted and submitted exact launcher once
+NEXT_OBSERVATION_DUE: at most 60 seconds or on progress/result signal
+```
