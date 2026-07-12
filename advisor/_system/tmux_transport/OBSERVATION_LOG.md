@@ -1100,3 +1100,18 @@ SENSITIVE_OUTPUT_SUSPECTED: false
 ACTION_TAKEN: verified active transport, disengaged kill switch, exact registered Worker pane/workspace/process/model/role/readiness, synchronization off, launcher commit/blob/checksum equality, target/upstream, prepared worktree identity, pins/compiler, write locks, and serialized scope; no input sent yet
 NEXT_OBSERVATION_DUE: immediately after exact launcher transport
 ```
+
+### AO-M1.2-PIXEL-PROTOTYPE-CORRECTION-20260712T063535Z - sent
+
+```text
+DISPATCH_ID: AO-M1.2-PIXEL-PROTOTYPE-CORRECTION-20260712T063535Z
+OBSERVED_AT: 2026-07-12T06:38:00Z
+PANE_ID: %13
+OUTPUT_FINGERPRINT: exact committed prototype-correction launcher visible; Worker read exact handoff and began preserved-worktree audit
+LAST_PROGRESS_MARKER: exact committed launcher submitted once to the same existing Agent Office Worker session
+STATE: RUNNING
+INTERACTIVE_PROMPT_PRESENT: false
+SENSITIVE_OUTPUT_SUSPECTED: false
+ACTION_TAKEN: exact committed launcher sent through one named tmux buffer; execution confirmed; no other input sent
+NEXT_OBSERVATION_DUE: at most 60 seconds or on progress/result/interactive/capacity signal
+```

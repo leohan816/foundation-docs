@@ -1943,3 +1943,11 @@ HARD_TIMEOUT_SECONDS_OR_NONE: none; long full regression/media train expected; t
 PREFLIGHT_VERDICT: PASS_READY_TO_SEND
 STATUS: WAITING_EXPECTED
 ```
+
+### AO-M1.2-PIXEL-PROTOTYPE-CORRECTION-20260712T063535Z - sent
+
+```text
+SENT_AT: 2026-07-12T06:38:00Z
+TRANSPORT: exact named tmux buffer to agent-office/%13
+STATUS: RUNNING
+```
