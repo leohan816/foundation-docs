@@ -980,3 +980,18 @@ SENSITIVE_OUTPUT_SUSPECTED: false
 ACTION_TAKEN: verified exact existing session/pane/workspace/process/model/role, synchronized panes off, launcher commit/blob/checksum, branch/upstream, tools, Chromium, IPv4 loopback, and serialized scope; no input sent yet
 NEXT_OBSERVATION_DUE: immediately after exact launcher transport
 ```
+
+### AO-M1.2-PIXEL-PROTOTYPE-20260712T033758Z - sent
+
+```text
+DISPATCH_ID: AO-M1.2-PIXEL-PROTOTYPE-20260712T033758Z
+OBSERVED_AT: 2026-07-12T03:40:00Z
+PANE_ID: %13
+OUTPUT_FINGERPRINT: exact committed prototype launcher visible; GPT-5.6 SOL Ultra Working indicator active
+LAST_PROGRESS_MARKER: exact committed launcher submitted once to the same existing Agent Office Worker session
+STATE: RUNNING
+INTERACTIVE_PROMPT_PRESENT: false
+SENSITIVE_OUTPUT_SUSPECTED: false
+ACTION_TAKEN: exact committed launcher sent through one named tmux buffer; pasted payload initially remained unsubmitted; pane and exact payload were revalidated and one Enter submitted it without re-paste; no other input sent
+NEXT_OBSERVATION_DUE: at most 60 seconds or on progress/result/interactive/capacity signal
+```
