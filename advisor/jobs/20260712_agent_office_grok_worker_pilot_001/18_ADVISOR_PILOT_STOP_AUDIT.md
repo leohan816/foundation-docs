@@ -57,8 +57,10 @@ explicitly requiring lint repair without weakening strict checks. Leo authorized
 stopping if quality could not be guaranteed. Advisor cancelled the turn after
 `5m17s`.
 
-The cancelled round-2 changes remain uncommitted in the isolated worktree for
-forensic evidence only. They are not a candidate result and must not be merged.
+The cancelled round-2 changes were initially left uncommitted in the isolated
+worktree. Leo then explicitly requested rollback. Advisor removed the isolated
+worktree and deleted both the local and remote pilot branch. They were never a
+candidate result and were never merged.
 
 ## Quality And Cost Assessment
 
@@ -87,9 +89,11 @@ would not convert the candidate into acceptable code.
   `shadow/agent-office-m1-2-spatial-office` at `ac8ba75`, equal to origin;
 - product code merge: none;
 - protected branch operation: none;
-- pilot branch: `pilot/grok-tmux-runtime-classification` at committed
-  `bc143e3`, equal to origin;
-- cancelled round-2 dirt: isolated worktree only;
+- historical pilot candidate: `bc143e3` (record only);
+- pilot worktree: removed;
+- local pilot branch: deleted;
+- remote pilot branch: deleted;
+- cancelled round-2 dirt: removed with the explicitly authorized rollback;
 - DB, secret, production, remote, public, schema, migration, and Hermes access:
   none.
 

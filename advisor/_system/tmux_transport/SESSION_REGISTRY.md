@@ -2,7 +2,7 @@
 
 Registry status: `ACTIVE_LOCATOR__REVALIDATE_BEFORE_EVERY_DISPATCH`
 
-Observed: 2026-07-11 UTC
+Observed: 2026-07-12 UTC
 
 Observed effective tmux window option: `synchronize-panes off` for the registered
 sessions. This must be checked again before every dispatch.
@@ -17,9 +17,9 @@ verification. Pane IDs and processes can change.
 | Foundation Worker | `foundation` | `$3` | 0 | `@3` | 0 | `%3` | `/home/leo/Project/FOUNDATION` | `claude` | latest pane record declares Foundation Worker | eligible only after live verification |
 | Cosmile Worker | `cosmile` | `$1` | 0 | `@1` | 0 | `%1` | `/home/leo/Project/Cosmile` | `claude` | latest pane record declares Cosmile Worker | eligible only after live verification |
 | SIASIU Worker | `siasiu` | `$0` | 0 | `@0` | 0 | `%0` | `/home/leo/Project/SIASIU` | `claude` | latest pane record declares SIASIU Worker | eligible only after live verification |
-| Fable5 Reviewer | `reviewer-fable5` | `$5` | 0 | `@5` | 0 | `%5` | `/home/leo/Project/foundation-control` | `claude` | latest pane record declares Fable5 Reviewer and `/fable-sentinel` review | eligible only after live role-evidence verification |
+| Foundation Independent Reviewer | `foundation-reviewer` | `$5` | 0 | `@5` | 0 | `%5` | `/home/leo/Project/foundation-control` | `claude` | same existing independent Reviewer session formerly named `reviewer-fable5`; live model changed by Leo to `Opus 4.8 (1M context)` with `max` effort; `/fable-sentinel` remains required when available | eligible only after live model, effort, role, skill, and readiness verification; session name is model-neutral and result provenance must identify the actual model |
 | Agent Office Worker | `agent-office` | `$13` | 0 | `@13` | 0 | `%13` | `/home/leo/Project/agent-office` | `codex` (live PID and version revalidated before each dispatch) | Leo/GPT Agent Office assignment; exact tmux ancestry; pane history confirms `gpt-5.6-sol ultra`; active repo-local role instructions | eligible for exact committed Agent Office mission dispatch after live verification; mission branch is specified by each handoff |
-| Agent Office Grok Pilot Worker | `agent-office-grok` | `$16` | 0 | `@16` | 0 | `%16` | `/home/leo/Project/agent-office` | `grok` (live child PID, authentication, model, and effort revalidated before every pilot dispatch) | Leo/GPT bounded pilot assignment only; existing user-created session; active Agent Office Worker instructions must be re-read from the isolated pilot worktree | eligible only for `AGENT_OFFICE_GROK_WORKER_PILOT_001` exact committed launchers after live verification; not a default Worker and no larger-batch authority |
+| Agent Office Opus Worker | `agent-office-opus` | `$16` | 0 | `@16` | 0 | `%16` | `/home/leo/Project/agent-office` | `claude` | same existing user-created tmux session formerly named `agent-office-grok`; Grok exited; live Claude Code shows `Opus 4.8 (1M context)` and `ultracode`; Agent Office Worker role must be reloaded from the exact mission worktree before dispatch | eligible for a future exact committed Agent Office Worker launcher only after live model, effort, role, workspace, branch, and readiness verification; no Grok pilot authority remains; no mission is active |
 
 ## Required Live Checks
 
