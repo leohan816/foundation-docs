@@ -935,3 +935,18 @@ SENSITIVE_OUTPUT_SUSPECTED: false
 ACTION_TAKEN: verified exact existing session/pane/workspace/process/role, synchronized panes off, launcher commit/blob/checksum, clean read-only target, serialization, and upstream state; no input sent yet
 NEXT_OBSERVATION_DUE: immediately after exact launcher transport
 ```
+
+### AO-M1.2-PIXEL-DESIGN-REVIEW-20260712T031305Z - sent
+
+```text
+DISPATCH_ID: AO-M1.2-PIXEL-DESIGN-REVIEW-20260712T031305Z
+OBSERVED_AT: 2026-07-12T03:15:00Z
+PANE_ID: %5
+OUTPUT_FINGERPRINT: exact committed living pixel-office Level-3 design review launcher visible; Fable5 processing indicator active
+LAST_PROGRESS_MARKER: exact committed launcher submitted once to the same existing independent Reviewer session
+STATE: RUNNING
+INTERACTIVE_PROMPT_PRESENT: false
+SENSITIVE_OUTPUT_SUSPECTED: false
+ACTION_TAKEN: exact committed launcher sent through one named tmux buffer; execution confirmed; no other input sent
+NEXT_OBSERVATION_DUE: at most 60 seconds or on progress/result/interactive/capacity signal
+```
