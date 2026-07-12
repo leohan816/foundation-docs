@@ -1010,3 +1010,18 @@ SENSITIVE_OUTPUT_SUSPECTED: false
 ACTION_TAKEN: verified active transport, disengaged kill switch, exact registered pane/workspace/process/role/readiness, synchronization off, launcher commit/blob/checksum equality, branch/upstream, clean design targets, preserved prototype dirt, and serialized write locks; no input sent yet
 NEXT_OBSERVATION_DUE: immediately after exact launcher transport
 ```
+
+### AO-M1.2-PIXI-BRIDGE-DESIGN-20260712T055511Z - sent
+
+```text
+DISPATCH_ID: AO-M1.2-PIXI-BRIDGE-DESIGN-20260712T055511Z
+OBSERVED_AT: 2026-07-12T05:57:00Z
+PANE_ID: %13
+OUTPUT_FINGERPRINT: exact committed Pixi compatibility design launcher visible; Codex Working indicator active
+LAST_PROGRESS_MARKER: exact committed launcher submitted once to the same existing Agent Office Worker session
+STATE: RUNNING
+INTERACTIVE_PROMPT_PRESENT: false
+SENSITIVE_OUTPUT_SUSPECTED: false
+ACTION_TAKEN: exact committed launcher sent through one named tmux buffer; execution confirmed; no other input sent
+NEXT_OBSERVATION_DUE: at most 60 seconds or on progress/result/interactive/capacity signal
+```

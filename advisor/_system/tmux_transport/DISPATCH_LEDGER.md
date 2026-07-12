@@ -1829,3 +1829,11 @@ HARD_TIMEOUT_SECONDS_OR_NONE: none; transient capacity/API errors require same-s
 PREFLIGHT_VERDICT: PASS_READY_TO_SEND
 STATUS: WAITING_EXPECTED
 ```
+
+### AO-M1.2-PIXI-BRIDGE-DESIGN-20260712T055511Z - sent
+
+```text
+SENT_AT: 2026-07-12T05:57:00Z
+TRANSPORT: exact named tmux buffer to agent-office/%13
+STATUS: RUNNING
+```
