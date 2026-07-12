@@ -61,6 +61,9 @@
 - [Advisor scope-correction review validation](32_ADVISOR_SCOPE_CORRECTION_REVIEW_VALIDATION.md)
 - [Opus Worker implementation resume launcher](06C_WORKER_IMPLEMENTATION_RESUME_RUN_PROMPT.md)
 - [Opus Worker continue-full-build launcher](06D_WORKER_CONTINUE_FULL_BUILD_RUN_PROMPT.md)
+- [Advisor production-render scope-exception validation](33_ADVISOR_WORKER_PRODUCTION_RENDER_SCOPE_EXCEPTION_VALIDATION.md)
+- [Control production-render scope correction handoff](09I_CONTROL_PRODUCTION_RENDER_SCOPE_CORRECTION_HANDOFF_PROMPT.md)
+- [Control production-render scope correction launcher](09I_CONTROL_PRODUCTION_RENDER_SCOPE_CORRECTION_RUN_PROMPT.md)
 
 Design: accepted at `381b411`; independent Sentinel design verdict `PASS`.
 
@@ -68,6 +71,6 @@ The first Worker entry pass stopped cleanly because the closed scope omitted the
 existing actor-overlay host and two coupled tests. Control corrected the exact
 scope at `453c661`; the same Sentinel returned `PASS`. Worker resume is ready.
 
-Pending: scope correction/review, Worker implementation/result, Advisor candidate
+Pending: production-render scope correction/review, Worker implementation/result, Advisor candidate
 validation, SOL Sentinel implementation review, routine patch loops, direct local
 rehearsal, final audit, and Founder Acceptance Sheet.
