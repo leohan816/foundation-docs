@@ -53,6 +53,21 @@ ACTION_TAKEN: verified active transport, registered pane/workspace/process/role/
 NEXT_OBSERVATION_DUE: immediately after exact launcher transport
 ```
 
+### AO-M1.2-LIVING-VISUAL-PATCH-DELTA-REVIEW-20260712T131955Z - sent
+
+```text
+DISPATCH_ID: AO-M1.2-LIVING-VISUAL-PATCH-DELTA-REVIEW-20260712T131955Z
+OBSERVED_AT: 2026-07-12T13:22:45Z
+PANE_ID: %5
+OUTPUT_FINGERPRINT: exact committed Level-3 launcher visible; Fable5 processing indicator active
+LAST_PROGRESS_MARKER: exact c535877..ac8ba75 visual-patch delta launcher submitted once to the same existing independent Reviewer session
+STATE: RUNNING
+INTERACTIVE_PROMPT_PRESENT: false
+SENSITIVE_OUTPUT_SUSPECTED: false
+ACTION_TAKEN: exact committed launcher sent through one named tmux buffer; execution confirmed; no other input sent
+NEXT_OBSERVATION_DUE: at most 60 seconds or on progress, result, interactive, or capacity signal
+```
+
 ### AO-M1.2-PIXEL-PROTOTYPE-CORRECTION-RESUME-20260712T065949Z - sent
 
 ```text
