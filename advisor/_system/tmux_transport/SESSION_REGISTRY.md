@@ -19,6 +19,7 @@ verification. Pane IDs and processes can change.
 | SIASIU Worker | `siasiu` | `$0` | 0 | `@0` | 0 | `%0` | `/home/leo/Project/SIASIU` | `claude` | latest pane record declares SIASIU Worker | eligible only after live verification |
 | Fable5 Reviewer | `reviewer-fable5` | `$5` | 0 | `@5` | 0 | `%5` | `/home/leo/Project/foundation-control` | `claude` | latest pane record declares Fable5 Reviewer and `/fable-sentinel` review | eligible only after live role-evidence verification |
 | Agent Office Worker | `agent-office` | `$13` | 0 | `@13` | 0 | `%13` | `/home/leo/Project/agent-office` | `codex` (live PID and version revalidated before each dispatch) | Leo/GPT Agent Office assignment; exact tmux ancestry; pane history confirms `gpt-5.6-sol ultra`; active repo-local role instructions | eligible for exact committed Agent Office mission dispatch after live verification; mission branch is specified by each handoff |
+| Agent Office Grok Pilot Worker | `agent-office-grok` | `$16` | 0 | `@16` | 0 | `%16` | `/home/leo/Project/agent-office` | `grok` (live child PID, authentication, model, and effort revalidated before every pilot dispatch) | Leo/GPT bounded pilot assignment only; existing user-created session; active Agent Office Worker instructions must be re-read from the isolated pilot worktree | eligible only for `AGENT_OFFICE_GROK_WORKER_PILOT_001` exact committed launchers after live verification; not a default Worker and no larger-batch authority |
 
 ## Required Live Checks
 
