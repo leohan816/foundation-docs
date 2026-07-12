@@ -2753,3 +2753,11 @@ HARD_TIMEOUT_SECONDS_OR_NONE: none
 PREFLIGHT_VERDICT: PASS_READY_TO_SEND
 STATUS: WAITING_EXPECTED
 ```
+
+### AO-BATCH-A-WORKER-RESUME-20260712T213800Z - sent
+
+```text
+SENT_AT: 2026-07-12T21:40:00Z
+TRANSPORT: exact named tmux buffer ao_batch_a_worker_resume_20260712 to agent-office-opus/%16; one Enter submitted unchanged content
+STATUS: RUNNING
+```
