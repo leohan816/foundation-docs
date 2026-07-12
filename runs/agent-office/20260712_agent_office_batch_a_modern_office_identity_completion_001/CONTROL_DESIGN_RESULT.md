@@ -1,6 +1,6 @@
 # Control Design Result — Agent Office Batch A Application-Integration Design Delta
 
-Result: `CONTROL_MASTER_DESIGN_DELTA_REWORKED_CD_1_TO_CD_10_SENTINEL_P1_P4_R1_R4_AND_S1_S3_S4__PENDING_INDEPENDENT_SENTINEL_THIRD_DELTA_REREVIEW`
+Result: `CONTROL_MASTER_DESIGN_DELTA_REWORKED_THROUGH_S1_S3_S4_AND_ADVISOR_T1_T3__PENDING_INDEPENDENT_SENTINEL_THIRD_DELTA_REREVIEW`
 
 Actor: Control (`foundation-control` session). Mode: `CONTROL_MASTER_DESIGN_MODE` (design coordination only — no implementation, no review, no risk acceptance, no final approval, no agents/sub-agents).
 
@@ -161,3 +161,23 @@ Driver: `SENTINEL_DESIGN_SECOND_DELTA_REREVIEW_RESULT.md` = `NEEDS_PATCH` (candi
 `SENTINEL_DESIGN_SECOND_DELTA_REREVIEW_RESULT.md`, `21_ADVISOR_SENTINEL_SECOND_DELTA_VALIDATION.md`, `src/domain/activity/index.ts:43-49` (`CurrentActivity`/`ObservableProjection`), `src/ui/pixel/assets/` (8 files), `tests/e2e/baselines/` + `tests/e2e-composed/baselines/`, `03_WORKER_BRIEF.md` (exact Worker result path). (RT) single-truth grounded in `src/runtime/observation-coordinator.ts:269-320`.
 
 `RETURN_TO: Advisor`; R2 preserved; implementation unauthorized until a clean independent-Sentinel third delta re-review.
+
+---
+
+## Advisor pre-review correction T1–T3 (Agent Office design commit — see pointer)
+
+Driver: `22_ADVISOR_CONTROL_THIRD_PATCH_VALIDATION.md` = `NEEDS_TARGETED_CONTROL_CORRECTION_BEFORE_SENTINEL` (candidate `a39634d`). Advisor held before spending another Sentinel pass. Corrected T1-T3 in the same four design paths; **closed R2, S3 RT-sole-truth, total arbitration, and STALE normalization preserved**.
+
+### T1–T3 closure table
+
+| Finding | Closure (exact) |
+|---|---|
+| **T1** accepted-evidence identity/dedup incomplete | Contract §2.3.1 now specifies `schemaVersion = 'agent-office.batch-a.accepted-evidence.v1'`, immutable `evidenceId` (UUIDv7) and `evidenceRef` (`sha256:<64 hex>`), `observedAt`/`effectiveFrom`/`optionalExpiresAt` validation (recency never proof; expired never contributes), **equality/idempotency by `evidenceId` with duplicate collapse**, and **deterministic same-`kind` selection** (greatest `effectiveFrom`; tie → greatest `evidenceId`; conflicting value/contradictory kind → field sentinel + diagnostic). §2.3.2 total runtime-state arbitration retained. |
+| **T2** baseline/script placeholders/deferral | Delta §9 replaces the `<new-batch-a-subdir>` placeholder with the literal `tests/e2e-composed/baselines/application-office-scene.spec.ts/batch-a-living-office/`, and states `scripts/local-office-rehearsal.mjs` as one exact path with no "if named by the handoff" deferral (consistent with WorkUnit plan §2). |
+| **T3** stale closure rows contradict final contract | Delta §14 now opens with a single **canonical current rule** (`SESSION_PROCESS_UNKNOWN` for missing/unverified process evidence; RT sole `mission`/`workUnit`/activity/`operationalState` truth; local attestations for absent facts only; no store-back) and marks the earlier P1 (`sessionProcess`→`SESSION_OFFLINE`), P3, and R3 (two-input) rows `[SUPERSEDED …]` as historical review provenance pointing to the current section. History retained, not erased. |
+
+### Direct reads this pass (no agents)
+
+`22_ADVISOR_CONTROL_THIRD_PATCH_VALIDATION.md`; the four `a39634d` after snapshots; `src/domain/activity/index.ts:43-49` (record discipline); `src/ui/pixel/assets/` and `tests/e2e*/baselines/` (literal paths).
+
+`RETURN_TO: Advisor`; R2/S3 preserved; implementation and independent review unauthorized until this correction is validated and a clean Sentinel re-review passes.

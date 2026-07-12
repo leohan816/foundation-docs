@@ -5,7 +5,7 @@ RESULT_WRITTEN
 TARGET_PROJECT: Agent Office Batch A
 ROLE_ACTOR: Control
 CONTROL_MODE: CONTROL_MASTER_DESIGN_MODE
-RESULT: CONTROL_MASTER_DESIGN_DELTA_REWORKED_CD_1_TO_CD_10_SENTINEL_P1_P4_R1_R4_AND_S1_S3_S4__PENDING_INDEPENDENT_SENTINEL_THIRD_DELTA_REREVIEW
+RESULT: CONTROL_MASTER_DESIGN_DELTA_REWORKED_THROUGH_S1_S3_S4_AND_ADVISOR_T1_T3__PENDING_INDEPENDENT_SENTINEL_THIRD_DELTA_REREVIEW
 MODEL_EFFORT_ACTUAL: Opus 4.8 (1M) xhigh
 MODEL_EFFORT_REQUESTED: Opus 4.8 Medium
 RESULT_FILE: ../foundation-docs/runs/agent-office/20260712_agent_office_batch_a_modern_office_identity_completion_001/CONTROL_DESIGN_RESULT.md
@@ -13,10 +13,10 @@ POINTER_FILE: ../foundation-docs/advisor/jobs/20260712_agent_office_batch_a_mode
 DESIGN_REPO: /home/leo/Project/agent-office-batch-a-001
 DESIGN_BRANCH: batch-a/modern-office-identity-001
 DESIGN_BASE: ac8ba75d3a128385beaeeac58ae5bf54c03d23f2
-DESIGN_COMMIT: a39634d3a0b292f371db0051f5c25ff2abb2a513
-DESIGN_COMMIT_HISTORY: 604dfad (publish) -> 6e41006 (CD-1..CD-8) -> 665b251 (CD-9/CD-10) -> 60a5a72 (P1-P4) -> 77681d9 (delta R1-R4) -> a39634d (2nd-delta S1/S3/S4)
+DESIGN_COMMIT: 5f8ffd102f8344c5b34e1d97f00cdca578871c3c
+DESIGN_COMMIT_HISTORY: 604dfad (publish) -> 6e41006 (CD-1..8) -> 665b251 (CD-9/10) -> 60a5a72 (P1-P4) -> 77681d9 (R1-R4) -> a39634d (S1/S3/S4) -> 5f8ffd1 (Advisor pre-review T1-T3)
 DESIGN_COMMIT_PUSHED: yes (origin/batch-a/modern-office-identity-001, non-force)
-REWORK: CD-1..CD-10 + Sentinel P1-P4 + delta R1-R4 + 2nd-delta S1/S3/S4 (four docs; R2 preserved unchanged); S1 exact AcceptedEvidenceRecord schema + total aiRuntimeState arbitration; S3 runtime projection kept sole mission/workUnit/activity/operational truth, local evidence limited to absent facts, STALE per field; S4 genuinely closed file list (exact assets/baselines/acceptance/Worker-result, no wildcard); direct reads completed; non-docs changes 0
+REWORK: through S1/S3/S4 + Advisor pre-review T1-T3 (four docs; R2/S3 preserved); T1 AcceptedEvidenceRecord schemaVersion/evidenceId/evidenceRef + dedup + deterministic same-kind ordering/arbitration; T2 literal baseline dir + exact scripts path (no deferral); T3 canonical current rule + [SUPERSEDED] markers on stale P1/P3/R3 closure rows; direct reads completed; non-docs changes 0
 CORRECTION_COMMIT_USED: 99e3e4109fd8d77cf64e58d3892541a4dacad947
 DESIGN_FILES:
   - docs/architecture/AGENT_OFFICE_BATCH_A_APPLICATION_INTEGRATION_DESIGN_DELTA.md (new)
@@ -35,4 +35,4 @@ RETURN_TO: Advisor
 NEXT_ACTOR: Advisor
 ```
 
-Advisor next step: return the reworked committed Control design (`a39634d`, S1/S3/S4 closed; R2 preserved) to the same independent-Sentinel session for a third delta re-review. Under the current Founder authorization a clean re-review plus Advisor acceptance opens the exact Worker implementation handoff; only `PASS_WITH_RISK`, a new material decision, or another mandatory stop returns to Leo/GPT. Control has stopped; it did not implement, review, or enter Batch B–E.
+Advisor next step: validate the pre-review correction (`5f8ffd1`, T1-T3 closed; R2/S3 preserved) and route it to the same independent-Sentinel session for the third delta re-review. Under the current Founder authorization a clean re-review plus Advisor acceptance opens the exact Worker implementation handoff; only `PASS_WITH_RISK`, a new material decision, or another mandatory stop returns to Leo/GPT. Control has stopped; it did not implement, review, or enter Batch B–E.
