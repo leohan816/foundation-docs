@@ -45,6 +45,26 @@ architecture/component map, data contract, state model, routes/navigation,
 organization model, WorkUnits, requirement matrix, proposed source scope,
 acceptance gates, rollback, unknowns, and explicit Batch B-E exclusion.
 
+The exact 17 items are fixed by the current Founder authorization as follows:
+
+1. how Living Pixel Office becomes the real private/local application shell;
+2. primary Office route and preserved secondary technical/control views;
+3. navigation and fallback structure;
+4. first-layer actor summary contract;
+5. second-layer actor detail-drawer contract;
+6. stable identity versus mutable Team/Advisor assignment;
+7. local/static registry schema and source-of-truth rules;
+8. truthful UNKNOWN and operational-state model;
+9. role-specific symbolic work-surface contracts;
+10. Channy presentation and explicit non-operational boundary;
+11. responsive, keyboard, accessibility, reduced-motion, and static behavior;
+12. exact Batch A/B/C/D/E boundaries;
+13. required source areas and forbidden source areas;
+14. internal WorkUnits and dependency order;
+15. test, browser, visual, accessibility, performance, and local-rehearsal gates;
+16. rollback and failure isolation; and
+17. exact implementation completion criteria.
+
 ## Design constraints
 
 - Do not redesign accepted M1/M1.2 foundations from zero.
@@ -68,4 +88,3 @@ Write:
 Commit and non-force push the Agent Office design commit and the exact
 Foundation Docs result/pointer. Report exact model/effort, files, commits,
 checks, unresolved questions, and `RETURN_TO: Advisor`. Stop after returning.
-
