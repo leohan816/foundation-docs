@@ -965,3 +965,18 @@ SENSITIVE_OUTPUT_SUSPECTED: false
 ACTION_TAKEN: Advisor read exact result/pointer and commit, verified two-file scope and upstream equality, accepted PASS for prototype gate only, reproduced converter limitations, and opened a narrow Leo/GPT tool-authority decision
 NEXT_OBSERVATION_DUE: none until Leo/GPT tool-authority decision
 ```
+
+## AO-M1.2-PIXEL-PROTOTYPE-20260712T033758Z
+
+```text
+DISPATCH_ID: AO-M1.2-PIXEL-PROTOTYPE-20260712T033758Z
+OBSERVED_AT: 2026-07-12T03:37:58Z
+PANE_ID: %13
+OUTPUT_FINGERPRINT: prior living pixel-office design Worker result and STOP; idle GPT-5.6 SOL Ultra prompt
+LAST_PROGRESS_MARKER: clean Fable5 design PASS, media-tool authority, official ffmpeg capability, exact prototype launcher, and clean target verified
+STATE: WAITING_EXPECTED
+INTERACTIVE_PROMPT_PRESENT: false
+SENSITIVE_OUTPUT_SUSPECTED: false
+ACTION_TAKEN: verified exact existing session/pane/workspace/process/model/role, synchronized panes off, launcher commit/blob/checksum, branch/upstream, tools, Chromium, IPv4 loopback, and serialized scope; no input sent yet
+NEXT_OBSERVATION_DUE: immediately after exact launcher transport
+```

@@ -1735,3 +1735,39 @@ REVIEW_VERDICT: PASS clean; bounded prototype gate only
 ADVISOR_VALIDATION: PASS accepted for AO12-PWU-06; prototype remains blocked before first mutation on separate media-tool authority
 NEXT_DEPENDENCY: AO12-PWU-07-MEDIA-TOOL-AUTHORITY Leo/GPT decision
 ```
+
+## AO-M1.2-PIXEL-PROTOTYPE-20260712T033758Z
+
+```text
+DISPATCH_ID: AO-M1.2-PIXEL-PROTOTYPE-20260712T033758Z
+MISSION_ID: AGENT_OFFICE_M1_2_SPATIAL_ANIMATED_ADVISOR_TEAM_OFFICE
+TARGET_ACTOR: Agent Office Worker
+TARGET_SESSION: agent-office
+TARGET_WINDOW: 0
+TARGET_PANE: 0
+OBSERVED_PANE_ID: %13
+WORKSPACE: /home/leo/Project/agent-office
+PROCESS: codex PID 2754606 under pane shell PID 2703903
+MODEL_EFFORT_EVIDENCE: pane footer gpt-5.6-sol ultra
+ROLE_EVIDENCE: same existing Agent Office Worker; prior design result and STOP visible
+READINESS_EVIDENCE: idle Codex prompt; no unrelated task, approval, auth, privilege, DB, secret, production, or interactive prompt active
+SYNCHRONIZED_PANES_OFF: true
+LAUNCHER_ABSOLUTE_PATH: /home/leo/Project/foundation-docs/advisor/jobs/20260711_agent_office_m1_2_spatial_animated_advisor_team_office/69_LIVING_PIXEL_OFFICE_PROTOTYPE_WORKER_RUN_PROMPT.md
+LAUNCHER_REPO_RELATIVE_PATH: advisor/jobs/20260711_agent_office_m1_2_spatial_animated_advisor_team_office/69_LIVING_PIXEL_OFFICE_PROTOTYPE_WORKER_RUN_PROMPT.md
+LAUNCHER_COMMIT_SHA: 28d3c764039f1fc3de60f45c614ab902ae54d59d
+LAUNCHER_GIT_BLOB: 5ce6fcbea16a4995c400f4d13f2d61e433401d7c
+LAUNCHER_SHA256_WORKTREE: 45b0c301172356d91bb6b37fdc746aad40287498f8c036ce5aa91d3cf45bb0e2
+LAUNCHER_SHA256_COMMITTED: 45b0c301172356d91bb6b37fdc746aad40287498f8c036ce5aa91d3cf45bb0e2
+UPSTREAM_EVIDENCE: foundation-docs 28d3c76 equals origin/main; Agent Office clean 9611d0d equals origin/shadow/agent-office-m1-2-spatial-office, left/right 0/0
+WORK_SCOPE: AO12-PWU-07..09 isolated synthetic prototype, tests, ignored media, and exact result/pointer only; AO12-PWU-12 blocked
+TOOL_EVIDENCE: official Ubuntu ffmpeg/ffprobe 8.0.1 at /usr/bin; libx264, MP4, WebM, GIF, palettegen, paletteuse, scale verified
+PORT_EVIDENCE: no IPv4 127.0.0.1:4173 listener; existing unrelated user SSH listener on IPv6 [::1]:4173 preserved
+RESULT_PATH: ../foundation-docs/runs/agent-office/20260711_agent_office_m1_2_spatial_animated_advisor_team_office/WORKER_LIVING_PIXEL_OFFICE_PROTOTYPE_RESULT.md
+POINTER_PATH: ../foundation-docs/advisor/jobs/20260711_agent_office_m1_2_spatial_animated_advisor_team_office/70_WORKER_LIVING_PIXEL_OFFICE_PROTOTYPE_RESULT_POINTER.md
+DEPENDENCY_LOCKS: clean Fable5 design PASS accepted; exact media tool authority recorded; full integration and final approval blocked
+PARALLEL_ISOLATION_EVIDENCE: one exact Worker pane; Reviewer idle; no broadcast or synchronized panes
+SOFT_STALL_SECONDS: 60
+HARD_TIMEOUT_SECONDS_OR_NONE: none; transient capacity/API errors require same-session readiness revalidation before one idempotent continue
+PREFLIGHT_VERDICT: PASS_READY_TO_SEND
+STATUS: WAITING_EXPECTED
+```
