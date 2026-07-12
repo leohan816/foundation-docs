@@ -816,3 +816,33 @@ SENSITIVE_OUTPUT_SUSPECTED: false
 ACTION_TAKEN: exact committed launcher sent through one named tmux buffer; execution confirmed; no other input sent
 NEXT_OBSERVATION_DUE: at most 60 seconds or on progress/result/interactive/capacity signal
 ```
+
+### AO-M1.2-D-A1-REWORK-20260712T005547Z - completion and Advisor validation
+
+```text
+DISPATCH_ID: AO-M1.2-D-A1-REWORK-20260712T005547Z
+OBSERVED_AT: 2026-07-12T01:23:08Z
+PANE_ID: %13
+OUTPUT_FINGERPRINT: AO12-D-A1 Worker pointer, Agent Office 48c8dbd, Foundation Docs result/pointer, STOP
+LAST_PROGRESS_MARKER: target and result/pointer pushed upstream-equal; no retained process or listener
+STATE: COMPLETED_VERIFIED
+INTERACTIVE_PROMPT_PRESENT: false
+SENSITIVE_OUTPUT_SUSPECTED: false
+ACTION_TAKEN: Advisor read the exact diff/result/pointer, inspected all seven images, reran full Vitest, composition, lint, typecheck, build, audit, marker scan, 43 demo and 3 composed Playwright cases, then cleaned outputs and confirmed clean upstream equality
+NEXT_OBSERVATION_DUE: immediately after final Fable5 review transport
+```
+
+## AO-M1.2-D-FINAL-LEVEL3-REVIEW-20260712T012308Z
+
+```text
+DISPATCH_ID: AO-M1.2-D-FINAL-LEVEL3-REVIEW-20260712T012308Z
+OBSERVED_AT: 2026-07-12T01:23:08Z
+PANE_ID: %5
+OUTPUT_FINGERPRINT: prior AO12-C Fable5 PASS and STOP; idle independent Reviewer prompt
+LAST_PROGRESS_MARKER: exact cumulative AO12-D final review launcher published at Foundation Docs e0ff18b
+STATE: WAITING_EXPECTED
+INTERACTIVE_PROMPT_PRESENT: false
+SENSITIVE_OUTPUT_SUSPECTED: false
+ACTION_TAKEN: verified exact existing session/pane/workspace/process/role, synchronized panes off, launcher commit/blob/checksum, clean read-only target, serialization, and upstream state; no input sent yet
+NEXT_OBSERVATION_DUE: immediately after exact launcher transport
+```

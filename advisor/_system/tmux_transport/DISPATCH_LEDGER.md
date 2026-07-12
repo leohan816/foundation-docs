@@ -1555,3 +1555,51 @@ SENT_AT: 2026-07-12T00:57:00Z
 TRANSPORT: exact named tmux buffer to agent-office/%13
 STATUS: RUNNING
 ```
+
+### AO-M1.2-D-A1-REWORK-20260712T005547Z - reconciled completion
+
+```text
+STATUS: COMPLETED_VERIFIED
+COMPLETED_AT: 2026-07-12T01:17:03Z
+TARGET_COMMIT: 48c8dbd9f2c5ecea68c28e85137d75db595ef5f9
+RESULT_COMMIT: 685c45c1498019142c29ad244e121e1d0c668958
+POINTER_COMMIT: c92187c33d9d369aaacadeae93d972a1bd91abf5
+ADVISOR_VALIDATION: PASS; direct 77/452, 13/13, 43/43, 3/3, build, audit, marker, visual, Git, and cleanup checks
+NEXT_DEPENDENCY: FABLE5_AO12_D_FINAL_IMPLEMENTATION_SECURITY_ACCESSIBILITY_VISUAL_REVIEW
+```
+
+## AO-M1.2-D-FINAL-LEVEL3-REVIEW-20260712T012308Z
+
+```text
+DISPATCH_ID: AO-M1.2-D-FINAL-LEVEL3-REVIEW-20260712T012308Z
+MISSION_ID: AGENT_OFFICE_M1_2_SPATIAL_ANIMATED_ADVISOR_TEAM_OFFICE
+TARGET_ACTOR: Fable5 Sentinel
+TARGET_SESSION: reviewer-fable5
+TARGET_WINDOW: 0
+TARGET_PANE: 0
+OBSERVED_PANE_ID: %5
+WORKSPACE: /home/leo/Project/foundation-control
+PROCESS: claude child PID 765045 under pane shell PID 764416
+MODEL_EFFORT_EVIDENCE: same existing Fable5 Reviewer session; Fable5 Max / Level 3
+ROLE_EVIDENCE: prior independent M1.2 AO12-A/B/C reviews and latest AO12-C PASS visible; same Reviewer context
+READINESS_EVIDENCE: idle Claude prompt; no task, approval, auth, privilege, DB, secret, production, or interactive prompt active
+SYNCHRONIZED_PANES_OFF: true
+LAUNCHER_ABSOLUTE_PATH: /home/leo/Project/foundation-docs/advisor/jobs/20260711_agent_office_m1_2_spatial_animated_advisor_team_office/52_FABLE5_AO12_D_FINAL_REVIEW_RUN_PROMPT.md
+LAUNCHER_REPO_RELATIVE_PATH: advisor/jobs/20260711_agent_office_m1_2_spatial_animated_advisor_team_office/52_FABLE5_AO12_D_FINAL_REVIEW_RUN_PROMPT.md
+LAUNCHER_COMMIT_SHA: e0ff18b8c1fa3c5e750817622db76bbfd81446c7
+LAUNCHER_GIT_BLOB: ac474b09793a0e00da1c4843996adec2f19393d3
+LAUNCHER_SHA256_WORKTREE: 8984ab45d0c886c97c8e4279a4176054f2468ade9b2dfc4b907e7fe8fbb23854
+LAUNCHER_SHA256_COMMITTED: 8984ab45d0c886c97c8e4279a4176054f2468ade9b2dfc4b907e7fe8fbb23854
+UPSTREAM_EVIDENCE: foundation-docs e0ff18b equals origin/main; Agent Office clean 48c8dbd equals origin/shadow/agent-office-m1-2-spatial-office, left/right 0/0
+REVIEW_TARGET: cumulative AO12-D f9d0533..48c8dbd plus corrective delta da5ecc9..48c8dbd
+RESULT_PATH: ../foundation-docs/runs/agent-office/20260711_agent_office_m1_2_spatial_animated_advisor_team_office/FABLE5_AO12_D_IMPLEMENTATION_SECURITY_ACCESSIBILITY_VISUAL_REVIEW_RESULT.md
+POINTER_PATH: ../foundation-docs/advisor/jobs/20260711_agent_office_m1_2_spatial_animated_advisor_team_office/53_FABLE5_AO12_D_FINAL_REVIEW_RESULT_POINTER.md
+WRITE_REPO_BRANCHES: foundation-docs/main exact result/pointer only; Agent Office read-only
+DEPENDENCY_LOCKS: AO12-D-A1 Worker completed and Advisor validated; Worker idle; no other Reviewer or Foundation Docs writer active
+BLIND_INDEPENDENCE_RULE: distrust Worker/Advisor conclusions; inspect actual code, design, tests, seven images, bundle, commits, pushes, and cleanup; Reviewer cannot patch or approve
+PARALLEL_ISOLATION_EVIDENCE: one exact Reviewer pane; serialized after Worker and Advisor validation; no broadcast or synchronized panes
+SOFT_STALL_SECONDS: 60
+HARD_TIMEOUT_SECONDS_OR_NONE: none; transient capacity/API errors require same-session readiness revalidation before one idempotent continue
+PREFLIGHT_VERDICT: PASS_READY_TO_SEND
+STATUS: WAITING_EXPECTED
+```
