@@ -1055,3 +1055,18 @@ SENSITIVE_OUTPUT_SUSPECTED: false
 ACTION_TAKEN: verified active transport, disengaged kill switch, exact registered Reviewer pane/workspace/process/role/readiness, synchronization off, launcher commit/blob/checksum equality, target/upstream, write locks, and read-only Agent Office scope; no input sent yet
 NEXT_OBSERVATION_DUE: immediately after exact launcher transport
 ```
+
+### AO-M1.2-PIXI-BRIDGE-DESIGN-REVIEW-20260712T061846Z - sent
+
+```text
+DISPATCH_ID: AO-M1.2-PIXI-BRIDGE-DESIGN-REVIEW-20260712T061846Z
+OBSERVED_AT: 2026-07-12T06:21:00Z
+PANE_ID: %5
+OUTPUT_FINGERPRINT: exact committed Level-3 launcher visible; /fable-sentinel accepted and handoff file loading; Fable5 processing active
+LAST_PROGRESS_MARKER: exact committed launcher submitted once to the same existing independent Reviewer session
+STATE: RUNNING
+INTERACTIVE_PROMPT_PRESENT: false
+SENSITIVE_OUTPUT_SUSPECTED: false
+ACTION_TAKEN: exact committed launcher sent through one named tmux buffer; execution and skill load confirmed; no other input sent
+NEXT_OBSERVATION_DUE: at most 60 seconds or on progress/result/interactive/capacity signal
+```
