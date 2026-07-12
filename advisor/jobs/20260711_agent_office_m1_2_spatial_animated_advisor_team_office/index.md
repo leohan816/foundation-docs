@@ -1,8 +1,8 @@
 # Agent Office M1.2 Spatial Office Design Mission
 
-Status: `M1_2_IMPLEMENTATION_REVIEWED_COMPLETE__AWAITING_LEO_GPT_FINAL_APPROVAL`
+Status: `AGENT_OFFICE_M1_2_CLOSED`
 
-Implementation: `AO12_A_B_C_D_COMPLETED_AND_ADVISOR_ACCEPTED__FINAL_LEO_GPT_APPROVAL_PENDING`
+Implementation: `AO12_A_B_C_D_COMPLETED__FABLE5_PASS__LEO_GPT_FINAL_APPROVED`
 
 ## Final Artifacts
 
@@ -11,6 +11,7 @@ Implementation: `AO12_A_B_C_D_COMPLETED_AND_ADVISOR_ACCEPTED__FINAL_LEO_GPT_APPR
 - [55_ADVISOR_M1_2_FINAL_AUDIT.md](55_ADVISOR_M1_2_FINAL_AUDIT.md)
 - [56_FOUNDER_ACCEPTANCE_SHEET.md](56_FOUNDER_ACCEPTANCE_SHEET.md)
 - [57_FINAL_CLOSURE_POINTER.md](57_FINAL_CLOSURE_POINTER.md)
+- [58_LEO_GPT_FINAL_APPROVAL.md](58_LEO_GPT_FINAL_APPROVAL.md)
 
 ## Entry Artifacts
 
@@ -97,7 +98,7 @@ Implementation: `AO12_A_B_C_D_COMPLETED_AND_ADVISOR_ACCEPTED__FINAL_LEO_GPT_APPR
 All 14 approved WorkUnits are complete. AO12-D-A1 was corrected at `48c8dbd`,
 Advisor directly revalidated the implementation, and the same independent
 Fable5 Reviewer returned a clean Level-3 `PASS` at Foundation Docs `cef2d39`.
-The final audit and Founder Acceptance Sheet are published. No runtime is
-running, both repositories are upstream-equal for the target commits, no
-accepted risk or unresolved defect remains, and no next mission is authorized.
-The only next actor is Leo/GPT for final M1.2 acceptance.
+The final audit and Founder Acceptance Sheet are published. Leo/GPT accepted the
+package as `APPROVE_M1_2_IMPLEMENTATION_COMPLETE`; M1.2 is closed. No accepted
+risk or unresolved defect remains, and no next mission is authorized. The next
+actor is `STOP`.
