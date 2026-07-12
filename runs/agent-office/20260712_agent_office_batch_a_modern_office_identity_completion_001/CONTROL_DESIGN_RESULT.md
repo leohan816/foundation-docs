@@ -1,6 +1,6 @@
 # Control Design Result — Agent Office Batch A Application-Integration Design Delta
 
-Result: `CONTROL_MASTER_DESIGN_PLUS_SENTINEL_PRC1_PRC8_CORRECTION__PENDING_ADVISOR_EXACT_DIFF_VALIDATION_THEN_SAME_SENTINEL_REREVIEW`
+Result: `CONTROL_MASTER_DESIGN_PLUS_SENTINEL_PRC_FINAL_FIVE_CORRECTIONS__PENDING_ADVISOR_DIFF_VALIDATION_THEN_SAME_SENTINEL_REREVIEW`
 
 Actor: Control (`foundation-control` session). Mode: `CONTROL_MASTER_DESIGN_MODE` (design coordination only — no implementation, no review, no risk acceptance, no final approval, no agents/sub-agents).
 
@@ -293,3 +293,21 @@ Independent Sentinel delta review (`SENTINEL_PRODUCTION_RENDER_CONTRACT_DELTA_RE
 Changed docs (four canonical, non-docs 0): delta §2.3 (PR-1..PR-3 rewrite) + §9 (office-layout-config.ts, client.ts parseProjection, overlay/mirror edits, LivingOfficeStructuralProjection, literal test) + §10 (PRC-8) + §14.7 + header; contract §3.1 (full interface) + header; WU BA-WU-01 Part 2 + §3 CD-3 gate + header; FEATURE_INDEX §2.0. Source/tests/config untouched; `prototype-entry.tsx`/`fixtures/*` not edited.
 
 `RETURN_TO: Advisor` — per validation `37_...`, Advisor performs exact-diff validation that PRC-1..PRC-8 are closed by `e8531a3`, then routes the exact corrected delta to the **same** `foundation-reviewer-sol` Sentinel for delta re-review; Worker stays stopped clean. Control has stopped and did not implement, review, self-review, accept risk, grant approval, or enter Batch B–E.
+
+---
+
+## Sentinel PRC delta re-review — final five corrections (candidate `8c5d0c25c8b91fbe2bf47ac25dde46494c4a982c`)
+
+Same-Sentinel delta re-review (`SENTINEL_PRC1_PRC8_DELTA_REREVIEW_RESULT.md`) **closed PRC-2/PRC-3/PRC-4** and returned `NEEDS_PATCH` on five per-field technical details; Advisor validation `40_...` (`ACCEPT_NEEDS_PATCH__ROUTE_FIVE_EXACT_CORRECTIONS_TO_SAME_CONTROL`) routed them here (handoff `09L`). Patched docs-only from cited source; all closed PRC items + WU-02/03/04 + U1-U3/S3/R2/T3 preserved; no product/authority/risk decision.
+
+**Code evidence read this pass (no agents):** `projector.ts:128-150,185-202` (`computeAiRuntimeState` arbitrates `{sessionProcess, work, waiting, error, ready}`: `work/waiting` from RT `observableName`/`WAITING_OBSERVABLES`, `error` from `observable==='FAILED'`, `ready`/`error` records from (B); provenance AI_ERROR→errorRecord else `runtime.provenance`, AI_READY→readyRecord, else `runtime.provenance`, UNKNOWN→MISSING); contract §2.3.2 (already the total arbitration) + §3 line 134; `types.ts:31` (`ORGANIZATION_ROLES` incl. `ADVISOR`), `:35-39` (`AdvisorTeamValue`); `contracts.ts:26-40` (14 `PixelOperationalState`), `:110-124` (`PixelPodInput` incl. `responsibleAdvisorRoleInstanceId: string`), `:208` (`PixelPrototypeProjection.pods`); `projection.ts:54-59` (raw `LivingOfficePresentationV1 = {schemaVersion, projectionRevision, evaluatedAt, frame}`); `living-office-actor-overlay.tsx:154` + `living-office-semantic-mirror.tsx:32-40` (read only `projection.pods`); `node_modules/vite/dist/node/index.d.ts:2337` (`build(): Promise<RolldownOutput | RolldownOutput[] | RolldownWatcher>`).
+
+- **PRC-1** — `aiRuntimeState` relabeled a **projector-computed** value via the §2.3.2 total arbitration over **(RT)** active-work/waiting/`FAILED` + **(B)** `sessionProcess`/`ai_ready`/`ai_error`, with per-result provenance; not (B)-only; identity/model/effort are not inputs. (delta §2.3 table)
+- **PRC-5** — `CommittedPodConfig.projectKey` is the **sole** key into `projectIdentityByProject` (registry-row project selection removed); **complete literal current-actor priority** over all 14 `PixelOperationalState` + ascending `roleInstanceId`; responsible Advisor valid only as **exactly one `ADVISOR` + matching Team + valid member**, else pod **omitted with diagnostic** → `M1_FIXED_STATIONS` if none remain (never `UNASSIGNED` in `responsibleAdvisorRoleInstanceId`); literal `DEFAULT_VIEWPORT`/`DEFAULT_LOGICAL_TIME_MS=0`/`DEFAULT_CAMERA`/selection defaults. (contract §3.1)
+- **PRC-6** — raw parser validates the **four literal `LivingOfficePresentationV1` keys** with `schemaVersion` top-level (no `operational` at that boundary); full `LivingOfficeProductionRenderInputV1` wrapper interface declares every field once incl. `logicalTimeMs` + always-empty `cues`; two distinct gates preserved. (delta §2.3 PR-3, contract §3.1.1)
+- **PRC-7** — exact `LivingOfficeStructuralProjection { readonly pods: readonly PixelPodInput[] }`; exact production caller `production-pixel-world-scene.tsx` passes `{pods}`+`frame` to overlay/mirror and `frame` to HUD; `PixelPrototypeProjection.pods` structurally satisfies it, `prototype-entry.tsx` unedited. (delta §2.3 PR-2)
+- **PRC-8** — installed **Vite `8.1.4`/Rolldown `1.1.5`**: `build()` returns `RolldownOutput | RolldownOutput[] | RolldownWatcher` (not `RollupOutput`); one exact `build({ root, mode:'production', build:{ write:false } })`, fail-closed normalization (reject watcher), roots by exact `facadeModuleId`, module ids from chunk `.modules`, reachability via `imports`/`dynamicImports`, markers/gzip from chunk `.code`. (delta §10)
+
+Changed docs (four canonical, non-docs 0): delta §2.3 (aiRuntimeState row, raw/wrapper parser, structural interface) + §10 (Rolldown) + §14.8 + header; contract §3.1 (projectKey/priority/responsible-Advisor/defaults) + §3.1.1 (wrapper interface) + header; WU BA-WU-01 Part 2 + §3 CD-3 gate + header; FEATURE_INDEX §2.0. Source/tests/config untouched; `prototype-entry.tsx`/`fixtures/*` not edited.
+
+`RETURN_TO: Advisor` — per validation `40_...`, Advisor performs the diff validation that PRC-1/5/6/7/8 are closed by `8c5d0c2` (PRC-2/3/4 remain closed), then routes the exact corrected delta to the **same** `foundation-reviewer-sol` Sentinel for the narrow delta re-review; Worker stays stopped clean. Control has stopped and did not implement, review, self-review, accept risk, grant approval, or enter Batch B–E.
