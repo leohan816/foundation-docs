@@ -1379,3 +1379,18 @@ SENSITIVE_OUTPUT_SUSPECTED: false
 ACTION_TAKEN: verified registered pane/workspace/process/model/effort/role/readiness, synchronization off, launcher commit/blob/checksum, target/upstream equality, read-only Agent Office scope, and serialized dependencies; no input sent yet
 NEXT_OBSERVATION_DUE: immediately after exact launcher transport
 ```
+
+### AO-BATCH-A-DESIGN-SECOND-DELTA-REVIEW-20260712T201420Z - sent
+
+```text
+DISPATCH_ID: AO-BATCH-A-DESIGN-SECOND-DELTA-REVIEW-20260712T201420Z
+OBSERVED_AT: 2026-07-12T20:15:16Z
+PANE_ID: %20
+OUTPUT_FINGERPRINT: exact committed 07C launcher visible and submitted; Codex entered Working state
+LAST_PROGRESS_MARKER: exact second delta review launcher submitted once to the same independent Sentinel session
+STATE: RUNNING
+INTERACTIVE_PROMPT_PRESENT: false
+SENSITIVE_OUTPUT_SUSPECTED: false
+ACTION_TAKEN: exact committed launcher pasted through one named tmux buffer; initial immediate Enter left the paste at the prompt, so one delayed Enter submitted that same unchanged content; no duplicate prompt or other input sent
+NEXT_OBSERVATION_DUE: at most 60 seconds or on progress/result/interactive/capacity signal
+```
