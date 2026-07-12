@@ -5,6 +5,7 @@
 - [Worker brief](02_WORKER_BRIEF.md)
 - [Fable5 review brief](03_SENTINEL_REVIEW_BRIEF.md)
 - [Entry effort conflict decision request](04_ENTRY_EFFORT_CONFLICT_DECISION_REQUEST.md)
+- [Advisor qualification validation](05_ADVISOR_QUALIFICATION_VALIDATION.md)
 - [Exact medium-effort control](05_GROK_MEDIUM_EFFORT_COMMAND.txt)
 - [Qualification handoff](06_GROK_QUALIFICATION_HANDOFF_PROMPT.md)
 - [Qualification launcher](06_GROK_QUALIFICATION_RUN_PROMPT.md)

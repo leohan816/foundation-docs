@@ -54,6 +54,11 @@ git diff --check
 Focused tests must be run separately. Report exact results, retries, errors,
 elapsed time, context, and token/cost data only when the Grok tool exposes them.
 
+The isolated worktree does not initially contain `node_modules`. `npm ci` is
+allowed only from the committed lockfile, must not change `package.json` or
+`package-lock.json`, and must leave dependency output ignored/untracked. No
+dependency upgrade or alternate registry configuration is authorized.
+
 ## Forbidden
 
 No polling daemon, remote/SSH/server pairing, credential/env/secret access,
@@ -71,3 +76,7 @@ Write:
 
 Commit/push Agent Office first, then only the result and pointer in Foundation
 Docs. Return to Advisor and stop.
+
+For result publication, `FOUNDATION_DOCS_COMMIT` identifies the commit containing
+the durable Worker result. One later pointer-only metadata commit is allowed.
+Never rewrite a pointer repeatedly to make it name its own commit.

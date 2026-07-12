@@ -16,6 +16,10 @@ in the isolated worktree and branch. Follow the exact allowlist, behavior,
 fixtures, checks, forbidden scope, evidence requirements, result paths, commit,
 push, rollback, and STOP rules in `02_WORKER_BRIEF.md`.
 
+Advisor qualification acceptance is recorded at
+`05_ADVISOR_QUALIFICATION_VALIDATION.md`. The isolated worktree has no initial
+`node_modules`; use only the bounded `npm ci` allowance in the Worker brief.
+
 Do not use an agent/sub-agent/delegated context. Do not contact or inspect the
 excluded `agent-office` session. Do not self-review or invoke Fable5. Return the
 durable result/pointer to Advisor and stop.
