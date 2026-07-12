@@ -47,7 +47,13 @@
 - [Advisor U1-U3 validation](26_ADVISOR_CONTROL_U1_U3_VALIDATION.md)
 - [SOL Sentinel fourth delta handoff](07E_SENTINEL_DESIGN_FOURTH_DELTA_REREVIEW_HANDOFF_PROMPT.md)
 - [SOL Sentinel fourth delta launcher](07E_SENTINEL_DESIGN_FOURTH_DELTA_REREVIEW_RUN_PROMPT.md)
+- [SOL Sentinel fourth delta result pointer](27_SENTINEL_DESIGN_FOURTH_DELTA_REREVIEW_RESULT_POINTER.md)
+- [Advisor final design acceptance](28_ADVISOR_FINAL_DESIGN_ACCEPTANCE.md)
+- [Opus Worker implementation handoff](06B_WORKER_IMPLEMENTATION_HANDOFF_PROMPT.md)
+- [Opus Worker implementation launcher](06B_WORKER_IMPLEMENTATION_RUN_PROMPT.md)
 
-Pending: Control result, Advisor design validation, exact Worker handoff,
-Worker result, Advisor candidate validation, SOL Sentinel result, patch loops,
-direct local rehearsal, final audit, and Founder Acceptance Sheet.
+Design: accepted at `381b411`; independent Sentinel design verdict `PASS`.
+
+Pending: Worker implementation/result, Advisor candidate validation, SOL
+Sentinel implementation review, any routine patch loops, direct local rehearsal,
+final audit, and Founder Acceptance Sheet.
