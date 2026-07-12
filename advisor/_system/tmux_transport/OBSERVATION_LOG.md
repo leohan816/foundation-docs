@@ -1627,3 +1627,16 @@ SENSITIVE_OUTPUT_SUSPECTED: false
 ACTION_TAKEN: verified pane/workspace/process/role/readiness, target cleanliness, exact launcher identity, and serialized docs-only scope; no input sent yet
 NEXT_OBSERVATION_DUE: immediately after transport
 ```
+
+### AO-BATCH-A-CONTROL-SCOPE-GAP-20260712T212000Z - sent
+
+```text
+OBSERVED_AT: 2026-07-12T21:22:02Z
+PANE_ID: %4
+STATE: RUNNING
+OUTPUT_FINGERPRINT: exact 09H launcher visible; Control acknowledged same-session CONTROL_MASTER_DESIGN_MODE and began direct read
+INTERACTIVE_PROMPT_PRESENT: false
+SENSITIVE_OUTPUT_SUSPECTED: false
+ACTION_TAKEN: exact committed buffer pasted once and submitted unchanged; no other pane input
+NEXT_OBSERVATION_DUE: at most 60 seconds or on progress/result signal
+```

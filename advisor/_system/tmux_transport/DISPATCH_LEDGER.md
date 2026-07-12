@@ -2659,3 +2659,11 @@ HARD_TIMEOUT_SECONDS_OR_NONE: none
 PREFLIGHT_VERDICT: PASS_READY_TO_SEND
 STATUS: WAITING_EXPECTED
 ```
+
+### AO-BATCH-A-CONTROL-SCOPE-GAP-20260712T212000Z - sent
+
+```text
+SENT_AT: 2026-07-12T21:22:00Z
+TRANSPORT: exact named tmux buffer ao_batch_a_control_scope_20260712 to foundation-control/%4; one Enter submitted unchanged content
+STATUS: RUNNING
+```
