@@ -57,7 +57,7 @@ Acceptance criteria (zero-code-change qualification):
 
 ## Model, Effort, AI Identity, Work Status Avoid Inference
 - Model: exact slug `grok-build` from `grok models` (CLI 0.2.93); official maps to 4.5 in Build context but identity is the slug.
-- Effort: NOT_CONFIGURABLE_BY_MODEL__USE_PROVIDER_DEFAULT (CLI rejects selection for grok-build; provider default used per intake; config uses "xhigh" where required but runtime flag max accepted).
+- Effort: NOT_CONFIGURABLE_BY_MODEL__USE_PROVIDER_DEFAULT; official Grok 4.5 model default is high, while effective CLI effort remains unexposed.
 - AI identity: from registered roleInstanceId in operational config + exact match on structured sources (tmuxSourceId etc); not from pane existence or command name (opaque).
 - Work status: from WorkUnit.state + structured activity (effectiveFrom + sourceEventIds from manifest/events) + actor presentation (from sources); not from time, attach status, or process name. Fail-closed on missing structured evidence.
 
