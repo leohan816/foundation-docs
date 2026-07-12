@@ -1779,3 +1779,53 @@ SENT_AT: 2026-07-12T03:40:00Z
 TRANSPORT: exact named tmux buffer to agent-office/%13; pasted payload remained unsubmitted, pane revalidated, one Enter submitted the existing exact payload without re-paste
 STATUS: RUNNING
 ```
+
+### AO-M1.2-PIXEL-PROTOTYPE-20260712T033758Z - reconciled blocker return
+
+```text
+STATUS: COMPLETED_VERIFIED_BLOCKED_PRE_COMMIT
+COMPLETED_AT: 2026-07-12T05:55:11Z
+TARGET_HEAD: 9611d0da1479ca5e7a9677641fe767a6b39b4a38
+TARGET_COMMIT: NONE
+TARGET_PUSH: NONE
+RESULT_COMMIT: 3ad03ca8a5edba256b7854bba38534743673ee93
+POINTER_COMMIT: 6d5d3913361cf1589c2d31e3e2e6601e352e0871
+WORKER_RESULT: prepared prototype preserved uncommitted; stale dependency gate correctly stopped the Worker
+ADVISOR_VALIDATION: Worker blocker valid; additional public-root TypeScript compatibility blocker confirmed; Leo/GPT Option A subsequently recorded
+NEXT_DEPENDENCY: AO-M1.2-PIXI-BRIDGE-DESIGN-20260712T055511Z
+```
+
+## AO-M1.2-PIXI-BRIDGE-DESIGN-20260712T055511Z
+
+```text
+DISPATCH_ID: AO-M1.2-PIXI-BRIDGE-DESIGN-20260712T055511Z
+MISSION_ID: AGENT_OFFICE_M1_2_SPATIAL_ANIMATED_ADVISOR_TEAM_OFFICE
+TARGET_ACTOR: Agent Office Worker
+TARGET_SESSION: agent-office
+TARGET_WINDOW: 0
+TARGET_PANE: 0
+OBSERVED_PANE_ID: %13
+WORKSPACE: /home/leo/Project/agent-office
+PROCESS: codex PID 2754606 under pane shell PID 2703903
+MODEL_EFFORT_EVIDENCE: live pane footer gpt-5.6-sol ultra; launcher declares Codex 5.6 SOL High minimum for bounded design delta
+ROLE_EVIDENCE: same existing Agent Office Worker; prior prototype blocker result and STOP visible
+READINESS_EVIDENCE: idle Codex prompt; no unrelated task, approval, auth, privilege, DB, secret, production, or interactive prompt active
+SYNCHRONIZED_PANES_OFF: true
+LAUNCHER_ABSOLUTE_PATH: /home/leo/Project/foundation-docs/advisor/jobs/20260711_agent_office_m1_2_spatial_animated_advisor_team_office/73_PIXI_PUBLIC_EXPORT_BRIDGE_DESIGN_RUN_PROMPT.md
+LAUNCHER_REPO_RELATIVE_PATH: advisor/jobs/20260711_agent_office_m1_2_spatial_animated_advisor_team_office/73_PIXI_PUBLIC_EXPORT_BRIDGE_DESIGN_RUN_PROMPT.md
+LAUNCHER_COMMIT_SHA: ac3f5db3b6ff1fc603ee6c4f22fa4032b8fbe142
+LAUNCHER_GIT_BLOB: f78c9e4a293dc45a451795cf57b84a94b95206c0
+LAUNCHER_SHA256_WORKTREE: e30911a5125cd78da2c96ce76bbfc96ca8c1d6e18577cf67f8b10cf53eef094d
+LAUNCHER_SHA256_COMMITTED: e30911a5125cd78da2c96ce76bbfc96ca8c1d6e18577cf67f8b10cf53eef094d
+UPSTREAM_EVIDENCE: foundation-docs ac3f5db equals origin/main; Agent Office HEAD 9611d0d equals origin/shadow/agent-office-m1-2-spatial-office, left/right 0/0; three design targets clean
+WORK_SCOPE: canonical technical design delta only; exactly three clean Agent Office Markdown paths plus exact Foundation Docs result/pointer
+RESULT_PATH: ../foundation-docs/runs/agent-office/20260711_agent_office_m1_2_spatial_animated_advisor_team_office/WORKER_PIXI_PUBLIC_EXPORT_BRIDGE_DESIGN_RESULT.md
+POINTER_PATH: ../foundation-docs/advisor/jobs/20260711_agent_office_m1_2_spatial_animated_advisor_team_office/74_WORKER_PIXI_PUBLIC_EXPORT_BRIDGE_DESIGN_RESULT_POINTER.md
+WRITE_REPO_BRANCHES: Agent Office shadow/agent-office-m1-2-spatial-office docs-only, then foundation-docs/main exact result/pointer, serial
+DEPENDENCY_LOCKS: prior prototype dispatch reconciled; Fable5 idle; no other active Foundation Docs writer; prepared prototype dirt owned by same Worker and explicitly preserved
+PARALLEL_ISOLATION_EVIDENCE: one exact Worker pane; serialized before same-session Fable5 design review; no broadcast or synchronized panes
+SOFT_STALL_SECONDS: 60
+HARD_TIMEOUT_SECONDS_OR_NONE: none; transient capacity/API errors require same-session readiness revalidation before one idempotent continue
+PREFLIGHT_VERDICT: PASS_READY_TO_SEND
+STATUS: WAITING_EXPECTED
+```

@@ -995,3 +995,18 @@ SENSITIVE_OUTPUT_SUSPECTED: false
 ACTION_TAKEN: exact committed launcher sent through one named tmux buffer; pasted payload initially remained unsubmitted; pane and exact payload were revalidated and one Enter submitted it without re-paste; no other input sent
 NEXT_OBSERVATION_DUE: at most 60 seconds or on progress/result/interactive/capacity signal
 ```
+
+### AO-M1.2-PIXI-BRIDGE-DESIGN-20260712T055511Z - preflight
+
+```text
+DISPATCH_ID: AO-M1.2-PIXI-BRIDGE-DESIGN-20260712T055511Z
+OBSERVED_AT: 2026-07-12T05:55:11Z
+PANE_ID: %13
+OUTPUT_FINGERPRINT: prior prototype blocker pointer and STOP; idle GPT-5.6 SOL Ultra prompt
+LAST_PROGRESS_MARKER: Leo/GPT Option A recorded; exact docs-only design launcher committed and pushed
+STATE: WAITING_EXPECTED
+INTERACTIVE_PROMPT_PRESENT: false
+SENSITIVE_OUTPUT_SUSPECTED: false
+ACTION_TAKEN: verified active transport, disengaged kill switch, exact registered pane/workspace/process/role/readiness, synchronization off, launcher commit/blob/checksum equality, branch/upstream, clean design targets, preserved prototype dirt, and serialized write locks; no input sent yet
+NEXT_OBSERVATION_DUE: immediately after exact launcher transport
+```
