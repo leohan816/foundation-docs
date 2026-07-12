@@ -1,6 +1,6 @@
 # Agent Office M1.2 Spatial Office Design Mission
 
-Status: `M1_2_LIVING_PIXEL_OFFICE_PROTOTYPE_AO12_PWU_07_THROUGH_09_READY_TO_DISPATCH`
+Status: `M1_2_LIVING_PIXEL_OFFICE_PROTOTYPE_NEEDS_LEO_GPT_PIXI_TYPESCRIPT_COMPATIBILITY_DECISION`
 
 Implementation: `AO12_A_B_C_D_PRESERVED__LIVING_PIXEL_OFFICE_IMPLEMENTATION_PENDING_REVIEWED_DESIGN`
 
@@ -25,6 +25,10 @@ Implementation: `AO12_A_B_C_D_PRESERVED__LIVING_PIXEL_OFFICE_IMPLEMENTATION_PEND
 - [69_LIVING_PIXEL_OFFICE_PROTOTYPE_WORKER_BRIEF.md](69_LIVING_PIXEL_OFFICE_PROTOTYPE_WORKER_BRIEF.md)
 - [69_LIVING_PIXEL_OFFICE_PROTOTYPE_WORKER_HANDOFF_PROMPT.md](69_LIVING_PIXEL_OFFICE_PROTOTYPE_WORKER_HANDOFF_PROMPT.md)
 - [69_LIVING_PIXEL_OFFICE_PROTOTYPE_WORKER_RUN_PROMPT.md](69_LIVING_PIXEL_OFFICE_PROTOTYPE_WORKER_RUN_PROMPT.md)
+- [70_WORKER_LIVING_PIXEL_OFFICE_PROTOTYPE_RESULT_POINTER.md](70_WORKER_LIVING_PIXEL_OFFICE_PROTOTYPE_RESULT_POINTER.md)
+- [71_ADVISOR_PROTOTYPE_BLOCKER_VALIDATION.md](71_ADVISOR_PROTOTYPE_BLOCKER_VALIDATION.md)
+- [71_PIXI_TYPESCRIPT_COMPATIBILITY_DECISION_PACKAGE.md](71_PIXI_TYPESCRIPT_COMPATIBILITY_DECISION_PACKAGE.md)
+- [71_GPT_PIXI_TYPESCRIPT_COMPATIBILITY_DECISION_RUN_PROMPT.md](71_GPT_PIXI_TYPESCRIPT_COMPATIBILITY_DECISION_RUN_PROMPT.md)
 
 ## Final Artifacts
 
@@ -126,7 +130,13 @@ superseded by `REQUEST_M1_2_FINAL_PATCH`. The Agent Office Worker authored and
 pushed the five-document living pixel-office design at `9611d0d`; Advisor
 directly validated the scope and evidence. The same existing Fable5 Reviewer
 returned a clean Level-3 design `PASS` at Foundation Docs `53f81b8`, accepted
-for the prototype gate only. The prototype remains stopped before its first
-mutation because the required full `ffmpeg`/`ffprobe` toolchain is absent and
-installation authority has not been granted. Full authenticated integration
-remains blocked until Leo/GPT accepts the reviewed recorded prototype direction.
+for the prototype gate only. Ubuntu `ffmpeg`/`ffprobe` 8.0.1 was subsequently
+installed under explicit authority and the Worker prepared the isolated
+prototype and media. The Worker correctly stopped before an Agent Office commit
+because one stale legacy dependency gate was outside the authorized path list.
+Advisor validation additionally proved that public imports from the exact Pixi
+pins produce 52 diagnostics under TypeScript 6 strict mode; the prepared deep
+`node_modules` import suppression is not an acceptable candidate. Leo/GPT must
+select the compatibility path before a design delta, Worker continuation, or
+Fable5 prototype review. Full authenticated integration remains blocked until
+Leo/GPT later accepts the reviewed recorded prototype direction.
