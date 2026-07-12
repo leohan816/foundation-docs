@@ -771,3 +771,33 @@ SENSITIVE_OUTPUT_SUSPECTED: false
 ACTION_TAKEN: exact committed launcher pasted through one named tmux buffer; paste initially remained at the prompt, so Advisor revalidated the visible exact payload and sent one Enter without re-pasting; execution confirmed; no other input sent
 NEXT_OBSERVATION_DUE: at most 60 seconds or on progress/result/interactive/capacity signal
 ```
+
+### AO-M1.2-D-IMPLEMENTATION-20260711T234120Z - completion and validation
+
+```text
+DISPATCH_ID: AO-M1.2-D-IMPLEMENTATION-20260711T234120Z
+OBSERVED_AT: 2026-07-12T00:55:47Z
+PANE_ID: %13
+OUTPUT_FINGERPRINT: AO12-D Worker pointer, Agent Office da5ecc9, Foundation Docs result/pointer, STOP
+LAST_PROGRESS_MARKER: implementation and full Worker verification completed; target and result/pointer pushed upstream-equal
+STATE: COMPLETED_REPORTED__ADVISOR_REWORK_REQUIRED
+INTERACTIVE_PROMPT_PRESENT: false
+SENSITIVE_OUTPUT_SUSPECTED: false
+ACTION_TAKEN: Advisor inspected exact source/diff, session lifecycle, production bundle, all seven new PNGs, Git and result artifacts; accepted expiry evidence and opened AO12-D-A1 because synthetic fixture markers remain in production JavaScript
+NEXT_OBSERVATION_DUE: immediately after exact AO12-D-A1 rework launcher transport
+```
+
+## AO-M1.2-D-A1-REWORK-20260712T005547Z
+
+```text
+DISPATCH_ID: AO-M1.2-D-A1-REWORK-20260712T005547Z
+OBSERVED_AT: 2026-07-12T00:55:47Z
+PANE_ID: %13
+OUTPUT_FINGERPRINT: AO12-D Worker result pointer and STOP; idle Codex prompt with gpt-5.6-sol ultra footer
+LAST_PROGRESS_MARKER: Agent Office da5ecc9 clean and upstream-equal; exact AO12-D-A1 launcher published at Foundation Docs 3b52791
+STATE: WAITING_EXPECTED
+INTERACTIVE_PROMPT_PRESENT: false
+SENSITIVE_OUTPUT_SUSPECTED: false
+ACTION_TAKEN: verified exact existing session/pane/workspace/process/model/role, synchronized panes off, launcher commit/blob/checksum, clean target branch, serialized dependency and upstream state; no input sent yet
+NEXT_OBSERVATION_DUE: immediately after exact launcher transport
+```

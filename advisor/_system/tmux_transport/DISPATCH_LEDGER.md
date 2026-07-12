@@ -1498,3 +1498,51 @@ SENT_AT: 2026-07-11T23:43:09Z
 TRANSPORT: exact named tmux buffer to agent-office/%13; initial exact paste remained unsubmitted, live pane revalidated, one Enter submitted the existing exact payload without re-paste
 STATUS: RUNNING
 ```
+
+### AO-M1.2-D-IMPLEMENTATION-20260711T234120Z - reconciled completion
+
+```text
+STATUS: COMPLETED_REPORTED__ADVISOR_REWORK_REQUIRED
+COMPLETED_AT: 2026-07-12T00:48:25Z
+TARGET_COMMIT: da5ecc9d1ecd0d331b20724a1f5bfca03d783a10
+RESULT_COMMIT: 6974704e0a9555e9dde91cf50595f36f70f648ed
+POINTER_COMMIT: 76b0478f562b6109133d190bdce903e06dcb27d6
+ADVISOR_FINDING: AO12-D-A1_PRODUCTION_BUNDLE_CONTAINS_SYNTHETIC_SPATIAL_FIXTURE
+NEXT_DEPENDENCY: AO12_D_A1_WORKER_REWORK
+```
+
+## AO-M1.2-D-A1-REWORK-20260712T005547Z
+
+```text
+DISPATCH_ID: AO-M1.2-D-A1-REWORK-20260712T005547Z
+MISSION_ID: AGENT_OFFICE_M1_2_SPATIAL_ANIMATED_ADVISOR_TEAM_OFFICE
+TARGET_ACTOR: Agent Office Worker-Rework
+TARGET_SESSION: agent-office
+TARGET_WINDOW: 0
+TARGET_PANE: 0
+OBSERVED_PANE_ID: %13
+WORKSPACE: /home/leo/Project/agent-office
+PROCESS: codex child PID 2754606 under pane shell PID 2703903
+MODEL_EFFORT_EVIDENCE: pane footer gpt-5.6-sol ultra
+ROLE_EVIDENCE: same existing Agent Office Worker; AO12-D result pointer and STOP visible
+READINESS_EVIDENCE: idle Codex prompt; no task, approval, auth, privilege, DB, secret, production, or interactive prompt active
+SYNCHRONIZED_PANES_OFF: true
+LAUNCHER_ABSOLUTE_PATH: /home/leo/Project/foundation-docs/advisor/jobs/20260711_agent_office_m1_2_spatial_animated_advisor_team_office/49_AO12_D_WORKER_REWORK_RUN_PROMPT.md
+LAUNCHER_REPO_RELATIVE_PATH: advisor/jobs/20260711_agent_office_m1_2_spatial_animated_advisor_team_office/49_AO12_D_WORKER_REWORK_RUN_PROMPT.md
+LAUNCHER_COMMIT_SHA: 3b527910da8bc7e9be9ef0c57893ef18c7cabc1e
+LAUNCHER_GIT_BLOB: 4461178872f56c68443b249ad160000a7c3a673b
+LAUNCHER_SHA256_WORKTREE: fccab5529d478d3651e40ed054b7ba70611064eb620120b186dee899a56da5a7
+LAUNCHER_SHA256_COMMITTED: fccab5529d478d3651e40ed054b7ba70611064eb620120b186dee899a56da5a7
+UPSTREAM_EVIDENCE: foundation-docs 3b52791 equals origin/main; Agent Office clean da5ecc9 equals origin/shadow/agent-office-m1-2-spatial-office, left/right 0/0
+REWORK_TARGET: AO12-D-A1 only; remove synthetic spatial fixture from production dashboard bundle and add deterministic exclusion gate
+RESULT_PATH: ../foundation-docs/runs/agent-office/20260711_agent_office_m1_2_spatial_animated_advisor_team_office/WORKER_AO12_D_REWORK_RESULT.md
+POINTER_PATH: ../foundation-docs/advisor/jobs/20260711_agent_office_m1_2_spatial_animated_advisor_team_office/50_WORKER_AO12_D_REWORK_RESULT_POINTER.md
+WRITE_REPO_BRANCHES: exact bounded Agent Office rework paths on shadow branch, then foundation-docs/main exact result/pointer only
+DEPENDENCY_LOCKS: AO12-D Worker return reconciled; Fable5 final review not started; reviewer-fable5 idle; no concurrent Agent Office writer
+BLIND_INDEPENDENCE_RULE: Worker cannot self-review or edit Fable5 artifacts; final independent review follows Advisor validation
+PARALLEL_ISOLATION_EVIDENCE: one exact Worker pane; serial rework; no broadcast or synchronized panes
+SOFT_STALL_SECONDS: 60
+HARD_TIMEOUT_SECONDS_OR_NONE: none; transient capacity/API errors require same-session readiness revalidation before one idempotent continue
+PREFLIGHT_VERDICT: PASS_READY_TO_SEND
+STATUS: WAITING_EXPECTED
+```
