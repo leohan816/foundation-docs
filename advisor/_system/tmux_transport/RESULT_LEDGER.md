@@ -741,3 +741,17 @@ POINTER_PATH: ../foundation-docs/advisor/jobs/20260712_agent_office_batch_a_mode
 FINDINGS: R2 closed; S1 exact accepted-evidence schema/arbitration; S3 preserve existing runtime work truth and define STALE normalization; S4 exact assets/baselines/tests/result paths
 NEXT_ACTOR: same Control session for bounded design patch
 ```
+## AO-BATCH-A-CONTROL-DESIGN-REWORK-S1-S3-S4-20260712T202252Z
+
+```text
+DISPATCH_ID: AO-BATCH-A-CONTROL-DESIGN-REWORK-S1-S3-S4-20260712T202252Z
+MISSION_ID: AGENT_OFFICE_BATCH_A_MODERN_OFFICE_IDENTITY_COMPLETION_001
+ACTOR: Control-Rework
+STATUS: COMPLETED_VERIFIED_WITH_ADVISOR_CORRECTION_REQUIRED
+TARGET_COMMIT: a39634d3a0b292f371db0051f5c25ff2abb2a513
+RESULT_COMMIT: e3d0442406e0ca4331cea49d1aed8dcfe28f9a3a
+RESULT_PATH: ../foundation-docs/runs/agent-office/20260712_agent_office_batch_a_modern_office_identity_completion_001/CONTROL_DESIGN_RESULT.md
+POINTER_PATH: ../foundation-docs/advisor/jobs/20260712_agent_office_batch_a_modern_office_identity_completion_001/11_CONTROL_DESIGN_RESULT_POINTER.md
+ADVISOR_PRE_REVIEW_FINDINGS: evidence schema identity/version/reference/dedup omitted; baseline placeholder remains; conditional script wording remains; stale closure rows contradict current contract
+NEXT_ACTOR: same Control session for narrow correction before independent review
+```

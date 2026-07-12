@@ -1438,3 +1438,18 @@ SENSITIVE_OUTPUT_SUSPECTED: false
 ACTION_TAKEN: exact committed launcher sent through one named tmux buffer; execution confirmed; no other input sent
 NEXT_OBSERVATION_DUE: at most 60 seconds or on progress/result/interactive/capacity signal
 ```
+
+### AO-BATCH-A-CONTROL-DESIGN-REWORK-S1-S3-S4-20260712T202252Z - completion
+
+```text
+DISPATCH_ID: AO-BATCH-A-CONTROL-DESIGN-REWORK-S1-S3-S4-20260712T202252Z
+OBSERVED_AT: 2026-07-12T20:34:01Z
+PANE_ID: %4
+OUTPUT_FINGERPRINT: Control returned a39634d/e3d0442, S1/S3/S4 closure claim, R2 preservation, and STOP
+LAST_PROGRESS_MARKER: four design docs pushed; no non-doc changes
+STATE: COMPLETED_REPORTED_NEEDS_TARGETED_CORRECTION
+INTERACTIVE_PROMPT_PRESENT: false
+SENSITIVE_OUTPUT_SUSPECTED: false
+ACTION_TAKEN: Advisor inspected actual contract/path text and held Reviewer dispatch due to exact deterministic defects still visible
+NEXT_OBSERVATION_DUE: none; same Control correction preflight follows
+```

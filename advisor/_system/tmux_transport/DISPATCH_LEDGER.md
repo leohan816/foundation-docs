@@ -2436,3 +2436,15 @@ SENT_AT: 2026-07-12T20:23:37Z
 TRANSPORT: exact named tmux buffer to foundation-control/%4
 STATUS: RUNNING
 ```
+
+### AO-BATCH-A-CONTROL-DESIGN-REWORK-S1-S3-S4-20260712T202252Z - reconciled completion
+
+```text
+STATUS: COMPLETED_VERIFIED_WITH_ADVISOR_CORRECTION_REQUIRED
+COMPLETED_AT: 2026-07-12T20:34:01Z
+TARGET_COMMIT: a39634d3a0b292f371db0051f5c25ff2abb2a513
+RESULT_COMMIT: e3d0442406e0ca4331cea49d1aed8dcfe28f9a3a
+CONTROL_RESULT: S1/S3/S4 closure claimed; R2 preserved; four documentation paths only
+ADVISOR_VALIDATION: scope/upstream pass; semantic pre-review hold for missing evidence record identity/version/reference/dedup fields, placeholder baseline path, conditional script wording, and stale closure-history contradictions
+NEXT_DEPENDENCY: same Control targeted pre-review correction; independent Reviewer not yet dispatched
+```
