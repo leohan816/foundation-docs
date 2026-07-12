@@ -1409,3 +1409,17 @@ SENSITIVE_OUTPUT_SUSPECTED: false
 ACTION_TAKEN: Advisor read exact result/pointer and classified all remaining findings as bounded design corrections; implementation remains undispatched
 NEXT_OBSERVATION_DUE: none for Reviewer; Control patch preflight follows
 ```
+## AO-BATCH-A-CONTROL-DESIGN-REWORK-S1-S3-S4-20260712T202252Z
+
+```text
+DISPATCH_ID: AO-BATCH-A-CONTROL-DESIGN-REWORK-S1-S3-S4-20260712T202252Z
+OBSERVED_AT: 2026-07-12T20:22:52Z
+PANE_ID: %4
+OUTPUT_FINGERPRINT: prior Control result 77681d9/8a65e50 and STOP; idle Control prompt
+LAST_PROGRESS_MARKER: Sentinel second delta NEEDS_PATCH validated and exact S1/S3/S4 launcher committed/pushed
+STATE: WAITING_EXPECTED
+INTERACTIVE_PROMPT_PRESENT: false
+SENSITIVE_OUTPUT_SUSPECTED: false
+ACTION_TAKEN: verified registered pane/workspace/process/role/readiness, synchronization off, launcher commit/blob/checksum, target/upstream equality, and serialized scope; no input sent yet
+NEXT_OBSERVATION_DUE: immediately after exact launcher transport
+```
