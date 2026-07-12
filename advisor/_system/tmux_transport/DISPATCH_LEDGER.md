@@ -2428,3 +2428,11 @@ HARD_TIMEOUT_SECONDS_OR_NONE: none; transient capacity/API error permits one sam
 PREFLIGHT_VERDICT: PASS_READY_TO_SEND
 STATUS: WAITING_EXPECTED
 ```
+
+### AO-BATCH-A-CONTROL-DESIGN-REWORK-S1-S3-S4-20260712T202252Z - sent
+
+```text
+SENT_AT: 2026-07-12T20:23:37Z
+TRANSPORT: exact named tmux buffer to foundation-control/%4
+STATUS: RUNNING
+```
