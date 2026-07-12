@@ -950,3 +950,18 @@ SENSITIVE_OUTPUT_SUSPECTED: false
 ACTION_TAKEN: exact committed launcher sent through one named tmux buffer; execution confirmed; no other input sent
 NEXT_OBSERVATION_DUE: at most 60 seconds or on progress/result/interactive/capacity signal
 ```
+
+### AO-M1.2-PIXEL-DESIGN-REVIEW-20260712T031305Z - completion
+
+```text
+DISPATCH_ID: AO-M1.2-PIXEL-DESIGN-REVIEW-20260712T031305Z
+OBSERVED_AT: 2026-07-12T03:24:00Z
+PANE_ID: %5
+OUTPUT_FINGERPRINT: Fable5 clean design PASS, result/pointer commit 53f81b8, STOP
+LAST_PROGRESS_MARKER: 14 mandatory design items reproduced; zero defects; tool and prototype preflights classified as fail-closed execution prerequisites
+STATE: COMPLETED_REPORTED
+INTERACTIVE_PROMPT_PRESENT: false
+SENSITIVE_OUTPUT_SUSPECTED: false
+ACTION_TAKEN: Advisor read exact result/pointer and commit, verified two-file scope and upstream equality, accepted PASS for prototype gate only, reproduced converter limitations, and opened a narrow Leo/GPT tool-authority decision
+NEXT_OBSERVATION_DUE: none until Leo/GPT tool-authority decision
+```

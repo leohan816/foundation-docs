@@ -1,6 +1,6 @@
 # Agent Office M1.2 Spatial Office Design Mission
 
-Status: `M1_2_LIVING_PIXEL_OFFICE_DESIGN_VALIDATED__FABLE5_LEVEL3_REVIEW_READY`
+Status: `M1_2_LIVING_PIXEL_OFFICE_DESIGN_CLEAN_PASS__PROTOTYPE_ENTRY_BLOCKED_ON_MEDIA_TOOL_AUTHORITY`
 
 Implementation: `AO12_A_B_C_D_PRESERVED__LIVING_PIXEL_OFFICE_IMPLEMENTATION_PENDING_REVIEWED_DESIGN`
 
@@ -17,6 +17,9 @@ Implementation: `AO12_A_B_C_D_PRESERVED__LIVING_PIXEL_OFFICE_IMPLEMENTATION_PEND
 - [64_ADVISOR_LIVING_PIXEL_OFFICE_DESIGN_VALIDATION.md](64_ADVISOR_LIVING_PIXEL_OFFICE_DESIGN_VALIDATION.md)
 - [65_FABLE5_LIVING_PIXEL_OFFICE_DESIGN_REVIEW_HANDOFF_PROMPT.md](65_FABLE5_LIVING_PIXEL_OFFICE_DESIGN_REVIEW_HANDOFF_PROMPT.md)
 - [65_FABLE5_LIVING_PIXEL_OFFICE_DESIGN_REVIEW_RUN_PROMPT.md](65_FABLE5_LIVING_PIXEL_OFFICE_DESIGN_REVIEW_RUN_PROMPT.md)
+- [66_FABLE5_LIVING_PIXEL_OFFICE_DESIGN_REVIEW_RESULT_POINTER.md](66_FABLE5_LIVING_PIXEL_OFFICE_DESIGN_REVIEW_RESULT_POINTER.md)
+- [67_ADVISOR_FABLE5_DESIGN_PASS_VALIDATION.md](67_ADVISOR_FABLE5_DESIGN_PASS_VALIDATION.md)
+- [67_MEDIA_TOOL_AUTHORITY_DECISION_REQUEST.md](67_MEDIA_TOOL_AUTHORITY_DECISION_REQUEST.md)
 
 ## Final Artifacts
 
@@ -116,7 +119,9 @@ The prior reviewed implementation is preserved as
 `EVIDENCE_BACKED_SPATIAL_DASHBOARD`, but its final product acceptance was
 superseded by `REQUEST_M1_2_FINAL_PATCH`. The Agent Office Worker authored and
 pushed the five-document living pixel-office design at `9611d0d`; Advisor
-directly validated the scope and evidence. The active gate is the same existing
-Fable5 Reviewer Level-3 design review. A clean `PASS` may open only the isolated
-synthetic prototype. Full authenticated integration remains blocked until
-Leo/GPT accepts the reviewed recorded prototype direction.
+directly validated the scope and evidence. The same existing Fable5 Reviewer
+returned a clean Level-3 design `PASS` at Foundation Docs `53f81b8`, accepted
+for the prototype gate only. The prototype remains stopped before its first
+mutation because the required full `ffmpeg`/`ffprobe` toolchain is absent and
+installation authority has not been granted. Full authenticated integration
+remains blocked until Leo/GPT accepts the reviewed recorded prototype direction.
