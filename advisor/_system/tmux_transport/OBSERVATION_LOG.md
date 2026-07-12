@@ -1545,3 +1545,12 @@ OUTPUT_FINGERPRINT: prior T1-T3 result and STOP; idle prompt
 INTERACTIVE_PROMPT_PRESENT: false
 ACTION_TAKEN: full exact preflight complete; no input sent yet
 ```
+
+### sent
+```text
+OBSERVED_AT: 2026-07-12T20:54:45Z
+PANE_ID: %4
+STATE: RUNNING
+OUTPUT_FINGERPRINT: exact 09G launcher visible; active processing
+ACTION_TAKEN: exact committed buffer sent once; no other input
+```
