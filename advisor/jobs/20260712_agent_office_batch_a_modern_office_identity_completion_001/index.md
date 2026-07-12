@@ -10,6 +10,9 @@
 - [Control scope correction launcher](06A_CONTROL_SCOPE_CORRECTION_RUN_PROMPT.md)
 - [Loop state](10_LOOP_STATE.md)
 - [Requirement/current-evidence matrix](14_REQUIREMENT_CURRENT_EVIDENCE_MATRIX.md)
+- [Advisor Control-design validation](15_ADVISOR_CONTROL_DESIGN_VALIDATION.md)
+- [Control design rework handoff](09_CONTROL_DESIGN_REWORK_HANDOFF_PROMPT.md)
+- [Control design rework launcher](09_CONTROL_DESIGN_REWORK_RUN_PROMPT.md)
 
 Pending: Control result, Advisor design validation, exact Worker handoff,
 Worker result, Advisor candidate validation, SOL Sentinel result, patch loops,
