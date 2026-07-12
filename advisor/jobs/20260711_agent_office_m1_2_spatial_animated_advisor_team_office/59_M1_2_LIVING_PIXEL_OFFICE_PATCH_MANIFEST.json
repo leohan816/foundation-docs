@@ -2,7 +2,7 @@
   "schemaVersion": "agent-office.m1.2.living-pixel-office-patch-manifest.v1",
   "manifestVersion": 2,
   "missionId": "AGENT_OFFICE_M1_2_SPATIAL_ANIMATED_ADVISOR_TEAM_OFFICE",
-  "status": "LIVING_PIXEL_OFFICE_DESIGN_CLEAN_PASS_ACCEPTED__MEDIA_TOOL_INSTALL_AUTHORIZED__PROTOTYPE_PREFLIGHT_PENDING__FULL_IMPLEMENTATION_BLOCKED",
+  "status": "LIVING_PIXEL_OFFICE_PROTOTYPE_AO12_PWU_07_THROUGH_09_READY_TO_DISPATCH__FULL_IMPLEMENTATION_BLOCKED",
   "authority": "59_LEO_GPT_LIVING_PIXEL_OFFICE_FINAL_PATCH_DECISION.md",
   "scopeChange": {
     "oldTotal": 14,
@@ -19,7 +19,7 @@
     {"id":"AO12-PWU-04","actor":"Agent Office Worker","phase":"DESIGN","title":"HUD, detail drawer, accessibility mirror, static and M1 fallback design","status":"COMPLETED","dependencies":["AO12-PWU-01","AO12-PWU-02"],"evidence":"agent-office@9611d0d"},
     {"id":"AO12-PWU-05","actor":"Agent Office Worker","phase":"DESIGN","title":"Prototype and future implementation batches, visual matrix, performance and rollback plan","status":"COMPLETED","dependencies":["AO12-PWU-02","AO12-PWU-03","AO12-PWU-04"],"evidence":"agent-office@9611d0d"},
     {"id":"AO12-PWU-06","actor":"Fable5 Reviewer","phase":"DESIGN_REVIEW","title":"Level-3 product-intent and renderer architecture review","status":"COMPLETED","dependencies":["AO12-PWU-01","AO12-PWU-02","AO12-PWU-03","AO12-PWU-04","AO12-PWU-05"],"evidence":"foundation-docs@53f81b8 clean PASS"},
-    {"id":"AO12-PWU-07","actor":"Agent Office Worker","phase":"PROTOTYPE","title":"Isolated animated office-world renderer and camera prototype","status":"WAITING_DEPENDENCY","dependencies":["AO12-PWU-06"],"blocker":"Official Ubuntu ffmpeg install and exact capability preflight must pass before first prototype mutation"},
+    {"id":"AO12-PWU-07","actor":"Agent Office Worker","phase":"PROTOTYPE","title":"Isolated animated office-world renderer and camera prototype","status":"READY","dependencies":["AO12-PWU-06"],"evidence":"Ubuntu ffmpeg 8.0.1 plus ffprobe/libx264/MP4/GIF/palette capability verified; exact Worker handoff 69"},
     {"id":"AO12-PWU-08","actor":"Agent Office Worker","phase":"PROTOTYPE","title":"Prototype actor and Channy sprites, props, cycles, HUD and detail overlay","status":"WAITING_DEPENDENCY","dependencies":["AO12-PWU-07"]},
     {"id":"AO12-PWU-09","actor":"Agent Office Worker","phase":"PROTOTYPE_EVIDENCE","title":"Directly viewable prototype, required scenes, and 20-to-30-second recording","status":"WAITING_DEPENDENCY","dependencies":["AO12-PWU-08"]},
     {"id":"AO12-PWU-10","actor":"Fable5 Reviewer","phase":"PROTOTYPE_REVIEW","title":"Level-3 visual and product-intent prototype review","status":"WAITING_DEPENDENCY","dependencies":["AO12-PWU-09"]},
