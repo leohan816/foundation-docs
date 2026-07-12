@@ -54,6 +54,9 @@
 - [Advisor Worker scope-exception validation](29_ADVISOR_WORKER_SCOPE_EXCEPTION_VALIDATION.md)
 - [Control scope-gap correction handoff](09H_CONTROL_DESIGN_SCOPE_GAP_CORRECTION_HANDOFF_PROMPT.md)
 - [Control scope-gap correction launcher](09H_CONTROL_DESIGN_SCOPE_GAP_CORRECTION_RUN_PROMPT.md)
+- [Advisor Control scope-correction validation](30_ADVISOR_CONTROL_SCOPE_CORRECTION_VALIDATION.md)
+- [SOL Sentinel scope-correction delta handoff](07F_SENTINEL_SCOPE_CORRECTION_DELTA_REVIEW_HANDOFF_PROMPT.md)
+- [SOL Sentinel scope-correction delta launcher](07F_SENTINEL_SCOPE_CORRECTION_DELTA_REVIEW_RUN_PROMPT.md)
 
 Design: accepted at `381b411`; independent Sentinel design verdict `PASS`.
 
