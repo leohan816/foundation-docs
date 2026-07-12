@@ -1783,3 +1783,29 @@ SENSITIVE_OUTPUT_SUSPECTED: false
 ACTION_TAKEN: no further input; continue bounded observation
 NEXT_OBSERVATION_DUE: at most 60 seconds or on progress/result signal
 ```
+
+### AO-BATCH-A-CONTROL-PRODUCTION-RENDER-SCOPE-20260712T223756Z - completion and validation
+
+```text
+OBSERVED_AT: 2026-07-12T22:45:00Z
+PANE_ID: %4
+STATE: COMPLETED_REPORTED
+OUTPUT_FINGERPRINT: Control returned docs-only candidate 9caff0e and result d77bed4, then STOP
+INTERACTIVE_PROMPT_PRESENT: false
+SENSITIVE_OUTPUT_SUSPECTED: false
+ACTION_TAKEN: Advisor verified exact commit/diff/source and found PR-1 through PR-3 before Sentinel spend; published targeted correction
+NEXT_OBSERVATION_DUE: immediate same-Control preflight
+```
+
+## AO-BATCH-A-CONTROL-PRODUCTION-RENDER-CONTRACT-20260712T224700Z
+
+```text
+OBSERVED_AT: 2026-07-12T22:47:00Z
+PANE_ID: %4
+STATE: RUNNING
+OUTPUT_FINGERPRINT: exact 09J launcher submitted; Control entered Shimmying state; 97% context displayed; no interactive prompt
+INTERACTIVE_PROMPT_PRESENT: false
+SENSITIVE_OUTPUT_SUSPECTED: false
+ACTION_TAKEN: verified same session/model/effort/workspace, target cleanliness, launcher identity, and serialized docs-only scope; sent exact launcher once
+NEXT_OBSERVATION_DUE: at most 60 seconds or on progress/result signal
+```

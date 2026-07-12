@@ -2842,3 +2842,50 @@ SENT_AT: 2026-07-12T22:37:56Z
 TRANSPORT: exact named tmux buffer ao_batch_a_render_scope_20260712 to foundation-control/%4; one delayed Enter submitted unchanged content
 STATUS: RUNNING
 ```
+
+### AO-BATCH-A-CONTROL-PRODUCTION-RENDER-SCOPE-20260712T223756Z - completed
+
+```text
+COMPLETED_AT: 2026-07-12T22:45:00Z
+STATUS: COMPLETED_VERIFIED
+TARGET_COMMIT: 9caff0e5edbcd0d29f0fd38c0835b9399c85b838
+RESULT_COMMIT: d77bed4
+SCOPE_EVIDENCE: four canonical docs in exact commit; zero source/test/config changes
+ADVISOR_VERDICT: NEEDS_TARGETED_CONTROL_CORRECTION_BEFORE_SENTINEL
+FINDINGS: PR-1 current livingOffice lacks claimed pods/layout/cues/selection; PR-2 production component call chain remains prototype-typed/projector-bound; PR-3 input validation and physical-chunk proof under-specified
+NEXT_DEPENDENCY: same Control technical docs correction
+```
+
+## AO-BATCH-A-CONTROL-PRODUCTION-RENDER-CONTRACT-20260712T224700Z
+
+```text
+DISPATCH_ID: AO-BATCH-A-CONTROL-PRODUCTION-RENDER-CONTRACT-20260712T224700Z
+MISSION_ID: AGENT_OFFICE_BATCH_A_MODERN_OFFICE_IDENTITY_COMPLETION_001
+TARGET_ACTOR: Control-Rework
+TARGET_SESSION: foundation-control/$4/@4/%4
+OBSERVED_WORKSPACE: /home/leo/Project/foundation-control
+PROCESS_MODEL: claude; same Opus 4.8 (1M) xhigh
+ROLE_SKILL_READINESS: same existing Control; previous completion and STOP visible; no interactive/auth/security prompt
+SYNCHRONIZED_PANES_OFF: true
+LAUNCHER_PATH: /home/leo/Project/foundation-docs/advisor/jobs/20260712_agent_office_batch_a_modern_office_identity_completion_001/09J_CONTROL_PRODUCTION_RENDER_CONTRACT_CORRECTION_RUN_PROMPT.md
+LAUNCHER_COMMIT: 6de031828ca5f68a34f0f1aa05e4caf1aec488ae
+LAUNCHER_BLOB: 755880699c76439d8f0891285ac5f50162bb5cce
+LAUNCHER_SHA256: d4887be29f9dbd44ff82fcbe7e2f06c563dbfab508ef8c5cf2a43b97f7748310
+TARGET_EVIDENCE: Agent Office candidate 9caff0e clean/upstream-equal; exact docs commit verified; foundation-docs launcher upstream-equal
+SCOPE: docs-only PR-1 through PR-3 correction; real production input, exact renderer call chains, runtime validation, robust CD-3 graph proof
+RESULT_PATH: ../foundation-docs/runs/agent-office/20260712_agent_office_batch_a_modern_office_identity_completion_001/CONTROL_DESIGN_RESULT.md
+POINTER_PATH: ../foundation-docs/advisor/jobs/20260712_agent_office_batch_a_modern_office_identity_completion_001/11_CONTROL_DESIGN_RESULT_POINTER.md
+DEPENDENCY_LOCKS: Worker stopped clean; Reviewer stopped; no concurrent Agent Office writer
+SOFT_STALL_SECONDS: 60
+HARD_TIMEOUT_SECONDS_OR_NONE: none
+PREFLIGHT_VERDICT: PASS_READY_TO_SEND
+STATUS: RUNNING
+```
+
+### AO-BATCH-A-CONTROL-PRODUCTION-RENDER-CONTRACT-20260712T224700Z - sent
+
+```text
+SENT_AT: 2026-07-12T22:47:00Z
+TRANSPORT: exact named tmux buffer ao_batch_a_render_contract_20260712 to foundation-control/%4; one delayed Enter submitted unchanged content
+STATUS: RUNNING
+```
