@@ -1,6 +1,6 @@
 # Control Design Result — Agent Office Batch A Application-Integration Design Delta
 
-Result: `CONTROL_MASTER_DESIGN_DELTA_REWORKED_THROUGH_SENTINEL_U1_U3__PENDING_INDEPENDENT_SENTINEL_FOURTH_DELTA_REREVIEW`
+Result: `CONTROL_MASTER_DESIGN_DELTA_U1_U3_PLUS_ACTOR_OVERLAY_SCOPE_GAP_CORRECTION__PENDING_INDEPENDENT_SENTINEL_REVIEW_OF_NARROW_DELTA`
 
 Actor: Control (`foundation-control` session). Mode: `CONTROL_MASTER_DESIGN_MODE` (design coordination only — no implementation, no review, no risk acceptance, no final approval, no agents/sub-agents).
 
@@ -205,3 +205,24 @@ S3 (RT sole `mission`/`workUnit`/activity/`operationalState` truth; (B) absent f
 `SENTINEL_DESIGN_THIRD_DELTA_REREVIEW_RESULT.md`, `25_ADVISOR_SENTINEL_THIRD_DELTA_VALIDATION.md`; the four `5f8ffd1` after snapshots; `src/domain/activity/index.ts`, `src/domain/state-machines/work-unit.ts`, `src/runtime/observation-coordinator.ts`, `src/application/spatial-office/authenticated-projection.ts`, `src/ui/pixel/contracts.ts`.
 
 `RETURN_TO: Advisor`; S3/R2/T3 preserved; implementation unauthorized until a clean independent-Sentinel fourth delta re-review.
+
+---
+
+## Scope-gap correction — actor-overlay landing sites (Agent Office design commit — see pointer)
+
+Driver: `29_ADVISOR_WORKER_SCOPE_EXCEPTION_VALIDATION.md` (with `28_ADVISOR_FINAL_DESIGN_ACCEPTANCE.md`). The accepted design under-specified the existing actor-overlay landing site. Docs-only correction in the same four design paths; **no architecture redesign; no new product decision**; U1-U3/S3/R2/T3 and all boundaries preserved.
+
+### Correction (closed)
+
+| Gap | Correction |
+|---|---|
+| Missing actor-overlay source | Delta §9 pixel-renderer list now includes `src/ui/pixel/living-office-actor-overlay.tsx` (verified: it renders the camera-tracked `living-office-actor-label` cards and the `living-office-actor-detail-heading` `role="dialog"`). |
+| WU-03/WU-04 landing site wrong/under-specified | WorkUnit plan: **BA-WU-03** compact actor labels **and** **BA-WU-04** actor-specific complete 17-field detail dialog now land in `living-office-actor-overlay.tsx`; `living-office-detail-drawer.tsx` is preserved as the **separate frame/evidence technical panel** ("Secondary DOM technical panel"/frame contract/key/projection revision), not the actor drawer, non-duplicating. Contract §2.7 landing-site note added. |
+| Coupled tests missing | Closed test list + WU-03/WU-04 tests now include `tests/ui/pixel-actor-overlay.test.tsx` and `tests/ui/pixel-world-semantic-parity.test.tsx`. |
+| Recorded | Delta §14.4 records this as a closed scope-correction (not a new product decision); `prototype-entry.tsx` is composition evidence only and must not be edited; no wildcard authorized. |
+
+### Direct reads this pass (no agents)
+
+`29_ADVISOR_WORKER_SCOPE_EXCEPTION_VALIDATION.md`, `28_ADVISOR_FINAL_DESIGN_ACCEPTANCE.md`; the four canonical Batch A docs; `src/ui/pixel/living-office-actor-overlay.tsx` (labels + actor detail dialog), `src/ui/pixel/living-office-detail-drawer.tsx` (frame/evidence technical panel), `src/ui/pixel/actor-sprite.tsx`, `src/ui/pixel/prototype-entry.tsx` (read-only composition: composes both overlay + detail-drawer), `tests/ui/pixel-actor-overlay.test.tsx`, `tests/ui/pixel-world-semantic-parity.test.tsx`.
+
+`RETURN_TO: Advisor`; U1-U3/S3/R2/T3 preserved; the same independent SOL Sentinel must review this narrow docs-only delta before Worker resume.
