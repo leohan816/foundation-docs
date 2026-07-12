@@ -24,6 +24,8 @@
 - [Advisor rework round 2 validation](16_ADVISOR_REWORK_ROUND2_VALIDATION.md)
 - [Implementation rework round 2 handoff](17_GROK_IMPLEMENTATION_REWORK_ROUND2_HANDOFF_PROMPT.md)
 - [Implementation rework round 2 launcher](17_GROK_IMPLEMENTATION_REWORK_ROUND2_RUN_PROMPT.md)
+- [Advisor pilot stop audit](18_ADVISOR_PILOT_STOP_AUDIT.md)
+- [Pilot stop pointer](19_GROK_PILOT_STOP_POINTER.md)
 - [Loop state](10_LOOP_STATE.md)
 
-Current state: `IMPLEMENTATION_NEEDS_PATCH_ROUND2__FABLE5_NOT_ROUTED`.
+Current state: `PILOT_STOPPED__REJECT_GROK_WORKER_FOR_CURRENT_PROTOCOL`.
