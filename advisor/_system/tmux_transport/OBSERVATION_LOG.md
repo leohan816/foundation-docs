@@ -1679,3 +1679,29 @@ SENSITIVE_OUTPUT_SUSPECTED: false
 ACTION_TAKEN: exact committed buffer pasted once; one delayed Enter submitted unchanged content; no duplicate or other input
 NEXT_OBSERVATION_DUE: at most 60 seconds or on progress/result signal
 ```
+
+### AO-BATCH-A-DESIGN-SCOPE-CORRECTION-REVIEW-20260712T212900Z - completion
+
+```text
+OBSERVED_AT: 2026-07-12T21:36:00Z
+PANE_ID: %20
+STATE: COMPLETED_REPORTED
+OUTPUT_FINGERPRINT: Sentinel returned PASS, result 24dbe4d, pointer 597d1ad, all nine questions YES, no residual risk, and STOP
+INTERACTIVE_PROMPT_PRESENT: false
+SENSITIVE_OUTPUT_SUSPECTED: false
+ACTION_TAKEN: Advisor read actual result/pointer, verified target/upstream, recorded environment-only test limitation, and authorized Worker resume
+NEXT_OBSERVATION_DUE: none; Worker resume preflight follows
+```
+
+## AO-BATCH-A-WORKER-RESUME-20260712T213800Z
+
+```text
+OBSERVED_AT: 2026-07-12T21:38:00Z
+PANE_ID: %16
+STATE: WAITING_EXPECTED
+OUTPUT_FINGERPRINT: prior clean scope exception and STOP; idle Opus 4.8 Ultracode Worker; no active task or prompt
+INTERACTIVE_PROMPT_PRESENT: false
+SENSITIVE_OUTPUT_SUSPECTED: false
+ACTION_TAKEN: verified exact pane/process/model/effort/readiness, amended launcher identity, target 453c661 cleanliness/upstream equality, and serialized scope; no input sent yet
+NEXT_OBSERVATION_DUE: immediately after exact transport
+```

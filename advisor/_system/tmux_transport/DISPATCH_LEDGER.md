@@ -2714,3 +2714,42 @@ SENT_AT: 2026-07-12T21:31:00Z
 TRANSPORT: exact named tmux buffer ao_batch_a_scope_review_20260712 to foundation-reviewer-sol/%20; one delayed Enter submitted unchanged pasted content
 STATUS: RUNNING
 ```
+
+### AO-BATCH-A-DESIGN-SCOPE-CORRECTION-REVIEW-20260712T212900Z - reconciled completion
+
+```text
+STATUS: COMPLETED_VERIFIED
+COMPLETED_AT: 2026-07-12T21:36:00Z
+TARGET_COMMIT: 453c661c4f4243c77b2f53089ec599561876b06f
+RESULT_COMMIT: 24dbe4da52a207bab759c17d1f59b016c4828dae
+POINTER_COMMIT: 597d1ad49f25d210b606ab10815f4b7e4593c447
+VERDICT: PASS; all nine questions YES; no residual risk; focused tests environment-blocked before collection and not claimed
+NEXT_DEPENDENCY: Advisor validation and same Opus Worker implementation resume
+```
+
+## AO-BATCH-A-WORKER-RESUME-20260712T213800Z
+
+```text
+DISPATCH_ID: AO-BATCH-A-WORKER-RESUME-20260712T213800Z
+MISSION_ID: AGENT_OFFICE_BATCH_A_MODERN_OFFICE_IDENTITY_COMPLETION_001
+TARGET_ACTOR: Agent Office Worker-Rework
+TARGET_SESSION: agent-office-opus/$16/@16/%16
+OBSERVED_WORKSPACE: /home/leo/Project/agent-office
+REQUIRED_WORKSPACE: /home/leo/Project/agent-office-batch-a-001
+PROCESS_MODEL: claude; same verified Opus 4.8 (1M); ultracode selected
+ROLE_SKILL_READINESS: same Worker; /fable-builder already loaded and required; prior clean STOP; idle prompt; no interactive/auth/security prompt
+SYNCHRONIZED_PANES_OFF: true
+LAUNCHER_PATH: /home/leo/Project/foundation-docs/advisor/jobs/20260712_agent_office_batch_a_modern_office_identity_completion_001/06C_WORKER_IMPLEMENTATION_RESUME_RUN_PROMPT.md
+LAUNCHER_COMMIT: 2b6afbdc2f845c9e607335e169564c1306847d6c
+LAUNCHER_BLOB: feedcd4a07d73126b4fe0e203fc330f131a7da0d
+LAUNCHER_SHA256: 54ea98924d27610474865bc518fb207e286442cf97a2ed1457e45a47034fc676
+TARGET_EVIDENCE: Agent Office 453c661 clean/upstream-equal; package-lock present; node_modules absent; foundation-docs launcher upstream-equal
+SCOPE: resume BA-WU-01..09; three corrected literal paths authorized; npm ci from committed lockfile allowed; no dependency changes
+RESULT_PATH: ../foundation-docs/runs/agent-office/20260712_agent_office_batch_a_modern_office_identity_completion_001/WORKER_RESULT.md
+POINTER_PATH: ../foundation-docs/advisor/jobs/20260712_agent_office_batch_a_modern_office_identity_completion_001/12_WORKER_RESULT_POINTER.md
+DEPENDENCY_LOCKS: Control stopped; Reviewer stopped; excluded sessions receive no input; no concurrent writer
+SOFT_STALL_SECONDS: 60
+HARD_TIMEOUT_SECONDS_OR_NONE: none
+PREFLIGHT_VERDICT: PASS_READY_TO_SEND
+STATUS: WAITING_EXPECTED
+```
