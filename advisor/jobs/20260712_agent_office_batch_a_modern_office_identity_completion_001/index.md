@@ -74,6 +74,9 @@
 - [Advisor Sentinel production-render review validation](37_ADVISOR_SENTINEL_PRODUCTION_RENDER_REVIEW_VALIDATION.md)
 - [Control PRC-1 through PRC-8 rework handoff](09K_CONTROL_PRC1_PRC8_CONSOLIDATED_REWORK_HANDOFF_PROMPT.md)
 - [Control PRC-1 through PRC-8 rework launcher](09K_CONTROL_PRC1_PRC8_CONSOLIDATED_REWORK_RUN_PROMPT.md)
+- [Advisor Control PRC-1 through PRC-8 validation](38_ADVISOR_CONTROL_PRC1_PRC8_VALIDATION.md)
+- [SOL Sentinel PRC-1 through PRC-8 re-review handoff](07H_SENTINEL_PRC1_PRC8_DELTA_REREVIEW_HANDOFF_PROMPT.md)
+- [SOL Sentinel PRC-1 through PRC-8 re-review launcher](07H_SENTINEL_PRC1_PRC8_DELTA_REREVIEW_RUN_PROMPT.md)
 
 Design: accepted at `381b411`; independent Sentinel design verdict `PASS`.
 
