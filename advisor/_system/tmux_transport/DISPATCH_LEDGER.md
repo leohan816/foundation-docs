@@ -1623,3 +1623,37 @@ REVIEW_VERDICT: PASS
 ADVISOR_VALIDATION: PASS; exact result/pointer commit, direct test and visual coverage, clean upstream target, and zero residual listener/process verified
 NEXT_DEPENDENCY: LEO_GPT_FINAL_M1_2_ACCEPTANCE
 ```
+## AO-M1.2-PIXEL-DESIGN-20260712T024242Z
+
+```text
+DISPATCH_ID: AO-M1.2-PIXEL-DESIGN-20260712T024242Z
+MISSION_ID: AGENT_OFFICE_M1_2_SPATIAL_ANIMATED_ADVISOR_TEAM_OFFICE
+TARGET_ACTOR: Agent Office Worker
+TARGET_SESSION: agent-office
+TARGET_WINDOW: 0
+TARGET_PANE: 0
+OBSERVED_PANE_ID: %13
+WORKSPACE: /home/leo/Project/agent-office
+PROCESS: codex under pane shell PID 2703903
+MODEL_EFFORT_EVIDENCE: pane footer gpt-5.6-sol ultra
+ROLE_EVIDENCE: same existing Agent Office Worker; prior result and STOP visible
+READINESS_EVIDENCE: idle Codex prompt; no unrelated task, approval, auth, privilege, DB, secret, production, or interactive prompt active
+SYNCHRONIZED_PANES_OFF: true
+LAUNCHER_ABSOLUTE_PATH: /home/leo/Project/foundation-docs/advisor/jobs/20260711_agent_office_m1_2_spatial_animated_advisor_team_office/61_PIXEL_OFFICE_DESIGN_RUN_PROMPT.md
+LAUNCHER_REPO_RELATIVE_PATH: advisor/jobs/20260711_agent_office_m1_2_spatial_animated_advisor_team_office/61_PIXEL_OFFICE_DESIGN_RUN_PROMPT.md
+LAUNCHER_COMMIT_SHA: dd5cade79bd02258e5c3ff19f1b629231433956c
+LAUNCHER_GIT_BLOB: 8b9544f52adcf6ccf4be78ac3949753a67f8a300
+LAUNCHER_SHA256_WORKTREE: ea3d9872e87d7577d6be1ba1b5c3d76ed2b04052cd7e2c656b9d33c5d7e2fce0
+LAUNCHER_SHA256_COMMITTED: ea3d9872e87d7577d6be1ba1b5c3d76ed2b04052cd7e2c656b9d33c5d7e2fce0
+CURRENT_AUTHORITY_COMMIT: foundation-docs 174ad49eef982dbd1ae7cccc1132a74af08ee60d
+UPSTREAM_EVIDENCE: Foundation Docs 174ad49 equals origin/main; Agent Office clean 48c8dbd equals origin/shadow/agent-office-m1-2-spatial-office
+WORK_SCOPE: AO12-PWU-01..05 canonical design package only; no dependency install or runtime/test/asset/package change
+RESULT_PATH: ../foundation-docs/runs/agent-office/20260711_agent_office_m1_2_spatial_animated_advisor_team_office/WORKER_LIVING_PIXEL_OFFICE_DESIGN_RESULT.md
+POINTER_PATH: ../foundation-docs/advisor/jobs/20260711_agent_office_m1_2_spatial_animated_advisor_team_office/63_WORKER_LIVING_PIXEL_OFFICE_DESIGN_RESULT_POINTER.md
+DEPENDENCY_LOCKS: full implementation blocked; prototype blocked pending clean Fable5 design PASS; Reviewer idle
+PARALLEL_ISOLATION_EVIDENCE: one exact Worker pane; no broadcast or synchronized panes
+SOFT_STALL_SECONDS: 60
+HARD_TIMEOUT_SECONDS_OR_NONE: none; transient capacity/API errors require same-session readiness revalidation before one idempotent continue
+PREFLIGHT_VERDICT: PASS_READY_TO_SEND
+STATUS: WAITING_EXPECTED
+```
