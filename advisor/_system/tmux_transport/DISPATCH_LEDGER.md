@@ -2706,3 +2706,11 @@ HARD_TIMEOUT_SECONDS_OR_NONE: none
 PREFLIGHT_VERDICT: PASS_READY_TO_SEND
 STATUS: WAITING_EXPECTED
 ```
+
+### AO-BATCH-A-DESIGN-SCOPE-CORRECTION-REVIEW-20260712T212900Z - sent
+
+```text
+SENT_AT: 2026-07-12T21:31:00Z
+TRANSPORT: exact named tmux buffer ao_batch_a_scope_review_20260712 to foundation-reviewer-sol/%20; one delayed Enter submitted unchanged pasted content
+STATUS: RUNNING
+```

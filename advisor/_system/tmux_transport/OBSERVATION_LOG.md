@@ -1666,3 +1666,16 @@ SENSITIVE_OUTPUT_SUSPECTED: false
 ACTION_TAKEN: verified pane/workspace/process/model/effort/role/readiness, exact launcher identity, target/upstream, and serialized read-only scope; no input sent yet
 NEXT_OBSERVATION_DUE: immediately after transport
 ```
+
+### AO-BATCH-A-DESIGN-SCOPE-CORRECTION-REVIEW-20260712T212900Z - sent
+
+```text
+OBSERVED_AT: 2026-07-12T21:31:02Z
+PANE_ID: %20
+STATE: RUNNING
+OUTPUT_FINGERPRINT: exact 07F launcher submitted; Reviewer acknowledged narrow delta and entered Working state
+INTERACTIVE_PROMPT_PRESENT: false
+SENSITIVE_OUTPUT_SUSPECTED: false
+ACTION_TAKEN: exact committed buffer pasted once; one delayed Enter submitted unchanged content; no duplicate or other input
+NEXT_OBSERVATION_DUE: at most 60 seconds or on progress/result signal
+```
