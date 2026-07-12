@@ -2539,3 +2539,19 @@ POINTER_COMMIT: 467ceb9794d0fd3cbff5e2f5b6476a5f66721f14
 VERDICT: NEEDS_PATCH; S3/T3 closed, R2 preserved, U1-U3 remain
 NEXT_DEPENDENCY: same Control narrow U1-U3 documentation correction
 ```
+## AO-BATCH-A-CONTROL-U1-U3-20260712T205400Z
+
+```text
+DISPATCH_ID: AO-BATCH-A-CONTROL-U1-U3-20260712T205400Z
+MISSION_ID: AGENT_OFFICE_BATCH_A_MODERN_OFFICE_IDENTITY_COMPLETION_001
+TARGET_ACTOR_SESSION: Control-Rework / foundation-control/$4/@4/%4
+WORKSPACE_PROCESS_MODEL: /home/leo/Project/foundation-control; claude; same verified Opus 4.8 (1M) xhigh
+READINESS: idle CONTROL_MASTER_DESIGN_MODE prompt after STOP; no interactive/auth/security prompt; synchronized panes off
+LAUNCHER_PATH: /home/leo/Project/foundation-docs/advisor/jobs/20260712_agent_office_batch_a_modern_office_identity_completion_001/09G_CONTROL_DESIGN_FINAL_NARROW_CORRECTION_RUN_PROMPT.md
+LAUNCHER_COMMIT_BLOB_SHA256: 36fea24 / 19c5ff58bf0fcb23a6914e43aae2b421a32de5b8 / d798b0446948081e8c4f4b05e10dd4bda2229b1732c51e04e9b66c3911f07d39
+TARGET_EVIDENCE: Agent Office 5f8ffd1 upstream-equal; foundation-docs launcher commit upstream-equal
+SCOPE: same four docs, U1-U3 only, no implementation; serialized before Reviewer and Worker
+RESULT_POINTER: CONTROL_DESIGN_RESULT.md / 11_CONTROL_DESIGN_RESULT_POINTER.md
+PREFLIGHT_VERDICT: PASS_READY_TO_SEND
+STATUS: WAITING_EXPECTED
+```

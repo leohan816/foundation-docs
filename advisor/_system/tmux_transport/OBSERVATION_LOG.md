@@ -1535,3 +1535,13 @@ SENSITIVE_OUTPUT_SUSPECTED: false
 ACTION_TAKEN: findings classified as exact in-scope technical documentation corrections; implementation remains undispatched
 NEXT_OBSERVATION_DUE: none; Control correction follows
 ```
+## AO-BATCH-A-CONTROL-U1-U3-20260712T205400Z
+
+```text
+OBSERVED_AT: 2026-07-12T20:54:00Z
+PANE_ID: %4
+STATE: WAITING_EXPECTED
+OUTPUT_FINGERPRINT: prior T1-T3 result and STOP; idle prompt
+INTERACTIVE_PROMPT_PRESENT: false
+ACTION_TAKEN: full exact preflight complete; no input sent yet
+```
