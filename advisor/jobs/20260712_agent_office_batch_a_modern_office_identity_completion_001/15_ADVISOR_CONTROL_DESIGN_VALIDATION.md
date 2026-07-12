@@ -111,3 +111,19 @@ direct-read coverage in the rework result.
   result/pointer.
 - Implementation remains unauthorized until clean independent `DESIGN_REVIEW`.
 
+## Post-rework residual check
+
+Control rework commit `6e41006ff14a941403ea08caba024bec48f9b5f9`
+closes CD-1 through CD-8 on substance. Two documentation residues must be
+corrected before design review:
+
+- **CD-9**: `docs/FEATURE_INDEX.md` still describes the new Batch A identity
+  contract as a legacy "ten-field" contract. Replace that row description with
+  the complete Batch A summary/detail fact contract.
+- **CD-10**: `docs/FEATURE_INDEX.md` and the Control result/pointer still say a
+  new Leo/GPT design/risk decision is required after clean design review and
+  before Worker implementation. The current Founder authorization already
+  grants conditional continuation after clean design review. State that a clean
+  independent `DESIGN_REVIEW` plus Advisor acceptance opens the exact Worker
+  handoff; only `PASS_WITH_RISK`, a new material decision, or another mandatory
+  stop returns to Leo/GPT.
