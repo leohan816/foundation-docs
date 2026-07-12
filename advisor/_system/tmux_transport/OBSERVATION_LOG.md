@@ -31,6 +31,21 @@ ACTION_TAKEN: verified exact session/pane/workspace/process/role, launcher commi
 NEXT_OBSERVATION_DUE: immediately after exact launcher transport
 ```
 
+### AO-M1.2-PIXEL-PROTOTYPE-CORRECTION-RESUME-20260712T065949Z - sent
+
+```text
+DISPATCH_ID: AO-M1.2-PIXEL-PROTOTYPE-CORRECTION-RESUME-20260712T065949Z
+OBSERVED_AT: 2026-07-12T07:01:02Z
+PANE_ID: %13
+OUTPUT_FINGERPRINT: exact committed correction-resume launcher visible; Worker opened execution in same Codex context
+LAST_PROGRESS_MARKER: launcher submitted once after two-step exact tmux paste confirmation
+STATE: RUNNING
+INTERACTIVE_PROMPT_PRESENT: false
+SENSITIVE_OUTPUT_SUSPECTED: false
+ACTION_TAKEN: exact committed launcher sent through one named tmux buffer; execution confirmed; no other input sent
+NEXT_OBSERVATION_DUE: at most 60 seconds or on progress/result/interactive/capacity signal
+```
+
 ### AO-M1.2-C-IMPLEMENTATION-20260711T222500Z - sent
 
 ```text
