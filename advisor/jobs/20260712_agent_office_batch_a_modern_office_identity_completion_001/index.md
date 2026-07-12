@@ -77,6 +77,10 @@
 - [Advisor Control PRC-1 through PRC-8 validation](38_ADVISOR_CONTROL_PRC1_PRC8_VALIDATION.md)
 - [SOL Sentinel PRC-1 through PRC-8 re-review handoff](07H_SENTINEL_PRC1_PRC8_DELTA_REREVIEW_HANDOFF_PROMPT.md)
 - [SOL Sentinel PRC-1 through PRC-8 re-review launcher](07H_SENTINEL_PRC1_PRC8_DELTA_REREVIEW_RUN_PROMPT.md)
+- [SOL Sentinel PRC re-review result pointer](39_SENTINEL_PRC1_PRC8_DELTA_REREVIEW_RESULT_POINTER.md)
+- [Advisor Sentinel PRC re-review validation](40_ADVISOR_SENTINEL_PRC_DELTA_REREVIEW_VALIDATION.md)
+- [Control final five PRC corrections handoff](09L_CONTROL_FINAL_FIVE_PRC_CORRECTIONS_HANDOFF_PROMPT.md)
+- [Control final five PRC corrections launcher](09L_CONTROL_FINAL_FIVE_PRC_CORRECTIONS_RUN_PROMPT.md)
 
 Design: accepted at `381b411`; independent Sentinel design verdict `PASS`.
 

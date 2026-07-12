@@ -4,11 +4,11 @@
 - Entry: `PASSED_WITH_ISOLATED_WORKTREE`
 - Control design: `PRC1_PRC8_CORRECTED_CANDIDATE_E8531A3`
 - Advisor design validation: `READY_FOR_SAME_SENTINEL_DELTA_REREVIEW`
-- Sentinel design review: `NEEDS_PATCH_AT_2E0DDDF__PRC1_PRC8`
+- Sentinel design review: `NEEDS_PATCH_AT_E8531A3__FIVE_TECHNICAL_ITEMS`
 - Opus Worker: `STOPPED_CLEAN__3_IMPLEMENTATION_COMMITS__PRODUCTION_RENDER_SCOPE_GAP`
 - Advisor candidate validation: `WAITING`
 - SOL Sentinel: `WAITING_FOR_ACCEPTED_CANDIDATE`
-- Patch attempts: `11_CONTROL_PRC1_PRC8_CONSOLIDATED_REWORK_COMPLETE`
+- Patch attempts: `12_CONTROL_FINAL_FIVE_PRC_CORRECTIONS_PENDING`
 - Final audit: `WAITING`
-- Next actor: `foundation-reviewer-sol` PRC-1 through PRC-8 delta re-review
+- Next actor: `foundation-control` five exact PRC corrections
 - Batch B: `NOT_STARTED_NOT_AUTHORIZED`
