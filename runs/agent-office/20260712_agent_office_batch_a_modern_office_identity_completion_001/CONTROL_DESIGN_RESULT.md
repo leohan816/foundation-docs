@@ -1,6 +1,6 @@
 # Control Design Result — Agent Office Batch A Application-Integration Design Delta
 
-Result: `CONTROL_MASTER_DESIGN_DELTA_REWORKED_CD_1_TO_CD_10_SENTINEL_P1_P4_AND_R1_R4__PENDING_INDEPENDENT_SENTINEL_DELTA_REREVIEW`
+Result: `CONTROL_MASTER_DESIGN_DELTA_REWORKED_CD_1_TO_CD_10_SENTINEL_P1_P4_R1_R4_AND_S1_S3_S4__PENDING_INDEPENDENT_SENTINEL_THIRD_DELTA_REREVIEW`
 
 Actor: Control (`foundation-control` session). Mode: `CONTROL_MASTER_DESIGN_MODE` (design coordination only — no implementation, no review, no risk acceptance, no final approval, no agents/sub-agents).
 
@@ -141,3 +141,23 @@ Driver: `SENTINEL_DESIGN_DELTA_REREVIEW_RESULT.md` = `NEEDS_PATCH` (candidate `6
 `SENTINEL_DESIGN_DELTA_REREVIEW_RESULT.md`, `19_ADVISOR_SENTINEL_DELTA_REREVIEW_VALIDATION.md`, `src/domain/activity/index.ts` (`:1-18` `ROLE_ACTIVITIES`, `:21-41` observable names, `:58-207` compatibility gate + `projectRequiredObservable` + `deriveObservable`), `src/domain/state-machines/work-unit.ts` (`:3-20`), `src/ui/pixel/contracts.ts` (`:6-11`, `:24-38`), `src/runtime/observation-coordinator.ts` (`:39-50`), `src/application/spatial-office/authenticated-projection.ts` (`:53-68`), `docs/operations/AGENT_OFFICE_M1_2_LIVING_PIXEL_OFFICE_IMPLEMENTATION_PLAN.md` §6.2 (exact production file surfaces).
 
 `RETURN_TO: Advisor`; implementation unauthorized until a clean independent-Sentinel delta re-review of the new candidate.
+
+---
+
+## Sentinel second delta re-review S1/S3/S4 rework (Agent Office design commit — see pointer)
+
+Driver: `SENTINEL_DESIGN_SECOND_DELTA_REREVIEW_RESULT.md` = `NEEDS_PATCH` (candidate `77681d9`; R1 `PARTIAL__BLOCKING`, **R2 `CLOSED`**, R3 `REGRESSION`, R4 `NOT_CLOSED`), validated by `21_ADVISOR_SENTINEL_SECOND_DELTA_VALIDATION.md`. Patched S1/S3/S4 in the same four design paths; **R2/§2.4 preserved unchanged**; semantics resolved from actual source.
+
+### S1/S3/S4 closure table
+
+| Finding | Closure (exact, from actual source) |
+|---|---|
+| **S1** accepted-evidence not an implementable contract | Contract §2.3.1 defines one exact `AcceptedEvidenceRecord` (`kind`/`roleInstanceId`/`missionId?`/`workUnitId?`/`value?`/`provenance`/`acceptanceStatus`/`sourceEventIds`(UUIDv7)/`effectiveFrom`/`optionalExpiresAt?`), modeled on `CurrentActivity` (`src/domain/activity/index.ts:43-49`), plus the acceptance/validation rule (status/provenance/source-event/expiry/allowed-token). §2.3.2 gives the **deterministic total arbitration** for `aiRuntimeState` over every process/runtime combination: `P≠AI_PROCESS_DETECTED`→`AI_RUNTIME_UNKNOWN`; error surfaces (`AI_ERROR`); `work && wait`→`AI_RUNTIME_UNKNOWN`; else work/wait/ready in order; `ai_ready + ai_error`→`AI_ERROR`. |
+| **S3** second work-truth store + stale unspecified (R3 regression) | Contract §2.5/§3 + delta §3 restore **(RT) the existing runtime projection/cue reducer as the sole truth** for `mission`/`workUnit`/activity/`operationalState` (`observation-coordinator.ts:269-320`); **(B)** is limited to facts genuinely absent from (RT) (process/identity/model/effort + `ai_ready`/`ai_error`), never a work-state store; the full-outer join and no-store-back are kept; (RT) wins conflicts over its own fields; **`STALE`/`INVALID`/`MISSING`/`UNVERIFIED` → each field's sentinel** (explicitly, per field). |
+| **S4** unnamed asset/baseline/wildcard/result classes | Delta §9 enumerates the exact 8 `src/ui/pixel/assets/` files (`ASSET_INVENTORY.md`, `actor-base-atlas.source.ts`, `actor-identity-atlas.source.ts`, `atlas-builder.ts`, `atlas-manifest.ts`, `channy-atlas.source.ts`, `office-world-atlas.source.ts`, `palette.ts`) and the exact new baseline directories (`tests/e2e/baselines/living-pixel-office.spec.ts/`, `tests/e2e-composed/baselines/application-office-scene.spec.ts/<new-subdir>`); replaces `tests/acceptance/production-*-boundary.test.ts` with the two exact acceptance paths (WorkUnit plan §2/§3); uses the exact full Worker result/pointer paths. `src/ui/pixel/fixtures/` stays test-demo-only. |
+
+### Direct reads this pass (Sentinel-cited source, no agents)
+
+`SENTINEL_DESIGN_SECOND_DELTA_REREVIEW_RESULT.md`, `21_ADVISOR_SENTINEL_SECOND_DELTA_VALIDATION.md`, `src/domain/activity/index.ts:43-49` (`CurrentActivity`/`ObservableProjection`), `src/ui/pixel/assets/` (8 files), `tests/e2e/baselines/` + `tests/e2e-composed/baselines/`, `03_WORKER_BRIEF.md` (exact Worker result path). (RT) single-truth grounded in `src/runtime/observation-coordinator.ts:269-320`.
+
+`RETURN_TO: Advisor`; R2 preserved; implementation unauthorized until a clean independent-Sentinel third delta re-review.
