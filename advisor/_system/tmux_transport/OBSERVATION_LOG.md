@@ -1394,3 +1394,18 @@ SENSITIVE_OUTPUT_SUSPECTED: false
 ACTION_TAKEN: exact committed launcher pasted through one named tmux buffer; initial immediate Enter left the paste at the prompt, so one delayed Enter submitted that same unchanged content; no duplicate prompt or other input sent
 NEXT_OBSERVATION_DUE: at most 60 seconds or on progress/result/interactive/capacity signal
 ```
+
+### AO-BATCH-A-DESIGN-SECOND-DELTA-REVIEW-20260712T201420Z - completion
+
+```text
+DISPATCH_ID: AO-BATCH-A-DESIGN-SECOND-DELTA-REVIEW-20260712T201420Z
+OBSERVED_AT: 2026-07-12T20:21:09Z
+PANE_ID: %20
+OUTPUT_FINGERPRINT: Sentinel returned NEEDS_PATCH, result c1715f45, pointer d240af1, exact R1/R2/R3/R4 classifications, and STOP
+LAST_PROGRESS_MARKER: actual diff/source review closed R2 and found S1 accepted-evidence schema/arbitration, S3 duplicate work truth/stale handling, and S4 path closure defects
+STATE: COMPLETED_REPORTED
+INTERACTIVE_PROMPT_PRESENT: false
+SENSITIVE_OUTPUT_SUSPECTED: false
+ACTION_TAKEN: Advisor read exact result/pointer and classified all remaining findings as bounded design corrections; implementation remains undispatched
+NEXT_OBSERVATION_DUE: none for Reviewer; Control patch preflight follows
+```

@@ -725,3 +725,19 @@ POINTER_PATH: ../foundation-docs/advisor/jobs/20260712_agent_office_batch_a_mode
 SCOPE_EVIDENCE: four Agent Office design docs only; no runtime/source/test/config/media change; pushed upstream-equal
 NEXT_ACTOR: same independent Sentinel for exact 60a5a72..77681d9 delta re-review
 ```
+## AO-BATCH-A-DESIGN-SECOND-DELTA-REVIEW-20260712T201420Z
+
+```text
+DISPATCH_ID: AO-BATCH-A-DESIGN-SECOND-DELTA-REVIEW-20260712T201420Z
+MISSION_ID: AGENT_OFFICE_BATCH_A_MODERN_OFFICE_IDENTITY_COMPLETION_001
+ACTOR: independent Sentinel re-review
+STATUS: COMPLETED_VERIFIED
+TARGET_COMMIT: 77681d9ed5dae3567115082945508f8474308812
+VERDICT: NEEDS_PATCH
+RESULT_COMMIT: c1715f45c1c8e02545fd7cab792cf2eda8384c7d
+POINTER_COMMIT: d240af1d0471feb28a5a8446d7e714cf956c7347
+RESULT_PATH: ../foundation-docs/runs/agent-office/20260712_agent_office_batch_a_modern_office_identity_completion_001/SENTINEL_DESIGN_SECOND_DELTA_REREVIEW_RESULT.md
+POINTER_PATH: ../foundation-docs/advisor/jobs/20260712_agent_office_batch_a_modern_office_identity_completion_001/20_SENTINEL_DESIGN_SECOND_DELTA_REREVIEW_RESULT_POINTER.md
+FINDINGS: R2 closed; S1 exact accepted-evidence schema/arbitration; S3 preserve existing runtime work truth and define STALE normalization; S4 exact assets/baselines/tests/result paths
+NEXT_ACTOR: same Control session for bounded design patch
+```
