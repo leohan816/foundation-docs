@@ -1,6 +1,6 @@
 # Control Design Result — Agent Office Batch A Application-Integration Design Delta
 
-Result: `CONTROL_MASTER_DESIGN_DELTA_REWORKED_THROUGH_S1_S3_S4_AND_ADVISOR_T1_T3__PENDING_INDEPENDENT_SENTINEL_THIRD_DELTA_REREVIEW`
+Result: `CONTROL_MASTER_DESIGN_DELTA_REWORKED_THROUGH_SENTINEL_U1_U3__PENDING_INDEPENDENT_SENTINEL_FOURTH_DELTA_REREVIEW`
 
 Actor: Control (`foundation-control` session). Mode: `CONTROL_MASTER_DESIGN_MODE` (design coordination only — no implementation, no review, no risk acceptance, no final approval, no agents/sub-agents).
 
@@ -181,3 +181,27 @@ Driver: `22_ADVISOR_CONTROL_THIRD_PATCH_VALIDATION.md` = `NEEDS_TARGETED_CONTROL
 `22_ADVISOR_CONTROL_THIRD_PATCH_VALIDATION.md`; the four `a39634d` after snapshots; `src/domain/activity/index.ts:43-49` (record discipline); `src/ui/pixel/assets/` and `tests/e2e*/baselines/` (literal paths).
 
 `RETURN_TO: Advisor`; R2/S3 preserved; implementation and independent review unauthorized until this correction is validated and a clean Sentinel re-review passes.
+
+---
+
+## Sentinel third delta re-review U1–U3 final narrow correction (Agent Office design commit — see pointer)
+
+Driver: `SENTINEL_DESIGN_THIRD_DELTA_REREVIEW_RESULT.md` = `NEEDS_PATCH` (candidate `5f8ffd1`; **S3 `CLOSED`, R2 `CLOSED__PRESERVED`, T3 `CLOSED`**; S1/T1 and S4/T2 `PARTIAL__BLOCKING`), validated by `25_ADVISOR_SENTINEL_THIRD_DELTA_VALIDATION.md`. Patched U1-U3 in the same four design paths; **closed S3/R2/T3, existing runtime-state arbitration, STALE behavior, and literal path scope preserved**.
+
+### U1–U3 closure table
+
+| Finding | Closure (exact) |
+|---|---|
+| **U1** `sessionProcess` no total cross-kind arbitration | Contract §2.3.1 adds an explicit **total conservative cross-kind** rule applied after same-kind selection: **zero** present kinds → `SESSION_PROCESS_UNKNOWN`; **exactly one** → its value (`process_detected`→`AI_PROCESS_DETECTED`, `process_absent`→`NO_AI_PROCESS`, `process_offline`→`SESSION_OFFLINE`); **two or more** contradictory → `SESSION_PROCESS_UNKNOWN` + diagnostic (the newest kind is not chosen). Total over missing/single/multi-unequal-time/tie/expired/contradictory; produces `P` for §2.3.2. |
+| **U2** duplicate `evidenceId` with unequal content undefined | Contract §2.3.1 distinguishes **identical replay** (same `evidenceId`, all contract fields equal → idempotent collapse to one) from an **`evidenceId` collision** (same `evidenceId`, any unequal field → **all records of that id dropped** + diagnostic). Set-based / input-order independent. |
+| **U3** documentation write class abbreviated | Delta §9 and WorkUnit WU-08 now list the **four literal** documentation write paths (`docs/architecture/AGENT_OFFICE_BATCH_A_APPLICATION_INTEGRATION_DESIGN_DELTA.md`, `docs/contracts/AGENT_OFFICE_BATCH_A_IDENTITY_ORGANIZATION_CONTRACT.md`, `docs/operations/AGENT_OFFICE_BATCH_A_IMPLEMENTATION_WORKUNIT_PLAN.md`, `docs/FEATURE_INDEX.md`); anything else still requires an Advisor amendment. |
+
+### Preserved (Sentinel-confirmed closed)
+
+S3 (RT sole `mission`/`workUnit`/activity/`operationalState` truth; (B) absent facts only; no store-back), R2 (`projectRequiredObservable` total non-elevating display), T3 (canonical current rule + `[SUPERSEDED]` history), and all product/security/authority/transport/accessibility/fallback/Channy/rollback/no-Grok/excluded-session/Batch B–E boundaries — unchanged.
+
+### Direct reads this pass (no agents)
+
+`SENTINEL_DESIGN_THIRD_DELTA_REREVIEW_RESULT.md`, `25_ADVISOR_SENTINEL_THIRD_DELTA_VALIDATION.md`; the four `5f8ffd1` after snapshots; `src/domain/activity/index.ts`, `src/domain/state-machines/work-unit.ts`, `src/runtime/observation-coordinator.ts`, `src/application/spatial-office/authenticated-projection.ts`, `src/ui/pixel/contracts.ts`.
+
+`RETURN_TO: Advisor`; S3/R2/T3 preserved; implementation unauthorized until a clean independent-Sentinel fourth delta re-review.
