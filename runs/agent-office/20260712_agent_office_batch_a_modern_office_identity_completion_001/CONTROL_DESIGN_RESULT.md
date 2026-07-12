@@ -60,7 +60,7 @@ Read directly this pass: `00_INTAKE.md`, `01_ADVISOR_BRIEF.md`, `02_CONTROL_DESI
 
 ## Next actor
 
-`RETURN_TO: Advisor`. Proposed next step: Advisor validates the committed Control design, then (per V2 release train) an independent-Sentinel `DESIGN_REVIEW`, Leo/GPT design/risk approval, then the exact Worker implementation handoff. Control stops here and does not implement, review, or enter Batch B–E.
+`RETURN_TO: Advisor`. Proposed next step: Advisor validates the committed Control design, then (per V2 release train) an independent-Sentinel `DESIGN_REVIEW`. Under the current Founder authorization, a clean `DESIGN_REVIEW` plus Advisor acceptance opens the exact Worker implementation handoff — no separate intermediate Leo/GPT design/risk approval is required; only `PASS_WITH_RISK`, a new material decision, or another mandatory stop returns to Leo/GPT. Control stops here and does not implement, review, or enter Batch B–E.
 
 ---
 
@@ -78,6 +78,12 @@ Driver: Advisor validation `15_ADVISOR_CONTROL_DESIGN_VALIDATION.md` = `NEEDS_IN
 - **CD-6** identity vs session: contract §1 + delta §3/§6 make `roleInstanceId` the stable key; `sessionName` is a current binding, not identity (removed from stable-identity fields).
 - **CD-7** U-1/U-4 resolvable: U-1 via the separated state vocabularies (§4); U-4 via a new committed local/static organization registry under `src/application/organization/` (provenance + evidence timestamp/status, no auto-refresh, no time-only freshness, unverified→`UNKNOWN`, invalid→`UNASSIGNED`, changes via reviewed commit).
 - **CD-8** direct reads completed this rework pass (same Control session, no agents): `AGENTS.md`, `docs/agent/RUN_PROTOCOL.md`, `docs/agent/RESULT_REPORTING_PROTOCOL.md`, `docs/architecture/AGENT_OFFICE_MASTER_DESIGN.md` (§1–§5 incl. §4 authority precedence + §11 batch context), `docs/contracts/AGENT_OFFICE_DOMAIN_EVENT_CONTRACT.md` (§1 + Batch A/C/D boundaries), `docs/contracts/AGENT_OFFICE_M1_2_SPATIAL_EVENT_ANIMATION_CONTRACT.md` (structure + cue vocabulary §2–§8), `docs/ui/AGENT_OFFICE_M1_2_PIXEL_WORLD_SPRITE_ANIMATION_SYSTEM.md` (§1–§7 incl. §5.2 actor states, §7 Channy), `docs/operations/AGENT_OFFICE_M1_2_LIVING_PIXEL_OFFICE_IMPLEMENTATION_PLAN.md` (§6.2 production surfaces + §6.3 integration behavior). The Grok stop audit remains an exclusion warning only; no Grok code/behavior used.
+
+### CD-9 / CD-10 residual closure (post-rework, `docs/FEATURE_INDEX.md` + result/pointer only)
+
+- **CD-9**: the `FEATURE_INDEX` identity-contract row no longer describes a legacy "ten-field" contract; it now states the complete Batch A summary/detail fact contract (`roleInstanceId`-stable identity attributes vs mutable bindings, separated AI-runtime vocabularies distinct from operational work state, per-field evidence source).
+- **CD-10**: `FEATURE_INDEX` §2.0 and this result/pointer no longer claim a required intermediate Leo/GPT design/risk decision before Worker implementation. Corrected flow: a clean independent-Sentinel `DESIGN_REVIEW` plus Advisor acceptance opens the exact Worker handoff under the current Founder authorization; only `PASS_WITH_RISK`, a new material decision, or another mandatory stop returns to Leo/GPT.
+- Scope this pass: allowed Agent Office path `docs/FEATURE_INDEX.md` only; the other three design docs and all CD-1..CD-8 closures are preserved unchanged.
 
 ### Rework checks / boundaries
 
