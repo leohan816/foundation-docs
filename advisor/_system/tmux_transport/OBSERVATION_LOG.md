@@ -861,3 +861,18 @@ SENSITIVE_OUTPUT_SUSPECTED: false
 ACTION_TAKEN: exact committed launcher sent through one named tmux buffer; execution confirmed; no other input sent
 NEXT_OBSERVATION_DUE: at most 60 seconds or on progress/result/interactive/capacity signal
 ```
+
+### AO-M1.2-D-FINAL-LEVEL3-REVIEW-20260712T012308Z - completion
+
+```text
+DISPATCH_ID: AO-M1.2-D-FINAL-LEVEL3-REVIEW-20260712T012308Z
+OBSERVED_AT: 2026-07-12T01:49:56Z
+PANE_ID: %5
+OUTPUT_FINGERPRINT: Fable5 AO12-D final PASS, result/pointer commit cef2d39, STOP
+LAST_PROGRESS_MARKER: independent 77/452 Vitest, clean 43/43 demo rerun, 3/3 composed, bundle/security/source/visual/cleanup checks, result and pointer pushed
+STATE: COMPLETED_REPORTED
+INTERACTIVE_PROMPT_PRESENT: false
+SENSITIVE_OUTPUT_SUSPECTED: false
+ACTION_TAKEN: captured completion; Advisor directly read result/pointer, verified exact two-file commit and upstream state, accepted PASS, and prepared final Leo/GPT package. Two self-matching read-only polling shells were terminated only after their underlying Playwright processes had completed and outputs were verified.
+NEXT_OBSERVATION_DUE: none; Leo/GPT final acceptance only
+```

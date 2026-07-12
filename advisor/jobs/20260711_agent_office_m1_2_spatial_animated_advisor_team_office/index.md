@@ -1,8 +1,16 @@
 # Agent Office M1.2 Spatial Office Design Mission
 
-Status: `AO12_D_A1_REWORK_ADVISOR_VALIDATED__FABLE5_FINAL_REVIEW_READY`
+Status: `M1_2_IMPLEMENTATION_REVIEWED_COMPLETE__AWAITING_LEO_GPT_FINAL_APPROVAL`
 
-Implementation: `AO12_A_B_C_ACCEPTED__AO12_D_CORRECTED_AND_ADVISOR_VALIDATED__FINAL_REVIEW_PENDING`
+Implementation: `AO12_A_B_C_D_COMPLETED_AND_ADVISOR_ACCEPTED__FINAL_LEO_GPT_APPROVAL_PENDING`
+
+## Final Artifacts
+
+- [53_FABLE5_AO12_D_FINAL_REVIEW_RESULT_POINTER.md](53_FABLE5_AO12_D_FINAL_REVIEW_RESULT_POINTER.md)
+- [54_ADVISOR_FABLE5_AO12_D_RESULT_VALIDATION.md](54_ADVISOR_FABLE5_AO12_D_RESULT_VALIDATION.md)
+- [55_ADVISOR_M1_2_FINAL_AUDIT.md](55_ADVISOR_M1_2_FINAL_AUDIT.md)
+- [56_FOUNDER_ACCEPTANCE_SHEET.md](56_FOUNDER_ACCEPTANCE_SHEET.md)
+- [57_FINAL_CLOSURE_POINTER.md](57_FINAL_CLOSURE_POINTER.md)
 
 ## Entry Artifacts
 
@@ -86,30 +94,10 @@ Implementation: `AO12_A_B_C_ACCEPTED__AO12_D_CORRECTED_AND_ADVISOR_VALIDATED__FI
 
 ## Current Routing
 
-The narrow patch at `b7d8cdb21183bf909a13b902cffc95bf15c68dd9`
-received a clean same-context Fable5 Level-3 `PASS`. Advisor froze the design and
-published implementation manifest v1 with 14 approved WorkUnits. AO12-A is
-implemented at `ecd2652501df55aba0aa0f55c236b1933c6dc1e3` and Advisor direct
-validation passed. Fable5 corrected its factual alias description and returned a
-clean corrected `PASS` at `edd7929`; Advisor accepted AO12-A. AO12-B is
-implemented at `4b751c6` and directly validated by Advisor. The same Fable5
-Reviewer session corrected the visual-coverage defect, directly inspected all
-six baselines, and retained a clean `PASS` at `6e2a231`; Advisor accepted
-AO12-B. AO12-C (`AO12-IWU-09..11`) is implemented at `f9d0533`, pushed and
-upstream-equal. Advisor directly inspected the source and all seven PNG
-baselines, reran lint/typecheck/full Vitest/build, 15 focused browser cases, 43
-default demo cases, 3 composed cases, dependency audit, naming, production
-boundary, and Git checks, and found no defect. The exact Level-3 Fable5 review
-returned a clean `PASS` at `3dbd89f` after independently reproducing all test,
-visual, performance, source, Git, and boundary evidence. Advisor accepted
-AO12-C and carried the validated-UTC expiry input check into AO12-D. AO12-D was
-implemented at `da5ecc9`, pushed, and returned with complete Worker evidence.
-Advisor direct validation accepted the session-expiry and visual evidence but
-reproduced `AO12-D-A1`: synthetic spatial fixtures are present in the production
-dashboard bundle despite the exact no-fixture acceptance criterion. A narrow
-same-Worker rework at `48c8dbd` removed the production fixture dependency and
-added a fresh-build zero-marker gate. Advisor independently reran 77/452 Vitest,
-13/13 composition, 43/43 demo and 3/3 composed Playwright, build, audit, marker,
-Git, cleanup, and visual checks. The cumulative AO12-D implementation is ready
-for the final independent Fable5 Level-3 implementation, security,
-accessibility, and visual review.
+All 14 approved WorkUnits are complete. AO12-D-A1 was corrected at `48c8dbd`,
+Advisor directly revalidated the implementation, and the same independent
+Fable5 Reviewer returned a clean Level-3 `PASS` at Foundation Docs `cef2d39`.
+The final audit and Founder Acceptance Sheet are published. No runtime is
+running, both repositories are upstream-equal for the target commits, no
+accepted risk or unresolved defect remains, and no next mission is authorized.
+The only next actor is Leo/GPT for final M1.2 acceptance.
