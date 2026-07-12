@@ -1,6 +1,6 @@
 # Control Design Result — Agent Office Batch A Application-Integration Design Delta
 
-Result: `CONTROL_MASTER_DESIGN_DELTA_U1_U3_PLUS_ACTOR_OVERLAY_SCOPE_GAP_CORRECTION__PENDING_INDEPENDENT_SENTINEL_REVIEW_OF_NARROW_DELTA`
+Result: `CONTROL_MASTER_DESIGN_DELTA_PLUS_FIXTURE_FREE_PRODUCTION_PROJECTOR_AND_CD3_TEST_SCOPE_CORRECTION__PENDING_INDEPENDENT_SENTINEL_REVIEW_OF_NARROW_DELTA`
 
 Actor: Control (`foundation-control` session). Mode: `CONTROL_MASTER_DESIGN_MODE` (design coordination only — no implementation, no review, no risk acceptance, no final approval, no agents/sub-agents).
 
@@ -226,3 +226,32 @@ Driver: `29_ADVISOR_WORKER_SCOPE_EXCEPTION_VALIDATION.md` (with `28_ADVISOR_FINA
 `29_ADVISOR_WORKER_SCOPE_EXCEPTION_VALIDATION.md`, `28_ADVISOR_FINAL_DESIGN_ACCEPTANCE.md`; the four canonical Batch A docs; `src/ui/pixel/living-office-actor-overlay.tsx` (labels + actor detail dialog), `src/ui/pixel/living-office-detail-drawer.tsx` (frame/evidence technical panel), `src/ui/pixel/actor-sprite.tsx`, `src/ui/pixel/prototype-entry.tsx` (read-only composition: composes both overlay + detail-drawer), `tests/ui/pixel-actor-overlay.test.tsx`, `tests/ui/pixel-world-semantic-parity.test.tsx`.
 
 `RETURN_TO: Advisor`; U1-U3/S3/R2/T3 preserved; the same independent SOL Sentinel must review this narrow docs-only delta before Worker resume.
+
+---
+
+## Fixture-free production frame-projector + CD-3 bundle-test scope correction (Agent Office design commit — see pointer)
+
+Driver: `33_ADVISOR_WORKER_PRODUCTION_RENDER_SCOPE_EXCEPTION_VALIDATION.md` (with `28_ADVISOR_FINAL_DESIGN_ACCEPTANCE.md`, `32_ADVISOR_SCOPE_CORRECTION_REVIEW_VALIDATION.md`). WU-01 part 2 (fixture-free production render) and the two bundle tests' stale assertions were under-specified. Docs-only correction; **technical design chosen from direct code evidence, not a product decision**; U1-U3/S3/R2/T3 and all boundaries preserved.
+
+### Code evidence
+
+`src/ui/pixel/frame-projector.ts:34` top-imports `./fixtures/prototype-timeline.js`; its `projectPixelWorldFrame` derives `timeline` from `timelineSegmentAt(...)` and threads it into route/camera/Channy/status. **All other pixel modules** (`world-layout`/`pathfinder`/`camera`/`presentation-clock`/`pixel-world-scene`/`pixel-world-chunk`/`living-office-actor-overlay`/`living-office-semantic-mirror`) import no fixture. `prototype-entry.tsx` imports `fixtures/prototype-projection`+`prototype-scenarios`+`projectPixelWorldFrame` (test-demo only). `production-pixel-prototype-boundary.test.ts` asserted zero `@pixi/react`/`pixi.js` anywhere (stale vs CD-3); `production-spatial-bundle-boundary.test.ts` requires an explicit projection and keeps fixtures in the demo entry (pattern to mirror).
+
+### Closure
+
+| Gap | Correction |
+|---|---|
+| Fixture-coupled production frame path | Delta §2.3 defines a **bounded shared-helper split**: new fixture-free `src/ui/pixel/frame-core.ts` (extracted fact/cue/parity primitives + route/camera/Channy/status helpers re-parameterized off the timeline), `frame-projector.ts` kept as the prototype projector, and a new `src/ui/pixel/production-frame-projector.ts` (imports only `frame-core.ts`+fixture-free helpers) building `PixelWorldFrameV1` from the authenticated `livingOffice` view. §9 adds both new paths; `fixtures/prototype-*` and `prototype-entry.tsx` stay out of production. |
+| Production timing/camera/routing/motion/Channy without fixture | Production drives progress from the fixture-free `presentation-clock.ts` + accepted RT cues; no `fixtures/prototype-timeline` import (delta §2.3 (4)). |
+| Stale CD-3 bundle assertions | Delta §10 gives the exact replacements in both authorized tests: eager/fallback graph Pixi-free + no prototype marker; Pixi only in the lazy Office chunk; **module-level fixture-import scan** of `frame-core.ts`/`production-frame-projector.ts` (explicitly **not** tree-shaking); prototype-chunk ≤300 KiB gzip + prototype tests unchanged. |
+| WU-01 part 2 | WU plan BA-WU-01 Part 2 source/tests/gate/rollback/dependency added; production isolation proven at module level and prototype behavior + tests preserved. §14.5 records this as a closed scope-correction. |
+
+### Preserved
+
+U1-U3, S3 (RT sole `mission`/`workUnit`/activity/`operationalState` truth; the production frame is fixture-free RT-derived), R2, T3, WU-02/03/04 ownership, eager-shell + fallbacks Pixi-free, prototype fixtures/markers outside production, and all product/security/authority/Channy/rollback/no-Grok/Batch B–E boundaries — unchanged.
+
+### Direct reads this pass (no agents)
+
+`33_…`, `28_…`, `32_…`; the four canonical docs; `src/ui/pixel/frame-projector.ts`, `frame-core`-target exports, `pixel-world-scene.tsx`, `contracts.ts` (`PixelWorldFrameV1`), `world-layout.ts`/`pathfinder.ts`/`camera.ts`/`presentation-clock.ts` (fixture-free confirmed), `prototype-entry.tsx` + `fixtures/prototype-timeline.ts`/`prototype-scenarios.ts` (read-only coupling), WU-01 authenticated-projection/runtime-shell/Vite paths, and both `tests/acceptance/production-*-boundary.test.ts`.
+
+`RETURN_TO: Advisor`; docs-only, no source edited; the same independent SOL Sentinel must perform a narrow docs/source-consistency delta review before the Worker resumes.
