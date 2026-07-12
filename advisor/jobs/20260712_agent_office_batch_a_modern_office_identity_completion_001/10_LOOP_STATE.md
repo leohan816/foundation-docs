@@ -2,13 +2,13 @@
 
 - Mission: `AGENT_OFFICE_BATCH_A_MODERN_OFFICE_IDENTITY_COMPLETION_001`
 - Entry: `PASSED_WITH_ISOLATED_WORKTREE`
-- Control design: `SECOND_PATCH_REQUIRED_AFTER_60A5A72`
-- Advisor design validation: `DELTA_NEEDS_PATCH_R1_TO_R4_ACCEPTED`
-- Sentinel design review: `NEEDS_PATCH_AT_60A5A72__R1_TO_R4`
+- Control design: `SECOND_PATCH_CANDIDATE_77681D9`
+- Advisor design validation: `SECOND_PATCH_SCOPE_VALIDATED__SEMANTIC_CLOSURE_RESERVED`
+- Sentinel design review: `SECOND_DELTA_REREVIEW_READY_60A5A72_TO_77681D9`
 - Opus Worker: `WAITING_FOR_CONTROL_DESIGN`
 - Advisor candidate validation: `WAITING`
 - SOL Sentinel: `WAITING_FOR_ACCEPTED_CANDIDATE`
 - Patch attempts: `4_CONTROL_DESIGN_REWORK_AFTER_DELTA_REREVIEW`
 - Final audit: `WAITING`
-- Next actor: `foundation-control` same-session bounded design rework
+- Next actor: `foundation-reviewer-sol` same-session second delta re-review
 - Batch B: `NOT_STARTED_NOT_AUTHORIZED`
