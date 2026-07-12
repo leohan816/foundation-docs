@@ -13,6 +13,9 @@
 - [Implementation launcher](07_GROK_IMPLEMENTATION_RUN_PROMPT.md)
 - [Qualification correction handoff](09_GROK_QUALIFICATION_CORRECTION_HANDOFF_PROMPT.md)
 - [Qualification correction launcher](09_GROK_QUALIFICATION_CORRECTION_RUN_PROMPT.md)
+- [Advisor implementation validation](12_ADVISOR_IMPLEMENTATION_VALIDATION.md)
+- [Implementation rework handoff](13_GROK_IMPLEMENTATION_REWORK_HANDOFF_PROMPT.md)
+- [Implementation rework launcher](13_GROK_IMPLEMENTATION_REWORK_RUN_PROMPT.md)
 - [Loop state](10_LOOP_STATE.md)
 
 Current state: `ENTRY_VALIDATED__PROVIDER_DEFAULT_ACCEPTED__QUALIFICATION_READY`.
