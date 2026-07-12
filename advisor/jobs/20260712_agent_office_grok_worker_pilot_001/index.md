@@ -19,6 +19,8 @@
 - [Rework API retry handoff](13A_GROK_REWORK_API_RETRY_HANDOFF_PROMPT.md)
 - [Rework API retry launcher](13A_GROK_REWORK_API_RETRY_RUN_PROMPT.md)
 - [Authentication blocker](14_AUTHENTICATION_REQUIRED.md)
+- [Post-reauth rework handoff](15_GROK_REWORK_POST_REAUTH_HANDOFF_PROMPT.md)
+- [Post-reauth rework launcher](15_GROK_REWORK_POST_REAUTH_RUN_PROMPT.md)
 - [Loop state](10_LOOP_STATE.md)
 
 Current state: `ENTRY_VALIDATED__PROVIDER_DEFAULT_ACCEPTED__QUALIFICATION_READY`.
