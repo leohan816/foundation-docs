@@ -1861,3 +1861,29 @@ SENSITIVE_OUTPUT_SUSPECTED: false
 ACTION_TAKEN: verified same session/model/effort/workspace and serialized scope; cleared stale unsubmitted suggestion only; pasted and submitted exact launcher once
 NEXT_OBSERVATION_DUE: at most 60 seconds or on progress/result signal
 ```
+
+### AO-BATCH-A-CONTROL-PRC1-PRC8-20260712T232200Z - completion
+
+```text
+OBSERVED_AT: 2026-07-12T23:37:00Z
+PANE_ID: %4
+STATE: COMPLETED_REPORTED
+OUTPUT_FINGERPRINT: Control returned e8531a3 and result 1ae9976, PRC-1 through PRC-8 closure summary, then STOP
+INTERACTIVE_PROMPT_PRESENT: false
+SENSITIVE_OUTPUT_SUSPECTED: false
+ACTION_TAKEN: Advisor verified exact docs-only diff and target/upstream; published same-Sentinel delta re-review with residual challenge points
+NEXT_OBSERVATION_DUE: none; Sentinel preflight follows
+```
+
+## AO-BATCH-A-PRC1-PRC8-REREVIEW-20260712T234000Z
+
+```text
+OBSERVED_AT: 2026-07-12T23:40:00Z
+PANE_ID: %20
+STATE: RUNNING
+OUTPUT_FINGERPRINT: exact 07H launcher submitted; Reviewer entered Working state; GPT-5.6 SOL xhigh footer visible
+INTERACTIVE_PROMPT_PRESENT: false
+SENSITIVE_OUTPUT_SUSPECTED: false
+ACTION_TAKEN: exact buffer pasted once; first Enter did not submit; verified unchanged input then sent one Enter; no duplicate or other input
+NEXT_OBSERVATION_DUE: at most 60 seconds or on progress/result signal
+```

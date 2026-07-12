@@ -2983,3 +2983,50 @@ SENT_AT: 2026-07-12T23:22:00Z
 TRANSPORT: stale unsent prompt line cleared with Ctrl-U; exact named tmux buffer ao_batch_a_prc_rework_20260712 pasted once to foundation-control/%4 and submitted with one Enter
 STATUS: RUNNING
 ```
+
+### AO-BATCH-A-CONTROL-PRC1-PRC8-20260712T232200Z - completed
+
+```text
+COMPLETED_AT: 2026-07-12T23:37:00Z
+STATUS: COMPLETED_VERIFIED
+TARGET_COMMIT: e8531a306a28b4f2858a49b32cc2b3c1bfb4ce6d
+RESULT_COMMIT: 1ae9976
+SCOPE_EVIDENCE: four canonical docs only; zero source/test/config change; target clean/upstream-equal
+ADVISOR_VERDICT: READY_FOR_SAME_SENTINEL_DELTA_REREVIEW__NOT_YET_ACCEPTED
+NEXT_DEPENDENCY: same Sentinel exact delta re-review
+```
+
+## AO-BATCH-A-PRC1-PRC8-REREVIEW-20260712T234000Z
+
+```text
+DISPATCH_ID: AO-BATCH-A-PRC1-PRC8-REREVIEW-20260712T234000Z
+MISSION_ID: AGENT_OFFICE_BATCH_A_MODERN_OFFICE_IDENTITY_COMPLETION_001
+TARGET_ACTOR: Sentinel-ReReview
+TARGET_SESSION: foundation-reviewer-sol/$20/@20/%20
+OBSERVED_WORKSPACE: /home/leo/Project/foundation-reviewer
+PROCESS_MODEL: codex; live footer GPT-5.6 SOL xhigh
+ROLE_SKILL_READINESS: same independent Sentinel; /fable-sentinel required; prior NEEDS_PATCH and STOP visible; idle; no interactive/auth/security prompt
+SYNCHRONIZED_PANES_OFF: true
+LAUNCHER_PATH: /home/leo/Project/foundation-docs/advisor/jobs/20260712_agent_office_batch_a_modern_office_identity_completion_001/07H_SENTINEL_PRC1_PRC8_DELTA_REREVIEW_RUN_PROMPT.md
+LAUNCHER_COMMIT: aa1761b655841bf3e4de13b4ea2c143c8d49b2cf
+LAUNCHER_BLOB: 861e9a69499402f68572e654ab94ee47d347879b
+LAUNCHER_SHA256: 3b0ef32364613968c3b1d45abeda8a2971665585aa960f90b3aaa6d09f1fad69
+TARGET_EVIDENCE: exact docs delta 2e0dddf..e8531a3; Agent Office clean/upstream-equal; foundation-docs launcher upstream-equal
+REVIEW_SCOPE: closure of prior PRC-1 through PRC-8 plus Advisor 38 exact questions
+RESULT_PATH: ../foundation-docs/runs/agent-office/20260712_agent_office_batch_a_modern_office_identity_completion_001/SENTINEL_PRC1_PRC8_DELTA_REREVIEW_RESULT.md
+POINTER_PATH: ../foundation-docs/advisor/jobs/20260712_agent_office_batch_a_modern_office_identity_completion_001/39_SENTINEL_PRC1_PRC8_DELTA_REREVIEW_RESULT_POINTER.md
+WRITE_SCOPE: foundation-docs exact result/pointer only; Agent Office read-only
+DEPENDENCY_LOCKS: Control stopped; Worker stopped clean; no concurrent writer
+SOFT_STALL_SECONDS: 60
+HARD_TIMEOUT_SECONDS_OR_NONE: none
+PREFLIGHT_VERDICT: PASS_READY_TO_SEND
+STATUS: RUNNING
+```
+
+### AO-BATCH-A-PRC1-PRC8-REREVIEW-20260712T234000Z - sent
+
+```text
+SENT_AT: 2026-07-12T23:40:00Z
+TRANSPORT: exact named tmux buffer ao_batch_a_prc_rereview_20260712 pasted once to foundation-reviewer-sol/%20; initial Enter left exact input visible; one verified follow-up Enter submitted unchanged content
+STATUS: RUNNING
+```
