@@ -1453,3 +1453,16 @@ SENSITIVE_OUTPUT_SUSPECTED: false
 ACTION_TAKEN: Advisor inspected actual contract/path text and held Reviewer dispatch due to exact deterministic defects still visible
 NEXT_OBSERVATION_DUE: none; same Control correction preflight follows
 ```
+## AO-BATCH-A-CONTROL-PRE-REVIEW-CORRECTION-20260712T203543Z
+
+```text
+DISPATCH_ID: AO-BATCH-A-CONTROL-PRE-REVIEW-CORRECTION-20260712T203543Z
+OBSERVED_AT: 2026-07-12T20:35:43Z
+PANE_ID: %4
+OUTPUT_FINGERPRINT: prior Control result and STOP; idle prompt
+STATE: WAITING_EXPECTED
+INTERACTIVE_PROMPT_PRESENT: false
+SENSITIVE_OUTPUT_SUSPECTED: false
+ACTION_TAKEN: verified pane/workspace/process/role/readiness, exact launcher commit/blob/checksum, target/upstream equality, and serialized scope; no input sent yet
+NEXT_OBSERVATION_DUE: immediately after transport
+```

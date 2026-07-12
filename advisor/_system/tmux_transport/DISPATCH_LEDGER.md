@@ -2448,3 +2448,28 @@ CONTROL_RESULT: S1/S3/S4 closure claimed; R2 preserved; four documentation paths
 ADVISOR_VALIDATION: scope/upstream pass; semantic pre-review hold for missing evidence record identity/version/reference/dedup fields, placeholder baseline path, conditional script wording, and stale closure-history contradictions
 NEXT_DEPENDENCY: same Control targeted pre-review correction; independent Reviewer not yet dispatched
 ```
+## AO-BATCH-A-CONTROL-PRE-REVIEW-CORRECTION-20260712T203543Z
+
+```text
+DISPATCH_ID: AO-BATCH-A-CONTROL-PRE-REVIEW-CORRECTION-20260712T203543Z
+MISSION_ID: AGENT_OFFICE_BATCH_A_MODERN_OFFICE_IDENTITY_COMPLETION_001
+TARGET_ACTOR: Control-Rework
+TARGET_SESSION: foundation-control/$4/@4/%4
+WORKSPACE: /home/leo/Project/foundation-control
+PROCESS_MODEL: claude; same verified Opus 4.8 (1M) xhigh Control context
+ROLE_READINESS: prior a39634d/e3d0442 result and STOP; idle CONTROL_MASTER_DESIGN_MODE prompt; no interactive/auth/security prompt
+SYNCHRONIZED_PANES_OFF: true
+LAUNCHER_PATH: /home/leo/Project/foundation-docs/advisor/jobs/20260712_agent_office_batch_a_modern_office_identity_completion_001/09F_CONTROL_DESIGN_PRE_REVIEW_CORRECTION_RUN_PROMPT.md
+LAUNCHER_COMMIT: f0789f6
+LAUNCHER_BLOB: 0950c439e6c41092292233ea9712e3c8dfe63c46
+LAUNCHER_SHA256: 500b81d46bdf9654bd15a9162c730a232920975f414ec5320ed2dcd4c98ade20
+UPSTREAM_EVIDENCE: foundation-docs f0789f6 equals origin/main at launcher publication; Agent Office a39634d equals origin/batch-a/modern-office-identity-001
+SCOPE: same four design docs; T1-T3 only; no implementation
+RESULT_PATH: ../foundation-docs/runs/agent-office/20260712_agent_office_batch_a_modern_office_identity_completion_001/CONTROL_DESIGN_RESULT.md
+POINTER_PATH: ../foundation-docs/advisor/jobs/20260712_agent_office_batch_a_modern_office_identity_completion_001/11_CONTROL_DESIGN_RESULT_POINTER.md
+DEPENDENCY_LOCKS: Reviewer idle; Worker undispatched; no concurrent Agent Office writer
+SOFT_STALL_SECONDS: 60
+HARD_TIMEOUT_SECONDS_OR_NONE: none
+PREFLIGHT_VERDICT: PASS_READY_TO_SEND
+STATUS: WAITING_EXPECTED
+```
