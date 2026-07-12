@@ -97,6 +97,30 @@ Provide exact file surfaces, dependencies, tests, performance budgets, visual
 proof, cleanup and rollback checkpoints, and review gates. No implementation is
 authorized by the design document itself.
 
+### Exact prototype media contract
+
+Use the ignored local root:
+
+`/home/leo/Project/agent-office/artifacts/m1-2-visual-prototype/`
+
+Required outputs:
+
+- `agent-office-living-office-prototype.webm`, 20 to 30 seconds, captured from
+  the actually running prototype with Playwright browser video recording;
+- `agent-office-living-office-prototype.mp4` converted from that recording;
+- `agent-office-living-office-prototype.gif`, showing character walking, Channy
+  roaming, and Advisor document handoff; and
+- `full-office.png`, `team-activity.png`, `lounge.png`, `channy.png`, and
+  `mobile.png`.
+
+The recording must contain continuous movement and visible state transitions.
+Do not assemble unrelated screenshots or count CSS hover-only effects as
+animation. Verify that the artifact root is ignored before generation and never
+commit large media. The evidence pointer must list every absolute path, byte
+size, SHA-256, scenario description, prototype commit SHA, exact recording
+command, and exact MP4/GIF conversion commands. The design must identify and
+fail closed if the required local recording/conversion tools are unavailable.
+
 ## Forbidden
 
 - runtime/source/test/dependency/lockfile/asset implementation;

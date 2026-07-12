@@ -47,3 +47,22 @@ The same Fable5 Reviewer must perform a product-intent and visual review of the
 prototype. Advisor then returns the prototype package to Leo/GPT. Full M1.2
 runtime integration remains blocked until Leo/GPT explicitly approves the
 prototype direction.
+
+## Prototype delivery format addendum
+
+The prototype evidence must be directly reviewable and generated from the
+actually running browser prototype:
+
+- `agent-office-living-office-prototype.webm`, 20 to 30 seconds;
+- `agent-office-living-office-prototype.mp4` converted from the recording;
+- one short GIF preview containing character walking, Channy roaming, and the
+  Advisor document handoff; and
+- PNGs for full office, Team activity, lounge, Channy, and mobile view.
+
+Prefer Playwright browser video recording. Motion must be continuous and include
+visible state transitions; unrelated screenshot assembly and hover-only effects
+do not qualify. Store media under ignored local
+`/home/leo/Project/agent-office/artifacts/m1-2-visual-prototype/`. Do not commit
+large media. Return absolute paths, sizes, SHA-256 hashes, scenario, prototype
+commit, and the exact reproduction command so Leo can retrieve files by SCP or
+the existing remote file explorer.

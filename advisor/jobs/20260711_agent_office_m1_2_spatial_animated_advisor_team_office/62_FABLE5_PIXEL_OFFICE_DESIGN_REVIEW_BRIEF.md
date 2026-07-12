@@ -20,6 +20,11 @@ design PASS cannot be interpreted as full runtime authorization, and that the
 20-to-30-second recording plan proves motion rather than relying only on still
 screenshots.
 
+Prototype review must inspect the actual WebM, MP4, GIF, and five PNGs; verify
+their paths, sizes, SHA-256 hashes, duration, source commit, ignored/not-committed
+status, and reproduction commands; and confirm that the video comes from a live
+Playwright browser recording with continuous motion and state transitions.
+
 Verdict: `PASS | PASS_WITH_RISK | NEEDS_PATCH | FAIL`.
 
 No implementation may start before a clean `PASS`. `PASS_WITH_RISK` returns to

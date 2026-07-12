@@ -28,6 +28,23 @@
     {"id":"AO12-PWU-13","actor":"Fable5 Reviewer and Advisor","phase":"FINAL_REVIEW","title":"Independent implementation review and final Founder package","status":"BLOCKED","dependencies":["AO12-PWU-12"],"blocker":"Full implementation is not authorized"}
   ],
   "prototypeAuthorization": "CONDITIONAL_ON_CLEAN_FABLE5_DESIGN_PASS",
+  "prototypeEvidenceContract": {
+    "artifactRoot": "/home/leo/Project/agent-office/artifacts/m1-2-visual-prototype/",
+    "gitPolicy": "LARGE_MEDIA_IGNORED_NOT_COMMITTED",
+    "requiredMedia": [
+      "agent-office-living-office-prototype.webm",
+      "agent-office-living-office-prototype.mp4",
+      "agent-office-living-office-prototype.gif",
+      "full-office.png",
+      "team-activity.png",
+      "lounge.png",
+      "channy.png",
+      "mobile.png"
+    ],
+    "recordingSeconds": {"minimum":20,"maximum":30},
+    "recordingMethod": "PLAYWRIGHT_ACTUAL_RUNNING_PROTOTYPE",
+    "requiredPointerFields": ["absolutePath","sizeBytes","sha256","scenario","prototypeCommit","reproductionCommand"]
+  },
   "fullImplementationAuthorization": "NOT_GRANTED__REQUIRES_LEO_GPT_PROTOTYPE_APPROVAL",
   "finalApprovalAuthority": "Leo/GPT"
 }
