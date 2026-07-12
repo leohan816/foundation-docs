@@ -1466,3 +1466,17 @@ SENSITIVE_OUTPUT_SUSPECTED: false
 ACTION_TAKEN: verified pane/workspace/process/role/readiness, exact launcher commit/blob/checksum, target/upstream equality, and serialized scope; no input sent yet
 NEXT_OBSERVATION_DUE: immediately after transport
 ```
+
+### AO-BATCH-A-CONTROL-PRE-REVIEW-CORRECTION-20260712T203543Z - sent
+
+```text
+DISPATCH_ID: AO-BATCH-A-CONTROL-PRE-REVIEW-CORRECTION-20260712T203543Z
+OBSERVED_AT: 2026-07-12T20:36:18Z
+PANE_ID: %4
+OUTPUT_FINGERPRINT: exact 09F launcher visible; active processing indicator
+STATE: RUNNING
+INTERACTIVE_PROMPT_PRESENT: false
+SENSITIVE_OUTPUT_SUSPECTED: false
+ACTION_TAKEN: exact committed launcher sent through one named tmux buffer; no other input sent
+NEXT_OBSERVATION_DUE: at most 60 seconds or on progress/result signal
+```
