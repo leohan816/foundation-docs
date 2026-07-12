@@ -40,6 +40,10 @@
 - [Advisor pre-review correction validation](23_ADVISOR_CONTROL_PRE_REVIEW_CORRECTION_VALIDATION.md)
 - [SOL Sentinel third delta handoff](07D_SENTINEL_DESIGN_THIRD_DELTA_REREVIEW_HANDOFF_PROMPT.md)
 - [SOL Sentinel third delta launcher](07D_SENTINEL_DESIGN_THIRD_DELTA_REREVIEW_RUN_PROMPT.md)
+- [SOL Sentinel third delta result pointer](24_SENTINEL_DESIGN_THIRD_DELTA_REREVIEW_RESULT_POINTER.md)
+- [Advisor third-delta validation](25_ADVISOR_SENTINEL_THIRD_DELTA_VALIDATION.md)
+- [Control final narrow correction handoff](09G_CONTROL_DESIGN_FINAL_NARROW_CORRECTION_HANDOFF_PROMPT.md)
+- [Control final narrow correction launcher](09G_CONTROL_DESIGN_FINAL_NARROW_CORRECTION_RUN_PROMPT.md)
 
 Pending: Control result, Advisor design validation, exact Worker handoff,
 Worker result, Advisor candidate validation, SOL Sentinel result, patch loops,
