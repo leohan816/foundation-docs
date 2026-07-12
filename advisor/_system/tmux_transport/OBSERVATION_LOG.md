@@ -1,5 +1,22 @@
 # tmux Observation Log
 
+## AO-GROK-PILOT-001-REWORK-POST-REAUTH-20260712T165638Z
+
+```text
+DISPATCH_ID: AO-GROK-PILOT-001-REWORK-POST-REAUTH-20260712T165638Z
+OBSERVED_AT: 2026-07-12T16:56:38Z
+PANE_ID: %16
+OUTPUT_FINGERPRINT: same existing Grok Build TUI restored after owner device-auth login; exact committed post-reauth launcher submitted once; immediate HTTP 403 permission-denied from cli-chat-proxy.grok.com/v1/responses
+LAST_PROGRESS_MARKER: owner reauthentication and grok models verification completed; isolated candidate remains 2378b28; no rework edits made
+STATE: BLOCKED
+INTERACTIVE_PROMPT_PRESENT: false
+SENSITIVE_OUTPUT_SUSPECTED: false
+ACTION_TAKEN: cleared unsent /effort input, transported the exact committed launcher to one prevalidated pane, observed the repeated post-reauth 403, stopped automatic retries, and preserved Worker/Reviewer isolation
+SAFE_DEFAULT: no further Grok input, no Reviewer dispatch, no promotion decision
+RESOLUTION_OWNER: Leo/xAI account entitlement support
+NEXT_OBSERVATION_DUE: after explicit entitlement restoration confirmation or successful Grok chat request
+```
+
 ## AO-M01-BATCH-E-20260711T044313Z
 
 ```text

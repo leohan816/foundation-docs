@@ -2230,3 +2230,26 @@ HARD_TIMEOUT_SECONDS_OR_NONE: none; long full regression/media train expected; t
 PREFLIGHT_VERDICT: PASS_READY_TO_SEND
 STATUS: WAITING_EXPECTED
 ```
+## AO-GROK-PILOT-001-REWORK-POST-REAUTH-20260712T165638Z
+
+```text
+DISPATCH_ID: AO-GROK-PILOT-001-REWORK-POST-REAUTH-20260712T165638Z
+MISSION_ID: AGENT_OFFICE_GROK_WORKER_PILOT_001
+TARGET_ACTOR: Agent Office Grok Pilot Worker Rework
+TARGET_SESSION: agent-office-grok/$16/@16/%16
+PROCESS_MODEL: grok PID 638374; grok-build; provider default; effective effort unexposed
+TARGET_WORKTREE: /home/leo/Project/agent-office-grok-pilot-001
+TARGET_BRANCH: pilot/grok-tmux-runtime-classification
+TARGET_COMMIT: 2378b28de2975f3cf00ba9922ea2f14d7af0fd30 equals origin/pilot/grok-tmux-runtime-classification
+READINESS_EVIDENCE: owner reauthentication complete; Grok process restored in the same existing pane; idle TUI with only unsent /effort text; no approval, secret, DB, production, or unrelated prompt
+SYNCHRONIZED_PANES_OFF: true
+LAUNCHER_PATH: /home/leo/Project/foundation-docs/advisor/jobs/20260712_agent_office_grok_worker_pilot_001/15_GROK_REWORK_POST_REAUTH_RUN_PROMPT.md
+LAUNCHER_COMMIT: 22a14d847805d72da1e264a285cac78bd4bf91cd
+LAUNCHER_BLOB: 25cbdaccb07d47a425c87590b957bf10389c4229
+LAUNCHER_SHA256: 1a20b0d6ec54524cf0993e01a913d7981fcde5ef91218a095e73fa554d1f786b
+FINDINGS: resume exact A-1 through A-7 rework after 403 owner reauthentication
+DEPENDENCY_LOCKS: Reviewer remains idle; excluded agent-office receives no input; same Grok Worker rework serialized
+SUBAGENT_EVIDENCE: no new tmux session observed; launcher forbids agents/subagents/delegation
+PREFLIGHT_VERDICT: PASS_READY_TO_SEND
+STATUS: WAITING_EXPECTED
+```
