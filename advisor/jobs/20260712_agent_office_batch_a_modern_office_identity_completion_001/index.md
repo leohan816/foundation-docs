@@ -30,6 +30,10 @@
 - [Advisor Control second-patch validation](20_ADVISOR_CONTROL_SECOND_PATCH_VALIDATION.md)
 - [SOL Sentinel second delta handoff](07C_SENTINEL_DESIGN_SECOND_DELTA_REREVIEW_HANDOFF_PROMPT.md)
 - [SOL Sentinel second delta launcher](07C_SENTINEL_DESIGN_SECOND_DELTA_REREVIEW_RUN_PROMPT.md)
+- [SOL Sentinel second delta result pointer](20_SENTINEL_DESIGN_SECOND_DELTA_REREVIEW_RESULT_POINTER.md)
+- [Advisor second-delta validation](21_ADVISOR_SENTINEL_SECOND_DELTA_VALIDATION.md)
+- [Control third design rework handoff](09E_CONTROL_DESIGN_REWORK_AFTER_SECOND_DELTA_HANDOFF_PROMPT.md)
+- [Control third design rework launcher](09E_CONTROL_DESIGN_REWORK_AFTER_SECOND_DELTA_RUN_PROMPT.md)
 
 Pending: Control result, Advisor design validation, exact Worker handoff,
 Worker result, Advisor candidate validation, SOL Sentinel result, patch loops,
