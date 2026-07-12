@@ -21,9 +21,9 @@
 - [Authentication blocker](14_AUTHENTICATION_REQUIRED.md)
 - [Post-reauth rework handoff](15_GROK_REWORK_POST_REAUTH_HANDOFF_PROMPT.md)
 - [Post-reauth rework launcher](15_GROK_REWORK_POST_REAUTH_RUN_PROMPT.md)
+- [Advisor rework round 2 validation](16_ADVISOR_REWORK_ROUND2_VALIDATION.md)
+- [Implementation rework round 2 handoff](17_GROK_IMPLEMENTATION_REWORK_ROUND2_HANDOFF_PROMPT.md)
+- [Implementation rework round 2 launcher](17_GROK_IMPLEMENTATION_REWORK_ROUND2_RUN_PROMPT.md)
 - [Loop state](10_LOOP_STATE.md)
 
-Current state: `ENTRY_VALIDATED__PROVIDER_DEFAULT_ACCEPTED__QUALIFICATION_READY`.
-
-The implementation launcher is committed for deterministic evidence but is not
-eligible for dispatch until Advisor accepts the read-only qualification.
+Current state: `IMPLEMENTATION_NEEDS_PATCH_ROUND2__FABLE5_NOT_ROUTED`.
