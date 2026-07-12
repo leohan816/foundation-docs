@@ -2936,3 +2936,50 @@ SENT_AT: 2026-07-12T23:10:00Z
 TRANSPORT: exact named tmux buffer ao_batch_a_render_contract_review_20260712 to foundation-reviewer-sol/%20; initial paste remained in input; one verified follow-up Enter submitted the unchanged exact content; no duplicate paste
 STATUS: RUNNING
 ```
+
+### AO-BATCH-A-PRODUCTION-RENDER-CONTRACT-REVIEW-20260712T231000Z - completed
+
+```text
+COMPLETED_AT: 2026-07-12T23:19:00Z
+STATUS: COMPLETED_VERIFIED
+VERDICT: NEEDS_PATCH
+TARGET_COMMIT: 2e0dddfcd8131206f63780c7613bc7d1a03f496d
+RESULT_COMMIT: 31324f316c375aeed3db0803366cd577d8f5e362
+POINTER_COMMIT: 46344a7f63091be02390b8e596192870943e3c70
+FINDINGS: PRC-1 through PRC-8; technical docs-contract defects; no Founder decision required
+NEXT_DEPENDENCY: same Control consolidated correction, then same Sentinel delta re-review
+```
+
+## AO-BATCH-A-CONTROL-PRC1-PRC8-20260712T232200Z
+
+```text
+DISPATCH_ID: AO-BATCH-A-CONTROL-PRC1-PRC8-20260712T232200Z
+MISSION_ID: AGENT_OFFICE_BATCH_A_MODERN_OFFICE_IDENTITY_COMPLETION_001
+TARGET_ACTOR: Control-Rework
+TARGET_SESSION: foundation-control/$4/@4/%4
+OBSERVED_WORKSPACE: /home/leo/Project/foundation-control
+PROCESS_MODEL: claude; same Opus 4.8 (1M) xhigh
+ROLE_SKILL_READINESS: same Control; prior completion visible; one stale unsubmitted suggestion cleared before exact paste; no interactive/auth/security prompt
+SYNCHRONIZED_PANES_OFF: true
+LAUNCHER_PATH: /home/leo/Project/foundation-docs/advisor/jobs/20260712_agent_office_batch_a_modern_office_identity_completion_001/09K_CONTROL_PRC1_PRC8_CONSOLIDATED_REWORK_RUN_PROMPT.md
+LAUNCHER_COMMIT: 182cc8bacdfb6710eb214b11e50e0c27996bff43
+LAUNCHER_BLOB: 8d1d3448929238074d7ade5e95ee499bdc67753b
+LAUNCHER_SHA256: 2544a40024154152ea1a878f0392d8c34a57298be5f1c22f1af85d74eb170ea6
+TARGET_EVIDENCE: candidate 2e0dddf clean/upstream-equal; Sentinel result/pointer pushed; foundation-docs launcher upstream-equal
+SCOPE: consolidated docs-only correction for Sentinel PRC-1 through PRC-8
+RESULT_PATH: ../foundation-docs/runs/agent-office/20260712_agent_office_batch_a_modern_office_identity_completion_001/CONTROL_DESIGN_RESULT.md
+POINTER_PATH: ../foundation-docs/advisor/jobs/20260712_agent_office_batch_a_modern_office_identity_completion_001/11_CONTROL_DESIGN_RESULT_POINTER.md
+DEPENDENCY_LOCKS: Worker stopped clean; Reviewer stopped; no concurrent Agent Office writer
+SOFT_STALL_SECONDS: 60
+HARD_TIMEOUT_SECONDS_OR_NONE: none
+PREFLIGHT_VERDICT: PASS_READY_TO_SEND
+STATUS: RUNNING
+```
+
+### AO-BATCH-A-CONTROL-PRC1-PRC8-20260712T232200Z - sent
+
+```text
+SENT_AT: 2026-07-12T23:22:00Z
+TRANSPORT: stale unsent prompt line cleared with Ctrl-U; exact named tmux buffer ao_batch_a_prc_rework_20260712 pasted once to foundation-control/%4 and submitted with one Enter
+STATUS: RUNNING
+```

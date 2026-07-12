@@ -1835,3 +1835,29 @@ SENSITIVE_OUTPUT_SUSPECTED: false
 ACTION_TAKEN: exact buffer pasted once; first delayed Enter did not submit; verified unchanged input then sent one Enter; no duplicate or other pane input
 NEXT_OBSERVATION_DUE: at most 60 seconds or on progress/result signal
 ```
+
+### AO-BATCH-A-PRODUCTION-RENDER-CONTRACT-REVIEW-20260712T231000Z - completion
+
+```text
+OBSERVED_AT: 2026-07-12T23:19:00Z
+PANE_ID: %20
+STATE: COMPLETED_REPORTED
+OUTPUT_FINGERPRINT: Sentinel returned NEEDS_PATCH with PRC-1 through PRC-8, result 31324f3, pointer 46344a7, Agent Office unchanged, then STOP
+INTERACTIVE_PROMPT_PRESENT: false
+SENSITIVE_OUTPUT_SUSPECTED: false
+ACTION_TAKEN: Advisor read full result/pointer, accepted all eight technical findings, and published one consolidated same-Control patch handoff
+NEXT_OBSERVATION_DUE: none; Control preflight follows
+```
+
+## AO-BATCH-A-CONTROL-PRC1-PRC8-20260712T232200Z
+
+```text
+OBSERVED_AT: 2026-07-12T23:22:00Z
+PANE_ID: %4
+STATE: RUNNING
+OUTPUT_FINGERPRINT: exact 09K launcher submitted; Control entered Schlepping state; context at compaction boundary; no interactive prompt
+INTERACTIVE_PROMPT_PRESENT: false
+SENSITIVE_OUTPUT_SUSPECTED: false
+ACTION_TAKEN: verified same session/model/effort/workspace and serialized scope; cleared stale unsubmitted suggestion only; pasted and submitted exact launcher once
+NEXT_OBSERVATION_DUE: at most 60 seconds or on progress/result signal
+```
