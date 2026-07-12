@@ -1951,3 +1951,52 @@ SENT_AT: 2026-07-12T06:38:00Z
 TRANSPORT: exact named tmux buffer to agent-office/%13
 STATUS: RUNNING
 ```
+
+### AO-M1.2-PIXEL-PROTOTYPE-CORRECTION-20260712T063535Z - reconciled blocker
+
+```text
+STATUS: BLOCKED_RETURNED_AND_RESTORED
+COMPLETED_AT: 2026-07-12T06:49:30Z
+RESULT_COMMIT: 4f3f985cb71a8436c82ba7be7e985eb5e4d12028
+POINTER_COMMIT: 89bd3fe6d869eaa54124efe80b02fcd399a3e981
+BLOCKER: mandated src JavaScript bridge requires a narrow eslint.config.mjs path override outside the prior exact allowlist
+RESTORATION: 69-entry prepared prototype/media state restored with zero path or SHA-256 differences; Agent Office commit none
+ADVISOR_CLASSIFICATION: technical repository lint-path omission; bounded clarification permitted without a new product or risk decision
+NEXT_DEPENDENCY: AO-M1.2-PIXEL-PROTOTYPE-CORRECTION-RESUME-20260712T065949Z
+```
+
+## AO-M1.2-PIXEL-PROTOTYPE-CORRECTION-RESUME-20260712T065949Z
+
+```text
+DISPATCH_ID: AO-M1.2-PIXEL-PROTOTYPE-CORRECTION-RESUME-20260712T065949Z
+MISSION_ID: AGENT_OFFICE_M1_2_SPATIAL_ANIMATED_ADVISOR_TEAM_OFFICE
+TARGET_ACTOR: Agent Office Worker
+TARGET_SESSION: agent-office
+TARGET_WINDOW: 0
+TARGET_PANE: 0
+OBSERVED_PANE_ID: %13
+WORKSPACE: /home/leo/Project/agent-office
+PROCESS: codex PID 2754606 under pane shell PID 2703903
+MODEL_EFFORT_EVIDENCE: live pane footer gpt-5.6-sol ultra; launcher requires Codex 5.6 SOL Ultra
+ROLE_EVIDENCE: same existing Agent Office Worker that returned and restored the prior bounded correction attempt
+READINESS_EVIDENCE: idle Codex prompt after exact blocker result and STOP; no unrelated task, approval, auth, privilege, DB, secret, production, or interactive prompt active
+SYNCHRONIZED_PANES_OFF: true
+LAUNCHER_ABSOLUTE_PATH: /home/leo/Project/foundation-docs/advisor/jobs/20260711_agent_office_m1_2_spatial_animated_advisor_team_office/81_LIVING_PIXEL_OFFICE_PROTOTYPE_CORRECTION_RESUME_WORKER_RUN_PROMPT.md
+LAUNCHER_REPO_RELATIVE_PATH: advisor/jobs/20260711_agent_office_m1_2_spatial_animated_advisor_team_office/81_LIVING_PIXEL_OFFICE_PROTOTYPE_CORRECTION_RESUME_WORKER_RUN_PROMPT.md
+LAUNCHER_COMMIT_SHA: 6add436e82e98c9f3e51235208e1ca43563a9d0c
+LAUNCHER_GIT_BLOB: be0748dcf523e81ce0c4991b375937a7942d6e62
+LAUNCHER_SHA256_WORKTREE: 57b1486c8ad31e6af723e3aa5565cc456bd13f713bfb1e211624fd6b8aa42f5e
+LAUNCHER_SHA256_COMMITTED: 57b1486c8ad31e6af723e3aa5565cc456bd13f713bfb1e211624fd6b8aa42f5e
+UPSTREAM_EVIDENCE: foundation-docs 6add436 equals origin/main at launcher publication; Agent Office HEAD 56385b8 equals origin/shadow/agent-office-m1-2-spatial-office, left/right 0/0
+PREPARED_WORKTREE_EVIDENCE: Worker's restored 69-entry state; current porcelain SHA-256 436165ba89cde6d14650893ce7f0190697aee875cb2ae132981a5f626e01e80f; index empty; artifact root 0700; port 4173 free
+WORK_SCOPE: prior exact prototype-correction scope plus eslint.config.mjs solely for a path-specific disableTypeChecked block covering src/ui/pixel/pixi-public-export-bridge.js
+RESULT_PATH: ../foundation-docs/runs/agent-office/20260711_agent_office_m1_2_spatial_animated_advisor_team_office/WORKER_LIVING_PIXEL_OFFICE_PROTOTYPE_CORRECTION_RESUME_RESULT.md
+POINTER_PATH: ../foundation-docs/advisor/jobs/20260711_agent_office_m1_2_spatial_animated_advisor_team_office/82_WORKER_LIVING_PIXEL_OFFICE_PROTOTYPE_CORRECTION_RESUME_RESULT_POINTER.md
+WRITE_REPO_BRANCHES: Agent Office shadow/agent-office-m1-2-spatial-office then foundation-docs/main exact result/pointer, serial
+DEPENDENCY_LOCKS: prior Worker stopped/restored; Fable5 design PASS remains clean; Reviewer idle; no other active Foundation Docs writer; same Worker owns preserved dirt
+PARALLEL_ISOLATION_EVIDENCE: one exact Worker pane; serialized before independent implementation/security/accessibility/visual review; no broadcast or synchronized panes
+SOFT_STALL_SECONDS: 60
+HARD_TIMEOUT_SECONDS_OR_NONE: none; long full regression/media train expected; transient capacity/API errors require same-session readiness revalidation before one idempotent continue
+PREFLIGHT_VERDICT: PASS_READY_TO_SEND
+STATUS: WAITING_EXPECTED
+```

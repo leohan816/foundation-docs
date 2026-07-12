@@ -1115,3 +1115,33 @@ SENSITIVE_OUTPUT_SUSPECTED: false
 ACTION_TAKEN: exact committed launcher sent through one named tmux buffer; execution confirmed; no other input sent
 NEXT_OBSERVATION_DUE: at most 60 seconds or on progress/result/interactive/capacity signal
 ```
+
+### AO-M1.2-PIXEL-PROTOTYPE-CORRECTION-20260712T063535Z - blocker completion
+
+```text
+DISPATCH_ID: AO-M1.2-PIXEL-PROTOTYPE-CORRECTION-20260712T063535Z
+OBSERVED_AT: 2026-07-12T06:49:30Z
+PANE_ID: %13
+OUTPUT_FINGERPRINT: Worker reported exact ESLint parser-service scope blocker, byte-exact restoration, result 4f3f985, pointer 89bd3fe, and STOP
+LAST_PROGRESS_MARKER: focused bridge diagnostic 19/19 passed; required lint stopped before full train; no Agent Office commit
+STATE: BLOCKED_RETURNED
+INTERACTIVE_PROMPT_PRESENT: false
+SENSITIVE_OUTPUT_SUSPECTED: false
+ACTION_TAKEN: Advisor read the exact result/pointer/config, independently confirmed the typed-rule path mismatch and existing disableTypeChecked pattern, and issued an exact one-path technical clarification
+NEXT_OBSERVATION_DUE: immediately after resume transport
+```
+
+## AO-M1.2-PIXEL-PROTOTYPE-CORRECTION-RESUME-20260712T065949Z
+
+```text
+DISPATCH_ID: AO-M1.2-PIXEL-PROTOTYPE-CORRECTION-RESUME-20260712T065949Z
+OBSERVED_AT: 2026-07-12T06:59:49Z
+PANE_ID: %13
+OUTPUT_FINGERPRINT: prior exact blocker pointer and STOP visible; idle GPT-5.6 SOL Ultra prompt
+LAST_PROGRESS_MARKER: exact clarification launcher committed/pushed at foundation-docs 6add436; target restored and upstream-equal
+STATE: WAITING_EXPECTED
+INTERACTIVE_PROMPT_PRESENT: false
+SENSITIVE_OUTPUT_SUSPECTED: false
+ACTION_TAKEN: verified active transport, exact registered Worker pane/workspace/process/model/role/readiness, synchronization off, launcher commit/blob/checksum, target/upstream equality, empty index, restored worktree fingerprint, owner-only artifact root, free port, and serialized write scope; no input sent yet
+NEXT_OBSERVATION_DUE: immediately after exact launcher transport
+```
