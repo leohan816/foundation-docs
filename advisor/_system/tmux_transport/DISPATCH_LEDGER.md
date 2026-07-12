@@ -90,6 +90,31 @@ QUALIFICATION_LAUNCHER_SENT: false
 STATUS: WAITING_EXPECTED
 ```
 
+## AO-GROK-PILOT-001-REWORK-20260712T164000Z
+
+```text
+DISPATCH_ID: AO-GROK-PILOT-001-REWORK-20260712T164000Z
+MISSION_ID: AGENT_OFFICE_GROK_WORKER_PILOT_001
+TARGET_ACTOR: Agent Office Grok Pilot Worker Rework
+TARGET_SESSION: agent-office-grok/$16/@16/%16
+PROCESS_MODEL: grok PID 576823; grok-build; provider default; effective effort unexposed
+TARGET_WORKTREE: /home/leo/Project/agent-office-grok-pilot-001
+TARGET_BRANCH: pilot/grok-tmux-runtime-classification
+TARGET_COMMIT: 2378b28de2975f3cf00ba9922ea2f14d7af0fd30 equals origin/pilot/grok-tmux-runtime-classification
+READINESS_EVIDENCE: Worker result pointer and STOP; idle prompt; no interactive/auth/security prompt
+SYNCHRONIZED_PANES_OFF: true
+LAUNCHER_PATH: /home/leo/Project/foundation-docs/advisor/jobs/20260712_agent_office_grok_worker_pilot_001/13_GROK_IMPLEMENTATION_REWORK_RUN_PROMPT.md
+LAUNCHER_COMMIT: dd1b0b2a15574d5150262c0e343e6c2417096a6b
+LAUNCHER_BLOB: 00e46eda451e1c7e5903467bda5ce413744d8c90
+LAUNCHER_SHA256: 634ccc6138541e0a97757b7c482b14a2f8a6c23013d6797aa894ebb199936d9f
+FINDINGS: A-1 process-name identity promotion; A-2 missing exact states; A-3 malformed fail-open; A-4 incomplete hierarchy/evidence; A-5 missing fixtures; A-6 scope/report inaccuracies; A-7 no upstream tracking
+ALLOWLIST: original exact paths plus three named compatibility test files only
+DEPENDENCY_LOCKS: Reviewer remains idle; excluded agent-office receives no input; same Grok Worker rework serialized
+SUBAGENT_EVIDENCE: no new session observed; rework forbids agents/subagents/delegation
+PREFLIGHT_VERDICT: PASS_READY_TO_SEND
+STATUS: WAITING_EXPECTED
+```
+
 ## AO-GROK-PILOT-001-IMPLEMENTATION-20260712T162806Z
 
 ```text
