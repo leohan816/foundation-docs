@@ -850,3 +850,20 @@ REPRODUCTION_LIMITATION: dependencies absent; focused test launch failed before 
 ADVISOR_RESULT_VERDICT: PASS__WORKER_RESUME_AUTHORIZED
 NEXT_ACTOR: same agent-office-opus Worker
 ```
+
+## AO-BATCH-A-WORKER-CONTINUE-20260712T223100Z - production render scope exception
+
+```text
+DISPATCH_ID: AO-BATCH-A-WORKER-CONTINUE-20260712T223100Z
+MISSION_ID: AGENT_OFFICE_BATCH_A_MODERN_OFFICE_IDENTITY_COMPLETION_001
+ACTOR: Agent Office Worker
+STATUS: STOPPED_CLEAN_SCOPE_EXCEPTION
+TARGET_BASE: 453c661c4f4243c77b2f53089ec599561876b06f
+LOCAL_COMMITS: 3174c67, 6f99259, 242e49c
+TARGET_STATE: clean; ahead upstream by 3
+GATE_STATE: 91 files / 560 tests pass; lint and typecheck pass
+BLOCKER: production Pixel renderer has no named fixture-free frame-projector path in the accepted closed scope; stale acceptance assertions conflict with accepted CD-3
+ADVISOR_EVIDENCE: 33_ADVISOR_WORKER_PRODUCTION_RENDER_SCOPE_EXCEPTION_VALIDATION.md
+ADVISOR_RESULT_VERDICT: PATCHABLE_TECHNICAL_DESIGN_GAP__CONTROL_SCOPE_CORRECTION_REQUIRED
+NEXT_ACTOR: same foundation-control session
+```

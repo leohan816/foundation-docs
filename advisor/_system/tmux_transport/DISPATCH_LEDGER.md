@@ -2796,3 +2796,49 @@ SENT_AT: 2026-07-12T22:31:00Z
 TRANSPORT: exact named tmux buffer ao_batch_a_continue_20260712 to agent-office-opus/%16; one Enter submitted unchanged content
 STATUS: RUNNING
 ```
+
+### AO-BATCH-A-WORKER-CONTINUE-20260712T223100Z - clean technical scope stop
+
+```text
+COMPLETED_AT: 2026-07-12T22:36:00Z
+STATUS: STOPPED_CLEAN_SCOPE_EXCEPTION
+TARGET_STATE: clean; local commits 3174c67, 6f99259, and 242e49c; branch ahead upstream by 3
+BLOCKER: accepted closed file map has no coherent fixture-free production frame-projector path; current projector statically imports prototype timeline and accepts only prototype schema
+TEST_STATE: 91 files / 560 tests pass; lint and typecheck pass
+ADVISOR_VALIDATION: 33_ADVISOR_WORKER_PRODUCTION_RENDER_SCOPE_EXCEPTION_VALIDATION.md
+NEXT_DEPENDENCY: docs-only Control technical scope correction and same-Sentinel narrow review
+```
+
+## AO-BATCH-A-CONTROL-PRODUCTION-RENDER-SCOPE-20260712T223756Z
+
+```text
+DISPATCH_ID: AO-BATCH-A-CONTROL-PRODUCTION-RENDER-SCOPE-20260712T223756Z
+MISSION_ID: AGENT_OFFICE_BATCH_A_MODERN_OFFICE_IDENTITY_COMPLETION_001
+TARGET_ACTOR: Control-Rework
+TARGET_SESSION: foundation-control/$4/@4/%4
+OBSERVED_WORKSPACE: /home/leo/Project/foundation-control
+PROCESS_MODEL: claude; live footer Opus 4.8 (1M) xhigh
+ROLE_SKILL_READINESS: same existing Control; prior STOP visible; idle; no interactive/auth/security prompt
+SYNCHRONIZED_PANES_OFF: true
+LAUNCHER_PATH: /home/leo/Project/foundation-docs/advisor/jobs/20260712_agent_office_batch_a_modern_office_identity_completion_001/09I_CONTROL_PRODUCTION_RENDER_SCOPE_CORRECTION_RUN_PROMPT.md
+LAUNCHER_COMMIT: 0e1449555f2a03b75450f3f6588fe07f534b8512
+LAUNCHER_BLOB: f8520a61d2cd473ccef46bf341f05b02bb3cfd5c
+LAUNCHER_SHA256: aba64d11208f6308f136f2689e754e2912c41cd028aa604fb4f13f0a33956960
+TARGET_EVIDENCE: design base 453c661; local implementation branch clean and ahead 3; foundation-docs launcher upstream-equal
+SCOPE: docs-only fixture-free production projector/file map and exact CD-3 bundle-test correction; no implementation
+RESULT_PATH: ../foundation-docs/runs/agent-office/20260712_agent_office_batch_a_modern_office_identity_completion_001/CONTROL_DESIGN_RESULT.md
+POINTER_PATH: ../foundation-docs/advisor/jobs/20260712_agent_office_batch_a_modern_office_identity_completion_001/11_CONTROL_DESIGN_RESULT_POINTER.md
+DEPENDENCY_LOCKS: Worker stopped clean; Reviewer stopped; no concurrent Agent Office writer
+SOFT_STALL_SECONDS: 60
+HARD_TIMEOUT_SECONDS_OR_NONE: none
+PREFLIGHT_VERDICT: PASS_READY_TO_SEND
+STATUS: RUNNING
+```
+
+### AO-BATCH-A-CONTROL-PRODUCTION-RENDER-SCOPE-20260712T223756Z - sent
+
+```text
+SENT_AT: 2026-07-12T22:37:56Z
+TRANSPORT: exact named tmux buffer ao_batch_a_render_scope_20260712 to foundation-control/%4; one delayed Enter submitted unchanged content
+STATUS: RUNNING
+```

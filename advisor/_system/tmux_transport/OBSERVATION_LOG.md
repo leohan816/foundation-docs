@@ -1744,3 +1744,42 @@ SENSITIVE_OUTPUT_SUSPECTED: false
 ACTION_TAKEN: no further input; continue bounded observation
 NEXT_OBSERVATION_DUE: at most 60 seconds or on progress/result signal
 ```
+
+### AO-BATCH-A-WORKER-CONTINUE-20260712T223100Z - scope exception
+
+```text
+OBSERVED_AT: 2026-07-12T22:36:00Z
+PANE_ID: %16
+STATE: STOPPED_EXPECTED_SCOPE_EXCEPTION
+OUTPUT_FINGERPRINT: Worker directly traced frame-projector -> prototype-timeline and prototype-only schema, reported the missing production path, preserved three local commits and green gates, and stopped without an uncommitted edit
+INTERACTIVE_PROMPT_PRESENT: false
+SENSITIVE_OUTPUT_SUSPECTED: false
+ACTION_TAKEN: Advisor verified source/test contradiction, clean target state, and no fourth implementation commit; classified patchable technical design gap and published exact Control handoff
+NEXT_OBSERVATION_DUE: none; Control preflight follows
+```
+
+## AO-BATCH-A-CONTROL-PRODUCTION-RENDER-SCOPE-20260712T223756Z
+
+```text
+OBSERVED_AT: 2026-07-12T22:37:56Z
+PANE_ID: %4
+STATE: WAITING_EXPECTED
+OUTPUT_FINGERPRINT: previous Control scope correction completed and STOP; idle Opus 4.8 (1M) xhigh Control
+INTERACTIVE_PROMPT_PRESENT: false
+SENSITIVE_OUTPUT_SUSPECTED: false
+ACTION_TAKEN: verified pane/workspace/process/model/effort/readiness, exact launcher identity, serialized docs-only scope, target and upstream state; then sent exact committed launcher once
+NEXT_OBSERVATION_DUE: immediately after transport
+```
+
+### AO-BATCH-A-CONTROL-PRODUCTION-RENDER-SCOPE-20260712T223756Z - accepted
+
+```text
+OBSERVED_AT: 2026-07-12T22:38:00Z
+PANE_ID: %4
+STATE: RUNNING
+OUTPUT_FINGERPRINT: exact 09I launcher visible; Control entered Actualizing state; no interactive prompt
+INTERACTIVE_PROMPT_PRESENT: false
+SENSITIVE_OUTPUT_SUSPECTED: false
+ACTION_TAKEN: no further input; continue bounded observation
+NEXT_OBSERVATION_DUE: at most 60 seconds or on progress/result signal
+```
