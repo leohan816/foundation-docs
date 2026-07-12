@@ -4,11 +4,11 @@
 - Entry: `PASSED_WITH_ISOLATED_WORKTREE`
 - Control design: `PRODUCTION_RENDER_CONTRACT_CANDIDATE_2E0DDDF`
 - Advisor design validation: `READY_FOR_NARROW_SENTINEL__NOT_YET_ACCEPTED`
-- Sentinel design review: `PASS_AT_453C661__NO_RESIDUAL_RISK`
+- Sentinel design review: `NEEDS_PATCH_AT_2E0DDDF__PRC1_PRC8`
 - Opus Worker: `STOPPED_CLEAN__3_IMPLEMENTATION_COMMITS__PRODUCTION_RENDER_SCOPE_GAP`
 - Advisor candidate validation: `WAITING`
 - SOL Sentinel: `WAITING_FOR_ACCEPTED_CANDIDATE`
-- Patch attempts: `10_CONTROL_PRODUCTION_RENDER_CONTRACT_CORRECTION_COMPLETE`
+- Patch attempts: `11_CONTROL_PRC1_PRC8_CONSOLIDATED_REWORK_PENDING`
 - Final audit: `WAITING`
-- Next actor: `foundation-reviewer-sol` production-render contract delta review
+- Next actor: `foundation-control` consolidated PRC-1 through PRC-8 patch
 - Batch B: `NOT_STARTED_NOT_AUTHORIZED`

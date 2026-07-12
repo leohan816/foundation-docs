@@ -70,6 +70,10 @@
 - [Advisor production-render contract revalidation](35_ADVISOR_PRODUCTION_RENDER_CONTRACT_REVALIDATION.md)
 - [SOL Sentinel production-render contract review handoff](07G_SENTINEL_PRODUCTION_RENDER_CONTRACT_DELTA_REVIEW_HANDOFF_PROMPT.md)
 - [SOL Sentinel production-render contract review launcher](07G_SENTINEL_PRODUCTION_RENDER_CONTRACT_DELTA_REVIEW_RUN_PROMPT.md)
+- [SOL Sentinel production-render contract result pointer](36_SENTINEL_PRODUCTION_RENDER_CONTRACT_DELTA_REVIEW_RESULT_POINTER.md)
+- [Advisor Sentinel production-render review validation](37_ADVISOR_SENTINEL_PRODUCTION_RENDER_REVIEW_VALIDATION.md)
+- [Control PRC-1 through PRC-8 rework handoff](09K_CONTROL_PRC1_PRC8_CONSOLIDATED_REWORK_HANDOFF_PROMPT.md)
+- [Control PRC-1 through PRC-8 rework launcher](09K_CONTROL_PRC1_PRC8_CONSOLIDATED_REWORK_RUN_PROMPT.md)
 
 Design: accepted at `381b411`; independent Sentinel design verdict `PASS`.
 
