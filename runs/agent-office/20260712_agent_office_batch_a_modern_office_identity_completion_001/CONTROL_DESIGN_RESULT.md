@@ -1,6 +1,6 @@
 # Control Design Result — Agent Office Batch A Application-Integration Design Delta
 
-Result: `CONTROL_MASTER_DESIGN_DELTA_PUBLISHED__PENDING_ADVISOR_VALIDATION_AND_FABLE5_DESIGN_REVIEW`
+Result: `CONTROL_MASTER_DESIGN_DELTA_REWORKED_CD_1_TO_CD_10_AND_SENTINEL_P1_P4__PENDING_INDEPENDENT_SENTINEL_DELTA_REVIEW` (stale `FABLE5` header corrected per Sentinel non-blocking finding §3)
 
 Actor: Control (`foundation-control` session). Mode: `CONTROL_MASTER_DESIGN_MODE` (design coordination only — no implementation, no review, no risk acceptance, no final approval, no agents/sub-agents).
 
@@ -93,3 +93,30 @@ Driver: Advisor validation `15_ADVISOR_CONTROL_DESIGN_VALIDATION.md` = `NEEDS_IN
 - Residual: **U-3** (exact `vite.config.ts` chunk-emission config for eager-shell isolation) — an implementation detail within the approved isolation rule, not a product/authority decision.
 
 `RETURN_TO: Advisor`. Implementation remains unauthorized until a clean independent-Sentinel `DESIGN_REVIEW`.
+
+---
+
+## Sentinel P1–P4 rework (Agent Office design commit — see pointer; base `ac8ba75`)
+
+Driver: independent-Sentinel `SENTINEL_DESIGN_REVIEW_RESULT.md` = `NEEDS_PATCH` (candidate `665b251`), validated by `17_ADVISOR_SENTINEL_DESIGN_REVIEW_VALIDATION.md`. Patched in the same four approved documentation paths; no runtime/source/test/package/config/media change; non-force push. The design is now implementation-deterministic; exact vocabularies are the inherited source vocabularies (cited), not invention.
+
+### P1–P4 closure table
+
+| Finding | Closure (exact) |
+|---|---|
+| **P1** contradictory fail-closed field vocabularies | Contract §2.3 = per-field type + normalization table with **exactly one sentinel per field**: `sessionProcess`→`SESSION_OFFLINE`, `aiIdentity`→`AI_IDENTITY_UNKNOWN`, `model`→`MODEL_UNKNOWN`, `effort`→`EFFORT_UNKNOWN`, `aiRuntimeState`→ new `AI_RUNTIME_UNKNOWN`; accepted-evidence rule for each of `AI_READY`/`AI_WORKING`/`AI_WAITING`/`AI_ERROR`; literal `UNKNOWN` scoped to free-text identity/binding fields only. Delta §3/§4 aligned. |
+| **P2** operational-state not one owned vocabulary | Contract §2.4 + delta §4 name **`PixelOperationalState`** (14, `src/ui/pixel/contracts.ts:24-38`) as the owned display vocabulary and give a **total fail-closed mapping** from `WORK_UNIT_STATES` (16, `src/domain/state-machines/work-unit.ts:3-20`) + activity cues (`src/domain/activity/index.ts:21-41`), default `UNKNOWN`; no `e.g.`. |
+| **P3** registry mint/merge/provenance incomplete | Contract §2.5/§3 give the exact fact envelope `{value, source, status, evidenceTimestamp}`, inherited **UPPER_SNAKE** discriminators (`contracts.ts:6-11`), field ownership (committed registry owns identity/bindings/AI-runtime because `authenticated-projection.ts:53-61` has no model/effort/session-process; `mission`/`workUnit`/`operationalState` joined from runtime on `roleInstanceId` and never stored), `mint→validate→join→project` flow, merge precedence + no-store-back rule, and the exact summary subset + drawer order/test matrix. |
+| **P4** PWA/failure scope + gates omitted | Delta §9 adds the conditional exact `src/pwa/cache-policy.ts`/`public/sw.js`/`src/server/http/static-shell.ts` subset + exact test paths and removes broad `src/ui/*`; delta §10 + plan §3 add the inherited full-integration/PWA failure matrix (impl plan §6.4/§6.5). |
+
+### Direct reads this pass (Sentinel-cited source, no agents)
+
+`SENTINEL_DESIGN_REVIEW_RESULT.md`, `17_ADVISOR_SENTINEL_DESIGN_REVIEW_VALIDATION.md`, `src/ui/pixel/contracts.ts` (`:6-11` provenance, `:24-38` `PixelOperationalState`), `src/domain/state-machines/work-unit.ts` (`:3-20` 16 states), `src/domain/activity/index.ts` (`:21-41` observable names + `UNKNOWN_OR_STALE`), `src/application/spatial-office/authenticated-projection.ts` (`:53-68` actor input has no model/effort/session-process), `docs/operations/AGENT_OFFICE_M1_2_LIVING_PIXEL_OFFICE_IMPLEMENTATION_PLAN.md` (`:706-742` §6.4 verification + §6.5 rollback checkpoints).
+
+### Non-blocking correction
+
+- The stale `CONTROL_DESIGN_RESULT.md` header (`PENDING_ADVISOR_VALIDATION_AND_FABLE5_DESIGN_REVIEW`) is corrected to the independent-Sentinel route.
+
+### Rework boundaries
+
+Same four Agent Office documentation paths only; no runtime/source/test/package/config/media/DB/secret/auth/transport/PWA-code change; no `main`/force push; no agents/sub-agents/new sessions; no self-review; Batch B–E untouched; accepted architecture + 17-item traceability + CD-1..CD-10 closures preserved. `RETURN_TO: Advisor`; implementation unauthorized until a clean independent-Sentinel delta re-review.
