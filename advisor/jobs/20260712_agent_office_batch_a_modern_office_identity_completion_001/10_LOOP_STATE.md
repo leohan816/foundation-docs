@@ -2,13 +2,13 @@
 
 - Mission: `AGENT_OFFICE_BATCH_A_MODERN_OFFICE_IDENTITY_COMPLETION_001`
 - Entry: `PASSED_WITH_ISOLATED_WORKTREE`
-- Control design: `SCOPE_CORRECTED_CANDIDATE_453C661`
-- Advisor design validation: `PASS_AT_453C661__WORKER_RESUME_AUTHORIZED`
+- Control design: `PRODUCTION_RENDER_CANDIDATE_9CAFF0E__PR1_PR3_CORRECTION_REQUIRED`
+- Advisor design validation: `NEEDS_TARGETED_CONTROL_CORRECTION_BEFORE_SENTINEL`
 - Sentinel design review: `PASS_AT_453C661__NO_RESIDUAL_RISK`
 - Opus Worker: `STOPPED_CLEAN__3_IMPLEMENTATION_COMMITS__PRODUCTION_RENDER_SCOPE_GAP`
 - Advisor candidate validation: `WAITING`
 - SOL Sentinel: `WAITING_FOR_ACCEPTED_CANDIDATE`
-- Patch attempts: `9_CONTROL_PRODUCTION_RENDER_SCOPE_CORRECTION_PENDING`
+- Patch attempts: `10_CONTROL_PRODUCTION_RENDER_CONTRACT_CORRECTION_PENDING`
 - Final audit: `WAITING`
-- Next actor: `foundation-control` fixture-free production-render docs correction
+- Next actor: `foundation-control` PR-1 through PR-3 docs correction
 - Batch B: `NOT_STARTED_NOT_AUTHORIZED`
