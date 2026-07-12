@@ -67,6 +67,9 @@
 - [Advisor production-render candidate validation](34_ADVISOR_CONTROL_PRODUCTION_RENDER_SCOPE_VALIDATION.md)
 - [Control production-render contract correction handoff](09J_CONTROL_PRODUCTION_RENDER_CONTRACT_CORRECTION_HANDOFF_PROMPT.md)
 - [Control production-render contract correction launcher](09J_CONTROL_PRODUCTION_RENDER_CONTRACT_CORRECTION_RUN_PROMPT.md)
+- [Advisor production-render contract revalidation](35_ADVISOR_PRODUCTION_RENDER_CONTRACT_REVALIDATION.md)
+- [SOL Sentinel production-render contract review handoff](07G_SENTINEL_PRODUCTION_RENDER_CONTRACT_DELTA_REVIEW_HANDOFF_PROMPT.md)
+- [SOL Sentinel production-render contract review launcher](07G_SENTINEL_PRODUCTION_RENDER_CONTRACT_DELTA_REVIEW_RUN_PROMPT.md)
 
 Design: accepted at `381b411`; independent Sentinel design verdict `PASS`.
 
