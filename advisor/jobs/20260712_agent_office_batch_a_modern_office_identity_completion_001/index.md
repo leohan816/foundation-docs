@@ -34,6 +34,9 @@
 - [Advisor second-delta validation](21_ADVISOR_SENTINEL_SECOND_DELTA_VALIDATION.md)
 - [Control third design rework handoff](09E_CONTROL_DESIGN_REWORK_AFTER_SECOND_DELTA_HANDOFF_PROMPT.md)
 - [Control third design rework launcher](09E_CONTROL_DESIGN_REWORK_AFTER_SECOND_DELTA_RUN_PROMPT.md)
+- [Advisor third-patch pre-review validation](22_ADVISOR_CONTROL_THIRD_PATCH_VALIDATION.md)
+- [Control pre-review correction handoff](09F_CONTROL_DESIGN_PRE_REVIEW_CORRECTION_HANDOFF_PROMPT.md)
+- [Control pre-review correction launcher](09F_CONTROL_DESIGN_PRE_REVIEW_CORRECTION_RUN_PROMPT.md)
 
 Pending: Control result, Advisor design validation, exact Worker handoff,
 Worker result, Advisor candidate validation, SOL Sentinel result, patch loops,
