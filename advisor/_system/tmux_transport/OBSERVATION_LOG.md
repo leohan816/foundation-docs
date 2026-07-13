@@ -2017,3 +2017,29 @@ SENSITIVE_OUTPUT_SUSPECTED: false
 ACTION_TAKEN: cleared UI placeholder only; exact buffer pasted once; first Enter did not submit, then one verified follow-up Enter submitted unchanged content
 NEXT_OBSERVATION_DUE: at most 60 seconds or on progress/result signal
 ```
+
+### AO-BATCH-A-FDR-REREVIEW-20260713T002800Z - completion
+
+```text
+OBSERVED_AT: 2026-07-13T00:34:00Z
+PANE_ID: %20
+STATE: COMPLETED_REPORTED
+OUTPUT_FINGERPRINT: Sentinel returned PASS; FDR-1/FDR-2/FDR-3 closed with prior PRC closures preserved; result dabaec3, pointer e738632, then STOP
+INTERACTIVE_PROMPT_PRESENT: false
+SENSITIVE_OUTPUT_SUSPECTED: false
+ACTION_TAKEN: Advisor read the exact result and published final design acceptance plus the Worker resume launcher
+NEXT_OBSERVATION_DUE: none; Worker preflight follows
+```
+
+## AO-BATCH-A-WORKER-FINAL-DESIGN-RESUME-20260713T003600Z
+
+```text
+OBSERVED_AT: 2026-07-13T00:36:00Z
+PANE_ID: %16
+STATE: RUNNING
+OUTPUT_FINGERPRINT: exact 06E launcher submitted; Worker reopened the committed handoff and entered WU-01 authenticated shell implementation under ultracode
+INTERACTIVE_PROMPT_PRESENT: false
+SENSITIVE_OUTPUT_SUSPECTED: false
+ACTION_TAKEN: verified same session/process, accepted target checkpoint, serialized scope, and exact launcher receipt; no repaste
+NEXT_OBSERVATION_DUE: at most 60 seconds or on progress/result signal
+```
