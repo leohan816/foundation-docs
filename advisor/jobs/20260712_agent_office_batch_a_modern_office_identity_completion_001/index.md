@@ -107,6 +107,9 @@
 - [Advisor Office-first visual baseline reconciliation](50_ADVISOR_OFFICE_FIRST_VISUAL_BASELINE_RECONCILIATION.md)
 - [Opus Worker visual baseline reconciliation handoff](06H_WORKER_VISUAL_BASELINE_RECONCILIATION_HANDOFF_PROMPT.md)
 - [Opus Worker visual baseline reconciliation launcher](06H_WORKER_VISUAL_BASELINE_RECONCILIATION_RUN_PROMPT.md)
+- [Advisor Living Office E2E harness scope amendment](51_ADVISOR_LIVING_OFFICE_E2E_HARNESS_SCOPE_AMENDMENT.md)
+- [Opus Worker Living Office E2E harness handoff](06I_WORKER_LIVING_OFFICE_E2E_HARNESS_HANDOFF_PROMPT.md)
+- [Opus Worker Living Office E2E harness launcher](06I_WORKER_LIVING_OFFICE_E2E_HARNESS_RUN_PROMPT.md)
 
 Design: accepted at `381b411`; independent Sentinel design verdict `PASS`.
 
