@@ -15,6 +15,9 @@
 - [Sentinel launcher](07_SENTINEL_DESIGN_CONTRACT_REVIEW_RUN_PROMPT.md)
 - [Sentinel finding-specific delta re-review handoff](07B_SENTINEL_DESIGN_DELTA_REREVIEW_HANDOFF_PROMPT.md)
 - [Sentinel finding-specific delta re-review launcher](07B_SENTINEL_DESIGN_DELTA_REREVIEW_RUN_PROMPT.md)
+- [Advisor classification of delta geometry finding](17A_ADVISOR_DELTA_FINDING_CLASSIFICATION.md)
+- [Control information-geometry patch handoff](09D_CONTROL_INFORMATION_GEOMETRY_PATCH_HANDOFF_PROMPT.md)
+- [Control information-geometry patch launcher](09D_CONTROL_INFORMATION_GEOMETRY_PATCH_RUN_PROMPT.md)
 - [Control narrow patch handoff](09_CONTROL_DESIGN_PATCH_HANDOFF_PROMPT.md)
 - [Control narrow patch launcher](09_CONTROL_DESIGN_PATCH_RUN_PROMPT.md)
 - [Advisor classification of Sentinel findings](13_ADVISOR_SENTINEL_FINDING_CLASSIFICATION.md)
@@ -33,7 +36,9 @@ with six bounded design/static-evidence findings. Advisor classified all six as
 patchable without a new product or authority decision. Control published exact
 finding patch `8522f3c` and text-only metadata correction `1ab8ad2`. Advisor
 verified the exact scope, contracts, all four changed PNGs at original size,
-Git/upstream state, and the four metadata closures. The final static candidate
-is accepted for the same-Sentinel finding-specific delta re-review. Worker
-implementation remains forbidden until that Reviewer returns a clean design
-delta `PASS` and Leo approves the static mockups.
+Git/upstream state, and the four metadata closures. The same-Sentinel delta
+review closed five findings but directly reproduced one information-state
+layout regression under `A1R-SDR-03`. Advisor classified it as a two-file
+static correction for the same Control, followed by the same Reviewer focused
+re-check. Worker implementation remains forbidden until a clean design delta
+`PASS` and Leo approves the static mockups.
