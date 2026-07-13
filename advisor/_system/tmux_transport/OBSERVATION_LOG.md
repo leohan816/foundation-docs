@@ -2320,3 +2320,13 @@ LAUNCHER_STATE: committed/pushed at 0c8a8db; exact blob/SHA-256 recorded
 DEPENDENCY_STATE: Reviewer and Control stopped; no concurrent writer; excluded historical agent-office untouched
 VERDICT: PASS_READY_TO_SEND
 ```
+
+### AO-BATCH-A-WORKER-SIXTH-REWORK-20260713T110937Z — dispatch accepted
+
+```text
+OBSERVED_AT: 2026-07-13T11:10:40Z
+PANE: %16
+EVIDENCE: exact launcher visible; same Worker directly opened committed 09P handoff and began sixth-rework clean-base verification in the existing /fable-builder context
+INTERACTIVE_PROMPT: none
+STATUS: RUNNING
+```
