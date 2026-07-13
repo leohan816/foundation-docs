@@ -3507,3 +3507,12 @@ HARD_TIMEOUT_SECONDS_OR_NONE: none
 PREFLIGHT_VERDICT: PASS_READY_TO_SEND
 STATUS: READY_TO_SEND
 ```
+
+### AO-BATCH-A-SENTINEL-SECOND-DELTA-20260713T083238Z — sent
+
+```text
+SENT_AT: 2026-07-13T08:34:00Z
+TRANSPORT: exact named tmux buffer pasted to %20; Codex multiline paste required a second explicit Enter before execution began
+POST_SEND_EVIDENCE: Reviewer stated /fable-sentinel use, read exact 07M handoff and SKILL.md, preserved Agent Office read-only/no-delegation scope
+STATUS: RUNNING
+```
