@@ -17,6 +17,9 @@
 - [Advisor classification of Sentinel findings](13_ADVISOR_SENTINEL_FINDING_CLASSIFICATION.md)
 - [Control Sentinel-finding patch handoff](09B_CONTROL_SENTINEL_PATCH_HANDOFF_PROMPT.md)
 - [Control Sentinel-finding patch launcher](09B_CONTROL_SENTINEL_PATCH_RUN_PROMPT.md)
+- [Advisor post-patch metadata validation](13A_ADVISOR_POST_PATCH_METADATA_VALIDATION.md)
+- [Control metadata correction handoff](09C_CONTROL_METADATA_CORRECTION_HANDOFF_PROMPT.md)
+- [Control metadata correction launcher](09C_CONTROL_METADATA_CORRECTION_RUN_PROMPT.md)
 - [Control patch result pointer](14_CONTROL_STATIC_DESIGN_PATCH_RESULT_POINTER.md)
 - [Sentinel design review result pointer](12_SENTINEL_DESIGN_CONTRACT_REVIEW_RESULT_POINTER.md)
 - [Loop state](10_LOOP_STATE.md)
@@ -24,6 +27,9 @@
 Current state: Control published initial design `d33dfc9` and narrow correction
 `b966c6a`. The independent product-first Sentinel review returned `NEEDS_PATCH`
 with six bounded design/static-evidence findings. Advisor classified all six as
-patchable without a new product or authority decision and prepared an exact
-same-Control correction. Worker implementation remains forbidden until the same
-Reviewer returns a clean design delta `PASS` and Leo approves the static mockups.
+patchable without a new product or authority decision. Control published exact
+finding patch `8522f3c`; Advisor verified its scope, contracts, and four changed
+PNGs, then found four text-only metadata inconsistencies to correct before the
+same-Sentinel delta re-review. Worker implementation remains forbidden until the
+same Reviewer returns a clean design delta `PASS` and Leo approves the static
+mockups.
