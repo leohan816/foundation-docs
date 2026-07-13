@@ -158,11 +158,15 @@ rehearsal, final audit, and Founder Acceptance Sheet.
 - [Advisor Sentinel third-delta validation](63_ADVISOR_SENTINEL_THIRD_DELTA_VALIDATION.md)
 - [Opus Worker fifth focused rework handoff](09O_WORKER_IMPLEMENTATION_FIFTH_REWORK_HANDOFF_PROMPT.md)
 - [Opus Worker fifth focused rework launcher](09O_WORKER_IMPLEMENTATION_FIFTH_REWORK_RUN_PROMPT.md)
+- [Advisor fifth-rework roster negative exactness addendum](64_ADVISOR_FIFTH_REWORK_ROSTER_NEGATIVE_EXACTNESS_ADDENDUM.md)
+- [Opus Worker fifth-rework exactness launcher](09O2_WORKER_FIFTH_REWORK_ROSTER_EXACTNESS_RUN_PROMPT.md)
+- [Opus Worker fifth-rework result pointer](21_WORKER_FIFTH_REWORK_RESULT_POINTER.md)
+- [Advisor Worker fifth-rework validation](65_ADVISOR_WORKER_FIFTH_REWORK_VALIDATION.md)
+- [SOL Sentinel fourth implementation delta re-review handoff](07O_SENTINEL_IMPLEMENTATION_FOURTH_DELTA_REREVIEW_HANDOFF_PROMPT.md)
+- [SOL Sentinel fourth implementation delta re-review launcher](07O_SENTINEL_IMPLEMENTATION_FOURTH_DELTA_REREVIEW_RUN_PROMPT.md)
 
-Current state: same SOL Sentinel returned `NEEDS_PATCH` after a narrow direct
-browser attack. The Office-first high-text switch works, but high-text loses the
-actor-detail/focus path; label/roster predicates accept malformed identity,
-field, source, and viewport states; and the source unit accepts `source X.`.
-All are routine in-scope A5 corrections. Same Opus Worker fifth focused rework
-is ready. Final re-review/rehearsal/audit/Founder approval remain pending; Batch
-B remains not started and unauthorized.
+Current state: Opus Worker fifth focused rework and Advisor exactness addendum
+are committed/pushed at `95e493c`. Advisor reproduced the affected unit `12/12`
+and Living Office `3/3` gates and accepted A5-1/A5-2/A5-3 for the same SOL
+Sentinel's fourth narrow implementation re-review. Final rehearsal/audit/Founder
+approval remain pending; Batch B remains not started and unauthorized.
