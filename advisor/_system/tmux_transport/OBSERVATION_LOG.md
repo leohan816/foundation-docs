@@ -2574,3 +2574,28 @@ EVIDENCE: exact 09C launcher visible; same Control opened committed handoff and 
 INTERACTIVE_PROMPT: none
 STATUS: RUNNING
 ```
+
+### AO-A1R-CONTROL-METADATA-CORRECTION-20260713T180100Z — result accepted
+
+```text
+OBSERVED_AT: 2026-07-13T18:07:00Z
+PANE: %4
+EVIDENCE: correction 1ab8ad2 and result/pointer 64589ce committed/pushed; exactly three Markdown files; no SVG/PNG/runtime change; same Control stopped
+STATUS: COMPLETED__ADVISOR_ACCEPTED_FOR_DELTA_REREVIEW
+NEXT_ACTOR: same foundation-reviewer-sol
+```
+
+## AO-A1R-SENTINEL-DESIGN-DELTA-REREVIEW-20260713T180910Z — preflight
+
+```text
+OBSERVED_AT: 2026-07-13T18:09:10Z
+SESSION: foundation-reviewer-sol
+LOCATOR: $20 / @20 / %20
+PROCESS: same Codex PID 711307; command explicitly gpt-5.6-sol xhigh
+PANE_STATE: original NEEDS_PATCH result and STOP visible; idle prompt; no unrelated work, approval, auth, error, or pending input
+TARGET_STATE: /home/leo/Project/agent-office-a1r-001 clean/upstream/direct-origin equal at 1ab8ad2
+LAUNCHER_STATE: committed/pushed at cee831e; exact blob/SHA-256 recorded
+SYNCHRONIZED_PANES: off
+DEPENDENCY_STATE: same Reviewer owns A1R-SDR-01..06; Control stopped; Worker unauthorized; no competing Reviewer use
+VERDICT: PASS_READY_TO_SEND
+```

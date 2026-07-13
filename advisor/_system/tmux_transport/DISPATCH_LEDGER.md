@@ -3986,3 +3986,42 @@ TRANSPORT: cleared idle input with Ctrl-U; exact named tmux buffer pasted once t
 POST_SEND_EVIDENCE: same Control opened committed handoff 09C and Advisor validation 13A; began four text-only corrections
 STATUS: RUNNING
 ```
+
+### AO-A1R-CONTROL-METADATA-CORRECTION-20260713T180100Z — completed
+
+```text
+COMPLETED_AT: 2026-07-13T18:07:00Z
+RESULT_EVIDENCE: Agent Office correction 1ab8ad2 and foundation-docs result/pointer 64589ce committed/pushed; same Control stopped
+ADVISOR_VALIDATION: exact three-Markdown path delta, four metadata closures, clean/upstream/direct-origin equality, zero SVG/PNG/runtime changes
+STATUS: COMPLETED__ADVISOR_ACCEPTED_FOR_DELTA_REREVIEW
+```
+
+## AO-A1R-SENTINEL-DESIGN-DELTA-REREVIEW-20260713T180910Z
+
+```text
+DISPATCH_ID: AO-A1R-SENTINEL-DESIGN-DELTA-REREVIEW-20260713T180910Z
+MISSION_ID: AGENT_OFFICE_A1R_LIVING_OFFICE_EXPERIENCE_REFINEMENT_001
+TARGET_ACTOR: Sentinel-ReReview
+TARGET_SESSION: foundation-reviewer-sol
+TARGET_LOCATOR: $20 / @20 / %20
+TARGET_WORKSPACE: /home/leo/Project/foundation-reviewer
+TARGET_REPO: /home/leo/Project/agent-office-a1r-001
+PROCESS_MODEL: Codex PID 711307; gpt-5.6-sol xhigh
+REQUIRED_SKILL: /fable-sentinel
+REVIEW_PASS: DESIGN_REVIEW__A1R_FOUNDER_UX_CONTRACT_DELTA_REREVIEW
+REVIEW_BASE: b966c6a98752558ad0db66fa2b79e42d9e9dcd24
+FINDING_PATCH: 8522f3c3df1f39bed976eb7189ea3e43edbf2dbd
+REVIEW_CANDIDATE: 1ab8ad200338d90d230d8d4f3373fa9b73d549c9
+LAUNCHER_PATH: advisor/jobs/20260713_agent_office_a1r_living_office_experience_refinement_001/07B_SENTINEL_DESIGN_DELTA_REREVIEW_RUN_PROMPT.md
+LAUNCHER_COMMIT: cee831ed48da3d66c404c557ae43761197d02ef2
+LAUNCHER_BLOB: a1199e372bfa2cf217e7dc1e5883e3b43f2bd419
+LAUNCHER_SHA256: e49bf3a36912e92869d27adc6a8279323994e8ad233abc3c97bbacda0053ba15
+RESULT_PATH: runs/agent-office/20260713_agent_office_a1r_living_office_experience_refinement_001/SENTINEL_DESIGN_CONTRACT_DELTA_REREVIEW_RESULT.md
+POINTER_PATH: advisor/jobs/20260713_agent_office_a1r_living_office_experience_refinement_001/17_SENTINEL_DESIGN_DELTA_REREVIEW_RESULT_POINTER.md
+REVIEW_SCOPE: same-Sentinel A1R-SDR-01..06 closure and direct regressions only; four original-size PNGs first; no runtime suite or Founder aesthetic approval
+WRITE_SCOPE: foundation-docs exact result/pointer only; Agent Office candidate read-only
+SERIALIZATION: Control stopped; Worker unauthorized; no competing A-1R writer or Reviewer use
+TIMEOUT_POLICY: observe approximately once per minute; no automatic approval/auth response
+PREFLIGHT_VERDICT: PASS_READY_TO_SEND
+STATUS: READY_TO_DISPATCH
+```
