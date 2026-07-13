@@ -98,6 +98,9 @@
 - [Advisor superseding final design acceptance](47_ADVISOR_FINAL_DESIGN_ACCEPTANCE_SUPERSEDING.md)
 - [Opus Worker final-design resume handoff](06E_WORKER_FINAL_DESIGN_RESUME_HANDOFF_PROMPT.md)
 - [Opus Worker final-design resume launcher](06E_WORKER_FINAL_DESIGN_RESUME_RUN_PROMPT.md)
+- [Advisor render-host test scope amendment](48_ADVISOR_RENDER_HOST_TEST_SCOPE_AMENDMENT.md)
+- [Opus Worker render-host test scope handoff](06F_WORKER_RENDER_HOST_TEST_SCOPE_HANDOFF_PROMPT.md)
+- [Opus Worker render-host test scope launcher](06F_WORKER_RENDER_HOST_TEST_SCOPE_RUN_PROMPT.md)
 
 Design: accepted at `381b411`; independent Sentinel design verdict `PASS`.
 
