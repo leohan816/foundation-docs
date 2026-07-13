@@ -3516,3 +3516,29 @@ TRANSPORT: exact named tmux buffer pasted to %20; Codex multiline paste required
 POST_SEND_EVIDENCE: Reviewer stated /fable-sentinel use, read exact 07M handoff and SKILL.md, preserved Agent Office read-only/no-delegation scope
 STATUS: RUNNING
 ```
+## AO-BATCH-A-WORKER-FOURTH-REWORK-20260713T090040Z
+
+```text
+DISPATCH_ID: AO-BATCH-A-WORKER-FOURTH-REWORK-20260713T090040Z
+MISSION_ID: AGENT_OFFICE_BATCH_A_MODERN_OFFICE_IDENTITY_COMPLETION_001
+TARGET_ACTOR: Agent Office Worker-Rework
+TARGET_SESSION: agent-office-opus/$16/@16/%16
+OBSERVED_WORKSPACE: /home/leo/Project/agent-office
+REQUIRED_WORKSPACE: /home/leo/Project/agent-office-batch-a-001
+PROCESS_MODEL: claude; live footer Opus 4.8 (1M) Ultracode
+ROLE_SKILL_READINESS: same Worker; /fable-builder required; third-rework result and STOP visible; idle; no unrelated work or interactive/auth/security prompt
+SYNCHRONIZED_PANES_OFF: true
+LAUNCHER_PATH: /home/leo/Project/foundation-docs/advisor/jobs/20260712_agent_office_batch_a_modern_office_identity_completion_001/09N_WORKER_IMPLEMENTATION_FOURTH_REWORK_RUN_PROMPT.md
+LAUNCHER_COMMIT: f878655
+LAUNCHER_BLOB: 127f4c80a09fed23f3d94770ed3a02e250d166cd
+LAUNCHER_SHA256: 8e64e2f5a1d2774405f377dd9f8ef368e3805980ba6745275428138e2aedc277
+TARGET_EVIDENCE: clean/upstream-equal fcd55a2; Sentinel NEEDS_PATCH result/pointer 0b57b7b/104c8cd; Advisor validation 60 committed/pushed
+PATCH_SCOPE: A4-1 200-percent Office-first equivalent; A4-2 exact actor/label cardinality and negative challenge; A4-3 complete accessible source names
+RESULT_PATH: ../foundation-docs/runs/agent-office/20260712_agent_office_batch_a_modern_office_identity_completion_001/WORKER_FOURTH_REWORK_RESULT.md
+POINTER_PATH: ../foundation-docs/advisor/jobs/20260712_agent_office_batch_a_modern_office_identity_completion_001/19_WORKER_FOURTH_REWORK_RESULT_POINTER.md
+DEPENDENCY_LOCKS: Control stopped; Reviewer stopped; no concurrent Agent Office writer; excluded historical agent-office untouched
+SOFT_STALL_SECONDS: 60
+HARD_TIMEOUT_SECONDS_OR_NONE: none
+PREFLIGHT_VERDICT: PASS_READY_TO_SEND
+STATUS: READY_TO_SEND
+```
