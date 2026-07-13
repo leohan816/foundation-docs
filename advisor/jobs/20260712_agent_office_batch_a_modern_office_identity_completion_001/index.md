@@ -148,6 +148,8 @@ rehearsal, final audit, and Founder Acceptance Sheet.
 - [Advisor Sentinel second-delta validation](60_ADVISOR_SENTINEL_SECOND_DELTA_VALIDATION.md)
 - [Opus Worker focused fourth implementation rework handoff](09N_WORKER_IMPLEMENTATION_FOURTH_REWORK_HANDOFF_PROMPT.md)
 - [Opus Worker focused fourth implementation rework launcher](09N_WORKER_IMPLEMENTATION_FOURTH_REWORK_RUN_PROMPT.md)
+- [Advisor fourth-rework test-exactness addendum](61_ADVISOR_FOURTH_REWORK_TEST_EXACTNESS_ADDENDUM.md)
+- [Opus Worker fourth-rework test-exactness launcher](09N2_WORKER_FOURTH_REWORK_TEST_EXACTNESS_RUN_PROMPT.md)
 
 Current state: same SOL Sentinel returned `NEEDS_PATCH`. A3-1 and normal-scale
 A3-2 are closed, but 200% coverage is 31.42%, the visual gate false-passes with
