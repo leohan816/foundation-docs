@@ -4110,3 +4110,43 @@ SERIALIZATION: Control only; Worker unauthorized; Reviewer stopped
 PREFLIGHT_VERDICT: PASS_READY_TO_SEND_AFTER_CLEARING_STRAY_IDLE_INPUT
 STATUS: READY_TO_DISPATCH
 ```
+
+### AO-A1R-CONTROL-PNG-EXPORT-CORRECTION-20260713T183532Z — sent and completed
+
+```text
+SENT_AT: 2026-07-13T18:37:00Z
+TRANSPORT: cleared stray idle input with Ctrl-U; exact 09E launcher pasted once to %4 and submitted
+COMPLETED_AT: 2026-07-13T18:41:00Z
+RESULT_EVIDENCE: PNG-only correction 11cdf80 and result/pointer 04bf2c7 pushed; exact 2400x1840 signature/dimensions; SVG and all other assets byte-identical
+STATUS: COMPLETED__ADVISOR_ACCEPTED_FOR_SENTINEL_RECHECK
+```
+
+## AO-A1R-SENTINEL-SDR03-RECHECK-20260713T184207Z
+
+```text
+DISPATCH_ID: AO-A1R-SENTINEL-SDR03-RECHECK-20260713T184207Z
+MISSION_ID: AGENT_OFFICE_A1R_LIVING_OFFICE_EXPERIENCE_REFINEMENT_001
+TARGET_ACTOR: Sentinel-ReReview
+TARGET_SESSION: foundation-reviewer-sol
+TARGET_LOCATOR: $20 / @20 / %20
+TARGET_WORKSPACE: /home/leo/Project/foundation-reviewer
+TARGET_REPO: /home/leo/Project/agent-office-a1r-001
+PROCESS_MODEL: Codex PID 711307; gpt-5.6-sol xhigh
+REQUIRED_SKILL: /fable-sentinel
+REVIEW_PASS: DESIGN_REVIEW__A1R_SDR03_VISUAL_REGRESSION_RECHECK
+REVIEW_BASE: 1ab8ad200338d90d230d8d4f3373fa9b73d549c9
+REVIEW_CANDIDATE: 11cdf8074511f29808abb28edb9e8aaedfb03b8f
+LAUNCHER_PATH: advisor/jobs/20260713_agent_office_a1r_living_office_experience_refinement_001/07C_SENTINEL_SDR03_RECHECK_RUN_PROMPT.md
+LAUNCHER_COMMIT: 30193b6419f951b515ece968c648e32553eadaf8
+LAUNCHER_BLOB: fce6b3520e69b7567606215ad07fcf7171685bfc
+LAUNCHER_SHA256: d78b6b48e9074589087ff32cf54cbde805d49c7f22a361402d6125d0586b61df
+RESULT_PATH: runs/agent-office/20260713_agent_office_a1r_living_office_experience_refinement_001/SENTINEL_DESIGN_CONTRACT_VISUAL_REGRESSION_RECHECK_RESULT.md
+POINTER_PATH: advisor/jobs/20260713_agent_office_a1r_living_office_experience_refinement_001/20_SENTINEL_VISUAL_REGRESSION_RECHECK_RESULT_POINTER.md
+REVIEW_SCOPE: A1R-SDR-03 and three direct visual regressions only; no runtime suite or Founder approval
+SERIALIZATION: Control stopped; Worker unauthorized; no competing Reviewer use
+SENT_AT: 2026-07-13T18:42:12Z
+TRANSPORT: exact named tmux buffer pasted once to %20 and submitted
+COMPLETED_AT: 2026-07-13T18:50:10Z
+RESULT_EVIDENCE: PASS result/pointer 7d8d2f1/4a348e9 pushed; A1R-SDR-03 closed; target clean/upstream/direct-origin equal
+STATUS: COMPLETED__PASS__READY_FOR_LEO_MOCKUP_DECISION
+```

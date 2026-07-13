@@ -2669,3 +2669,34 @@ LAUNCHER_STATE: committed/pushed at f32d622; exact blob/SHA-256 recorded
 DEPENDENCY_STATE: Worker unauthorized; Reviewer stopped
 VERDICT: PASS_READY_TO_SEND_AFTER_CLEARING_STRAY_IDLE_INPUT
 ```
+
+### AO-A1R-CONTROL-PNG-EXPORT-CORRECTION-20260713T183532Z — completed
+
+```text
+OBSERVED_AT: 2026-07-13T18:41:00Z
+PANE: %4
+EVIDENCE: exact 09E launcher executed; PNG-only 11cdf80/04bf2c7 pushed; Advisor directly verified 2400x1840, valid signature, one-path delta, and byte-identical SVG
+INTERACTIVE_PROMPT: none
+STATUS: COMPLETED__ADVISOR_ACCEPTED_FOR_SENTINEL_RECHECK
+```
+
+## AO-A1R-SENTINEL-SDR03-RECHECK-20260713T184207Z — lifecycle
+
+```text
+OBSERVED_AT: 2026-07-13T18:42:07Z
+SESSION: foundation-reviewer-sol
+LOCATOR: $20 / @20 / %20
+PROCESS: same Codex PID 711307; gpt-5.6-sol xhigh
+PANE_STATE: prior NEEDS_PATCH result and STOP visible; idle; no approval/auth/error/unrelated work
+TARGET_STATE: clean/upstream/direct-origin equal at 11cdf80
+LAUNCHER_STATE: committed/pushed at 30193b6; exact blob/SHA-256 recorded
+VERDICT: PASS_READY_TO_SEND
+
+OBSERVED_AT: 2026-07-13T18:42:16Z
+EVIDENCE: exact 07C launcher accepted; /fable-sentinel loaded; A1R-SDR-03-only scope and NO_RUNTIME_SUITES visible
+STATUS: RUNNING
+
+OBSERVED_AT: 2026-07-13T18:50:10Z
+EVIDENCE: PASS result/pointer 7d8d2f1/4a348e9 pushed; three measures zero; 2400x1840 PNG and byte-identical SVG verified; no direct regression; Reviewer stopped
+STATUS: COMPLETED__PASS__READY_FOR_LEO_MOCKUP_DECISION
+```
