@@ -3471,3 +3471,12 @@ HARD_TIMEOUT_SECONDS_OR_NONE: none
 PREFLIGHT_VERDICT: PASS_READY_TO_SEND
 STATUS: READY_TO_SEND
 ```
+
+### AO-BATCH-A-WORKER-THIRD-REWORK-20260713T075200Z — sent
+
+```text
+SENT_AT: 2026-07-13T07:53:40Z
+TRANSPORT: cleared idle input with Ctrl-U; exact named tmux buffer pasted once to %16 and submitted with one Enter
+POST_SEND_EVIDENCE: Worker opened exact 09M handoff, identified A3-1/A3-2, verified clean/upstream-equal 1187b9a and Opus 4.8 Ultracode with /fable-builder
+STATUS: RUNNING
+```

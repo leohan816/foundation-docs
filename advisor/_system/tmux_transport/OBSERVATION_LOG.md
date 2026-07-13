@@ -2162,3 +2162,13 @@ LAUNCHER_STATE: committed and pushed at foundation-docs 3a1d724; exact blob/SHA-
 DEPENDENCY_STATE: Control and Reviewer stopped; excluded historical agent-office untouched
 VERDICT: PASS_READY_TO_SEND
 ```
+
+### AO-BATCH-A-WORKER-THIRD-REWORK-20260713T075200Z — dispatch accepted
+
+```text
+OBSERVED_AT: 2026-07-13T07:53:40Z
+PANE: %16
+EVIDENCE: exact launcher visible; Worker directly opened committed 09M handoff and stated the two bounded findings; preflight reported clean/upstream-equal 1187b9a, Opus 4.8 Ultracode, /fable-builder, and single writer
+INTERACTIVE_PROMPT: none
+STATUS: RUNNING
+```
