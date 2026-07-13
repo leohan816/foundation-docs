@@ -5,13 +5,13 @@
 - Control design: `FINAL_ACCEPTED_AT_535F39A`
 - Advisor design validation: `PASS__WORKER_FULL_IMPLEMENTATION_RESUME_AUTHORIZED`
 - Sentinel design review: `PASS__ALL_PRC_AND_FDR_FINDINGS_CLOSED`
-- Opus Worker: `FIFTH_REWORK_AT_95E493C_COMPLETE`
-- Opus Worker implementation rework: `A5_1_A5_2_A5_3_CANDIDATE_COMPLETE`
-- Advisor candidate validation: `ACCEPT_FOR_SAME_SENTINEL_FOURTH_DELTA_REREVIEW`
-- SOL Sentinel: `FOURTH_DELTA_REREVIEW_READY`
-- Patch attempts: `14_CONTROL_DESIGN_PATCHES_COMPLETE__SENTINEL_PASS__4_IMPLEMENTATION_REWORKS_COMPLETE`
+- Opus Worker: `SIXTH_FOCUSED_EVIDENCE_REWORK_READY`
+- Opus Worker implementation rework: `A6_1_A6_2_A6_3_PENDING`
+- Advisor candidate validation: `FOURTH_SENTINEL_NEEDS_PATCH_ACCEPTED_AS_ROUTINE`
+- SOL Sentinel: `FOURTH_DELTA_NEEDS_PATCH__SAME_SESSION_REREVIEW_REQUIRED_AFTER_WORKER`
+- Patch attempts: `14_CONTROL_DESIGN_PATCHES_COMPLETE__SENTINEL_PASS__5_IMPLEMENTATION_REWORKS_COMPLETE`
 - Final audit: `WAITING`
-- Next actor: same existing `foundation-reviewer-sol` Sentinel fourth implementation delta re-review
+- Next actor: same existing `agent-office-opus` Worker sixth focused evidence rework
 - Batch B: `NOT_STARTED_NOT_AUTHORIZED`
 - [Worker fourth-rework result pointer](19_WORKER_FOURTH_REWORK_RESULT_POINTER.md)
 - [Advisor Worker fourth-rework validation](62_ADVISOR_WORKER_FOURTH_REWORK_VALIDATION.md)
@@ -27,3 +27,7 @@
 - [Advisor Worker fifth-rework validation](65_ADVISOR_WORKER_FIFTH_REWORK_VALIDATION.md)
 - [SOL Sentinel fourth implementation delta re-review handoff](07O_SENTINEL_IMPLEMENTATION_FOURTH_DELTA_REREVIEW_HANDOFF_PROMPT.md)
 - [SOL Sentinel fourth implementation delta re-review launcher](07O_SENTINEL_IMPLEMENTATION_FOURTH_DELTA_REREVIEW_RUN_PROMPT.md)
+- [SOL Sentinel fourth implementation delta result pointer](22_SENTINEL_IMPLEMENTATION_FOURTH_DELTA_REREVIEW_RESULT_POINTER.md)
+- [Advisor Sentinel fourth-delta validation](66_ADVISOR_SENTINEL_FOURTH_DELTA_VALIDATION.md)
+- [Opus Worker sixth focused evidence rework handoff](09P_WORKER_IMPLEMENTATION_SIXTH_REWORK_HANDOFF_PROMPT.md)
+- [Opus Worker sixth focused evidence rework launcher](09P_WORKER_IMPLEMENTATION_SIXTH_REWORK_RUN_PROMPT.md)

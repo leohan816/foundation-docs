@@ -164,9 +164,15 @@ rehearsal, final audit, and Founder Acceptance Sheet.
 - [Advisor Worker fifth-rework validation](65_ADVISOR_WORKER_FIFTH_REWORK_VALIDATION.md)
 - [SOL Sentinel fourth implementation delta re-review handoff](07O_SENTINEL_IMPLEMENTATION_FOURTH_DELTA_REREVIEW_HANDOFF_PROMPT.md)
 - [SOL Sentinel fourth implementation delta re-review launcher](07O_SENTINEL_IMPLEMENTATION_FOURTH_DELTA_REREVIEW_RUN_PROMPT.md)
+- [SOL Sentinel fourth implementation delta result pointer](22_SENTINEL_IMPLEMENTATION_FOURTH_DELTA_REREVIEW_RESULT_POINTER.md)
+- [Advisor Sentinel fourth-delta validation](66_ADVISOR_SENTINEL_FOURTH_DELTA_VALIDATION.md)
+- [Opus Worker sixth focused evidence rework handoff](09P_WORKER_IMPLEMENTATION_SIXTH_REWORK_HANDOFF_PROMPT.md)
+- [Opus Worker sixth focused evidence rework launcher](09P_WORKER_IMPLEMENTATION_SIXTH_REWORK_RUN_PROMPT.md)
 
-Current state: Opus Worker fifth focused rework and Advisor exactness addendum
-are committed/pushed at `95e493c`. Advisor reproduced the affected unit `12/12`
-and Living Office `3/3` gates and accepted A5-1/A5-2/A5-3 for the same SOL
-Sentinel's fourth narrow implementation re-review. Final rehearsal/audit/Founder
-approval remain pending; Batch B remains not started and unauthorized.
+Current state: the same SOL Sentinel directly verified the A5-1 production
+drawer/focus behavior and A5-3 source proof, but returned routine `NEEDS_PATCH`
+because the committed A5-2 predicates false-pass empty actual values and
+wrong/duplicate roster triggers, and the initial-200% as-built proof is
+overstated. The same Opus Worker sixth narrow evidence patch is ready. Final
+rehearsal/audit/Founder approval remain pending; Batch B remains not started and
+unauthorized.
