@@ -186,6 +186,7 @@ rehearsal, final audit, and Founder Acceptance Sheet.
 - [Founder Acceptance Sheet](72_FOUNDER_ACCEPTANCE_SHEET.md)
 - [Advisor final audit](05_FINAL_AUDIT.md)
 - [Final closure pointer](73_FINAL_CLOSURE_POINTER.md)
+- [Leo/GPT final return](74_LEO_GPT_FINAL_RETURN.md)
 
 Current state: the same Opus Worker published the final test/docs-only A7 patch
 at `58a484b`. The independent SOL Sentinel returned `PASS`; the Advisor then

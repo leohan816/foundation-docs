@@ -13,6 +13,7 @@ DESIGN_REVIEW: PASS
 IMPLEMENTATION_REVIEW: PASS
 FINAL_AUDIT: /home/leo/Project/foundation-docs/advisor/jobs/20260712_agent_office_batch_a_modern_office_identity_completion_001/05_FINAL_AUDIT.md
 FOUNDER_ACCEPTANCE_SHEET: /home/leo/Project/foundation-docs/advisor/jobs/20260712_agent_office_batch_a_modern_office_identity_completion_001/72_FOUNDER_ACCEPTANCE_SHEET.md
+LEO_GPT_FINAL_RETURN: /home/leo/Project/foundation-docs/advisor/jobs/20260712_agent_office_batch_a_modern_office_identity_completion_001/74_LEO_GPT_FINAL_RETURN.md
 LOCAL_REHEARSAL: /home/leo/Project/foundation-docs/advisor/jobs/20260712_agent_office_batch_a_modern_office_identity_completion_001/71_FINAL_LOCAL_REHEARSAL.md
 SENTINEL_RESULT: /home/leo/Project/foundation-docs/runs/agent-office/20260712_agent_office_batch_a_modern_office_identity_completion_001/SENTINEL_IMPLEMENTATION_SIXTH_DELTA_REREVIEW_RESULT.md
 RUNTIME_STATE: STOPPED_SAFE
