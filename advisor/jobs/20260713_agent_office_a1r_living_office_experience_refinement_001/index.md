@@ -7,11 +7,14 @@
 - [Sentinel design-contract review brief](03_SENTINEL_DESIGN_CONTRACT_REVIEW_BRIEF.md)
 - [Advisor validation of Control candidate](04_ADVISOR_CONTROL_DESIGN_VALIDATION.md)
 - [Advisor candidate acceptance for review](05_ADVISOR_DESIGN_CANDIDATE_ACCEPTANCE.md)
+- [Advisor final static-design candidate acceptance](05B_ADVISOR_FINAL_STATIC_DESIGN_ACCEPTANCE.md)
 - [Reviewer routing decision](05A_REVIEWER_ROUTING_DECISION.md)
 - [Control handoff](06_CONTROL_STATIC_DESIGN_HANDOFF_PROMPT.md)
 - [Control launcher](06_CONTROL_STATIC_DESIGN_RUN_PROMPT.md)
 - [Sentinel handoff](07_SENTINEL_DESIGN_CONTRACT_REVIEW_HANDOFF_PROMPT.md)
 - [Sentinel launcher](07_SENTINEL_DESIGN_CONTRACT_REVIEW_RUN_PROMPT.md)
+- [Sentinel finding-specific delta re-review handoff](07B_SENTINEL_DESIGN_DELTA_REREVIEW_HANDOFF_PROMPT.md)
+- [Sentinel finding-specific delta re-review launcher](07B_SENTINEL_DESIGN_DELTA_REREVIEW_RUN_PROMPT.md)
 - [Control narrow patch handoff](09_CONTROL_DESIGN_PATCH_HANDOFF_PROMPT.md)
 - [Control narrow patch launcher](09_CONTROL_DESIGN_PATCH_RUN_PROMPT.md)
 - [Advisor classification of Sentinel findings](13_ADVISOR_SENTINEL_FINDING_CLASSIFICATION.md)
@@ -28,8 +31,9 @@ Current state: Control published initial design `d33dfc9` and narrow correction
 `b966c6a`. The independent product-first Sentinel review returned `NEEDS_PATCH`
 with six bounded design/static-evidence findings. Advisor classified all six as
 patchable without a new product or authority decision. Control published exact
-finding patch `8522f3c`; Advisor verified its scope, contracts, and four changed
-PNGs, then found four text-only metadata inconsistencies to correct before the
-same-Sentinel delta re-review. Worker implementation remains forbidden until the
-same Reviewer returns a clean design delta `PASS` and Leo approves the static
-mockups.
+finding patch `8522f3c` and text-only metadata correction `1ab8ad2`. Advisor
+verified the exact scope, contracts, all four changed PNGs at original size,
+Git/upstream state, and the four metadata closures. The final static candidate
+is accepted for the same-Sentinel finding-specific delta re-review. Worker
+implementation remains forbidden until that Reviewer returns a clean design
+delta `PASS` and Leo approves the static mockups.
