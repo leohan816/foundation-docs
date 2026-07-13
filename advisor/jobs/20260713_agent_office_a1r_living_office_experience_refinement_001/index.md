@@ -24,6 +24,8 @@
 - [Advisor final visual-patch acceptance](18B_ADVISOR_FINAL_VISUAL_PATCH_ACCEPTANCE.md)
 - [Sentinel SDR-03 re-check handoff](07C_SENTINEL_SDR03_RECHECK_HANDOFF_PROMPT.md)
 - [Sentinel SDR-03 re-check launcher](07C_SENTINEL_SDR03_RECHECK_RUN_PROMPT.md)
+- [Founder static mockup approval package](21_FOUNDER_STATIC_MOCKUP_APPROVAL_PACKAGE.md)
+- [Advisor static design return pointer](22_ADVISOR_STATIC_DESIGN_RETURN_POINTER.md)
 - [Control narrow patch handoff](09_CONTROL_DESIGN_PATCH_HANDOFF_PROMPT.md)
 - [Control narrow patch launcher](09_CONTROL_DESIGN_PATCH_RUN_PROMPT.md)
 - [Advisor classification of Sentinel findings](13_ADVISOR_SENTINEL_FINDING_CLASSIFICATION.md)
@@ -50,5 +52,5 @@ measures in `ad147ec`; Advisor accepted the reflow but caught a 1x PNG export
 where the contract requires 2x, so a PNG-only export correction precedes the
 same Reviewer focused re-check. The final candidate is `11cdf80`, with a
 byte-identical final SVG and corrected `2400×1840` PNG. Worker implementation
-remains forbidden until a clean design delta `PASS` and Leo approves the static
-mockups.
+remains forbidden. The same Reviewer returned final `PASS` and closed
+`A1R-SDR-03`; the reviewed package now waits for Leo/GPT static mockup approval.
