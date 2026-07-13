@@ -2492,3 +2492,13 @@ SYNCHRONIZED_PANES: off
 DEPENDENCY_STATE: Control stopped; Worker unauthorized; no competing Reviewer use
 VERDICT: PASS_READY_TO_SEND
 ```
+
+### AO-A1R-SENTINEL-DESIGN-REVIEW-20260713T171800Z — dispatch accepted
+
+```text
+OBSERVED_AT: 2026-07-13T17:19:03Z
+PANE: %20
+EVIDENCE: exact launcher visible with /fable-sentinel, review base 58a484b, candidate b966c6a, product-first static review contract, and Advisor-accepted flag; same Reviewer entered Working state
+INTERACTIVE_PROMPT: none
+STATUS: RUNNING
+```
