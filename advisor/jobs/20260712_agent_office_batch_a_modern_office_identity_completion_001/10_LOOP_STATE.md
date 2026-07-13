@@ -8,10 +8,11 @@
 - Opus Worker: `SEVENTH_REWORK_AT_58A484B_COMPLETE`
 - Opus Worker implementation rework: `A7_CANDIDATE_COMPLETE`
 - Advisor candidate validation: `ACCEPT_FOR_SAME_SENTINEL_SIXTH_DELTA_REREVIEW`
-- SOL Sentinel: `SIXTH_DELTA_REREVIEW_READY`
-- Patch attempts: `14_CONTROL_DESIGN_PATCHES_COMPLETE__SENTINEL_PASS__5_IMPLEMENTATION_REWORKS_COMPLETE`
-- Final audit: `WAITING`
-- Next actor: same existing `foundation-reviewer-sol` Sentinel sixth implementation delta re-review
+- SOL Sentinel: `SIXTH_DELTA_REREVIEW_PASS__IMPLEMENTATION_REVIEW_COMPLETE`
+- Patch attempts: `CONTROL_DESIGN_PATCH_TRAIN_COMPLETE__7_IMPLEMENTATION_REWORKS_COMPLETE`
+- Final rehearsal: `PASS`
+- Final audit: `PASS__AWAITING_LEO_GPT_FOUNDER_APPROVAL`
+- Next actor: `Leo/GPT`
 - Batch B: `NOT_STARTED_NOT_AUTHORIZED`
 - [Worker fourth-rework result pointer](19_WORKER_FOURTH_REWORK_RESULT_POINTER.md)
 - [Advisor Worker fourth-rework validation](62_ADVISOR_WORKER_FOURTH_REWORK_VALIDATION.md)
@@ -43,3 +44,9 @@
 - [Advisor Worker seventh-rework validation](69_ADVISOR_WORKER_SEVENTH_REWORK_VALIDATION.md)
 - [SOL Sentinel sixth implementation delta re-review handoff](07Q_SENTINEL_IMPLEMENTATION_SIXTH_DELTA_REREVIEW_HANDOFF_PROMPT.md)
 - [SOL Sentinel sixth implementation delta re-review launcher](07Q_SENTINEL_IMPLEMENTATION_SIXTH_DELTA_REREVIEW_RUN_PROMPT.md)
+- [SOL Sentinel sixth implementation delta result pointer](26_SENTINEL_IMPLEMENTATION_SIXTH_DELTA_REREVIEW_RESULT_POINTER.md)
+- [Advisor Sentinel sixth-delta validation](70_ADVISOR_SENTINEL_SIXTH_DELTA_VALIDATION.md)
+- [Final local rehearsal](71_FINAL_LOCAL_REHEARSAL.md)
+- [Founder Acceptance Sheet](72_FOUNDER_ACCEPTANCE_SHEET.md)
+- [Advisor final audit](05_FINAL_AUDIT.md)
+- [Final closure pointer](73_FINAL_CLOSURE_POINTER.md)

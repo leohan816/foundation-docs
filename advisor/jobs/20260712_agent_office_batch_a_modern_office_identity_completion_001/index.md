@@ -180,10 +180,15 @@ rehearsal, final audit, and Founder Acceptance Sheet.
 - [Advisor Worker seventh-rework validation](69_ADVISOR_WORKER_SEVENTH_REWORK_VALIDATION.md)
 - [SOL Sentinel sixth implementation delta re-review handoff](07Q_SENTINEL_IMPLEMENTATION_SIXTH_DELTA_REREVIEW_HANDOFF_PROMPT.md)
 - [SOL Sentinel sixth implementation delta re-review launcher](07Q_SENTINEL_IMPLEMENTATION_SIXTH_DELTA_REREVIEW_RUN_PROMPT.md)
+- [SOL Sentinel sixth implementation delta result pointer](26_SENTINEL_IMPLEMENTATION_SIXTH_DELTA_REREVIEW_RESULT_POINTER.md)
+- [Advisor Sentinel sixth-delta validation](70_ADVISOR_SENTINEL_SIXTH_DELTA_VALIDATION.md)
+- [Final local rehearsal](71_FINAL_LOCAL_REHEARSAL.md)
+- [Founder Acceptance Sheet](72_FOUNDER_ACCEPTANCE_SHEET.md)
+- [Advisor final audit](05_FINAL_AUDIT.md)
+- [Final closure pointer](73_FINAL_CLOSURE_POINTER.md)
 
-Current state: the same Opus Worker published the test/docs-only A7 patch at
-`58a484b`. Advisor directly inspected the five-file delta and reproduced
-targeted lint, typecheck, and the real Living Office `3/3` gate. The same SOL
-Sentinel sixth narrow delta re-review is ready to reapply the two exact attacks.
-Final rehearsal/audit/Founder approval remain pending; Batch B remains not
-started and unauthorized.
+Current state: the same Opus Worker published the final test/docs-only A7 patch
+at `58a484b`. The independent SOL Sentinel returned `PASS`; the Advisor then
+reproduced the current production build, loopback start/open/stop cleanup, and
+desktop/mobile/reduced Living Office `3/3` gate. Final audit is `PASS` and only
+Leo/GPT Founder approval remains. Batch B remains not started and unauthorized.
