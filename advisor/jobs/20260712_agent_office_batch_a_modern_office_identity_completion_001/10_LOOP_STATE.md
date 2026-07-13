@@ -5,11 +5,11 @@
 - Control design: `FINAL_ACCEPTED_AT_535F39A`
 - Advisor design validation: `PASS__WORKER_FULL_IMPLEMENTATION_RESUME_AUTHORIZED`
 - Sentinel design review: `PASS__ALL_PRC_AND_FDR_FINDINGS_CLOSED`
-- Opus Worker: `RENDER_HOST_TEST_SCOPE_EXCEPTION_VALIDATED__READY_TO_RESUME_FROM_DA2AD0E`
-- Opus Worker implementation rework: `FIRST_REWORK_AT_74D5866_REVIEWED_NEEDS_PATCH`
-- Advisor candidate validation: `SECOND_ROUTINE_REWORK_AUTHORIZED`
+- Opus Worker: `SECOND_REWORK_AT_1187B9A_COMPLETE`
+- Opus Worker implementation rework: `THIRD_FOCUSED_REWORK_REQUIRED__TEAM_AND_OFFICE_OCCLUSION_ONLY`
+- Advisor candidate validation: `REJECT_FOR_REVIEW__A3_1_A3_2_ROUTINE_PATCHABLE`
 - SOL Sentinel: `NEEDS_PATCH__SIR3_CLOSED__SIR1_SIR2_SIR4_PARTIAL__SIR5_REGRESSION`
-- Patch attempts: `14_CONTROL_DESIGN_PATCHES_COMPLETE__SENTINEL_PASS__1_IMPLEMENTATION_REWORK_REVIEWED__SECOND_REWORK_READY`
+- Patch attempts: `14_CONTROL_DESIGN_PATCHES_COMPLETE__SENTINEL_PASS__2_IMPLEMENTATION_REWORKS_COMPLETE__THIRD_FOCUSED_REWORK_READY`
 - Final audit: `WAITING`
-- Next actor: same existing `agent-office-opus` Worker second implementation rework
+- Next actor: same existing `agent-office-opus` Worker focused third implementation rework
 - Batch B: `NOT_STARTED_NOT_AUTHORIZED`

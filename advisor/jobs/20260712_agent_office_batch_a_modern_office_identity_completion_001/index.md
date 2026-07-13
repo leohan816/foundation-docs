@@ -136,8 +136,14 @@ rehearsal, final audit, and Founder Acceptance Sheet.
 - [Advisor Sentinel implementation delta validation](56_ADVISOR_SENTINEL_IMPLEMENTATION_DELTA_VALIDATION.md)
 - [Opus Worker second implementation rework handoff](09L_WORKER_IMPLEMENTATION_SECOND_REWORK_HANDOFF_PROMPT.md)
 - [Opus Worker second implementation rework launcher](09L_WORKER_IMPLEMENTATION_SECOND_REWORK_RUN_PROMPT.md)
+- [Opus Worker second rework result pointer](16_WORKER_SECOND_REWORK_RESULT_POINTER.md)
+- [Advisor Worker second-rework validation](58_ADVISOR_WORKER_SECOND_REWORK_VALIDATION.md)
+- [Opus Worker focused third implementation rework handoff](09M_WORKER_IMPLEMENTATION_THIRD_REWORK_HANDOFF_PROMPT.md)
+- [Opus Worker focused third implementation rework launcher](09M_WORKER_IMPLEMENTATION_THIRD_REWORK_RUN_PROMPT.md)
 
-Current state: same-session SOL Sentinel returned `NEEDS_PATCH`; SIR-3 is closed
-and I2-1 through I2-4 are accepted as routine patchable Batch A defects. The
-same Opus Worker second rework is ready. Final audit and Founder approval remain
-pending; Batch B remains not started and unauthorized.
+Current state: the second Worker rework closed I2-1/I2-3/I2-4 technically, but
+Advisor direct current-candidate pixel inspection found two review-blocking,
+routine patchable first-layer defects: missing Team and excessive desktop
+Office occlusion. The same Opus Worker focused third rework is ready. Final
+Sentinel re-review, audit, and Founder approval remain pending; Batch B remains
+not started and unauthorized.
