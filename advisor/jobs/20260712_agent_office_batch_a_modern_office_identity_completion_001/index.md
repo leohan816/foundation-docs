@@ -87,6 +87,10 @@
 - [Advisor final textual-consistency validation](42_ADVISOR_CONTROL_TEXT_CONSISTENCY_VALIDATION.md)
 - [SOL Sentinel final design delta handoff](07I_SENTINEL_FINAL_DESIGN_DELTA_REREVIEW_HANDOFF_PROMPT.md)
 - [SOL Sentinel final design delta launcher](07I_SENTINEL_FINAL_DESIGN_DELTA_REREVIEW_RUN_PROMPT.md)
+- [SOL Sentinel final design delta result pointer](43_SENTINEL_FINAL_DESIGN_DELTA_REREVIEW_RESULT_POINTER.md)
+- [Advisor Sentinel final design review validation](44_ADVISOR_SENTINEL_FINAL_DESIGN_REVIEW_VALIDATION.md)
+- [Control final source-exactness handoff](09N_CONTROL_FINAL_SOURCE_EXACTNESS_CORRECTION_HANDOFF_PROMPT.md)
+- [Control final source-exactness launcher](09N_CONTROL_FINAL_SOURCE_EXACTNESS_CORRECTION_RUN_PROMPT.md)
 
 Design: accepted at `381b411`; independent Sentinel design verdict `PASS`.
 

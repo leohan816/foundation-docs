@@ -2,13 +2,13 @@
 
 - Mission: `AGENT_OFFICE_BATCH_A_MODERN_OFFICE_IDENTITY_COMPLETION_001`
 - Entry: `PASSED_WITH_ISOLATED_WORKTREE`
-- Control design: `FINAL_CONSISTENT_CANDIDATE_D65716C`
-- Advisor design validation: `READY_FOR_SAME_SENTINEL_FINAL_DESIGN_DELTA_REREVIEW`
-- Sentinel design review: `WAITING_FOR_FINAL_DELTA_REREVIEW`
+- Control design: `D65716C_REVIEWED__THREE_SOURCE_EXACTNESS_PATCHES_REQUIRED`
+- Advisor design validation: `ACCEPT_NEEDS_PATCH__ROUTE_FDR1_FDR2_FDR3_TO_CONTROL`
+- Sentinel design review: `NEEDS_PATCH__PRC5_REGRESSION_PRC6_PRC8_PARTIAL`
 - Opus Worker: `STOPPED_CLEAN__3_IMPLEMENTATION_COMMITS__PRODUCTION_RENDER_SCOPE_GAP`
 - Advisor candidate validation: `WAITING`
 - SOL Sentinel: `WAITING_FOR_ACCEPTED_CANDIDATE`
-- Patch attempts: `13_CONTROL_PATCHES_COMPLETE__PENDING_SENTINEL`
+- Patch attempts: `14_CONTROL_SOURCE_EXACTNESS_PATCH_PENDING`
 - Final audit: `WAITING`
-- Next actor: `foundation-reviewer-sol` final design delta re-review
+- Next actor: `foundation-control` exact FDR-1/FDR-2/FDR-3 correction
 - Batch B: `NOT_STARTED_NOT_AUTHORIZED`
