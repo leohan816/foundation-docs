@@ -5,15 +5,19 @@
 - Control design: `FINAL_ACCEPTED_AT_535F39A`
 - Advisor design validation: `PASS__WORKER_FULL_IMPLEMENTATION_RESUME_AUTHORIZED`
 - Sentinel design review: `PASS__ALL_PRC_AND_FDR_FINDINGS_CLOSED`
-- Opus Worker: `FOURTH_REWORK_AT_43107B9_COMPLETE`
-- Opus Worker implementation rework: `A4_1_A4_2_A4_3_CANDIDATE_COMPLETE`
-- Advisor candidate validation: `ACCEPT_FOR_SAME_SENTINEL_THIRD_DELTA_REREVIEW`
-- SOL Sentinel: `THIRD_DELTA_REREVIEW_READY`
+- Opus Worker: `FOURTH_REWORK_AT_43107B9_REVIEWED_NEEDS_PATCH`
+- Opus Worker implementation rework: `A5_1_A5_2_A5_3_FIFTH_FOCUSED_REWORK_READY`
+- Advisor candidate validation: `ROUTINE_PATCHABLE_WITHIN_APPROVED_A4_SCOPE`
+- SOL Sentinel: `THIRD_DELTA_NEEDS_PATCH__A5_1_A5_2_A5_3_ROUTINE`
 - Patch attempts: `14_CONTROL_DESIGN_PATCHES_COMPLETE__SENTINEL_PASS__4_IMPLEMENTATION_REWORKS_COMPLETE`
 - Final audit: `WAITING`
-- Next actor: same existing `foundation-reviewer-sol` Sentinel third implementation delta re-review
+- Next actor: same existing `agent-office-opus` Worker fifth focused implementation rework
 - Batch B: `NOT_STARTED_NOT_AUTHORIZED`
 - [Worker fourth-rework result pointer](19_WORKER_FOURTH_REWORK_RESULT_POINTER.md)
 - [Advisor Worker fourth-rework validation](62_ADVISOR_WORKER_FOURTH_REWORK_VALIDATION.md)
 - [SOL Sentinel third implementation delta re-review handoff](07N_SENTINEL_IMPLEMENTATION_THIRD_DELTA_REREVIEW_HANDOFF_PROMPT.md)
 - [SOL Sentinel third implementation delta re-review launcher](07N_SENTINEL_IMPLEMENTATION_THIRD_DELTA_REREVIEW_RUN_PROMPT.md)
+- [SOL Sentinel third implementation delta result pointer](20_SENTINEL_IMPLEMENTATION_THIRD_DELTA_REREVIEW_RESULT_POINTER.md)
+- [Advisor Sentinel third-delta validation](63_ADVISOR_SENTINEL_THIRD_DELTA_VALIDATION.md)
+- [Opus Worker fifth focused rework handoff](09O_WORKER_IMPLEMENTATION_FIFTH_REWORK_HANDOFF_PROMPT.md)
+- [Opus Worker fifth focused rework launcher](09O_WORKER_IMPLEMENTATION_FIFTH_REWORK_RUN_PROMPT.md)
