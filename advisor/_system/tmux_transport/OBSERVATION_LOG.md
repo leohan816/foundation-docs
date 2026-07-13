@@ -1913,3 +1913,29 @@ SENSITIVE_OUTPUT_SUSPECTED: false
 ACTION_TAKEN: verified same session/workspace/model/effort and serialized scope; cleared stale unsubmitted suggestion only; pasted and submitted exact launcher once
 NEXT_OBSERVATION_DUE: at most 60 seconds or on progress/result signal
 ```
+
+### AO-BATCH-A-CONTROL-FINAL-FIVE-20260712T234800Z - completion
+
+```text
+OBSERVED_AT: 2026-07-12T23:58:00Z
+PANE_ID: %4
+STATE: COMPLETED_REPORTED
+OUTPUT_FINGERPRINT: Control returned docs-only candidate 8c5d0c2 and result 4d5a8c1, then STOP
+INTERACTIVE_PROMPT_PRESENT: false
+SENSITIVE_OUTPUT_SUSPECTED: false
+ACTION_TAKEN: Advisor inspected the exact diff and found five stale statements contradicting the intended final-five rules; published validation 41 and an exact same-Control text patch
+NEXT_OBSERVATION_DUE: none; same Control preflight follows
+```
+
+## AO-BATCH-A-CONTROL-TEXT-CONSISTENCY-20260713T000100Z
+
+```text
+OBSERVED_AT: 2026-07-13T00:01:00Z
+PANE_ID: %4
+STATE: RUNNING
+OUTPUT_FINGERPRINT: exact 09M launcher submitted; Control opened the handoff under Opus 4.8 (1M) xhigh
+INTERACTIVE_PROMPT_PRESENT: false
+SENSITIVE_OUTPUT_SUSPECTED: false
+ACTION_TAKEN: verified same session/workspace/model/effort and serialized scope; exact buffer pasted once and submitted once
+NEXT_OBSERVATION_DUE: at most 60 seconds or on progress/result signal
+```

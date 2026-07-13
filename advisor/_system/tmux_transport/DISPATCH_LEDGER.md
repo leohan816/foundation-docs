@@ -3078,3 +3078,49 @@ SENT_AT: 2026-07-12T23:48:00Z
 TRANSPORT: stale unsent line cleared with Ctrl-U; exact named tmux buffer ao_batch_a_final_five_20260712 pasted once to foundation-control/%4 and submitted with one Enter
 STATUS: RUNNING
 ```
+
+### AO-BATCH-A-CONTROL-FINAL-FIVE-20260712T234800Z - completed
+
+```text
+COMPLETED_AT: 2026-07-12T23:58:00Z
+STATUS: COMPLETED_ADVISOR_CORRECTION_REQUIRED
+TARGET_COMMIT: 8c5d0c25c8b91fbe2bf47ac25dde46494c4a982c
+RESULT_COMMIT: 4d5a8c1
+SCOPE_EVIDENCE: four canonical docs only; zero source/test/config change; target clean/upstream-equal
+ADVISOR_VERDICT: FIVE_STALE_TEXTUAL_CONTRADICTIONS_REQUIRE_EXACT_CONTROL_PATCH
+NEXT_DEPENDENCY: same Control textual consistency patch
+```
+
+## AO-BATCH-A-CONTROL-TEXT-CONSISTENCY-20260713T000100Z
+
+```text
+DISPATCH_ID: AO-BATCH-A-CONTROL-TEXT-CONSISTENCY-20260713T000100Z
+MISSION_ID: AGENT_OFFICE_BATCH_A_MODERN_OFFICE_IDENTITY_COMPLETION_001
+TARGET_ACTOR: Control-Rework
+TARGET_SESSION: foundation-control/$4/@4/%4
+OBSERVED_WORKSPACE: /home/leo/Project/foundation-control
+PROCESS_MODEL: claude; live Control context remains Opus 4.8 (1M) xhigh
+ROLE_SKILL_READINESS: same Control session; prior result and STOP visible; idle; no interactive/auth/security prompt
+SYNCHRONIZED_PANES_OFF: true
+LAUNCHER_PATH: /home/leo/Project/foundation-docs/advisor/jobs/20260712_agent_office_batch_a_modern_office_identity_completion_001/09M_CONTROL_FINAL_TEXTUAL_CONSISTENCY_RUN_PROMPT.md
+LAUNCHER_COMMIT: 731f22612925621a0d9e23d06d4674d86914f522
+LAUNCHER_BLOB: 81a1f6f16f04db0dffb95aa5a9fe54e33706a9c0
+LAUNCHER_SHA256: 8e3e7c178b4da5e6e749afc2b3c17cb44410b6deb8be2f552706af86dc7f73a9
+TARGET_EVIDENCE: candidate 8c5d0c2 clean/upstream-equal; Advisor validation 41 and exact launcher committed/upstream-equal
+SCOPE: exact stale-text consistency correction only; no redesign or implementation
+RESULT_PATH: ../foundation-docs/runs/agent-office/20260712_agent_office_batch_a_modern_office_identity_completion_001/CONTROL_DESIGN_RESULT.md
+POINTER_PATH: ../foundation-docs/advisor/jobs/20260712_agent_office_batch_a_modern_office_identity_completion_001/11_CONTROL_DESIGN_RESULT_POINTER.md
+DEPENDENCY_LOCKS: Worker stopped clean; Reviewer stopped; no concurrent Agent Office writer
+SOFT_STALL_SECONDS: 60
+HARD_TIMEOUT_SECONDS_OR_NONE: none
+PREFLIGHT_VERDICT: PASS_READY_TO_SEND
+STATUS: RUNNING
+```
+
+### AO-BATCH-A-CONTROL-TEXT-CONSISTENCY-20260713T000100Z - sent
+
+```text
+SENT_AT: 2026-07-13T00:01:00Z
+TRANSPORT: exact named tmux buffer ao_batch_a_text_consistency_20260712 pasted once to foundation-control/%4 and submitted with one Enter
+STATUS: RUNNING
+```
