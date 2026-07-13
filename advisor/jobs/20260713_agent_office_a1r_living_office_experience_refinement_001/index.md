@@ -14,11 +14,16 @@
 - [Sentinel launcher](07_SENTINEL_DESIGN_CONTRACT_REVIEW_RUN_PROMPT.md)
 - [Control narrow patch handoff](09_CONTROL_DESIGN_PATCH_HANDOFF_PROMPT.md)
 - [Control narrow patch launcher](09_CONTROL_DESIGN_PATCH_RUN_PROMPT.md)
+- [Advisor classification of Sentinel findings](13_ADVISOR_SENTINEL_FINDING_CLASSIFICATION.md)
+- [Control Sentinel-finding patch handoff](09B_CONTROL_SENTINEL_PATCH_HANDOFF_PROMPT.md)
+- [Control Sentinel-finding patch launcher](09B_CONTROL_SENTINEL_PATCH_RUN_PROMPT.md)
 - [Control patch result pointer](14_CONTROL_STATIC_DESIGN_PATCH_RESULT_POINTER.md)
+- [Sentinel design review result pointer](12_SENTINEL_DESIGN_CONTRACT_REVIEW_RESULT_POINTER.md)
 - [Loop state](10_LOOP_STATE.md)
 
 Current state: Control published initial design `d33dfc9` and narrow correction
-`b966c6a`. Advisor directly verified the exact diff and all full-size PNGs;
-A1R-ADV-01 and A1R-ADV-02 are closed. Candidate `b966c6a` is ready for one
-independent product-first design-contract review. Worker implementation remains
-forbidden until independent design `PASS` and Leo mockup approval.
+`b966c6a`. The independent product-first Sentinel review returned `NEEDS_PATCH`
+with six bounded design/static-evidence findings. Advisor classified all six as
+patchable without a new product or authority decision and prepared an exact
+same-Control correction. Worker implementation remains forbidden until the same
+Reviewer returns a clean design delta `PASS` and Leo approves the static mockups.

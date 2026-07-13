@@ -4,15 +4,17 @@
 - Entry gate: `PASSED_FOR_STATIC_DESIGN_ONLY`
 - Evidence inventory: `COMPLETE`
 - Isolated design branch: `READY_AT_58A484B`
-- Control: `DESIGN_B966C6A_COMPLETE__ADVISOR_ACCEPTED_FOR_REVIEW`
-- Sentinel: `READY_TO_DISPATCH_AT_B966C6A`
+- Control: `DESIGN_B966C6A_COMPLETE__SENTINEL_FINDING_PATCH_READY`
+- Sentinel: `NEEDS_PATCH__A1R_SDR_01_THROUGH_06`
 - Worker: `NOT_AUTHORIZED`
 - Leo mockup approval: `PENDING`
 - Batch A Founder approval: `WITHHELD`
 - Batch B: `NOT_STARTED_NOT_AUTHORIZED`
 - Advisor validation: `A1R-ADV-01_CLOSED` + `A1R-ADV-02_CLOSED`
-- Next actor: existing independent `foundation-reviewer-sol`
+- Next actor: same existing `foundation-control`, then same independent
+  `foundation-reviewer-sol` for a finding-specific delta re-review
 
-Proportional process: one full design pass, one independent design-contract
-review, and finding-specific deltas only. No runtime suite during design-only
-work.
+Proportional process: the complete independent design-contract review is done.
+Only `A1R-SDR-01..06` and directly affected static assets may change now. No
+runtime suite during design-only work. Worker remains unauthorized until a
+clean design delta `PASS` and Leo static-mockup approval.
