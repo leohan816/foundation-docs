@@ -2210,3 +2210,13 @@ LAUNCHER_STATE: committed/pushed at f878655; exact blob/SHA-256 recorded
 DEPENDENCY_STATE: Reviewer and Control stopped; no concurrent writer; excluded historical agent-office untouched
 VERDICT: PASS_READY_TO_SEND
 ```
+
+### AO-BATCH-A-WORKER-FOURTH-REWORK-20260713T090040Z — dispatch accepted
+
+```text
+OBSERVED_AT: 2026-07-13T09:02:00Z
+PANE: %16
+EVIDENCE: exact launcher visible; Worker directly opened committed 09N handoff, accurately restated all three bounded findings, and started clean-base/upstream verification
+INTERACTIVE_PROMPT: none
+STATUS: RUNNING
+```

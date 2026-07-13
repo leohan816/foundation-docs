@@ -3542,3 +3542,12 @@ HARD_TIMEOUT_SECONDS_OR_NONE: none
 PREFLIGHT_VERDICT: PASS_READY_TO_SEND
 STATUS: READY_TO_SEND
 ```
+
+### AO-BATCH-A-WORKER-FOURTH-REWORK-20260713T090040Z — sent
+
+```text
+SENT_AT: 2026-07-13T09:02:00Z
+TRANSPORT: cleared idle input with Ctrl-U; exact named tmux buffer pasted once to %16 and submitted with one Enter
+POST_SEND_EVIDENCE: Worker opened exact 09N handoff, restated A4-1/A4-2/A4-3, and began exact fcd55a2/upstream preflight under Opus 4.8 Ultracode /fable-builder context
+STATUS: RUNNING
+```
