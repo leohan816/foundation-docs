@@ -1965,3 +1965,29 @@ SENSITIVE_OUTPUT_SUSPECTED: false
 ACTION_TAKEN: cleared UI placeholder only; exact buffer pasted once; first Enter did not submit, then one verified follow-up Enter submitted unchanged content
 NEXT_OBSERVATION_DUE: at most 60 seconds or on progress/result signal
 ```
+
+### AO-BATCH-A-FINAL-DESIGN-REREVIEW-20260713T000800Z - completion
+
+```text
+OBSERVED_AT: 2026-07-13T00:14:00Z
+PANE_ID: %20
+STATE: COMPLETED_REPORTED
+OUTPUT_FINGERPRINT: Sentinel returned NEEDS_PATCH; PRC-1/2/3/4/7 closed, PRC-5 regression and PRC-6/8 partial; result 11c1675, pointer fc57ed8, then STOP
+INTERACTIVE_PROMPT_PRESENT: false
+SENSITIVE_OUTPUT_SUSPECTED: false
+ACTION_TAKEN: Advisor read full result and source evidence, accepted all three technical findings, and published exact same-Control FDR-1/FDR-2/FDR-3 correction
+NEXT_OBSERVATION_DUE: none; Control preflight follows
+```
+
+## AO-BATCH-A-CONTROL-SOURCE-EXACTNESS-20260713T001600Z
+
+```text
+OBSERVED_AT: 2026-07-13T00:16:00Z
+PANE_ID: %4
+STATE: RUNNING
+OUTPUT_FINGERPRINT: exact 09N launcher submitted; Control opened the handoff under Opus 4.8 (1M) xhigh
+INTERACTIVE_PROMPT_PRESENT: false
+SENSITIVE_OUTPUT_SUSPECTED: false
+ACTION_TAKEN: verified same session/workspace/model/effort and serialized scope; exact buffer pasted once and submitted once
+NEXT_OBSERVATION_DUE: at most 60 seconds or on progress/result signal
+```

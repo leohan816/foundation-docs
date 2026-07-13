@@ -3171,3 +3171,51 @@ SENT_AT: 2026-07-13T00:08:00Z
 TRANSPORT: cleared placeholder input with Ctrl-U; exact named tmux buffer ao_batch_a_final_design_review_20260713 pasted once; initial Enter left pasted content visible, one verified follow-up Enter submitted unchanged content
 STATUS: RUNNING
 ```
+
+### AO-BATCH-A-FINAL-DESIGN-REREVIEW-20260713T000800Z - completed
+
+```text
+COMPLETED_AT: 2026-07-13T00:14:00Z
+STATUS: COMPLETED_VERIFIED
+VERDICT: NEEDS_PATCH
+RESULT_COMMIT: 11c1675c5e4332cced42a6e3b4f6dd545823498d
+POINTER_COMMIT: fc57ed810f11a2f9d93cc4d174a33e71656e4458
+CLOSED: PRC-1, PRC-2, PRC-3, PRC-4, PRC-7
+REMAINING: PRC-5 REGRESSION; PRC-6 PARTIAL__BLOCKING; PRC-8 PARTIAL__BLOCKING
+ADVISOR_VERDICT: ROUTE_EXACT_FDR1_FDR2_FDR3_TO_SAME_CONTROL
+NEXT_DEPENDENCY: same Control source-exactness correction
+```
+
+## AO-BATCH-A-CONTROL-SOURCE-EXACTNESS-20260713T001600Z
+
+```text
+DISPATCH_ID: AO-BATCH-A-CONTROL-SOURCE-EXACTNESS-20260713T001600Z
+MISSION_ID: AGENT_OFFICE_BATCH_A_MODERN_OFFICE_IDENTITY_COMPLETION_001
+TARGET_ACTOR: Control-Rework
+TARGET_SESSION: foundation-control/$4/@4/%4
+OBSERVED_WORKSPACE: /home/leo/Project/foundation-control
+PROCESS_MODEL: claude; live Control context remains Opus 4.8 (1M) xhigh
+ROLE_SKILL_READINESS: same Control session; prior result and STOP visible; idle; no interactive/auth/security prompt
+SYNCHRONIZED_PANES_OFF: true
+LAUNCHER_PATH: /home/leo/Project/foundation-docs/advisor/jobs/20260712_agent_office_batch_a_modern_office_identity_completion_001/09N_CONTROL_FINAL_SOURCE_EXACTNESS_CORRECTION_RUN_PROMPT.md
+LAUNCHER_COMMIT: 0d469f7fadb346886a9ff08c2848189a6c036774
+LAUNCHER_BLOB: 1fe52117b3b090117244c992617b98ed4388e79f
+LAUNCHER_SHA256: e685bbdee7d86567bb2bc164fc00ff68ac90b8e5d8235bf87195627b8ceec63a
+TARGET_EVIDENCE: candidate d65716c clean/upstream-equal; Sentinel result/pointer and Advisor validation 44 committed/upstream-equal
+SCOPE: docs-only FDR-1 camera/pod Team, FDR-2 raw parser, FDR-3 Vite facade correction
+RESULT_PATH: ../foundation-docs/runs/agent-office/20260712_agent_office_batch_a_modern_office_identity_completion_001/CONTROL_DESIGN_RESULT.md
+POINTER_PATH: ../foundation-docs/advisor/jobs/20260712_agent_office_batch_a_modern_office_identity_completion_001/11_CONTROL_DESIGN_RESULT_POINTER.md
+DEPENDENCY_LOCKS: Worker stopped clean; Reviewer stopped; no concurrent Agent Office writer
+SOFT_STALL_SECONDS: 60
+HARD_TIMEOUT_SECONDS_OR_NONE: none
+PREFLIGHT_VERDICT: PASS_READY_TO_SEND
+STATUS: RUNNING
+```
+
+### AO-BATCH-A-CONTROL-SOURCE-EXACTNESS-20260713T001600Z - sent
+
+```text
+SENT_AT: 2026-07-13T00:16:00Z
+TRANSPORT: cleared idle input with Ctrl-U; exact named tmux buffer ao_batch_a_source_exactness_20260713 pasted once and submitted with one Enter
+STATUS: RUNNING
+```
