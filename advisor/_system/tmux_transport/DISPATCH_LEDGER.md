@@ -4034,3 +4034,37 @@ TRANSPORT: exact named tmux buffer pasted once to %20; idle input was cleared be
 POST_SEND_EVIDENCE: same independent SOL Reviewer opened the exact 07B delta launcher with /fable-sentinel, candidate 1ab8ad2, and finding-specific scope; Working state visible
 STATUS: RUNNING
 ```
+
+### AO-A1R-SENTINEL-DESIGN-DELTA-REREVIEW-20260713T180910Z — completed
+
+```text
+COMPLETED_AT: 2026-07-13T18:25:00Z
+RESULT_EVIDENCE: NEEDS_PATCH result/pointer committed/pushed at 97fdb48/367f600; A1R-SDR-01/02/04/05/06 closed; A1R-SDR-03 information-state geometry regression open
+STATUS: COMPLETED__BOUNDED_CONTROL_PATCH_REQUIRED
+```
+
+## AO-A1R-CONTROL-INFORMATION-GEOMETRY-PATCH-20260713T182710Z
+
+```text
+DISPATCH_ID: AO-A1R-CONTROL-INFORMATION-GEOMETRY-PATCH-20260713T182710Z
+MISSION_ID: AGENT_OFFICE_A1R_LIVING_OFFICE_EXPERIENCE_REFINEMENT_001
+TARGET_ACTOR: Control-Rework
+TARGET_SESSION: foundation-control
+TARGET_LOCATOR: $4 / @4 / %4
+TARGET_WORKSPACE: /home/leo/Project/foundation-control
+DESIGN_WORKTREE: /home/leo/Project/agent-office-a1r-001
+CONTROL_MODE: PRODUCT_EXPERIENCE_DESIGN_MODE__INFORMATION_GEOMETRY_PATCH
+PROCESS_MODEL: same Claude PID 1774874; Opus 4.8 (1M), xhigh
+LAUNCHER_PATH: advisor/jobs/20260713_agent_office_a1r_living_office_experience_refinement_001/09D_CONTROL_INFORMATION_GEOMETRY_PATCH_RUN_PROMPT.md
+LAUNCHER_COMMIT: 351f8abace770e2e91e71b43f18c709d15562a6e
+LAUNCHER_BLOB: ebb45efb3a9910043e8ba6e28f5ddfed5e3f4f5e
+LAUNCHER_SHA256: 21c5fd238fdf18a448b0ba42f00eb5f7f585b51bb0b50f6764bc71ec50c1a7ac
+TARGET_DESIGN_BASE: 1ab8ad200338d90d230d8d4f3373fa9b73d549c9
+PATCH_SCOPE: exact information-state SVG/PNG geometry regression only; no canvas-size, runtime, or other asset changes
+EXPECTED_RESULT: runs/agent-office/20260713_agent_office_a1r_living_office_experience_refinement_001/CONTROL_INFORMATION_STATE_GEOMETRY_PATCH_RESULT.md
+EXPECTED_POINTER: advisor/jobs/20260713_agent_office_a1r_living_office_experience_refinement_001/18_CONTROL_INFORMATION_GEOMETRY_PATCH_RESULT_POINTER.md
+SERIALIZATION: Control only; Worker unauthorized; Reviewer stopped
+TIMEOUT_POLICY: observe approximately once per minute; no automatic approval/auth response
+PREFLIGHT_VERDICT: PASS_READY_TO_SEND_AFTER_CLEARING_STRAY_IDLE_INPUT
+STATUS: READY_TO_DISPATCH
+```

@@ -2609,3 +2609,30 @@ EVIDENCE: exact 07B launcher visible with /fable-sentinel, base b966c6a, candida
 INTERACTIVE_PROMPT: none
 STATUS: RUNNING
 ```
+
+### AO-A1R-SENTINEL-DESIGN-DELTA-REREVIEW-20260713T180910Z — result accepted
+
+```text
+OBSERVED_AT: 2026-07-13T18:25:00Z
+PANE: %20
+EVIDENCE: exact NEEDS_PATCH result/pointer 97fdb48/367f600 pushed; five findings closed; three measured information-state overlap/overflow regressions keep A1R-SDR-03 open; same Reviewer stopped
+INTERACTIVE_PROMPT: none
+STATUS: COMPLETED__BOUNDED_CONTROL_PATCH_REQUIRED
+NEXT_ACTOR: same foundation-control
+```
+
+## AO-A1R-CONTROL-INFORMATION-GEOMETRY-PATCH-20260713T182710Z — preflight
+
+```text
+OBSERVED_AT: 2026-07-13T18:27:10Z
+SESSION: foundation-control
+LOCATOR: $4 / @4 / %4
+PROCESS: same Claude PID 1774874; pane_current_command=claude
+MODEL_EFFORT: Opus 4.8 (1M), xhigh
+PANE_STATE: prior Control STOP visible; idle prompt contains stray unsent text requesting a Sentinel launcher; no unrelated work, approval, auth, or error; clear with Ctrl-U before exact paste
+TARGET_STATE: /home/leo/Project/agent-office-a1r-001 clean/upstream/direct-origin equal at 1ab8ad2
+LAUNCHER_STATE: committed/pushed at 351f8ab; exact blob/SHA-256 recorded
+SYNCHRONIZED_PANES: off
+DEPENDENCY_STATE: Worker unauthorized; Reviewer stopped; no competing A-1R writer
+VERDICT: PASS_READY_TO_SEND_AFTER_CLEARING_STRAY_IDLE_INPUT
+```
