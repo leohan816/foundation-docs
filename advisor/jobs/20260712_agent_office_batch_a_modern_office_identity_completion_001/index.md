@@ -101,6 +101,9 @@
 - [Advisor render-host test scope amendment](48_ADVISOR_RENDER_HOST_TEST_SCOPE_AMENDMENT.md)
 - [Opus Worker render-host test scope handoff](06F_WORKER_RENDER_HOST_TEST_SCOPE_HANDOFF_PROMPT.md)
 - [Opus Worker render-host test scope launcher](06F_WORKER_RENDER_HOST_TEST_SCOPE_RUN_PROMPT.md)
+- [Advisor CD-3 marker non-weakening correction](49_ADVISOR_CD3_PROTOTYPE_MARKER_NON_WEAKENING_CORRECTION.md)
+- [Opus Worker CD-3 marker correction handoff](06G_WORKER_CD3_MARKER_CORRECTION_HANDOFF_PROMPT.md)
+- [Opus Worker CD-3 marker correction launcher](06G_WORKER_CD3_MARKER_CORRECTION_RUN_PROMPT.md)
 
 Design: accepted at `381b411`; independent Sentinel design verdict `PASS`.
 
