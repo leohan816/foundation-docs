@@ -3879,3 +3879,32 @@ TRANSPORT: cleared stray idle input with Ctrl-U; exact named tmux buffer pasted 
 POST_SEND_EVIDENCE: same Control opened the exact committed 09 handoff and began the two-finding narrow patch under xhigh
 STATUS: RUNNING
 ```
+
+## AO-A1R-SENTINEL-DESIGN-REVIEW-20260713T171800Z
+
+```text
+DISPATCH_ID: AO-A1R-SENTINEL-DESIGN-REVIEW-20260713T171800Z
+MISSION_ID: AGENT_OFFICE_A1R_LIVING_OFFICE_EXPERIENCE_REFINEMENT_001
+TARGET_ACTOR: Sentinel
+TARGET_SESSION: foundation-reviewer-sol
+TARGET_LOCATOR: $20 / @20 / %20
+TARGET_WORKSPACE: /home/leo/Project/foundation-reviewer
+TARGET_REPO: /home/leo/Project/agent-office-a1r-001
+PROCESS_MODEL: codex PID 711307; gpt-5.6-sol xhigh
+REQUIRED_SKILL: /fable-sentinel
+REVIEW_PASS: DESIGN_REVIEW__A1R_FOUNDER_UX_CONTRACT
+REVIEW_BASE: 58a484b088b4e57e7b3ee6e582f54c7f3ce6dc85
+REVIEW_CANDIDATE: b966c6a98752558ad0db66fa2b79e42d9e9dcd24
+LAUNCHER_PATH: advisor/jobs/20260713_agent_office_a1r_living_office_experience_refinement_001/07_SENTINEL_DESIGN_CONTRACT_REVIEW_RUN_PROMPT.md
+LAUNCHER_COMMIT: 27aaaf4ebeb21e4a5f2d02fb1f6b187857cc99c0
+LAUNCHER_BLOB: 63d61eac702569b43e6566de12cb96271aa2fdc1
+LAUNCHER_SHA256: 57618aa483a645fc55322b87f8408991ff916384339386e883007cae2c430c45
+RESULT_PATH: runs/agent-office/20260713_agent_office_a1r_living_office_experience_refinement_001/SENTINEL_DESIGN_CONTRACT_REVIEW_RESULT.md
+POINTER_PATH: advisor/jobs/20260713_agent_office_a1r_living_office_experience_refinement_001/12_SENTINEL_DESIGN_CONTRACT_REVIEW_RESULT_POINTER.md
+REVIEW_SCOPE: complete static product/UX candidate; five PNGs first; exact diff/docs; no runtime suite; no aesthetic Founder approval
+WRITE_SCOPE: foundation-docs exact result/pointer only; Agent Office candidate read-only
+SERIALIZATION: Control stopped; Worker unauthorized; no competing A-1R writer or Reviewer use
+TIMEOUT_POLICY: observe approximately once per minute; no automatic approval/auth response
+PREFLIGHT_VERDICT: PASS_READY_TO_SEND
+STATUS: READY_TO_DISPATCH
+```

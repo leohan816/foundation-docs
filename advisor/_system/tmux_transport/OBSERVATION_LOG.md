@@ -2467,3 +2467,28 @@ EVIDENCE: stray idle input cleared; exact launcher visible; same Control directl
 INTERACTIVE_PROMPT: none
 STATUS: RUNNING
 ```
+
+### AO-A1R-CONTROL-PRE-REVIEW-PATCH-20260713T170220Z — result accepted and closed
+
+```text
+OBSERVED_AT: 2026-07-13T17:15:00Z
+PANE: %4
+EVIDENCE: patch b966c6a and exact result/pointer committed/pushed; Advisor directly verified eight-path docs-only delta, Founder activation mapping, and corrected Pod/mobile PNGs at original size
+STATUS: COMPLETED__ADVISOR_ACCEPTED_FOR_REVIEW
+NEXT_ACTOR: independent foundation-reviewer-sol
+```
+
+## AO-A1R-SENTINEL-DESIGN-REVIEW-20260713T171800Z — preflight
+
+```text
+OBSERVED_AT: 2026-07-13T17:18:00Z
+SESSION: foundation-reviewer-sol
+LOCATOR: $20 / @20 / %20
+PROCESS: same Codex PID 711307; command explicitly gpt-5.6-sol xhigh
+PANE_STATE: prior independent PASS/STOP visible; idle prompt; no unrelated work, approval, auth, error, or pending input
+TARGET_STATE: /home/leo/Project/agent-office-a1r-001 clean/upstream equal at b966c6a
+LAUNCHER_STATE: committed/pushed at 27aaaf4; exact blob/SHA-256 recorded
+SYNCHRONIZED_PANES: off
+DEPENDENCY_STATE: Control stopped; Worker unauthorized; no competing Reviewer use
+VERDICT: PASS_READY_TO_SEND
+```
