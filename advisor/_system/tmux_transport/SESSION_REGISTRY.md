@@ -23,10 +23,11 @@ verification. Pane IDs and processes can change.
 | Agent Office Opus Worker | `agent-office-opus` | `$16` | 0 | `@16` | 0 | `%16` | `/home/leo/Project/agent-office` | `claude` | same existing user-created tmux session formerly named `agent-office-grok`; Grok exited; live Claude Code shows `Opus 4.8 (1M context)` and `ultracode`; `/fable-builder` and Agent Office Worker role must be loaded from the exact mission worktree before dispatch | primary Agent Office implementation Worker for future exact committed missions after live model, effort, role, workspace, branch, and readiness verification; no review or final approval authority |
 | Agent Office Product Designer | `agent-office-designer` | `$21` | 0 | `@21` | 0 | `%21` | `/home/leo/Project/agent-office-designer` | `codex` (v0.144.1 at onboarding) | user-created dedicated Designer workspace with local `AGENTS.md`; live runtime verified as `GPT-5.6 SOL` with `max` effort and YOLO mode | primary Agent Office product-experience and visual-design actor after exact committed handoff; no implementation, independent review, risk acceptance, or final approval authority |
 
-Agent Office product-experience routing decision effective 2026-07-13:
-`agent-office-designer` owns the next A-1R visual/UX design pass. `foundation-control`
-is excluded from further A-1R product-experience design. Control remains eligible
-for separately authorized architecture, contract, and coding-design work.
+Agent Office routing decision effective 2026-07-13:
+`agent-office-designer` owns Agent Office product-experience and visual design.
+`foundation-control` is excluded from all further Agent Office work. Control is
+reserved for Foundation, SIASIU, Cosmile, and their authorized cross-project
+architecture, contract, boundary, coding-design, and release-design work.
 
 ## Required Live Checks
 

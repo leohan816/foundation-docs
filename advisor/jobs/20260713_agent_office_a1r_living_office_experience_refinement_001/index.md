@@ -27,6 +27,10 @@
 - [Founder static mockup approval package](21_FOUNDER_STATIC_MOCKUP_APPROVAL_PACKAGE.md)
 - [Advisor static design return pointer](22_ADVISOR_STATIC_DESIGN_RETURN_POINTER.md)
 - [Founder static mockup rejection and Designer routing](23_FOUNDER_STATIC_MOCKUP_REJECTION_AND_DESIGNER_ROUTING.md)
+- [Founder visual-design recovery decision V2](24_FOUNDER_VISUAL_DESIGN_RECOVERY_DECISION_V2.md)
+- [Advisor Phase 1 Designer brief](25_ADVISOR_PHASE1_DESIGNER_BRIEF.md)
+- [Designer Phase 1 handoff](26_DESIGNER_PHASE1_HANDOFF_PROMPT.md)
+- [Designer Phase 1 launcher](26_DESIGNER_PHASE1_RUN_PROMPT.md)
 - [Control narrow patch handoff](09_CONTROL_DESIGN_PATCH_HANDOFF_PROMPT.md)
 - [Control narrow patch launcher](09_CONTROL_DESIGN_PATCH_RUN_PROMPT.md)
 - [Advisor classification of Sentinel findings](13_ADVISOR_SENTINEL_FINDING_CLASSIFICATION.md)
@@ -59,3 +63,9 @@ direct full-size inspection. That `PASS` is contract evidence only and cannot
 authorize implementation. `agent-office-designer` is now the designated A-1R
 product-experience Designer; Control is excluded from further A-1R visual/UX
 design. The mission remains on hold and Worker implementation remains forbidden.
+
+V2 recovery supersedes that hold only for Phase 1 visual-direction exploration.
+The dedicated Designer may create exactly three compact high-fidelity product
+scenes on the isolated recovery branch. Advisor must inspect each scene at full
+size and return only surviving directions to Leo/GPT. Control, Worker, and
+Reviewer remain undispatched.

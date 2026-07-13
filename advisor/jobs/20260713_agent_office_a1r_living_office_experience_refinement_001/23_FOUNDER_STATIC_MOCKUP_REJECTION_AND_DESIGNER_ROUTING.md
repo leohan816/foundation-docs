@@ -1,5 +1,9 @@
 # Founder Static Mockup Rejection and Designer Routing
 
+> **SUPERSEDED BY V2 RECOVERY AUTHORITY:** See
+> `24_FOUNDER_VISUAL_DESIGN_RECOVERY_DECISION_V2.md` for the active routing and
+> phased recovery process.
+
 ## Decision
 
 ```text
