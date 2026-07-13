@@ -3943,3 +3943,12 @@ TIMEOUT_POLICY: observe approximately once per minute; no automatic approval/aut
 PREFLIGHT_VERDICT: PASS_READY_TO_SEND
 STATUS: READY_TO_DISPATCH
 ```
+
+### AO-A1R-CONTROL-SENTINEL-FINDING-PATCH-20260713T173751Z — sent
+
+```text
+SENT_AT: 2026-07-13T17:38:40Z
+TRANSPORT: cleared idle input with Ctrl-U; exact named tmux buffer pasted once to %4 and submitted with one Enter
+POST_SEND_EVIDENCE: same Control opened the exact committed 09B handoff and Advisor classification 13, then began the six-finding design/static-asset patch under xhigh
+STATUS: RUNNING
+```

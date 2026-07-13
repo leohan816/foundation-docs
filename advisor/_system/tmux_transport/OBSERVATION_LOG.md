@@ -2529,3 +2529,13 @@ SYNCHRONIZED_PANES: off
 DEPENDENCY_STATE: Worker unauthorized; Reviewer stopped; no competing A-1R writer
 VERDICT: PASS_READY_TO_SEND
 ```
+
+### AO-A1R-CONTROL-SENTINEL-FINDING-PATCH-20260713T173751Z — dispatch accepted
+
+```text
+OBSERVED_AT: 2026-07-13T17:38:40Z
+PANE: %4
+EVIDENCE: exact launcher visible; same Control directly opened committed handoff 09B and classification 13 and began A1R-SDR-01..06 work
+INTERACTIVE_PROMPT: none
+STATUS: RUNNING
+```
