@@ -1939,3 +1939,29 @@ SENSITIVE_OUTPUT_SUSPECTED: false
 ACTION_TAKEN: verified same session/workspace/model/effort and serialized scope; exact buffer pasted once and submitted once
 NEXT_OBSERVATION_DUE: at most 60 seconds or on progress/result signal
 ```
+
+### AO-BATCH-A-CONTROL-TEXT-CONSISTENCY-20260713T000100Z - completion
+
+```text
+OBSERVED_AT: 2026-07-13T00:06:00Z
+PANE_ID: %4
+STATE: COMPLETED_REPORTED
+OUTPUT_FINGERPRINT: Control returned bounded text-only candidate d65716c and result bb27975, then STOP
+INTERACTIVE_PROMPT_PRESENT: false
+SENSITIVE_OUTPUT_SUSPECTED: false
+ACTION_TAKEN: Advisor verified exact diff, stale-pattern absence, preserved actor-level UNASSIGNED rules, and clean/upstream-equal target; published validation 42 and final same-Sentinel route
+NEXT_OBSERVATION_DUE: none; Sentinel preflight follows
+```
+
+## AO-BATCH-A-FINAL-DESIGN-REREVIEW-20260713T000800Z
+
+```text
+OBSERVED_AT: 2026-07-13T00:08:00Z
+PANE_ID: %20
+STATE: RUNNING
+OUTPUT_FINGERPRINT: exact 07I launcher submitted; Reviewer entered Working state; GPT-5.6 SOL xhigh footer visible
+INTERACTIVE_PROMPT_PRESENT: false
+SENSITIVE_OUTPUT_SUSPECTED: false
+ACTION_TAKEN: cleared UI placeholder only; exact buffer pasted once; first Enter did not submit, then one verified follow-up Enter submitted unchanged content
+NEXT_OBSERVATION_DUE: at most 60 seconds or on progress/result signal
+```
