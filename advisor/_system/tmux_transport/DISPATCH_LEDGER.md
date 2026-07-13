@@ -3917,3 +3917,29 @@ TRANSPORT: cleared idle input with Ctrl-U; exact named tmux buffer pasted once t
 POST_SEND_EVIDENCE: same independent SOL Reviewer accepted the exact b966c6a launcher and entered Working state
 STATUS: RUNNING
 ```
+
+## AO-A1R-CONTROL-SENTINEL-FINDING-PATCH-20260713T173751Z
+
+```text
+DISPATCH_ID: AO-A1R-CONTROL-SENTINEL-FINDING-PATCH-20260713T173751Z
+MISSION_ID: AGENT_OFFICE_A1R_LIVING_OFFICE_EXPERIENCE_REFINEMENT_001
+TARGET_ACTOR: Control-Rework
+TARGET_SESSION: foundation-control
+TARGET_LOCATOR: $4 / @4 / %4
+TARGET_WORKSPACE: /home/leo/Project/foundation-control
+DESIGN_WORKTREE: /home/leo/Project/agent-office-a1r-001
+CONTROL_MODE: PRODUCT_EXPERIENCE_DESIGN_MODE__SENTINEL_FINDING_PATCH
+PROCESS_MODEL: same Claude PID 1774874; verified from the same live process and prior direct result as Opus 4.8 (1M), xhigh
+LAUNCHER_PATH: advisor/jobs/20260713_agent_office_a1r_living_office_experience_refinement_001/09B_CONTROL_SENTINEL_PATCH_RUN_PROMPT.md
+LAUNCHER_COMMIT: 03d7dafdcc0f7468b76bbcecb8c9a15fd6bc1bcb
+LAUNCHER_BLOB: fc2c1786655be9564798055eb1e2c440a1a105b4
+LAUNCHER_SHA256: 8f8b52955cfa1092380acd2d1d518215fb300b5ef9a9131122600aecf0da0ec1
+TARGET_DESIGN_BASE: b966c6a98752558ad0db66fa2b79e42d9e9dcd24
+PATCH_SCOPE: exact A1R-SDR-01..06 only; finding-bearing documents and affected SVG/PNG assets; no runtime suites
+EXPECTED_RESULT: runs/agent-office/20260713_agent_office_a1r_living_office_experience_refinement_001/CONTROL_SENTINEL_FINDING_PATCH_RESULT.md
+EXPECTED_POINTER: advisor/jobs/20260713_agent_office_a1r_living_office_experience_refinement_001/15_CONTROL_SENTINEL_FINDING_PATCH_RESULT_POINTER.md
+SERIALIZATION: Control only; Worker unauthorized; Reviewer stopped; no competing A-1R writer
+TIMEOUT_POLICY: observe approximately once per minute; no automatic approval/auth response
+PREFLIGHT_VERDICT: PASS_READY_TO_SEND
+STATUS: READY_TO_DISPATCH
+```

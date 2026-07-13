@@ -2502,3 +2502,30 @@ EVIDENCE: exact launcher visible with /fable-sentinel, review base 58a484b, cand
 INTERACTIVE_PROMPT: none
 STATUS: RUNNING
 ```
+
+### AO-A1R-SENTINEL-DESIGN-REVIEW-20260713T171800Z — result accepted
+
+```text
+OBSERVED_AT: 2026-07-13T17:37:51Z
+PANE: %20
+EVIDENCE: exact NEEDS_PATCH result and pointer committed/pushed at 2efb02b/1a37bb9; six bounded findings A1R-SDR-01..06; Reviewer stopped; no Agent Office mutation
+INTERACTIVE_PROMPT: none
+STATUS: COMPLETED__NEEDS_PATCH
+NEXT_ACTOR: same foundation-control for exact design/static-asset patch
+```
+
+### AO-A1R-CONTROL-SENTINEL-FINDING-PATCH-20260713T173751Z — preflight
+
+```text
+OBSERVED_AT: 2026-07-13T17:37:51Z
+SESSION: foundation-control
+LOCATOR: $4 / @4 / %4
+PROCESS: same existing Claude PID 1774874 under pane shell 298059; pane_current_command=claude
+MODEL_EFFORT: same live process and prior direct result identify Opus 4.8 (1M), xhigh
+PANE_STATE: prior Control result and explicit STOP visible; idle prompt; no unrelated work, approval, auth, error, or pending input
+TARGET_STATE: /home/leo/Project/agent-office-a1r-001 clean/upstream/direct-origin equal at b966c6a
+LAUNCHER_STATE: committed/pushed at 03d7daf; exact blob/SHA-256 recorded
+SYNCHRONIZED_PANES: off
+DEPENDENCY_STATE: Worker unauthorized; Reviewer stopped; no competing A-1R writer
+VERDICT: PASS_READY_TO_SEND
+```
