@@ -3952,3 +3952,28 @@ TRANSPORT: cleared idle input with Ctrl-U; exact named tmux buffer pasted once t
 POST_SEND_EVIDENCE: same Control opened the exact committed 09B handoff and Advisor classification 13, then began the six-finding design/static-asset patch under xhigh
 STATUS: RUNNING
 ```
+
+## AO-A1R-CONTROL-METADATA-CORRECTION-20260713T180100Z
+
+```text
+DISPATCH_ID: AO-A1R-CONTROL-METADATA-CORRECTION-20260713T180100Z
+MISSION_ID: AGENT_OFFICE_A1R_LIVING_OFFICE_EXPERIENCE_REFINEMENT_001
+TARGET_ACTOR: Control-Rework
+TARGET_SESSION: foundation-control
+TARGET_LOCATOR: $4 / @4 / %4
+TARGET_WORKSPACE: /home/leo/Project/foundation-control
+DESIGN_WORKTREE: /home/leo/Project/agent-office-a1r-001
+CONTROL_MODE: PRODUCT_EXPERIENCE_DESIGN_MODE__POST_PATCH_METADATA_CORRECTION
+PROCESS_MODEL: same Claude PID 1774874; Opus 4.8 (1M), xhigh
+LAUNCHER_PATH: advisor/jobs/20260713_agent_office_a1r_living_office_experience_refinement_001/09C_CONTROL_METADATA_CORRECTION_RUN_PROMPT.md
+LAUNCHER_COMMIT: 17c964614b6109838241c338b9fc64365b18e03e
+LAUNCHER_BLOB: 226f5a253b72f4570cf2fd7014fec8a79028e380
+LAUNCHER_SHA256: 92d554f2e0a429e25eaf2f428973af5700bb413b7a23ba751923570c35ec185c
+TARGET_DESIGN_BASE: 8522f3c3df1f39bed976eb7189ea3e43edbf2dbd
+PATCH_SCOPE: four exact documentation metadata corrections; no SVG/PNG or runtime/test work
+EXPECTED_RESULT: runs/agent-office/20260713_agent_office_a1r_living_office_experience_refinement_001/CONTROL_POST_PATCH_METADATA_CORRECTION_RESULT.md
+EXPECTED_POINTER: advisor/jobs/20260713_agent_office_a1r_living_office_experience_refinement_001/16_CONTROL_POST_PATCH_METADATA_CORRECTION_RESULT_POINTER.md
+SERIALIZATION: Control only; Worker unauthorized; Reviewer stopped
+PREFLIGHT_VERDICT: PASS_READY_TO_SEND
+STATUS: READY_TO_DISPATCH
+```

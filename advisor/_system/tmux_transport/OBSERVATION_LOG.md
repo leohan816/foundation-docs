@@ -2539,3 +2539,28 @@ EVIDENCE: exact launcher visible; same Control directly opened committed handoff
 INTERACTIVE_PROMPT: none
 STATUS: RUNNING
 ```
+
+### AO-A1R-CONTROL-SENTINEL-FINDING-PATCH-20260713T173751Z — result accepted for Advisor validation
+
+```text
+OBSERVED_AT: 2026-07-13T18:01:00Z
+PANE: %4
+EVIDENCE: design patch 8522f3c and result/pointer 165d7e4 committed/pushed; Control stopped; Advisor directly inspected exact diff and four original-size PNGs
+STATUS: COMPLETED__NARROW_METADATA_CORRECTION_REQUIRED
+```
+
+### AO-A1R-CONTROL-METADATA-CORRECTION-20260713T180100Z — preflight
+
+```text
+OBSERVED_AT: 2026-07-13T18:01:00Z
+SESSION: foundation-control
+LOCATOR: $4 / @4 / %4
+PROCESS: same Claude PID 1774874; pane_current_command=claude
+MODEL_EFFORT: Opus 4.8 (1M), xhigh
+PANE_STATE: prior result and explicit STOP visible; idle prompt; no unrelated work, approval, auth, or error
+TARGET_STATE: clean/upstream/direct-origin equal at 8522f3c
+LAUNCHER_STATE: committed/pushed at 17c9646; exact blob/SHA-256 recorded
+SYNCHRONIZED_PANES: off
+DEPENDENCY_STATE: Worker unauthorized; Reviewer stopped
+VERDICT: PASS_READY_TO_SEND
+```
