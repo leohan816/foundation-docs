@@ -81,6 +81,9 @@
 - [Advisor Sentinel PRC re-review validation](40_ADVISOR_SENTINEL_PRC_DELTA_REREVIEW_VALIDATION.md)
 - [Control final five PRC corrections handoff](09L_CONTROL_FINAL_FIVE_PRC_CORRECTIONS_HANDOFF_PROMPT.md)
 - [Control final five PRC corrections launcher](09L_CONTROL_FINAL_FIVE_PRC_CORRECTIONS_RUN_PROMPT.md)
+- [Advisor Control final-five diff validation](41_ADVISOR_CONTROL_FINAL_FIVE_DIFF_VALIDATION.md)
+- [Control final textual-consistency handoff](09M_CONTROL_FINAL_TEXTUAL_CONSISTENCY_HANDOFF_PROMPT.md)
+- [Control final textual-consistency launcher](09M_CONTROL_FINAL_TEXTUAL_CONSISTENCY_RUN_PROMPT.md)
 
 Design: accepted at `381b411`; independent Sentinel design verdict `PASS`.
 
