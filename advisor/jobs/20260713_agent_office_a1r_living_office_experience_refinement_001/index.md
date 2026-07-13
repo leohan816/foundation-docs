@@ -33,6 +33,8 @@
 - [Designer Phase 1 launcher](26_DESIGNER_PHASE1_RUN_PROMPT.md)
 - [Designer Phase 1 timebox correction](26A_DESIGNER_PHASE1_TIMEBOX_ADDENDUM.md)
 - [Designer Phase 1 timebox launcher](26A_DESIGNER_PHASE1_TIMEBOX_RUN_PROMPT.md)
+- [Designer Phase 1 result pointer](27_DESIGNER_PHASE1_RESULT_POINTER.md)
+- [Advisor Phase 1 Founder direction selection](28_ADVISOR_PHASE1_FOUNDER_DIRECTION_SELECTION.md)
 - [Control narrow patch handoff](09_CONTROL_DESIGN_PATCH_HANDOFF_PROMPT.md)
 - [Control narrow patch launcher](09_CONTROL_DESIGN_PATCH_RUN_PROMPT.md)
 - [Advisor classification of Sentinel findings](13_ADVISOR_SENTINEL_FINDING_CLASSIFICATION.md)
@@ -71,3 +73,8 @@ The dedicated Designer may create exactly three compact high-fidelity product
 scenes on the isolated recovery branch. Advisor must inspect each scene at full
 size and return only surviving directions to Leo/GPT. Control, Worker, and
 Reviewer remain undispatched.
+
+Phase 1 is now complete at candidate `870ffe9`. The Advisor inspected all three
+full-size scenes and passed A, B, and C to Founder direction selection. The
+mission is waiting on Leo/GPT; no Phase 2, Worker, Control, or Reviewer task has
+started.
