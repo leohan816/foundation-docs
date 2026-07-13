@@ -91,6 +91,9 @@
 - [Advisor Sentinel final design review validation](44_ADVISOR_SENTINEL_FINAL_DESIGN_REVIEW_VALIDATION.md)
 - [Control final source-exactness handoff](09N_CONTROL_FINAL_SOURCE_EXACTNESS_CORRECTION_HANDOFF_PROMPT.md)
 - [Control final source-exactness launcher](09N_CONTROL_FINAL_SOURCE_EXACTNESS_CORRECTION_RUN_PROMPT.md)
+- [Advisor Control source-exactness validation](45_ADVISOR_CONTROL_SOURCE_EXACTNESS_VALIDATION.md)
+- [SOL Sentinel FDR delta handoff](07J_SENTINEL_FDR_DELTA_REREVIEW_HANDOFF_PROMPT.md)
+- [SOL Sentinel FDR delta launcher](07J_SENTINEL_FDR_DELTA_REREVIEW_RUN_PROMPT.md)
 
 Design: accepted at `381b411`; independent Sentinel design verdict `PASS`.
 
