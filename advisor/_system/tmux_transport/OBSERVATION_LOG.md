@@ -2095,3 +2095,16 @@ SENSITIVE_OUTPUT_SUSPECTED: false
 ACTION_TAKEN: exact Git-backed named buffer pasted once; initial Enter left pasted content visible, then one verified follow-up Enter submitted the unchanged content
 NEXT_OBSERVATION_DUE: at most 60 seconds or on progress/result signal
 ```
+
+### AO-BATCH-A-SIR-DELTA-REREVIEW-20260713T051000Z - completion
+
+```text
+OBSERVED_AT: 2026-07-13T05:38:40Z
+PANE_ID: %20
+STATE: COMPLETED_REPORTED
+OUTPUT_FINGERPRINT: Sentinel returned NEEDS_PATCH; SIR-3 closed, SIR-1/2/4 partial blocking, SIR-5 semantic parity regression; result fd2743d and pointer 1d367fb pushed; STOP
+INTERACTIVE_PROMPT_PRESENT: false
+SENSITIVE_OUTPUT_SUSPECTED: false
+ACTION_TAKEN: Advisor read the exact result and pointer, verified commits/target cleanliness, accepted four bounded implementation defects, and prepared same-Worker rework without reopening product design
+NEXT_OBSERVATION_DUE: none; Worker preflight follows
+```

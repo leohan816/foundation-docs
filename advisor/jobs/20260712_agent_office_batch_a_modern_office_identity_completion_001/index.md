@@ -132,7 +132,12 @@ rehearsal, final audit, and Founder Acceptance Sheet.
 - [Advisor Worker-rework validation](55_ADVISOR_WORKER_REWORK_VALIDATION.md)
 - [SOL Sentinel implementation delta re-review handoff](07L_SENTINEL_IMPLEMENTATION_DELTA_REREVIEW_HANDOFF_PROMPT.md)
 - [SOL Sentinel implementation delta re-review launcher](07L_SENTINEL_IMPLEMENTATION_DELTA_REREVIEW_RUN_PROMPT.md)
+- [SOL Sentinel implementation delta re-review result pointer](15_SENTINEL_IMPLEMENTATION_DELTA_REREVIEW_RESULT_POINTER.md)
+- [Advisor Sentinel implementation delta validation](56_ADVISOR_SENTINEL_IMPLEMENTATION_DELTA_VALIDATION.md)
+- [Opus Worker second implementation rework handoff](09L_WORKER_IMPLEMENTATION_SECOND_REWORK_HANDOFF_PROMPT.md)
+- [Opus Worker second implementation rework launcher](09L_WORKER_IMPLEMENTATION_SECOND_REWORK_RUN_PROMPT.md)
 
-Current state: rework candidate `74d5866` is accepted for same-session SOL
-Sentinel delta re-review. Final audit and Founder approval remain pending; Batch
-B remains not started and unauthorized.
+Current state: same-session SOL Sentinel returned `NEEDS_PATCH`; SIR-3 is closed
+and I2-1 through I2-4 are accepted as routine patchable Batch A defects. The
+same Opus Worker second rework is ready. Final audit and Founder approval remain
+pending; Batch B remains not started and unauthorized.

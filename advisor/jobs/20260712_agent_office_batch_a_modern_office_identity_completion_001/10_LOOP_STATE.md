@@ -6,10 +6,10 @@
 - Advisor design validation: `PASS__WORKER_FULL_IMPLEMENTATION_RESUME_AUTHORIZED`
 - Sentinel design review: `PASS__ALL_PRC_AND_FDR_FINDINGS_CLOSED`
 - Opus Worker: `RENDER_HOST_TEST_SCOPE_EXCEPTION_VALIDATED__READY_TO_RESUME_FROM_DA2AD0E`
-- Opus Worker implementation rework: `SIR_1_THROUGH_SIR_5_PATCHED_AT_74D5866`
-- Advisor candidate validation: `ACCEPTED_FOR_SENTINEL_DELTA_REREVIEW`
-- SOL Sentinel: `READY_FOR_IMPLEMENTATION_DELTA_REREVIEW`
-- Patch attempts: `14_CONTROL_DESIGN_PATCHES_COMPLETE__SENTINEL_PASS__1_IMPLEMENTATION_REWORK_COMPLETE`
+- Opus Worker implementation rework: `FIRST_REWORK_AT_74D5866_REVIEWED_NEEDS_PATCH`
+- Advisor candidate validation: `SECOND_ROUTINE_REWORK_AUTHORIZED`
+- SOL Sentinel: `NEEDS_PATCH__SIR3_CLOSED__SIR1_SIR2_SIR4_PARTIAL__SIR5_REGRESSION`
+- Patch attempts: `14_CONTROL_DESIGN_PATCHES_COMPLETE__SENTINEL_PASS__1_IMPLEMENTATION_REWORK_REVIEWED__SECOND_REWORK_READY`
 - Final audit: `WAITING`
-- Next actor: same existing `foundation-reviewer-sol` Sentinel delta re-review
+- Next actor: same existing `agent-office-opus` Worker second implementation rework
 - Batch B: `NOT_STARTED_NOT_AUTHORIZED`
