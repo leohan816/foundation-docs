@@ -2646,3 +2646,26 @@ EVIDENCE: stray idle input cleared; exact 09D launcher visible with one-SVG/one-
 INTERACTIVE_PROMPT: none
 STATUS: RUNNING
 ```
+
+### AO-A1R-CONTROL-INFORMATION-GEOMETRY-PATCH-20260713T182710Z — result validation
+
+```text
+OBSERVED_AT: 2026-07-13T18:34:00Z
+PANE: %4
+EVIDENCE: ad147ec/e3f0c15 pushed; SVG geometry closure accepted; Advisor direct PNG header check found 1200x920 instead of canonical 2400x1840
+STATUS: COMPLETED__PNG_EXPORT_CORRECTION_REQUIRED
+```
+
+## AO-A1R-CONTROL-PNG-EXPORT-CORRECTION-20260713T183532Z — preflight
+
+```text
+OBSERVED_AT: 2026-07-13T18:35:32Z
+SESSION: foundation-control
+LOCATOR: $4 / @4 / %4
+PROCESS: same Claude PID 1774874; Opus 4.8 (1M), xhigh
+PANE_STATE: prior Control STOP visible; stray unsent idle text; no unrelated work, approval, auth, or error; clear before exact paste
+TARGET_STATE: clean/upstream/direct-origin equal at ad147ec
+LAUNCHER_STATE: committed/pushed at f32d622; exact blob/SHA-256 recorded
+DEPENDENCY_STATE: Worker unauthorized; Reviewer stopped
+VERDICT: PASS_READY_TO_SEND_AFTER_CLEARING_STRAY_IDLE_INPUT
+```

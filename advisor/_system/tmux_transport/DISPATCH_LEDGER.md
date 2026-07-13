@@ -4077,3 +4077,36 @@ TRANSPORT: cleared stray idle input with Ctrl-U; exact named tmux buffer pasted 
 POST_SEND_EVIDENCE: same Control opened the exact 09D launcher, candidate base 1ab8ad2, and two-file static geometry scope; active processing visible
 STATUS: RUNNING
 ```
+
+### AO-A1R-CONTROL-INFORMATION-GEOMETRY-PATCH-20260713T182710Z — completed
+
+```text
+COMPLETED_AT: 2026-07-13T18:34:00Z
+RESULT_EVIDENCE: geometry patch ad147ec and result/pointer e3f0c15 pushed; three overlap/overflow measures zero; Advisor found PNG export at 1x instead of required 2x
+STATUS: COMPLETED__PNG_EXPORT_CORRECTION_REQUIRED
+```
+
+## AO-A1R-CONTROL-PNG-EXPORT-CORRECTION-20260713T183532Z
+
+```text
+DISPATCH_ID: AO-A1R-CONTROL-PNG-EXPORT-CORRECTION-20260713T183532Z
+MISSION_ID: AGENT_OFFICE_A1R_LIVING_OFFICE_EXPERIENCE_REFINEMENT_001
+TARGET_ACTOR: Control-Rework
+TARGET_SESSION: foundation-control
+TARGET_LOCATOR: $4 / @4 / %4
+TARGET_WORKSPACE: /home/leo/Project/foundation-control
+DESIGN_WORKTREE: /home/leo/Project/agent-office-a1r-001
+CONTROL_MODE: PRODUCT_EXPERIENCE_DESIGN_MODE__PNG_EXPORT_CORRECTION
+PROCESS_MODEL: same Claude PID 1774874; Opus 4.8 (1M), xhigh
+LAUNCHER_PATH: advisor/jobs/20260713_agent_office_a1r_living_office_experience_refinement_001/09E_CONTROL_PNG_EXPORT_CORRECTION_RUN_PROMPT.md
+LAUNCHER_COMMIT: f32d62272ecfe2d74715e0000ee8e0f93417cd94
+LAUNCHER_BLOB: 38a294a79a8bbe21a5f406bdd972770fd15ee3c0
+LAUNCHER_SHA256: 27ea6e944ed6a5eeba878bbee04e9fc390c4702cbfe616d0ef9875a6c8f7f23d
+TARGET_DESIGN_BASE: ad147ecbecdddaea1966f7094837cf1272456af5
+PATCH_SCOPE: one PNG re-export at exact 2400x1840; SVG and all other files byte-identical
+EXPECTED_RESULT: runs/agent-office/20260713_agent_office_a1r_living_office_experience_refinement_001/CONTROL_INFORMATION_STATE_PNG_EXPORT_CORRECTION_RESULT.md
+EXPECTED_POINTER: advisor/jobs/20260713_agent_office_a1r_living_office_experience_refinement_001/19_CONTROL_PNG_EXPORT_CORRECTION_RESULT_POINTER.md
+SERIALIZATION: Control only; Worker unauthorized; Reviewer stopped
+PREFLIGHT_VERDICT: PASS_READY_TO_SEND_AFTER_CLEARING_STRAY_IDLE_INPUT
+STATUS: READY_TO_DISPATCH
+```
