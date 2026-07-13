@@ -140,10 +140,13 @@ rehearsal, final audit, and Founder Acceptance Sheet.
 - [Advisor Worker second-rework validation](58_ADVISOR_WORKER_SECOND_REWORK_VALIDATION.md)
 - [Opus Worker focused third implementation rework handoff](09M_WORKER_IMPLEMENTATION_THIRD_REWORK_HANDOFF_PROMPT.md)
 - [Opus Worker focused third implementation rework launcher](09M_WORKER_IMPLEMENTATION_THIRD_REWORK_RUN_PROMPT.md)
+- [Opus Worker third rework result pointer](17_WORKER_THIRD_REWORK_RESULT_POINTER.md)
+- [Advisor Worker third-rework validation](59_ADVISOR_WORKER_THIRD_REWORK_VALIDATION.md)
+- [SOL Sentinel second implementation delta re-review handoff](07M_SENTINEL_IMPLEMENTATION_SECOND_DELTA_REREVIEW_HANDOFF_PROMPT.md)
+- [SOL Sentinel second implementation delta re-review launcher](07M_SENTINEL_IMPLEMENTATION_SECOND_DELTA_REREVIEW_RUN_PROMPT.md)
 
-Current state: the second Worker rework closed I2-1/I2-3/I2-4 technically, but
-Advisor direct current-candidate pixel inspection found two review-blocking,
-routine patchable first-layer defects: missing Team and excessive desktop
-Office occlusion. The same Opus Worker focused third rework is ready. Final
-Sentinel re-review, audit, and Founder approval remain pending; Batch B remains
-not started and unauthorized.
+Current state: focused candidate `fcd55a2` adds the missing Team first-layer
+fact and reduces measured desktop label coverage from 28.1% to 16.8%. Advisor
+direct focused tests and current-candidate pixel inspection accept it for the
+same SOL Sentinel second delta re-review. Final audit and Founder approval
+remain pending; Batch B remains not started and unauthorized.
