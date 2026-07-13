@@ -3445,3 +3445,29 @@ HARD_TIMEOUT_SECONDS_OR_NONE: none
 PREFLIGHT_VERDICT: PASS_READY_TO_SEND
 STATUS: READY_TO_SEND
 ```
+## AO-BATCH-A-WORKER-THIRD-REWORK-20260713T075200Z
+
+```text
+DISPATCH_ID: AO-BATCH-A-WORKER-THIRD-REWORK-20260713T075200Z
+MISSION_ID: AGENT_OFFICE_BATCH_A_MODERN_OFFICE_IDENTITY_COMPLETION_001
+TARGET_ACTOR: Agent Office Worker-Rework
+TARGET_SESSION: agent-office-opus/$16/@16/%16
+OBSERVED_WORKSPACE: /home/leo/Project/agent-office
+REQUIRED_WORKSPACE: /home/leo/Project/agent-office-batch-a-001
+PROCESS_MODEL: claude; live footer Opus 4.8 (1M) Ultracode
+ROLE_SKILL_READINESS: same Worker; /fable-builder required; second-rework result and STOP visible; idle; no unrelated work or interactive/auth/security prompt
+SYNCHRONIZED_PANES_OFF: true
+LAUNCHER_PATH: /home/leo/Project/foundation-docs/advisor/jobs/20260712_agent_office_batch_a_modern_office_identity_completion_001/09M_WORKER_IMPLEMENTATION_THIRD_REWORK_RUN_PROMPT.md
+LAUNCHER_COMMIT: 3a1d724
+LAUNCHER_BLOB: 473a2fb019360e64193e9172e9cca44636d8b503
+LAUNCHER_SHA256: 6cf3088138b08b4be266bf791133bcc946a52611047bc3a1092a00af54ff86f7
+TARGET_EVIDENCE: exact clean/upstream-equal 1187b9a; Worker second result a8ab399 and pointer a109256; Advisor direct 71/71 focused plus authenticated browser 3/3 and fresh desktop/mobile pixel inspection
+PATCH_SCOPE: A3-1 current Team in first information layer; A3-2 compact Office-first desktop labels plus deterministic occlusion coverage gate
+RESULT_PATH: ../foundation-docs/runs/agent-office/20260712_agent_office_batch_a_modern_office_identity_completion_001/WORKER_THIRD_REWORK_RESULT.md
+POINTER_PATH: ../foundation-docs/advisor/jobs/20260712_agent_office_batch_a_modern_office_identity_completion_001/17_WORKER_THIRD_REWORK_RESULT_POINTER.md
+DEPENDENCY_LOCKS: Control stopped; Reviewer stopped; no concurrent Agent Office writer; excluded historical agent-office untouched
+SOFT_STALL_SECONDS: 60
+HARD_TIMEOUT_SECONDS_OR_NONE: none
+PREFLIGHT_VERDICT: PASS_READY_TO_SEND
+STATUS: READY_TO_SEND
+```

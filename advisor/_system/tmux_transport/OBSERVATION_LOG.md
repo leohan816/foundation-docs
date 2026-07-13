@@ -2134,3 +2134,31 @@ SENSITIVE_OUTPUT_SUSPECTED: false
 ACTION_TAKEN: verified exact session/window/pane/process, synchronized panes off, clean/upstream-equal target 74d5866, committed launcher identity, serialized dependencies, and no concurrent writer; no input sent yet
 NEXT_OBSERVATION_DUE: immediate exact committed launcher dispatch
 ```
+## AO-BATCH-A-WORKER-SECOND-REWORK-20260713T054330Z — Advisor direct validation
+
+```text
+OBSERVED_AT: 2026-07-13T07:48:38Z
+TARGET_COMMIT: 1187b9ae37077f22e697680bf531f9e475f005bf
+BRANCH_STATE: clean and upstream-equal
+FOCUSED_TESTS: 5 files / 71 tests PASS
+AUTHENTICATED_BROWSER: 3/3 PASS under strict CSP
+PIXEL_EVIDENCE: fresh desktop 1440x900 and mobile 390x844 unmasked captures directly inspected
+TECHNICAL_CLOSURE: I2-1, I2-3, I2-4 accepted
+BLOCKING_FINDINGS: A3-1 required Team omitted from first layer; A3-2 desktop cards materially obscure Office/actors/work surfaces
+DECISION: reject before independent review; route focused same-Worker third rework
+```
+
+## AO-BATCH-A-WORKER-THIRD-REWORK-20260713T075200Z — preflight
+
+```text
+OBSERVED_AT: 2026-07-13T07:52:00Z
+SESSION: agent-office-opus
+LOCATOR: $16 / @16 / %16
+PROCESS: claude
+MODEL_EFFORT: live footer Opus 4.8 (1M) Ultracode
+PANE_STATE: Worker second-rework completion and STOP visible; idle prompt; no pending approval/auth/error
+REPO_STATE: /home/leo/Project/agent-office-batch-a-001 at clean/upstream-equal 1187b9a
+LAUNCHER_STATE: committed and pushed at foundation-docs 3a1d724; exact blob/SHA-256 recorded
+DEPENDENCY_STATE: Control and Reviewer stopped; excluded historical agent-office untouched
+VERDICT: PASS_READY_TO_SEND
+```

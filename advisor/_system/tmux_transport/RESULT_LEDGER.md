@@ -1065,3 +1065,15 @@ LAUNCHER_COMMIT: c5a7bc9633930564e9da0d0e1ef9fd227e4582f8
 WORK_SCOPE: exact two-test correction, accepted render-host chain, remaining WU-01 and WU-05 through WU-09
 NEXT_ACTOR: Advisor after exact Worker result and pointer return
 ```
+## AO-BATCH-A-WORKER-SECOND-REWORK-20260713T054330Z
+
+```text
+COMPLETED_AT: 2026-07-13T07:40:00Z
+STATUS: COMPLETED__ADVISOR_REJECTED_BEFORE_REVIEW
+TARGET_COMMIT: 1187b9ae37077f22e697680bf531f9e475f005bf
+RESULT_COMMIT: a8ab3995a9ed45d8f0817c45095a2fdf20e96dbd
+POINTER_COMMIT: a109256b74b33568458a9069b9bc4d99587a20cc
+GREEN_EVIDENCE: Worker final gate reported 631/631; Advisor focused 71/71 and authenticated Living Office 3/3 independently reproduced
+ADVISOR_FINDINGS: A3-1 missing current Team in first layer; A3-2 excessive desktop Office occlusion
+NEXT_DEPENDENCY: same agent-office-opus focused third rework
+```
