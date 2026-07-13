@@ -94,6 +94,10 @@
 - [Advisor Control source-exactness validation](45_ADVISOR_CONTROL_SOURCE_EXACTNESS_VALIDATION.md)
 - [SOL Sentinel FDR delta handoff](07J_SENTINEL_FDR_DELTA_REREVIEW_HANDOFF_PROMPT.md)
 - [SOL Sentinel FDR delta launcher](07J_SENTINEL_FDR_DELTA_REREVIEW_RUN_PROMPT.md)
+- [SOL Sentinel FDR delta result pointer](46_SENTINEL_FDR_DELTA_REREVIEW_RESULT_POINTER.md)
+- [Advisor superseding final design acceptance](47_ADVISOR_FINAL_DESIGN_ACCEPTANCE_SUPERSEDING.md)
+- [Opus Worker final-design resume handoff](06E_WORKER_FINAL_DESIGN_RESUME_HANDOFF_PROMPT.md)
+- [Opus Worker final-design resume launcher](06E_WORKER_FINAL_DESIGN_RESUME_RUN_PROMPT.md)
 
 Design: accepted at `381b411`; independent Sentinel design verdict `PASS`.
 
