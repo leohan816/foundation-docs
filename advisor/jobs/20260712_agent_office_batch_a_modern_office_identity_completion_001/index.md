@@ -84,6 +84,9 @@
 - [Advisor Control final-five diff validation](41_ADVISOR_CONTROL_FINAL_FIVE_DIFF_VALIDATION.md)
 - [Control final textual-consistency handoff](09M_CONTROL_FINAL_TEXTUAL_CONSISTENCY_HANDOFF_PROMPT.md)
 - [Control final textual-consistency launcher](09M_CONTROL_FINAL_TEXTUAL_CONSISTENCY_RUN_PROMPT.md)
+- [Advisor final textual-consistency validation](42_ADVISOR_CONTROL_TEXT_CONSISTENCY_VALIDATION.md)
+- [SOL Sentinel final design delta handoff](07I_SENTINEL_FINAL_DESIGN_DELTA_REREVIEW_HANDOFF_PROMPT.md)
+- [SOL Sentinel final design delta launcher](07I_SENTINEL_FINAL_DESIGN_DELTA_REREVIEW_RUN_PROMPT.md)
 
 Design: accepted at `381b411`; independent Sentinel design verdict `PASS`.
 
