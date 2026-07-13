@@ -176,10 +176,14 @@ rehearsal, final audit, and Founder Acceptance Sheet.
 - [Advisor Sentinel fifth-delta validation](68_ADVISOR_SENTINEL_FIFTH_DELTA_VALIDATION.md)
 - [Opus Worker seventh exact per-cell rework handoff](09Q_WORKER_IMPLEMENTATION_SEVENTH_REWORK_HANDOFF_PROMPT.md)
 - [Opus Worker seventh exact per-cell rework launcher](09Q_WORKER_IMPLEMENTATION_SEVENTH_REWORK_RUN_PROMPT.md)
+- [Opus Worker seventh-rework result pointer](25_WORKER_SEVENTH_REWORK_RESULT_POINTER.md)
+- [Advisor Worker seventh-rework validation](69_ADVISOR_WORKER_SEVENTH_REWORK_VALIDATION.md)
+- [SOL Sentinel sixth implementation delta re-review handoff](07Q_SENTINEL_IMPLEMENTATION_SIXTH_DELTA_REREVIEW_HANDOFF_PROMPT.md)
+- [SOL Sentinel sixth implementation delta re-review launcher](07Q_SENTINEL_IMPLEMENTATION_SIXTH_DELTA_REREVIEW_RUN_PROMPT.md)
 
-Current state: the same SOL Sentinel closed A6-1, A6-3, and the original four
-attacks but returned routine `NEEDS_PATCH` because hidden values and a missing
-per-fact value masked by a hidden duplicate still pass the global marker-count
-predicate. A one-file-centered seventh exact per-cell evidence patch is ready
-for the same Opus Worker. Final rehearsal/audit/Founder approval remain pending;
-Batch B remains not started and unauthorized.
+Current state: the same Opus Worker published the test/docs-only A7 patch at
+`58a484b`. Advisor directly inspected the five-file delta and reproduced
+targeted lint, typecheck, and the real Living Office `3/3` gate. The same SOL
+Sentinel sixth narrow delta re-review is ready to reapply the two exact attacks.
+Final rehearsal/audit/Founder approval remain pending; Batch B remains not
+started and unauthorized.

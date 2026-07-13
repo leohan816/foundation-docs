@@ -5,13 +5,13 @@
 - Control design: `FINAL_ACCEPTED_AT_535F39A`
 - Advisor design validation: `PASS__WORKER_FULL_IMPLEMENTATION_RESUME_AUTHORIZED`
 - Sentinel design review: `PASS__ALL_PRC_AND_FDR_FINDINGS_CLOSED`
-- Opus Worker: `SEVENTH_EXACT_PER_CELL_EVIDENCE_REWORK_READY`
-- Opus Worker implementation rework: `A7_PENDING`
-- Advisor candidate validation: `FIFTH_SENTINEL_NEEDS_PATCH_ACCEPTED_AS_ROUTINE`
-- SOL Sentinel: `FIFTH_DELTA_NEEDS_PATCH__SAME_SESSION_REREVIEW_REQUIRED_AFTER_WORKER`
+- Opus Worker: `SEVENTH_REWORK_AT_58A484B_COMPLETE`
+- Opus Worker implementation rework: `A7_CANDIDATE_COMPLETE`
+- Advisor candidate validation: `ACCEPT_FOR_SAME_SENTINEL_SIXTH_DELTA_REREVIEW`
+- SOL Sentinel: `SIXTH_DELTA_REREVIEW_READY`
 - Patch attempts: `14_CONTROL_DESIGN_PATCHES_COMPLETE__SENTINEL_PASS__5_IMPLEMENTATION_REWORKS_COMPLETE`
 - Final audit: `WAITING`
-- Next actor: same existing `agent-office-opus` Worker seventh exact per-cell evidence rework
+- Next actor: same existing `foundation-reviewer-sol` Sentinel sixth implementation delta re-review
 - Batch B: `NOT_STARTED_NOT_AUTHORIZED`
 - [Worker fourth-rework result pointer](19_WORKER_FOURTH_REWORK_RESULT_POINTER.md)
 - [Advisor Worker fourth-rework validation](62_ADVISOR_WORKER_FOURTH_REWORK_VALIDATION.md)
@@ -39,3 +39,7 @@
 - [Advisor Sentinel fifth-delta validation](68_ADVISOR_SENTINEL_FIFTH_DELTA_VALIDATION.md)
 - [Opus Worker seventh exact per-cell rework handoff](09Q_WORKER_IMPLEMENTATION_SEVENTH_REWORK_HANDOFF_PROMPT.md)
 - [Opus Worker seventh exact per-cell rework launcher](09Q_WORKER_IMPLEMENTATION_SEVENTH_REWORK_RUN_PROMPT.md)
+- [Opus Worker seventh-rework result pointer](25_WORKER_SEVENTH_REWORK_RESULT_POINTER.md)
+- [Advisor Worker seventh-rework validation](69_ADVISOR_WORKER_SEVENTH_REWORK_VALIDATION.md)
+- [SOL Sentinel sixth implementation delta re-review handoff](07Q_SENTINEL_IMPLEMENTATION_SIXTH_DELTA_REREVIEW_HANDOFF_PROMPT.md)
+- [SOL Sentinel sixth implementation delta re-review launcher](07Q_SENTINEL_IMPLEMENTATION_SIXTH_DELTA_REREVIEW_RUN_PROMPT.md)
