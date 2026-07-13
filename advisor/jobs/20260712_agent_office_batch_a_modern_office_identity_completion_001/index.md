@@ -104,6 +104,9 @@
 - [Advisor CD-3 marker non-weakening correction](49_ADVISOR_CD3_PROTOTYPE_MARKER_NON_WEAKENING_CORRECTION.md)
 - [Opus Worker CD-3 marker correction handoff](06G_WORKER_CD3_MARKER_CORRECTION_HANDOFF_PROMPT.md)
 - [Opus Worker CD-3 marker correction launcher](06G_WORKER_CD3_MARKER_CORRECTION_RUN_PROMPT.md)
+- [Advisor Office-first visual baseline reconciliation](50_ADVISOR_OFFICE_FIRST_VISUAL_BASELINE_RECONCILIATION.md)
+- [Opus Worker visual baseline reconciliation handoff](06H_WORKER_VISUAL_BASELINE_RECONCILIATION_HANDOFF_PROMPT.md)
+- [Opus Worker visual baseline reconciliation launcher](06H_WORKER_VISUAL_BASELINE_RECONCILIATION_RUN_PROMPT.md)
 
 Design: accepted at `381b411`; independent Sentinel design verdict `PASS`.
 
