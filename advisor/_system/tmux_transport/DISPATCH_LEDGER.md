@@ -3845,3 +3845,28 @@ SERIALIZATION: design-only; Worker and Reviewer not dispatched; no competing A-1
 TIMEOUT_POLICY: observe approximately once per minute; no automatic approval/auth response
 STATUS: READY_TO_DISPATCH
 ```
+
+## AO-A1R-CONTROL-PRE-REVIEW-PATCH-20260713T170220Z
+
+```text
+DISPATCH_ID: AO-A1R-CONTROL-PRE-REVIEW-PATCH-20260713T170220Z
+MISSION_ID: AGENT_OFFICE_A1R_LIVING_OFFICE_EXPERIENCE_REFINEMENT_001
+TARGET_ACTOR: Control-Rework
+TARGET_SESSION: foundation-control
+TARGET_LOCATOR: $4 / @4 / %4
+TARGET_WORKSPACE: /home/leo/Project/foundation-control
+DESIGN_WORKTREE: /home/leo/Project/agent-office-a1r-001
+CONTROL_MODE: PRODUCT_EXPERIENCE_DESIGN_MODE__NARROW_PRE_REVIEW_PATCH
+LAUNCHER_PATH: advisor/jobs/20260713_agent_office_a1r_living_office_experience_refinement_001/09_CONTROL_DESIGN_PATCH_RUN_PROMPT.md
+LAUNCHER_COMMIT: b9bc4a45a5f1b449b4b2143ad6d8886bb6a3d7ef
+LAUNCHER_BLOB: e600f6636174e495526902c9d985d0d076d9a5d7
+LAUNCHER_SHA256: 036a2eaf15a850845bcef379023eb885e83a2d98c601ba11e78bd3ca7a64bc5d
+TARGET_DESIGN_BASE: d33dfc97a04077ded1a19c26d9806cb745166d73
+PATCH_SCOPE: A1R-ADV-01 exact Founder activation-batch mapping; A1R-ADV-02 detailed-Pod and mobile mockup collisions only
+EXPECTED_RESULT: runs/agent-office/20260713_agent_office_a1r_living_office_experience_refinement_001/CONTROL_STATIC_DESIGN_PATCH_RESULT.md
+EXPECTED_POINTER: advisor/jobs/20260713_agent_office_a1r_living_office_experience_refinement_001/14_CONTROL_STATIC_DESIGN_PATCH_RESULT_POINTER.md
+SERIALIZATION: Control only; Worker unauthorized; Reviewer waiting; no competing A-1R writer
+TIMEOUT_POLICY: observe approximately once per minute; no automatic approval/auth response
+PREFLIGHT_VERDICT: PASS_READY_TO_SEND_AFTER_CLEARING_STRAY_IDLE_INPUT
+STATUS: READY_TO_DISPATCH
+```

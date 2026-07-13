@@ -2431,3 +2431,29 @@ SYNCHRONIZED_PANES: off
 DEPENDENCY_STATE: Worker not authorized; independent Reviewer waiting; no competing A-1R writer
 VERDICT: PASS_READY_TO_SEND
 ```
+
+### AO-A1R-CONTROL-STATIC-DESIGN-20260713T163702Z — result accepted for Advisor validation
+
+```text
+OBSERVED_AT: 2026-07-13T16:58:00Z
+PANE: %4
+EVIDENCE: Control result/pointer committed and pushed; design commit d33dfc9 is direct child of 58a484b and equals its upstream; 15 authorized docs/mockup paths and zero non-doc changes
+INTERACTIVE_PROMPT: none during execution
+STATUS: COMPLETED__ADVISOR_VALIDATION_REQUIRED
+```
+
+## AO-A1R-CONTROL-PRE-REVIEW-PATCH-20260713T170220Z — preflight
+
+```text
+OBSERVED_AT: 2026-07-13T17:02:20Z
+SESSION: foundation-control
+LOCATOR: $4 / @4 / %4
+PROCESS: same Claude Code PID 1774874; pane_current_command=claude
+MODEL_EFFORT: same live process and just-published direct result identify Opus 4.8 (1M), xhigh
+PANE_STATE: Control completion/STOP visible; idle prompt contains stray unsent text "route to independent design review"; no approval/auth/error; clear with Ctrl-U before exact paste
+TARGET_STATE: /home/leo/Project/agent-office-a1r-001 clean/upstream equal at d33dfc9
+LAUNCHER_STATE: committed/pushed at b9bc4a4; exact blob/SHA-256 recorded
+SYNCHRONIZED_PANES: off
+DEPENDENCY_STATE: Worker unauthorized; Reviewer waiting; no competing A-1R writer
+VERDICT: PASS_READY_TO_SEND_AFTER_CLEARING_STRAY_IDLE_INPUT
+```
