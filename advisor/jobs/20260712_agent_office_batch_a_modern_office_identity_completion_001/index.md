@@ -150,10 +150,13 @@ rehearsal, final audit, and Founder Acceptance Sheet.
 - [Opus Worker focused fourth implementation rework launcher](09N_WORKER_IMPLEMENTATION_FOURTH_REWORK_RUN_PROMPT.md)
 - [Advisor fourth-rework test-exactness addendum](61_ADVISOR_FOURTH_REWORK_TEST_EXACTNESS_ADDENDUM.md)
 - [Opus Worker fourth-rework test-exactness launcher](09N2_WORKER_FOURTH_REWORK_TEST_EXACTNESS_RUN_PROMPT.md)
+- [Opus Worker fourth-rework result pointer](19_WORKER_FOURTH_REWORK_RESULT_POINTER.md)
+- [Advisor Worker fourth-rework validation](62_ADVISOR_WORKER_FOURTH_REWORK_VALIDATION.md)
+- [SOL Sentinel third implementation delta re-review handoff](07N_SENTINEL_IMPLEMENTATION_THIRD_DELTA_REREVIEW_HANDOFF_PROMPT.md)
+- [SOL Sentinel third implementation delta re-review launcher](07N_SENTINEL_IMPLEMENTATION_THIRD_DELTA_REREVIEW_RUN_PROMPT.md)
 
-Current state: same SOL Sentinel returned `NEEDS_PATCH`. A3-1 and normal-scale
-A3-2 are closed, but 200% coverage is 31.42%, the visual gate false-passes with
-seven hidden labels, and the accessible-name source claim exceeds actual code.
-All are routine patchable within the accepted A3 scope; same Opus Worker fourth
-focused rework is ready. Final review/audit/Founder approval remain pending;
-Batch B remains not started and unauthorized.
+Current state: Opus Worker fourth focused rework is committed/pushed at
+`43107b9`; Advisor reproduced the affected unit `9/9` and Living Office `3/3`
+gates and accepted the exact A4-1/A4-2/A4-3 delta for the same SOL Sentinel's
+third narrow implementation re-review. Final rehearsal/audit/Founder approval
+remain pending; Batch B remains not started and unauthorized.
