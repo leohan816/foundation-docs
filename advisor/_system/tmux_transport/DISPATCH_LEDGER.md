@@ -784,6 +784,14 @@ SENT_AT: PENDING_AFTER_COMMITTED_LEDGER
 STATUS: READY_TO_SEND
 ```
 
+### AO-BATCH-A-SIR-DELTA-REREVIEW-20260713T051000Z - sent
+
+```text
+SENT_AT: 2026-07-13T05:11:31Z
+TRANSPORT: cleared placeholder input with Ctrl-U; exact committed launcher loaded from Git into named tmux buffer ao_batch_a_sir_delta_20260713, pasted once to %20, and submitted unchanged with one verified follow-up Enter
+STATUS: RUNNING
+```
+
 ### BOOTSTRAP-RELOAD-COSMILE-20260710T184743Z
 
 ```text

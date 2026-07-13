@@ -2082,3 +2082,16 @@ SENSITIVE_OUTPUT_SUSPECTED: false
 ACTION_TAKEN: verified exact session/window/pane/workspace/process, synchronized panes off, committed launcher identity, candidate clean/upstream-equal, and no concurrent writer; no input sent yet
 NEXT_OBSERVATION_DUE: immediate exact committed launcher dispatch
 ```
+
+### AO-BATCH-A-SIR-DELTA-REREVIEW-20260713T051000Z - dispatch
+
+```text
+OBSERVED_AT: 2026-07-13T05:11:34Z
+PANE_ID: %20
+STATE: RUNNING
+OUTPUT_FINGERPRINT: exact 07L launcher submitted; Reviewer entered Working state; GPT-5.6 SOL xhigh footer visible
+INTERACTIVE_PROMPT_PRESENT: false
+SENSITIVE_OUTPUT_SUSPECTED: false
+ACTION_TAKEN: exact Git-backed named buffer pasted once; initial Enter left pasted content visible, then one verified follow-up Enter submitted the unchanged content
+NEXT_OBSERVATION_DUE: at most 60 seconds or on progress/result signal
+```
