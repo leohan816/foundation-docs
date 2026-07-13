@@ -4068,3 +4068,12 @@ TIMEOUT_POLICY: observe approximately once per minute; no automatic approval/aut
 PREFLIGHT_VERDICT: PASS_READY_TO_SEND_AFTER_CLEARING_STRAY_IDLE_INPUT
 STATUS: READY_TO_DISPATCH
 ```
+
+### AO-A1R-CONTROL-INFORMATION-GEOMETRY-PATCH-20260713T182710Z — sent
+
+```text
+SENT_AT: 2026-07-13T18:29:00Z
+TRANSPORT: cleared stray idle input with Ctrl-U; exact named tmux buffer pasted once to %4 and submitted
+POST_SEND_EVIDENCE: same Control opened the exact 09D launcher, candidate base 1ab8ad2, and two-file static geometry scope; active processing visible
+STATUS: RUNNING
+```

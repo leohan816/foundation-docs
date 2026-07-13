@@ -2636,3 +2636,13 @@ SYNCHRONIZED_PANES: off
 DEPENDENCY_STATE: Worker unauthorized; Reviewer stopped; no competing A-1R writer
 VERDICT: PASS_READY_TO_SEND_AFTER_CLEARING_STRAY_IDLE_INPUT
 ```
+
+### AO-A1R-CONTROL-INFORMATION-GEOMETRY-PATCH-20260713T182710Z — dispatch accepted
+
+```text
+OBSERVED_AT: 2026-07-13T18:29:05Z
+PANE: %4
+EVIDENCE: stray idle input cleared; exact 09D launcher visible with one-SVG/one-PNG scope, no agents/sub-agents, Worker unauthorized, and focused static checks; same Control entered active processing
+INTERACTIVE_PROMPT: none
+STATUS: RUNNING
+```
