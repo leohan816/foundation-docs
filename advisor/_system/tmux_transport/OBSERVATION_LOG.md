@@ -2564,3 +2564,13 @@ SYNCHRONIZED_PANES: off
 DEPENDENCY_STATE: Worker unauthorized; Reviewer stopped
 VERDICT: PASS_READY_TO_SEND
 ```
+
+### AO-A1R-CONTROL-METADATA-CORRECTION-20260713T180100Z — dispatch accepted
+
+```text
+OBSERVED_AT: 2026-07-13T18:02:00Z
+PANE: %4
+EVIDENCE: exact 09C launcher visible; same Control opened committed handoff and 13A validation; no SVG/PNG/runtime work authorized
+INTERACTIVE_PROMPT: none
+STATUS: RUNNING
+```

@@ -3977,3 +3977,12 @@ SERIALIZATION: Control only; Worker unauthorized; Reviewer stopped
 PREFLIGHT_VERDICT: PASS_READY_TO_SEND
 STATUS: READY_TO_DISPATCH
 ```
+
+### AO-A1R-CONTROL-METADATA-CORRECTION-20260713T180100Z — sent
+
+```text
+SENT_AT: 2026-07-13T18:02:00Z
+TRANSPORT: cleared idle input with Ctrl-U; exact named tmux buffer pasted once to %4 and submitted with one Enter
+POST_SEND_EVIDENCE: same Control opened committed handoff 09C and Advisor validation 13A; began four text-only corrections
+STATUS: RUNNING
+```
