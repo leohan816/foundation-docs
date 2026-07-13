@@ -3824,3 +3824,24 @@ TRANSPORT: cleared idle input with Ctrl-U; exact named tmux buffer pasted once t
 POST_SEND_EVIDENCE: same Reviewer announced /fable-sentinel, directly read exact 07Q handoff and Sentinel delta references, and preserved Agent Office read-only/no-delegation scope
 STATUS: RUNNING
 ```
+## AO-A1R-CONTROL-STATIC-DESIGN-20260713T163702Z
+
+```text
+DISPATCH_ID: AO-A1R-CONTROL-STATIC-DESIGN-20260713T163702Z
+MISSION_ID: AGENT_OFFICE_A1R_LIVING_OFFICE_EXPERIENCE_REFINEMENT_001
+TARGET_ACTOR: Control
+TARGET_SESSION: foundation-control
+TARGET_LOCATOR: $4 / @4 / %4
+TARGET_WORKSPACE: /home/leo/Project/foundation-control
+DESIGN_WORKTREE: /home/leo/Project/agent-office-a1r-001
+CONTROL_MODE: PRODUCT_EXPERIENCE_DESIGN_MODE
+LAUNCHER_PATH: advisor/jobs/20260713_agent_office_a1r_living_office_experience_refinement_001/06_CONTROL_STATIC_DESIGN_RUN_PROMPT.md
+LAUNCHER_COMMIT: ae1b1af811e0e2411ac989c9c33936e42c206edf
+LAUNCHER_BLOB: ba21bb5dd6515b3579078bbc7eb2f130da8ac0e8
+LAUNCHER_SHA256: 76135a89fb198a848acdfb2f1af6d0b914fca37ab1873a7e07668312c38f11d2
+EXPECTED_RESULT: runs/agent-office/20260713_agent_office_a1r_living_office_experience_refinement_001/CONTROL_STATIC_DESIGN_RESULT.md
+EXPECTED_POINTER: advisor/jobs/20260713_agent_office_a1r_living_office_experience_refinement_001/11_CONTROL_STATIC_DESIGN_RESULT_POINTER.md
+SERIALIZATION: design-only; Worker and Reviewer not dispatched; no competing A-1R writer
+TIMEOUT_POLICY: observe approximately once per minute; no automatic approval/auth response
+STATUS: READY_TO_DISPATCH
+```
