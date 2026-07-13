@@ -18,6 +18,13 @@ This protocol defines actor authority, mission routing, release-train sequencing
 evidence requirements, and reload behavior across Foundation, foundation-control,
 SIASIU, Cosmile, foundation-advisor, and the Fable5 review workspace.
 
+Companion canonical execution policy:
+`ADVISOR_ORCHESTRATION_MODEL_EFFORT_SKILL_AND_DELTA_PROTOCOL.md`. Every Advisor
+must read it for the default Control-design train, unknown gate, live
+model/effort verification, mandatory role skills, proportional delta review, and
+test-suite rerun thresholds. This companion policy cannot expand an actor's
+authority under V2.
+
 It does not authorize runtime implementation, database access, production access,
 flag changes, protected-branch merges, or live rollout by itself.
 

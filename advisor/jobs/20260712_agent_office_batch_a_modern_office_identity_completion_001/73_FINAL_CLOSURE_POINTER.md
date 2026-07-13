@@ -8,6 +8,7 @@ TARGET_REPO: /home/leo/Project/agent-office-batch-a-001
 TARGET_BRANCH: batch-a/modern-office-identity-001
 BASE_COMMIT: ac8ba75d3a128385beaeeac58ae5bf54c03d23f2
 FINAL_CANDIDATE: 58a484b088b4e57e7b3ee6e582f54c7f3ce6dc85
+FOUNDATION_DOCS_FINAL_AUDIT_COMMIT: 3b2025e409465e4d214bef987deb81b9d51e644a
 DESIGN_REVIEW: PASS
 IMPLEMENTATION_REVIEW: PASS
 FINAL_AUDIT: /home/leo/Project/foundation-docs/advisor/jobs/20260712_agent_office_batch_a_modern_office_identity_completion_001/05_FINAL_AUDIT.md
