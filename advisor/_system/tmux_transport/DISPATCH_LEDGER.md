@@ -3751,3 +3751,30 @@ TRANSPORT: cleared idle input with Ctrl-U; exact named tmux buffer pasted once t
 POST_SEND_EVIDENCE: same Reviewer announced /fable-sentinel, directly read exact 07P handoff and Sentinel delta references, and preserved Agent Office read-only/no-delegation scope
 STATUS: RUNNING
 ```
+
+## AO-BATCH-A-WORKER-SEVENTH-REWORK-20260713T115008Z
+
+```text
+DISPATCH_ID: AO-BATCH-A-WORKER-SEVENTH-REWORK-20260713T115008Z
+MISSION_ID: AGENT_OFFICE_BATCH_A_MODERN_OFFICE_IDENTITY_COMPLETION_001
+TARGET_ACTOR: Agent Office Worker-Rework
+TARGET_SESSION: agent-office-opus/$16/@16/%16
+OBSERVED_WORKSPACE: /home/leo/Project/agent-office
+REQUIRED_WORKSPACE: /home/leo/Project/agent-office-batch-a-001
+PROCESS_MODEL: same claude PID 686211; prior live status claude-opus-4-8 (1M); current live footer Ultracode / xhigh
+ROLE_SKILL_READINESS: same Worker; /fable-builder required; sixth-rework result and STOP visible; idle; no unrelated work or interactive/auth/security prompt
+SYNCHRONIZED_PANES_OFF: true
+LAUNCHER_PATH: /home/leo/Project/foundation-docs/advisor/jobs/20260712_agent_office_batch_a_modern_office_identity_completion_001/09Q_WORKER_IMPLEMENTATION_SEVENTH_REWORK_RUN_PROMPT.md
+LAUNCHER_COMMIT: a9ac68900d004890a158b093dc068f5769dd44dd
+LAUNCHER_BLOB: 08739fa3c40a52b9d73a07bbe62d6f7b47276763
+LAUNCHER_SHA256: e1dfd7c4d2ebab920864df3052a585cd5d06565fc3401c4e2a7e3fca20c6825b
+TARGET_EVIDENCE: clean/upstream/direct-origin equal 1e0b550; Sentinel NEEDS_PATCH result/pointer c1620d8/adf5b1c; Advisor validation 68 committed/pushed
+PATCH_SCOPE: E2E exact one-rendered-value-per-keyed-cell predicate; hidden and missing-plus-hidden-duplicate attacks for labels/roster; directly affected as-built accuracy
+RESULT_PATH: ../foundation-docs/runs/agent-office/20260712_agent_office_batch_a_modern_office_identity_completion_001/WORKER_SEVENTH_REWORK_RESULT.md
+POINTER_PATH: ../foundation-docs/advisor/jobs/20260712_agent_office_batch_a_modern_office_identity_completion_001/25_WORKER_SEVENTH_REWORK_RESULT_POINTER.md
+DEPENDENCY_LOCKS: Control stopped; Reviewer stopped; no concurrent Agent Office writer; excluded historical agent-office untouched
+SOFT_STALL_SECONDS: 60
+HARD_TIMEOUT_SECONDS_OR_NONE: none
+PREFLIGHT_VERDICT: PASS_READY_TO_SEND
+STATUS: READY_TO_SEND
+```
