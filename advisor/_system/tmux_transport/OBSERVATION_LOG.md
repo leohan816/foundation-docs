@@ -2457,3 +2457,13 @@ SYNCHRONIZED_PANES: off
 DEPENDENCY_STATE: Worker unauthorized; Reviewer waiting; no competing A-1R writer
 VERDICT: PASS_READY_TO_SEND_AFTER_CLEARING_STRAY_IDLE_INPUT
 ```
+
+### AO-A1R-CONTROL-PRE-REVIEW-PATCH-20260713T170220Z — dispatch accepted
+
+```text
+OBSERVED_AT: 2026-07-13T17:03:15Z
+PANE: %4
+EVIDENCE: stray idle input cleared; exact launcher visible; same Control directly opened the committed 09 handoff and declared the two-finding narrow pre-review patch
+INTERACTIVE_PROMPT: none
+STATUS: RUNNING
+```

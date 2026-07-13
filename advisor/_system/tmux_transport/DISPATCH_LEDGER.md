@@ -3870,3 +3870,12 @@ TIMEOUT_POLICY: observe approximately once per minute; no automatic approval/aut
 PREFLIGHT_VERDICT: PASS_READY_TO_SEND_AFTER_CLEARING_STRAY_IDLE_INPUT
 STATUS: READY_TO_DISPATCH
 ```
+
+### AO-A1R-CONTROL-PRE-REVIEW-PATCH-20260713T170220Z — sent
+
+```text
+SENT_AT: 2026-07-13T17:03:00Z
+TRANSPORT: cleared stray idle input with Ctrl-U; exact named tmux buffer pasted once to %4 and submitted with one Enter
+POST_SEND_EVIDENCE: same Control opened the exact committed 09 handoff and began the two-finding narrow patch under xhigh
+STATUS: RUNNING
+```
