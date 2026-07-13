@@ -18,6 +18,9 @@
 - [Advisor classification of delta geometry finding](17A_ADVISOR_DELTA_FINDING_CLASSIFICATION.md)
 - [Control information-geometry patch handoff](09D_CONTROL_INFORMATION_GEOMETRY_PATCH_HANDOFF_PROMPT.md)
 - [Control information-geometry patch launcher](09D_CONTROL_INFORMATION_GEOMETRY_PATCH_RUN_PROMPT.md)
+- [Advisor validation of geometry patch](18A_ADVISOR_GEOMETRY_PATCH_VALIDATION.md)
+- [Control PNG export correction handoff](09E_CONTROL_PNG_EXPORT_CORRECTION_HANDOFF_PROMPT.md)
+- [Control PNG export correction launcher](09E_CONTROL_PNG_EXPORT_CORRECTION_RUN_PROMPT.md)
 - [Control narrow patch handoff](09_CONTROL_DESIGN_PATCH_HANDOFF_PROMPT.md)
 - [Control narrow patch launcher](09_CONTROL_DESIGN_PATCH_RUN_PROMPT.md)
 - [Advisor classification of Sentinel findings](13_ADVISOR_SENTINEL_FINDING_CLASSIFICATION.md)
@@ -39,6 +42,8 @@ verified the exact scope, contracts, all four changed PNGs at original size,
 Git/upstream state, and the four metadata closures. The same-Sentinel delta
 review closed five findings but directly reproduced one information-state
 layout regression under `A1R-SDR-03`. Advisor classified it as a two-file
-static correction for the same Control, followed by the same Reviewer focused
-re-check. Worker implementation remains forbidden until a clean design delta
-`PASS` and Leo approves the static mockups.
+static correction for the same Control. Control fixed its three geometry
+measures in `ad147ec`; Advisor accepted the reflow but caught a 1x PNG export
+where the contract requires 2x, so a PNG-only export correction precedes the
+same Reviewer focused re-check. Worker implementation remains forbidden until a
+clean design delta `PASS` and Leo approves the static mockups.
