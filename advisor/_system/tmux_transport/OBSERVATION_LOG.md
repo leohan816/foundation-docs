@@ -2108,3 +2108,16 @@ SENSITIVE_OUTPUT_SUSPECTED: false
 ACTION_TAKEN: Advisor read the exact result and pointer, verified commits/target cleanliness, accepted four bounded implementation defects, and prepared same-Worker rework without reopening product design
 NEXT_OBSERVATION_DUE: none; Worker preflight follows
 ```
+
+## AO-BATCH-A-WORKER-SECOND-REWORK-20260713T054330Z
+
+```text
+OBSERVED_AT: 2026-07-13T05:43:30Z
+PANE_ID: %16
+STATE: READY_IDLE
+OUTPUT_FINGERPRINT: prior Worker SIR-1..SIR-5 rework result and STOP visible; Opus 4.8 (1M) Ultracode footer visible
+INTERACTIVE_PROMPT_PRESENT: false
+SENSITIVE_OUTPUT_SUSPECTED: false
+ACTION_TAKEN: verified exact session/window/pane/process, synchronized panes off, clean/upstream-equal target 74d5866, committed launcher identity, serialized dependencies, and no concurrent writer; no input sent yet
+NEXT_OBSERVATION_DUE: immediate exact committed launcher dispatch
+```

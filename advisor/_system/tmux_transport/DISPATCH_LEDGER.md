@@ -806,6 +806,33 @@ ADVISOR_CLASSIFICATION: I2-1 through I2-4 are routine patchable within accepted 
 NEXT_DEPENDENCY: same agent-office-opus Worker exact second rework
 ```
 
+## AO-BATCH-A-WORKER-SECOND-REWORK-20260713T054330Z
+
+```text
+DISPATCH_ID: AO-BATCH-A-WORKER-SECOND-REWORK-20260713T054330Z
+MISSION_ID: AGENT_OFFICE_BATCH_A_MODERN_OFFICE_IDENTITY_COMPLETION_001
+TARGET_ACTOR: Agent Office Worker-Rework
+TARGET_SESSION: agent-office-opus/$16/@16/%16
+OBSERVED_WORKSPACE: /home/leo/Project/agent-office
+REQUIRED_WORKSPACE: /home/leo/Project/agent-office-batch-a-001
+PROCESS_MODEL: claude; live footer Opus 4.8 (1M) Ultracode
+ROLE_SKILL_READINESS: same Worker; /fable-builder required; prior rework result and STOP visible; idle; no unrelated work or interactive/auth/security prompt
+SYNCHRONIZED_PANES_OFF: true
+LAUNCHER_PATH: /home/leo/Project/foundation-docs/advisor/jobs/20260712_agent_office_batch_a_modern_office_identity_completion_001/09L_WORKER_IMPLEMENTATION_SECOND_REWORK_RUN_PROMPT.md
+LAUNCHER_COMMIT: ed30d7de99c077cafe39a25470807fd84fb497de
+LAUNCHER_BLOB: 1e4cbc80bab8e9f3044f1d7be393ef2c28eda20e
+LAUNCHER_SHA256: 0871aef63b17a914cb13841fa547c2cd6f67f70958f6c264edb4e2318c11b56d
+TARGET_EVIDENCE: exact clean/upstream-equal 74d5866; Sentinel NEEDS_PATCH result fd2743d and pointer 1d367fb; Advisor validation 56 and launcher committed/upstream-equal
+PATCH_SCOPE: I2-1 truthful parent/HUD init state; I2-2 readable associated desktop/mobile/200-percent labels; I2-3 exact total pre-assembly validation; I2-4 Channy semantic parity/production copy/recognizability
+RESULT_PATH: ../foundation-docs/runs/agent-office/20260712_agent_office_batch_a_modern_office_identity_completion_001/WORKER_SECOND_REWORK_RESULT.md
+POINTER_PATH: ../foundation-docs/advisor/jobs/20260712_agent_office_batch_a_modern_office_identity_completion_001/16_WORKER_SECOND_REWORK_RESULT_POINTER.md
+DEPENDENCY_LOCKS: Control stopped; Reviewer stopped; no concurrent Agent Office writer; excluded historical agent-office untouched
+SOFT_STALL_SECONDS: 60
+HARD_TIMEOUT_SECONDS_OR_NONE: none
+PREFLIGHT_VERDICT: PASS_READY_TO_SEND
+STATUS: READY_TO_SEND
+```
+
 ### BOOTSTRAP-RELOAD-COSMILE-20260710T184743Z
 
 ```text
