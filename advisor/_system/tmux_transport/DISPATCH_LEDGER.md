@@ -784,6 +784,14 @@ SENT_AT: PENDING_AFTER_COMMITTED_LEDGER
 STATUS: READY_TO_SEND
 ```
 
+### AO-BATCH-A-WORKER-SECOND-REWORK-20260713T054330Z - sent
+
+```text
+SENT_AT: 2026-07-13T05:44:42Z
+TRANSPORT: cleared idle input with Ctrl-U; exact committed launcher loaded from Git into named tmux buffer ao_batch_a_worker_second_rework_20260713, pasted once to %16, and submitted with one Enter
+STATUS: RUNNING
+```
+
 ### AO-BATCH-A-SIR-DELTA-REREVIEW-20260713T051000Z - sent
 
 ```text

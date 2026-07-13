@@ -2083,6 +2083,19 @@ ACTION_TAKEN: verified exact session/window/pane/workspace/process, synchronized
 NEXT_OBSERVATION_DUE: immediate exact committed launcher dispatch
 ```
 
+### AO-BATCH-A-WORKER-SECOND-REWORK-20260713T054330Z - dispatch
+
+```text
+OBSERVED_AT: 2026-07-13T05:44:45Z
+PANE_ID: %16
+STATE: RUNNING
+OUTPUT_FINGERPRINT: exact 09L launcher submitted; Worker explicitly accepted no-agent constraint and opened committed handoff; Opus 4.8 Ultracode footer visible
+INTERACTIVE_PROMPT_PRESENT: false
+SENSITIVE_OUTPUT_SUSPECTED: false
+ACTION_TAKEN: exact Git-backed named buffer pasted and submitted once; receipt and scope acknowledgement verified; no repaste
+NEXT_OBSERVATION_DUE: at most 60 seconds or on progress/result signal
+```
+
 ### AO-BATCH-A-SIR-DELTA-REREVIEW-20260713T051000Z - dispatch
 
 ```text
