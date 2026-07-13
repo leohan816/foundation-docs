@@ -1,6 +1,6 @@
 # Control Design Result — Agent Office Batch A Application-Integration Design Delta
 
-Result: `CONTROL_MASTER_DESIGN_PLUS_FINAL_TEXTUAL_CONSISTENCY_PATCH__PENDING_ADVISOR_DIFF_VALIDATION_THEN_SAME_SENTINEL_REREVIEW`
+Result: `CONTROL_MASTER_DESIGN_PLUS_SENTINEL_FINAL_SOURCE_EXACTNESS_FDR1_FDR2_FDR3__PENDING_ADVISOR_DIFF_VALIDATION_THEN_SAME_SENTINEL_REREVIEW`
 
 Actor: Control (`foundation-control` session). Mode: `CONTROL_MASTER_DESIGN_MODE` (design coordination only — no implementation, no review, no risk acceptance, no final approval, no agents/sub-agents).
 
@@ -327,3 +327,19 @@ Advisor final-five diff validation `41_ADVISOR_CONTROL_FINAL_FIVE_DIFF_VALIDATIO
 **Consistency grep (correction #5)** over the four canonical docs: 0 remaining stale wrapper-5-field summaries; 0 remaining pod-responsible-Advisor→`UNASSIGNED`; 0 remaining registry-`project` project-identity keys. The three surviving `UNASSIGNED` matches (contract 163/224, delta 155) are the **legitimate actor-level `advisorTeam` = UNASSIGNED** rule that validation 41 explicitly preserves — kept unchanged.
 
 `RETURN_TO: Advisor` — per validation `41_...`, Advisor performs the diff validation that the five stale sentences are resolved by `d65716c`, then routes to the **same** `foundation-reviewer-sol` Sentinel for the narrow delta re-review; Worker stays stopped clean. Control has stopped and did not implement, review, self-review, accept risk, grant approval, or enter Batch B–E.
+
+---
+
+## Sentinel final design review — source-exactness corrections FDR-1/FDR-2/FDR-3 (candidate `535f39aaf090043e4d7e1ddaf7d369a0c321b159`)
+
+Same-Sentinel final design delta re-review (`SENTINEL_FINAL_DESIGN_DELTA_REREVIEW_RESULT.md`, `NEEDS_PATCH` after reproducing the exact in-memory Vite/Rolldown build) **closed PRC-1/2/3/4/7** and returned three source-exactness defects; Advisor validation `44_...` (`ACCEPT_NEEDS_PATCH__ROUTE_THREE_EVIDENCE_BACKED_CORRECTIONS_TO_SAME_CONTROL`) routed them here (handoff `09N`). Patched docs-only from actual source; all closed PRC items + stale-text corrections + WU-02/03/04 + U1-U3/S3/R2/T3 preserved; no product/authority/risk decision.
+
+**Code evidence read this pass (no agents):** `contracts.ts:249-255` (`PixelCameraState.mode = FULL_OFFICE|FOCUSED_POD|MANUAL|SCRIPTED`; FIT_ALL not a member); `camera.ts:9-24` (`fullOfficeCamera(layout, viewportWidth, viewportHeight, selectedPodId): PixelCameraState` → `mode:'FULL_OFFICE'`); `types.ts:35-39` (`AdvisorTeam = FOUNDATION_ADVISOR_TEAM|VIBENEWS_ADVISOR_TEAM`; `AdvisorTeamValue = AdvisorTeam|UNASSIGNED`), `:21` (`OrganizationFactStatus`), `:149-161` (`OrganizationDiagnosticCode` 6 values), `:164-189` (`OrganizationFrameActor` 16 envelopes + `canReceiveWork`); `projection.ts:54-59,94-108,203-216` (raw 4-key shape; presentation built with the same enclosing `services.projectionRevision`); `client.ts:519-549` (outer revision safe-integer/≥0 check), `:610` (`isCanonicalUtc`); `contracts.ts:8-13` (`PixelActorFactSource`); `index.html:15` (`<script type="module" src="/src/ui/main.tsx">`); reproduced build `facadeModuleId: <root>/index.html`, `isEntry: true`.
+
+- **FDR-1 / PRC-5 regression** (contract §3.1, delta §2.3): `DEFAULT_CAMERA.mode='FIT_ALL'` removed everywhere; production camera = `cameraOverride=null` + `fullOfficeCamera(...)` → `mode='FULL_OFFICE'`, no second enum. A renderable pod's `CommittedPodConfig.advisorTeamId` is a **non-sentinel `AdvisorTeam`**; the responsible Advisor's `advisorTeam.value` must equal it; actor-level `advisorTeam=UNASSIGNED` preserved as a valid fail-closed actor state but never a renderable pod lane.
+- **FDR-2 / PRC-6 partial** (contract §3.1.2 new, delta §2.3): complete literal raw untrusted-boundary parser contract distinct from the §3.1.1 wrapper (false "§3.1 lists it" removed): `parseRawLivingOfficePresentation` in `client.ts` from `parseProjection`; four top-level keys; `projectionRevision` non-negative safe integer **equal to the enclosing snapshot revision**; `evaluatedAt` canonical UTC; exact `frame`/actor/**16 fact-envelope**/`canReceiveWork`/`diagnostic` keys + enums (`OrganizationFactStatus`/`PixelActorFactSource`/`OrganizationDiagnosticCode`); `canReceiveWork=false` when `advisorTeam.value==='UNASSIGNED'`; fail-closed `null`.
+- **FDR-3 / PRC-8 partial** (delta §10): the reproduced `build({build:{write:false}})` returns the eager entry chunk with `isEntry:true` and **`facadeModuleId` = the absolute `index.html` path** (`main.tsx` is a module in that chunk's `.modules`, not the facade); eager root corrected to `index.html`, asserting `src/ui/main.tsx` in its `.modules`; production Office dynamic root stays `production-pixel-office-chunk.tsx`; other `.modules`/`imports`/`dynamicImports`/`.code`/marker/gzip/fixture rules unchanged.
+
+Changed docs (four canonical, non-docs 0): delta §2.3 (camera + raw parser) + §10 (eager facade) + §14.9 + header; contract §3.1 (camera/AdvisorTeam) + §3.1.2 (raw parser contract) + header; WU BA-WU-01 Part 2 + §3 CD-3 gate + header; FEATURE_INDEX §2.0. Source/tests/config untouched; `prototype-entry.tsx`/`fixtures/*` not edited.
+
+`RETURN_TO: Advisor` — per validation `44_...`, Advisor performs the diff validation that FDR-1/2/3 are resolved by `535f39a`, then routes the exact corrected delta to the **same** `foundation-reviewer-sol` Sentinel for the narrow delta re-review; Worker stays stopped clean. Control has stopped and did not implement, review, self-review, accept risk, grant approval, or enter Batch B–E.
