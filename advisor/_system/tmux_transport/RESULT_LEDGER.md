@@ -1040,3 +1040,28 @@ LAUNCHER_COMMIT: 7dcb2a552fe696f4e78f9b8f1f6341db12e55ec6
 WORK_SCOPE: WU-01 part 2 and WU-05 through WU-09, complete gates, fresh evidence, local rehearsal
 NEXT_ACTOR: Advisor after exact Worker result and pointer return
 ```
+
+### AO-BATCH-A-WORKER-FINAL-DESIGN-RESUME-20260713T003600Z - scope exception
+
+```text
+STATUS: COMPLETED_SCOPE_EXCEPTION
+TARGET_COMMIT: da2ad0ead6e5775e69eebefe5a20fd81f50ca732
+GREEN_EVIDENCE: 92 files / 582 tests; lint/typecheck PASS; worktree clean
+EXCEPTION: tests/ui/pixi-public-export-bridge.test.ts and tests/ui/pixel-renderer-lifecycle.test.tsx source-location assertions
+ADVISOR_EVIDENCE: 48_ADVISOR_RENDER_HOST_TEST_SCOPE_AMENDMENT.md
+ADVISOR_RESULT_VERDICT: PROCEED_WITH_EXACT_TECHNICAL_SCOPE_AMENDMENT
+NEXT_ACTOR: same agent-office-opus Worker session
+```
+
+## AO-BATCH-A-WORKER-RENDER-HOST-TEST-SCOPE-20260713T011700Z
+
+```text
+DISPATCH_ID: AO-BATCH-A-WORKER-RENDER-HOST-TEST-SCOPE-20260713T011700Z
+MISSION_ID: AGENT_OFFICE_BATCH_A_MODERN_OFFICE_IDENTITY_COMPLETION_001
+ACTOR: Agent Office Worker-Rework
+STATUS: RUNNING
+TARGET_COMMIT: da2ad0ead6e5775e69eebefe5a20fd81f50ca732
+LAUNCHER_COMMIT: c5a7bc9633930564e9da0d0e1ef9fd227e4582f8
+WORK_SCOPE: exact two-test correction, accepted render-host chain, remaining WU-01 and WU-05 through WU-09
+NEXT_ACTOR: Advisor after exact Worker result and pointer return
+```

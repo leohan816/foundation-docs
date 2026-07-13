@@ -2043,3 +2043,29 @@ SENSITIVE_OUTPUT_SUSPECTED: false
 ACTION_TAKEN: verified same session/process, accepted target checkpoint, serialized scope, and exact launcher receipt; no repaste
 NEXT_OBSERVATION_DUE: at most 60 seconds or on progress/result signal
 ```
+
+### AO-BATCH-A-WORKER-FINAL-DESIGN-RESUME-20260713T003600Z - scope exception
+
+```text
+OBSERVED_AT: 2026-07-13T01:14:00Z
+PANE_ID: %16
+STATE: COMPLETED_SCOPE_EXCEPTION
+OUTPUT_FINGERPRINT: Worker preserved da2ad0e clean after proving source-coupled test conflict; 92 files / 582 tests, lint and typecheck green
+INTERACTIVE_PROMPT_PRESENT: false
+SENSITIVE_OUTPUT_SUSPECTED: false
+ACTION_TAKEN: Advisor directly read both tests and accepted exact two-path assertion-location correction without weakening gates
+NEXT_OBSERVATION_DUE: none; 06F same-Worker resume follows
+```
+
+## AO-BATCH-A-WORKER-RENDER-HOST-TEST-SCOPE-20260713T011700Z
+
+```text
+OBSERVED_AT: 2026-07-13T01:17:00Z
+PANE_ID: %16
+STATE: RUNNING
+OUTPUT_FINGERPRINT: exact 06F launcher submitted; Worker reverified da2ad0e clean/ahead-2 and opened amendment 48 under ultracode
+INTERACTIVE_PROMPT_PRESENT: false
+SENSITIVE_OUTPUT_SUSPECTED: false
+ACTION_TAKEN: verified same session/process/checkpoint and exact committed launcher receipt; no repaste
+NEXT_OBSERVATION_DUE: at most 60 seconds or on progress/result signal
+```

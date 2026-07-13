@@ -3314,3 +3314,50 @@ SENT_AT: 2026-07-13T00:36:00Z
 TRANSPORT: cleared idle input with Ctrl-U; exact named tmux buffer pasted once and submitted with one Enter
 STATUS: RUNNING
 ```
+
+### AO-BATCH-A-WORKER-FINAL-DESIGN-RESUME-20260713T003600Z - scope exception
+
+```text
+COMPLETED_AT: 2026-07-13T01:14:00Z
+STATUS: COMPLETED_SCOPE_EXCEPTION
+TARGET_COMMIT: da2ad0ead6e5775e69eebefe5a20fd81f50ca732
+GREEN_EVIDENCE: 92 files / 582 tests; lint PASS; typecheck PASS; clean worktree
+EXCEPTION: design-required pixel-render-host extraction conflicts with two out-of-scope source-location assertions
+ADVISOR_ACTION: exact two-test technical scope amendment published at c5a7bc9; no product/security/authority decision
+NEXT_DEPENDENCY: same Worker exact 06F resume
+```
+
+## AO-BATCH-A-WORKER-RENDER-HOST-TEST-SCOPE-20260713T011700Z
+
+```text
+DISPATCH_ID: AO-BATCH-A-WORKER-RENDER-HOST-TEST-SCOPE-20260713T011700Z
+MISSION_ID: AGENT_OFFICE_BATCH_A_MODERN_OFFICE_IDENTITY_COMPLETION_001
+TARGET_ACTOR: Agent Office Worker-Rework
+TARGET_SESSION: agent-office-opus/$16/@16/%16
+OBSERVED_WORKSPACE: /home/leo/Project/agent-office
+REQUIRED_WORKSPACE: /home/leo/Project/agent-office-batch-a-001
+PROCESS_MODEL: claude; same verified Opus 4.8 (1M) context; ultracode footer visible
+ROLE_SKILL_READINESS: /fable-builder required; clean scope-exception stop visible; no interactive/auth/security prompt
+SYNCHRONIZED_PANES_OFF: true
+LAUNCHER_PATH: /home/leo/Project/foundation-docs/advisor/jobs/20260712_agent_office_batch_a_modern_office_identity_completion_001/06F_WORKER_RENDER_HOST_TEST_SCOPE_RUN_PROMPT.md
+LAUNCHER_COMMIT: c5a7bc9633930564e9da0d0e1ef9fd227e4582f8
+LAUNCHER_BLOB: b41a4b271494c2ab5fdc9d1c1a1a381f50e3796a
+LAUNCHER_SHA256: 4ae73bdc3f554da587ecfb21be9a461ab0e116ac31a02d1d9cbada399962272c
+TARGET_EVIDENCE: clean checkpoint da2ad0e; 92 files / 582 tests; lint/typecheck PASS; branch ahead 2 expected
+SCOPE: exact two source-coupled test corrections, accepted render-host chain, then remaining Batch A gates and result
+RESULT_PATH: ../foundation-docs/runs/agent-office/20260712_agent_office_batch_a_modern_office_identity_completion_001/WORKER_RESULT.md
+POINTER_PATH: ../foundation-docs/advisor/jobs/20260712_agent_office_batch_a_modern_office_identity_completion_001/12_WORKER_RESULT_POINTER.md
+DEPENDENCY_LOCKS: Control/Reviewer stopped; excluded historical agent-office session untouched; no concurrent writer
+SOFT_STALL_SECONDS: 60
+HARD_TIMEOUT_SECONDS_OR_NONE: none
+PREFLIGHT_VERDICT: PASS_READY_TO_SEND
+STATUS: RUNNING
+```
+
+### AO-BATCH-A-WORKER-RENDER-HOST-TEST-SCOPE-20260713T011700Z - sent
+
+```text
+SENT_AT: 2026-07-13T01:17:00Z
+TRANSPORT: cleared idle input with Ctrl-U; exact named tmux buffer pasted once and submitted with one Enter
+STATUS: RUNNING
+```
