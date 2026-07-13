@@ -1,5 +1,9 @@
 # Founder Static Mockup Approval Package
 
+> **SUPERSEDED / FOUNDER REJECTED:** Leo directly inspected the full-size
+> artifacts and rejected this visual direction. This file remains historical
+> evidence only. See `23_FOUNDER_STATIC_MOCKUP_REJECTION_AND_DESIGNER_ROUTING.md`.
+
 ## RESULT SUMMARY
 
 - Mission: `AGENT_OFFICE_A1R_LIVING_OFFICE_EXPERIENCE_REFINEMENT_001`

@@ -26,6 +26,7 @@
 - [Sentinel SDR-03 re-check launcher](07C_SENTINEL_SDR03_RECHECK_RUN_PROMPT.md)
 - [Founder static mockup approval package](21_FOUNDER_STATIC_MOCKUP_APPROVAL_PACKAGE.md)
 - [Advisor static design return pointer](22_ADVISOR_STATIC_DESIGN_RETURN_POINTER.md)
+- [Founder static mockup rejection and Designer routing](23_FOUNDER_STATIC_MOCKUP_REJECTION_AND_DESIGNER_ROUTING.md)
 - [Control narrow patch handoff](09_CONTROL_DESIGN_PATCH_HANDOFF_PROMPT.md)
 - [Control narrow patch launcher](09_CONTROL_DESIGN_PATCH_RUN_PROMPT.md)
 - [Advisor classification of Sentinel findings](13_ADVISOR_SENTINEL_FINDING_CLASSIFICATION.md)
@@ -53,4 +54,8 @@ where the contract requires 2x, so a PNG-only export correction precedes the
 same Reviewer focused re-check. The final candidate is `11cdf80`, with a
 byte-identical final SVG and corrected `2400×1840` PNG. Worker implementation
 remains forbidden. The same Reviewer returned final `PASS` and closed
-`A1R-SDR-03`; the reviewed package now waits for Leo/GPT static mockup approval.
+`A1R-SDR-03`, but Leo subsequently rejected the visual product direction after
+direct full-size inspection. That `PASS` is contract evidence only and cannot
+authorize implementation. `agent-office-designer` is now the designated A-1R
+product-experience Designer; Control is excluded from further A-1R visual/UX
+design. The mission remains on hold and Worker implementation remains forbidden.

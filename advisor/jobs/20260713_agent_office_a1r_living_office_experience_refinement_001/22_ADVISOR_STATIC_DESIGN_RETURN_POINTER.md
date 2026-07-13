@@ -1,5 +1,9 @@
 # Advisor Static Design Return Pointer
 
+> **SUPERSEDED:** the returned mockup package was rejected by Leo after direct
+> visual inspection. It must not authorize implementation. See
+> `23_FOUNDER_STATIC_MOCKUP_REJECTION_AND_DESIGNER_ROUTING.md`.
+
 ```text
 RESULT_READY_FOR_LEO_GPT
 MISSION_ID: AGENT_OFFICE_A1R_LIVING_OFFICE_EXPERIENCE_REFINEMENT_001

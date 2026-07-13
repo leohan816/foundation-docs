@@ -2,7 +2,7 @@
 
 Registry status: `ACTIVE_LOCATOR__REVALIDATE_BEFORE_EVERY_DISPATCH`
 
-Observed: 2026-07-12 UTC
+Observed: 2026-07-13 UTC
 
 Observed effective tmux window option: `synchronize-panes off` for the registered
 sessions. This must be checked again before every dispatch.
@@ -21,6 +21,12 @@ verification. Pane IDs and processes can change.
 | Foundation SOL Reviewer | `foundation-reviewer-sol` | `$20` | 0 | `@20` | 0 | `%20` | `/home/leo/Project/foundation-reviewer` | `codex` (v0.144.1 at onboarding) | user-authorized independent SOL Reviewer session; current resource-conscious baseline is `GPT-5.6 SOL` with `xhigh` effort in the dedicated neutral reviewer workspace; Advisor may require `max` for a specific Level 3 review after live verification | primary cross-repo SOL Sentinel candidate; idle until an exact committed launcher instructs it to read the applicable Sentinel contract; must not implement, patch, or grant final approval |
 | Agent Office SOL Reviewer (legacy project-specific locator) | `agent-office-sol` | `$13` | 0 | `@13` | 0 | `%13` | `/home/leo/Project/agent-office` | `codex` (live PID and version revalidated before each dispatch) | same existing Agent Office Codex session formerly named `agent-office`; previously assigned as an independent SOL Sentinel | do not auto-select while `foundation-reviewer-sol` is available; any reuse requires explicit routing, live model/effort verification, and conflict check |
 | Agent Office Opus Worker | `agent-office-opus` | `$16` | 0 | `@16` | 0 | `%16` | `/home/leo/Project/agent-office` | `claude` | same existing user-created tmux session formerly named `agent-office-grok`; Grok exited; live Claude Code shows `Opus 4.8 (1M context)` and `ultracode`; `/fable-builder` and Agent Office Worker role must be loaded from the exact mission worktree before dispatch | primary Agent Office implementation Worker for future exact committed missions after live model, effort, role, workspace, branch, and readiness verification; no review or final approval authority |
+| Agent Office Product Designer | `agent-office-designer` | `$21` | 0 | `@21` | 0 | `%21` | `/home/leo/Project/agent-office-designer` | `codex` (v0.144.1 at onboarding) | user-created dedicated Designer workspace with local `AGENTS.md`; live runtime verified as `GPT-5.6 SOL` with `max` effort and YOLO mode | primary Agent Office product-experience and visual-design actor after exact committed handoff; no implementation, independent review, risk acceptance, or final approval authority |
+
+Agent Office product-experience routing decision effective 2026-07-13:
+`agent-office-designer` owns the next A-1R visual/UX design pass. `foundation-control`
+is excluded from further A-1R product-experience design. Control remains eligible
+for separately authorized architecture, contract, and coding-design work.
 
 ## Required Live Checks
 
