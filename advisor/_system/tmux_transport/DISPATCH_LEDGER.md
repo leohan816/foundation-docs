@@ -3588,3 +3588,30 @@ TRANSPORT: cleared idle input with Ctrl-U; exact named tmux buffer pasted once t
 POST_SEND_EVIDENCE: same Reviewer announced /fable-sentinel, directly read exact 07N handoff and Sentinel review references, preserved Agent Office read-only/no-delegation scope
 STATUS: RUNNING
 ```
+
+## AO-BATCH-A-WORKER-FIFTH-REWORK-20260713T100736Z
+
+```text
+DISPATCH_ID: AO-BATCH-A-WORKER-FIFTH-REWORK-20260713T100736Z
+MISSION_ID: AGENT_OFFICE_BATCH_A_MODERN_OFFICE_IDENTITY_COMPLETION_001
+TARGET_ACTOR: Agent Office Worker-Rework
+TARGET_SESSION: agent-office-opus/$16/@16/%16
+OBSERVED_WORKSPACE: /home/leo/Project/agent-office
+REQUIRED_WORKSPACE: /home/leo/Project/agent-office-batch-a-001
+PROCESS_MODEL: claude; live footer Opus 4.8 (1M) Ultracode
+ROLE_SKILL_READINESS: same Worker; /fable-builder required; fourth-rework result and STOP visible; idle; no unrelated work or interactive/auth/security prompt
+SYNCHRONIZED_PANES_OFF: true
+LAUNCHER_PATH: /home/leo/Project/foundation-docs/advisor/jobs/20260712_agent_office_batch_a_modern_office_identity_completion_001/09O_WORKER_IMPLEMENTATION_FIFTH_REWORK_RUN_PROMPT.md
+LAUNCHER_COMMIT: f9ea6c4
+LAUNCHER_BLOB: 595d3a68cfcb95670dd0315ff84b545f4ef14207
+LAUNCHER_SHA256: 4b3f4509b17e94410288f1dde3f0d0eee867ef6978f850a84ca435a696965a5d
+TARGET_EVIDENCE: clean/upstream-equal 43107b9; Sentinel NEEDS_PATCH result/pointer 9c8cee8/8387bcd; Advisor validation 63 committed/pushed
+PATCH_SCOPE: A5-1 high-text actor drawer/focus equivalence; A5-2 exact label/roster anti-false-pass predicates; A5-3 exact full-source unit gate; directly affected as-built text
+RESULT_PATH: ../foundation-docs/runs/agent-office/20260712_agent_office_batch_a_modern_office_identity_completion_001/WORKER_FIFTH_REWORK_RESULT.md
+POINTER_PATH: ../foundation-docs/advisor/jobs/20260712_agent_office_batch_a_modern_office_identity_completion_001/21_WORKER_FIFTH_REWORK_RESULT_POINTER.md
+DEPENDENCY_LOCKS: Control stopped; Reviewer stopped; no concurrent Agent Office writer; excluded historical agent-office untouched
+SOFT_STALL_SECONDS: 60
+HARD_TIMEOUT_SECONDS_OR_NONE: none
+PREFLIGHT_VERDICT: PASS_READY_TO_SEND
+STATUS: READY_TO_SEND
+```
