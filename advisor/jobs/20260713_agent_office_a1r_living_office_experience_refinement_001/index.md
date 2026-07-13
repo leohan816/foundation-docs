@@ -31,6 +31,8 @@
 - [Advisor Phase 1 Designer brief](25_ADVISOR_PHASE1_DESIGNER_BRIEF.md)
 - [Designer Phase 1 handoff](26_DESIGNER_PHASE1_HANDOFF_PROMPT.md)
 - [Designer Phase 1 launcher](26_DESIGNER_PHASE1_RUN_PROMPT.md)
+- [Designer Phase 1 timebox correction](26A_DESIGNER_PHASE1_TIMEBOX_ADDENDUM.md)
+- [Designer Phase 1 timebox launcher](26A_DESIGNER_PHASE1_TIMEBOX_RUN_PROMPT.md)
 - [Control narrow patch handoff](09_CONTROL_DESIGN_PATCH_HANDOFF_PROMPT.md)
 - [Control narrow patch launcher](09_CONTROL_DESIGN_PATCH_RUN_PROMPT.md)
 - [Advisor classification of Sentinel findings](13_ADVISOR_SENTINEL_FINDING_CLASSIFICATION.md)
