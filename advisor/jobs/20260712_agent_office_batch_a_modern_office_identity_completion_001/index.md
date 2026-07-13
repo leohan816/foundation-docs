@@ -120,3 +120,19 @@ scope at `453c661`; the same Sentinel returned `PASS`. Worker resume is ready.
 Pending: production-render scope correction/review, Worker implementation/result, Advisor candidate
 validation, SOL Sentinel implementation review, routine patch loops, direct local
 rehearsal, final audit, and Founder Acceptance Sheet.
+
+## Implementation Review Train
+
+- [Advisor Worker-result validation](53_ADVISOR_WORKER_RESULT_VALIDATION.md)
+- [SOL Sentinel implementation-review result pointer](13_SENTINEL_IMPLEMENTATION_REVIEW_RESULT_POINTER.md)
+- [Advisor Sentinel implementation-review validation](54_ADVISOR_SENTINEL_IMPLEMENTATION_REVIEW_VALIDATION.md)
+- [Opus Worker implementation rework handoff](09K_WORKER_IMPLEMENTATION_REWORK_HANDOFF_PROMPT.md)
+- [Opus Worker implementation rework launcher](09K_WORKER_IMPLEMENTATION_REWORK_RUN_PROMPT.md)
+- [Opus Worker rework result pointer](14_WORKER_REWORK_RESULT_POINTER.md)
+- [Advisor Worker-rework validation](55_ADVISOR_WORKER_REWORK_VALIDATION.md)
+- [SOL Sentinel implementation delta re-review handoff](07L_SENTINEL_IMPLEMENTATION_DELTA_REREVIEW_HANDOFF_PROMPT.md)
+- [SOL Sentinel implementation delta re-review launcher](07L_SENTINEL_IMPLEMENTATION_DELTA_REREVIEW_RUN_PROMPT.md)
+
+Current state: rework candidate `74d5866` is accepted for same-session SOL
+Sentinel delta re-review. Final audit and Founder approval remain pending; Batch
+B remains not started and unauthorized.
