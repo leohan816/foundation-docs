@@ -1,6 +1,6 @@
 # Control Design Result — Agent Office Batch A Application-Integration Design Delta
 
-Result: `CONTROL_MASTER_DESIGN_PLUS_SENTINEL_PRC_FINAL_FIVE_CORRECTIONS__PENDING_ADVISOR_DIFF_VALIDATION_THEN_SAME_SENTINEL_REREVIEW`
+Result: `CONTROL_MASTER_DESIGN_PLUS_FINAL_TEXTUAL_CONSISTENCY_PATCH__PENDING_ADVISOR_DIFF_VALIDATION_THEN_SAME_SENTINEL_REREVIEW`
 
 Actor: Control (`foundation-control` session). Mode: `CONTROL_MASTER_DESIGN_MODE` (design coordination only — no implementation, no review, no risk acceptance, no final approval, no agents/sub-agents).
 
@@ -311,3 +311,19 @@ Same-Sentinel delta re-review (`SENTINEL_PRC1_PRC8_DELTA_REREVIEW_RESULT.md`) **
 Changed docs (four canonical, non-docs 0): delta §2.3 (aiRuntimeState row, raw/wrapper parser, structural interface) + §10 (Rolldown) + §14.8 + header; contract §3.1 (projectKey/priority/responsible-Advisor/defaults) + §3.1.1 (wrapper interface) + header; WU BA-WU-01 Part 2 + §3 CD-3 gate + header; FEATURE_INDEX §2.0. Source/tests/config untouched; `prototype-entry.tsx`/`fixtures/*` not edited.
 
 `RETURN_TO: Advisor` — per validation `40_...`, Advisor performs the diff validation that PRC-1/5/6/7/8 are closed by `8c5d0c2` (PRC-2/3/4 remain closed), then routes the exact corrected delta to the **same** `foundation-reviewer-sol` Sentinel for the narrow delta re-review; Worker stays stopped clean. Control has stopped and did not implement, review, self-review, accept risk, grant approval, or enter Batch B–E.
+
+---
+
+## Final textual-consistency patch (candidate `d65716c27e258e5cfc332a8b68a58583697ffca8`)
+
+Advisor final-five diff validation `41_ADVISOR_CONTROL_FINAL_FIVE_DIFF_VALIDATION.md` (`NEEDS_EXACT_TEXTUAL_CONSISTENCY_PATCH_BEFORE_SENTINEL`) found the substantive final-five rules present in `8c5d0c2` but five **stale sentences** still contradicting them. Corrected docs-only, stale text only, no redesign/scope change (handoff `09M`); two docs touched (delta + contract); all substantive PRC-1..PRC-8 rules + PRC-2/3/4 closures + accepted boundaries + source/tests/config preserved.
+
+- **[1]** delta PR-1 (line 65): the `LivingOfficeProductionRenderInputV1` inline summary now lists all seven fields `{schemaVersion, operational, committedLayout, viewport, logicalTimeMs, selection, cues (always empty)}` (was missing `logicalTimeMs`/`cues`), matching §3.1.1 + PR-3 boundary.
+- **[2]** delta PR-1 table (line 75): invalid/missing/multiple pod responsible Advisor now → **pod omitted with diagnostic**, `M1_FIXED_STATIONS` if none remain (was → `UNASSIGNED`, pod cannot receive work).
+- **[3]** delta PR-1 table (line 76): `PixelProjectIdentity` keyed **only** by `CommittedPodConfig.projectKey` (was keyed by registry `project`).
+- **[4]** delta PR-3 validation (line 110): pod responsible-Advisor validation now cites the ADVISOR-role/Team/member rule + pod-omission (was `else UNASSIGNED`).
+- **[5]** contract §3.1 TS comments (lines 178/184): `projectIdentityByProject` keyed by `CommittedPodConfig.projectKey`; `responsibleAdvisorRoleInstanceId` null/empty/multiple/unresolvable → **pod omitted** (never a role-instance `UNASSIGNED` sentinel).
+
+**Consistency grep (correction #5)** over the four canonical docs: 0 remaining stale wrapper-5-field summaries; 0 remaining pod-responsible-Advisor→`UNASSIGNED`; 0 remaining registry-`project` project-identity keys. The three surviving `UNASSIGNED` matches (contract 163/224, delta 155) are the **legitimate actor-level `advisorTeam` = UNASSIGNED** rule that validation 41 explicitly preserves — kept unchanged.
+
+`RETURN_TO: Advisor` — per validation `41_...`, Advisor performs the diff validation that the five stale sentences are resolved by `d65716c`, then routes to the **same** `foundation-reviewer-sol` Sentinel for the narrow delta re-review; Worker stays stopped clean. Control has stopped and did not implement, review, self-review, accept risk, grant approval, or enter Batch B–E.
