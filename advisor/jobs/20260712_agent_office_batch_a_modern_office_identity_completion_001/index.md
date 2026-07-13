@@ -144,9 +144,14 @@ rehearsal, final audit, and Founder Acceptance Sheet.
 - [Advisor Worker third-rework validation](59_ADVISOR_WORKER_THIRD_REWORK_VALIDATION.md)
 - [SOL Sentinel second implementation delta re-review handoff](07M_SENTINEL_IMPLEMENTATION_SECOND_DELTA_REREVIEW_HANDOFF_PROMPT.md)
 - [SOL Sentinel second implementation delta re-review launcher](07M_SENTINEL_IMPLEMENTATION_SECOND_DELTA_REREVIEW_RUN_PROMPT.md)
+- [SOL Sentinel second implementation delta result pointer](18_SENTINEL_IMPLEMENTATION_SECOND_DELTA_REREVIEW_RESULT_POINTER.md)
+- [Advisor Sentinel second-delta validation](60_ADVISOR_SENTINEL_SECOND_DELTA_VALIDATION.md)
+- [Opus Worker focused fourth implementation rework handoff](09N_WORKER_IMPLEMENTATION_FOURTH_REWORK_HANDOFF_PROMPT.md)
+- [Opus Worker focused fourth implementation rework launcher](09N_WORKER_IMPLEMENTATION_FOURTH_REWORK_RUN_PROMPT.md)
 
-Current state: focused candidate `fcd55a2` adds the missing Team first-layer
-fact and reduces measured desktop label coverage from 28.1% to 16.8%. Advisor
-direct focused tests and current-candidate pixel inspection accept it for the
-same SOL Sentinel second delta re-review. Final audit and Founder approval
-remain pending; Batch B remains not started and unauthorized.
+Current state: same SOL Sentinel returned `NEEDS_PATCH`. A3-1 and normal-scale
+A3-2 are closed, but 200% coverage is 31.42%, the visual gate false-passes with
+seven hidden labels, and the accessible-name source claim exceeds actual code.
+All are routine patchable within the accepted A3 scope; same Opus Worker fourth
+focused rework is ready. Final review/audit/Founder approval remain pending;
+Batch B remains not started and unauthorized.
