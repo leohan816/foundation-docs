@@ -1991,3 +1991,29 @@ SENSITIVE_OUTPUT_SUSPECTED: false
 ACTION_TAKEN: verified same session/workspace/model/effort and serialized scope; exact buffer pasted once and submitted once
 NEXT_OBSERVATION_DUE: at most 60 seconds or on progress/result signal
 ```
+
+### AO-BATCH-A-CONTROL-SOURCE-EXACTNESS-20260713T001600Z - completion
+
+```text
+OBSERVED_AT: 2026-07-13T00:26:00Z
+PANE_ID: %4
+STATE: COMPLETED_REPORTED
+OUTPUT_FINGERPRINT: Control returned docs-only candidate 535f39a and result b9688f7, then STOP
+INTERACTIVE_PROMPT_PRESENT: false
+SENSITIVE_OUTPUT_SUSPECTED: false
+ACTION_TAKEN: Advisor verified exact diff against camera/types/parser/Vite evidence and published validation 45 plus same-Sentinel FDR delta route
+NEXT_OBSERVATION_DUE: none; Sentinel preflight follows
+```
+
+## AO-BATCH-A-FDR-REREVIEW-20260713T002800Z
+
+```text
+OBSERVED_AT: 2026-07-13T00:28:00Z
+PANE_ID: %20
+STATE: RUNNING
+OUTPUT_FINGERPRINT: exact 07J launcher submitted; Reviewer entered Working state; GPT-5.6 SOL xhigh footer visible
+INTERACTIVE_PROMPT_PRESENT: false
+SENSITIVE_OUTPUT_SUSPECTED: false
+ACTION_TAKEN: cleared UI placeholder only; exact buffer pasted once; first Enter did not submit, then one verified follow-up Enter submitted unchanged content
+NEXT_OBSERVATION_DUE: at most 60 seconds or on progress/result signal
+```
