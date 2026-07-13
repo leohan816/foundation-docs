@@ -168,11 +168,14 @@ rehearsal, final audit, and Founder Acceptance Sheet.
 - [Advisor Sentinel fourth-delta validation](66_ADVISOR_SENTINEL_FOURTH_DELTA_VALIDATION.md)
 - [Opus Worker sixth focused evidence rework handoff](09P_WORKER_IMPLEMENTATION_SIXTH_REWORK_HANDOFF_PROMPT.md)
 - [Opus Worker sixth focused evidence rework launcher](09P_WORKER_IMPLEMENTATION_SIXTH_REWORK_RUN_PROMPT.md)
+- [Opus Worker sixth-rework result pointer](23_WORKER_SIXTH_REWORK_RESULT_POINTER.md)
+- [Advisor Worker sixth-rework validation](67_ADVISOR_WORKER_SIXTH_REWORK_VALIDATION.md)
+- [SOL Sentinel fifth implementation delta re-review handoff](07P_SENTINEL_IMPLEMENTATION_FIFTH_DELTA_REREVIEW_HANDOFF_PROMPT.md)
+- [SOL Sentinel fifth implementation delta re-review launcher](07P_SENTINEL_IMPLEMENTATION_FIFTH_DELTA_REREVIEW_RUN_PROMPT.md)
 
-Current state: the same SOL Sentinel directly verified the A5-1 production
-drawer/focus behavior and A5-3 source proof, but returned routine `NEEDS_PATCH`
-because the committed A5-2 predicates false-pass empty actual values and
-wrong/duplicate roster triggers, and the initial-200% as-built proof is
-overstated. The same Opus Worker sixth narrow evidence patch is ready. Final
+Current state: the same Opus Worker published the sixth narrow evidence patch at
+`1e0b550`. Advisor directly inspected the seven-file delta and reproduced the
+affected unit `12/12` and real Living Office `3/3` gates. The same SOL Sentinel
+fifth narrow delta re-review is ready to reapply its four exact attacks. Final
 rehearsal/audit/Founder approval remain pending; Batch B remains not started and
 unauthorized.
