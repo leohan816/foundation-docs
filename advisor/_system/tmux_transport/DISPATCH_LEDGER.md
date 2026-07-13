@@ -4025,3 +4025,12 @@ TIMEOUT_POLICY: observe approximately once per minute; no automatic approval/aut
 PREFLIGHT_VERDICT: PASS_READY_TO_SEND
 STATUS: READY_TO_DISPATCH
 ```
+
+### AO-A1R-SENTINEL-DESIGN-DELTA-REREVIEW-20260713T180910Z — sent
+
+```text
+SENT_AT: 2026-07-13T18:11:00Z
+TRANSPORT: exact named tmux buffer pasted once to %20; idle input was cleared before paste; submission confirmed after the pane accepted Enter
+POST_SEND_EVIDENCE: same independent SOL Reviewer opened the exact 07B delta launcher with /fable-sentinel, candidate 1ab8ad2, and finding-specific scope; Working state visible
+STATUS: RUNNING
+```

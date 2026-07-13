@@ -2599,3 +2599,13 @@ SYNCHRONIZED_PANES: off
 DEPENDENCY_STATE: same Reviewer owns A1R-SDR-01..06; Control stopped; Worker unauthorized; no competing Reviewer use
 VERDICT: PASS_READY_TO_SEND
 ```
+
+### AO-A1R-SENTINEL-DESIGN-DELTA-REREVIEW-20260713T180910Z — dispatch accepted
+
+```text
+OBSERVED_AT: 2026-07-13T18:11:04Z
+PANE: %20
+EVIDENCE: exact 07B launcher visible with /fable-sentinel, base b966c6a, candidate 1ab8ad2, four-PNG-first rule, A1R-SDR-01..06-only scope, and NO_RUNTIME_SUITES; same Reviewer entered Working state
+INTERACTIVE_PROMPT: none
+STATUS: RUNNING
+```
