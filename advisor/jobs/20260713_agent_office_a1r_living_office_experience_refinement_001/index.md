@@ -7,6 +7,7 @@
 - [Sentinel design-contract review brief](03_SENTINEL_DESIGN_CONTRACT_REVIEW_BRIEF.md)
 - [Advisor validation of Control candidate](04_ADVISOR_CONTROL_DESIGN_VALIDATION.md)
 - [Advisor candidate acceptance for review](05_ADVISOR_DESIGN_CANDIDATE_ACCEPTANCE.md)
+- [Reviewer routing decision](05A_REVIEWER_ROUTING_DECISION.md)
 - [Control handoff](06_CONTROL_STATIC_DESIGN_HANDOFF_PROMPT.md)
 - [Control launcher](06_CONTROL_STATIC_DESIGN_RUN_PROMPT.md)
 - [Sentinel handoff](07_SENTINEL_DESIGN_CONTRACT_REVIEW_HANDOFF_PROMPT.md)
