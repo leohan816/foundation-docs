@@ -787,6 +787,18 @@ POST_SEND_EVIDENCE: verified Designer entered active processing; no duplicate di
 STATUS: SENT__DESIGN_RUNNING
 ```
 
+### AO-AS1-DESIGNER-20260714T190923Z — Setup Pack checkpoint
+
+```text
+CHECKPOINT: SETUP_PACK_COMMITTED
+COMMIT: a1c54eabfda832b70bb974c288386237a8843e32
+PATHS: config/slack/agent-office-advisor.manifest.yaml; config/slack/foundation-advisor.manifest.yaml; config/slack/as1-slack-pilot.env.example; docs/operations/AGENT_OFFICE_AS1_SLACK_SETUP.md
+PUSHED_UPSTREAM_EQUAL: true
+RUNTIME_OR_SECRET_ACTIVATION: none
+DESIGNER_CONTINUATION: full bounded design package
+STATUS: DESIGN_RUNNING
+```
+
 ### AO-BATCH-A-WORKER-SECOND-REWORK-20260713T054330Z - sent
 
 ```text
