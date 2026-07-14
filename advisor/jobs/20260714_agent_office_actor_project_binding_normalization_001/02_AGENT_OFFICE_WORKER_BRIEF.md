@@ -16,9 +16,11 @@ only. Do not execute their separate Worker or multi-Reviewer routes.
 
 ## Target
 
-- Primary repo: `/home/leo/Project/agent-office`
-- Primary branch/base: `shadow/agent-office-m1-2-spatial-office` at
-  `ac8ba75d3a128385beaeeac58ae5bf54c03d23f2`
+- Canonical repo: `/home/leo/Project/agent-office`
+- Authorized mission worktree:
+  `/home/leo/Project/.worktrees/agent-office/AGENT_OFFICE_ACTOR_PROJECT_BINDING_NORMALIZATION_001`
+- Mission branch/base: `normalization/actor-project-binding-001` at
+  `58a484b088b4e57e7b3ee6e582f54c7f3ce6dc85`
 - Narrow project-instruction targets:
   `/home/leo/Project/FOUNDATION`, `/home/leo/Project/SIASIU`, and
   `/home/leo/Project/Cosmile`
@@ -36,8 +38,10 @@ does not create permanent cross-repository implementation authority.
    canonical agent-document system under `docs/agent/` (use a focused
    `docs/agent/roles/` subdirectory if needed). Do not copy the large preserved
    files verbatim and do not create another role system.
-2. Reconcile the existing reviewed organization registry semantics from commit
-   `58a484b` into the current Agent Office source only as required to represent:
+2. Modify the existing reviewed organization registry at commit `58a484b`
+   directly. Preserve its existing types, normalization, evidence separation,
+   and public API. Change only existing Team/actor records and closed values
+   required to represent:
    - `agent-office-advisor` -> Agent Office Team / `agent-office`;
    - `foundation-advisor` -> Foundation Team / `FOUNDATION`, `SIASIU`, `Cosmile`;
    - `foundation-designer` -> Foundation Team member reporting to
@@ -76,7 +80,8 @@ Agent Office:
 - one concise migration/authority record under `docs/agent/`
 - root `AGENTS.md`
 - root `CLAUDE.md`
-- existing organization registry source files, only if required
+- existing `src/application/organization/types.ts` and `registry.ts`, only for
+  the required Team/actor value changes; do not replace their interfaces
 - one focused contract test required to encode the four bindings
 
 FOUNDATION, SIASIU, and Cosmile:
@@ -102,6 +107,9 @@ otherwise be broken.
 - unrelated instruction rewrites;
 - touching the failed Grok pilot or excluded historical Worker session;
 - touching `foundation-control` source/workspace;
+- retaining or adapting the aborted untracked organization files created in the
+  canonical repo before this correction; remove those Worker-owned untracked
+  files and leave the canonical repo at its original state;
 - self-review or final approval.
 
 ## Targeted Validation
