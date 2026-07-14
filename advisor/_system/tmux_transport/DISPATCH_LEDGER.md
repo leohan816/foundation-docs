@@ -3846,6 +3846,17 @@ TIMEOUT_POLICY: observe approximately once per minute; no automatic approval/aut
 STATUS: READY_TO_DISPATCH
 ```
 
+### AO-PRE-AS1-TRANSPORT-IDENTITY-WORKER-20260714T162507Z — sent
+
+```text
+SENT_AT: 2026-07-14T16:27:00Z
+TRANSPORT: exact committed launcher loaded into a unique named tmux buffer, pasted once to %16 with bracketed-paste protection, and submitted with one isolated Enter
+LIVE_TARGET: agent-office-opus/$16/@16/%16; /home/leo/Project/agent-office; claude; sync off
+DUPLICATE_RETRY_SENT: false
+POST_SEND_SIGNAL: launcher rendered once and Claude entered active processing
+STATUS: RUNNING
+```
+
 
 ## AO-A1R-CONTROL-PRE-REVIEW-PATCH-20260713T170220Z
 
