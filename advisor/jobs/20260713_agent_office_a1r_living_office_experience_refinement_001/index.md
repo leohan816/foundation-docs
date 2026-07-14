@@ -39,8 +39,11 @@
 - [Advisor modular Team Strip design brief](30_ADVISOR_MODULAR_TEAM_STRIP_DESIGN_BRIEF.md)
 - [Designer modular Team Strip handoff](31_DESIGNER_MODULAR_TEAM_STRIP_HANDOFF_PROMPT.md)
 - [Designer modular Team Strip launcher](31_DESIGNER_MODULAR_TEAM_STRIP_RUN_PROMPT.md)
+- [Designer modular Team Strip result pointer](32_DESIGNER_MODULAR_TEAM_STRIP_RESULT_POINTER.md)
 - [Designer modular Team Strip result publication handoff](32A_DESIGNER_RESULT_PUBLISH_HANDOFF_PROMPT.md)
 - [Designer modular Team Strip result publication launcher](32A_DESIGNER_RESULT_PUBLISH_RUN_PROMPT.md)
+- [Advisor modular Team Strip preflight](33_ADVISOR_MODULAR_TEAM_STRIP_PREFLIGHT.md)
+- [Founder modular system review pointer](34_FOUNDER_MODULAR_SYSTEM_REVIEW_POINTER.md)
 - [Control narrow patch handoff](09_CONTROL_DESIGN_PATCH_HANDOFF_PROMPT.md)
 - [Control narrow patch launcher](09_CONTROL_DESIGN_PATCH_RUN_PROMPT.md)
 - [Advisor classification of Sentinel findings](13_ADVISOR_SENTINEL_FINDING_CLASSIFICATION.md)
@@ -87,6 +90,9 @@ started.
 
 The Founder then superseded the single generated-scene assumption. The active
 design direction is a vertically extensible management-game canvas composed of
-fixed reusable Team Strips and canonical modules. A Designer-only static proof
-is preparing on `a1r/modular-team-strip-layout-001`; implementation and review
+fixed reusable Team Strips and canonical modules. The Designer completed the
+static construction system at candidate `99beac3`; the Advisor directly passed
+the canonical source, deterministic exports, full-size visual proof, reuse,
+geometry, corridor, Git, and publication checks. The package is waiting for
+Leo/GPT modular-system direction review. Implementation and independent review
 remain unauthorized.
