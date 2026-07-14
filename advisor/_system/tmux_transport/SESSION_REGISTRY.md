@@ -12,7 +12,7 @@ verification. Pane IDs and processes can change.
 
 | Actor | Session | Observed session ID | Window index | Observed window ID | Pane index | Observed pane ID | Workspace | Observed process | Role evidence | Dispatch status |
 |---|---|---|---:|---|---:|---|---|---|---|---|
-| Agent Office Advisor | `agent-office-advisor` | `$9` | 0 | `@9` | 0 | `%9` | `/home/leo/Project/agent-office` | `codex`; restart to canonical workspace pending during this record update | Agent Office Advisor role is stored under `foundation-docs/advisor/_system/roles/agent-office-advisor/`; no role-named project folder | Agent Office field manager; historical exact-delivery authority is `SUSPENDED__LOCATOR_REBIND_REQUIRED` and must fail closed |
+| Agent Office Advisor | `agent-office-advisor` | `$26` | 0 | `@26` | 0 | `%26` | `/home/leo/Project/agent-office` | `codex` v0.144.3; live launch record identifies `gpt-5.6-sol` / `max` at this observation | Agent Office Advisor role is stored under `foundation-docs/advisor/_system/roles/agent-office-advisor/`; no role-named project folder | Agent Office field manager; historical exact-delivery authority remains `SUSPENDED__LOCATOR_REBIND_REQUIRED` until the current migration implementation and independent review pass |
 | Foundation Advisor | `foundation-advisor` | `$22` | 0 | `@22` | 0 | `%22` | `/home/leo/Project/FOUNDATION` | `codex` v0.144.3; configured `gpt-5.6-sol` / `max` baseline | Foundation Advisor role is stored under `foundation-docs/advisor/_system/roles/foundation-advisor/`; no role-named project folder; effort remains dynamically selected under canonical policy; no Agent Office inbox or exact-delivery authority | responsible Advisor for Foundation Control, Foundation Worker, Cosmile Worker, SIASIU Worker, Foundation Designer, and Foundation Reviewer routing after live verification |
 | Control | `foundation-control` | `$4` | 0 | `@4` | 0 | `%4` | `/home/leo/Project/foundation-control` | `claude` | Control for Foundation, SIASIU, Cosmile, and their cross-project architecture/contracts; reports to `foundation-advisor` | eligible only for exact Foundation Advisor handoffs after live verification; excluded from Agent Office work |
 | Foundation Worker | `foundation` | `$3` | 0 | `@3` | 0 | `%3` | `/home/leo/Project/FOUNDATION` | `claude` | latest pane record declares Foundation Worker | eligible only after live verification |
@@ -43,8 +43,9 @@ the Advisor power to alter its verdict.
 
 Agent Office exact-delivery safety status effective 2026-07-14:
 the reviewed implementation still hard-codes the historical
-`foundation-advisor/$9/@9/%9` identity and workspace. The live role is now
-`agent-office-advisor/$9/@9/%9` in `/home/leo/Project/agent-office`.
+`foundation-advisor/$9/@9/%9` identity and role-named workspace. The directly
+verified live role is now `agent-office-advisor/$26/@26/%26` in
+`/home/leo/Project/agent-office`.
 Therefore no exact delivery capability or inbox-artifact exception may be used
 until a separate implementation/security review rebinds the closed contract.
 

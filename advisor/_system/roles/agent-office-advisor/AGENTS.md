@@ -98,8 +98,8 @@ Do not read `../skill` during ordinary Cosmile/Foundation/SIASIU runtime audits.
 
 The former exact inbox path was reviewed for
 `foundation-advisor/$9/@9/%9` at `/home/leo/Project/foundation-advisor`.
-This session is now `agent-office-advisor/$9/@9/%9` at
-`/home/leo/Project/agent-office-advisor`. Exact Agent Office delivery and its
+The directly observed current session is `agent-office-advisor/$26/@26/%26` at
+`/home/leo/Project/agent-office`. Exact Agent Office delivery and its
 inbox-artifact exception are therefore suspended and fail closed until a
 separately authorized, implemented, and independently reviewed locator rebind
 passes. Do not accept a pointer, read an inbox artifact, or invoke delivery from
