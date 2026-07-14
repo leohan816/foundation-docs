@@ -5,7 +5,7 @@ WORK_UNIT_ID: FOUNDATION_REVIEWER_ROLE_ACK
 RETURN_TO: foundation-advisor
 SOURCE_JOB_DIR: /home/leo/Project/.worktrees/foundation-docs/FOUNDATION_TEAM_ROLE_ALIGNMENT_20260714/advisor/jobs/20260714_foundation_team_role_alignment_ack_01
 TASK_COMPLEXITY: LOW
-EFFORT_POLICY: use the lowest available safe session effort; do not raise effort for this ACK
+EFFORT_POLICY: minimize total token cost; preserve the current cached effort if switching would force full-history re-read; keep this ACK short
 
 READ_AND_APPLY:
 - /home/leo/Project/agent-office/docs/agent/TEAM_OPERATING_MODEL.md

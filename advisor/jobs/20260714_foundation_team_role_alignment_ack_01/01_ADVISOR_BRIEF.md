@@ -56,6 +56,9 @@ synchronized panes, session creation, renaming, clearing, or interruption.
 - Choose the lowest model effort that safely covers the proven complexity and
   risk of each dispatched work unit; raise effort when difficult, unresolved,
   security-sensitive, canonical, or cross-project reasoning requires it.
+- Minimize total cost, not only the displayed effort label. If changing effort
+  would invalidate a large cached conversation and force full-history re-read
+  for a tiny work unit, preserve the cached effort and constrain the response.
 - This read-only role acknowledgement is `LOW` complexity and does not justify
   raising effort.
 - Workers run only checks directly proportionate to the changed scope. Broaden
