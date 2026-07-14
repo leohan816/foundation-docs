@@ -3857,6 +3857,21 @@ POST_SEND_SIGNAL: launcher rendered once and Claude entered active processing
 STATUS: RUNNING
 ```
 
+### AO-PRE-AS1-TRANSPORT-IDENTITY-WORKER-20260714T162507Z — active-surface clarification
+
+```text
+CLARIFICATION_ID: AO-PRE-AS1-TRANSPORT-ACTIVE-REFERENCE-20260714T163100Z
+PURPOSE: confirm that every active delivery/routing/preflight/allowlist/session/workspace/fallback reference moves to the current Agent Office Advisor; no mission restart
+TARGET: same verified agent-office-opus/$16/@16/%16 Worker
+LAUNCHER_PATH: advisor/jobs/20260714_agent_office_pre_as1_physical_transport_identity_migration/06A_WORKER_SCOPE_CLARIFICATION_RUN_PROMPT.md
+LAUNCHER_COMMIT: 656a9fc
+LAUNCHER_BLOB: c28f172068bd99e96bb839a3c6b8841833abcce7
+LAUNCHER_SHA256: 19119092268d5e8340d4d9b979739139f3ca61c851e7aaaff03acf34d40282b3
+SCOPE_EFFECT: completion criterion only; historical evidence remains immutable/non-authoritative; VibeNews and Slack remain excluded
+DUPLICATE_RETRY_ALLOWED: false
+STATUS: READY_TO_STEER
+```
+
 
 ## AO-A1R-CONTROL-PRE-REVIEW-PATCH-20260713T170220Z
 
