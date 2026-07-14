@@ -5,6 +5,7 @@
 - `01A_ACTIVE_REFERENCE_SCOPE_CLARIFICATION.md`: no active legacy physical target
 - `02_WORKER_BRIEF.md`: Worker boundary
 - `03_SENTINEL_REVIEW_BRIEF.md`: independent review contract
+- `04_ADVISOR_CANDIDATE_VALIDATION.md`: accepted candidate and reproduced gates
 - `06_WORKER_HANDOFF_PROMPT.md`: full Worker handoff
 - `06_WORKER_RUN_PROMPT.md`: exact committed launcher
 - `06A_WORKER_SCOPE_CLARIFICATION_RUN_PROMPT.md`: in-place Worker clarification
@@ -14,4 +15,6 @@
 - `07A_WORKER_PATCH_PATH_FENCE_RUN_PROMPT.md`: in-place path-fence launcher
 - `07B_WORKER_PATCH_REAL_ARTIFACT_FENCE.md`: real Markdown-wrap authority fence
 - `07B_WORKER_PATCH_REAL_ARTIFACT_FENCE_RUN_PROMPT.md`: in-place real-artifact launcher
+- `08_SENTINEL_REVIEW_HANDOFF.md`: exact independent review scope
+- `08_SENTINEL_REVIEW_RUN_PROMPT.md`: exact independent review launcher
 - `10_LOOP_STATE.md`: current route state
