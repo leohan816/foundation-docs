@@ -1,9 +1,17 @@
 # Agent Office Actor/Project Binding Normalization
 
-- Status: handoffs prepared; implementation not yet dispatched
+- Status: broad train superseded; one bounded Worker correction ready
 - Validation: delta-only
 - Slack: forbidden/not started
 - Product behavior: unchanged
+
+## Current Authority
+
+- Authoritative Worker brief: `02_AGENT_OFFICE_WORKER_BRIEF.md`
+- Founder correction: `13_FOUNDER_SCOPE_TIMEBOX_CORRECTION.md`
+- Current launcher: `14_BOUNDED_WORKER_CORRECTION_RUN_PROMPT.md`
+- Files `03` through `11`: historical pre-correction planning only;
+  `SUPERSEDED_NOT_AUTHORIZED`
 
 ## Artifacts
 
@@ -20,3 +28,5 @@
 11. `10_AGENT_OFFICE_SENTINEL_BRIEF.md`
 12. `11_FOUNDATION_SENTINEL_BRIEF.md`
 13. `12_LOOP_STATE.md`
+14. `13_FOUNDER_SCOPE_TIMEBOX_CORRECTION.md`
+15. `14_BOUNDED_WORKER_CORRECTION_RUN_PROMPT.md`
