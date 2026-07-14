@@ -26,3 +26,6 @@
 - `09B_WORKER_DURABLE_RESULT_CONTRACT_CORRECTION.md`: two-file result-protocol correction
 - `09B_WORKER_DURABLE_RESULT_CONTRACT_CORRECTION_RUN_PROMPT.md`: exact evidence-only launcher
 - `10_LOOP_STATE.md`: current route state
+- `11_ADVISOR_SENTINEL_PATCH_VALIDATION.md`: Advisor direct patch/evidence validation
+- `12_SENTINEL_DELTA_REVIEW_HANDOFF.md`: exact same-Reviewer delta scope
+- `12_SENTINEL_DELTA_REVIEW_RUN_PROMPT.md`: exact delta re-review launcher
