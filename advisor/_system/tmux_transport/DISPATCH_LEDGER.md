@@ -3846,6 +3846,7 @@ TIMEOUT_POLICY: observe approximately once per minute; no automatic approval/aut
 STATUS: READY_TO_DISPATCH
 ```
 
+
 ## AO-A1R-CONTROL-PRE-REVIEW-PATCH-20260713T170220Z
 
 ```text
@@ -4293,4 +4294,26 @@ VALIDATION: focused registry/type/lint/reference/diff only; no product suites
 SLACK_IMPLEMENTATION: forbidden
 PREFLIGHT: PASS_READY_TO_SEND
 STATUS: READY_TO_DISPATCH
+```
+
+### AO-ACTOR-PROJECT-NORMALIZATION-WORKER-20260714T082604Z — scope corrected
+
+```text
+CORRECTION_SENT_AT: 2026-07-14T08:33:00Z
+FOUNDER_CORRECTION: one Worker; one Reviewer; targeted delta only; 60-minute target; 120-minute hard stop
+INTERRUPTION: one Escape stopped the superseded read/design pass before repository edits
+CORRECTION_LAUNCHER_PATH: advisor/jobs/20260714_agent_office_actor_project_binding_normalization_001/14_BOUNDED_WORKER_CORRECTION_RUN_PROMPT.md
+CORRECTION_LAUNCHER_COMMIT: cb0e7ee1013b0b2334ea02c1e202f34fd557b78b
+CORRECTION_LAUNCHER_BLOB: e4061a58a9c9ffa228e06000a01ba5d4773d7d7c
+CORRECTION_LAUNCHER_SHA256: 02a7b0ceaffcbf2ee40d873b8e1c461bf179c577818ca21a32384a2b11a612d6
+TEAM_CLARIFICATION_SENT_AT: 2026-07-14T08:35:00Z
+TEAM_CLARIFICATION_PATH: advisor/jobs/20260714_agent_office_actor_project_binding_normalization_001/15_TEAM_STRUCTURE_CLARIFICATION_RUN_PROMPT.md
+TEAM_CLARIFICATION_COMMIT: b87e7aa45c870f948b47c747c9888d6cdd9867a1
+TEAM_CLARIFICATION_BLOB: a57ecfabe17bf2dcc9617ec20a87f5ed6a5a9981
+TEAM_CLARIFICATION_SHA256: 5cd725418b5d1d0ad689a051503da1ca425631dba47a05af54b798c273e5b609
+TRANSPORT: each exact committed launcher loaded into a distinct named tmux buffer, pasted only to %16, and submitted once
+SUPERSEDED_ROUTES: separate FOUNDATION/SIASIU/Cosmile Workers and dual Reviewers not authorized
+PRODUCT_TESTS: forbidden
+SLACK_IMPLEMENTATION: forbidden
+STATUS: RUNNING_BOUNDED
 ```
