@@ -2,7 +2,7 @@
 
 ```text
 MISSION: AGENT_OFFICE_ACTOR_PROJECT_BINDING_NORMALIZATION_001
-STATE: ROOT_ROLE_ENTRY_SENTINEL_PATCH_ADVISOR_VALIDATED__SAME_REVIEWER_REREVIEW_READY
+STATE: ROOT_ROLE_ENTRY_SENTINEL_PASS__FINAL_AUDIT_FOUND_STALE_RUNTIME_RECORD
 FOUNDER_SCOPE_CORRECTION: ACTIVE
 DESIGN: FOUNDER_CONTRACT_FROZEN
 ONE_WORKER: agent-office-opus
@@ -19,6 +19,7 @@ COMPLETENESS_PATCH: b64ae8c separates Advisor and subordinate entry authority
 ADVISOR_TARGETED_VALIDATION: initial pass superseded by independent findings
 SENTINEL_PRIOR_VERDICT: NEEDS_PATCH
 PATCH_COMMIT: 79beb96
-ADVISOR_TARGETED_VALIDATION: prior findings closed
-NEXT: same agent-office-reviewer performs narrow finding-closure re-review
+SENTINEL_REREVIEW_VERDICT: PASS
+FINAL_AUDIT_FINDING: migration record falsely says no tmux action occurred in entire mission
+NEXT: same Worker corrects one factual record; same Reviewer checks only that delta
 ```

@@ -1,8 +1,8 @@
 # Agent Office Actor/Project Binding Normalization
 
 - Status: prior authority-chain re-review passed; live Advisor re-entry exposed
-  one bounded root role-entry conflict; independent NEEDS_PATCH was patched by
-  the same Worker and same-Reviewer narrow re-review is ready
+  one bounded root role-entry conflict; same-Reviewer re-review passed; final
+  audit found one stale runtime-record statement for bounded correction
 - Validation: delta-only
 - Slack: forbidden/not started
 - Product behavior: unchanged
@@ -68,3 +68,6 @@
 49. `48_UPDATED_ROLE_ENTRY_PATCH_WORKER_RESULT_POINTER.md`
 50. `49_SOL_SENTINEL_ROLE_ENTRY_DELTA_REREVIEW_BRIEF.md`
 51. `50_SOL_SENTINEL_ROLE_ENTRY_DELTA_REREVIEW_RUN_PROMPT.md`
+52. `51_ROLE_ENTRY_SENTINEL_REREVIEW_PASS_POINTER.md`
+53. `52_FINAL_RUNTIME_RECORD_CORRECTION_BRIEF.md`
+54. `53_FINAL_RUNTIME_RECORD_CORRECTION_RUN_PROMPT.md`
