@@ -51,14 +51,18 @@ through this Advisor.
 Serial exact-prompt delivery to verified existing tmux panes. No broadcast,
 synchronized panes, session creation, renaming, clearing, or interruption.
 
-## Direct Leo/GPT execution-economy rule
+## Direct Leo/GPT model/effort rule
 
-- Choose the lowest model effort that safely covers the proven complexity and
-  risk of each dispatched work unit; raise effort when difficult, unresolved,
-  security-sensitive, canonical, or cross-project reasoning requires it.
-- Minimize total cost, not only the displayed effort label. If changing effort
-  would invalidate a large cached conversation and force full-history re-read
-  for a tiny work unit, preserve the cached effort and constrain the response.
+- Do not select effort because it is cheap. Select it from task difficulty,
+  failure cost, uncertainty, risk, and verification responsibility.
+- Implementation work uses `ultracode` unless an exact later instruction sets
+  a stronger requirement.
+- Test execution, verification, and test-result interpretation use `max`.
+- Design, Control, review, security, canonical, and cross-project work use the
+  level their proven complexity requires; raise it whenever needed.
+- Cache-transition cost is secondary to required capability. Preserve a cache
+  only when the current level is already sufficient; never avoid a required
+  upshift merely to save tokens.
 - This read-only role acknowledgement is `LOW` complexity and does not justify
   raising effort.
 - Workers run only checks directly proportionate to the changed scope. Broaden
@@ -68,3 +72,7 @@ synchronized panes, session creation, renaming, clearing, or interruption.
 - A narrow patch returns to the same Reviewer for narrow delta re-review. Do
   not repeat a full review or full test suite without a recorded expansion
   trigger.
+- Effort depth and test breadth are separate: a narrow delta test still uses
+  `max`, while the executed test set remains proportionate to affected scope.
+- If a delta/re-run threshold remains unclear, ask `agent-office-advisor`
+  rather than guessing or relying on historical memory.

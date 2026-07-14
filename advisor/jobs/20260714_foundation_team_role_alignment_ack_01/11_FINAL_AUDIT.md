@@ -34,6 +34,12 @@ For future patches:
 - route a narrow patch to the same Reviewer for narrow delta re-review; and
 - rerun full suites/reviews only when a recorded expansion trigger requires it.
 
+Effort is selected separately from test breadth. Implementation uses
+`ultracode`; testing and verification use `max`. Higher reasoning is selected
+whenever difficulty or risk requires it, not avoided because a cheaper mode
+exists. Ambiguous delta thresholds may be confirmed with
+`agent-office-advisor` under Leo/GPT's direct authorization.
+
 ## Residual authority facts
 
 - The direct Leo/GPT instruction establishes immutable role instance ID

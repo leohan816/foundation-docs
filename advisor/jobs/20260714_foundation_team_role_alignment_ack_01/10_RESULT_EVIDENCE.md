@@ -35,6 +35,7 @@ conversation and force a full-history re-read. The client subsequently reported
 low effort. Reviewer remained at its cached max effort to avoid a potentially
 larger transition cost and was constrained to one short ACK block.
 
-Future selection must minimize total cost, not only the effort label: use the
-lowest safe effort unless task complexity/risk requires more, and avoid a cache
-transition whose re-read cost exceeds the bounded work.
+Future selection is difficulty- and responsibility-driven, not price-driven.
+Implementation uses `ultracode`; test execution and verification use `max`.
+Cache transition cost matters only after required capability is satisfied. A
+narrow delta test remains narrow in breadth but uses `max` effort.
