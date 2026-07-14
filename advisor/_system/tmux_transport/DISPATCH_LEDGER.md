@@ -4269,3 +4269,28 @@ PUSH: non-force main push; local HEAD equals origin/main
 UNRELATED_DIRTY_FILES: preserved unstaged and unchanged
 STATUS: COMPLETED
 ```
+## AO-ACTOR-PROJECT-NORMALIZATION-WORKER-20260714T082604Z
+
+```text
+DISPATCH_ID: AO-ACTOR-PROJECT-NORMALIZATION-WORKER-20260714T082604Z
+MISSION_ID: AGENT_OFFICE_ACTOR_PROJECT_BINDING_NORMALIZATION_001
+TARGET_ACTOR: Agent Office Worker
+TARGET_SESSION: agent-office-opus
+TARGET_LOCATOR: $16 / @16 / %16
+TARGET_WORKSPACE: /home/leo/Project/agent-office
+TARGET_BRANCH: shadow/agent-office-m1-2-spatial-office
+TARGET_BASE: ac8ba75d3a128385beaeeac58ae5bf54c03d23f2
+PROCESS: claude; live pane shows Opus 4.8 ultracode
+REQUIRED_SKILL: /fable-builder
+LAUNCHER_PATH: advisor/jobs/20260714_agent_office_actor_project_binding_normalization_001/06_AGENT_OFFICE_WORKER_RUN_PROMPT.md
+LAUNCHER_COMMIT: f6ad729f9e1fb469ad8961fc9320cf447221bb8d
+LAUNCHER_BLOB: ccb0bb53f2a27b827e0a9243dd683015312520f9
+LAUNCHER_SHA256: c7636e9a2fb4323e43ef591c519c2c23f7e6faecb085adeff3e8eb3ccf2f44f4
+SYNCHRONIZED_PANES: off
+DIRTY_STATE: four pre-existing Grok-related untracked paths; exact exclusion required
+SERIALIZATION: Agent Office Worker only; project-entry Workers wait
+VALIDATION: focused registry/type/lint/reference/diff only; no product suites
+SLACK_IMPLEMENTATION: forbidden
+PREFLIGHT: PASS_READY_TO_SEND
+STATUS: READY_TO_DISPATCH
+```
