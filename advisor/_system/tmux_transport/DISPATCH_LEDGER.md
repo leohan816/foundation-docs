@@ -4438,6 +4438,34 @@ SLACK_AS1: not started, not authorized
 STATUS: RESULT_EVIDENCE_CORRECTION_RUNNING
 ```
 
+## AO-PRE-AS1-TRANSPORT-IDENTITY-SENTINEL-DELTA-20260714T180235Z
+
+```text
+DISPATCH_ID: AO-PRE-AS1-TRANSPORT-IDENTITY-SENTINEL-DELTA-20260714T180235Z
+MISSION_ID: AGENT_OFFICE_PRE_AS1_PHYSICAL_TRANSPORT_IDENTITY_MIGRATION_001
+TARGET_ACTOR: Agent Office Independent SOL Sentinel Reviewer
+TARGET_SESSION: agent-office-reviewer
+TARGET_LOCATOR: $25 / @25 / %25
+TARGET_WORKSPACE: /home/leo/Project/agent-office
+PROCESS: Codex PID 1800045; exact process command verifies gpt-5.6-sol / xhigh
+REQUIRED_SKILL: /home/leo/Project/skill/fable-sentinel/SKILL.md
+SKILL_SHA256: 429aa2397e917e89e7b8770c3a22bf26a60d1337401760db3010fbcaa3b489d7
+PATCH_BASE: 9a7e9444208b613752dc4ab42e23b3cc70cc1516
+SOURCE_CANDIDATE: 1a4e1e98a0ea07c3f383da3761792298cd807f29
+EVIDENCE_HEAD: d240d8992f69327b712c9fa4a1dea97194edd1ae
+LAUNCHER_PATH: advisor/jobs/20260714_agent_office_pre_as1_physical_transport_identity_migration/12_SENTINEL_DELTA_REVIEW_RUN_PROMPT.md
+LAUNCHER_COMMIT: 5022bd0f70f2619ca3662ab3d368f268d0077347
+LAUNCHER_BLOB: ac8a6a5bc69a9254f9aaebe94d33cf6ab68f9cc2
+LAUNCHER_SHA256: 41ed8c803e79d3a9d407a8a07b93eacb41f01fad5e1c5f5fd20a6b9aaf28352a
+SENT_AT: 2026-07-14T18:02:35Z
+TRANSPORT: exact committed launcher loaded into a named tmux buffer, pasted once to %25, and submitted with isolated Enter
+SYNCHRONIZED_PANES: off
+REVIEW_SCOPE: F01/F02 closure, evidence accuracy, and preservation of prior PASS conclusions only
+SLACK_AS1: not started, not authorized
+TRANSPORT_ACTIVATION: not authorized
+STATUS: DELTA_REVIEW_RUNNING
+```
+
 ### AO-PRE-AS1-TRANSPORT-IDENTITY-WORKER-20260714T162507Z — path fence queued
 
 ```text
