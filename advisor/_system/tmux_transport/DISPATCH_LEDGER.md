@@ -781,7 +781,10 @@ SOFT_STALL_SECONDS: 600
 HARD_TIMEOUT_SECONDS_OR_NONE: 1800
 PREFLIGHT_VERDICT: PASS_READY_TO_SEND
 SENT_AT: PENDING_AFTER_COMMITTED_LEDGER
-STATUS: READY_TO_SEND
+SENT_AT: 2026-07-14T19:10:10Z
+TRANSPORT: exact committed launcher loaded into named tmux buffer ao-as1-designer-20260714T190923Z, pasted once to %24, and submitted with isolated Enter
+POST_SEND_EVIDENCE: verified Designer entered active processing; no duplicate dispatch
+STATUS: SENT__DESIGN_RUNNING
 ```
 
 ### AO-BATCH-A-WORKER-SECOND-REWORK-20260713T054330Z - sent
