@@ -4433,3 +4433,29 @@ RESTART: false
 SCOPE_EXPANSION: false
 STATUS: PATCH_RUNNING_WITH_REAL_ARTIFACT_FENCE_QUEUED
 ```
+
+## AO-PRE-AS1-TRANSPORT-IDENTITY-REVIEW-20260714T172636Z
+
+```text
+DISPATCH_ID: AO-PRE-AS1-TRANSPORT-IDENTITY-REVIEW-20260714T172636Z
+MISSION_ID: AGENT_OFFICE_PRE_AS1_PHYSICAL_TRANSPORT_IDENTITY_MIGRATION_001
+TARGET_ACTOR: Agent Office Independent SOL Sentinel Reviewer
+TARGET_SESSION: agent-office-reviewer
+TARGET_LOCATOR: $25 / @25 / %25
+TARGET_WORKSPACE: /home/leo/Project/agent-office
+PROCESS: Codex PID 1800045; command line verifies gpt-5.6-sol / xhigh
+REQUIRED_SKILL: /home/leo/Project/skill/fable-sentinel/SKILL.md
+SKILL_SHA256: 429aa2397e917e89e7b8770c3a22bf26a60d1337401760db3010fbcaa3b489d7
+BASELINE: 88c6cbd757ed205eb1aadd68d8ea7629865d5765
+CANDIDATE: 9a7e9444208b613752dc4ab42e23b3cc70cc1516
+LAUNCHER_PATH: advisor/jobs/20260714_agent_office_pre_as1_physical_transport_identity_migration/08_SENTINEL_REVIEW_RUN_PROMPT.md
+LAUNCHER_COMMIT: 65577c89df45c68a970f863da00c65379f878459
+LAUNCHER_BLOB: 8a598dc03d1c0686eb2f32e506ffdfef8f4019ad
+LAUNCHER_SHA256: f8e353796869c7d7f5f9973096a27012e227b2389bf57857543318283f8717c7
+PRE_SEND_INPUT: cleared one unsent non-semantic keyboard-mash string only; no submitted Reviewer work was altered
+TRANSPORT: exact committed launcher loaded into a named tmux buffer, pasted once to %25, and submitted with isolated Enter
+SYNCHRONIZED_PANES: off
+REVIEW_SCOPE: exact transport destination, authority lineage, historical fail-closed behavior, targeted 55-test gate
+SLACK_AS1: not started, not authorized
+STATUS: REVIEW_RUNNING
+```
