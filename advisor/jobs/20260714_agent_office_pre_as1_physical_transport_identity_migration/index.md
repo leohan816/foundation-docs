@@ -17,4 +17,8 @@
 - `07B_WORKER_PATCH_REAL_ARTIFACT_FENCE_RUN_PROMPT.md`: in-place real-artifact launcher
 - `08_SENTINEL_REVIEW_HANDOFF.md`: exact independent review scope
 - `08_SENTINEL_REVIEW_RUN_PROMPT.md`: exact independent review launcher
+- `08_SENTINEL_REVIEW_RESULT.md`: independent `NEEDS_PATCH` result
+- `08_SENTINEL_REVIEW_RESULT_POINTER.md`: immutable result pointer
+- `09_WORKER_SENTINEL_PATCH_HANDOFF.md`: bounded F01/F02 closure
+- `09_WORKER_SENTINEL_PATCH_RUN_PROMPT.md`: exact same-Worker patch launcher
 - `10_LOOP_STATE.md`: current route state
