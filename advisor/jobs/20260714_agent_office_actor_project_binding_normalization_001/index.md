@@ -2,8 +2,7 @@
 
 - Status: prior authority-chain re-review passed; live Advisor re-entry exposed
   one bounded root role-entry conflict; same-Reviewer re-review passed; final
-  runtime-record review returned three bounded evidence findings for same-Worker
-  closure
+  runtime-record findings patched and awaiting same-Reviewer narrow re-review
 - Validation: delta-only
 - Slack: forbidden/not started
 - Product behavior: unchanged
@@ -79,3 +78,6 @@
 59. `58_FINAL_RUNTIME_BINDING_OBSERVATION.md`
 60. `59_FINAL_RUNTIME_RECORD_PATCH_BRIEF.md`
 61. `60_FINAL_RUNTIME_RECORD_PATCH_RUN_PROMPT.md`
+62. `61_FINAL_RUNTIME_RECORD_PATCH_WORKER_RESULT_POINTER.md`
+63. `62_SOL_SENTINEL_FINAL_RUNTIME_RECORD_REREVIEW_BRIEF.md`
+64. `63_SOL_SENTINEL_FINAL_RUNTIME_RECORD_REREVIEW_RUN_PROMPT.md`
