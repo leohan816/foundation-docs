@@ -11,4 +11,5 @@
 - `08_DESIGNER_F01_PATCH_BRIEF.md`: exact bounded F01 correction
 - `08_DESIGNER_F01_PATCH_HANDOFF.md`: same-Designer patch authority
 - `08_DESIGNER_F01_PATCH_RUN_PROMPT.md`: exact patch launcher
+- `08A_DESIGNER_F01_PATCH_DISPATCH.md`: verified patch dispatch coordinates
 - `10_LOOP_STATE.md`: current gate and next actor
