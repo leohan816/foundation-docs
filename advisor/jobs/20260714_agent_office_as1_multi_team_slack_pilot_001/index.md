@@ -24,3 +24,4 @@
 - `19_IMPLEMENTATION_SECURITY_REVIEW_BRIEF.md`: exact Level 3 implementation/security gates
 - `19_IMPLEMENTATION_SECURITY_REVIEW_HANDOFF.md`: independent Reviewer authority and STOP contract
 - `19_IMPLEMENTATION_SECURITY_REVIEW_RUN_PROMPT.md`: exact Reviewer launcher
+- `19A_IMPLEMENTATION_SECURITY_REVIEW_DISPATCH.md`: verified Reviewer runtime and dispatch coordinates
