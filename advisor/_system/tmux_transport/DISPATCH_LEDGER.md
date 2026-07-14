@@ -4403,6 +4403,22 @@ SLACK_AS1: not started, not authorized
 STATUS: PATCH_RUNNING
 ```
 
+### AO-PRE-AS1-TRANSPORT-IDENTITY-SENTINEL-PATCH-20260714T174044Z — process grammar fence queued
+
+```text
+QUEUED_AT: 2026-07-14T17:47:10Z
+REASON: in-progress implementation used a semicolon-plus-arbitrary-suffix process regex, broader than the exact current registry observation grammar required by F01
+LAUNCHER_PATH: advisor/jobs/20260714_agent_office_pre_as1_physical_transport_identity_migration/09A_WORKER_PROCESS_CELL_GRAMMAR_FENCE_RUN_PROMPT.md
+LAUNCHER_COMMIT: 777f8bbb50af93da672ddcc8e1e9680369e7bd3c
+LAUNCHER_BLOB: 5576148f6c68d6593318d20acce3d65ede161445
+LAUNCHER_SHA256: a75360af0d18d6d97b7f7025d6ae4696c7739cd762cc8b0f0bc3e6dd642638b0
+TRANSPORT: exact committed in-place clarification queued once in the same active Worker run
+RESTART: false
+SCOPE_EXPANSION: false
+DUPLICATE_DISPATCH: false
+STATUS: PATCH_RUNNING_WITH_PROCESS_GRAMMAR_FENCE_QUEUED
+```
+
 ### AO-PRE-AS1-TRANSPORT-IDENTITY-WORKER-20260714T162507Z — path fence queued
 
 ```text
