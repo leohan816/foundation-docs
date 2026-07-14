@@ -6,6 +6,7 @@
 - Session: `agent-office-reviewer` (`$20/@20/%20`)
 - Verified runtime before dispatch: GPT-5.6 SOL, xhigh, Agent Office workspace
 - Required skill: `/fable-sentinel`
+- Required skill source: `/home/leo/Project/skill/fable-sentinel/SKILL.md`
 - Review level: Level 1 focused cross-repository documentation/authority delta
 - One Reviewer only
 - Return to: `agent-office-advisor`
@@ -29,7 +30,8 @@
 
 ## Review Order And Exact Questions
 
-Inspect actual files and diffs; do not trust the Worker summary.
+Read and apply the required skill source before reviewing. Inspect actual files
+and diffs; do not trust the Worker summary.
 
 1. Is Agent Office `docs/agent/` unambiguously the current common authority for
    Team, Actor, role, Advisor-led routine, onboarding, dispatch, and
@@ -59,8 +61,10 @@ Inspect actual files and diffs; do not trust the Worker summary.
 ## Review Limits
 
 - Delta-only: no product tests, visual tests, broad audit, or historical replay.
-- Read-only candidate inspection. Do not patch, commit, push, merge, remove
-  folders, manipulate tmux, or start AS1.
+- Read-only candidate inspection. Do not patch candidate/project files, commit,
+  push, merge, remove folders, manipulate tmux, or start AS1.
+- The only allowed write is the required `SENTINEL_REVIEW_RESULT.md` result file
+  below. This exception does not authorize any candidate or project change.
 - The four accidental folders and final live tmux rebinding remain Advisor final
   cleanup items; verify the documented intended state, not completion yet.
 
