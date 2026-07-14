@@ -29,3 +29,7 @@
 - `11_ADVISOR_SENTINEL_PATCH_VALIDATION.md`: Advisor direct patch/evidence validation
 - `12_SENTINEL_DELTA_REVIEW_HANDOFF.md`: exact same-Reviewer delta scope
 - `12_SENTINEL_DELTA_REVIEW_RUN_PROMPT.md`: exact delta re-review launcher
+- `12_SENTINEL_DELTA_REVIEW_RESULT.md`: independent delta verdict and reproduced evidence
+- `12_SENTINEL_DELTA_REVIEW_RESULT_POINTER.md`: immutable delta-review result pointer
+- `13_ADVISOR_FINAL_AUDIT.md`: targeted final migration audit
+- `14_LEO_GPT_AS1_AUTHORIZATION_RETURN.md`: final pointer and AS1 authorization request
