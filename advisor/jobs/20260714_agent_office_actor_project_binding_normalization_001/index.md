@@ -1,8 +1,7 @@
 # Agent Office Actor/Project Binding Normalization
 
-- Status: prior authority-chain re-review passed; live Advisor re-entry exposed
-  one bounded root role-entry conflict; same-Reviewer re-review passed; final
-  runtime-record findings patched and awaiting same-Reviewer narrow re-review
+- Status: complete; all bounded findings patched; same-Reviewer final re-review
+  PASS; Advisor final audit PASS; Slack/AS1 not started
 - Validation: delta-only
 - Slack: forbidden/not started
 - Product behavior: unchanged
@@ -81,3 +80,5 @@
 62. `61_FINAL_RUNTIME_RECORD_PATCH_WORKER_RESULT_POINTER.md`
 63. `62_SOL_SENTINEL_FINAL_RUNTIME_RECORD_REREVIEW_BRIEF.md`
 64. `63_SOL_SENTINEL_FINAL_RUNTIME_RECORD_REREVIEW_RUN_PROMPT.md`
+65. `64_FINAL_RUNTIME_RECORD_SENTINEL_REREVIEW_PASS_POINTER.md`
+66. `65_ADVISOR_FINAL_AUDIT.md`
