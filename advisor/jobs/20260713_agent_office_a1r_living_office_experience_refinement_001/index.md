@@ -39,6 +39,8 @@
 - [Advisor modular Team Strip design brief](30_ADVISOR_MODULAR_TEAM_STRIP_DESIGN_BRIEF.md)
 - [Designer modular Team Strip handoff](31_DESIGNER_MODULAR_TEAM_STRIP_HANDOFF_PROMPT.md)
 - [Designer modular Team Strip launcher](31_DESIGNER_MODULAR_TEAM_STRIP_RUN_PROMPT.md)
+- [Designer modular Team Strip result publication handoff](32A_DESIGNER_RESULT_PUBLISH_HANDOFF_PROMPT.md)
+- [Designer modular Team Strip result publication launcher](32A_DESIGNER_RESULT_PUBLISH_RUN_PROMPT.md)
 - [Control narrow patch handoff](09_CONTROL_DESIGN_PATCH_HANDOFF_PROMPT.md)
 - [Control narrow patch launcher](09_CONTROL_DESIGN_PATCH_RUN_PROMPT.md)
 - [Advisor classification of Sentinel findings](13_ADVISOR_SENTINEL_FINDING_CLASSIFICATION.md)
