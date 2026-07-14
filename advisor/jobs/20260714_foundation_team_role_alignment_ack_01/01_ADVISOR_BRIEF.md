@@ -50,3 +50,18 @@ through this Advisor.
 
 Serial exact-prompt delivery to verified existing tmux panes. No broadcast,
 synchronized panes, session creation, renaming, clearing, or interruption.
+
+## Direct Leo/GPT execution-economy rule
+
+- Choose the lowest model effort that safely covers the proven complexity and
+  risk of each dispatched work unit; raise effort when difficult, unresolved,
+  security-sensitive, canonical, or cross-project reasoning requires it.
+- This read-only role acknowledgement is `LOW` complexity and does not justify
+  raising effort.
+- Workers run only checks directly proportionate to the changed scope. Broaden
+  to affected integration or full regression only when shared infrastructure,
+  a security/data/contract boundary, cross-project consumers, or direct test
+  evidence requires it.
+- A narrow patch returns to the same Reviewer for narrow delta re-review. Do
+  not repeat a full review or full test suite without a recorded expansion
+  trigger.

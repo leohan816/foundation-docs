@@ -4,6 +4,8 @@ MISSION_ID: FOUNDATION_TEAM_ROLE_ALIGNMENT_ACK_20260714_01
 WORK_UNIT_ID: COSMILE_WORKER_ROLE_ACK
 RETURN_TO: foundation-advisor
 SOURCE_JOB_DIR: /home/leo/Project/.worktrees/foundation-docs/FOUNDATION_TEAM_ROLE_ALIGNMENT_20260714/advisor/jobs/20260714_foundation_team_role_alignment_ack_01
+TASK_COMPLEXITY: LOW
+EFFORT_POLICY: use the lowest available safe session effort; do not raise effort for this ACK
 
 READ_AND_APPLY:
 - /home/leo/Project/agent-office/docs/agent/TEAM_OPERATING_MODEL.md
