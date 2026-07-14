@@ -6,4 +6,9 @@
 - `03_DESIGN_REVIEW_BRIEF.md`: independent Sentinel design criteria
 - `04_DESIGNER_HANDOFF.md`: full Designer handoff
 - `04_DESIGNER_RUN_PROMPT.md`: exact short Designer launcher
+- `07_DESIGN_REVIEW_RESULT.md`: independent design verdict and F01 finding
+- `07_DESIGN_REVIEW_RESULT_POINTER.md`: immutable verdict pointer
+- `08_DESIGNER_F01_PATCH_BRIEF.md`: exact bounded F01 correction
+- `08_DESIGNER_F01_PATCH_HANDOFF.md`: same-Designer patch authority
+- `08_DESIGNER_F01_PATCH_RUN_PROMPT.md`: exact patch launcher
 - `10_LOOP_STATE.md`: current gate and next actor
