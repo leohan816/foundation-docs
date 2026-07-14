@@ -4419,6 +4419,25 @@ DUPLICATE_DISPATCH: false
 STATUS: PATCH_RUNNING_WITH_PROCESS_GRAMMAR_FENCE_QUEUED
 ```
 
+### AO-PRE-AS1-TRANSPORT-IDENTITY-SENTINEL-PATCH-20260714T174044Z — durable result correction sent
+
+```text
+SENT_AT: 2026-07-14T17:56:58Z
+CORRECTION_CLASS: RESULT_EVIDENCE_ONLY
+REASON: durable pointer omitted active result-protocol TARGET_COMMIT and PUSH_STATUS fields even though pane output contained them
+PRESERVED_SOURCE_CANDIDATE: 1a4e1e98a0ea07c3f383da3761792298cd807f29
+LAUNCHER_PATH: advisor/jobs/20260714_agent_office_pre_as1_physical_transport_identity_migration/09B_WORKER_DURABLE_RESULT_CONTRACT_CORRECTION_RUN_PROMPT.md
+LAUNCHER_COMMIT: b5662ed91c066978071a0ea120b4bfc923361901
+LAUNCHER_BLOB: 1b7535a688205911b741fb058734935de9148709
+LAUNCHER_SHA256: 26ce136682ce068844bf4a7c3f8e1b14ba1ec17c2224b2e54ef366fd97bb0052
+TRANSPORT: exact committed launcher pasted once to the same idle Worker and submitted with isolated Enter
+ALLOWED_FILES: Worker result and pointer only
+TEST_RERUN: forbidden; source candidate already Advisor-reproduced
+SCOPE_EXPANSION: false
+SLACK_AS1: not started, not authorized
+STATUS: RESULT_EVIDENCE_CORRECTION_RUNNING
+```
+
 ### AO-PRE-AS1-TRANSPORT-IDENTITY-WORKER-20260714T162507Z — path fence queued
 
 ```text
