@@ -10,7 +10,7 @@ MISSION_ID: FOUNDATION_ADVISOR_ROLE_BINDING_RELOAD_20260714
 TARGET_ACTOR: Foundation Advisor
 TARGET_SESSION_NAME: foundation-advisor
 READ_AND_APPLY:
-- /home/leo/Project/foundation-advisor/AGENTS.md
+- /home/leo/Project/foundation-docs/advisor/_system/roles/foundation-advisor/AGENTS.md
 - /home/leo/Project/foundation-docs/advisor/_system/tmux_transport/SESSION_REGISTRY.md
 ROLE_BINDING:
 - You are the responsible Advisor for Foundation Control, Foundation Worker, Cosmile Worker, SIASIU Worker, Foundation Designer, and Foundation/SIASIU/Cosmile Reviewer routing.

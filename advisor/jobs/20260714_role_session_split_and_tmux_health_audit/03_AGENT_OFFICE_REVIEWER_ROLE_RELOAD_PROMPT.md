@@ -1,16 +1,16 @@
 # Agent Office SOL Reviewer Role Reload Prompt
 
 TARGET_ACTOR: Sentinel
-TARGET_SESSION: `agent-office-reviewer-sol`
+TARGET_SESSION: `agent-office-reviewer`
 RETURN_RESULT_TO: `agent-office-advisor`
 
 ========
 ROLE_BINDING_RELOAD
 MISSION_ID: AGENT_OFFICE_REVIEWER_ROLE_BINDING_RELOAD_20260714
 TARGET_ACTOR: Agent Office Independent SOL Reviewer
-TARGET_SESSION_NAME: agent-office-reviewer-sol
+TARGET_SESSION_NAME: agent-office-reviewer
 READ_AND_APPLY:
-- /home/leo/Project/agent-office-reviewer/AGENTS.md
+- /home/leo/Project/foundation-docs/advisor/_system/roles/agent-office-reviewer/AGENTS.md
 - /home/leo/Project/foundation-docs/advisor/_system/tmux_transport/SESSION_REGISTRY.md
 ROLE_BINDING:
 - Responsible Advisor: agent-office-advisor.

@@ -90,7 +90,7 @@ Skill choice follows role, not model name:
 | Worker implementation | `/fable-builder` | Implement approved WorkUnits and tests only |
 | Independent Reviewer | `/fable-sentinel` | Read-only, distrust summaries, inspect direct evidence, no patch |
 | General Debugger | `/fable-debugger` | Diagnose bounded non-contract failures; does not replace Builder or Sentinel |
-| Future Designer | dedicated reviewed designer skill when activated | Until then, use Control master-design mode; never claim an inactive skill |
+| Product/System Designer | dedicated role instructions and reviewed designer skill when available | Product experience and design artifacts only; no runtime patch or self-review |
 
 Every launcher states the role, exact session, required skill/mode, source handoff,
 return target, allowed scope, forbidden scope, and verdict/result contract. A
@@ -101,10 +101,17 @@ skill remains required even when the selected model is strong.
 Advisor selects effort from actual risk and complexity, then verifies the live
 runtime before every dispatch. Session names never prove model or effort.
 
+Every configured effort is a baseline, not a permanent binding. The responsible
+Advisor may raise or lower an actor's effort at a clean task boundary when direct
+evidence shows that the current task needs a different reasoning depth. This
+authority applies to the Advisor's own effort as well, but must not be used to
+trade away required judgment, review independence, or risk coverage.
+
 | Actor | Low-risk/narrow | Normal substantial | High-risk/complex |
 |---|---|---|---|
-| Advisor | `xhigh` default | `xhigh` | `max` only for exceptional unresolved authority/security or cross-repo risk |
+| Advisor | `high` only for bounded, low-risk routing or exact documentation delta | `xhigh` default | `max` for exceptional unresolved authority/security, broad cross-repo risk, or difficult final synthesis |
 | Control designer | `high` for narrow design delta | `xhigh` | `max` for Level 3 contract/security/data architecture |
+| Product/System Designer | `high` for narrow visual or interaction delta | `xhigh` or the role's recorded baseline | `max`; `ultra` only for a documented high-complexity product-system problem when the runtime supports it |
 | Worker | `medium/high` for mechanical local work | `xhigh`; `Ultracode` when supported for complex implementation | strongest approved implementation profile, with explicit reason |
 | Sentinel Reviewer | `high` for tiny docs or exact delta | `xhigh` for ordinary implementation review | `max` for Level 3 security/authority/PII/DB/payment/prod or unresolved uncertainty |
 
@@ -122,6 +129,22 @@ Advisor records:
 
 Effort may rise when evidence reveals wider risk. It may fall for a truly narrow
 delta only when the required coverage and independence remain unchanged.
+
+Effort-change controls:
+
+- classify the task and unresolved unknowns before changing effort;
+- change only the exact target role session, never a broadcast or synchronized
+  pane;
+- verify the live model and effort after the change and before dispatch;
+- record the previous effort, selected effort, reason, mission, and verifier;
+- do not lower effort while a material uncertainty, failed gate, security issue,
+  or authority conflict remains unresolved;
+- do not select effort merely from token availability, cost pressure, session
+  name, or preference for speed;
+- after an exceptional high-effort task, reassess at the next clean boundary and
+  return to the role baseline when the evidence no longer justifies escalation;
+- if the requested profile is unsupported, use the strongest verified supported
+  profile appropriate to the task and disclose the fallback.
 
 ## 5. Delta-First Design, Documentation, Review, and Testing
 
@@ -178,7 +201,26 @@ Routine `NEEDS_PATCH` returns to the same Worker and then the same Reviewer.
 `PASS_WITH_RISK`, a new product/authority decision, or unresolved material risk
 returns to Leo/GPT.
 
-## 7. tmux Transport and Monitoring
+## 7. Actor Workspace Model
+
+- actor identity lives in the Agent Office registry and committed role record;
+- runtime identity lives in a verified tmux session;
+- work occurs in the canonical project repository or an explicitly authorized
+  temporary Git worktree;
+- a role or session name is never a repository or workspace name;
+- do not create permanent top-level role folders such as `*-advisor`,
+  `*-reviewer`, or `*-designer`;
+- keep role instructions under `foundation-docs/advisor/_system/roles/` and load
+  the exact committed role path into the target session;
+- do not add role-only files to a canonical product repository without explicit
+  owner approval;
+- a Designer uses the exact active project/worktree named by the Advisor; an
+  idle Foundation Designer may start in `FOUNDATION`, but a SIASIU or Cosmile
+  design mission must rebind it to that exact repository/worktree before work;
+- concurrent actors sharing a canonical repository remain subject to writer-lock,
+  branch, dirty-state, and independence checks.
+
+## 8. tmux Transport and Monitoring
 
 - existing registered role sessions only;
 - exact committed launcher and exact pane only;
@@ -195,7 +237,7 @@ attempts. A fallback model requires live identity verification, compatible role
 quality, required skill reload, and a ledger entry. Do not silently lower the
 required risk coverage.
 
-## 8. Naming and Communication
+## 9. Naming and Communication
 
 - The current official product name is `SIASIU`. Do not emit `Shashu`, `SHASHU`,
   `shashu`, or Korean legacy spellings except in clearly marked historical
@@ -205,7 +247,7 @@ required risk coverage.
 - After answering a status question, Advisor resumes the active mission unless
   Leo explicitly pauses or stops it.
 
-## 9. Completion Audit
+## 10. Completion Audit
 
 Advisor closes only after required actors have returned and direct evidence
 supports the mission. The final audit records:
