@@ -71,6 +71,58 @@ branch (project-root pointers resolve there):
   never role-named folders (`agent-office-advisor`/`foundation-advisor`
   directories are not canonical workspaces).
 
+## Authority-Chain Patch (brief 31 — Sentinel P1 closure)
+
+The independent SOL Sentinel (`SENTINEL_REVIEW_RESULT.md`, verdict `NEEDS_PATCH`,
+finding P1) confirmed the documentation delta but found a split current-authority
+contradiction: the ownership correction declared foundation-docs non-authoritative,
+yet the active foundation-docs V2 role-boundary protocol still marked itself
+`ACTIVE_CANONICAL_V2` with actor/routing authority and precedence over repo-local
+files, and the three product `CLAUDE.md` files still labeled that V2 file the
+current `Canonical protocol`. Each Foundation-Team root therefore presented two
+incompatible current-authority chains (criteria 1, 2, 6).
+
+Patch applied (documentation-only, per brief `31`, `PROCEED_WITH_LIMITS`):
+
+- foundation-docs V2 file
+  `설계문서/shared/AGENT_ROLE_BOUNDARY_AND_RELEASE_TRAIN_PROTOCOL_V2.md`: status
+  changed to `SUPERSEDED_HISTORICAL_EVIDENCE` with an unmistakable supersession
+  note; the self-authority sentence and the §16 precedence order / `V2 controls`
+  clause were rewritten so V2 no longer competes with Agent Office and no longer
+  requires repo-local files to be patched to match it; Agent Office canonical
+  pointers were added. Historical findings/body were not rewritten. (Uncommitted
+  in foundation-docs `main` — see STOP condition; Advisor persists.)
+- FOUNDATION `acb46c0`, SIASIU `7ad5a23`, Cosmile `72fe650`: each root
+  `AGENTS.md` + `CLAUDE.md` pair now agrees the Agent Office operating model and
+  role docs are the current common role/routing authority, and labels the V2 file
+  historical evidence only (no `Canonical protocol` / mandatory-current
+  reference). All project-specific product/domain/safety/release constraints were
+  preserved (Foundation Worker restoration; SIASIU accuracy/medical/naming/
+  citation/no-heuristics; Cosmile public/private + Core-API boundary; each repo's
+  approval/STOP gates).
+
+Result: every active entry point (Agent Office docs, the V2 file, and all three
+product pairs) now carries one ownership model — Agent Office `docs/agent/` owns
+current common role/routing authority; foundation-docs, including the V2 file, is
+historical evidence only. The Final Ownership Model above is now supported by the
+actual active-file graph.
+
+Verification: `git diff --check` clean on all changed files; each product
+`AGENTS.md`/`CLAUDE.md` pair is consistent; the V2 file exposes its superseded
+status and Agent Office pointers; changed files are documentation-only (no
+source/test/fixture/schema/registry/product/Slack/tmux); pre-existing untracked
+dirt preserved and unstaged; no product tests run.
+
+Completeness correction: a follow-up review found the product `CLAUDE.md`
+"Agent Run / Result Protocol" pre-read lists still required the superseded V2
+file as a mandatory read. That V2 item was removed from all three lists
+(FOUNDATION `f641700`, SIASIU `e1830b4`, Cosmile `6e44aa4`), preserving each
+repo's `docs/agent/RUN_PROTOCOL.md` and `docs/agent/RESULT_REPORTING_PROTOCOL.md`
+reads and all product/domain/safety rules. After this correction, targeted search
+confirms the only remaining V2 reference in each product root is the explicit
+historical-evidence label, and no active root instruction names the V2 file as a
+current canonical or mandatory read.
+
 ## Exact changed-file list (delta rework)
 
 Agent Office worktree (`5df16b3`, from `b6fd321`):
@@ -180,9 +232,12 @@ and did not start AS1; Slack remains forbidden here. (Recorded in
 
 - `foundation-docs` remains on branch `main` with the Advisor's own unrelated
   uncommitted changes. The Worker must not push `main` or disturb unrelated dirt,
-  and no exact foundation-docs result path was supplied. This durable result is
-  therefore **written uncommitted** at the conventional `runs/` path for the
-  Advisor to persist; no foundation-docs commit or push was made by the Worker.
+  and no exact foundation-docs result path was supplied. This durable result and
+  the brief-`31` V2 supersession edit
+  (`설계문서/shared/AGENT_ROLE_BOUNDARY_AND_RELEASE_TRAIN_PROTOCOL_V2.md`) are
+  therefore **written uncommitted** for the Advisor to persist; no foundation-docs
+  commit or push was made by the Worker. The three product-repo commits were
+  pushed to their non-`main` shadow branches.
 
 ## Durable result & pointer
 

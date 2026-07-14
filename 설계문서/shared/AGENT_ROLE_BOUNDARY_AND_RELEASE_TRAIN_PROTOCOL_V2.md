@@ -1,6 +1,17 @@
 # Agent Role Boundary and Release Train Protocol V2
 
-Status: `ACTIVE_CANONICAL_V2`
+Status: `SUPERSEDED_HISTORICAL_EVIDENCE`
+
+> **Supersession (2026-07-14).** This document is retained as historical evidence
+> of the V2 role-boundary and release-train design. It is **not** the current
+> authority for Team, Actor, role, Advisor-led routine, onboarding, dispatch, or
+> tmux/runtime-binding rules, and it does **not** take precedence over repo-local
+> instructions or require them to be patched to match it. Current common
+> role/routing authority is the Agent Office operating model and role docs:
+> `/home/leo/Project/agent-office/docs/agent/TEAM_OPERATING_MODEL.md` and
+> `/home/leo/Project/agent-office/docs/agent/roles/`. Retained release-train and
+> review-separation content here applies only as non-authoritative background
+> unless a current Agent Office document restates it.
 
 Decision owner and final approver: Leo/GPT  
 Author and propagation owner: Advisor  
@@ -14,9 +25,12 @@ Activation evidence:
 - Review result commit: `80d2fd7c6e6b6f7de2d0502442b51fd26dfafe11`
 - Review pointer: `../foundation-docs/advisor/jobs/20260710_agent_role_boundary_release_train_protocol_v2/12_FABLE5_REVIEW_RESULT_POINTER.md`
 
-This protocol defines actor authority, mission routing, release-train sequencing,
-evidence requirements, and reload behavior across Foundation, foundation-control,
-SIASIU, Cosmile, foundation-advisor, and the Fable5 review workspace.
+This protocol historically described actor authority, mission routing,
+release-train sequencing, evidence requirements, and reload behavior across
+Foundation, foundation-control, SIASIU, Cosmile, foundation-advisor, and the
+Fable5 review workspace. Those current rules are now owned by the Agent Office
+operating model and role docs (see the supersession note above); this text is
+retained as historical background only.
 
 Companion canonical execution policy:
 `ADVISOR_ORCHESTRATION_MODEL_EFFORT_SKILL_AND_DELTA_PROTOCOL.md`. Every Advisor
@@ -415,17 +429,18 @@ This protocol does not override platform/system safety instructions.
 For project operation, use this order:
 
 1. Current explicit Leo/GPT mission decision.
-2. This canonical V2 protocol for actor authority, routing, review separation, and
-   release-train sequencing.
+2. The current Agent Office operating model and role docs
+   (`/home/leo/Project/agent-office/docs/agent/`) for Team, Actor, role,
+   Advisor-led routine, routing, review separation, and dispatch authority.
 3. Approved mission design, Advisor brief, and role handoff for exact scope.
 4. Repo-local `CLAUDE.md`, `AGENTS.md`, and referenced active rules for local safety,
    coding, test, and domain constraints.
-5. Evidence reports, snapshots, and historical operating documents as evidence only.
+5. Evidence reports, snapshots, and historical operating documents — including
+   this superseded V2 protocol — as evidence only.
 
 When both `CLAUDE.md` and `AGENTS.md` exist, both apply in their documented scope.
-A more narrowly scoped file applies within its directory, but it cannot expand the
-actor's V2 authority. If either file conflicts with V2 on actor/release-train
-authority, V2 controls and the active file must be patched. If repo-local safety or
+This superseded protocol does not control actor/routing authority and does not
+require any repo-local file to be patched to match it. If repo-local safety or
 domain rules conflict with a handoff, STOP; do not silently weaken the local rule.
 
 After final tmux transport activation, older Advisor-local wording that requires
