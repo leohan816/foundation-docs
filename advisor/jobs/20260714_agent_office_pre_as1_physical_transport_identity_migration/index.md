@@ -21,4 +21,6 @@
 - `08_SENTINEL_REVIEW_RESULT_POINTER.md`: immutable result pointer
 - `09_WORKER_SENTINEL_PATCH_HANDOFF.md`: bounded F01/F02 closure
 - `09_WORKER_SENTINEL_PATCH_RUN_PROMPT.md`: exact same-Worker patch launcher
+- `09A_WORKER_PROCESS_CELL_GRAMMAR_FENCE.md`: exact process-annotation grammar clarification
+- `09A_WORKER_PROCESS_CELL_GRAMMAR_FENCE_RUN_PROMPT.md`: in-place grammar-fence launcher
 - `10_LOOP_STATE.md`: current route state
