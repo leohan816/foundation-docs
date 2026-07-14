@@ -1,8 +1,8 @@
 # Agent Office Actor/Project Binding Normalization
 
 - Status: prior authority-chain re-review passed; live Advisor re-entry exposed
-  one bounded root role-entry conflict; independent review returned NEEDS_PATCH
-  and the same-Worker routine patch is ready
+  one bounded root role-entry conflict; independent NEEDS_PATCH was patched by
+  the same Worker and same-Reviewer narrow re-review is ready
 - Validation: delta-only
 - Slack: forbidden/not started
 - Product behavior: unchanged
@@ -65,3 +65,6 @@
 46. `45_ROLE_ENTRY_SENTINEL_NEEDS_PATCH_POINTER.md`
 47. `46_ROLE_ENTRY_SENTINEL_PATCH_BRIEF.md`
 48. `47_ROLE_ENTRY_SENTINEL_PATCH_RUN_PROMPT.md`
+49. `48_UPDATED_ROLE_ENTRY_PATCH_WORKER_RESULT_POINTER.md`
+50. `49_SOL_SENTINEL_ROLE_ENTRY_DELTA_REREVIEW_BRIEF.md`
+51. `50_SOL_SENTINEL_ROLE_ENTRY_DELTA_REREVIEW_RUN_PROMPT.md`

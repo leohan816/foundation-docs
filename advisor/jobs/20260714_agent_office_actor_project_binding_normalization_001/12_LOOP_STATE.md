@@ -2,7 +2,7 @@
 
 ```text
 MISSION: AGENT_OFFICE_ACTOR_PROJECT_BINDING_NORMALIZATION_001
-STATE: ROOT_ROLE_ENTRY_SENTINEL_NEEDS_PATCH__SAME_WORKER_ROUTINE_PATCH_READY
+STATE: ROOT_ROLE_ENTRY_SENTINEL_PATCH_ADVISOR_VALIDATED__SAME_REVIEWER_REREVIEW_READY
 FOUNDER_SCOPE_CORRECTION: ACTIVE
 DESIGN: FOUNDER_CONTRACT_FROZEN
 ONE_WORKER: agent-office-opus
@@ -17,7 +17,8 @@ LIVE_CLEANUP: accidental folders removed; canonical tmux paths verified
 FIRST_PATCH: 911a45b role-neutralized root files
 COMPLETENESS_PATCH: b64ae8c separates Advisor and subordinate entry authority
 ADVISOR_TARGETED_VALIDATION: initial pass superseded by independent findings
-SENTINEL_VERDICT: NEEDS_PATCH
-FINDINGS: Advisor self-return; Reviewer-verdict prohibition; Worker evidence correction
-NEXT: same Worker closes exact findings; same Reviewer performs narrow re-review
+SENTINEL_PRIOR_VERDICT: NEEDS_PATCH
+PATCH_COMMIT: 79beb96
+ADVISOR_TARGETED_VALIDATION: prior findings closed
+NEXT: same agent-office-reviewer performs narrow finding-closure re-review
 ```

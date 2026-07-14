@@ -123,12 +123,56 @@ Correction (base `911a45b`, final commit `b64ae8c`; same two files):
 Added targeted checks (brief 40): whitespace-normalized search confirmed both
 files carry the Advisor (Leo/GPT) and subordinate (Advisor-handoff) entry paths,
 the Worker-only protocol scoping, and the Advisor→Leo/GPT fail-closed/return
-routing; no remaining universal statement makes an Advisor require its own Advisor
-handoff, read Worker protocols as a normal prerequisite, or return its result to
-itself. `git diff --check` clean; diff scope exactly `AGENTS.md` and `CLAUDE.md`;
-the Grok untracked paths were untouched; no product tests. All safety, security,
-branch, dispatch, evidence, role-separation, and next-mission boundaries from
-`911a45b` are preserved.
+routing; the Advisor no longer requires its own Advisor handoff and no longer
+reads Worker protocols as a normal prerequisite. **Correction (see the Sentinel
+patch below):** the brief-40 search also claimed no universal statement made the
+Advisor return its result to itself; that claim was inaccurate. The inherited
+"every/all role results return to Advisor" wording in both root files still
+routed the Advisor's own result to Advisor. The independent SOL Sentinel caught
+this (`ROLE_ENTRY_SENTINEL_RESULT.md`, `NEEDS_PATCH`), and brief `46` closed it.
+`git diff --check` clean; diff scope exactly `AGENTS.md` and `CLAUDE.md`; the Grok
+untracked paths were untouched; no product tests. All safety, security, branch,
+dispatch, evidence, role-separation, and next-mission boundaries from `911a45b`
+are preserved.
+
+## Sentinel patch (brief 46)
+
+The independent SOL Sentinel reviewed base->candidate `2c91b74 -> 911a45b ->
+b64ae8c` and returned `NEEDS_PATCH` (`ROLE_ENTRY_SENTINEL_RESULT.md`) with three
+findings, all confirmed and closed here:
+
+1. **Advisor returned its result to itself.** Both root files still said
+   "every/all role results return to **Advisor**"; because the files apply to
+   every role, that included the Advisor. Fixed: subordinate results (Designer,
+   Worker, Reviewer, Control) return to the responsible Advisor; the Advisor
+   writes the mission audit and returns the mission result to Leo/GPT, and never
+   returns its own result to itself (`AGENTS.md` "Actors and Authority" bullet;
+   `CLAUDE.md` "Role Summary").
+2. **Universal prohibition blocked the authorized Reviewer verdict.** The
+   inherited Worker-entry language universally forbade issuing/claiming an
+   independent-review verdict, which the separate independent Reviewer must do.
+   Fixed: self-review and false review claims remain prohibited for every actor,
+   but independent verdict issuance on another actor's work is reserved to the
+   separately assigned Reviewer, which never patches, accepts risk, or grants
+   final approval; risk acceptance and final approval remain with Leo/GPT
+   (`AGENTS.md` "Non-Negotiable Boundaries"; `CLAUDE.md` "Fail-Closed Rules").
+3. **Inaccurate Worker evidence.** This result's brief-40 claim that no universal
+   statement made the Advisor return its result to itself was false; it is
+   corrected above.
+
+Patch: base `b64ae8c`, final commit `79beb96`; same two files. All Sentinel
+criteria already `CLOSED` (role-neutral entry, Advisor/subordinate entry, session
+name proves nothing, Worker-only protocol/Git/STOP conditioning, prior
+safety/branch/next-mission boundaries, exact file/Git/Grok constraints, machine
+registry pre-AS1 gate) were preserved and not reopened.
+
+Targeted checks (brief 46): diff scope exactly `AGENTS.md` and `CLAUDE.md`;
+whitespace-normalized search shows no universal result-routing statement targets
+the Advisor itself, and no universal prohibition blocks the authorized Reviewer
+verdict while self-review, false review claims, and Reviewer patch/risk/final
+approval remain prohibited; Advisor/subordinate authority and Worker-only protocol
+conditioning intact; `git diff --check` clean; non-force fast-forward push;
+HEAD == upstream; Grok paths untouched; no product tests.
 
 ## Machine registry / AS1 deferral
 
@@ -140,11 +184,11 @@ remote/production action was taken.
 ## Git status / upstream
 
 - `shadow/agent-office-m1-2-spatial-office`: first patch `911a45b`
-  (`2c91b74..911a45b`) and completeness correction `b64ae8c`
-  (`911a45b..b64ae8c`), both non-force fast-forward pushes. Final HEAD `b64ae8c`
-  == `origin/shadow/agent-office-m1-2-spatial-office`; ahead/behind `0/0`. Not
-  `main`, not protected; no force push, no merge.
-- No staged/unstaged residual mission files after either commit.
+  (`2c91b74..911a45b`), completeness correction `b64ae8c` (`911a45b..b64ae8c`),
+  and Sentinel patch `79beb96` (`b64ae8c..79beb96`) — all non-force fast-forward
+  pushes. Final HEAD `79beb96` == `origin/shadow/agent-office-m1-2-spatial-office`;
+  ahead/behind `0/0`. Not `main`, not protected; no force push, no merge.
+- No staged/unstaged residual mission files after any commit.
 
 ## Unrelated-path preservation
 
@@ -161,8 +205,8 @@ the Advisor to persist; no foundation-docs commit or push was made by the Worker
 
 ## Rollback
 
-`git -C /home/leo/Project/agent-office revert b64ae8c 911a45b` (or reset the
-branch to `2c91b74`) restores the prior entry documents. No runtime, data, or
+`git -C /home/leo/Project/agent-office revert 79beb96 b64ae8c 911a45b` (or reset
+the branch to `2c91b74`) restores the prior entry documents. No runtime, data, or
 product surface is affected.
 
 RETURN_TO: Advisor
