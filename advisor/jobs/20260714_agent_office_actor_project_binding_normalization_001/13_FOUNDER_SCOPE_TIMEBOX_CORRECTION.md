@@ -37,3 +37,19 @@ exact correction launcher `14_BOUNDED_WORKER_CORRECTION_RUN_PROMPT.md`.
 Only targeted registry, stale-path, root instruction consistency, tmux path,
 Git state, folder listing, commit/push, and upstream checks are authorized.
 Product/Living Office tests and Slack work remain forbidden.
+
+## Team Composition Clarification
+
+This mission confirms two Advisor-led operating groups; it does not redesign
+them:
+
+- Agent Office Team: `agent-office-advisor` -> assigned Agent Office Designer,
+  Worker, and independent Reviewer -> `agent-office-advisor`.
+- Foundation Team: `foundation-advisor` -> `foundation-designer`,
+  `foundation-control`, `foundation`, `siasiu`, `cosmile`, and the assigned
+  independent Foundation Reviewer -> `foundation-advisor`.
+
+The Foundation Advisor performs the same mission intake, staffing, routing,
+patch-loop, evidence, final-audit, and Founder-reporting role as the Agent Office
+Advisor. Control is a subordinate internal architecture/contract actor. The
+official product name is `SIASIU`.

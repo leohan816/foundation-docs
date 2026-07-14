@@ -48,6 +48,15 @@ does not create permanent cross-repository implementation authority.
    Leo/GPT -> responsible Advisor -> subordinate actor -> responsible Advisor ->
    Leo/GPT. Reviewer judgment remains independent, but assignment and result
    routing remain inside the Advisor-led Mission.
+   Record only the already verified Team composition:
+   - Agent Office Team: `agent-office-advisor` routes its assigned Designer,
+     Worker, and independent Reviewer for the `agent-office` project.
+   - Foundation Team: `foundation-advisor` performs the same Advisor orchestration
+     role for `foundation-designer`, `foundation-control`, the `foundation`,
+     `siasiu`, and `cosmile` Workers, and its independent Reviewer across
+     `FOUNDATION`, `SIASIU`, and `Cosmile`.
+   `foundation-control` is an internal Control actor, not a Team leader. Use the
+   official current name `SIASIU`; never introduce Shashu naming.
 4. Add only concise, non-contradictory pointers to the canonical role and actor
    sources in the root `AGENTS.md` and `CLAUDE.md` files for `agent-office`,
    `FOUNDATION`, `SIASIU`, and `Cosmile`. Create a missing root `AGENTS.md` only
@@ -89,6 +98,7 @@ otherwise be broken.
 - multiple Workers or multiple Reviewers;
 - runtime behavior, authentication, delivery, DB, secret, remote, production,
   or command-authority changes;
+- treating a Designer, Control, Worker, or Reviewer as a separate Team leader;
 - unrelated instruction rewrites;
 - touching the failed Grok pilot or excluded historical Worker session;
 - touching `foundation-control` source/workspace;
