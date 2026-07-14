@@ -2,7 +2,7 @@
 
 ```text
 MISSION: AGENT_OFFICE_ACTOR_PROJECT_BINDING_NORMALIZATION_001
-STATE: SOL_SENTINEL_PASS__ADVISOR_FINAL_CLEANUP_AND_AUDIT
+STATE: LIVE_ADVISOR_REENTRY_FOUND_ROOT_ROLE_CONFLICT__BOUNDED_WORKER_PATCH_READY
 FOUNDER_SCOPE_CORRECTION: ACTIVE
 DESIGN: FOUNDER_CONTRACT_FROZEN
 ONE_WORKER: agent-office-opus
@@ -13,5 +13,7 @@ ONE_INDEPENDENT_REVIEWER: agent-office-reviewer_AFTER_DELTA_RESULT
 CONTROL_OR_DESIGNER: NOT_AUTHORIZED
 SLACK: NOT_STARTED_FORBIDDEN
 TIMEBOX: TARGET_60_MINUTES__HARD_STOP_120_MINUTES
-NEXT: Advisor removes accidental folders, verifies tmux bindings, and publishes final audit
+LIVE_CLEANUP: accidental folders removed; canonical tmux paths verified
+NEW_BOUNDED_DEFECT: agent-office root AGENTS.md and CLAUDE.md assign all actors to Worker
+NEXT: same Worker patches the two root entry documents; same Reviewer performs exact delta re-review
 ```

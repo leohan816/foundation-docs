@@ -1,6 +1,7 @@
 # Agent Office Actor/Project Binding Normalization
 
-- Status: broad train superseded; one bounded Worker correction ready
+- Status: prior authority-chain re-review passed; live Advisor re-entry exposed
+  one bounded root role-entry conflict requiring same-Worker correction
 - Validation: delta-only
 - Slack: forbidden/not started
 - Product behavior: unchanged
@@ -53,3 +54,5 @@
 36. `35_SOL_SENTINEL_AUTHORITY_CHAIN_REREVIEW_BRIEF.md`
 37. `36_SOL_SENTINEL_AUTHORITY_CHAIN_REREVIEW_RUN_PROMPT.md`
 38. `37_SENTINEL_REREVIEW_PASS_POINTER.md`
+39. `38_ROLE_ENTRY_CONFLICT_PATCH_BRIEF.md`
+40. `39_ROLE_ENTRY_CONFLICT_PATCH_RUN_PROMPT.md`
