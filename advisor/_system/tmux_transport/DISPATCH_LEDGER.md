@@ -4418,3 +4418,18 @@ SCOPE_EXPANSION: false
 DUPLICATE_DISPATCH: false
 STATUS: PATCH_RUNNING_WITH_PATH_FENCE_QUEUED
 ```
+
+### AO-PRE-AS1-TRANSPORT-IDENTITY-WORKER-20260714T162507Z — real artifact fence queued
+
+```text
+QUEUED_AT: 2026-07-14T17:08:19Z
+REASON: actual committed decision wraps required clauses across Markdown lines; synthetic single-line fixture could mask a valid-artifact rejection
+LAUNCHER_PATH: advisor/jobs/20260714_agent_office_pre_as1_physical_transport_identity_migration/07B_WORKER_PATCH_REAL_ARTIFACT_FENCE_RUN_PROMPT.md
+LAUNCHER_COMMIT: 7d2baf80aef85ec0a4ebd59b4ca476be3c9a58aa
+LAUNCHER_BLOB: 6eba374100eab2f0cf8ad88571fcf801b945f7fe
+LAUNCHER_SHA256: 96ca30993c3f94970cb5f9f887f738a1c378aa4c677baa0477e5cf8bb4da6c6c
+TRANSPORT: exact committed launcher queued once in the same active Worker run
+RESTART: false
+SCOPE_EXPANSION: false
+STATUS: PATCH_RUNNING_WITH_REAL_ARTIFACT_FENCE_QUEUED
+```
