@@ -8,4 +8,6 @@
 - `06_WORKER_HANDOFF_PROMPT.md`: full Worker handoff
 - `06_WORKER_RUN_PROMPT.md`: exact committed launcher
 - `06A_WORKER_SCOPE_CLARIFICATION_RUN_PROMPT.md`: in-place Worker clarification
+- `07_WORKER_PATCH_HANDOFF.md`: Advisor validation findings and bounded patch
+- `07_WORKER_PATCH_RUN_PROMPT.md`: exact patch launcher
 - `10_LOOP_STATE.md`: current route state
