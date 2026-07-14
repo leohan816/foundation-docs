@@ -4459,3 +4459,36 @@ REVIEW_SCOPE: exact transport destination, authority lineage, historical fail-cl
 SLACK_AS1: not started, not authorized
 STATUS: REVIEW_RUNNING
 ```
+
+## AO-PRE-AS1-TRANSPORT-IDENTITY-SENTINEL-PATCH-20260714T174044Z
+
+```text
+DISPATCH_ID: AO-PRE-AS1-TRANSPORT-IDENTITY-SENTINEL-PATCH-20260714T174044Z
+MISSION_ID: AGENT_OFFICE_PRE_AS1_PHYSICAL_TRANSPORT_IDENTITY_MIGRATION_001
+PATCH_CLASS: ROUTINE_NARROW_SENTINEL_FINDING_CLOSURE
+TARGET_ACTOR: Agent Office Worker
+TARGET_SESSION: agent-office-opus
+TARGET_LOCATOR: $16 / @16 / %16
+TARGET_WORKSPACE: /home/leo/Project/agent-office
+IMPLEMENTATION_WORKTREE: /home/leo/Project/.worktrees/agent-office/AGENT_OFFICE_PRE_AS1_PHYSICAL_TRANSPORT_IDENTITY_MIGRATION_001
+TARGET_BRANCH: config/pre-as1-physical-transport-identity-migration-001
+BASE_CANDIDATE: 9a7e9444208b613752dc4ab42e23b3cc70cc1516
+PROCESS: same continuous Claude PID 686211; project transcript verifies claude-opus-4-8 and live footer verifies ultracode
+REQUIRED_SKILL: /fable-builder
+REVIEW_RESULT_COMMIT: 8003544a422f3aa2dd0fdcc090f991de6bbfa939
+REVIEW_VERDICT: NEEDS_PATCH
+FINDINGS: F01 HIGH exact registry structure; F02 LOW stale %9 test title
+LAUNCHER_PATH: advisor/jobs/20260714_agent_office_pre_as1_physical_transport_identity_migration/09_WORKER_SENTINEL_PATCH_RUN_PROMPT.md
+LAUNCHER_COMMIT: 8f04354358d9dfbf408684e29cdb43be459b48ac
+LAUNCHER_BLOB: b15dae9ee29dc8f79be8cc9fd889781085d8c174
+LAUNCHER_SHA256: d9a52833a9a49421e25a0feb7caf21e04c05981ba9ab00180777451eba61c496
+SENT_AT: 2026-07-14T17:40:44Z
+TRANSPORT: exact committed launcher loaded into a named tmux buffer, pasted once to %16, and submitted with isolated Enter
+POST_SEND_EVIDENCE: same Worker entered active processing; no duplicate dispatch
+SYNCHRONIZED_PANES: off
+VALIDATION: exact-delivery test file, typecheck, two-path ESLint, diff check, targeted token classification only
+REVIEW_ROUTE: exact same agent-office-reviewer delta re-review after Advisor acceptance
+SLACK_AS1: not started, not authorized
+TRANSPORT_ACTIVATION: not authorized
+STATUS: PATCH_RUNNING
+```
