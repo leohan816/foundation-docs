@@ -4402,3 +4402,19 @@ REVIEWER: waiting; candidate not yet accepted by Advisor
 SLACK_AS1: not started, not authorized
 STATUS: PATCH_RUNNING
 ```
+
+### AO-PRE-AS1-TRANSPORT-IDENTITY-WORKER-20260714T162507Z — path fence queued
+
+```text
+QUEUED_AT: 2026-07-14T17:04:12Z
+REASON: in-progress Advisor inspection found the migration-decision content was validated but its exact canonical path was not yet pinned
+LAUNCHER_PATH: advisor/jobs/20260714_agent_office_pre_as1_physical_transport_identity_migration/07A_WORKER_PATCH_PATH_FENCE_RUN_PROMPT.md
+LAUNCHER_COMMIT: 624ea0c64f0ad8a7a66b706e9fc2fcf7ca2c9fe2
+LAUNCHER_BLOB: c9432d91f88e33daefcba9ab1cc765ec1df308a9
+LAUNCHER_SHA256: c9495317b48135a27a6cb23c38a1f5197881e658115c87cb0fd489da67407a27
+TRANSPORT: exact committed launcher queued once in the same active Worker run
+RESTART: false
+SCOPE_EXPANSION: false
+DUPLICATE_DISPATCH: false
+STATUS: PATCH_RUNNING_WITH_PATH_FENCE_QUEUED
+```
