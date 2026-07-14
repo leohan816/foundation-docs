@@ -20,3 +20,7 @@
 - `17_WORKER_IMPLEMENTATION_HANDOFF.md`: Worker authority and STOP contract
 - `17_WORKER_IMPLEMENTATION_RUN_PROMPT.md`: exact Worker launcher
 - `17A_WORKER_IMPLEMENTATION_DISPATCH.md`: verified dispatch record
+- `18_ADVISOR_CANDIDATE_VALIDATION.md`: Advisor reproduction and candidate acceptance for review
+- `19_IMPLEMENTATION_SECURITY_REVIEW_BRIEF.md`: exact Level 3 implementation/security gates
+- `19_IMPLEMENTATION_SECURITY_REVIEW_HANDOFF.md`: independent Reviewer authority and STOP contract
+- `19_IMPLEMENTATION_SECURITY_REVIEW_RUN_PROMPT.md`: exact Reviewer launcher
