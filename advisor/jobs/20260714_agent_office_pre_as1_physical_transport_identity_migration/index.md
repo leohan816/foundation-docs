@@ -10,4 +10,6 @@
 - `06A_WORKER_SCOPE_CLARIFICATION_RUN_PROMPT.md`: in-place Worker clarification
 - `07_WORKER_PATCH_HANDOFF.md`: Advisor validation findings and bounded patch
 - `07_WORKER_PATCH_RUN_PROMPT.md`: exact patch launcher
+- `07A_WORKER_PATCH_PATH_FENCE.md`: exact migration-decision path fence
+- `07A_WORKER_PATCH_PATH_FENCE_RUN_PROMPT.md`: in-place path-fence launcher
 - `10_LOOP_STATE.md`: current route state
