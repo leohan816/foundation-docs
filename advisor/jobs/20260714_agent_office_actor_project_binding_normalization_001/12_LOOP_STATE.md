@@ -2,7 +2,7 @@
 
 ```text
 MISSION: AGENT_OFFICE_ACTOR_PROJECT_BINDING_NORMALIZATION_001
-STATE: FIRST_ROOT_PATCH_COMPLETE__ADVISOR_FOUND_ROLE_ENTRY_COMPLETENESS_DEFECT
+STATE: ROOT_ROLE_ENTRY_PATCH_ADVISOR_VALIDATED__SENTINEL_DELTA_REVIEW_READY
 FOUNDER_SCOPE_CORRECTION: ACTIVE
 DESIGN: FOUNDER_CONTRACT_FROZEN
 ONE_WORKER: agent-office-opus
@@ -14,7 +14,8 @@ CONTROL_OR_DESIGNER: NOT_AUTHORIZED
 SLACK: NOT_STARTED_FORBIDDEN
 TIMEBOX: TARGET_60_MINUTES__HARD_STOP_120_MINUTES
 LIVE_CLEANUP: accidental folders removed; canonical tmux paths verified
-FIRST_PATCH: 911a45b role-neutralizes the root files but is not review-ready
-NEW_BOUNDED_DEFECT: Advisor self-handoff and universal Worker-protocol language remain
-NEXT: same Worker corrects exact role-appropriate entry; same Reviewer then performs exact delta re-review
+FIRST_PATCH: 911a45b role-neutralized root files
+COMPLETENESS_PATCH: b64ae8c separates Advisor and subordinate entry authority
+ADVISOR_TARGETED_VALIDATION: PASS
+NEXT: same independent agent-office-reviewer performs exact two-file delta review
 ```
