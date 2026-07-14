@@ -1,0 +1,14 @@
+# Updated Worker Result Pointer
+
+```text
+MISSION_ID: AGENT_OFFICE_ACTOR_PROJECT_BINDING_NORMALIZATION_001
+ACTOR: agent-office-opus
+RESULT_FILE: /home/leo/Project/foundation-docs/runs/agent-office/20260714_agent_office_actor_project_binding_normalization_001/WORKER_RESULT.md
+RESULT_SHA256: f277ac57de598895cce8ecb7239c1a3e7a1130c92fc20cd45c283103002c860b
+FOUNDATION_DOCS_SUPERSESSION_COMMIT: 1f50d560cc1c494e1d62cb8e791e38b482b63db9
+FOUNDATION_COMMIT: f6417004d9157766b2b23d4d0870ade7f0c7fe96
+SIASIU_COMMIT: e1830b45c6d2b22b2471bb5957b6aaf7fa6dd602
+COSMILE_COMMIT: 6e44aa40ffb2960573839a01424761dc5e98d610
+RETURN_RESULT_TO: agent-office-advisor
+NEXT_ACTOR: agent-office-reviewer
+```
