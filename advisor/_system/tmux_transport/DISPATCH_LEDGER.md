@@ -4317,3 +4317,34 @@ PRODUCT_TESTS: forbidden
 SLACK_IMPLEMENTATION: forbidden
 STATUS: RUNNING_BOUNDED
 ```
+
+## AO-PRE-AS1-TRANSPORT-IDENTITY-WORKER-20260714T162507Z
+
+```text
+DISPATCH_ID: AO-PRE-AS1-TRANSPORT-IDENTITY-WORKER-20260714T162507Z
+MISSION_ID: AGENT_OFFICE_PRE_AS1_PHYSICAL_TRANSPORT_IDENTITY_MIGRATION_001
+TARGET_ACTOR: Agent Office Worker
+TARGET_SESSION: agent-office-opus
+TARGET_LOCATOR: $16 / @16 / %16
+TARGET_WORKSPACE: /home/leo/Project/agent-office
+IMPLEMENTATION_WORKTREE: /home/leo/Project/.worktrees/agent-office/AGENT_OFFICE_PRE_AS1_PHYSICAL_TRANSPORT_IDENTITY_MIGRATION_001
+TARGET_BRANCH: config/pre-as1-physical-transport-identity-migration-001
+TARGET_BASE: 88c6cbd757ed205eb1aadd68d8ea7629865d5765
+PROCESS: claude PID 686211; same continuous process as prior verified Opus 4.8 session; live footer shows ultracode
+REQUIRED_SKILL: /fable-builder
+LAUNCHER_PATH: advisor/jobs/20260714_agent_office_pre_as1_physical_transport_identity_migration/06_WORKER_RUN_PROMPT.md
+LAUNCHER_COMMIT: b24d4acaddff3b608def1b8e723c5b36cf64aa69
+LAUNCHER_BLOB: f7f21fc652e14aeafc5a4c4fd1b72175977ff914
+LAUNCHER_SHA256: 5c491d707404c3493211fef0fcb9f81b27cfddde49e7b5c1e92c4ea6b7b4bf04
+SYNCHRONIZED_PANES: off
+READINESS: prior mission stopped; visible input is an ANSI-dim Claude suggestion, not submitted user text
+SERIALIZATION: Worker only; Reviewer waits for accepted candidate
+HISTORICAL_ARTIFACTS: immutable; no rewrite or re-key
+VIBENEWS: deferred fail-closed; no file or tmux change
+TMUX_INPUT_TO_AGENT_OFFICE_ADVISOR: forbidden
+SLACK_AS1: not started, not authorized
+SOFT_STALL: 10 minutes without output change
+HARD_TIMEOUT: none; inspect and escalate, never auto-interrupt
+PREFLIGHT: PASS_READY_TO_SEND
+STATUS: READY_TO_DISPATCH
+```
