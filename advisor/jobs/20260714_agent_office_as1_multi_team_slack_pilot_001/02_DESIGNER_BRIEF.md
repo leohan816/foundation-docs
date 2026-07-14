@@ -28,6 +28,9 @@ activation, secret access, package changes, source code, tests, or live Slack.
 
 No other target-repository path may change.
 
+Use only the assigned existing Designer session. Do not create or use agents,
+sub-agents, delegated contexts, substitute actors, or additional tmux sessions.
+
 ## Setup Pack checkpoint
 
 Within 30-45 minutes, commit and non-force push files 1-3 and 6. Print a compact

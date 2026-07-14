@@ -15,7 +15,8 @@ worktree and only on the eight allowed files.
 
 This is design and non-secret Setup Pack work only. Do not modify runtime source,
 tests, package files, existing contracts, feature indexes, tmux, real secrets, or
-live Slack. Do not review your own work.
+live Slack. Do not create or use agents, sub-agents, delegated contexts,
+substitute actors, or additional tmux sessions. Do not review your own work.
 
 Commit and non-force push the Setup Pack checkpoint first. Continue to the full
 design package, commit and push it, then return the exact result pointer to
