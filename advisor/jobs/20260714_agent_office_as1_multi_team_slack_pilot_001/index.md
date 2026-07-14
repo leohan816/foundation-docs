@@ -13,3 +13,10 @@
 - `08_DESIGNER_F01_PATCH_RUN_PROMPT.md`: exact patch launcher
 - `08A_DESIGNER_F01_PATCH_DISPATCH.md`: verified patch dispatch coordinates
 - `10_LOOP_STATE.md`: current gate and next actor
+- `14_F01_D1_DELTA_REREVIEW_RESULT.md`: final same-Reviewer design PASS
+- `14_F01_D1_DELTA_REREVIEW_RESULT_POINTER.md`: immutable final design verdict pointer
+- `15_ADVISOR_DESIGN_ACCEPTANCE.md`: Advisor acceptance of the reviewed design
+- `16_WORKER_IMPLEMENTATION_BRIEF.md`: exact Phase A implementation scope and gates
+- `17_WORKER_IMPLEMENTATION_HANDOFF.md`: Worker authority and STOP contract
+- `17_WORKER_IMPLEMENTATION_RUN_PROMPT.md`: exact Worker launcher
+- `17A_WORKER_IMPLEMENTATION_DISPATCH.md`: verified dispatch record
