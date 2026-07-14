@@ -1,6 +1,12 @@
 # Final Audit
 
-Verdict: `PASS`
+Historical bounded-cleanup verdict: `PASS`
+
+Founder final classification: `NEEDS_PATCH__TOP_LEVEL_FOLDER_CONSOLIDATION_NOT_COMPLETED`
+
+This audit remains valid for its runtime and temporary-root cleanup evidence,
+but it did not close the directory-consolidation requirement. Final closure is
+recorded in [Delta 02 final audit](09_FINAL_DELTA_02_AUDIT.md).
 
 ## Scope Result
 
