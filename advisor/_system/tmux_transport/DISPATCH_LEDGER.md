@@ -892,7 +892,10 @@ INDEPENDENCE: separate Reviewer process/session; no Designer or Worker context; 
 RESULT_PATH: advisor/jobs/20260714_agent_office_as1_multi_team_slack_pilot_001/07_DESIGN_REVIEW_RESULT.md
 RESULT_POINTER: advisor/jobs/20260714_agent_office_as1_multi_team_slack_pilot_001/07_DESIGN_REVIEW_RESULT_POINTER.md
 SOFT_STALL: 90 minutes
-STATUS: READY_TO_SEND
+SENT_AT: 2026-07-14T19:51:29Z
+TRANSPORT: exact committed launcher loaded into named tmux buffer ao-as1-design-review-20260714T195011Z, pasted once to %25, and submitted with isolated Enter
+POST_SEND_EVIDENCE: independent Reviewer entered active processing; no duplicate dispatch
+STATUS: SENT__DESIGN_REVIEW_RUNNING
 ```
 
 ### AO-BATCH-A-WORKER-SECOND-REWORK-20260713T054330Z - sent
