@@ -5,8 +5,8 @@
 - Rename live `foundation-advisor` to `agent-office-advisor` while preserving its
   existing context.
 - Create a new isolated `foundation-advisor` using GPT-5.6 SOL Max.
-- Create a new isolated `foundation-designer` using GPT-5.6 SOL Ultra, matching
-  the high-capability SOL design pattern.
+- Create a new isolated `foundation-designer` using GPT-5.6 SOL. Its efficient
+  default is Max; Ultra is reserved for a documented high-complexity mission.
 - Rename `foundation-reviewer-sol` to `agent-office-reviewer-sol`.
 - Preserve `foundation-reviewer-fable5` for Foundation, SIASIU, and Cosmile
   review; actual runtime identity must still be reported honestly.

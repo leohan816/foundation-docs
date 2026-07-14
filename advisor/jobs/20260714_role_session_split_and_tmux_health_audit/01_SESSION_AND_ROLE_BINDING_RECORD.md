@@ -6,7 +6,7 @@
 |---|---|---|---|---|
 | Agent Office Advisor | `agent-office-advisor` | `$9/@9/%9` | `/home/leo/Project/agent-office-advisor` | existing Codex context; live status GPT-5.6 SOL xhigh |
 | Foundation Advisor | `foundation-advisor` | `$22/@22/%22` | `/home/leo/Project/foundation-advisor` | Codex v0.144.3; GPT-5.6 SOL max |
-| Foundation Designer | `foundation-designer` | `$23/@23/%23` | `/home/leo/Project/foundation-designer` | Codex v0.144.3; GPT-5.6 SOL ultra |
+| Foundation Designer | `foundation-designer` | `$23/@23/%23` | `/home/leo/Project/foundation-designer` | Codex v0.144.3; GPT-5.6 SOL max; Ultra only by documented escalation |
 | Agent Office SOL Reviewer | `agent-office-reviewer-sol` | `$20/@20/%20` | `/home/leo/Project/agent-office-reviewer` | existing Codex reviewer context; live status GPT-5.6 SOL xhigh |
 | Foundation Reviewer | `foundation-reviewer-fable5` | `$5/@5/%5` | `/home/leo/Project/foundation-control` | Claude; live pane shows Opus 4.8 Max, not Fable5 |
 | Foundation Control | `foundation-control` | `$4/@4/%4` | `/home/leo/Project/foundation-control` | Claude; live pane shows Opus 4.8 xhigh |
