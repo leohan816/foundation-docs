@@ -4382,3 +4382,23 @@ HARD_TIMEOUT: none; inspect and escalate, never auto-interrupt
 PREFLIGHT: PASS_READY_TO_SEND
 STATUS: READY_TO_DISPATCH
 ```
+
+### AO-PRE-AS1-TRANSPORT-IDENTITY-WORKER-20260714T162507Z — bounded patch sent
+
+```text
+SENT_AT: 2026-07-14T16:53:44Z
+PATCH_CLASS: ROUTINE_BOUNDED_AUTHORITY_FENCE
+BASE_CANDIDATE: b523b5cf0277badb093c6d1046d71ff3f414446c
+VALIDATION_FINDINGS: AO-PTIM-F01, AO-PTIM-F02
+LAUNCHER_PATH: advisor/jobs/20260714_agent_office_pre_as1_physical_transport_identity_migration/07_WORKER_PATCH_RUN_PROMPT.md
+LAUNCHER_COMMIT: 4dce5bd5f6e406df71be2a679f6bdce33d096dd3
+LAUNCHER_BLOB: a7fbf16397768cd0047c92e24144c71742bdbf4f
+LAUNCHER_SHA256: a8892cf55f47953837a32bd23e493b042587894bfb37a67f29ca5ec0ea9867b5
+TARGET_SESSION: agent-office-opus
+TARGET_LOCATOR: $16 / @16 / %16
+TRANSPORT: exact committed launcher loaded into a named tmux buffer, pasted once to %16, and submitted with isolated Enter
+POST_SEND_EVIDENCE: same Worker entered thinking with xhigh effort; no duplicate dispatch
+REVIEWER: waiting; candidate not yet accepted by Advisor
+SLACK_AS1: not started, not authorized
+STATUS: PATCH_RUNNING
+```
