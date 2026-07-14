@@ -23,4 +23,6 @@
 - `09_WORKER_SENTINEL_PATCH_RUN_PROMPT.md`: exact same-Worker patch launcher
 - `09A_WORKER_PROCESS_CELL_GRAMMAR_FENCE.md`: exact process-annotation grammar clarification
 - `09A_WORKER_PROCESS_CELL_GRAMMAR_FENCE_RUN_PROMPT.md`: in-place grammar-fence launcher
+- `09B_WORKER_DURABLE_RESULT_CONTRACT_CORRECTION.md`: two-file result-protocol correction
+- `09B_WORKER_DURABLE_RESULT_CONTRACT_CORRECTION_RUN_PROMPT.md`: exact evidence-only launcher
 - `10_LOOP_STATE.md`: current route state
