@@ -2,7 +2,7 @@
 
 ```text
 MISSION: AGENT_OFFICE_ACTOR_PROJECT_BINDING_NORMALIZATION_001
-STATE: LIVE_ADVISOR_REENTRY_FOUND_ROOT_ROLE_CONFLICT__BOUNDED_WORKER_PATCH_READY
+STATE: FIRST_ROOT_PATCH_COMPLETE__ADVISOR_FOUND_ROLE_ENTRY_COMPLETENESS_DEFECT
 FOUNDER_SCOPE_CORRECTION: ACTIVE
 DESIGN: FOUNDER_CONTRACT_FROZEN
 ONE_WORKER: agent-office-opus
@@ -14,6 +14,7 @@ CONTROL_OR_DESIGNER: NOT_AUTHORIZED
 SLACK: NOT_STARTED_FORBIDDEN
 TIMEBOX: TARGET_60_MINUTES__HARD_STOP_120_MINUTES
 LIVE_CLEANUP: accidental folders removed; canonical tmux paths verified
-NEW_BOUNDED_DEFECT: agent-office root AGENTS.md and CLAUDE.md assign all actors to Worker
-NEXT: same Worker patches the two root entry documents; same Reviewer performs exact delta re-review
+FIRST_PATCH: 911a45b role-neutralizes the root files but is not review-ready
+NEW_BOUNDED_DEFECT: Advisor self-handoff and universal Worker-protocol language remain
+NEXT: same Worker corrects exact role-appropriate entry; same Reviewer then performs exact delta re-review
 ```
