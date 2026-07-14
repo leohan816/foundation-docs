@@ -44,6 +44,8 @@
 - [Designer modular Team Strip result publication launcher](32A_DESIGNER_RESULT_PUBLISH_RUN_PROMPT.md)
 - [Advisor modular Team Strip preflight](33_ADVISOR_MODULAR_TEAM_STRIP_PREFLIGHT.md)
 - [Founder modular system review pointer](34_FOUNDER_MODULAR_SYSTEM_REVIEW_POINTER.md)
+- [Founder modular system direction decision](35_FOUNDER_MODULAR_SYSTEM_DIRECTION_DECISION.md)
+- [A-1R visual research closure pointer](36_A1R_VISUAL_RESEARCH_CLOSURE_POINTER.md)
 - [Control narrow patch handoff](09_CONTROL_DESIGN_PATCH_HANDOFF_PROMPT.md)
 - [Control narrow patch launcher](09_CONTROL_DESIGN_PATCH_RUN_PROMPT.md)
 - [Advisor classification of Sentinel findings](13_ADVISOR_SENTINEL_FINDING_CLASSIFICATION.md)
@@ -93,6 +95,10 @@ design direction is a vertically extensible management-game canvas composed of
 fixed reusable Team Strips and canonical modules. The Designer completed the
 static construction system at candidate `99beac3`; the Advisor directly passed
 the canonical source, deterministic exports, full-size visual proof, reuse,
-geometry, corridor, Git, and publication checks. The package is waiting for
-Leo/GPT modular-system direction review. Implementation and independent review
-remain unauthorized.
+geometry, corridor, Git, and publication checks. Leo/GPT approved candidate
+`99beac3` for its reusable construction-system direction and deterministic
+module proof only. The A-1R visual research track is
+`COMPLETE_AND_DEFERRED`; final Living Office visual approval remains ungranted
+and implementation, Worker dispatch, full validation, Batch B, and Slack work
+remain unauthorized. The next bounded operation is Agent Office workspace
+inventory and cleanup using delta-only Git and preservation checks.
