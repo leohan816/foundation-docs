@@ -22,7 +22,9 @@ runtime implementation, or registry-schema work.
 
 ## Canonical Documentation Model
 
-Use the existing Agent Office `docs/agent/` system as the one common source.
+Use the existing Agent Office `docs/agent/` system as the one common current
+authority. `foundation-docs` retains only mission evidence, audit/history,
+migration records, and pointers to these Agent Office documents.
 
 1. Create or update `docs/agent/TEAM_OPERATING_MODEL.md` with:
    - the default operating routine:
@@ -36,6 +38,11 @@ Use the existing Agent Office `docs/agent/` system as the one common source.
    - a concise new-project onboarding checklist that creates relationships
      without creating role-named folders;
    - mandatory role-read and live-runtime verification before dispatch.
+   - an Advisor instruction-validation gate: every new instruction is checked
+     against real repository, authority, risk, and active-work state before
+     execution and classified as `PROCEED`, `PROCEED_WITH_LIMITS`,
+     `NEEDS_DECISION`, `HOLD`, or `FAIL`; incorrect instructions are returned to
+     Leo/GPT with evidence and a safe correction rather than executed blindly.
 2. Create concise, deduplicated common role documents under
    `docs/agent/roles/` for Advisor, Designer, Worker, Reviewer, and Control.
    Derive useful constraints from foundation-docs commit `076f0f4`; do not copy
@@ -52,17 +59,23 @@ Use the existing Agent Office `docs/agent/` system as the one common source.
    `SIASIU` only.
 4. Minimally update Agent Office `docs/agent/RUN_PROTOCOL.md` only as needed to
    require direct reading of `TEAM_OPERATING_MODEL.md` and the actor's matching
-   role document before work.
+   role document before work. Current Team, Actor, authority, onboarding,
+   protocol, dispatch, and tmux/runtime-binding rules must point inward to Agent
+   Office canonical documents, never outward to foundation-docs as authority.
 5. Add concise consistent mandatory-read references to root `AGENTS.md` and
    `CLAUDE.md` in Agent Office, FOUNDATION, SIASIU, and Cosmile. Preserve all
    existing project-specific rules. A project root contains only its responsible
    Advisor, participating roles, reporting path, project constraints, and
-   pointers to the common Agent Office documents and runtime session registry.
+   pointers to the common Agent Office documents. Any foundation-docs pointer
+   may identify historical evidence only and must not claim current authority.
 6. Write one concise migration/authority record under `docs/agent/` describing
    the accidental role-folder cleanup, canonical locations, Team bindings,
    intended tmux paths, and the fact that no Slack or product implementation ran.
 7. Commit and non-force push each changed repository without staging unrelated
    dirty files.
+8. State explicitly in the migration record that the existing machine registry
+   actor/Team bindings remain unchanged in this documentation-only mission. A
+   separate minimal config-only delta is required before AS1 Slack Pilot starts.
 
 ## Forbidden
 
@@ -70,12 +83,16 @@ Use the existing Agent Office `docs/agent/` system as the one common source.
   change;
 - product/Living Office/browser/visual/full tests;
 - new role or organization system outside `docs/agent/`;
+- treating foundation-docs as the current role, Team, Actor, protocol, or
+  runtime-binding authority;
 - duplicating full common role definitions into project roots;
 - `.agent-office/` overlays, template collections, FEATURE_INDEX churn;
 - Slack, delivery, authentication, DB, secret, remote, production, or command
   authority changes;
 - Control/Designer dispatch, multiple Workers, multiple Reviewers;
 - changes to the `foundation-control` workspace;
+- claiming that the existing machine registry bindings were corrected;
+- starting AS1 Slack Pilot before the separate machine-registry config delta;
 - self-review or final approval.
 
 ## Targeted Validation
@@ -88,6 +105,8 @@ Use the existing Agent Office `docs/agent/` system as the one common source.
 - official `SIASIU` naming;
 - `git diff --check`, status, exact commits, pushes, and upstream equality;
 - Advisor performs final tmux path and top-level folder validation.
+- migration record visibly contains the machine-registry deferral and pre-AS1
+  gate.
 
 ## Result
 
