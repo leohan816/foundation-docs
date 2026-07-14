@@ -35,6 +35,10 @@
 - [Designer Phase 1 timebox launcher](26A_DESIGNER_PHASE1_TIMEBOX_RUN_PROMPT.md)
 - [Designer Phase 1 result pointer](27_DESIGNER_PHASE1_RESULT_POINTER.md)
 - [Advisor Phase 1 Founder direction selection](28_ADVISOR_PHASE1_FOUNDER_DIRECTION_SELECTION.md)
+- [Founder modular Team Strip layout decision](29_FOUNDER_MODULAR_TEAM_STRIP_LAYOUT_DECISION.md)
+- [Advisor modular Team Strip design brief](30_ADVISOR_MODULAR_TEAM_STRIP_DESIGN_BRIEF.md)
+- [Designer modular Team Strip handoff](31_DESIGNER_MODULAR_TEAM_STRIP_HANDOFF_PROMPT.md)
+- [Designer modular Team Strip launcher](31_DESIGNER_MODULAR_TEAM_STRIP_RUN_PROMPT.md)
 - [Control narrow patch handoff](09_CONTROL_DESIGN_PATCH_HANDOFF_PROMPT.md)
 - [Control narrow patch launcher](09_CONTROL_DESIGN_PATCH_RUN_PROMPT.md)
 - [Advisor classification of Sentinel findings](13_ADVISOR_SENTINEL_FINDING_CLASSIFICATION.md)
@@ -78,3 +82,9 @@ Phase 1 is now complete at candidate `870ffe9`. The Advisor inspected all three
 full-size scenes and passed A, B, and C to Founder direction selection. The
 mission is waiting on Leo/GPT; no Phase 2, Worker, Control, or Reviewer task has
 started.
+
+The Founder then superseded the single generated-scene assumption. The active
+design direction is a vertically extensible management-game canvas composed of
+fixed reusable Team Strips and canonical modules. A Designer-only static proof
+is preparing on `a1r/modular-team-strip-layout-001`; implementation and review
+remain unauthorized.

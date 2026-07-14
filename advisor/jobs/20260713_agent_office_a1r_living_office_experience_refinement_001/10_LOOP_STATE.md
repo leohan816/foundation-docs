@@ -5,7 +5,7 @@
 - Evidence inventory: `COMPLETE`
 - Isolated design branch: `READY_AT_58A484B`
 - Control: `PRIOR_STATIC_PACKAGE_COMPLETE__EXCLUDED_FROM_FURTHER_A1R_PRODUCT_EXPERIENCE_DESIGN`
-- Designer: `PHASE1_COMPLETE__CANDIDATE_870FFE9_PUSHED`
+- Designer: `MODULAR_TEAM_STRIP_HANDOFF_PREPARING`
 - Sentinel: `PRIOR_CONTRACT_PASS_RECORDED__DOES_NOT_GRANT_PRODUCT_OR_FOUNDER_ACCEPTANCE`
 - Worker: `NOT_AUTHORIZED`
 - Leo mockup approval: `REJECTED__V2_VISUAL_RECOVERY_AUTHORIZED`
@@ -13,7 +13,7 @@
 - Batch B: `NOT_STARTED_NOT_AUTHORIZED`
 - Advisor validation: `A1R-ADV-01_CLOSED` + `A1R-ADV-02_CLOSED`
 - Advisor static-design return: `SUPERSEDED_BY_FOUNDER_REJECTION`
-- Next actor: `Leo/GPT` for `FOUNDER_VISUAL_DIRECTION_SELECTION`
+- Next actor: `Agent Office Designer` for modular Team Strip system proof
 
 Proportional process: the prior independent design-contract review is complete,
 but direct Founder and Advisor inspection rejected the visual product result.
@@ -29,3 +29,10 @@ preflight. Candidate `870ffe9` is clean, pushed, upstream-equal, and contains
 only the three scenes plus their direction/provenance document. No regeneration
 was used. The mission now waits for Leo/GPT to select one direction; Phase 2,
 Worker implementation, and independent review remain undispatched.
+
+The Founder subsequently replaced the single-scene direction-selection model
+with a modular management-game layout. Candidate `870ffe9` remains preserved but
+is superseded as the active layout direction. A clean branch at base `11cdf80`
+will prove one fixed Team Strip geometry, canonical reusable modules, Small/
+Medium/Large occupancy, and unlimited vertical stacking. Control, Worker, and
+Reviewer remain undispatched.
