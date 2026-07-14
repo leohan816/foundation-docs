@@ -3,6 +3,7 @@ TARGET_SESSION: foundation-designer
 MISSION_ID: FOUNDATION_TEAM_ROLE_ALIGNMENT_ACK_20260714_01
 WORK_UNIT_ID: DESIGNER_ROLE_ACK
 RETURN_TO: foundation-advisor
+SOURCE_JOB_DIR: /home/leo/Project/.worktrees/foundation-docs/FOUNDATION_TEAM_ROLE_ALIGNMENT_20260714/advisor/jobs/20260714_foundation_team_role_alignment_ack_01
 
 READ_AND_APPLY:
 - /home/leo/Project/agent-office/docs/agent/TEAM_OPERATING_MODEL.md
