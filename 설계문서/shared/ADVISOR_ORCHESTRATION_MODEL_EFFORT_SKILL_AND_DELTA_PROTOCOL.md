@@ -220,6 +220,25 @@ returns to Leo/GPT.
 - concurrent actors sharing a canonical repository remain subject to writer-lock,
   branch, dirty-state, and independence checks.
 
+### Responsible Advisor authority chain
+
+```text
+Leo / Strategy GPT
+-> responsible Advisor
+-> Control, Designer, Worker, or Reviewer
+-> responsible Advisor
+-> Leo
+```
+
+An Advisor is a registered actor assigned to exactly one Advisor Team and its
+authorized projects. It is not a repository, permanent role folder, or peer
+Worker. A subordinate actor does not become a Team leader because it has a tmux
+session. Subordinate actors cannot self-assign, broaden scope, or dispatch other
+actors without exact Advisor authority. Reviewer judgment remains independent,
+but review assignment and result routing remain within the responsible
+Advisor-led mission. Every operational and future Slack path must fail closed if
+it could bypass the responsible Advisor.
+
 ## 8. tmux Transport and Monitoring
 
 - existing registered role sessions only;
