@@ -3872,6 +3872,14 @@ DUPLICATE_RETRY_ALLOWED: false
 STATUS: READY_TO_STEER
 ```
 
+```text
+CLARIFICATION_SENT_AT: 2026-07-14T16:32:00Z
+TRANSPORT: exact committed clarification pasted once to %16 and queued as an in-place Claude steering message
+POST_SEND_SIGNAL: Claude UI confirms one queued message; original mission analysis continues
+DUPLICATE_RETRY_SENT: false
+STATUS: RUNNING_WITH_CLARIFICATION_QUEUED
+```
+
 
 ## AO-A1R-CONTROL-PRE-REVIEW-PATCH-20260713T170220Z
 
