@@ -1,130 +1,96 @@
-# Bounded Actor/Project Binding Worker Brief
+# Documentation-Only Actor/Project Binding Worker Brief
 
-## Authority And Supersession
+## Authority
 
-This brief incorporates `FOUNDER_SCOPE_AND_TIMEBOX_CORRECTION` and supersedes
-the broader implementation scope previously published in this file.
+This is role and relationship normalization only. It is not product coding,
+runtime implementation, or registry-schema work.
 
-- One implementation Worker only: `agent-office-opus`
-- One independent Reviewer only: selected after the Worker result
-- Target: 60 minutes
-- Hard stop: 120 minutes
+- One documentation Worker: `agent-office-opus`
+- One independent documentation Reviewer after the Worker result
+- Target: 60 minutes; hard stop: 120 minutes
+- Required skill: `/fable-builder`
 - Slack implementation: forbidden
 
-Artifacts `03` through `11` in this job are historical pre-correction planning
-only. Do not execute their separate Worker or multi-Reviewer routes.
+## Workspaces
 
-## Target
-
-- Canonical repo: `/home/leo/Project/agent-office`
-- Authorized mission worktree:
+- Agent Office mission worktree:
   `/home/leo/Project/.worktrees/agent-office/AGENT_OFFICE_ACTOR_PROJECT_BINDING_NORMALIZATION_001`
-- Mission branch/base: `normalization/actor-project-binding-001` at
-  `58a484b088b4e57e7b3ee6e582f54c7f3ce6dc85`
-- Narrow project-instruction targets:
+- Branch/base: `normalization/actor-project-binding-001` at `58a484b`
+- Narrow root-instruction targets:
   `/home/leo/Project/FOUNDATION`, `/home/leo/Project/SIASIU`, and
   `/home/leo/Project/Cosmile`
-- Worker: `agent-office-opus`
-- Required skill: `/fable-builder`
 
-This mission-specific handoff authorizes one Worker to make the listed narrow
-documentation/configuration changes across the four canonical repositories. It
-does not create permanent cross-repository implementation authority.
+## Canonical Documentation Model
 
-## Required Work Only
+Use the existing Agent Office `docs/agent/` system as the one common source.
 
-1. Read the useful preserved role material at foundation-docs commit `076f0f4`
-   under `advisor/_system/roles/`. Deduplicate it into the existing Agent Office
-   canonical agent-document system under `docs/agent/` (use a focused
-   `docs/agent/roles/` subdirectory if needed). Do not copy the large preserved
-   files verbatim and do not create another role system.
-2. Modify the existing reviewed organization registry at commit `58a484b`
-   directly. Preserve its existing types, normalization, evidence separation,
-   and public API. Change only existing Team/actor records and closed values
-   required to represent:
-   - `agent-office-advisor` -> Agent Office Team / `agent-office`;
-   - `foundation-advisor` -> Foundation Team / `FOUNDATION`, `SIASIU`, `Cosmile`;
-   - `foundation-designer` -> Foundation Team member reporting to
-     `foundation-advisor`;
-   - `foundation-control` -> Foundation Team internal Control member reporting
-     to `foundation-advisor`.
-3. Preserve the authority invariant:
-   Leo/GPT -> responsible Advisor -> subordinate actor -> responsible Advisor ->
-   Leo/GPT. Reviewer judgment remains independent, but assignment and result
-   routing remain inside the Advisor-led Mission.
-   Record only the already verified Team composition:
-   - Agent Office Team: `agent-office-advisor` routes its assigned Designer,
-     Worker, and independent Reviewer for the `agent-office` project.
-   - Foundation Team: `foundation-advisor` performs the same Advisor orchestration
-     role for `foundation-designer`, `foundation-control`, the `foundation`,
-     `siasiu`, and `cosmile` Workers, and its independent Reviewer across
-     `FOUNDATION`, `SIASIU`, and `Cosmile`.
-   `foundation-control` is an internal Control actor, not a Team leader. Use the
-   official current name `SIASIU`; never introduce Shashu naming.
-4. Add only concise, non-contradictory pointers to the canonical role and actor
-   sources in the root `AGENTS.md` and `CLAUDE.md` files for `agent-office`,
-   `FOUNDATION`, `SIASIU`, and `Cosmile`. Create a missing root `AGENTS.md` only
-   when needed for this exact reference. Preserve all existing project rules.
-5. Write one concise migration/authority record in Agent Office documentation.
-   It must record the canonical project folders, actor/tmux/workspace separation,
-   responsible-Advisor rule, final intended tmux bindings, and the fact that
-   Slack implementation did not start.
-6. Commit and non-force push each repository changed by this bounded mission.
-   Do not stage or alter pre-existing unrelated dirty files.
-
-## Allowed Files
-
-Agent Office:
-
-- `docs/agent/roles/**`
-- one concise migration/authority record under `docs/agent/`
-- root `AGENTS.md`
-- root `CLAUDE.md`
-- existing `src/application/organization/types.ts` and `registry.ts`, only for
-  the required Team/actor value changes; do not replace their interfaces
-- one focused contract test required to encode the four bindings
-
-FOUNDATION, SIASIU, and Cosmile:
-
-- root `AGENTS.md`
-- root `CLAUDE.md`
-
-Do not create `.agent-office/` overlays, a new organization schema, a second
-registry, broad Team fixtures, VibeNews changes, template collections, or
-FEATURE_INDEX churn unless an already-existing canonical reference would
-otherwise be broken.
+1. Create or update `docs/agent/TEAM_OPERATING_MODEL.md` with:
+   - the default operating routine:
+     Leo/GPT -> responsible Advisor -> selected Control/Designer/Worker/Reviewer
+     -> responsible Advisor -> Leo/GPT;
+   - the rule that every active actor belongs to one responsible Advisor Team;
+   - the distinction among project folder, actor identity, role, tmux runtime,
+     and temporary mission worktree;
+   - subordinate no-self-assignment/no-scope-expansion/no-dispatch rules;
+   - independent Reviewer judgment with Advisor-routed assignment/result;
+   - a concise new-project onboarding checklist that creates relationships
+     without creating role-named folders;
+   - mandatory role-read and live-runtime verification before dispatch.
+2. Create concise, deduplicated common role documents under
+   `docs/agent/roles/` for Advisor, Designer, Worker, Reviewer, and Control.
+   Derive useful constraints from foundation-docs commit `076f0f4`; do not copy
+   its large files or templates verbatim. Each role document must define
+   responsibilities, authority, prohibitions, accepted inputs, required outputs,
+   reports-to/result routing, evidence, dispatch prerequisites, and completion.
+3. Record the two current Team relationships in the common operating model:
+   - Agent Office Team: `agent-office-advisor` with the assigned Agent Office
+     Designer, Worker, and independent Reviewer for `agent-office`.
+   - Foundation Team: `foundation-advisor` with `foundation-designer`,
+     `foundation-control`, `foundation`, `siasiu`, `cosmile`, and the assigned
+     independent Foundation Reviewer across `FOUNDATION`, `SIASIU`, `Cosmile`.
+   Foundation Control is an internal Control actor, not a Team leader. Use
+   `SIASIU` only.
+4. Minimally update Agent Office `docs/agent/RUN_PROTOCOL.md` only as needed to
+   require direct reading of `TEAM_OPERATING_MODEL.md` and the actor's matching
+   role document before work.
+5. Add concise consistent mandatory-read references to root `AGENTS.md` and
+   `CLAUDE.md` in Agent Office, FOUNDATION, SIASIU, and Cosmile. Preserve all
+   existing project-specific rules. A project root contains only its responsible
+   Advisor, participating roles, reporting path, project constraints, and
+   pointers to the common Agent Office documents and runtime session registry.
+6. Write one concise migration/authority record under `docs/agent/` describing
+   the accidental role-folder cleanup, canonical locations, Team bindings,
+   intended tmux paths, and the fact that no Slack or product implementation ran.
+7. Commit and non-force push each changed repository without staging unrelated
+   dirty files.
 
 ## Forbidden
 
-- product, Living Office, browser, visual, performance, or full test suites;
-- broad history or dependency research;
-- Slack implementation;
-- Control or Designer dispatch;
-- multiple Workers or multiple Reviewers;
-- runtime behavior, authentication, delivery, DB, secret, remote, production,
-  or command-authority changes;
-- treating a Designer, Control, Worker, or Reviewer as a separate Team leader;
-- unrelated instruction rewrites;
-- touching the failed Grok pilot or excluded historical Worker session;
-- touching `foundation-control` source/workspace;
-- retaining or adapting the aborted untracked organization files created in the
-  canonical repo before this correction; remove those Worker-owned untracked
-  files and leave the canonical repo at its original state;
+- any `src/**`, `tests/**`, fixture, product, runtime, schema, or registry-code
+  change;
+- product/Living Office/browser/visual/full tests;
+- new role or organization system outside `docs/agent/`;
+- duplicating full common role definitions into project roots;
+- `.agent-office/` overlays, template collections, FEATURE_INDEX churn;
+- Slack, delivery, authentication, DB, secret, remote, production, or command
+  authority changes;
+- Control/Designer dispatch, multiple Workers, multiple Reviewers;
+- changes to the `foundation-control` workspace;
 - self-review or final approval.
 
 ## Targeted Validation
 
-- focused registry contract validation for the four bindings and Advisor chain;
-- targeted stale-path search for the four accidental top-level role paths;
-- root `AGENTS.md` / `CLAUDE.md` role-reference consistency;
-- `git diff --check`, `git status`, commit and upstream equality in changed repos;
-- final top-level folder and tmux binding evidence supplied by Advisor after the
-  Worker returns (the Worker must not manipulate tmux sessions or remove the
-  Advisor's live directory).
+- no source/test/product file changes;
+- exact common-document links resolve;
+- each project root `AGENTS.md` and `CLAUDE.md` agrees on responsible Advisor,
+  routine, and role source;
+- stale-path search for the four accidental role folders;
+- official `SIASIU` naming;
+- `git diff --check`, status, exact commits, pushes, and upstream equality;
+- Advisor performs final tmux path and top-level folder validation.
 
-## Result Contract
+## Result
 
-Report exact files, concise diff, every command and failure, focused test counts,
-commits/pushes/upstream state, unrelated dirty files preserved, remaining
-unknowns, and rollback. If a real contradiction prevents completion by the hard
-stop, preserve work and return the exact blocker. Do not expand scope.
+Return exact files, concise diff, link/reference checks, all command outcomes,
+commits/pushes/upstream state, preserved unrelated files, known limits, and
+rollback. Stop at the hard limit on a real contradiction; never broaden scope.
