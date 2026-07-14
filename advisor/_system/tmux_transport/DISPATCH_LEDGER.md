@@ -840,7 +840,10 @@ SYNCHRONIZED_PANES: off
 RESULT_PATH: artifacts/as1-multi-team-slack-pilot/DESIGNER_PATCH_01_RESULT.md
 RESULT_POINTER: artifacts/as1-multi-team-slack-pilot/DESIGNER_PATCH_01_RESULT_POINTER.txt
 SOFT_STALL: 30 minutes
-STATUS: READY_TO_SEND
+SENT_AT: 2026-07-14T19:40:30Z
+TRANSPORT: exact committed launcher loaded into named tmux buffer ao-as1-designer-patch-20260714T193949Z, pasted once to %24, and submitted with isolated Enter
+POST_SEND_EVIDENCE: same Designer entered active processing; no duplicate dispatch
+STATUS: SENT__PATCH_RUNNING
 ```
 
 ### AO-BATCH-A-WORKER-SECOND-REWORK-20260713T054330Z - sent
