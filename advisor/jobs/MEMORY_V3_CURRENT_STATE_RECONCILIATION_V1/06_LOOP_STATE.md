@@ -1,0 +1,21 @@
+# M1 Loop State
+
+```text
+MISSION_ID: MEMORY_V3_CURRENT_STATE_RECONCILIATION_V1
+STATE: HANDOFFS_PREPARED
+CURRENT_PHASE: PRE_DISPATCH
+CONTROL_RESULT: PENDING
+FOUNDATION_RESULT: PENDING
+SIASIU_RESULT: PENDING
+COSMILE_RESULT: PENDING
+INTEGRATED_BASELINE: PENDING
+INDEPENDENT_REVIEW: PENDING
+ADVISOR_FINAL_AUDIT: PENDING
+M2: NOT_AUTHORIZED
+M3: NOT_AUTHORIZED
+PACKAGE_1B: NOT_AUTHORIZED
+NEXT_MISSION: NOT_AUTHORIZED
+```
+
+Every actor is dispatched only after a live identity/model/effort/workspace/role/skill/independence check. Shared foundation-docs writes are serialized. Any corrected subject returns to the same Reviewer for delta-only re-review.
+
