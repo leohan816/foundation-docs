@@ -2,7 +2,7 @@
 
 MISSION_ID: `AGENT_OFFICE_TEAM_ONBOARDING_AND_EXECUTION_PROFILE_POLICY_001`
 
-STATE: `DESIGN_REVIEW_READY_TO_DISPATCH`
+STATE: `DESIGN_REVIEW_RUNNING`
 
 COMPLETED:
 
@@ -14,13 +14,13 @@ COMPLETED:
 - Designer package/result/pointer committed and independently revalidated by
   Advisor for exact review routing.
 
-CURRENT_ACTOR: `agent-office-advisor`
+CURRENT_ACTOR: `agent-office-reviewer`
 
-NEXT_ACTOR: `agent-office-reviewer`
+NEXT_ACTOR: `agent-office-advisor` for verdict audit and routing
 
 WORKER_STATUS: `NOT_DISPATCHED`
 
-REVIEWER_STATUS: `DESIGN_REVIEW_PREFLIGHT_PASSED`
+REVIEWER_STATUS: `DESIGN_REVIEW_RUNNING`
 
 AS1_STATUS: `OWNER_SETUP_REQUIRED__FROZEN_UNCHANGED`
 
