@@ -669,12 +669,250 @@ PAYLOAD
 PURCHASE_ITEM_REFERENCE
 USER_OR_GUEST_IDENTIFIER
 CONSENT_FIELD
-PRO았는지
+PROVENANCE_FIELD
+FLUSH_DEFAULT
+RETRY
+REPLAY_AND_IDEMPOTENCY
+RETENTION_REPRESENTATION
+CLEANUP_PATH
+ERROR_OR_DEAD_LETTER_PATH
+FOUNDATION_INTAKE_PATH
+CURRENT_CONTAINMENT_STATUS
+```
+
+실제 DB row는 조회하지 않는다.
+
+Package 1B 관련 항목은 다음처럼 보고한다.
+
+```text
+PACKAGE_1B_AUTHORIZATION:
+NO
+
+UNAUTHORIZED_CODE_OR_STUB:
+OBSERVED / NOT_OBSERVED / UNKNOWN
+
+STRUCTURED_PURCHASED_ITEM_IMPLEMENTATION:
+<status>
+
+FOUNDATION_SIGNAL_DELIVERY:
+<status>
+
+OUTBOX_CONTAINMENT:
+<status>
+```
+
+M1 실행은 Package 1B 승인이 아니다.
+
+```text
+M1
+≠ Package 1B authorization
+≠ M2 authorization
+≠ outbox flush authorization
+≠ DB query authorization
+≠ V3 implementation authorization
+```
+
+---
+
+# 12. 테스트 실행 안전 조건
+
+테스트 명령과 테스트 파일을 발견하고 기록하는 것은 허용한다.
+
+실제 테스트 실행은 다음 조건이 실행 전에 증명된 경우에만 허용한다.
+
+```text
+외부 DB 접근 없음
+실제 secret 접근 없음
+network/provider 호출 없음
+source 변경 없음
+fixture/snapshot 자동 업데이트 없음
+persistent Docker volume 변경 없음
+ephemeral artifact만 사용
+실행 후 Git 상태 불변
+```
+
+테스트 실행 전후 정확한 `git status` evidence를 기록한다.
+
+안전성을 증명할 수 없으면 다음과 같이 기록한다.
+
+```text
+TEST_COMMAND:
+<observed command>
+
+TEST_EXECUTION:
+NOT_RUN_SAFETY_UNPROVEN
+
+REASON:
+<exact reason>
+```
+
+테스트 수치 확보를 위해 안전 경계를 완화하거나 추측하지 않는다.
+
+---
+
+# 13. 각 Actor Result 요구사항
+
+각 조사 Actor는 Advisor가 지정한 exact result path와 pointer path에 durable result를 작성한다.
+
+채팅·tmux pane 출력만으로는 evidence가 아니다.
+
+필수 result 내용:
+
+```text
+MISSION_ID
+ACTOR
+PROJECT
+REPOSITORY
+BRANCH
+STARTING_HEAD
+ENDING_HEAD
+ACTUAL_MODEL
+EFFORT
+REQUIRED_SKILL
+AUTHORIZED_SCOPE
+OBSERVED_FILES
+GIT_BASELINE
+STATUS_MATRIX
+REMAINING_DELTA
+TEST_COMMANDS
+TEST_EXECUTION
+FAILURES_AND_SKIPS
+UNKNOWN
+BLOCKED
+FOUNDER_DECISIONS
+PRODUCT_REPO_WRITE_STATUS: ZERO
+DB_QUERY_STATUS: ZERO
+FLAG_CHANGE_STATUS: ZERO
+RESULT_PATH
+POINTER_PATH
+RETURN_TO: foundation-advisor
+STOP
+```
+
+각 Actor는 다음을 지킨다.
+
+```text
+Actor
+→ durable result file
+→ compact pointer
+→ foundation-advisor
+→ STOP
+```
+
+금지:
+
+* 다른 Worker에게 직접 전달
+* Reviewer 직접 호출
+* Control이 Worker에게 직접 전달
+* 다음 WorkUnit 자동 시작
+* M2·M3 또는 Package 1B 시작
+
+---
+
+# 14. Advisor 통합 산출물
+
+최종 M1 통합 artifact는 최소 다음 구조를 가진다.
+
+```text
+01_CURRENT_GIT_BASELINE
+02_V3_00_TO_V3_12_STATUS_MATRIX
+03_V3_11A_TO_V3_11E_CODE_INVENTORY
+04_EVENT_AND_OUTCOME_FLOW_MAP
+05_PRODUCT_INGREDIENT_MAPPING_STATE
+06_MEMORY_CANDIDATE_AND_SAFETY_STATE
+07_OUTBOX_AND_PACKAGE1B_STATE
+08_ANALYTICS_AND_ALERT_STATE
+09_STALE_DUPLICATE_SUPERSEDED_MAP
+10_UNKNOWN_BLOCKED_FOUNDER_DECISIONS
+11_REMAINING_DELTA
+12_LIKELY_M2_SCOPE_NOT_PREAUTHORIZED
+13_EVIDENCE_POINTERS
+14_INDEPENDENT_REVIEW
+15_ADVISOR_FINAL_AUDIT
+```
+
+각 V3 항목은 다음 형식을 사용한다.
+
+```text
+V3_ITEM:
+STATUS:
+EVIDENCE:
+CURRENT_IMPLEMENTATION:
+CONTRACT_ALIGNMENT:
+REMAINING_DELTA:
+UNKNOWN:
+BLOCKER:
+FOUNDER_DECISION_REQUIRED:
+```
+
+허용되는 `STATUS`는 다음뿐이다.
+
+```text
+ALREADY_COMPLETE
+PARTIALLY_COMPLETE
+NOT_IMPLEMENTED
+SUPERSEDED
+UNKNOWN
+BLOCKED
+NEEDS_FOUNDER_DECISION
+NOT_APPLICABLE
+```
+
+`REMAINING_DELTA`는 상태값이 아니라 별도 필드다.
+
+Advisor는 likely next scope를 제안할 수 있지만 다음을 명시한다.
+
+```text
+LIKELY_M2_SCOPE:
+<evidence-based proposal>
+
+M2_AUTHORIZATION:
+NO
+
+NEXT_MISSION:
+NOT_PREAUTHORIZED
+```
+
+---
+
+# 15. Independent Review
+
+독립 Reviewer 검수는 필수다.
+
+Reviewer는 dispatch 직전에 다음을 live verification한다.
+
+```text
+SESSION
+ACTUAL_MODEL
+EFFORT
+WORKSPACE
+ROLE
+REQUIRED_SKILL
+INDEPENDENCE
+```
+
+Reviewer required skill:
+
+```text
+/fable-sentinel
+```
+
+Reviewer는 다음을 직접 확인한다.
+
+* Git baseline 정확성
+* product repo write 0
+* foundation-control write 0
+* DB query 0
+* feature flag change 0
+* evidence pointer 무결성
+* status 분류 정확성
+* UNKNOWN이 추측으로 채워지지 않았는지
 * stale/duplicate/superseded 분류
 * 테스트 실행 안전 조건
-* outbox·Package 1B 상태
+* outbox와 Package 1B 상태
 * remaining delta가 실제 evidence와 일치하는지
 * proposed M2 scope가 과장되지 않았는지
+* M2·M3·Package 1B가 시작되지 않았는지
 
 Reviewer verdict:
 
@@ -685,28 +923,43 @@ NEEDS_PATCH
 FAIL
 ```
 
-`NEEDS_PATCH`이면 같은 작성 Actor가 감사 artifact만 수정하고, 같은 Reviewer가 delta 중심으로 재검수한다.
+`NEEDS_PATCH`이면:
 
-`PASS_WITH_RISK`이면 Leo/GPT 위험 수용 전에는 M1 기준선을 final로 닫지 않는다.
+```text
+같은 작성 Actor
+→ 감사 artifact의 좁은 delta 수정
+→ 같은 Reviewer
+→ delta 중심 재검수
+```
+
+를 사용한다.
+
+`PASS_WITH_RISK`이면 Leo/GPT가 위험을 수용하기 전에는 M1 기준선을 final로 닫지 않는다.
+
+Reviewer는 제품 코드를 수정하거나 직접 patch하지 않는다.
 
 ---
 
 # 16. STOP 조건
 
-다음이 발생하면 즉시 멈추고 Advisor에게 반환한다.
+다음이 발생하면 즉시 멈추고 evidence와 함께 foundation-advisor에게 반환한다.
 
 ```text
 현재 authority 충돌
 actor/session/model/workspace 불일치
-제품 repo에 write 필요
-DB 조회 필요
-secret/provider 접근 필요
+required skill 확인 실패
+제품 repo 또는 foundation-control에 write 필요
+DB 조회 또는 DB 연결 필요
+secret/provider/network 접근 필요
 테스트 안전성 증명 실패
-unrelated dirty state와 범위 충돌
+unrelated dirty state와 조사 범위 충돌
 Package 1B 결정을 요구
 retention/consent/identity 정책 결정 필요
 M2 구현이 필요
+새 branch 생성·변경이 필요
+git fetch가 필요
 현재 Mission 범위를 넘어서는 조사 필요
+result 또는 pointer evidence를 검증할 수 없음
 ```
 
 STOP은 실패가 아니라 권한 경계 유지다.
@@ -723,7 +976,7 @@ Leo + Strategy GPT
 
 M1:
 REVIEWED_BASELINE_READY
-또는 Reviewer verdict에 따른 정확한 상태
+또는 Reviewer verdict와 Advisor audit에 따른 정확한 상태
 
 M2:
 NOT_AUTHORIZED
@@ -738,4 +991,6 @@ NEXT_MISSION:
 NOT_AUTHORIZED
 ```
 
-Advisor는 likely next scope를 제안할 수 있지만 자동 시작하지 않는다.
+Advisor는 likely next scope를 제안할 수 있지만 자동으로 실행하지 않는다.
+
+M1 최종 결과는 독립 Reviewer verdict와 Advisor final audit를 포함하여 Leo/GPT에게 반환하고 멈춘다.
