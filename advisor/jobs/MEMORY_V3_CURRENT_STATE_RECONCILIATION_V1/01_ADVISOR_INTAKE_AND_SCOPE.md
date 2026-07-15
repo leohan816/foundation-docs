@@ -47,7 +47,7 @@ Captured without `git fetch` before dispatch. Existing untracked files are user-
 | FOUNDATION | `shadow/foundation-shared-memory-v0` | `f6417004d9157766b2b23d4d0870ade7f0c7fe96` | `origin/shadow/foundation-shared-memory-v0` | `0/0` from local refs | 2 untracked files |
 | SIASIU | `shadow/m4-siasiu-memory` | `e1830b45c6d2b22b2471bb5957b6aaf7fa6dd602` | `origin/shadow/m4-siasiu-memory` | `0/0` from local refs | 3 untracked files |
 | Cosmile | `shadow/m4-cosmile-memory` | `6e44aa40ffb2960573839a01424761dc5e98d610` | `origin/shadow/m4-cosmile-memory` | `0/0` from local refs | 6 untracked files |
-| foundation-control | `shadow/m5-ingress-gate` | `c89b792bed177aad9322e09debecc76caab0c8a0` | `origin/shadow/m5-ingress-gate` | `0/0` from local refs | 30 untracked files |
+| foundation-control | `shadow/m5-ingress-gate` | `c89b792bed177aad9322e09debecc76caab0c8a0` | `origin/shadow/m5-ingress-gate` | `0/0` from local refs | 35 untracked files |
 | selected foundation-docs worktree | `advisor/foundation-team-role-alignment-20260714` | `bd75ffffd5f7ceb62685c0cae23a9d738297623c` | none | unknown/not applicable | clean before these mission artifacts |
 
 Remote-tracking freshness is based only on local reflog evidence and is not guaranteed current. No network refresh is authorized.
@@ -63,4 +63,3 @@ Remote-tracking freshness is based only on local reflog evidence and is not guar
 ## Completion criteria
 
 Every V3-00 through V3-12 item is evidence-classified using only the allowed status values; `REMAINING_DELTA` is separate; Git pre/post states prove zero prohibited writes; an independent `/fable-sentinel` review reaches `PASS`, or any accepted risk is explicitly resolved; Advisor final audit returns the reviewed baseline and pointer; all unauthorized missions remain unstarted.
-
