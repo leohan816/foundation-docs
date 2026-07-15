@@ -33,19 +33,25 @@ STATUS: `DISPATCHED`
   `3ffbb57689a8b5828eaef235cb9a1ff40dce43e5`
 - review pointer commit:
   `bb1d6931997d9b89bfe54f09320b1d68b57a97d6`
-- V3 handoff commit:
-  `47430b9f01bd1b5d0a841a72f1f56cc9a41c5e81`
-- V3 handoff SHA256:
-  `e62f521b776c85403a291081c08e295ccc097b4de5c021a6ff39f18e6c3d5c47`
+- corrected V3 handoff commit:
+  `ef26aad4879811aecac797c28ce535cb6498d15f`
+- corrected V3 handoff SHA256:
+  `6562955a8d1f1cb2da7eb527ed52bb76c3787f39a05c4d7258dc462df31933cf`
 - run-prompt SHA256:
   `18048355fa02e5d905fb336c7bfc41ea946cb8974eab20156469c78767311692`
 
-The Worker independently verified the governance HEAD, committed handoff bytes
-and SHA256, exact candidate tip, clean status, and upstream equality before
-reading the handoff. It was dispatched to repair only B01, B02, B04, B05, B08,
-and B09, preserve B03/B06/B07 and protected behavior, run the exact targeted
-gates, commit and non-force push in source-result-pointer order, return to
-`agent-office-advisor`, and STOP.
+The initial dispatch referenced handoff commit `47430b9f...`, whose copied
+review-result SHA256 omitted the two characters `db`. The Worker detected the
+discrepancy during provenance preflight. The Advisor interrupted before any
+source inspection or edit, confirmed the candidate remained clean, corrected
+only that hash in commit `ef26aad9...`, and reissued the exact handoff above.
+
+The Worker must independently verify the corrected governance commit, committed
+handoff bytes and SHA256, exact candidate tip, clean status, and upstream
+equality before continuing. It is dispatched to repair only B01, B02, B04,
+B05, B08, and B09, preserve B03/B06/B07 and protected behavior, run the exact
+targeted gates, commit and non-force push in source-result-pointer order,
+return to `agent-office-advisor`, and STOP.
 
 ## Boundaries
 
