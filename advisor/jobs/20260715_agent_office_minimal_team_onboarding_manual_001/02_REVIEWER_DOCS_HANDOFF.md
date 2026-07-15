@@ -16,7 +16,7 @@ RISK_LEVEL: LEVEL_1_WITH_AUTHORITY_WORDING
 SELECTED_MODEL: gpt-5.6-sol
 SELECTED_MODE: independent Sentinel documentation review
 SELECTED_EFFORT: xhigh
-REQUIRED_SKILL: /fable-sentinel
+REQUIRED_SKILL: /fable-sentinel; if unavailable, apply /home/leo/Project/skill/fable-sentinel/SKILL.md directly
 WHY_NOT_LOWER: the two documents govern five roles and the Advisor authority chain
 WHY_NOT_HIGHER: max is unnecessary for a closed two-file documentation delta
 ESCALATION_TRIGGER: material authority conflict, hidden runtime scope, or unresolved ambiguity
@@ -45,9 +45,18 @@ AS1 must remain unchanged at
 
 ## Review order
 
-Invoke `/fable-sentinel`, then independently inspect the actual baseline,
-candidate, two-file diff, target documents, and five existing role files.
-Do not trust the Designer or Advisor summary without direct evidence.
+Invoke `/fable-sentinel`. If that slash alias is not exposed in this runtime,
+read and apply `/home/leo/Project/skill/fable-sentinel/SKILL.md` and only the
+references it requires for this narrow review; record that fallback explicitly.
+This uses the same canonical Sentinel protocol without installing or changing a
+skill. Then independently inspect the actual baseline, candidate, two-file
+diff, target documents, and five existing role files. Do not trust the Designer
+or Advisor summary without direct evidence.
+
+Verify the live runtime directly. The expected binding is the existing
+`agent-office-reviewer` session and `%28` pane running `gpt-5.6-sol` at `xhigh`,
+but neither the session name nor this statement is evidence. Use live process,
+tmux, workspace, and model/effort evidence from the current runtime.
 
 Determine whether the candidate:
 
@@ -82,8 +91,10 @@ directly.
 - Read repository and governance evidence.
 - Run only Git diff/status, exact path/link/term checks, and other narrow
   read-only documentation checks needed for the verdict.
-- Create exactly the two governance result paths below, commit them together,
-  and non-force push the governance branch once.
+- Create exactly the two governance result paths below as the required Reviewer
+  output. Do not stage, commit, or push them. This bounded result writing is not
+  a product or candidate patch. The Advisor will inspect their exact content,
+  preserve the verdict without rewriting it, and perform the governance commit.
 
 Do not modify the product candidate, patch documentation, run product tests,
 builds, servers, visual suites, broad audits, Slack, tmux delivery, Registry,
@@ -99,7 +110,8 @@ Write exactly:
 
 Use one explicit verdict: `PASS`, `PASS_WITH_RISK`, `NEEDS_PATCH`, or `FAIL`.
 List findings first with exact file/line evidence. If there are no findings,
-state that clearly. Record checks run, candidate identity, independence,
-scope, unchanged AS1 evidence, result commit, push status, and return route.
-Commit and non-force push once, leave the governance worktree clean and
-upstream-equal, return to `agent-office-advisor`, and STOP.
+state that clearly. Record checks run, candidate identity, independence, scope,
+unchanged AS1 evidence, the two uncommitted result paths, and the return route.
+Do not claim a result commit or push. Leave the product candidate clean and
+unchanged; leave exactly the two authorized untracked governance result files
+for Advisor preservation, return to `agent-office-advisor`, and STOP.
