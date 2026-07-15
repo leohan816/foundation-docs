@@ -28,7 +28,7 @@ Read the complete immutable review result directly before inspecting source:
 - review result commit:
   `3ffbb57689a8b5828eaef235cb9a1ff40dce43e5`
 - review result SHA256:
-  `8af621decdfb55bb38352ab15a7bc6dd9d23572ccce97b17f604669ad38cf3`
+  `8af621decdfbdb55bb38352ab15a7bc6dd9d23572ccce97b17f604669ad38cf3`
 - review pointer commit:
   `bb1d6931997d9b89bfe54f09320b1d68b57a97d6`
 - verdict: `NEEDS_PATCH`
