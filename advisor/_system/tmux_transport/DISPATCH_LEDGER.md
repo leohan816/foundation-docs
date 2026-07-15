@@ -103,6 +103,35 @@ PREFLIGHT_VERDICT: PASS_READY_TO_SEND
 STATUS: READY_TO_DISPATCH
 ```
 
+## AO-TEAM-ONBOARDING-SENTINEL-DESIGN-DELTA-20260715T180842Z
+
+```text
+DISPATCH_ID: AO-TEAM-ONBOARDING-SENTINEL-DESIGN-DELTA-20260715T180842Z
+MISSION_ID: AGENT_OFFICE_TEAM_ONBOARDING_AND_EXECUTION_PROFILE_POLICY_001
+TARGET_ACTOR: Agent Office Reviewer / independent Sentinel
+TARGET_SESSION: agent-office-reviewer
+TARGET_LOCATOR: $28 / @28 / %28
+TARGET_WORKSPACE: /home/leo/Project/agent-office
+PROCESS: codex PID 2381362; gpt-5.6-sol; model_reasoning_effort=max
+SELECTED_MODE: INDEPENDENT_SENTINEL_DESIGN_DELTA_REVIEW
+REQUIRED_SKILL: /fable-sentinel
+REQUIRED_SKILL_SHA256: 429aa2397e917e89e7b8770c3a22bf26a60d1337401760db3010fbcaa3b489d7
+PROFILE_RATIONALE: max is the lowest sufficient profile for same-Reviewer adversarial verification of five lifecycle, immutable-lineage, closed-path, independence, and skill-semantics defects
+WHY_NOT_HIGHER: no verified higher profile is required for this bounded delta
+REVIEW_BASE: 24e5bc1b52f617648742162376c07e747a2f31e0
+REVIEW_CANDIDATE: 7fbaec6f593aff9422075e3c5f033bfbc0d7abaa
+LAUNCHER_PATH: advisor/jobs/20260715_agent_office_team_onboarding_execution_profile_policy_001/08_SENTINEL_DESIGN_DELTA_REVIEW_RUN_PROMPT.md
+LAUNCHER_COMMIT: bbdb091b8af3200fbcf4a56cc5541239b350c97d
+LAUNCHER_BLOB: fb27d7b9bcda5a7b33d835b1703d8676ec7252da
+LAUNCHER_SHA256: 0af1922cf2b167eb7bbc6bc03bcd1bc20fe77d186639bb371e492d4758acbde7
+SYNCHRONIZED_PANES: off
+INDEPENDENCE: same independent Reviewer as initial pass; separate from Advisor/Designer/Worker; no candidate write authority
+CANDIDATE_STATE: clean and upstream-equal at exact candidate
+GOVERNANCE_STATE: clean and upstream-equal at exact launcher commit
+PREFLIGHT_VERDICT: PASS_READY_TO_SEND
+STATUS: READY_TO_DISPATCH
+```
+
 ## AO-TEAM-ONBOARDING-DESIGN-PATCH-01-20260715T174201Z
 
 ```text
