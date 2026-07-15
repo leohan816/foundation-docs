@@ -103,6 +103,34 @@ PREFLIGHT_VERDICT: PASS_READY_TO_SEND
 STATUS: READY_TO_DISPATCH
 ```
 
+## AO-TEAM-ONBOARDING-DESIGN-PATCH-01-20260715T174201Z
+
+```text
+DISPATCH_ID: AO-TEAM-ONBOARDING-DESIGN-PATCH-01-20260715T174201Z
+MISSION_ID: AGENT_OFFICE_TEAM_ONBOARDING_AND_EXECUTION_PROFILE_POLICY_001
+TARGET_ACTOR: Agent Office Designer
+TARGET_SESSION: agent-office-designer
+TARGET_LOCATOR: $24 / @24 / %24
+TARGET_WORKSPACE: /home/leo/Project/agent-office
+TARGET_WORKTREE: /home/leo/Project/.worktrees/agent-office/AGENT_OFFICE_TEAM_ONBOARDING_AND_EXECUTION_PROFILE_POLICY_001
+TARGET_BRANCH: feature/team-onboarding-execution-profile-policy-001
+TARGET_CANDIDATE: 24e5bc1b52f617648742162376c07e747a2f31e0
+PROCESS: codex PID 1705591; gpt-5.6-sol; model_reasoning_effort=max
+SELECTED_MODE: BOUNDED_DESIGN_CONTRACT_PATCH__NO_RUNTIME_IMPLEMENTATION
+REQUIRED_SKILL: NONE_REGISTERED_FOR_THIS_DESIGN_ROLE
+PROFILE_RATIONALE: max is the lowest sufficient profile after five adversarial lifecycle, immutable-evidence, Reviewer-independence, and closed-path defects survived the initial design pass
+ESCALATION_TRIGGER: material identity/authority conflict, second registry, baseline change, cross-project or AS1 change, or Leo-owned risk
+LAUNCHER_PATH: advisor/jobs/20260715_agent_office_team_onboarding_execution_profile_policy_001/06_DESIGNER_PATCH_RUN_PROMPT.md
+LAUNCHER_COMMIT: bd80a176822c18e9ae3e00e685700438acaeaf5f
+LAUNCHER_BLOB: f60b129689752fba569fa4a85c16d98629becf95
+LAUNCHER_SHA256: 98bdbf68c8669a29332a990a9999a45afee79f0cf8bf360b32d35bd436b7c2b8
+SYNCHRONIZED_PANES: off
+WORKTREE_STATE: clean at exact reviewed candidate; upstream equal
+SERIALIZATION: same Designer only; Worker remains not dispatched
+PREFLIGHT_VERDICT: PASS_READY_TO_SEND
+STATUS: READY_TO_DISPATCH
+```
+
 ### AO-TEAM-ONBOARDING-SENTINEL-DESIGN-20260715T171605Z — sent
 
 ```text
