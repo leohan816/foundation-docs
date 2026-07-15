@@ -1,17 +1,17 @@
 # M2 A/B — Cosmile Recommendation Lifecycle and Purchase-Feedback Evidence Design
 
-Status: DESIGN_READY_FOR_INDEPENDENT_REVIEW
+Status: DESIGN_PATCH_READY_FOR_DELTA_REVIEW
 
 MISSION_ID: MEMORY_V3_CURRENT_STATE_RECONCILIATION_V1
-WORK_UNIT_ID: M2-AB-DESIGN
+WORK_UNIT_ID: M2-AB-DESIGN-PATCH-001
 ROLE: Foundation Designer
-MODE: COSMILE_AB_IMPLEMENTATION_READY_DESIGN
+MODE: BOUNDED_DESIGN_PATCH
 RESPONSIBLE_ADVISOR: foundation-advisor
 RETURN_TO: foundation-advisor
 
 ACTUAL_ACTOR: foundation-designer
 ACTUAL_SESSION: foundation-designer
-ACTUAL_TMUX: session $29 · window 0 · pane %29
+ACTUAL_TMUX: session foundation-designer · window @29 · pane %29
 ACTUAL_WORKSPACE: /home/leo/Project/Cosmile
 ACTUAL_MODEL_EFFORT: gpt-5.6-sol / max
 REQUIRED_SKILL_APPLIED: /fable-builder
@@ -20,6 +20,8 @@ SKILL_APPLICATION: anchor-first; contract-to-code mapping; test design before co
 TARGET_BRANCH: shadow/m4-cosmile-memory
 TARGET_HEAD_VERIFIED: 6e44aa40ffb2960573839a01424761dc5e98d610
 CONTROL_CONTRACT_COMMIT_VERIFIED: 73889c86f5170cfe20718a237dff989d52960c9f
+PREVIOUS_SUBJECT_COMMIT_VERIFIED: 35cc5591456566ccdb02324974956b0c5ec7ce3a
+REVIEW_RESULT_COMMIT_VERIFIED: 481a718e30bd060de365076225c3ca972180da9c
 FOUNDATION_DOCS_BRANCH: advisor/foundation-team-role-alignment-20260714
 
 PRODUCT_WRITE: ZERO
@@ -63,6 +65,25 @@ Visual evidence:
 - No live browser, server, test, DB, or screenshot run was authorized. No claim
   of rendered-runtime visual verification is made. The implementation review
   must inspect the implemented UI at 390 × 844 and at text zoom before closure.
+
+### 0.1 Bounded patch delta map
+
+Unaffected clauses from subject commit 35cc5591 remain unchanged. This patch
+changes only the stable findings below:
+
+| Review ID | Exact changed design sections |
+|---|---|
+| REV-F1 | §3.3–§3.4, §4.3, §5.4–§5.5, §5.8–§5.13, §8.1, §8.4, §9–§10, §12, pointer |
+| REV-F2 | §3.1, §5.1, §8.1, §8.3, §8.6, §10, pointer |
+| REV-F3 | §2.3, §3.3, §3.5, §4.3, §5.3, §5.6, §5.10–§5.11, §8.1–§8.3, §11–§12, pointer |
+| REV-N1 | §3.2, §5.2, §5.10, §8.1, §8.4 |
+| REV-N2 | §3.1, §5.1, §5.5, §5.11, §8.1–§8.2, §9 |
+| REV-N3 | §5.2, §5.10–§5.11, §8.2, §8.4 |
+| REV-N4 | §3.3, §5.11, §8.2–§8.3 |
+| REV-N5 | §2.2, §3.1, §8.3, §8.6, §11, pointer |
+
+REV-N6 is not a Designer artifact change and is intentionally absent from the
+product contract.
 
 ## 1. Fixed decisions and design resolutions
 
@@ -162,6 +183,11 @@ blocked state: “추천 기록을 준비하지 못해 상품 제안을 표시�
 
 Generic cards use the same visual card but the heading is “참고 상품”; they have
 no dismiss/save/cart recommendation lifecycle mapping and no recommendation ID.
+When the A flag is OFF, or when showRecommendation=false, this surface preserves
+the current read-only card: no new cart, wishlist, or dismiss CTA is rendered.
+Every new consult-surface product link, wishlist, cart, and dismiss CTA in the
+wireframe above exists only for a canonical recommendation card while the A flag
+is enabled.
 
 ### 2.3 Purchased-line feedback target
 
@@ -196,13 +222,18 @@ The action opens one modal surface:
     │                                      │
     │ 3. 동의                              │
     │ [ ] 코스마일 피드백 저장             │
-    │ [ ] 서비스 간 활용 검토용 보관       │
+    │ [ ] 이번 피드백을 서비스 간 활용     │
+    │     검토용 큐에 보관                 │
     │                                      │
     │ [피드백 저장]                        │
     └──────────────────────────────────────┘
 
 Adverse guidance replaces neither the selected satisfaction nor the form. It
 appears above the sticky action as a persistent role=alert block.
+
+Both consent controls start unchecked for every new or corrected evidence
+submission. The cross-service control is a per-evidence election; a prior
+durable purpose grant never prechecks it.
 
 ## 3. BEHAVIOR — journeys and state machines
 
@@ -221,7 +252,7 @@ Eligibility:
 State flow:
 
     NOT_ELIGIBLE
-      └─> ledger-only generic cards or no cards
+      └─> current read-only ledger-only generic cards or no cards; no new CTAs
 
     ELIGIBLE
       └─> PREPARING_PRESENTATION
@@ -242,13 +273,23 @@ Presentation behavior:
 
 - The client requests presentation preparation once per Foundation trace and
   product.
+- The mapper preserves showRecommendation so the client can distinguish a
+  canonical recommendation from a generic product card before choosing an
+  emission path.
 - The server derives identity; the client never supplies userId or guestId.
 - The server creates one recommendationId per product, writes the shown
-  lifecycle row and its mapped product_card_view CommerceEvent, then returns the
-  opaque IDs.
+  lifecycle row and its mapped product_card_view CommerceEvent in one database
+  transaction, then returns the opaque IDs.
 - The card becomes visible only after that success when A is enabled.
 - The response-level recommendation_view remains a ledger event and is not
-  counted as a second product recommendation.
+  counted as a second product recommendation. It may emit only when
+  showRecommendation=true; generic showRecommendation=false containers emit no
+  recommendation_view.
+- Canonical cards never post product_card_view or product_card_click directly to
+  /api/events. Those two canonical ledger events are written only by the server
+  beside their paired RecommendationEvent row. Generic cards preserve the
+  existing client-direct event behavior except for the recommendation_view
+  suppression above.
 
 Interaction behavior:
 
@@ -266,12 +307,19 @@ Interaction behavior:
   recommendation_added_to_cart at the same producer boundary as cart_add.
 - Generic add-to-cart with no valid recommendation ID is ledger-only and clears
   direct recommendation context for that latest cart-line touch.
+- Every canonical stage pair is all-or-nothing in one evidence transaction. For
+  cart and wishlist, the product mutation completes first and outside that
+  transaction; a later evidence-pair failure never rolls back the successful
+  cart or wishlist mutation. Pair failure rolls back both evidence rows and
+  returns canonicalEvidenceStatus=failed_closed with
+  canonical_evidence_pair_write_failed. Presentation failure keeps cards hidden;
+  other UI states must not claim that the canonical stage was recorded.
 
 ### 3.2 Propagation to purchase
 
-CartItem stores a nullable validated recommendationId, nullable sessionId, and
-linkedAt. The latest cart-add touch wins. Multi-touch and quantity-weighted
-attribution remain deferred.
+CartItem stores a nullable validated recommendationId, nullable
+recommendationSessionId, and recommendationLinkedAt. The latest cart-add touch
+wins. Multi-touch and quantity-weighted attribution remain deferred.
 
 Checkout copies the three fields into OrderItem. Guest-cart merge does not copy
 recommendation context into an identified cart because cart merge is not
@@ -281,7 +329,7 @@ At paid transition, per order item:
 
 1. Valid propagated recommendationId for the same product and identity:
    direct, recommendationId retained.
-2. No propagated ID, but a non-null local session reference and a canonical
+2. No propagated ID, but a non-null recommendationSessionId and a canonical
    recommendation match for the same product/session:
    session, recommendationId null.
 3. Otherwise:
@@ -289,8 +337,8 @@ At paid transition, per order item:
 
 The resolver reads RecommendationEvent only. It never reconstructs the
 lifecycle from broad CommerceEvent history. Current A/B has no authoritative
-session mint, so sessionId remains null unless an already-authorized local
-session source exists; the Worker must not invent one.
+session mint, so recommendationSessionId remains null unless an already-
+authorized local session source exists; the Worker must not invent one.
 
 ### 3.3 Purchased-line feedback
 
@@ -303,6 +351,10 @@ Entry eligibility:
 - pending or cancelled orders are blocked;
 - no raw order or line ID is returned in the evidence envelope.
 
+A refunded order line remains feedback-eligible when paidAt is non-null. Its
+purchase_state remains paid because the purchase occurred; keeping the entry
+available is intentional so adverse reporting remains possible after refund.
+
 Flow:
 
     ENTRY_READY
@@ -314,10 +366,24 @@ Flow:
                   ├─ invalid -> FIELD_ERROR, no evidence/outbox
                   ├─ adverse severity unknown -> LOCAL_HUMAN_REVIEW, no outbox
                   └─ valid -> LOCAL_SAVED
-                      ├─ cross-service consent absent -> LOCAL_ONLY
-                      ├─ guest -> LOCAL_ONLY_GUEST
-                      ├─ adverse hold duration unset -> LOCAL_HOLD_ONLY
-                      └─ identified + granted + eligible -> OUTBOX_PENDING
+                      ├─ cross-service election unchecked -> LOCAL_ONLY
+                      ├─ checked but effective grant cannot be established -> LOCAL_ONLY
+                      ├─ checked + guest -> LOCAL_ONLY_GUEST
+                      └─ checked + identified + effective grant + eligible
+                           -> OUTBOX_PENDING
+                              └─ severe additionally keeps local
+                                 human_safety_review_required
+
+The cross-service checkbox is a per-evidence election. Unchecked always keeps
+this evidence local-only, even when a durable grant from an earlier submission
+is still effective; it appends no revocation. Checked appends a new durable
+grant when the purpose state is not currently granted, then the evidence may
+enter the contained outbox if every other gate passes. The envelope consent
+state and visible confirmation must reflect this election, not merely the
+durable purpose state. Valid skin_reaction/other low, moderate, and severe rows
+follow these same gates; severe also raises the local human-safety-review state
+but remains enqueue-eligible because A/B has no consumer or delivery. Unknown
+severity remains human-review-only with no outbox.
 
 At least one meaningful axis is required:
 
@@ -349,9 +415,13 @@ Retraction:
 - Blocks every pending/blocked outbox row in the root lineage.
 - No new cross-service outbox row is created after consent revocation.
 - Root and descendants become ineligible for processing immediately.
+- Evidence retraction and consent revocation are separate actions: retraction
+  does not append a consent row, and revocation does not retract local evidence.
 - No automatic memory, ranking, or safety action occurs.
-- A legally held adverse source record remains isolated and ineligible until a
-  separate legal retention decision; A/B does not delete or time-limit it.
+- A retracted legally held adverse source record remains isolated and ineligible
+  because of the retraction while awaiting a separate legal retention decision;
+  unset duration alone does not block valid adverse enqueue. A/B does not delete
+  or time-limit the retained source.
 
 ### 3.5 Consent state machine
 
@@ -367,7 +437,7 @@ Notice versions:
 - cosmile.cross_service_commerce_evidence.v1
 - cosmile.identity_linking.v1
 
-Effective state:
+Durable purpose state:
 
     MISSING
       -> GRANTED (explicit unchecked-to-checked user action)
@@ -390,6 +460,36 @@ Rules:
 - revocation immediately blocks future enqueue.
 - expiry is honored when observed, but A/B introduces no automatic consent TTL.
 
+Per-evidence cross-service election:
+
+- Every new or corrected evidence form initializes crossServiceElected=false,
+  regardless of the durable purpose state.
+- Checked sets crossServiceElected=true. If the durable
+  cross_service_commerce_evidence purpose is not currently granted, the server
+  first appends a current-version grant. Only an effective grant created or
+  confirmed for that checked submission may populate consent.state=granted in
+  an outbox envelope.
+- Unchecked keeps this evidence local-only even when a prior durable grant is
+  effective. It appends no revocation, records no cross-service consent claim on
+  this evidence, and must show the local-only confirmation.
+- If grant append or current-grant resolution fails after a checked election,
+  the evidence remains local-only and no outbox row is created; UNKNOWN is not
+  rendered as queued.
+
+A/B durable revocation is API-and-contract-test only:
+
+- POST /api/commerce-evidence/consents accepts exactly
+  {action:"revoke", purpose:"cross_service_commerce_evidence"} for an
+  authenticated identified shopper; identity is server-derived.
+- It appends a revoked ConsentRecord that supersedes the current grant and
+  returns only status=revoked or status=already_not_granted. It exposes no
+  consent, subject, order, or evidence identifier.
+- There is no new account UI in A/B. A user-facing account revocation surface is
+  deferred; production/live activation is forbidden until that surface receives
+  separate approval and implementation-ready design.
+- Retraction remains the evidence-lineage action in §3.4 and never substitutes
+  for this purpose revocation.
+
 Exact user-facing notice copy:
 
 - Same service: “구매한 상품에 대한 선택형 피드백을 코스마일에 저장하는 데
@@ -397,7 +497,8 @@ Exact user-facing notice copy:
 - Cross service: “이 선택형 피드백을 최소화된 커머스 증거로 검토 대기 큐에
   보관하는 데 동의합니다. 현재 외부 전송이나 자동 학습은 하지 않습니다.”
 
-Both controls start unchecked. The second control never implies the first.
+Both controls start unchecked. The second control never implies the first, and
+its visible checked state governs only the current evidence election.
 
 ### 3.6 Identity-linking model
 
@@ -468,10 +569,11 @@ generated medical advice is permitted.
 
 | State | User label |
 |---|---|
-| local saved, no cross-service consent | “코스마일에만 저장됐어요. 서비스 간 활용 대상은 아닙니다.” |
-| identified and contained outbox pending | “검토 대기 큐에 보관됐어요. 아직 외부로 전송되지 않았습니다.” |
+| local saved, cross-service election unchecked | “코스마일에만 저장됐어요. 서비스 간 활용 대상은 아닙니다.” |
+| checked election but grant not established | “코스마일에 저장됐지만 서비스 간 보관 동의를 확인하지 못했어요. 검토 대기 큐에는 보관되지 않았습니다.” |
+| checked, identified, and contained outbox pending | “검토 대기 큐에 보관됐어요. 아직 외부로 전송되지 않았습니다.” |
 | guest | “게스트 피드백은 코스마일에만 저장돼요.” |
-| adverse hold unset | “안전 관련 피드백은 별도 보관 상태예요. 서비스 간 활용은 보류됐습니다.” |
+| valid skin/other adverse outbox pending | “안전 관련 피드백이 검토 대기 큐에 보관됐어요. 아직 외부로 전송되지 않았습니다.” |
 | duplicate request | “이미 처리된 피드백입니다.” |
 | retracted | “피드백이 철회되어 활용 대상에서 제외됐습니다.” |
 | feature off | “이 기능은 현재 비활성 상태입니다.” |
@@ -486,14 +588,27 @@ UNKNOWN is never rendered as success.
 
 | Product action | General CommerceEvent | Canonical recommendation/outcome plane | Mapping rule |
 |---|---|---|---|
-| Recommendation result container shown | recommendation_view | none | Response-level ledger only; never counted per product. |
+| Recommendation result container shown | recommendation_view | none | Response-level ledger only when showRecommendation=true; never counted per product. |
 | Explicit recommended product first revealed | product_card_view | RecommendationEvent.recommendation_shown | One recommendationId per product; same producerEventKey in both rows. |
 | Recommended product opened | product_card_click | RecommendationEvent.recommendation_clicked | Existing validated recommendationId. |
 | Recommended product saved | wishlist_add | RecommendationEvent.recommendation_saved | Only wishlist-add, not removal. |
 | Recommended product dismissed | ai_recommendation_ignored | RecommendationEvent.recommendation_dismissed | Card is removed after server acknowledgement or an honest local error state. |
 | Recommended product added to cart | cart_add | RecommendationEvent.recommendation_added_to_cart | Only a validated propagated ID. |
 | Paid order | purchase_complete | RecOutcomeEvent per purchased line | Direct/session/organic resolver; no new RecommendationEvent type. |
-| Generic/static product action | existing ledger event | none | Product-card-only behavior remains ledger-only. |
+| Generic/static product action | existing ledger event | none | Existing client product-card behavior remains ledger-only; showRecommendation=false suppresses recommendation_view. |
+
+Exact client/server emission contract:
+
+| Render/action class | Client-direct /api/events | Server canonical pair | Required result |
+|---|---|---|---|
+| Canonical card first reveal, A flag ON | recommendation_view may emit once for the actual recommendation container; product_card_view must not emit directly | product_card_view + recommendation_shown | Exactly one CommerceEvent and one RecommendationEvent share producerEventKey. |
+| Canonical card open, A flag ON | product_card_click must not emit directly | product_card_click + recommendation_clicked | Exactly one row in each plane for the stage. |
+| Canonical save/dismiss/cart | no new client-direct mapped ledger write | wishlist_add/recommendation_saved; ai_recommendation_ignored/recommendation_dismissed; cart_add/recommendation_added_to_cart | Each named pair is server-owned and atomic. |
+| Generic/non-canonical card, including flags OFF | Preserve existing client-direct product_card_view/product_card_click and every other existing client emission | none | recommendation_view is the sole suppression when showRecommendation=false; zero recommendation ID or lifecycle row. |
+
+The Worker changes the already-allowlisted ConsultFoundationResult.tsx to route
+these modes. The /api/events route is unchanged and remains outside the
+allowlist.
 
 Aggregation invariant:
 
@@ -502,6 +617,15 @@ Aggregation invariant:
   RecOutcomeEvent.
 - A query must never sum mapped rows from both planes.
 - producerEventKey is the explicit join/deduplication key.
+- Canonical paired CommerceEvent + RecommendationEvent writes occur in one DB
+  transaction per stage. A failure commits neither row and returns
+  canonicalEvidenceStatus=failed_closed with
+  canonical_evidence_pair_write_failed; there is no best-effort partial pair or
+  repair queue.
+- For cart and wishlist, the already-successful product mutation is outside and
+  before the evidence transaction. Pair rollback never rolls back that mutation,
+  and the mutation response remains successful while exposing only the
+  sanitized failed_closed evidence status.
 
 ### 5.2 ID minting and deterministic idempotency
 
@@ -509,11 +633,11 @@ Aggregation invariant:
 |---|---|---|
 | recommendationId | Existing rec_v3_ + ULID26; server mints at successful first presentation preparation. | Client card context -> click/save/dismiss/cart -> CartItem -> OrderItem -> RecOutcomeEvent and CommerceEvidenceRecord. |
 | recommendation eventId | rec_evt_v1_ + ULID26; server per lifecycle row. | Internal only. |
-| sessionId | null, or csess_v1_ + ULID26 from an already-authorized Cosmile-local session source. A/B mints none. | RecommendationEvent -> CartItem -> OrderItem. Never cross-service identity. |
+| recommendationSessionId | null, or csess_v1_ + ULID26 from an already-authorized Cosmile-local session source. A/B mints none. | Existing RecommendationEvent.sessionId physical column -> CartItem.recommendationSessionId -> OrderItem.recommendationSessionId. Never cross-service identity. |
 | purchaseItemRef | pir_v1_ + ULID26; server lazily mints once for a paid OrderItem. | CommerceEvidenceRecord and outbox envelope; raw orderItemId never leaves local persistence. |
 | evidenceId | cevi_v1_ + ULID26; server per root/correction/retraction. | Local lineage and outbox envelope. |
 | sourceEventId | pf_evt_v1_ + ULID26; server per feedback action. | Envelope source and idempotency input. |
-| clientRequestId | pf_req_v1_ + browser crypto.randomUUID; minted once per submit attempt and reused on retry. | API -> unique local request key. |
+| clientRequestId | pf_req_v1_ + browser crypto.randomUUID; minted once per submit attempt and reused on retry. | API -> CommerceEvidenceRecord; unique only with orderItemId. |
 
 Deterministic keys:
 
@@ -546,6 +670,13 @@ Lifecycle uniqueness:
 - presentationDedupeKey unique only for recommendation_shown;
 - duplicate requests return the existing canonical row and never create a
   second mapped row.
+
+Feedback request replay is scoped to (orderItemId, clientRequestId). After the
+server proves current ownership of the order line, a same-owner replay returns
+the prior sanitized status. Ownership is checked before any idempotency lookup;
+a cross-owner request returns the same generic not-found response as any other
+unowned line and reveals neither collision nor prior status. Reusing the same
+clientRequestId on a different owned order line is a distinct request.
 
 ### 5.3 Versioned commerce-evidence envelope
 
@@ -596,6 +727,11 @@ Outbox envelope identity is stricter than local storage:
 - identity_link_allowed false;
 - guest evidence is rejected before outbox creation.
 
+An outbox envelope is constructible only when the current
+CommerceEvidenceRecord has crossServiceElected=true and references the effective
+grant used for that submission. An unchecked local record is never serialized
+with consent.state=granted merely because an older durable grant exists.
+
 Retraction envelope, if eligible under an unrevoked consent, has all feedback
 fields null. In A/B, revocation blocks new enqueue, so a post-revocation
 retraction only blocks local pending rows and appends the local tombstone.
@@ -604,11 +740,11 @@ retraction only blocks local pending rows and appends the local tombstone.
 
 | Satisfaction input | Adverse input | Severity input | Normalized output | Local state | Outbox eligibility |
 |---|---|---|---|---|---|
-| satisfied/neutral/dissatisfied | none or not_selected | not applicable | satisfaction set; adverse fields null | valid | consent/identity gates apply |
-| any or not_selected | skin_reaction | low/moderate/severe | adverse_type skin_reaction; severity selected; certainty reported | valid; severe also human_safety_review_required | local hold only; blocked with retention_hold_unconfigured until legal duration is fixed |
-| any or not_selected | other | low/moderate/severe | adverse_type other; severity selected; certainty reported | valid; severe also human_safety_review_required | local hold only; blocked with retention_hold_unconfigured until legal duration is fixed |
-| any or not_selected | skin_reaction or other | unknown | adverse type set; severity null; certainty reported | human_safety_review_required | blocked: adverse_fields_inconsistent |
-| any or not_selected | usage_safety | not applicable | adverse_type usage_safety; severity null; certainty reported | valid + static guidance | consent/identity gates apply |
+| satisfied/neutral/dissatisfied | none or not_selected | not applicable | satisfaction set; adverse fields null | valid | per-evidence election, consent, and identity gates apply |
+| any or not_selected | skin_reaction | low/moderate/severe | adverse_type skin_reaction; severity selected; certainty reported | valid; severe also human_safety_review_required | per-evidence election, consent, and identity gates apply; severe remains enqueue-eligible |
+| any or not_selected | other | low/moderate/severe | adverse_type other; severity selected; certainty reported | valid; severe also human_safety_review_required | per-evidence election, consent, and identity gates apply; severe remains enqueue-eligible |
+| any or not_selected | skin_reaction or other | unknown | adverse type set; severity null; certainty reported | human_safety_review_required | blocked: adverse_severity_unknown |
+| any or not_selected | usage_safety | not applicable | adverse_type usage_safety; severity null; certainty reported | valid + static guidance | per-evidence election, consent, and identity gates apply |
 | not_selected | none or not_selected | not applicable | all feedback fields null | invalid | blocked: feedback_empty |
 | any | none/not_selected | any severity value | inconsistent | invalid | blocked: adverse_fields_inconsistent |
 | any | usage_safety | low/moderate/severe/unknown | inconsistent | invalid | blocked: adverse_fields_inconsistent |
@@ -655,10 +791,10 @@ Cosmile-local A/B gate codes are a separate namespace:
 - invalid_normalization
 - adverse_fields_inconsistent
 - adverse_severity_unknown
+- canonical_evidence_pair_write_failed
 - correction_target_not_current
 - evidence_retracted
 - duplicate_request
-- retention_hold_unconfigured
 - outbox_write_failed
 
 APIs return stable codes and status only. They never return raw order IDs,
@@ -683,6 +819,20 @@ category and is never the A/B authority:
   consentScope=cross_service;
 - the new purpose field is the exact authoritative purpose.
 
+CommerceEvidenceRecord pins the current-submission election separately from the
+durable ledger:
+
+- crossServiceElected is required and defaults false in UI state, not in server
+  interpretation;
+- crossServiceConsentRecordId is nullable and must be null when
+  crossServiceElected=false;
+- when crossServiceElected=true and the grant is established,
+  crossServiceConsentRecordId references that effective current-version granted
+  record; a failed grant leaves it null and makes the local record ineligible
+  for outbox creation;
+- a later durable revocation never rewrites the evidence row; it blocks pending
+  lineage rows and future enqueue through the effective-state resolver.
+
 A/B conditional database checks:
 
 - purpose in the three closed values;
@@ -691,6 +841,9 @@ A/B conditional database checks:
 - granted requires noticeVersion and capturedAt;
 - revoked requires revokedAt;
 - actor XOR subjectRef/guestRef;
+- crossServiceElected=false implies crossServiceConsentRecordId is null;
+- an evidence outbox row requires crossServiceElected=true and a matching
+  granted crossServiceConsentRecordId;
 - identity_linking grant is never consumed by any A/B writer.
 
 SubjectRefMap is unchanged. allowLink must remain false and has zero A/B write
@@ -727,15 +880,19 @@ retentionState=duration_unconfigured until a separate legal decision.
 
 | Record | Class | Representation | A/B behavior |
 |---|---|---|---|
-| New outbox pending/blocked row | outbox_pending_30d | queueExpiresAt=createdAt+30d | Eligible reads treat expired as blocked. No delivery consumer exists. Local purge implementation is not scheduled or activated. |
+| Non-adverse outbox pending/blocked row | outbox_pending_30d | queueExpiresAt=createdAt+30d | Eligible reads treat expired as blocked. No delivery consumer exists. Local purge implementation is not scheduled or activated. |
 | Non-adverse structured feedback | feedback_non_adverse_90d | retentionExpiresAt=createdAt+90d | Eligibility stops at expiry. |
 | Minimal consent/idempotency/lineage/tombstone metadata | audit_metadata_180d | expiresAt=createdAt+180d | Contains no feedback or raw identity. |
-| Skin/other adverse report | adverse_regulatory_hold | retentionExpiresAt=null; retentionState=duration_unconfigured | Short TTL never applies. Cross-service enqueue is blocked with retention_hold_unconfigured. No duration or automatic purge is implemented. |
+| Skin/other adverse report and its contained outbox row | adverse_regulatory_hold | local retentionExpiresAt=null; outbox queueExpiresAt=null; both retentionState=duration_unconfigured | Valid low/moderate/severe evidence may enqueue after election/consent/identity gates. Severe also retains local human review. No short TTL, duration, release workflow, delivery, or automatic purge is implemented. |
 | usage_safety without an adverse report | feedback_non_adverse_90d | retentionExpiresAt=createdAt+90d | Static guidance remains; consent/identity gates apply. |
 
 The 30/90/180 values are non-production constants in the design module and are
 never environment-configurable in A/B. No production retention action is
 authorized.
+
+The 30-day queue expiry applies only to non-adverse evidence. Queue expiry is a
+contained-queue eligibility representation, not the evidence retention period;
+it must never be copied onto adverse_regulatory_hold rows.
 
 ### 5.9 Outbox containment invariants
 
@@ -756,6 +913,7 @@ Required evidence-only columns:
 - sourceHash
 - consentRecordId
 - evidenceRetentionClass
+- retentionState
 - queueExpiresAt
 - environment
 
@@ -772,6 +930,14 @@ For signalType=cosmile.commerce_evidence:
 - payloadJson is the exact minimized envelope;
 - raw orderItemId/orderId, userId, guestId, traceId, payment ID, free text, PII,
   price, margin, and shipping data are absent.
+- evidenceRetentionClass=adverse_regulatory_hold requires queueExpiresAt=null and
+  retentionState=duration_unconfigured;
+- every non-adverse evidence row requires queueExpiresAt=createdAt+30 days and
+  retentionState=null;
+- severe adverse status remains pending in the contained queue while the local
+  evidence also carries human_safety_review_required; that raise-only local flag
+  is not a delivery or enqueue blocker;
+- unknown adverse severity creates no outbox row.
 
 Legacy foundationSignalMapper hardening:
 
@@ -801,7 +967,8 @@ Schema changes:
 2. RecommendationEvent:
    - add eventId as primary key;
    - recommendationId becomes non-unique indexed data;
-   - sessionId becomes nullable;
+   - existing physical sessionId (the recommendationSessionId domain value)
+     becomes nullable;
    - add producerEventKey unique;
    - add presentationDedupeKey nullable unique;
    - unique recommendationId + eventType;
@@ -819,8 +986,9 @@ Schema changes:
 
 5. Add CommerceEvidenceRecord with the exact normalized fields, internal
    orderItemId FK, opaque purchaseItemRef, actor XOR, consent snapshots,
-   lineage, retention, reason/status, clientRequestId unique, sourceEventId
-   unique, and createdAt timestamptz.
+   crossServiceElected, crossServiceConsentRecordId, lineage, retention,
+   reason/status, composite unique (orderItemId, clientRequestId),
+   sourceEventId unique, and createdAt timestamptz.
 
 6. Add CommerceEvidenceTombstone with §5.7 fields.
 
@@ -883,6 +1051,8 @@ Rollback:
 | source.source_event_id | sourceEventId unique | server-minted | retry preserves |
 | source.idempotency_key | Outbox.idempotencyKey unique | deterministic builder | same input same key; changed source changes key |
 | source.occurred_at | createdAt | server UTC | invalid client time ignored |
+| clientRequestId | record.clientRequestId with unique (orderItemId, clientRequestId) | feedback request only; never envelope | same-owner replay; cross-owner generic not-found |
+| canonicalEvidenceStatus | no persistence; derived transaction result | sanitized written, duplicate, or failed_closed | pair rollback + product mutation preserved |
 | actor.subject_ref | record/outbox subjectRef | server-derived | XOR and format |
 | actor.anonymous_ref | local record anonymousRef; outbox null | server-derived | local allowed; outbox guest rejected |
 | actor.identity_state | derived, not independently trusted | identified/anonymous | matches XOR |
@@ -890,18 +1060,21 @@ Rollback:
 | purchase.purchase_item_ref | OrderItem.purchaseItemRef; record/outbox | server mapping | raw line ID absent |
 | purchase.product_ref | record/outbox productRef | server-owned line snapshot | missing/mismatch rejected |
 | purchase.sku_ref | record skuRef nullable | server-owned line snapshot | null and valid SKU |
-| purchase.purchase_state | paid constant after paidAt gate | paid | pending/cancelled blocked |
+| purchase.purchase_state | paid constant after paidAt gate | paid | pending/cancelled blocked; refunded with paidAt accepted |
 | feedback.satisfaction | record.satisfaction nullable | closed input mapper | each value + null |
 | feedback.adverse_type | record.adverseType nullable | closed input mapper | each value + invalid |
 | feedback.adverse_severity | record.adverseSeverity nullable | conditional mapper | low/moderate/severe/unknown axis |
 | feedback.adverse_certainty | record.adverseCertainty nullable | reported only | repeated/verified/contradicted rejected in A/B input |
 | consent.purpose | ConsentRecord.purpose | current effective grant | exact cross-service purpose |
-| consent.state | ConsentRecord.state | effective state resolver | missing/revoked/expired blocked |
+| consent.state | ConsentRecord.state + record election | granted only for checked election with effective grant | unchecked/missing/revoked/expired cannot create envelope |
 | consent.notice_version | ConsentRecord.noticeVersion | fixed copy version | absent/wrong blocked |
 | consent.captured_at | ConsentRecord.capturedAt | server time | required for grant |
 | privacy.raw_text_stored | false constant + no column | false | unexpected raw key rejected |
 | privacy.contains_pii | false constant | false | PII-key/value fixtures rejected |
-| privacy.retention_class | record.retentionClass | deterministic mapper | adverse cannot receive 90d |
+| privacy.retention_class | record/outbox evidenceRetentionClass | deterministic mapper | adverse local expiry and queue expiry both null; duration_unconfigured |
+| outbox.queueExpiresAt | Outbox.queueExpiresAt nullable | server-derived | adverse null; non-adverse createdAt+30d |
+| outbox.retentionState | Outbox.retentionState nullable | server-derived | adverse duration_unconfigured; non-adverse null |
+| crossServiceElected | record.crossServiceElected | current form election only; not in envelope | unchecked remains local despite prior grant |
 | lineage.root_evidence_id | record.rootEvidenceId | server-derived | root/correction/retraction |
 | lineage.supersedes_evidence_id | record.supersedesEvidenceId unique | correction action | branching rejected |
 | lineage.retracts_evidence_id | record.retractsEvidenceId unique | retraction action | second retraction rejected |
@@ -913,6 +1086,7 @@ Rollback:
 | Key | Mint/source | Propagation | Storage/join | Boundary |
 |---|---|---|---|---|
 | recommendation_id | present route via ids.ts | card context -> interaction/cart/wishlist -> CartItem -> OrderItem | RecommendationEvent, CommerceEvent, RecOutcomeEvent, CommerceEvidenceRecord | Opaque; never minted at cart. |
+| recommendation_session_id | already-authorized local source only; A/B mints none | shown event -> CartItem.recommendationSessionId -> OrderItem.recommendationSessionId | Existing RecommendationEvent.sessionId physical column and the two propagation columns | Nullable; never cross-service identity or envelope data. |
 | subject_ref | ids.ts from server-derived local user | recommendation/evidence services | RecommendationEvent, RecOutcomeEvent, CommerceEvidenceRecord, evidence outbox | No raw user ID in envelope. |
 | anonymous_ref | ids.ts from server-derived guest | recommendation/local feedback only | RecommendationEvent, RecOutcomeEvent, local evidence | Cross-service outbox forbidden. |
 | order_item_id | internal OrderItem primary key | server ownership and FK only | RecOutcomeEvent and local evidence FK | Never in envelope/outbox/API result. |
@@ -929,7 +1103,7 @@ Rollback:
 | Retracted evidence cannot re-enter | tombstone precheck before correction/new root/outbox | replay blocked |
 | Candidate creation forbidden | no candidate imports/calls in allowlist | zero static references and zero fake calls |
 | Identity link default OFF | no SubjectRefMap writer | allowLink remains false |
-| Adverse short TTL forbidden | adverse branch before retention arithmetic | expiry null; duration_unconfigured |
+| Adverse short TTL forbidden | adverse branch before retention arithmetic | local retention expiry null and outbox queue expiry null; duration_unconfigured; valid rows still enqueue |
 
 ## 6. Accessibility, responsive, and non-happy states
 
@@ -1057,19 +1231,32 @@ failure is classified under TEST_MEANING_POLICY before changing code or test.
 
 Recommendation lifecycle:
 
-- A flag OFF: no presentation/event/CommerceEvent write.
-- showRecommendation=false: no ID mint or recommendation row.
+- A flag OFF: no canonical presentation service call, recommendation row, or
+  server-mapped canonical CommerceEvent; current generic client behavior remains.
+- showRecommendation=false: no ID mint, recommendation row, or
+  recommendation_view; existing generic client product_card_view/click behavior
+  remains stable.
 - presentation mints one ID per product only after eligibility.
 - repeated presentation request returns existing IDs.
 - same recommendationId accepts shown + clicked + saved + dismissed +
   added-to-cart rows.
 - duplicate stage collapses by producerEventKey and recommendationId+eventType.
-- later event copies identity/product/session from shown row, not client input.
-- null session accepted; fabricated/invalid session rejected.
+- later event copies identity/product/recommendationSessionId from shown row,
+  not client input.
+- null recommendationSessionId accepted; fabricated/invalid value rejected.
 - generic cart/wishlist actions create zero recommendation rows.
 - guest recommendation cannot be reused after login.
 - CommerceEvent and RecommendationEvent share producerEventKey.
 - response-level recommendation_view is not dual-counted.
+- canonical card render and open post zero direct /api/events
+  product_card_view/product_card_click requests.
+- producer-time mapping yields exactly one ledger row and one lifecycle row for
+  each canonical stage, including retry/duplicate paths.
+- injected first- or second-write failure rolls back both rows and returns
+  canonicalEvidenceStatus=failed_closed with
+  canonical_evidence_pair_write_failed.
+- a cart/wishlist mutation completed before that injected failure remains
+  committed and successful; no partial evidence row survives.
 
 Attribution:
 
@@ -1087,6 +1274,9 @@ Normalization and safety:
 - satisfied + severe remains severe;
 - satisfaction changes do not alter adverse output;
 - unknown severity produces human review and zero outbox;
+- valid identified, checked, granted skin_reaction/other low, moderate, and
+  severe each produce a contained pending outbox row; severe also keeps local
+  human_safety_review_required;
 - repeated/verified/contradicted cannot be selected by A/B;
 - static adverse copy is a constant and no provider is called;
 - raw/free-text/unknown keys rejected.
@@ -1101,6 +1291,16 @@ Consent and identity:
 - guest outbox always rejected;
 - allowLink has zero writer calls;
 - revocation blocks future enqueue immediately.
+- a prior durable cross-service grant does not precheck a new evidence election;
+  submitting unchecked stays local-only and appends no revocation.
+- checked with no current grant appends one current-version grant before outbox
+  eligibility; checked with a current grant creates no duplicate grant.
+- consent.state=granted appears only for a checked election tied to its effective
+  grant; grant-resolution failure produces local-only truthful status.
+- authenticated consents API revocation appends a revoked row and blocks future
+  enqueue; repeated revoke is sanitized and idempotent.
+- evidence retraction does not revoke the durable purpose, and purpose revocation
+  does not create an evidence retraction.
 
 Lineage:
 
@@ -1113,9 +1313,10 @@ Lineage:
 
 Retention:
 
-- 30/90/180 arithmetic from server time;
-- adverse skin/other expiry remains null and state duration_unconfigured;
-- adverse never receives short feedback TTL;
+- non-adverse queue 30-day and local 90/180-day arithmetic from server time;
+- adverse skin/other local retentionExpiresAt and outbox queueExpiresAt both
+  remain null with retentionState=duration_unconfigured;
+- adverse never receives a short feedback or queue TTL;
 - expired evidence is ineligible;
 - no scheduled cleanup/consumer is created.
 
@@ -1124,20 +1325,31 @@ Retention:
 - owner and paid-line gate;
 - non-owner returns a generic not-found response;
 - pending/cancelled order blocked;
-- duplicate clientRequestId returns prior status;
+- refunded line with paidAt remains feedback-eligible;
+- same-owner replay of (orderItemId, clientRequestId) returns prior sanitized
+  status; the same request ID on another owned line is distinct;
+- cross-owner request performs ownership rejection before idempotency lookup and
+  returns generic not-found without revealing a collision;
 - request body whitelist;
 - no raw IDs/hashes/payload in response;
 - local-only, guest-only, outbox-pending, human-review, revoked, expired,
   duplicate, retracted, and UNKNOWN response states;
 - correction/retraction authorization;
+- authenticated consent revoke API accepts only the fixed action/purpose,
+  appends an idempotent durable revocation, and returns no identifiers;
+- cart/wishlist success plus canonicalEvidenceStatus=failed_closed is preserved
+  when the following evidence-pair transaction is injected to fail;
 - feature flags default OFF and production always blocked.
 
 ### 8.3 UI state tests — safe
 
-- feedback entry only for paidAt lines when flag eligibility says available;
+- feedback entry for paidAt lines, including refunded lines, when flag
+  eligibility says available;
 - all focus targets and accessible labels exist;
 - submit disabled until local consent and a meaningful axis;
 - cross-service checkbox never prechecked;
+- a prior durable grant still renders the new evidence checkbox unchecked;
+- checked/unchecked confirmations exactly match queued/local-only outcome;
 - guest cross-service control disabled with explanation;
 - severity fields conditionally visible;
 - adverse guidance persists regardless of satisfaction;
@@ -1145,22 +1357,32 @@ Retention:
 - offline/UNKNOWN never shows saved;
 - correction and retraction copy/states;
 - recommendation preparation hides cards until IDs exist;
-- generic cards never show recommendation actions.
+- canonical cards call no client-direct product_card_view/click emitter;
+- generic and flags-OFF cards retain current read-only rendering and existing
+  client emissions, show no new cart/wishlist/dismiss CTA, and emit no
+  recommendation_view when showRecommendation=false;
+- no new account revocation UI is rendered in A/B.
 
 ### 8.4 Ephemeral DB contract and migration rehearsal — safe only in disposable Postgres
 
-- nullable RecommendationEvent.sessionId;
+- nullable existing RecommendationEvent.sessionId physical landing for the
+  recommendationSessionId domain value;
 - eventId primary key and multiple lifecycle rows per recommendationId;
 - unique stage and producer key;
 - identity XOR and ID formats;
-- CartItem/OrderItem propagation columns;
+- CartItem/OrderItem recommendationSessionId propagation columns;
 - purchaseItemRef uniqueness;
 - CommerceEvidenceRecord closed enums, XOR, conditional adverse, and lineage
   constraints;
-- consent conditional checks;
+- composite unique (orderItemId, clientRequestId), not global request-ID unique;
+- consent and crossServiceElected conditional checks;
 - outbox new-row constraints: raw columns null, pending/blocked only, no sentAt;
-- adverse retention cannot have a duration;
-- non-adverse retention must have an expiry;
+- adverse outbox row requires queueExpiresAt null and
+  retentionState=duration_unconfigured;
+- non-adverse outbox row requires queueExpiresAt=createdAt+30 days and
+  retentionState null;
+- adverse retention cannot have a duration; non-adverse local retention must
+  have an expiry;
 - zero candidate/adverse-candidate writes;
 - forward/down/forward rehearsal with zero-row rollback preconditions.
 
@@ -1184,10 +1406,12 @@ Infra unavailable is SKIP, never PASS.
 - existing v3_11 provider-independent suite;
 - existing recommendation-event suite;
 - existing outcome-event suite;
-- current event schema and view/click contract evals;
+- current event schema and generic view/click contract evals, plus canonical
+  no-client-direct-emission assertions;
 - TypeScript check and production build only with all A/B flags OFF and no
   external provider/DB access;
-- affected cart, wishlist, checkout, order-detail, and consultation behavior.
+- affected cart, wishlist, checkout, order-detail, and consultation behavior,
+  including flags-OFF read-only consult cards.
 
 ### 8.7 Prohibited checks/actions
 
@@ -1215,9 +1439,10 @@ product file. Reviewer patches nothing.
    event mapping, idempotency, and zero-candidate/zero-transport invariants.
 4. Worker writes the new migration and disposable rollback rehearsal; does not
    connect to a real target.
-5. Worker lands the RecommendationEvent constraint correction and producer-time
-   event service.
-6. Worker lands client context and cart/wishlist/checkout propagation.
+5. Worker lands the RecommendationEvent constraint correction, producer-time
+   pair transaction, and failed_closed status.
+6. Worker lands client context and cart/wishlist/checkout propagation while
+   keeping successful product mutations outside the evidence transaction.
 7. Worker lands consent, evidence, lineage, tombstone, retention, and contained
    outbox services.
 8. Worker lands recommendation and purchased-line feedback UI/API.
@@ -1228,8 +1453,8 @@ product file. Reviewer patches nothing.
     correction returns to the same author and is delta-reviewed by the same
     Reviewer.
 
-No step activates a flag, sends an outbox row, contacts Foundation, or creates a
-candidate.
+No step activates a flag, delivers an outbox row to Foundation, contacts
+Foundation, or creates a candidate.
 
 ## 10. Requirement-to-design-to-file-to-test traceability
 
@@ -1237,13 +1462,15 @@ candidate.
 |---|---|---|---|
 | Current UX/source inventory | §0, §2 | existing source evidence; canonical design doc | review inspection |
 | Presentation and interaction states | §3.1, §5.1 | ConsultFoundationResult; recommendation routes/service | §8.1, §8.3 |
+| Canonical client-emission suppression and atomic pairs | §3.1, §5.1 | ConsultFoundationResult; recommendation/commerce event services | §8.1–§8.3, §8.6 |
 | Responsive/accessibility/UNKNOWN | §2, §4.3, §6 | recommendation and feedback components | §8.3 |
 | Event taxonomy and ID propagation | §5.1, §5.2, §5.12 | event service; cart; checkout; types | §8.1, §8.4 |
 | Versioned envelope and fields | §5.3, §5.11 | commerceEvidence types/normalizer/service | §8.1, §8.4 |
 | Closed normalization and invalid combos | §4.1, §5.4, §5.5 | normalizer; feedback state | §8.1 |
-| Consent and identity linking | §3.5, §3.6, §5.6 | consent/evidence service; consent route | §8.1, §8.2, §8.4 |
+| Consent election, durable revocation, and identity linking | §3.3, §3.5, §3.6, §5.3, §5.6 | consent/evidence service; consent route | §8.1–§8.4 |
 | Correction/retraction/tombstone | §3.4, §5.7 | evidence service; feedback route | §8.1, §8.2, §8.4 |
-| Retention representation | §5.8 | schema; evidence service | §8.1, §8.4 |
+| Retention representation and adverse queue exemption | §5.8, §5.9 | schema; evidence/outbox service | §8.1, §8.4 |
+| Request replay scope and refunded eligibility | §3.3, §5.2, §5.10, §5.11 | feedback route; evidence service; schema | §8.2–§8.4 |
 | Outbox containment | §5.9 | foundationSignalMapper; evidence service; schema | §8.4, §8.5 |
 | Additive migration/rollback | §5.10 | schema; new migration/down | §8.4 |
 | Exact Worker allowlist | §7 | all listed paths | scope diff audit |
@@ -1257,16 +1484,16 @@ Founder constraints:
 | Founder constraint | Design landing |
 |---|---|
 | F1 nullable opaque session, ID at presentation | §3.1, §3.2, §5.2, §5.10 |
-| F2 two planes, producer mapping, dedupe | §5.1, §5.2 |
+| F2 two planes, producer mapping, dedupe | §3.1, §5.1, §5.2 |
 | F3 Cosmile normalization ownership | §5.3, §5.4 |
 | F4 zero Cosmile candidates | §5.12, §5.13, §7, §8.5 |
 | F5/F6 Foundation eligibility/candidate only in future C | §11 |
-| F7 separate consent; userId not consent | §3.5, §5.6, §5.9 |
+| F7 separate consent; userId not consent | §3.3, §3.5, §5.3, §5.6, §5.9 |
 | F8 identity linking OFF | §3.6 |
 | F9 append-only correction/retraction | §3.4, §5.7 |
 | F10 independent satisfaction/adverse | §5.4, §5.13 |
 | F11 static adverse guidance | §4.2 |
-| F12 adverse hold duration not implemented | §5.8 |
+| F12 adverse hold duration not implemented | §5.8, §5.9 |
 
 ## 11. Explicit exclusions and kill switches
 
@@ -1279,6 +1506,8 @@ Excluded:
   aggregation worker;
 - external semantic provider, LLM normalization, embeddings, or raw text;
 - automatic identity linking or guest cross-service evidence;
+- user-facing account consent-revocation UI; A/B exposes only the authenticated
+  revocation API and tests;
 - session creation;
 - multi-touch, weighted, cross-device, or historical attribution;
 - historical backfill;
@@ -1294,6 +1523,10 @@ Kill switches:
 - COSMILE_REC_OUTCOME_ENABLED remains OFF.
 - New COSMILE_COMMERCE_EVIDENCE_ENABLED defaults OFF and must return false in
   production.
+- With the A flag OFF, ConsultFoundationResult retains the current read-only
+  generic card and exposes none of the new cart/wishlist/dismiss CTAs.
+- Production/live activation remains forbidden until a user-facing account
+  revocation surface receives separate approval and implementation-ready design.
 - No NEXT_PUBLIC flag may independently enable server writes.
 - No env file is added or changed.
 
@@ -1301,13 +1534,15 @@ Kill switches:
 
 1. RecommendationEvent PK correction is safe only when its row count is zero in
    the disposable baseline. Any row causes HOLD; no backfill is authorized.
-2. There is no current authoritative Cosmile session mint. sessionId therefore
-   remains null and session attribution is designed but not runtime-proven.
+2. There is no current authoritative Cosmile session mint.
+   recommendationSessionId therefore remains null and session attribution is
+   designed but not runtime-proven.
 3. No live rendered UI was executed in this Designer handoff. Implementation
    review must inspect 390 × 844, keyboard-only, reduced-motion, and 200% text.
 4. adverse_regulatory_hold duration and legal erasure obligations remain
-   unresolved. Adverse source records remain locally isolated and cross-service
-   blocked.
+   unresolved. Valid adverse source and contained-outbox rows have null expiry
+   and may accumulate in disposable/local shadow environments until a separate
+   legal decision; no consumer or delivery exists.
 5. Retention expiry is represented and enforced for eligibility, but no
    scheduled cleanup is activated. Any cleanup activation requires a separate
    operational handoff.
@@ -1320,6 +1555,9 @@ Kill switches:
 8. The current UI has no browser test library. UI behavior should be kept in a
    pure state module and visually inspected in implementation review; do not add
    a dependency without a new scope decision.
+9. Durable purpose revocation is API-and-test-only in A/B. The user-facing
+   account surface is deferred, so production/live activation remains blocked
+   pending separate approval and design.
 
 HARD STOP on:
 
@@ -1334,18 +1572,21 @@ HARD STOP on:
 - any raw text/PII/secret/real identifier in evidence;
 - any real DB, production/live, protected branch, main merge/push, or flag
   activation;
+- any production/live proposal before the user-facing account revocation surface
+  has separate approval and implementation-ready design;
 - any file outside §7.
 
 ## 13. Completion
 
-DESIGN_STATUS: DESIGN_READY_FOR_INDEPENDENT_REVIEW
+DESIGN_STATUS: DESIGN_PATCH_READY_FOR_DELTA_REVIEW
 
 The package closes field meaning, UX policy, consent policy, normalization
 policy, source-to-file mapping, test design, file scope, and stop conditions for
 Cosmile A/B. It does not approve itself and grants no implementation authority.
 
 NEXT_ROUTE:
-foundation-designer -> foundation-advisor -> independent Foundation Reviewer
+foundation-designer -> foundation-advisor -> foundation-reviewer-fable5
+delta-only re-review of REV-F1..REV-F3 and REV-N1..REV-N5
 
 RETURN_TO: foundation-advisor
 STOP
