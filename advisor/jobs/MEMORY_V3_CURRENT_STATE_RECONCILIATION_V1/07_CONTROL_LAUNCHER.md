@@ -1,0 +1,18 @@
+========
+TARGET_ACTOR: foundation-control
+TARGET_SESSION: foundation-control
+ROLE_MODE: READ_ONLY_CONTROL_ANALYSIS
+MISSION_ID: MEMORY_V3_CURRENT_STATE_RECONCILIATION_V1
+WORK_UNIT_ID: M1-CONTROL-CROSS-PROJECT-AUDIT
+MODEL_EFFORT: XHIGH
+READ_AND_EXECUTE: /home/leo/Project/.worktrees/foundation-docs/FOUNDATION_TEAM_ROLE_ALIGNMENT_20260714/advisor/jobs/MEMORY_V3_CURRENT_STATE_RECONCILIATION_V1/02_CONTROL_HANDOFF.md
+HANDOFF_COMMIT: f3bf31370034c68a9ab404eed000ea7f5c16aedc
+RETURN_RESULT_TO: foundation-advisor
+DO_NOT_EXECUTE_FROM_MEMORY: true
+READ_REFERENCED_FILES_DIRECTLY: true
+DO_NOT_BROADEN_SCOPE: true
+NO_NEW_AGENT_OR_SUBAGENT: true
+STOP_AFTER_RETURN: true
+
+Open READ_AND_EXECUTE directly, follow current Agent Office authority, write only the declared result and pointer, return only the pointer to foundation-advisor, and STOP.
+========
