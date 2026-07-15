@@ -2,7 +2,7 @@
 
 MISSION_ID: `AGENT_OFFICE_TEAM_ONBOARDING_AND_EXECUTION_PROFILE_POLICY_001`
 
-STATE: `DESIGN_REVIEW_RUNNING`
+STATE: `DESIGN_PATCH_01_READY`
 
 COMPLETED:
 
@@ -13,14 +13,19 @@ COMPLETED:
 - exact committed Designer launcher and live runtime preflight verified.
 - Designer package/result/pointer committed and independently revalidated by
   Advisor for exact review routing.
+- Independent Sentinel design review completed `NEEDS_PATCH`; result commit
+  `6f7935015c0f344601b24174e212e95b0694adb3` and pointer commit
+  `62b68bf475975202ba2721bc5bf31414ea9a7dbd` are pushed.
+- Advisor accepted P1-P5 as bounded, repairable design defects and prepared an
+  exact same-Designer patch handoff. Implementation remains forbidden.
 
-CURRENT_ACTOR: `agent-office-reviewer`
+CURRENT_ACTOR: `agent-office-advisor`
 
-NEXT_ACTOR: `agent-office-advisor` for verdict audit and routing
+NEXT_ACTOR: `agent-office-designer` for bounded design patch 01
 
 WORKER_STATUS: `NOT_DISPATCHED`
 
-REVIEWER_STATUS: `DESIGN_REVIEW_RUNNING`
+REVIEWER_STATUS: `DESIGN_REVIEW_NEEDS_PATCH__AWAITING_SAME_REVIEWER_DELTA`
 
 AS1_STATUS: `OWNER_SETUP_REQUIRED__FROZEN_UNCHANGED`
 
