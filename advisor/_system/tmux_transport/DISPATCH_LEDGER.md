@@ -74,6 +74,35 @@ NEXT_ACTOR: agent-office-reviewer
 STATUS: COMPLETED__ADVISOR_ACCEPTED_FOR_INDEPENDENT_DESIGN_REVIEW
 ```
 
+## AO-TEAM-ONBOARDING-SENTINEL-DESIGN-20260715T171605Z
+
+```text
+DISPATCH_ID: AO-TEAM-ONBOARDING-SENTINEL-DESIGN-20260715T171605Z
+MISSION_ID: AGENT_OFFICE_TEAM_ONBOARDING_AND_EXECUTION_PROFILE_POLICY_001
+TARGET_ACTOR: Agent Office Reviewer
+TARGET_SESSION: agent-office-reviewer
+TARGET_LOCATOR: $28 / @28 / %28
+TARGET_WORKSPACE: /home/leo/Project/agent-office
+PROCESS: codex PID 2381362; gpt-5.6-sol; model_reasoning_effort=max
+SELECTED_MODE: INDEPENDENT_SENTINEL_DESIGN_REVIEW
+REQUIRED_SKILL: /fable-sentinel
+REQUIRED_SKILL_SHA256: 429aa2397e917e89e7b8770c3a22bf26a60d1337401760db3010fbcaa3b489d7
+PROFILE_RATIONALE: max is the lowest sufficient profile for an independent Level-3 review of immutable identity, readiness authority, Team aggregation, lifecycle, profile selection, and Reviewer independence across the 1,620-line package
+WHY_NOT_HIGHER: no verified higher profile is required for this bounded design review
+REVIEW_BASE: 50124a1ea720e162e906c04c6f6fb2591c4974b8
+REVIEW_CANDIDATE: 24e5bc1b52f617648742162376c07e747a2f31e0
+LAUNCHER_PATH: advisor/jobs/20260715_agent_office_team_onboarding_execution_profile_policy_001/04_SENTINEL_DESIGN_REVIEW_RUN_PROMPT.md
+LAUNCHER_COMMIT: 369745eb7d46efd0086607f9f927b28e819ac2ea
+LAUNCHER_BLOB: eee9ea998ea135b7aaab302c181cd04fdc7024ec
+LAUNCHER_SHA256: be1fed34beca33a1b1f8c4c9771b77eb12de4b5b2ed263ab77c81ef0acc992cd
+SYNCHRONIZED_PANES: off
+INDEPENDENCE: separate session/process from Advisor, Designer, and Worker; no candidate write authority
+CANDIDATE_STATE: clean and upstream-equal at exact candidate
+GOVERNANCE_STATE: clean and upstream-equal at exact launcher commit
+PREFLIGHT_VERDICT: PASS_READY_TO_SEND
+STATUS: READY_TO_DISPATCH
+```
+
 ## AO-GROK-PILOT-001-EFFORT-AND-QUALIFICATION-20260712T152114Z
 
 ```text
