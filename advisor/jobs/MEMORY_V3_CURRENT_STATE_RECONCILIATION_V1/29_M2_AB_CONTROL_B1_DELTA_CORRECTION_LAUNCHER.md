@@ -1,0 +1,19 @@
+TARGET_ACTOR: foundation-control
+TARGET_SESSION: foundation-control
+MISSION_ID: MEMORY_V3_CURRENT_STATE_RECONCILIATION_V1
+WORK_UNIT_ID: M2-AB-CONTROL-B1-DELTA-CORRECTION
+ROLE: Control
+MODE: RESULT_ARTIFACT_DELTA_CORRECTION_ONLY
+READ_AND_EXECUTE: /home/leo/Project/.worktrees/foundation-docs/FOUNDATION_TEAM_ROLE_ALIGNMENT_20260714/advisor/jobs/MEMORY_V3_CURRENT_STATE_RECONCILIATION_V1/28_M2_AB_CONTROL_B1_DELTA_CORRECTION_HANDOFF.md
+REQUIRED_SKILL: /fable-builder
+REQUIRED_MODEL_EFFORT: Opus 4.8 (1M) / high
+RETURN_TO: foundation-advisor
+DELTA_ONLY: true
+NO_BROAD_REANALYSIS: true
+NO_PRODUCT_OR_CONTROL_WRITE: true
+NO_COMMIT_OR_PUSH: true
+NO_NEW_AGENT_OR_SUBAGENT: true
+STOP_AFTER_RETURN: true
+
+Open READ_AND_EXECUTE, patch only the bounded B1 text in the two declared result
+files, verify the delta, return the compact corrected pointer, and STOP.
