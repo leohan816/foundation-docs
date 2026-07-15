@@ -1,0 +1,34 @@
+========
+TARGET_ACTOR: foundation-reviewer-fable5
+TARGET_ACTOR_ID: foundation-reviewer-fable5
+TARGET_PROJECT: FOUNDATION Team / Memory V3 M1
+TARGET_REPO: /home/leo/Project/.worktrees/foundation-docs/FOUNDATION_TEAM_ROLE_ALIGNMENT_20260714
+TARGET_BRANCH: advisor/foundation-team-role-alignment-20260714
+TARGET_SESSION_NAME: foundation-reviewer-fable5
+TARGET_WINDOW_ID: @5
+TARGET_PANE_ID: %5
+ROLE_MODE: CURRENT_STATE_AUDIT_REVIEW
+MODEL_NAME: Fable 5 (must be verified live, not inferred)
+MODEL_EFFORT: max (must be verified live)
+REQUIRED_SKILL: /fable-sentinel
+MISSION_ID: MEMORY_V3_CURRENT_STATE_RECONCILIATION_V1
+WORK_UNIT_ID: M1-INDEPENDENT-CURRENT-STATE-AUDIT-REVIEW
+READ_AND_EXECUTE: /home/leo/Project/.worktrees/foundation-docs/FOUNDATION_TEAM_ROLE_ALIGNMENT_20260714/advisor/jobs/MEMORY_V3_CURRENT_STATE_RECONCILIATION_V1/18_FOUNDATION_REVIEWER_HANDOFF.md
+SUBJECT_HEAD: 137b655016a875710695acaae898b160d5029ca8
+EXPECTED_RESULT_PATH: /home/leo/Project/.worktrees/foundation-docs/FOUNDATION_TEAM_ROLE_ALIGNMENT_20260714/runs/shared/MEMORY_V3_CURRENT_STATE_RECONCILIATION_V1/FOUNDATION_REVIEWER_RESULT.md
+EXPECTED_POINTER_PATH: /home/leo/Project/.worktrees/foundation-docs/FOUNDATION_TEAM_ROLE_ALIGNMENT_20260714/runs/shared/MEMORY_V3_CURRENT_STATE_RECONCILIATION_V1/FOUNDATION_REVIEWER_RESULT_POINTER.md
+RETURN_RESULT_TO: foundation-advisor
+PRE_DISPATCH_LIVE_VERIFICATION: REQUIRED
+DO_NOT_EXECUTE_FROM_MEMORY: true
+READ_REFERENCED_FILES_DIRECTLY: true
+DO_NOT_BROADEN_SCOPE: true
+NO_NEW_AGENT_OR_SUBAGENT: true
+DO_NOT_PATCH: true
+NO_DB_OR_NETWORK: true
+NO_COMMIT_OR_PUSH: true
+STOP_AFTER_RETURN: true
+
+Open READ_AND_EXECUTE directly. Perform only the independent Reviewer role.
+Write only the declared Reviewer-owned result and pointer. Return the compact
+pointer to foundation-advisor and STOP.
+========
