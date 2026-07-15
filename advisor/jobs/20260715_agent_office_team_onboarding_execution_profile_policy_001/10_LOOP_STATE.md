@@ -2,7 +2,7 @@
 
 MISSION_ID: `AGENT_OFFICE_TEAM_ONBOARDING_AND_EXECUTION_PROFILE_POLICY_001`
 
-STATE: `DESIGN_PATCH_01_RUNNING`
+STATE: `DESIGN_PATCH_01_ACCEPTED_FOR_DELTA_REVIEW`
 
 COMPLETED:
 
@@ -18,11 +18,13 @@ COMPLETED:
   `62b68bf475975202ba2721bc5bf31414ea9a7dbd` are pushed.
 - Advisor accepted P1-P5 as bounded, repairable design defects and prepared an
   exact same-Designer patch handoff. Implementation remains forbidden.
+- Same Designer completed the bounded patch/result/pointer sequence at candidate
+  `7fbaec6f593aff9422075e3c5f033bfbc0d7abaa`; Advisor reproduced exact paths,
+  hashes, ancestry, clean state, and upstream equality.
 
-CURRENT_ACTOR: `agent-office-designer`
+CURRENT_ACTOR: `agent-office-advisor`
 
-NEXT_ACTOR: `agent-office-advisor` for patch evidence audit, then the same
-`agent-office-reviewer` for delta re-review
+NEXT_ACTOR: same `agent-office-reviewer` for bounded design delta re-review
 
 WORKER_STATUS: `NOT_DISPATCHED`
 
