@@ -2,7 +2,7 @@
 
 MISSION_ID: `AGENT_OFFICE_TEAM_ONBOARDING_AND_EXECUTION_PROFILE_POLICY_001`
 
-STATE: `DESIGN_READY_TO_DISPATCH`
+STATE: `DESIGN_RUNNING`
 
 COMPLETED:
 
@@ -12,9 +12,9 @@ COMPLETED:
 - Designer profile selected and justified;
 - exact committed Designer launcher and live runtime preflight verified.
 
-CURRENT_ACTOR: `agent-office-advisor`
+CURRENT_ACTOR: `agent-office-designer`
 
-NEXT_ACTOR: `agent-office-designer`
+NEXT_ACTOR: `agent-office-advisor` for result validation, then independent Reviewer
 
 WORKER_STATUS: `NOT_DISPATCHED`
 
