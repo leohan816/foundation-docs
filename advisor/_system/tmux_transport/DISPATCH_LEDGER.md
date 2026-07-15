@@ -4317,3 +4317,31 @@ PRODUCT_TESTS: forbidden
 SLACK_IMPLEMENTATION: forbidden
 STATUS: RUNNING_BOUNDED
 ```
+
+## AO-TEAM-ONBOARDING-DESIGN-20260715T164809Z
+
+```text
+DISPATCH_ID: AO-TEAM-ONBOARDING-DESIGN-20260715T164809Z
+MISSION_ID: AGENT_OFFICE_TEAM_ONBOARDING_AND_EXECUTION_PROFILE_POLICY_001
+TARGET_ACTOR: Agent Office Designer
+TARGET_SESSION: agent-office-designer
+TARGET_LOCATOR: $24 / @24 / %24
+TARGET_WORKSPACE: /home/leo/Project/agent-office
+TARGET_WORKTREE: /home/leo/Project/.worktrees/agent-office/AGENT_OFFICE_TEAM_ONBOARDING_AND_EXECUTION_PROFILE_POLICY_001
+TARGET_BRANCH: feature/team-onboarding-execution-profile-policy-001
+TARGET_BASE: 50124a1ea720e162e906c04c6f6fb2591c4974b8
+PROCESS: codex PID 1705591; gpt-5.6-sol; model_reasoning_effort=max
+SELECTED_MODE: BOUNDED_PRODUCT_SYSTEM_DESIGN__NO_RUNTIME_IMPLEMENTATION
+REQUIRED_SKILL: NONE_REGISTERED_FOR_THIS_DESIGN_ROLE
+PROFILE_RATIONALE: max is the lowest sufficient profile for the combined immutable identity, evidence projection, optional-role, profile-selection, and no-second-registry design constraints; no verified higher profile is required
+ESCALATION_TRIGGER: material identity/authority conflict, second registry, baseline change, cross-project or AS1 change
+LAUNCHER_PATH: advisor/jobs/20260715_agent_office_team_onboarding_execution_profile_policy_001/02_DESIGNER_RUN_PROMPT.md
+LAUNCHER_COMMIT: 27077c9026f2c988e573e64abe9722eb329b42ce
+LAUNCHER_BLOB: 2883679b7b96f529b8589f17a54006a646aa1298
+LAUNCHER_SHA256: 2924b5321a5860c5bd5ee9e5c74bf0f386fb2e94210aadf0d8889c14af36bd21
+SYNCHRONIZED_PANES: off
+WORKTREE_STATE: clean at exact approved baseline; AS1 worktrees isolated and unchanged
+SERIALIZATION: Designer only; Worker and Reviewer not dispatched
+PREFLIGHT_VERDICT: PASS_READY_TO_SEND
+STATUS: READY_TO_DISPATCH
+```

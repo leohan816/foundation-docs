@@ -2,14 +2,15 @@
 
 MISSION_ID: `AGENT_OFFICE_TEAM_ONBOARDING_AND_EXECUTION_PROFILE_POLICY_001`
 
-STATE: `DESIGN_DISPATCH_PREPARATION`
+STATE: `DESIGN_READY_TO_DISPATCH`
 
 COMPLETED:
 
 - Founder mission approved with profile-selection clarification;
 - baseline and isolation preflight complete;
 - existing canonical role/registry/readiness gap inventory complete;
-- Designer profile selected and justified.
+- Designer profile selected and justified;
+- exact committed Designer launcher and live runtime preflight verified.
 
 CURRENT_ACTOR: `agent-office-advisor`
 
