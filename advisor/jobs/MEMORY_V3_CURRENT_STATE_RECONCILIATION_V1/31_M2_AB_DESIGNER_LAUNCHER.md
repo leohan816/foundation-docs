@@ -1,0 +1,24 @@
+TARGET_ACTOR: foundation-designer
+TARGET_SESSION: foundation-designer
+MISSION_ID: MEMORY_V3_CURRENT_STATE_RECONCILIATION_V1
+WORK_UNIT_ID: M2-AB-DESIGN
+ROLE: Designer
+MODE: COSMILE_AB_IMPLEMENTATION_READY_DESIGN
+TARGET_WORKSPACE: /home/leo/Project/Cosmile
+READ_AND_EXECUTE: /home/leo/Project/.worktrees/foundation-docs/FOUNDATION_TEAM_ROLE_ALIGNMENT_20260714/advisor/jobs/MEMORY_V3_CURRENT_STATE_RECONCILIATION_V1/30_M2_AB_DESIGNER_HANDOFF.md
+REQUIRED_SKILL: /fable-builder
+REQUIRED_MODEL_EFFORT: gpt-5.6-sol / max
+EXPECTED_RESULT: /home/leo/Project/.worktrees/foundation-docs/FOUNDATION_TEAM_ROLE_ALIGNMENT_20260714/runs/cosmile/MEMORY_V3_CURRENT_STATE_RECONCILIATION_V1/M2_AB_DESIGN_RESULT.md
+EXPECTED_POINTER: /home/leo/Project/.worktrees/foundation-docs/FOUNDATION_TEAM_ROLE_ALIGNMENT_20260714/runs/cosmile/MEMORY_V3_CURRENT_STATE_RECONCILIATION_V1/M2_AB_DESIGN_RESULT_POINTER.md
+RETURN_TO: foundation-advisor
+DO_NOT_EXECUTE_FROM_MEMORY: true
+READ_REFERENCED_FILES_DIRECTLY: true
+DO_NOT_BROADEN_SCOPE: true
+NO_NEW_AGENT_OR_SUBAGENT: true
+NO_PRODUCT_WRITE: true
+NO_COMMIT_OR_PUSH: true
+STOP_AFTER_RETURN: true
+
+Open READ_AND_EXECUTE, load and apply REQUIRED_SKILL, verify the live actor,
+session, model, effort, and target workspace, perform only the Designer role,
+write only the declared result and pointer, return the pointer, and STOP.
