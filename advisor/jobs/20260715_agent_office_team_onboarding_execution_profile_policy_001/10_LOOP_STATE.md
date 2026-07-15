@@ -2,7 +2,7 @@
 
 MISSION_ID: `AGENT_OFFICE_TEAM_ONBOARDING_AND_EXECUTION_PROFILE_POLICY_001`
 
-STATE: `DESIGN_PATCH_01_ACCEPTED_FOR_DELTA_REVIEW`
+STATE: `DESIGN_PATCH_01_DELTA_REVIEW_RUNNING`
 
 COMPLETED:
 
@@ -22,9 +22,9 @@ COMPLETED:
   `7fbaec6f593aff9422075e3c5f033bfbc0d7abaa`; Advisor reproduced exact paths,
   hashes, ancestry, clean state, and upstream equality.
 
-CURRENT_ACTOR: `agent-office-advisor`
+CURRENT_ACTOR: `agent-office-reviewer`
 
-NEXT_ACTOR: same `agent-office-reviewer` for bounded design delta re-review
+NEXT_ACTOR: `agent-office-advisor` for delta verdict audit and routing
 
 WORKER_STATUS: `NOT_DISPATCHED`
 
