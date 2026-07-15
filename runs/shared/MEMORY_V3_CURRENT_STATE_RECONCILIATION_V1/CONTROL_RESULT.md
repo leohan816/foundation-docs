@@ -55,7 +55,7 @@ Evidence discipline: every status is boolean/count/status + file:line or commit,
 | **Foundation decision/safety/evidence contract (FRC)** | **FOUNDATION** | none for durable customer memory (validate/gate/reason) | owns decision/safety/evidence; **not** customer-memory DB, **not** identity broker, **not** service DB reader | FOUNDATION `shadow/foundation-shared-memory-v0` `f6417004`; **no `schema.prisma` / durable memory model observed** in FOUNDATION (consistent with validate/gate-only boundary) |
 | **Foundation memory ingress gate (M5/M6-G substrate)** | **foundation-control** shadow (M5 ingress gate) | Foundation memory architecture V1 (substrate V3 inherits) | ingress-gate shadow wiring, flag OFF inert | Control branch `shadow/m5-ingress-gate` `c89b792`; `tests/test_ingress_gate.py`, `FOUNDATION_SERVICE_MEMORY_ARCHITECTURE_V1_20260704.md` |
 
-**Boundary conclusion:** ownership is service-local and non-overlapping. Foundation holds decision/safety/evidence; Cosmile/SIASIU hold their own durable memory. No cross-service DB direct reference is in the V3 contract (V3-00 §4 non-goal). The only Cosmile→Foundation runtime path is the **shadow signal path** (§7), not a durable-memory write.
+**Boundary conclusion:** ownership is service-local and non-overlapping. Foundation holds decision/safety/evidence; Cosmile/SIASIU hold their own durable memory. No cross-service DB direct reference is in the V3 contract (V3-00 §4 non-goal). The Cosmile→Foundation paths (§7, repo-owner delta) are a **write-only `FoundationSignalOutbox` queue** (`foundationSignalMapper.ts`/`maybeEnqueueFoundationSignal` from `trackCommerceEvent`, **no consumer/delivery**) plus a shadow signal path — **neither is a durable cross-service memory write into Foundation**, so the service-local ownership boundary holds.
 
 ---
 
@@ -128,19 +128,27 @@ Identifiers: `recommendationId` (present, unthreaded), `sessionId=null` (G-C5 ca
 
 ## 7. Outbox & Package 1A/1B state (handoff §11 fields)
 
-- `OUTBOX_OR_TRANSPORT_PATH`: **no dedicated durable transactional outbox** (no `Outbox` model; no dead-letter/retry table). The only Cosmile→Foundation path is `src/app/api/slice/signal/route.ts` (`sliceEnabled()` gate → `{disabled:true}` when OFF) + `src/lib/foundationSignalMapper.ts` → Foundation `ingest_event_signal` (**shadow**; `interpretsCustomer/memoryCandidate/storedAsMemory = always false`).
-- `PRODUCER`: Cosmile commerce/signal routes; `CONSUMER`: Foundation shadow ingest (no durable memory write); `PAYLOAD`: mapped commerce/signal; `PURCHASE_ITEM_REFERENCE`: structured-only (Package 1A closed); `USER_OR_GUEST_IDENTIFIER`: subject/anonymous ref XOR; `CONSENT_FIELD`/`PROVENANCE_FIELD`: candidate gate carries consent/provenance (memoryCandidate.ts D2); `FLUSH_DEFAULT`: **OFF/BLOCKED** (V3-EXTENSION-ROADMAP "Foundation signal transmission: BLOCKED — no flush"); `RETRY`/`REPLAY_AND_IDEMPOTENCY`: code-level existing-check idempotency proposed (V3-11C2), no transactional replay; `RETENTION_REPRESENTATION`: structured-only; `CLEANUP_PATH`/`ERROR_OR_DEAD_LETTER_PATH`: none observed; `FOUNDATION_INTAKE_PATH`: shadow ingest only; `CURRENT_CONTAINMENT_STATUS`: **CONTAINED** (flag-gated shadow, no durable write, no flush).
+**★Delta correction (repo-owner evidence — Cosmile Worker result, commit `68d52a0805b8e8df74c82a96c04833c015111d77`).** This supersedes the Control M1 draft claim of "no dedicated outbox model"; the Cosmile Worker with full repo access confirms a pre-existing outbox does exist. Corrected facts:
 
-Package status (V3_CANONICAL_INDEX + V3_EXTENSION_ROADMAP):
+- `OUTBOX_OR_TRANSPORT_PATH`: **a pre-existing durable outbox does exist** — prisma model **`FoundationSignalOutbox`** (`app/prisma/schema.prisma:195`) with producer path `src/lib/foundationSignalMapper.ts` (**`maybeEnqueueFoundationSignal`**), called from **`trackCommerceEvent`**. (The `slice/signal` route observed in the Control draft is a separate shadow path; the outbox is the durable write-only queue.)
+- `PRODUCER`: `trackCommerceEvent` → `EVENT_TO_SIGNAL` whitelist map (wishlist add/remove, cart_add, purchase_complete, refund_requested, …) → `maybeEnqueueFoundationSignal` enqueue.
+- `CONSUMER`: **NONE** — no flush worker, no sender, no Foundation intake client (Worker: the sole `prisma.foundationSignalOutbox` reference is the enqueue; the only reader is a **read-only dry-run report route**). No delivery, no flush.
+- `PURCHASE_ITEM_REFERENCE`: **NOT present** on the outbox (`canonicalProductId` + `sourceEventId` only; no `orderId`/`orderItemId` column).
+- `USER_OR_GUEST_IDENTIFIER`: subject/anonymous ref; `CONSENT_FIELD`: **`privacyLevel` only, inferred by the assumption "`userId` ⇒ user_consented"** (`foundationSignalMapper.ts:30-31`, self-declared MVP) — **consent defect**: a `ConsentRecord` model exists but has **no writer** (no real consent source). `RETENTION_REPRESENTATION`: **none** (no TTL/retention columns or policy encoding). `RETRY`/`REPLAY_AND_IDEMPOTENCY`/`CLEANUP_PATH`/`ERROR_OR_DEAD_LETTER_PATH`: **absent** (no enforcement). `FOUNDATION_INTAKE_PATH`: none in Cosmile (dry-run report only). `FLUSH_DEFAULT`: no flush.
+- `CURRENT_CONTAINMENT_STATUS`: **CONTAINED** — write-only queue, no consumer, no network path, independent of the two OFF flags (per Worker; unchanged).
+
+Package status (V3_CANONICAL_INDEX + V3_EXTENSION_ROADMAP + repo-owner delta):
 ```text
 PACKAGE_1A_STATE: FINAL_APPROVED_AND_CLOSED (discovery; closure at advisor/jobs/20260710_v3_package1a_...)
 PACKAGE_1B_AUTHORIZATION: NO  (Package_1B: NOT_STARTED_NOT_APPROVED)
-UNAUTHORIZED_CODE_OR_STUB: NOT_OBSERVED (no Package-1B flush/outbox/dead-letter code found)
-STRUCTURED_PURCHASED_ITEM_IMPLEMENTATION: PARTIALLY_COMPLETE (RecOutcomeEvent orderItemId/productId schema present; wiring gate-only)
-FOUNDATION_SIGNAL_DELIVERY: BLOCKED (roadmap) / shadow-contained (flag OFF)
-OUTBOX_CONTAINMENT: CONTAINED (shadow, flag-gated, no durable write, no flush, no dead-letter)
+UNAUTHORIZED_CODE_OR_STUB: UNKNOWN — PREEXISTING_OUTBOX_CODE_OBSERVED; AUTHORIZATION_PROVENANCE_NOT_ESTABLISHED_BY_M1
+  (FoundationSignalOutbox + maybeEnqueueFoundationSignal from trackCommerceEvent exist as pre-existing code; M1 does
+   not establish whether that code was authorized or unauthorized — no inference either way)
+STRUCTURED_PURCHASED_ITEM_IMPLEMENTATION: NOT_IMPLEMENTED (outbox has no orderId/orderItemId column; no purchase-item reference)
+FOUNDATION_SIGNAL_DELIVERY: NOT_IMPLEMENTED (outbox write-only; zero delivery — no consumer/flush/sender/intake client)
+OUTBOX_CONTAINMENT: CONTAINED (write-only queue, no consumer, no network path, independent of the two OFF flags)
 ```
-Free-text feedback = DEFERRED_NOT_APPROVED; external-provider processing = DEFERRED_NOT_APPROVED; historical structured-only records are never reinterpreted as semantic free-text (roadmap).
+Free-text feedback = DEFERRED_NOT_APPROVED; external-provider processing = DEFERRED_NOT_APPROVED; historical structured-only records are never reinterpreted as semantic free-text (roadmap). Outbox hardening required before any Package 1B (Worker): real consent source (`ConsentRecord` writer), ref-based identifiers, retention/cleanup, purchase-item reference.
 
 ---
 
