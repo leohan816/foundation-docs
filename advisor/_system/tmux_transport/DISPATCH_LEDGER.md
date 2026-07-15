@@ -131,6 +131,18 @@ PREFLIGHT_VERDICT: PASS_READY_TO_SEND
 STATUS: READY_TO_DISPATCH
 ```
 
+### AO-TEAM-ONBOARDING-DESIGN-PATCH-01-20260715T174201Z - sent
+
+```text
+SENT_AT: 2026-07-15T17:43:28Z
+TRANSPORT: exact committed launcher loaded into named buffer ao_team_onboarding_design_patch_01_20260715, pasted once only to %24, and submitted with isolated Enter
+POST_SEND_EVIDENCE: exact launcher displayed in Designer pane; Designer read the committed patch handoff and entered Working state
+DUPLICATE_RETRY_SENT: false
+WORKER_STATUS: NOT_DISPATCHED
+REVIEWER_STATUS: AWAITING_SAME_REVIEWER_DELTA
+STATUS: RUNNING_BOUNDED_DESIGN_PATCH
+```
+
 ### AO-TEAM-ONBOARDING-SENTINEL-DESIGN-20260715T171605Z — sent
 
 ```text

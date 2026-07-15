@@ -2,7 +2,7 @@
 
 MISSION_ID: `AGENT_OFFICE_TEAM_ONBOARDING_AND_EXECUTION_PROFILE_POLICY_001`
 
-STATE: `DESIGN_PATCH_01_READY`
+STATE: `DESIGN_PATCH_01_RUNNING`
 
 COMPLETED:
 
@@ -19,9 +19,10 @@ COMPLETED:
 - Advisor accepted P1-P5 as bounded, repairable design defects and prepared an
   exact same-Designer patch handoff. Implementation remains forbidden.
 
-CURRENT_ACTOR: `agent-office-advisor`
+CURRENT_ACTOR: `agent-office-designer`
 
-NEXT_ACTOR: `agent-office-designer` for bounded design patch 01
+NEXT_ACTOR: `agent-office-advisor` for patch evidence audit, then the same
+`agent-office-reviewer` for delta re-review
 
 WORKER_STATUS: `NOT_DISPATCHED`
 
