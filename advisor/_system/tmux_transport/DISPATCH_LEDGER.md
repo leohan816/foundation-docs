@@ -44,6 +44,21 @@ SENT_AT: 2026-07-11T04:43:13Z
 STATUS: RUNNING
 ```
 
+### AO-TEAM-ONBOARDING-DESIGN-20260715T164809Z — exact scenario addendum
+
+```text
+ADDENDUM_SENT_AT: 2026-07-15T16:53:18Z
+ADDENDUM_PATH: advisor/jobs/20260715_agent_office_team_onboarding_execution_profile_policy_001/02A_DESIGN_VALIDATION_SCENARIOS_ADDENDUM.md
+ADDENDUM_COMMIT: 358e1fed948575943358393989d9f3b2cae123da
+ADDENDUM_BLOB: 227b1a3afa870bbb21a1c287f117ebca081239b2
+ADDENDUM_SHA256: aa7f9a7a28287868f2e0f32e0e641c091b73224ce9298f63d2b6e460898b4746
+PURPOSE: enumerate the twelve already-authorized Founder validation scenarios after the Designer identified that the original committed handoff referenced but did not enumerate them
+TRANSPORT: exact committed addendum queued once to %24, then the superseded open-ended scenario search was interrupted with Escape so the addendum could submit immediately
+SCOPE_CHANGE: none
+DUPLICATE_RETRY_SENT: false
+STATUS: RUNNING_WITH_EXACT_ADDENDUM
+```
+
 ## AO-GROK-PILOT-001-EFFORT-AND-QUALIFICATION-20260712T152114Z
 
 ```text
