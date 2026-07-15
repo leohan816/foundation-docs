@@ -2,7 +2,7 @@
 
 MISSION_ID: `AGENT_OFFICE_TEAM_ONBOARDING_AND_EXECUTION_PROFILE_POLICY_001`
 
-STATE: `DESIGN_PATCH_01_DELTA_REVIEW_RUNNING`
+STATE: `SUPERSEDED_BY_FOUNDER_SCOPE_CORRECTION__NO_IMPLEMENTATION`
 
 COMPLETED:
 
@@ -21,14 +21,19 @@ COMPLETED:
 - Same Designer completed the bounded patch/result/pointer sequence at candidate
   `7fbaec6f593aff9422075e3c5f033bfbc0d7abaa`; Advisor reproduced exact paths,
   hashes, ancestry, clean state, and upstream equality.
+- Same Reviewer completed the delta review as `NEEDS_PATCH`; result commit
+  `01b089b2da50cd562e2615c1dd78039b766d6990` and pointer commit
+  `3f0d2094e7eef46a5df32e155c65d48509d45edf` are preserved.
+- Founder superseded this implementation plan before Worker dispatch. No P2
+  patch or 21-path implementation will be routed.
 
-CURRENT_ACTOR: `agent-office-reviewer`
+CURRENT_ACTOR: `NONE__MISSION_SUPERSEDED`
 
-NEXT_ACTOR: `agent-office-advisor` for delta verdict audit and routing
+NEXT_ACTOR: `NONE`
 
-WORKER_STATUS: `NOT_DISPATCHED`
+WORKER_STATUS: `NOT_DISPATCHED__PLAN_SUPERSEDED`
 
-REVIEWER_STATUS: `DESIGN_REVIEW_NEEDS_PATCH__AWAITING_SAME_REVIEWER_DELTA`
+REVIEWER_STATUS: `DELTA_REVIEW_NEEDS_PATCH__PRESERVED_AS_SUPERSEDED_EVIDENCE`
 
 AS1_STATUS: `OWNER_SETUP_REQUIRED__FROZEN_UNCHANGED`
 
