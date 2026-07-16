@@ -30,8 +30,8 @@ Current pinned baselines:
 | Cosmile | `shadow/m4-cosmile-memory` | `f26fa5ced7083bb8d0af00bda2a54951923ea22f` | A/B evidence producer plane independently reviewed; outbox remains producer-only |
 
 No repository-owner Worker or Designer was needed for this package. Control reproduced
-every load-bearing fact from pinned Git source; the requested output is a decision
-package, not an implementation-ready design.
+every load-bearing D8 fact from Git-pinned product blobs and committed evidence; the
+requested output is a decision package, not an implementation-ready design.
 
 ## 2. D8-1 — Authenticity and ingress authority
 
@@ -41,8 +41,9 @@ package, not an implementation-ready design.
   unkeyed v1 `source_hash`. That proves integrity consistency, not sender authenticity.
 - The landed `CommerceEvidenceProvenanceVerifier` is an injected seam whose default is
   `UNCONFIGURED`; only a verified binding may continue. Default execution accepts zero.
-- Neither repository contains an authorized credential, signature implementation,
-  endpoint, transport, or active ingress component.
+- Neither pinned commerce-evidence path contains an authorized credential, signature
+  implementation, endpoint, transport, or active ingress component. This statement does
+  not describe either repository's unrelated pre-existing integration planes.
 
 ### Exact unresolved question
 
@@ -368,7 +369,9 @@ Primary durable evidence:
   blob `e0d50940e5eacdc8a100204b78f63d231f4f8b2c`;
 - Control read-only analysis: commit `ec81b5490030f27c36d1ce69c8eb1f774babb91d`,
   result SHA-256 `44ad1e61576fdf8bc8392629071589f19d875e47a336e4dee12b8e1b60b5967f`;
-- final C design subject/corrections: commits `7cbcb8d9…` and `4480b55f…`;
+- final C design subject/corrections: commits
+  `7cbcb8d9bfe012b92d8bf8f1e0ba0957f1610117` and
+  `4480b55f43b876499746efe6497b5e2e4eb1931d`;
 - final C design delta review PASS: `062c1d6391e4f595d5d57e3cc81ec60df3157be0`;
 - Foundation C WU7 implementation review PASS: `0d28bc0d8bcb72bc6712f075cbf5a86ba630a051`;
 - Foundation C Advisor final audit: `941fe428578f74289c70aa21d7b1cfd6227ab04c`;
