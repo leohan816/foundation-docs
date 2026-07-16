@@ -1,0 +1,31 @@
+# Pointer — WU8 Implementation-Ready Design Delta-Only Re-Review
+
+```text
+MISSION_ID: MEMORY_V3_WU8_IMPLEMENTATION_READY_DESIGN_V1
+REVIEW_ID: WU8-IMPLEMENTATION-READY-DESIGN-DELTA-REVIEW-001
+REVIEW_PASS: DELTA_REVIEW (same Reviewer/session as the full NEEDS_PATCH review)
+ACTUAL_ACTOR: foundation-reviewer-fable5 (live: foundation-reviewer-fable5 / @5 / %5)
+ACTUAL_MODEL: claude-fable-5 (live) · EFFORT: max (live env) · SKILL: /fable-sentinel
+
+VERDICT: PASS
+PER_ITEM: DR-1 CLOSED · DR-2 CLOSED · REGRESSIONS: 0
+DELTA: exactly the 5 authorized DR-1/DR-2 subject anchors + pointer metadata; nothing else changed
+
+RESULT: runs/shared/MEMORY_V3_WU8_IMPLEMENTATION_READY_DESIGN_V1/WU8_IMPLEMENTATION_READY_DESIGN_DELTA_REVIEW_RESULT.md
+RESULT_SHA256: a91a18b3f4cfdc2a0609fc9f2317f57336d60b2e1e96359506151d38787852f8
+
+PREVIOUS_SUBJECT: 3fd7a49aa00346afc0142b92f69790819cd90e7a (blob 726223cb…, SHA-256 08eb2653…)
+NEW_SUBJECT: 08dc39dcc76b595c4b4fe8fc8f0e24b9bffedf9b
+NEW_SUBJECT_BLOB: cd8d0340de36e877fe7bfc33c1cba0627826320e
+NEW_SUBJECT_SHA256: 2213262a68f8a2034a118190937d16502dc00b987efd0ad89bd268e0468a17de
+FULL_REVIEW_RECORD: ef8b697 (byte-identical ba206fb5…) — 16 rulings stand for unchanged scope
+BASELINES: FOUNDATION 33570b9 · Cosmile f26fa5c · control c89b792 · SIASIU e1830b4 (zero mission writes)
+
+POLICY_SELECTED / RISK_ACCEPTED / IMPLEMENTATION_AUTHORITY: NONE
+STAGE_COMMIT_PUSH: ZERO (Advisor publishes)
+WU8_IMPLEMENTATION / DELIVERY / INTAKE / CANDIDATE_RUNTIME / FULL_PACKAGE_1B / M3: NOT_AUTHORIZED
+HARD_STOP: ACTIVE
+NEXT: foundation-advisor final audit -> Leo/GPT -> HARD STOP
+RETURN_TO: foundation-advisor
+STOP
+```
