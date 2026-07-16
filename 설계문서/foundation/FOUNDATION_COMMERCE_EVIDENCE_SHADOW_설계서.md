@@ -1,7 +1,7 @@
 # FOUNDATION_COMMERCE_EVIDENCE_SHADOW_설계서 — commerce_evidence C Shadow 모듈 정본
 
-> **버전 v0.1.1 · 2026-07-16 · WU1(C-CONTRACT-FREEZE) + authority 문구 정정.**
-> **변경이력:** v0.1 (2026-07-16) — WU1 계약 동결: v1 envelope 순수 데이터 계약 · 18 reason code 전용 불변 세트 · byte-호환 idempotency/source-hash 헬퍼 · 합성 golden fixture · WU1 전용 테스트. · v0.1.1 (2026-07-16) — authority 문구 정정(behavior 변경 0): WU2~WU7은 Founder 승인(`c96caef`) 범위이나 reviewed dependency/review gate + 별도 exact Advisor handoff 하에서만 진행(자동 전이 없음·WU1에서 미구현/미착수) · **WU8만 NOT_AUTHORIZED·개시 금지**.
+> **버전 v0.2 · 2026-07-16 · WU2(C-VERIFIER-VALIDATOR) 반영.**
+> **변경이력:** v0.1 (2026-07-16) — WU1 계약 동결: v1 envelope 순수 데이터 계약 · 18 reason code 전용 불변 세트 · byte-호환 idempotency/source-hash 헬퍼 · 합성 golden fixture · WU1 전용 테스트. · v0.1.1 (2026-07-16) — authority 문구 정정(behavior 변경 0): WU2~WU7은 Founder 승인(`c96caef`) 범위이나 reviewed dependency/review gate + 별도 exact Advisor handoff 하에서만 진행(자동 전이 없음·WU1에서 미구현/미착수) · **WU8만 NOT_AUTHORIZED·개시 금지**. · v0.2 (2026-07-16) — WU2 구현(§9): fail-closed verifier 프로토콜/기본값(`verifiers.py`) + 순수 주입시계 validator 게이트 1~8(`validator.py`) + WU2 전용 테스트 2파일. Advisor gate PASS(`64_`·WU1 evidence `f5c66a8`) 후 별도 handoff(`65_`)로 착수. 게이트 0·9~11/ledger/lineage 상태/candidate/service/flag = WU3~ 미착수.
 > **본 문서는 이미 독립 검수된 C 설계를 모듈 정본으로 성문화한 것이다 — 새 정책/아키텍처/행동/범위/권한 발명 0.**
 
 ## 0. 정본 앵커 (전부 foundation-docs · 원문이 우선)
@@ -133,4 +133,60 @@ Founder authorization(§0 앵커) 자구 준수: 실 DB/네트워크/provider/se
 
 ## 8. rollback
 
-WU1 산출물은 **어떤 runtime도 import하지 않는 additive 파일들**이다. rollback = 검토된 forward change로 본 패키지 파일들 + 본 설계서/README 항목 제거 (history rewrite 없음). flag 개념 자체가 아직 없음(WU5).
+WU1 산출물은 **어떤 runtime도 import하지 않는 additive 파일들**이다. rollback = 검토된 forward change로 본 패키지 파일들 + 본 설계서/README 항목 제거 (history rewrite 없음). flag 개념 자체가 아직 없음(WU5). WU2 rollback 동일(additive `verifiers.py`/`validator.py`/테스트 2파일 제거 — runtime importer 0).
+
+## 9. WU2 — verifier 프로토콜/기본값 + 순수 validator 게이트 1~8 (reviewed design §5.1·§6·§4·§8 착지)
+
+### 9.1 `verifiers.py`
+- `ProvenanceVerdict(status, source_identity: bool, envelope_digest: bool)` — 불변 NamedTuple·**진단 필드 구조적 부재**(category-only). status enum: `VERIFIED | UNVERIFIED | UNCONFIGURED | ERROR` (§6.1 자구).
+- `CommerceEvidenceProvenanceVerifier.verify(schema_version, source_service, source_environment, source_event_id, evidence_id, evidence_type, idempotency_key, declared_source_hash, recomputed_source_hash, occurred_at, opaque_ingress_context)` — §6.1 자구 11-인자 seam. **기본 구현 `UnconfiguredProvenanceVerifier` → 항상 UNCONFIGURED(바인딩 false)** = 아무것도 통과 못 함.
+- `ConsentVerdict(status)` — status enum: `GRANTED | REVOKED | EXPIRED | MISSING | PENDING | MISMATCH | UNKNOWN | UNCONFIGURED | ERROR` (§6.2 자구). `CommerceEvidenceConsentVerifier.verify_effective(subject_ref, purpose, notice_version, captured_at, occurred_at, decision_time, opaque_ingress_context)`. **기본 `UnconfiguredConsentVerifier` → UNCONFIGURED.**
+- credential/key/서명/토큰/헤더/endpoint/provider/env/consent store 선택·정의·접근 **0**. `opaque_ingress_context`는 **identity로만 통과**(검사/복사/직렬화/로그/echo 금지 — 테스트가 sentinel로 고정).
+
+### 9.2 `validator.py` — 순수 게이트 1~8 (첫 실패 승리·상태 0·전역 가변상태 0)
+`validate_commerce_evidence_v1(envelope, *, decision_time, provenance_verifier, consent_verifier, opaque_ingress_context=None) -> ValidationResultV1`
+- `decision_time` = **주입 UTC aware datetime**(naive/비UTC → TypeError — 호출자 계약 위반·envelope 코드 아님).
+- 반환 `ValidationResultV1(status, primary_reason_code, reason_codes, provenance_status, consent_status, retention_class)` — 전 필드 category/enum만. `status ∈ {rejected, accepted_for_eligibility_review}` · verifier status 미도달 = `not_evaluated` · 예외/비정상 verdict의 기록 category = `ERROR`. 입력 식별자/해시/필드명·값/예외문/opaque context **미반환·미보존**. 모든 코드는 `commerce_evidence_code()` guard 경유. 내부 예상외 예외 → `cannot_determine` reject(문구 0).
+- **게이트 순서와 코드(§5.1 gates 1~8 + §4.1/§4.2/§4.4/§8 자구):**
+
+| G | 검사(순서 고정) | 실패 코드 |
+|---|---|---|
+| 1 | envelope mapping? → schema_version 자구 → lineage.normalizer_version 자구(§5.2 "missing/wrong … normalizer version") → source.environment(local\|shadow·§5.2 "missing/wrong/non-local/non-shadow") → evidence_id str+RE → evidence_type enum → occurred_at 형식+Gregorian+`> decision_time` 금지(동등 허용) → **base scalar 타입 sweep**(전 leaf = str\|bool\|None·컨테이너 dict/list·str 키 — 수치/기타 타입 금지 §4.1 "no coercion") | invalid_normalization / unsupported_schema_version / environment_not_allowed / invalid_normalization |
+| 2 | **재귀 raw/PII 스캔 먼저**(키 카테고리 전 깊이 + 값 패턴·공유 gate 패턴 재사용+§4.5 C 확장 키) → privacy group mapping·`raw_text_stored is False`·`contains_pii is False`(bool 리터럴·비bool 포함 위반) → **extra/unknown key 거부**(top+7그룹·※결측 키는 소비 게이트에서 field-specific) | raw_text_or_pii_present → privacy_scope_exceeded |
+| 3 | actor mapping·4키 존재·subject_ref str+`subject_identity.validate_subject_ref`(validate-not-mint 재사용)·anonymous_ref `is None`·identity_state=="identified"·link bool 타입 → 전부 후 `link is True` | invalid_identity_xor → identity_link_forbidden |
+| 4 | source.service=="cosmile"·source_event_id/idempotency_key 존재+str+RE·**idempotency 재계산 일치**(WU1 `evidence_idempotency_key`)·lineage.source_hash 존재+str+RE·**source-hash 재계산 일치**(WU1 `recompute_envelope_source_hash`) → **provenance verifier**: `VERIFIED`+양 바인딩 true만 통과(예외/비정상 반환/바인딩 결손 포함 전부 실패·**consent 미호출**) | provenance_untrusted |
+| 5 | consent mapping → purpose(결측→consent_missing·불일치→privacy_scope_exceeded) → notice(동일) → state(revoked→consent_revoked·expired→consent_expired·granted 외→consent_missing) → captured_at 형식+Gregorian+`> occurred_at` 금지(**동등 허용** — IR-C-N4) → **consent verifier**: GRANTED만 통과·REVOKED/EXPIRED/MISMATCH→각 코드·그 외 전부(UNCONFIGURED/ERROR/예외/비정상)→consent_missing | consent_missing / consent_revoked / consent_expired / privacy_scope_exceeded |
+| 6 | purchase mapping(결측→missing_purchase_item_ref) → purchase_item_ref str+비공백+RE → product_ref str+비공백(무정규식) → sku_ref 키존재·str\|None·빈문자 금지 → purchase_state=="paid" | missing_purchase_item_ref / missing_product_ref / invalid_normalization |
+| 7 | feedback mapping·4키 존재 → 토큰 유효성(각 필드 null\|enum·certainty null\|"reported") → type 조건: retraction=4필드 전부 null·비retraction=최소 1축 → **§4.4 조합표**: adverse null⇒sev/cert null · adverse 비null⇒cert=="reported" · skin/other⇒sev 비null · usage_safety⇒sev null | invalid_normalization → adverse_fields_inconsistent |
+| 8 | retention_class enum → 기대 class 도출(skin/other adverse=adverse_regulatory_hold·그 외=feedback_non_adverse_90d) 불일치→privacy_scope_exceeded → **adverse hold: 정책 UNCONFIGURED 고정 → 전체 envelope 차단**(privacy_scope_exceeded — IR-C-N1·기간/관할/역할/예외 발명 0) → 비adverse: `occurred_at+90d <= decision_time` → retention_expired(경계=만료) | privacy_scope_exceeded / retention_expired |
+
+- **WU2가 방출 가능한 코드 = 15 stateless + `cannot_determine`(내부 예외 collapse)뿐.** `duplicate_evidence`/`lineage_broken`/`evidence_retracted` = WU3(게이트 9~11)·**미방출**. lineage 필드 **값** 규칙(root/supersedes/retracts 형식·관계) = 게이트 10(WU3) 소관 — WU2는 lineage에 대해 키 정확성(G2)·normalizer(G1)·source_hash(G4)만 판정.
+
+### 9.3 해석 노트 (설계 자구 근거 명시 — 발명 아님·검수 공격 지점으로 공개)
+1. **source 그룹 결측/비mapping** → G1 environment 검사가 먼저 실패 → `environment_not_allowed` (§5.2 트리거 자구 "missing/wrong/non-local/non-shadow environment"). §4.1 표의 source→provenance_untrusted는 G4 문맥(무결성/형식)에서 적용.
+2. **lineage 그룹 결측/비mapping** → G1 normalizer 검사 실패 → `unsupported_schema_version` (§5.2 트리거 자구 "missing/wrong schema version **or normalizer version**"). §4.1의 lineage→lineage_broken은 G10(WU3)에서 정련.
+3. **retraction + 비null feedback** → `invalid_normalization` (producer normalizer는 retraction에서 4필드 전부 null을 방출 — 비null = 유효 normalizer 출력 아님·§5.2 invalid_normalization 계열).
+4. **수치 등 비계약 leaf 타입** → G1 base-scalar sweep에서 `invalid_normalization` (§5.1 G1 "base scalar types"·§4.1 "Booleans are not accepted as integers"·계약에 수치 필드 0).
+
+### 9.4 WU2 계약-코드-테스트 매핑 (공백 셀 0)
+| 계약 항목 | 코드 착지 | 테스트 |
+|---|---|---|
+| §6.1 provenance seam/verdict/기본 UNCONFIGURED | verifiers.ProvenanceVerdict/…Verifier/Unconfigured… | test_…verifiers::TestProvenance* |
+| §6.2 consent seam/verdict/기본 UNCONFIGURED | verifiers.ConsentVerdict/…ConsentVerifier/Unconfigured… | test_…verifiers::TestConsent* |
+| verdict 불변·진단 필드 부재·opaque context identity 통과 | NamedTuple 구조 + validator 전달부 | test_…verifiers::TestVerdictShape · test_…validator::TestOpaqueContext |
+| §5.1 G1~G8 첫 실패 순서 | validator._GATES 순차 | test_…validator::TestGatePrecedence (다결함 행렬) |
+| 15 stateless 코드 positive+인접 negative | 각 게이트 분기 | test_…validator::TestCode_* (코드별 클래스) |
+| 기본 verifier = 전건 거부 | Unconfigured 기본값 경로 | test_…validator::TestDefaultsRejectEverything |
+| verifier 예외/비정상 반환/바인딩 결손 fail-closed | G4/G5 try/except+shape 검사 | test_…validator::TestVerifierFailClosed |
+| provenance 실패 시 consent 미호출 | 첫 실패 단락 | 동상(호출 기록 fake) |
+| 해시 재계산(무결성≠인증) | G4에서 WU1 hash_v1 재사용(재타이핑 0) | test_…validator::TestCode_provenance_untrusted |
+| subject validate-not-mint 재사용 | G3에서 subject_identity.validate_subject_ref | test_…validator::TestCode_invalid_identity_xor |
+| bool≠int·no coercion | G1 sweep·G2 privacy·G3 link 리터럴 검사 | test_…validator::TestTypeStrictness |
+| captured_at==occurred_at 경계 허용(IR-C-N4) | G5 강한 부등호 | test_…validator::TestConsentTimeBoundary |
+| 90d 경계=만료 | G8 `<=` | test_…validator::TestCode_retention_expired |
+| adverse UNCONFIGURED 전면 차단(IR-C-N1) | G8 상수 고정 | test_…validator::TestAdverseUnconfiguredBlocks |
+| category-only·무echo | ValidationResultV1 + repr 검사 | test_…validator::TestNoEcho |
+| 상태 0/입력 불변/결정론 | 순수 함수·사본 없는 read-only 접근 | test_…validator::TestPurity |
+
+### 9.5 WU2 경계
+게이트 0(flag)·9~11(replay/lineage/commit)·ledger·lineage 상태·candidate·service 응답·audit·metrics·endpoint/transport/DB/durable storage/runtime importer **0** — WU3~WU5 소관·별도 handoff 필요. adverse 정책은 **UNCONFIGURED 상수로만** 존재(설정 경로 없음).
