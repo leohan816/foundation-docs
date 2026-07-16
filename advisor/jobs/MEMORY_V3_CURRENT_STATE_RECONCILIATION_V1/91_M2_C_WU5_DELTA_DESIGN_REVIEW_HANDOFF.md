@@ -145,4 +145,3 @@ FAIL
 If `NEEDS_PATCH`, give bounded finding IDs and exact artifact paths/sections; do not
 patch. Record the actual live model and effort from the runtime. Return the compact
 pointer to `foundation-advisor` and STOP.
-
