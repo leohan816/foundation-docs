@@ -1,7 +1,7 @@
 # FOUNDATION_COMMERCE_EVIDENCE_SHADOW_설계서 — commerce_evidence C Shadow 모듈 정본
 
-> **버전 v0.2 · 2026-07-16 · WU2(C-VERIFIER-VALIDATOR) 반영.**
-> **변경이력:** v0.1 (2026-07-16) — WU1 계약 동결: v1 envelope 순수 데이터 계약 · 18 reason code 전용 불변 세트 · byte-호환 idempotency/source-hash 헬퍼 · 합성 golden fixture · WU1 전용 테스트. · v0.1.1 (2026-07-16) — authority 문구 정정(behavior 변경 0): WU2~WU7은 Founder 승인(`c96caef`) 범위이나 reviewed dependency/review gate + 별도 exact Advisor handoff 하에서만 진행(자동 전이 없음·WU1에서 미구현/미착수) · **WU8만 NOT_AUTHORIZED·개시 금지**. · v0.2 (2026-07-16) — WU2 구현(§9): fail-closed verifier 프로토콜/기본값(`verifiers.py`) + 순수 주입시계 validator 게이트 1~8(`validator.py`) + WU2 전용 테스트 2파일. Advisor gate PASS(`64_`·WU1 evidence `f5c66a8`) 후 별도 handoff(`65_`)로 착수. 게이트 0·9~11/ledger/lineage 상태/candidate/service/flag = WU3~ 미착수.
+> **버전 v0.3 · 2026-07-16 · WU3(C-EPHEMERAL-LEDGER) 반영.**
+> **변경이력:** v0.1 (2026-07-16) — WU1 계약 동결: v1 envelope 순수 데이터 계약 · 18 reason code 전용 불변 세트 · byte-호환 idempotency/source-hash 헬퍼 · 합성 golden fixture · WU1 전용 테스트. · v0.1.1 (2026-07-16) — authority 문구 정정(behavior 변경 0): WU2~WU7은 Founder 승인(`c96caef`) 범위이나 reviewed dependency/review gate + 별도 exact Advisor handoff 하에서만 진행(자동 전이 없음·WU1에서 미구현/미착수) · **WU8만 NOT_AUTHORIZED·개시 금지**. · v0.2 (2026-07-16) — WU2 구현(§9): fail-closed verifier 프로토콜/기본값(`verifiers.py`) + 순수 주입시계 validator 게이트 1~8(`validator.py`) + WU2 전용 테스트 2파일. Advisor gate PASS(`64_`·WU1 evidence `f5c66a8`) 후 별도 handoff(`65_`)로 착수. · v0.3 (2026-07-16) — WU3 구현(§10): 순수 lineage 규칙(`lineage.py`) + 1-프로세스 in-memory `RLock` ephemeral 참조 ledger 게이트 9~11(`ledger.py`·replay/idempotency/collision/lineage-race/atomic-commit/COW rollback/commit_guard seam) + WU3 전용 테스트 2파일. Advisor gate PASS(`71_`·WU2 evidence `6632261`) 후 별도 handoff(`72_`)로 착수. candidate DTO(§10 mapping)/service/audit/flag/durable = WU4~ 미착수 · **1-프로세스 ephemeral 전용·restart/multi-process/durable 주장 0**.
 > **본 문서는 이미 독립 검수된 C 설계를 모듈 정본으로 성문화한 것이다 — 새 정책/아키텍처/행동/범위/권한 발명 0.**
 
 ## 0. 정본 앵커 (전부 foundation-docs · 원문이 우선)
@@ -190,3 +190,59 @@ WU1 산출물은 **어떤 runtime도 import하지 않는 additive 파일들**이
 
 ### 9.5 WU2 경계
 게이트 0(flag)·9~11(replay/lineage/commit)·ledger·lineage 상태·candidate·service 응답·audit·metrics·endpoint/transport/DB/durable storage/runtime importer **0** — WU3~WU5 소관·별도 handoff 필요. adverse 정책은 **UNCONFIGURED 상수로만** 존재(설정 경로 없음).
+
+## 10. WU3 — 순수 lineage 규칙 + 1-프로세스 ephemeral RLock ledger 게이트 9~11 (reviewed design §5.1·§7·§9 착지)
+
+### 10.1 입력/출력 경계 (§4.1·§4.2)
+- WU3는 **WU2-검증된 합성 envelope + WU2 category status(provenance_status·consent_status) + 주입 `commit_guard`** 만 받는다. WU2 verifier를 호출하지 않고·입력을 정규화하지 않고·게이트 1~8을 재실행하지 않는다.
+- 반환 = 좁은 내부 `LedgerResultV1` (미래 `CommerceEvidenceDecisionV1` service 응답 아님). **Foundation 발행 `decision_id`/`lineage_pointer`만 반환 가능** — producer evidence/source-event/idempotency/actor/purchase/product/SKU/consent/hash **값 미반환**. 나머지는 category/count.
+
+### 10.2 `lineage.py` — 순수 규칙 (불변·category-only·전역상태 0·persistence 0)
+`plan_lineage(evidence, snapshot) -> LineagePlan` — envelope의 lineage/identity 필드 + read-only lineage snapshot(해당 (service, purchase_item)의 root/current_leaf/tombstone/identity)를 받아 계획만 산출(effect 미적용).
+| type | 규칙(§9.1·handoff §5) | 성공 effect | 실패 코드 |
+|---|---|---|---|
+| purchase_feedback(root) | root_evidence_id==evidence_id · supersedes/retracts None · 동일 (service, purchase_item)에 active root 없음 · **tombstone된 purchase → evidence_retracted** · 그 외 불일치 → lineage_broken | new_root(현 leaf=self) | evidence_retracted / lineage_broken |
+| correction | root 존재·비tombstone · root_evidence_id=그 root · supersedes==현 current_leaf · retracts None · subject/purchase_item/product/**sku(양쪽 non-null 시 일치·null↔non-null 전이 금지)** ==root · target에 successor 없음 | advance_leaf(+predecessor superseded) | lineage_broken (tombstone 시 evidence_retracted 우선) |
+| retraction | root 존재·비tombstone · root_evidence_id=그 root · retracts==현 current_leaf · supersedes None · identity==root · target successor 없음 | tombstone_root(+eligibility revoked·lifecycle blocked·**slot 0**) | lineage_broken (이미 tombstone/retracted 시 evidence_retracted 우선) |
+- parent/root 미도착 = lineage_broken(buffer/추론 금지). 도착순서가 승자 결정 안 함 — lock+current-leaf가 결정.
+
+### 10.3 `ledger.py` — 게이트 9~11 (인스턴스-scoped `threading.RLock` 1개·module/global mutable ledger 0)
+`submit(evidence, provenance_status, consent_status, requested_slots, commit_guard, *, decision_id_factory=uuid4hex, lineage_pointer_factory=uuid4hex) -> LedgerResultV1`. 파일/SQLite/DB/Docker/network/env/provider/secret/clock/`SharedMemoryStore` **0**.
+- **Gate 9 replay/collision(§7.1·§7.2)**: primary identity `(service, source_event_id)`. 6 uniqueness: (1)source-event (2)(service,evidence_id) (3)(service,idempotency_key) (4)(service,target_evidence_id) correction/retraction 공통 (5)(service,evidence_id,slot∈{outcome,adverse}) (6)(service,root_evidence_id) tombstone 1개+동일 source/purchase lineage replay block. fingerprint(§6 자구): `"sha256:"+sha256(UTF8(json.dumps({"envelope":validated_envelope,"provenance_status":cat,"consent_status":cat}, sort_keys=True, separators=(",",":"), ensure_ascii=True))).hexdigest()`. 커밋된 primary + fingerprint 일치 = **exact_replay**(저장 decision_id/lineage_pointer 반환·replayed=True·mutable lineage 미실행·신규 effect 0). **★exact_replay의 effective_eligibility는 receipt-time 저장값이 아니라 현재 유효 lineage category를 반환한다**(§5.1·§7.2 — 이후 retraction으로 revoke되면 replay도 revoked 보고). fingerprint 불일치 또는 신규 primary가 evidence_id/idempotency_key 재사용 = **duplicate_evidence**(state 0). source_hash 일치만으로 replay/인증 아님.
+- **Gate 10 lineage(§7.4 races)**: 같은 lock 아래 `plan_lineage` 적용. 경합: 2 correction→first 승·loser lineage_broken / correction 후 old-target retraction→loser lineage_broken / retraction 후 correction→loser evidence_retracted / 2 retraction→first 승·later evidence_retracted / 커밋된 event 정확 재시도→exact_replay(zero new effects).
+- **★slot 요청 fail-closed 검증(§4.2)**: requested_slots는 commit 전 검증한다 — 미지 category·중복은 **silent filter/double-count 금지**로 cannot_determine(state 0)·retraction(creates_slots False)에 slot 요청이 있으면 모순 → cannot_determine. 통과 시에만 검증된 tuple을 예약(created_slots == 실제 예약 수).
+- **Gate 11 atomic commit(§7.3)**: 같은 lock 아래 ① `commit_guard()` 재확인(정확히 True만 진행·False/예외/비-bool → **cannot_determine·state 0·slot 0**·기본/미설정 guard는 block) ② 전 uniqueness/lineage 재확인 ③ decision_id/lineage_pointer 할당(root당 pointer 1개·correction/retraction은 root pointer 재사용·producer 값에서 파생 금지·주입 factory 기본 `uuid.uuid4().hex`·형식 `^fcei_dec_v1_[0-9a-f]{32}$`/`^fcei_lin_v1_[0-9a-f]{32}$`) ④ receipt/node 1개 append ⑤ generic slot 예약 또는 lifecycle category만 append ⑥ **all-or-none**. 구현 = **copy-on-write**(신규 인덱스 사본을 만들고 마지막에 원자적 rebind) → 각 mutation 경계(`COMMIT_BOUNDARIES`)의 주입 실패가 receipt/index/root/leaf/tombstone/slot/effect count를 **불변**으로 남김. 예상외 예외 → cannot_determine(문구 0·partial state 0).
+- **kill-switch seam(§4.3)**: WU5가 feature flag 소유 — WU3는 flag import/수정 0. 대신 side-effect-free 주입 `commit_guard()`를 lock 아래 commit 직전 호출. 허용적 기본값 금지(기본/미설정 = block).
+
+### 10.4 `LedgerResultV1` (category-only)
+`status`(accepted|rejected|exact_replay) · `primary_reason_code`(str|None·전용 guard 경유) · `reason_codes`(()|(code,)) · `decision_id`(Foundation 발행|None) · `lineage_pointer`(Foundation 발행|None) · `effective_eligibility`(not_evaluated|eligible|ineligible|revoked|expired) · `replayed`(bool) · `created_slots`(0|1|2) · `slot_state`(not_created|reserved|superseded|blocked). producer 식별자/hash/payload **미포함**.
+
+### 10.5 inspection/cleanup 경계 (§7)
+low-cardinality category/count만 노출(receipt/slot/tombstone count·eligibility category tuple — **식별자-keyed map/payload 미노출**). `clear()`/신규 인스턴스 = in-memory state 전소거(restart/rollback 의미 증명용) — **restart-safe/multi-process/file/durable 주장 0**. adverse 보존기간/production cleanup 정책 발명 0.
+
+### 10.6 WU3 계약-코드-테스트 매핑 (공백 셀 0)
+| 계약 항목 | 코드 착지 | 테스트 |
+|---|---|---|
+| §9.1 root/correction/retraction 규칙 | lineage.plan_lineage | test_…lineage::TestRoot/TestCorrection/TestRetraction |
+| out-of-order/wrong-root/wrong-current-leaf | lineage.plan_lineage 분기 | test_…lineage::TestOutOfOrder/TestWrongRoot/TestWrongLeaf |
+| subject/purchase/product/SKU cross-root mismatch·no re-key | lineage identity 일치 검사(sku null↔non-null 금지) | test_…lineage::TestIdentityImmutable |
+| tombstone 우선·no resurrection | lineage evidence_retracted 우선 | test_…lineage::TestTombstoneWins |
+| §7.1 6 uniqueness | ledger Gate 9 인덱스 | test_…ledger::TestUniqueness |
+| §7.2 exact replay(same IDs·zero effect) | ledger fingerprint 일치 경로 | test_…ledger::TestExactReplay |
+| duplicate/collision | ledger duplicate_evidence | test_…ledger::TestCollision |
+| target successor uniqueness | ledger uniqueness 4 | test_…ledger::TestSuccessorUnique |
+| slot 예약 uniqueness(outcome|adverse·DTO 아님) | ledger uniqueness 5 | test_…ledger::TestSlotUnique |
+| correction/retraction lifecycle category·retraction slot 0 | ledger commit effect | test_…ledger::TestLifecycle |
+| §7.4 races(barrier·반복 결정론 스케줄: mutated-collision·correction↔retraction 양 순서·2 retraction·slot retry·guard-off) | ledger RLock+COW | test_…ledger::TestSection74Races |
+| 100+ replay·thread race → 1 commit/slot | ledger 원자성 | test_…ledger::TestConcurrencyRaces |
+| exact_replay = 현재 유효 eligibility(retraction 후 revoked) | ledger Gate 9 현재 lineage 조회 | test_…ledger::TestExactReplay(replay_after_retraction) |
+| slot 요청 fail-closed(미지 category·중복·retraction 요청 → state 0) | ledger slot 검증 | test_…ledger::TestSlotRequestValidation |
+| commit_guard OFF/exception/non-bool → state 0 | ledger Gate 11 ① | test_…ledger::TestCommitGuard |
+| 각 mutation 경계 주입 실패 → 전 state rollback | ledger COW+probe | test_…ledger::TestRollback |
+| instance isolation·clear()·no durability | ledger 인스턴스-scoped + clear | test_…ledger::TestInstanceIsolation |
+| repr/snapshot에 producer id/hash/payload/예외문 0 | LedgerResultV1 + snapshot | test_…ledger::TestNoEcho |
+| file/DB/network/env/provider/secret/store/API/flag/candidate/service import 0 | 모듈 import 표면 | test_…ledger::TestContainment (AST) |
+| fingerprint 자구(§6) | ledger._fingerprint | test_…ledger::TestFingerprint |
+
+### 10.7 WU3 경계
+candidate DTO(§10.1 mapping·furef/MemoryCandidate/approval/reuse/store write)·service 응답(§11)·audit/metrics·feature flag(§0 gate)·endpoint/transport/DB/durable storage/runtime importer **0** — WU4~WU5 소관. **1-프로세스 ephemeral 전용**: restart/multi-process/file/durable **주장 0**. rollback = additive `ledger.py`/`lineage.py`/테스트 2파일 제거(runtime importer 0·history rewrite 없음).
