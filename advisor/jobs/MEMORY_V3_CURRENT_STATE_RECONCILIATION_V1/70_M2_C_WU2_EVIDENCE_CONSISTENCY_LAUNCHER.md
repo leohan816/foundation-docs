@@ -1,0 +1,27 @@
+========
+TARGET_ACTOR: foundation Worker
+TARGET_ACTOR_ID: foundation
+TARGET_SESSION_NAME: foundation
+TARGET_WINDOW_ID: @3
+TARGET_PANE_ID: %3
+ROLE_MODE: WU2_EVIDENCE_CONSISTENCY_ONLY
+ACTUAL_MODEL: Opus 4.8 live safeguard runtime; verify live
+MODEL_EFFORT: max; verify live
+REQUIRED_SKILL: /fable-builder
+MISSION_ID: MEMORY_V3_CURRENT_STATE_RECONCILIATION_V1
+WORK_UNIT_ID: M2-C-WU2-EVIDENCE-CONSISTENCY-CORRECTION-001
+PRODUCT_HEAD: c42c69b42fed3428f3d15b834b193bb8c79c7ef5
+READ_AND_EXECUTE: /home/leo/Project/.worktrees/foundation-docs/FOUNDATION_TEAM_ROLE_ALIGNMENT_20260714/advisor/jobs/MEMORY_V3_CURRENT_STATE_RECONCILIATION_V1/69_M2_C_WU2_EVIDENCE_CONSISTENCY_HANDOFF.md
+RETURN_TO: foundation-advisor
+PRODUCT_WRITE: forbidden
+FOUNDATION_DOCS_WRITE: exact WU2 result + pointer only
+FOUNDATION_DOCS_STAGE_COMMIT_PUSH: forbidden
+DO_NOT_EXECUTE_FROM_MEMORY: true
+DO_NOT_BROADEN_SCOPE: true
+NO_NEW_AGENT_OR_SUBAGENT: true
+WORK_UNIT_3_TO_8: forbidden
+STOP_AFTER_RETURN: true
+
+Open READ_AND_EXECUTE directly, correct only the stale contradictory WU2 evidence
+prose, return the compact pointer to foundation-advisor, and STOP.
+========
