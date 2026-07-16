@@ -55,7 +55,7 @@ The patched design SHA-256 is:
    content; only its first `accepted` result binds DTOs. An unexpected post-ledger
    failure poisons the service-health latch and blocks the instance without clearing
    unrelated prior ledger state.
-5. The current shared-memory gate receives only the exact seven-key temporary policy
+5. The current shared-memory gate receives only the exact eight-key temporary policy
    projection plus same-subject/empty-state contexts. It receives no `furef_v2`,
    `retention_policy`, product/SKU/IDs, stored gate decision, or write target.
    Outcome must return `allow/[allow_shadow_write]` as read-only evidence; usage-
