@@ -562,12 +562,14 @@ One ledger transaction then:
    lineage pointer;
 6. appends the evidence decision node;
 7. appends candidate draft slots or lifecycle revocation/supersession effects;
-8. appends a minimized audit event;
-9. commits all or none.
+8. commits those ledger effects all or none.
 
 No verifier, network, provider, file, environment lookup, or existing memory store is
-called inside the transaction. An exception rolls back every item. No response says
-accepted or created until commit succeeds.
+called inside the transaction. A WU3 exception rolls back every WU3 ledger item. After
+WU3 returns, minimized audit and metrics occur outside that transaction. Success or
+replay is not released until both sinks return literal `True`; a post-accepted/replay
+sink failure poisons the service without clearing or rolling back prior ledger state.
+A rejection sink failure leaves the rejection unchanged.
 
 The proposed reference driver uses one `threading.RLock` around this operation and is
 valid only for one-process local/ephemeral shadow tests. It does not claim
@@ -1039,7 +1041,7 @@ This is a return object from a future in-process method, not a transport schema.
 CommerceEvidenceDecisionV1
   contract_version: "foundation.commerce_evidence_decision.v1"
   status: disabled | rejected | accepted_for_eligibility_review | exact_replay
-  decision_id: Foundation opaque ID or null only when disabled before parsing
+  decision_id: Foundation opaque ID or null only when flag-disabled, already-poisoned, or decision-ID-factory-failure
   primary_reason_code: one safe code or null
   reason_codes: [] or [primary_reason_code]
   lineage_pointer: Foundation opaque pointer or null
@@ -1429,6 +1431,7 @@ never a copied value. Values are non-negative integers only.
 | `foundation/feature_flags.py` | exact four names in 11.6: shadow false plus hard-off live/intake/candidate-runtime | default OFF; no setter or environment activation |
 | `foundation/shared_memory/tests/test_commerce_evidence_*.py` | all test categories in section 13 | synthetic only |
 | `foundation/shared_memory/tests/fixtures/commerce_evidence_v1_golden.json` | reviewed synthetic cross-language hash fixture | no real identifier/PII/secret |
+| `foundation/shared_memory/tests/fixtures/commerce_evidence_service_v1_cases.json` | WU6 synthetic service/audit/containment cases only | no real identifier, PII, secret, provider, network, DB, or runtime activation |
 
 No modification to `foundation/shared_memory/api.py` is proposed for the bounded
 shadow code. In particular, `ingest_event_signal` is not overloaded because it:
