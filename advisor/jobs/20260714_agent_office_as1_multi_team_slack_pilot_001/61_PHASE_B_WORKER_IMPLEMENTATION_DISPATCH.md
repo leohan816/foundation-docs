@@ -12,7 +12,8 @@ STATUS: `DISPATCH_READY`
 - CLI version: `2.1.207`
 - Authentication: Claude Max account, authenticated
 - Model: `claude-opus-4-8` (direct `/status` evidence)
-- Effort/mode: `ultracode` (direct live UI evidence)
+- Mode: `ultracode` (direct live UI evidence)
+- Effort: `xhigh` (direct post-clear startup evidence)
 - Session workspace: `/home/leo/Project/agent-office`
 - Mission worktree: `/home/leo/Project/.worktrees/agent-office/AGENT_OFFICE_AS1_PHASE_B_LIVE_PILOT_001`
 - Product branch: `feature/as1-phase-b-live-pilot-001`

@@ -35,13 +35,13 @@ before editing. Historical evidence is not current authority.
 - `CONTEXT_REQUIREMENT`: reviewed Phase A modules plus exact Phase B delta
 - `SELECTED_MODEL`: Opus 4.8
 - `SELECTED_MODE`: Ultracode
-- `SELECTED_EFFORT`: Ultracode
+- `SELECTED_EFFORT`: xhigh
 - `REQUIRED_SKILL`: `/fable-builder`
 - `WHY_NOT_LOWER`: exact identity, one-use authority, pinned-byte tmux delivery,
-  pidfd lifecycle, and secret boundaries require the approved high-capability
-  implementation profile
-- `WHY_NOT_HIGHER`: Ultracode is the approved sufficient Worker profile; no
-  stronger profile is needed for this bounded implementation
+  pidfd lifecycle, and secret boundaries require xhigh reasoning with the
+  approved Ultracode implementation mode
+- `WHY_NOT_HIGHER`: xhigh is sufficient inside the Ultracode implementation
+  mode; max is not justified before a demonstrated capability limitation
 - `ESCALATION_TRIGGER`: return `CAPABILITY_INSUFFICIENT` only for a demonstrated
   model capability limit; routine code/test/tool failures stay with this Worker
 
