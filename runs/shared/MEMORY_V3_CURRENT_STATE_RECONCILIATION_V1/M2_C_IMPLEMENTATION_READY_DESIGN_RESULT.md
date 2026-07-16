@@ -1063,11 +1063,13 @@ wrong beyond its category code.
 or applied. When the accepted event is a retraction, `created_count=0` and effective
 eligibility is `revoked`.
 
-After the flag and base mapping-type check, every evaluation receives one decision
-ID that is stable for that response and its category audit. A committed exact replay
-returns the first writer's stored decision ID. Pre-commit rejection IDs are not
-derived from, or reserved against, untrusted producer identifiers. A disabled call
-returns null and does not inspect the envelope.
+Every flag-enabled, healthy evaluation first attempts one Foundation decision ID;
+that ID is stable for its response and category audit and is passed into WU3 for a
+first commit. A committed exact replay returns the first writer's stored decision ID
+and discards the retry's unused Foundation ID. Pre-commit rejection IDs are not
+derived from, or reserved against, untrusted producer identifiers. `decision_id` is
+null only for flag-disabled, already-poisoned, or decision-ID-factory-failure paths,
+all of which inspect no envelope. A disabled call returns null and does not parse.
 
 ### 11.2 Minimized decision audit
 
@@ -1087,11 +1089,14 @@ consent/hash/credential identifier, offending field name/value, verifier diagnos
 candidate ID, natural-language note, and exception string/stack containing input.
 Unexpected exceptions record only `cannot_determine` plus code location/version.
 
-Accepted/control audit append is part of the ledger transaction. A pre-commit
-rejection writes only the allowlisted category record to the volatile audit sink.
-If that minimized rejection-audit append fails, the request remains rejected with
-its already selected safe code; audit failure can never turn it into acceptance and
-no exception text is returned.
+The landed WU3 ledger has no audit callback, so accepted/replay audit append is
+**not** ledger-transactional and this design claims no such rollback. WU5 appends the
+minimized audit only after WU3 returns. A success/replay response is released only
+after that append and its metric emission succeed; otherwise the service is poisoned
+as specified in section 11.7. A pre-commit or WU3 rejection writes only the
+allowlisted category record to the volatile audit sink. If that rejection-audit
+append fails, the request remains rejected with its already selected safe code;
+audit failure can never turn it into acceptance and no exception text is returned.
 
 Non-adverse decision/replay metadata has the non-production 180-day logical maximum
 from `occurred_at`; the in-memory driver may discard it earlier. Rejected adverse
@@ -1113,6 +1118,296 @@ No metric label contains any identifier, hash, product, subject, candidate, cons
 row, or exception. Thresholds and alert destinations are operational policy outside
 C; zero-write/promotion invariants are hard review failures.
 
+### 11.4 Exact Python 3.7 WU5 types and constructors
+
+`service.py` uses `typing.NamedTuple`, `Optional`, and `Tuple`; it uses no dataclass,
+Protocol, Pydantic, dynamic model, or Python-3.8-only syntax. Field order is contract
+order:
+
+```text
+DECISION_CONTRACT_VERSION = "foundation.commerce_evidence_decision.v1"
+
+CandidateOutcomeV1(NamedTuple)
+  created_count: int
+  state: str
+
+CommerceEvidenceDecisionV1(NamedTuple)
+  contract_version: str
+  status: str
+  decision_id: Optional[str]
+  primary_reason_code: Optional[str]
+  reason_codes: Tuple[str, ...]
+  lineage_pointer: Optional[str]
+  effective_eligibility: str
+  candidate_outcome: CandidateOutcomeV1
+  replayed: bool
+  applied_to_real_user: bool
+  write_live: bool
+  promotion_performed: bool
+```
+
+The only valid status values are `disabled`, `rejected`,
+`accepted_for_eligibility_review`, and `exact_replay`. Candidate state is one of
+`not_created`, `review_required`, `blocked`, or `superseded`; WU5 never emits
+`superseded` for the new correction node because its newly adopted drafts are
+`review_required`. The private constructor is exact:
+
+```text
+_decision_v1(*, status: str, decision_id: Optional[str],
+             primary_reason_code: Optional[str],
+             lineage_pointer: Optional[str], effective_eligibility: str,
+             created_count: int, candidate_state: str,
+             replayed: bool) -> CommerceEvidenceDecisionV1
+```
+
+It guards every reason through shared `reason_codes.code`, requires reason arrays to
+be `()` or the one guarded primary value, stamps the contract version and all three
+runtime invariants, and returns the fixed rejected/`cannot_determine` shape if a
+combination is invalid. It never accepts arbitrary response fields.
+
+`audit.py` defines only category/minimization types and volatile sinks:
+
+```text
+AUDIT_CONTRACT_VERSION = "foundation.commerce_evidence_audit.v1"
+
+SafeEnvelopeCategoriesV1(NamedTuple)
+  schema_version: Optional[str]
+  source_service: Optional[str]
+  environment: Optional[str]
+  evidence_type: Optional[str]
+
+CommerceEvidenceAuditV1(NamedTuple)
+  decision_id: str
+  audit_time: str
+  contract_version: str
+  schema_version: Optional[str]
+  source_service: Optional[str]
+  environment: Optional[str]
+  evidence_type: Optional[str]
+  status: str
+  primary_reason_code: Optional[str]
+  provenance_verdict_category: str
+  consent_verdict_category: str
+  retention_class: Optional[str]
+  lineage_action_category: str
+  candidate_kind_categories: Tuple[str, ...]
+  candidate_created_count: int
+  effective_eligibility: str
+  feature_flag_state: str
+  applied_to_real_user: bool
+  write_live: bool
+  promotion_performed: bool
+
+CommerceEvidenceMetricV1(NamedTuple)
+  name: str
+  labels: Tuple[Tuple[str, str], ...]
+  value: int
+```
+
+`audit_time` is the injected decision time rendered as exact UTC millisecond
+`YYYY-MM-DDTHH:mm:ss.sssZ`. Safe envelope categories are populated only when the
+value exactly belongs to the v1 enum/literal set; malformed, absent, or unparsed
+values become null rather than being copied. The private constructors are:
+
+```text
+safe_envelope_categories_v1(envelope: object) -> SafeEnvelopeCategoriesV1
+build_audit_v1(*, decision_id: str, audit_time: str,
+               categories: SafeEnvelopeCategoriesV1,
+               status: str, primary_reason_code: Optional[str],
+               provenance_category: str, consent_category: str,
+               retention_class: Optional[str], lineage_action: str,
+               candidate_kinds: Tuple[str, ...], candidate_count: int,
+               effective_eligibility: str,
+               feature_flag_state: str) -> CommerceEvidenceAuditV1
+build_metrics_v1(*, decision: CommerceEvidenceDecisionV1,
+                 audit: CommerceEvidenceAuditV1)
+                 -> Tuple[CommerceEvidenceMetricV1, ...]
+```
+
+Only the fields above can enter the constructors. Invalid enums/counts/reasons,
+unexpected objects, or exceptions produce no record and no diagnostic text.
+`CommerceEvidenceAuditSink.append(record) -> bool` and
+`CommerceEvidenceMetricsSink.emit_many(records) -> bool` are narrow base-class
+seams. `InMemoryCommerceEvidenceAuditSink` and
+`InMemoryCommerceEvidenceMetricsSink` are the defaults; each is instance-scoped,
+`RLock`-protected, stores only the declared immutable records/counters, returns
+literal `True` on success, and performs no file/DB/env/network/provider action.
+Non-boolean or truthy non-`True` sink results are failures.
+
+The service surface is one unimported in-process class:
+
+```text
+CommerceEvidenceShadowService(
+  *, ledger=None, clock=None, provenance_verifier=None,
+  consent_verifier=None, decision_id_factory=None,
+  candidate_id_factory=None, evidence_ref_factory=None,
+  lineage_pointer_factory=None, current_gate=None,
+  audit_sink=None, metrics_sink=None, flag_reader=None
+)
+
+.evaluate(envelope: object, *, opaque_ingress_context=None)
+  -> CommerceEvidenceDecisionV1
+```
+
+There is no module singleton, route, endpoint, consumer, sender, background thread,
+environment loader, or import from the existing shared-memory API.
+
+### 11.5 Exact injected dependencies and local defaults
+
+| Injection | Exact default | Failure behavior / boundary |
+|---|---|---|
+| `ledger` | new `EphemeralLedger()` per service instance | wrong interface is a static constructor `TypeError`; no global state |
+| `clock` | local `_utc_now()` → aware UTC `datetime.now(timezone.utc)` | invalid/naive/non-UTC/exception → rejected `cannot_determine`; no audit without valid time |
+| `provenance_verifier` | new `UnconfiguredProvenanceVerifier()` | accepts zero; verdict exception handled by WU2 |
+| `consent_verifier` | new `UnconfiguredConsentVerifier()` | accepts zero; verdict exception handled by WU2 |
+| `opaque_ingress_context` | per-call `None` | passed by identity only to WU2; never inspected/copied/serialized/logged |
+| `decision_id_factory` | landed `ledger._default_decision_id` | one call per enabled healthy evaluation; bad/exception → null-ID rejected `cannot_determine` |
+| `lineage_pointer_factory` | landed `ledger._default_lineage_pointer` | passed unchanged to WU3; WU3 validates/collapses |
+| `candidate_id_factory` | landed `candidates._default_candidate_id` | passed unchanged to WU4 planner; planner collapses |
+| `evidence_ref_factory` | landed `candidates._default_evidence_ref` | passed unchanged to WU4 planner; planner collapses |
+| `current_gate` | landed `shared_memory.gate.gate_decision` | read-only WU4 projection only; mismatch/exception collapses plan |
+| `audit_sink` | new in-memory audit sink | no payload; exact-`True` success only |
+| `metrics_sink` | new in-memory metrics sink | low-cardinality records only; exact-`True` success only |
+| `flag_reader` | `foundation.feature_flags.get` | no env read; exception/non-boolean/false fails closed |
+
+The constructor uses these landed functions rather than retyping ID formulas. It
+validates callability/static interfaces with fixed messages only. No default reads a
+secret, environment, file, database, network, provider, clock service, or runtime
+configuration.
+
+### 11.6 Exact feature-flag and shared-reason integration
+
+WU5 makes only this semantic addition to `foundation/feature_flags.py` (format may
+follow the existing compact file, names and values may not):
+
+```text
+COMMERCE_EVIDENCE_C_SHADOW = "commerce_evidence_c_shadow"
+COMMERCE_EVIDENCE_C_LIVE = "commerce_evidence_c_live"
+COMMERCE_EVIDENCE_C_INTAKE = "commerce_evidence_c_intake"
+COMMERCE_EVIDENCE_C_CANDIDATE_RUNTIME = "commerce_evidence_c_candidate_runtime"
+
+FLAGS[COMMERCE_EVIDENCE_C_SHADOW] = False
+HARD_OFF += (
+  COMMERCE_EVIDENCE_C_LIVE,
+  COMMERCE_EVIDENCE_C_INTAKE,
+  COMMERCE_EVIDENCE_C_CANDIDATE_RUNTIME,
+)
+```
+
+These are source literals only. `get()` retains its existing rule that every
+`HARD_OFF` member returns false regardless of `FLAGS`; no environment override or
+setter is added. Gate 0 continues only when
+`flag_reader(COMMERCE_EVIDENCE_C_SHADOW) is True`. False, null, truthy non-boolean,
+or exception returns the fixed disabled shape before ID allocation, clock, health
+latch, parsing, verifier, ledger, audit, or candidate work. The only optional action
+is a best-effort unlabeled `commerce_evidence_flag_enabled` gauge with value zero;
+its failure does not alter disabled state. The ledger `commit_guard` re-runs the same
+exact-`True` read under WU3's lock immediately before COW commit. No cached entry
+flag can substitute for that read.
+
+The complete shared reason-code delta is:
+
+```text
+from .commerce_evidence.reason_codes import commerce_evidence_code
+
+def code(c) -> str:
+    try:
+        if c in _SAFE_DYNAMIC:
+            return c
+        return commerce_evidence_code(c)
+    except Exception:
+        return "cannot_determine"
+```
+
+No `_SAFE_DYNAMIC` member changes. Its existing values remain byte-for-byte accepted;
+the dedicated guard adds exactly the existing 18 C values, and every unknown,
+unhashable value, exception object/string, service-health failure, or typo becomes
+the existing literal `cannot_determine`. No nineteenth C code or diagnostic channel
+is introduced.
+
+### 11.7 Exact orchestration, audit honesty, and decision-ID ownership
+
+One service-owned outer `RLock` covers each call and the health latch. It does not
+claim to extend WU3's transaction:
+
+1. Read gate 0 exactly as section 11.6. OFF returns disabled/null-ID and inspects
+   nothing. If ON but `candidate_effect_healthy` is false, return rejected
+   `cannot_determine` with null ID before parsing/WU3/sinks.
+2. Allocate and regex-check one evaluation decision ID, then obtain and validate one
+   UTC decision time. Failure returns rejected `cannot_determine`; ID is null only
+   when allocation itself failed. Extract only safe audit categories.
+3. Run WU2 validation with the same time/verifiers/context. A rejection constructs
+   the response/audit/metrics and never calls WU4 or WU3. Sink failure cannot change
+   the rejection and does not poison because no success/control state committed.
+4. Run WU4 planning. For a failed plan, retain its guarded category but still call
+   WU3 with `requested_slots=()` and a hard-false guard so gates 9/10 preserve
+   replay/collision/lineage precedence. For a planned result, pass its slots and the
+   real flag recheck guard.
+5. Pass `decision_id_factory=lambda: evaluation_decision_id` and the injected
+   lineage factory to unchanged WU3. WU3 rejection/collision receives the evaluation
+   ID only at the service response/audit layer. Exact replay returns WU3's stored ID
+   and pointer; the unused evaluation ID is discarded. First accepted root/
+   correction/retraction returns and stores the evaluation ID.
+6. For WU3 rejection, build category-only rejection audit/metrics. Sink failure
+   leaves that rejection unchanged. For exact replay, candidate adoption is empty.
+   For accepted, validate slot/count/state and bind WU4 drafts using WU3 IDs. Any
+   mismatch or empty adoption where drafts were required is a post-ledger failure.
+7. Prebuild the immutable success/replay audit and metric tuples, append audit, then
+   emit metrics, requiring literal `True` from each. Only then release
+   `accepted_for_eligibility_review` or `exact_replay`. Audit is therefore required
+   before a success response but is not part of WU3 atomic state.
+8. Any post-accepted or post-replay invariant/bind/audit/metric/assembly failure
+   discards this call's adoption, sets `candidate_effect_healthy=False`, returns
+   rejected `cannot_determine`, and exposes no lineage pointer/candidate effect. It
+   never calls `ledger.clear()` or mutates unrelated ledger state. An already
+   appended audit or metric is not rolled back and must not be described as atomic;
+   the poisoned instance accepts no later call. Recovery is a new in-memory service
+   instance/process restart only.
+
+Decision-ID ownership is exact:
+
+| Path | Returned decision ID | Ledger ownership |
+|---|---|---|
+| gate-0 disabled | null | ledger not called |
+| latch already poisoned | null | ledger not called |
+| ID factory failure | null | ledger not called |
+| clock/validation/plan pre-commit rejection | current Foundation evaluation ID | no ledger receipt |
+| WU3 rejection/collision/lineage/guard failure | current Foundation evaluation ID | no new receipt |
+| exact replay | original WU3 stored ID | retry ID unused/discarded |
+| first accepted root/correction/retraction | evaluation ID passed to and stored by WU3 | committed receipt |
+| post-accepted failure | committed WU3 ID, but rejected `cannot_determine` response | receipt remains; instance poisoned |
+| post-replay audit/metric failure | original WU3 stored ID, but rejected `cannot_determine` response | original receipt unchanged; instance poisoned |
+
+Only a matching WU3 result may expose its lineage pointer. Every rejection,
+including post-ledger service-health failure, returns null lineage pointer. No ID is
+producer-derived and no candidate/evidence ref appears in response/audit/metric.
+
+### 11.8 Exact path projections
+
+| Path | Decision projection | Audit / metric projection |
+|---|---|---|
+| flag OFF | `disabled`, null IDs/reason, `not_evaluated`, `0/not_created`, replay false | no audit; optional unlabeled flag gauge `0` only |
+| latch poisoned | `rejected/cannot_determine`, null IDs, `not_evaluated`, `0/blocked` | no sink call; no parsing |
+| ID/clock failure | `rejected/cannot_determine`, ID null only for ID failure, `0/blocked` | no audit without both valid ID/time; category-only decision metric if constructible |
+| WU2 structural/provenance/consent/retention reject | `rejected/<guarded code>`, evaluation ID, null lineage, `not_evaluated`, `0/not_created` | safe exact enums or null; verifier/retention categories only |
+| skin/other adverse policy UNCONFIGURED | `rejected/privacy_scope_exceeded`, evaluation ID, `0/blocked` | audit contains only the closed envelope `evidence_type` and retention category; `adverse_type` itself is absent; candidate kinds empty |
+| WU4 failure + unseen valid lineage | WU3 `cannot_determine`, evaluation ID, `0/not_created` | lineage action `none`; no seed/ID content |
+| collision | `rejected/duplicate_evidence`, evaluation ID, null lineage, `0/not_created` | lineage action `collision`; category metric only |
+| exact replay | `exact_replay`, stored ID/pointer/current eligibility, `0/not_created`, replay true | lineage action `exact_replay`; no candidate kinds/new effect |
+| accepted root | accepted, WU3 ID/pointer, eligible, `1|2/review_required` | action `new_root`; kinds `outcome_feedback` then `safety_note` as present |
+| accepted correction | accepted, WU3 ID/pointer, eligible, `1|2/review_required` | action `advance_leaf`; predecessor supersession remains ledger category only |
+| accepted retraction | accepted, WU3 ID/pointer, revoked, `0/blocked` | action `tombstone_root`; candidate kinds empty |
+| pre-commit/WU3 rejection audit or metric failure | original rejection unchanged | failed record is absent; no exception/diagnostic; no poison |
+| post-accepted/replay failure | `rejected/cannot_determine`, corresponding WU3 ID, null lineage, `not_evaluated`, `0/blocked` | no fallback payload; any prior append remains; latch poisoned |
+| unexpected pre-ledger exception | `rejected/cannot_determine`, evaluation ID if allocated, null lineage, `0/blocked` | safe record only when valid ID/time exist; never exception text/stack |
+
+Metric records use only the six names in section 11.3. Label tuples are fixed and
+ordered: decision (`status`, `primary_reason_code`, `schema_version`, `environment`),
+verifier (`verifier`, `verdict_category`), candidate (`kind`, `state`), lineage
+(`action`, `outcome_category`), invariant (`applied`, `write_live`, `promotion`),
+and flag has no labels. Null categories serialize as the literal category `none`,
+never a copied value. Values are non-negative integers only.
+
 ## 12. Future Foundation module and storage plan — all NOT AUTHORIZED
 
 ### 12.1 Minimal additive paths
@@ -1128,10 +1423,10 @@ C; zero-write/promotion invariants are hard review failures.
 | `foundation/shared_memory/commerce_evidence/ledger.py` | protocol + locked ephemeral reference ledger; gates 9–11 | no file/DB, no `SharedMemoryStore` |
 | `foundation/shared_memory/commerce_evidence/lineage.py` | root/leaf/tombstone/successor rules and lifecycle effects | append-only only |
 | `foundation/shared_memory/commerce_evidence/candidates.py` | exact candidate version/DTOs, pure pre-ledger plan, total accepted-result adoption, read-only current-gate projection | no ledger mutation, learning/reuse/store writes |
-| `foundation/shared_memory/commerce_evidence/service.py` | flag-first in-process orchestration and minimized response | no endpoint, consumer, sender, or legacy signal call |
-| `foundation/shared_memory/commerce_evidence/audit.py` | safe audit projection and low-cardinality metrics records | no payload/identifier fields |
-| `foundation/shared_memory/reason_codes.py` | additive guarded delegation to the dedicated C set | preserve all current dynamic codes |
-| `foundation/feature_flags.py` | add `commerce_evidence_c_shadow=False`; hard-off live/intake/candidate-runtime names | default OFF; no environment activation |
+| `foundation/shared_memory/commerce_evidence/service.py` | exact section 11 service types, injected seams, flag-first outer-lock orchestration, WU3/WU4 composition, poison latch, and minimized decision projection | no WU1–WU4 edit, endpoint, consumer, sender, store, or legacy signal call |
+| `foundation/shared_memory/commerce_evidence/audit.py` | exact section 11 category types, constructors, volatile audit sink, and low-cardinality metric sink | no payload/identifier/diagnostic fields; append is honestly post-ledger |
+| `foundation/shared_memory/reason_codes.py` | exact guarded delegation in 11.6 to the dedicated C set | preserve every current dynamic code; unknown/unhashable/exception → existing `cannot_determine` |
+| `foundation/feature_flags.py` | exact four names in 11.6: shadow false plus hard-off live/intake/candidate-runtime | default OFF; no setter or environment activation |
 | `foundation/shared_memory/tests/test_commerce_evidence_*.py` | all test categories in section 13 | synthetic only |
 | `foundation/shared_memory/tests/fixtures/commerce_evidence_v1_golden.json` | reviewed synthetic cross-language hash fixture | no real identifier/PII/secret |
 
@@ -1307,6 +1602,97 @@ network; or any file beyond the two-path WU4 handoff. WU5 owns orchestration and
 outer-lock/replay-preserving blocked-submit/poison-latch behavior; WU4 tests may
 model that contract but must not implement `service.py`.
 
+### 13.5 Exact WU5/WU6 boundary, later oracles, and WU5 STOPs
+
+WU5 may write exactly these six Foundation product paths and no others:
+
+```text
+foundation/shared_memory/commerce_evidence/service.py
+foundation/shared_memory/commerce_evidence/audit.py
+foundation/feature_flags.py
+foundation/shared_memory/reason_codes.py
+설계문서/FOUNDATION_COMMERCE_EVIDENCE_SHADOW_설계서.md
+설계문서/README.md
+```
+
+The two Korean documentation paths are the Founder-corrected canonical product-
+design allowlist. WU5 may not create, edit, rename, or delete any test or fixture.
+In particular, a missing test is expected at WU5 and is not authority to pull WU6
+forward. WU5's sufficient non-mutating evidence is limited to:
+
+1. `git diff --check` and an exact six-path diff inventory;
+2. Python 3.7-compatible AST parsing of the two new modules and two changed Python
+   files via `python3 -B` without import, bytecode, or repository writes;
+3. repository-local static search/AST inspection proving the forbidden-import/call
+   set below is absent and the legacy API does not import C;
+4. literal/set inspection proving the four flag names/defaults/hard-off membership,
+   preservation of the existing dynamic reason set, and guarded delegation to the
+   exact 18-code C set;
+5. product HEAD, branch, pre-existing porcelain, and no-test/no-runtime-execution
+   evidence returned to the Advisor.
+
+WU6, and WU6 alone, may create or change exactly these later verification paths:
+
+```text
+foundation/shared_memory/tests/test_commerce_evidence_service.py
+foundation/shared_memory/tests/test_commerce_evidence_audit.py
+foundation/shared_memory/tests/test_commerce_evidence_containment.py
+foundation/shared_memory/tests/fixtures/commerce_evidence_service_v1_cases.json
+```
+
+Its fixture must be synthetic, contain no real identifier/PII/secret, and exercise
+only the reviewed v1 literals. WU6 must prove, with deterministic injected fakes:
+
+1. exact type fields/order, literals, signatures, constructor guards, and Python
+   3.7 compatibility from sections 11.4–11.6;
+2. flag OFF and already-poisoned paths call none of parse, ID, clock, verifier,
+   WU4, WU3, audit, or metrics as applicable; all three future flags remain hard
+   off and the shadow flag is re-read inside the WU3 commit guard;
+3. default UNCONFIGURED verifiers accept zero, and every clock/factory/flag/sink
+   malformed value or exception follows the exact fail-closed projection;
+4. the existing shared dynamic reason codes remain accepted, exactly 18 C codes
+   delegate, and unknown, unhashable, exception-bearing, or typo values collapse to
+   `cannot_determine` without text leakage;
+5. every row in section 11.8, including adverse-policy rejection, collision,
+   correction, retraction, exact replay, and unexpected exceptions, has exact
+   response/audit/metric field and call-count assertions;
+6. decision-ID allocation and ownership match the section 11.7 table; producer,
+   candidate, and evidence identifiers occur in no public/audit/metric
+   serialization;
+7. audit records contain only the allowlist; metric names/ordered labels are exact;
+   success/replay is not released until both sinks return literal `True`;
+8. rejection sink failure preserves the selected rejection, whereas accepted or
+   replay sink/invariant failure poisons the instance, returns only
+   `cannot_determine`, never calls `ledger.clear()`, and preserves an unrelated
+   prior accepted ledger snapshot byte-for-byte;
+9. WU4 preparation failure still permits exact replay/collision and gate-10
+   precedence through the hard-false submit path; accepted 0/1/2-slot adoption and
+   lifecycle outcomes match WU3/WU4 exactly;
+10. static containment and legacy regressions prove zero endpoint/network/provider/
+    DB/file/env/secret/transport/store/approval/reuse/promotion/ranking/safety
+    mutation and unchanged existing shared-memory behavior.
+
+WU5 acceptance is the direct mapping below. A blank cell is a STOP, not Worker
+discretion:
+
+| WU5 concern | Implemented only in | Non-mutating WU5 evidence | WU6 behavioral oracle |
+|---|---|---|---|
+| decision/service surface and ID ownership | `service.py` | AST/signature/literal inventory | items 1, 5, 6 |
+| minimized audit and metrics | `audit.py` | field/call/static inventory | items 5, 7, 8 |
+| flag gate and commit recheck | `feature_flags.py`, `service.py` | exact literal/hard-off + call-site inspection | items 2, 3 |
+| guarded reason integration | shared `reason_codes.py` | old-set equality + delegation inspection | item 4 |
+| WU3/WU4 ordering and post-ledger containment | `service.py` | call graph, no WU1–WU4 diff, no `clear` | items 8, 9 |
+| containment and canonical design sync | all six allowlisted paths | exact path/static/doc diff | item 10 |
+
+WU5 must STOP without writing if it needs any WU1–WU4 edit; a nineteenth reason or
+new envelope/version/gate; a test/fixture path; a new policy, persistence, endpoint,
+consumer, transport, delivery, environment/config loader, DB, network/provider,
+secret/PII, current `MemoryCandidate`/store connection, approval/reuse/promotion/
+ranking/safety mutation, live/intake/candidate-runtime activation, or any path beyond
+the six above. It must also STOP if it cannot preserve exact replay/collision/gate-10
+precedence, unrelated WU3 state after a post-ledger failure, category-only outputs,
+or source-default OFF without editing WU3/WU4. No WU5 artifact authorizes WU6.
+
 ## 14. Activation, rollback, and kill switch
 
 ### 14.1 Stages
@@ -1337,14 +1723,22 @@ No stage automatically unlocks the next one.
 - Verifier UNCONFIGURED/ERROR and adverse policy UNCONFIGURED are independent kill
   conditions even if the code flag is ON.
 - A separate hard-off name must guard any future live intake and candidate runtime;
-  this design never turns it on.
+  the exact names are `commerce_evidence_c_live`,
+  `commerce_evidence_c_intake`, and
+  `commerce_evidence_c_candidate_runtime`; this design never turns them on.
+- Any post-accepted or post-replay assembly/audit/metric failure sets the instance
+  health latch false without clearing the ledger. The poisoned instance fails before
+  parsing/WU3 and can recover only through a new in-memory instance/process restart.
 
 ### 14.3 Rollback
 
-Rollback is flag OFF plus removal of the unimported additive C package in a reviewed
-forward change. The reference ledger is volatile; restart clears it. Existing
-shared-memory/event-signal behavior remains the fallback. Cosmile outbox rows remain
-pending/blocked in Cosmile and are not drained, marked sent, or deleted.
+WU5 rollback is source flag OFF plus a reviewed forward revert/removal of only its
+two additive modules, exact four flag additions, guarded reason delegation, and two
+canonical design-doc deltas. It does not remove WU1–WU4 files or clear a live
+service-owned ledger. A process restart discards the whole volatile service instance,
+including its poison latch and ledger; existing shared-memory/event-signal behavior
+remains the fallback. Cosmile outbox rows remain pending/blocked in Cosmile and are
+not drained, marked sent, or deleted.
 
 No queued row may be replayed into a later intake until the exact idempotency/hash
 compatibility fixture and durable uniqueness behavior are independently proved.
@@ -1395,6 +1789,9 @@ product schema. Any future durable schema requires its own forward/down plan.
 | do not overload signal API | separate package/service; no API modification | package boundary | legacy regression/static | `ingest_event_signal` unchanged |
 | default OFF/rollback | two flag checks, volatile store, no consumer | `feature_flags.py`, `service.py` | kill/rollback | OFF leaves existing behavior unchanged |
 | no identifiers in result/audit | Foundation IDs only in response; audit allowlist | `audit.py`, `service.py` | serialization/malicious | no producer value appears |
+| landed WU3 has no audit callback | post-ledger category audit is honest; success/replay waits for sinks; failure poisons without clearing | `service.py`, `audit.py` | WU6 sink/invariant matrix | no false atomicity; unrelated ledger state unchanged |
+| exact replay must survive current WU4 preparation failure | hard-false WU3 submission preserves gates 9/10 before gate 11 | `service.py` with unchanged WU3/WU4 | WU6 replay/collision/lineage oracle | stored ID/pointer returned; zero new candidate effect |
+| WU5 and WU6 stay separate | six product/doc paths now; four dedicated test/fixture paths later | section 13.5 path guards | WU5 inventory + WU6 oracle manifest | WU5 runs no product test and edits no test |
 
 ## 17. Ordered future WorkUnits — every row NOT_AUTHORIZED
 
@@ -1404,8 +1801,8 @@ product schema. Any future durable schema requires its own forward/down plan.
 | 2 | `C-VERIFIER-VALIDATOR` / Foundation Worker | C `verifiers.py`, `validator.py`, tests | WU1 reviewed | credential/protocol must be invented; default accepts any input | flag OFF; gate-order and default-reject evidence |
 | 3 | `C-EPHEMERAL-LEDGER` / Foundation Worker | C `ledger.py`, `lineage.py`, tests only | WU1–2 reviewed | cross-process/durable behavior requested | remove volatile driver; race/rollback evidence |
 | 4 | `C-CANDIDATE-DRAFTS` / Foundation Worker | C `candidates.py`, one dedicated mapping test | WU1–3 reviewed + this clarification independently reviewed | any section 13.4 STOP; WU3/service edit needed; furef/store/reuse/adverse policy invented | remove two unimported files; exact DTO/hash/plan/projection/adoption evidence |
-| 5 | `C-SHADOW-SERVICE` / Foundation Worker | C `service.py`, `audit.py`; additive guarded reason/flag lines | WU1–4 reviewed | endpoint/consumer/env/network/DB requested | flag OFF; response/audit/static evidence |
-| 6 | `C-VERIFICATION` / Foundation Worker | dedicated tests and synthetic fixtures only | WU1–5 | real data/DB/network/secret/provider needed | no product state; full evidence bundle |
+| 5 | `C-SHADOW-SERVICE` / Foundation Worker | exact six paths in 13.5: C `service.py`, `audit.py`; shared guarded reason/flag lines; two canonical design docs; **no test/fixture** | WU1–4 reviewed + this WU5 clarification independently reviewed | any 13.5 STOP; WU1–WU4/test edit or broader authority needed | source flag OFF; AST/static/path evidence only; no product test |
+| 6 | `C-VERIFICATION` / Foundation Worker | exact three dedicated tests + one synthetic fixture in 13.5 only | WU1–5 reviewed evidence | real data/DB/network/secret/provider, product-source fix, or new policy needed | no product state; exact ten-oracle evidence bundle |
 | 7 | `C-INDEPENDENT-IMPLEMENTATION-REVIEW` / independent Foundation Reviewer | read-only plus declared review result storage | WU1–6 evidence | any unproved objective gate | verdict to Advisor; no patch by Reviewer |
 | 8 | `C-DELIVERY-INTAKE-CANDIDATE-RUNTIME` / none | none | new Founder/security/legal/storage decisions | always STOP under current mission | no action |
 
@@ -1430,7 +1827,12 @@ sends work directly to another subordinate.
 - two Foundation-owned candidate draft types, mapping, and no-runtime lifecycle;
 - exact shared candidate-version literal, Python DTO fields, millisecond UTC expiry,
   two-phase pure plan/adoption API, read-only current-gate projection, and WU4 tests;
-- response/audit/metrics minimization;
+- exact Python 3.7 WU5 service/audit types, injected dependencies/defaults, four
+  source flag names, guarded shared-reason delegation, and decision-ID ownership;
+- honest post-ledger audit/metrics sequencing, replay-preserving hard-false submit,
+  and fail-closed poison-latch behavior that never clears unrelated ledger state;
+- exact response/audit/metrics path projections and WU5 six-path/no-test versus WU6
+  four-path verification boundary, acceptance map, rollback, and STOPs;
 - module boundaries, test plan, flags, rollback, threats, traceability, and future
   WorkUnit stops.
 
