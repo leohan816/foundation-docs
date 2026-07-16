@@ -1,0 +1,46 @@
+========
+TARGET_ACTOR: foundation Worker
+TARGET_ACTOR_ID: foundation
+TARGET_PROJECT: FOUNDATION / Memory V3 M2 C Shadow WU1
+TARGET_REPOSITORY: /home/leo/Project/FOUNDATION
+TARGET_BRANCH: shadow/foundation-shared-memory-v0
+BASELINE_COMMIT: f6417004d9157766b2b23d4d0870ade7f0c7fe96
+EXPECTED_ORIGIN: git@github.com:leohan816/foundation.git
+TARGET_SESSION_NAME: foundation
+TARGET_WINDOW_ID: @3
+TARGET_PANE_ID: %3
+ROLE_MODE: FOUNDATION_WORKER_C_CONTRACT_FREEZE
+ACTUAL_MODEL: verify live; do not infer
+MODEL_EFFORT_IMPLEMENTATION: ultracode — set and verify live
+MODEL_EFFORT_FINAL_WU1_TESTS: max — switch and verify before final checks
+REQUIRED_SKILL: /fable-builder
+MISSION_ID: MEMORY_V3_CURRENT_STATE_RECONCILIATION_V1
+WORK_UNIT_ID: M2-C-WU1-CONTRACT-FREEZE-001
+READ_AND_EXECUTE: /home/leo/Project/.worktrees/foundation-docs/FOUNDATION_TEAM_ROLE_ALIGNMENT_20260714/advisor/jobs/MEMORY_V3_CURRENT_STATE_RECONCILIATION_V1/60_M2_C_WU1_CONTRACT_FREEZE_HANDOFF.md
+FOUNDER_AUTHORIZATION_COMMIT: c96caefe4cfd4c4f4b6bf54251f2b947dfbd51d2
+DOCUMENT_ALLOWLIST_CORRECTION_COMMIT: 36690ec2b0810dc46bb90be9fda4a596d5d17af0
+REVIEWED_DESIGN_COMMIT: 7cbcb8d9bfe012b92d8bf8f1e0ba0957f1610117
+DESIGN_REVIEW_COMMIT: 920359eb03971540dae405dc836cc00f398e4ff1
+EXPECTED_RESULT: /home/leo/Project/.worktrees/foundation-docs/FOUNDATION_TEAM_ROLE_ALIGNMENT_20260714/runs/foundation/MEMORY_V3_CURRENT_STATE_RECONCILIATION_V1/M2_C_WU1_CONTRACT_FREEZE_RESULT.md
+EXPECTED_POINTER: /home/leo/Project/.worktrees/foundation-docs/FOUNDATION_TEAM_ROLE_ALIGNMENT_20260714/runs/foundation/MEMORY_V3_CURRENT_STATE_RECONCILIATION_V1/M2_C_WU1_CONTRACT_FREEZE_RESULT_POINTER.md
+EXPECTED_DESIGN_MIRROR: /home/leo/Project/.worktrees/foundation-docs/FOUNDATION_TEAM_ROLE_ALIGNMENT_20260714/설계문서/foundation/FOUNDATION_COMMERCE_EVIDENCE_SHADOW_설계서.md
+RETURN_TO: foundation-advisor
+PRE_DISPATCH_LIVE_VERIFICATION: REQUIRED
+DO_NOT_EXECUTE_FROM_MEMORY: true
+READ_REFERENCED_FILES_DIRECTLY: true
+DO_NOT_BROADEN_SCOPE: true
+NO_NEW_AGENT_OR_SUBAGENT: true
+TESTS_BEFORE_CODE: true
+REAL_DB_NETWORK_PROVIDER_SECRET_ENV_PROD_LIVE: forbidden
+WORK_UNIT_2_TO_8: forbidden
+PRODUCT_COMMIT_AND_NONFORCE_SHADOW_PUSH: authorized only after WU1 gates
+FOUNDATION_DOCS_COMMIT_OR_PUSH: forbidden
+NO_REVIEWER_DISPATCH: true
+STOP_AFTER_RETURN: true
+
+Open READ_AND_EXECUTE directly. Apply REQUIRED_SKILL, verify exact runtime and Git
+state, create the canonical design document before code, implement only WU1 using
+ultracode, switch to max for final WU1 tests/diff/privacy audit, write the declared
+evidence and byte-identical mirror, return only the pointer to foundation-advisor,
+and STOP. Do not start WU2 or any later WorkUnit.
+========
