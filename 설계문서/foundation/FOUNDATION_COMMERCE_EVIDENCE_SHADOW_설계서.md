@@ -1,7 +1,7 @@
 # FOUNDATION_COMMERCE_EVIDENCE_SHADOW_설계서 — commerce_evidence C Shadow 모듈 정본
 
-> **버전 v0.3 · 2026-07-16 · WU3(C-EPHEMERAL-LEDGER) 반영.**
-> **변경이력:** v0.1 (2026-07-16) — WU1 계약 동결: v1 envelope 순수 데이터 계약 · 18 reason code 전용 불변 세트 · byte-호환 idempotency/source-hash 헬퍼 · 합성 golden fixture · WU1 전용 테스트. · v0.1.1 (2026-07-16) — authority 문구 정정(behavior 변경 0): WU2~WU7은 Founder 승인(`c96caef`) 범위이나 reviewed dependency/review gate + 별도 exact Advisor handoff 하에서만 진행(자동 전이 없음·WU1에서 미구현/미착수) · **WU8만 NOT_AUTHORIZED·개시 금지**. · v0.2 (2026-07-16) — WU2 구현(§9): fail-closed verifier 프로토콜/기본값(`verifiers.py`) + 순수 주입시계 validator 게이트 1~8(`validator.py`) + WU2 전용 테스트 2파일. Advisor gate PASS(`64_`·WU1 evidence `f5c66a8`) 후 별도 handoff(`65_`)로 착수. · v0.3 (2026-07-16) — WU3 구현(§10): 순수 lineage 규칙(`lineage.py`) + 1-프로세스 in-memory `RLock` ephemeral 참조 ledger 게이트 9~11(`ledger.py`·replay/idempotency/collision/lineage-race/atomic-commit/COW rollback/commit_guard seam) + WU3 전용 테스트 2파일. Advisor gate PASS(`71_`·WU2 evidence `6632261`) 후 별도 handoff(`72_`)로 착수. candidate DTO(§10 mapping)/service/audit/flag/durable = WU4~ 미착수 · **1-프로세스 ephemeral 전용·restart/multi-process/durable 주장 0**.
+> **버전 v0.4 · 2026-07-16 · WU4(C-CANDIDATE-DRAFTS) 반영.**
+> **변경이력:** v0.1 (2026-07-16) — WU1 계약 동결: v1 envelope 순수 데이터 계약 · 18 reason code 전용 불변 세트 · byte-호환 idempotency/source-hash 헬퍼 · 합성 golden fixture · WU1 전용 테스트. · v0.1.1 (2026-07-16) — authority 문구 정정(behavior 변경 0): WU2~WU7은 Founder 승인(`c96caef`) 범위이나 reviewed dependency/review gate + 별도 exact Advisor handoff 하에서만 진행(자동 전이 없음·WU1에서 미구현/미착수) · **WU8만 NOT_AUTHORIZED·개시 금지**. · v0.2 (2026-07-16) — WU2 구현(§9): fail-closed verifier 프로토콜/기본값(`verifiers.py`) + 순수 주입시계 validator 게이트 1~8(`validator.py`) + WU2 전용 테스트 2파일. Advisor gate PASS(`64_`·WU1 evidence `f5c66a8`) 후 별도 handoff(`65_`)로 착수. · v0.3 (2026-07-16) — WU3 구현(§10): 순수 lineage 규칙(`lineage.py`) + 1-프로세스 in-memory `RLock` ephemeral 참조 ledger 게이트 9~11(`ledger.py`·replay/idempotency/collision/lineage-race/atomic-commit/COW rollback/commit_guard seam) + WU3 전용 테스트 2파일. Advisor gate PASS(`71_`·WU2 evidence `6632261`) 후 별도 handoff(`72_`)로 착수. candidate DTO(§10 mapping)/service/audit/flag/durable = WU4~ 미착수 · **1-프로세스 ephemeral 전용·restart/multi-process/durable 주장 0**. · v0.4 (2026-07-16) — WU4 구현(§11): 2 immutable review-only candidate DTO(`CommerceOutcomeCandidateV1`·`CommerceAdverseCandidateV1`) + 순수 pre-ledger 계획 `plan_candidate_drafts_v1` + accepted-result 순수 채택 `adopt_candidate_drafts_v1` + read-only current-gate 사영(`gate_decision` 8키 임시 dict) + WU4 전용 테스트 1파일(`candidates.py`·`test_commerce_evidence_candidates.py`). reviewed design §10.1/§10.3/§10.5/§13.4(구현본 `3d04f6f`) 착지. Advisor gate(`0b67d0c`) + WU4 design clarification(`f225607`) 독립검수 PASS(`b0a22b8`·`c285ebd`) 후 별도 handoff(`84_`·WU3 evidence `74_`) 로 착수. **EphemeralLedger.submit 미호출·WU5 outer-lock/poison-latch/service/audit/flag/store write 0 · current `MemoryCandidate`/`furef_v2`/retention enum 미터치 · skin/other = privacy_scope_exceeded fail-closed · candidate/adoption = RAM-only 내부 effect(공개 응답/durable 저장 아님)**.
 > **본 문서는 이미 독립 검수된 C 설계를 모듈 정본으로 성문화한 것이다 — 새 정책/아키텍처/행동/범위/권한 발명 0.**
 
 ## 0. 정본 앵커 (전부 foundation-docs · 원문이 우선)
@@ -246,3 +246,58 @@ low-cardinality category/count만 노출(receipt/slot/tombstone count·eligibili
 
 ### 10.7 WU3 경계
 candidate DTO(§10.1 mapping·furef/MemoryCandidate/approval/reuse/store write)·service 응답(§11)·audit/metrics·feature flag(§0 gate)·endpoint/transport/DB/durable storage/runtime importer **0** — WU4~WU5 소관. **1-프로세스 ephemeral 전용**: restart/multi-process/file/durable **주장 0**. rollback = additive `ledger.py`/`lineage.py`/테스트 2파일 제거(runtime importer 0·history rewrite 없음).
+
+## 11. WU4 — 2 immutable review-only candidate DTO + 순수 pre-ledger 계획/채택 (reviewed design §10.1·§10.3·§10.5·§13.4 착지)
+
+> 정본 앵커: 구현본 reviewed design `3d04f6f927b763efd977c23ec44b210fd8dbbedfa637e5144c3d932b53cbeb66`(commit `9549638`) + corrected WU4 clarification `f225607`. **우선순위: pinned source > reviewed design 산문 > 본 문서.** 새 정책/입력필드/reason/version 발명 0.
+
+### 11.1 입력/출력 경계
+- WU4(`candidates.py`)는 **WU2-검증된 합성 envelope + 진짜 accepted `ValidationResultV1`** 만 받아 순수 계획(`plan_candidate_drafts_v1`)을 산출하고, **WU3 발행 `decision_id`/`lineage_pointer`** 로 순수 채택(`adopt_candidate_drafts_v1`)한다. **`EphemeralLedger.submit` 미호출**·WU3 게이트 9~11 재실행/재정렬 0·WU5 outer-lock/replay-preserving hard-false submit/poison-latch/response·audit assembly 미구현(WU5 소관·테스트는 landed WU3로 그 경계를 *모델*만 함).
+- candidate/evidence ID·content_hash·lineage_pointer = 내부 값 — **producer에 미반환**. adoption = RAM-only 내부 effect(공개 `CommerceEvidenceDecisionV1` 아님).
+- I/O·ledger mutation·service call·store write·producer 응답·factory 외 부작용 **0**.
+
+### 11.2 `candidates.py` — 5 immutable 타입 (§10.1 자구)
+- `CANDIDATE_CONTRACT_VERSION = "foundation.commerce_evidence_candidate.v1"` — 두 DTO + 두 slot content-hash 사영의 버전 마커(제품/전송/저장/retention/runtime 정책 아님). 1자만 바뀌어도 hash가 바뀐다.
+- `CommerceOutcomeCandidateV1`(19 필드·§10.1 표 순서): contract_version·candidate_id(`^fcei_cand_v1_[0-9a-f]{32}$`)·decision_id(`^fcei_dec_v1_…$`)·lineage_pointer(`^fcei_lin_v1_…$`)·subject_ref(`^subj_v2_[0-9a-f]{32}$`)·source_service(`cosmile`)·product_ref(opaque 비공백)·sku_ref(null|비공백)·satisfaction(satisfied|neutral|dissatisfied)·evidence_ref(`^fcei_ref_v1_…$`)·content_hash(`^sha256:[0-9a-f]{64}$`)·consent_scope(`cross_service`)·retention_expires_at(`.sssZ`=occurred_at+90d)·memory_kind(`outcome_feedback`)·sensitivity_level(`normal`)·status(`review_required`)·raw_text_stored(`False`)·applied_to_real_user(`False`)·write_live(`False`).
+- `CommerceAdverseCandidateV1`(23 필드·§10.1 표 순서): 위와 동형 + adverse_type(현재 구성가능 값 `usage_safety` 뿐)·adverse_severity(usage_safety 불변식 = null)·adverse_certainty(`reported`)·memory_kind(`safety_note`)·sensitivity_level(`high`)·safety_handling(`human_safety_review_required`)·response_policy(`preapproved_static_guidance_only`·문구 미생성). skin/other는 DTO에 도달 불가.
+- `CandidateDraftSeedV1`(내부·불변·17 필드): slot·candidate_id·evidence_ref·content_hash·subject_ref·source_service·product_ref·sku_ref·satisfaction·adverse_type·adverse_severity·adverse_certainty·retention_expires_at·memory_kind·sensitivity_level·policy_gate_decision·policy_reason_codes. decision/lineage 참조·raw content 미포함·producer에 미직렬화.
+- `CandidateDraftPlanV1`: status(`planned|rejected`)·primary_reason_code(str|None)·reason_codes(tuple)·requested_slots(tuple)·seeds(tuple)·lifecycle_action(`create_current|supersede_predecessor|revoke_lineage|none`). rejected = 가드된 C category + 빈 slot/seed.
+- `CandidateAdoptionV1`: drafts(`Tuple[Union[Outcome,Adverse], …]`)·lifecycle_action.
+
+### 11.3 `plan_candidate_drafts_v1` — 순수 계획 (accepted-only·fail-closed·전역상태 0·I/O 0)
+`plan_candidate_drafts_v1(validated_envelope, *, validation_result, candidate_id_factory=_default_candidate_id, evidence_ref_factory=_default_evidence_ref, current_gate=gate_decision) -> CandidateDraftPlanV1`
+- **accepted 게이트**: `ValidationResultV1` 이고 status=`accepted_for_eligibility_review`·provenance=`VERIFIED`·consent=`GRANTED`·retention_class=`feedback_non_adverse_90d` 일 때만 진행. 잘 형성된 rejection → 그 **가드된 primary category** 그대로(rejected·상태 0). 비-ValidationResultV1/모순 accepted/mapper·gate·hash·timestamp·factory 예외/무효·중복 ID/예상외 예외 → **`cannot_determine`**(rejected·slot/seed 0·예외문 0).
+- **lifecycle**: evidence_type `purchase_feedback`→`create_current` · `correction`→`supersede_predecessor` · `retraction`→`revoke_lineage`.
+- **slot 매핑(§10.2·outcome→adverse 순서)**: adverse_type ∈ {`skin_reaction`,`other`} → **`privacy_scope_exceeded`**(satisfaction 유무 무관·slot/seed 0·**factory 호출 0**). retraction → slot/seed `()`·**factory 호출 0**·lifecycle `revoke_lineage`(planned). 그 외: outcome slot ⟺ satisfaction≠null · adverse slot ⟺ adverse_type=`usage_safety`.
+- **content_hash(§10.1)**: `sha256:`+`sha256(json.dumps({8키}, sort_keys=True, separators=(",",":"), ensure_ascii=True))`. 8키 = contract_version·memory_kind·product_ref·sku_ref·satisfaction·adverse_type·adverse_severity·adverse_certainty. outcome slot = adverse 3필드 JSON null · adverse slot = satisfaction JSON null(absent-axis 미복사). subject/purchase/decision/lineage/candidate/evidence ID 제외 → 무결성이지 신원/인증 아님.
+- **retention**: occurred_at(`.sssZ`) 파싱 + `timedelta(days=90)` → 동일 `.sssZ`(datetime/epoch/duration/retention enum 아님).
+- **current-gate 사영(§11.5)** → policy_gate_decision/policy_reason_codes.
+- **ID factory**: outcome→adverse 순서로 slot당 candidate factory 1회 후 evidence factory 1회. 형식(`^fcei_cand_v1_…$`/`^fcei_ref_v1_…$`) + plan 내 유일성 검증(무효/중복 → cannot_determine).
+
+### 11.4 `adopt_candidate_drafts_v1` — 순수 채택 (bind-only·total·fail-closed)
+`adopt_candidate_drafts_v1(plan, *, decision_id, lineage_pointer) -> CandidateAdoptionV1`
+- `planned` plan + WU3 보장 `^fcei_dec_v1_…$`/`^fcei_lin_v1_…$` 만 채택. factory·parsing·hash·gate·I/O·lookup·producer 복사·정책결정 **0** — 두 참조 + 고정 리터럴을 seed 순서대로 최종 DTO에 bind만. retraction(seeds `()`) → drafts `()`·lifecycle `revoke_lineage`. 비-planned/무효 dec·lin/무효 seed(잘못된 리터럴·null ID·잘못된 bool·무효 enum·비-`.sssZ` retention) → **빈 채택(drafts `()`·lifecycle `none`)** fail-closed. **ledger 참조 없음** → `ledger.clear()`/mutation 구조적 불가.
+
+### 11.5 current-gate read-only 사영 (§10.3)
+각 seed는 commit 전 현행 `gate_decision`에 **정확히 이 8키 임시 dict** 로 사영된다(read-only·write target 아님): `{subject_ref, memory_kind, sensitivity_level, consent_scope:"cross_service", raw_text_stored:False, write_intent:"candidate_only", applied_to_real_user:False, write_live:False}`, 호출 = `consent_record=None`·`subject_context={"subject_ref": seed.subject_ref}`·`memory_state={}`. `furef_v2`/`retention_policy`/candidate·evidence ID/product·SKU/`gate_decision`/write target **미포함**. 허용 결과쌍만 통과: outcome=`allow`/`[allow_shadow_write]`(읽기전용 정책증거·write 권한 아님) · usage-safety adverse=`block`/`[high_sensitivity_reconfirmation_required]`(별도 human-review draft 보존·shared-memory materialization 차단). 그 외 결과/예외/reason/decision → 계획 `cannot_determine`. `SharedMemoryStore.ingest`/`write_approved_memory`/learning approval/reuse 호출 **0**.
+
+### 11.6 WU4 계약-코드-테스트 매핑 (공백 셀 0 — §13.4 14 oracle)
+| 계약 항목(oracle) | 코드 착지 | 테스트 |
+|---|---|---|
+| (1) contract 리터럴·두 DTO·두 hash projection에 존재·1자 변경→hash 변화 | candidates.CANDIDATE_CONTRACT_VERSION | TestContractLiteral |
+| (2) DTO `_fields` 순서·annotation·잘못된 리터럴/무효·null ID/잘못된 bool/무효 enum/비-UTC retention 구성 거부 | 두 DTO NamedTuple + adopter `_build_*` 검증 | TestDtoFieldsAndValidation |
+| (3) satisfaction-only→`("outcome",)`·usage-safety-only→`("adverse",)`·combined→`("outcome","adverse")`·tuple/seed/DTO 순서 동일 | planner slot 매핑 + adopter | TestSlotOrder |
+| (4) 8키 JSON projection·명시 null absent-axis·compact sorted ASCII·golden 값·subject/purchase/decision/lineage/candidate/evidence ID 무영향 | planner `_content_hash` | TestContentHashGolden |
+| (5) retention = occurred_at+90d(월/년/윤년 경계)·`.sssZ`·retention enum 부재 | planner `_retention_expires_at` | TestRetention |
+| (6) purchase_feedback=`create_current`·correction=`supersede_predecessor`(corrected axes만)·retraction=`revoke_lineage`(slot/seed/factory 0) | planner lifecycle 분기 | TestLifecycle |
+| (7) skin/other(+satisfaction)→`privacy_scope_exceeded`·상태 0·factory 0·satisfaction 미억제 | planner skin/other fail-closed | TestSkinOtherFailClosed |
+| (8) factory 순서 candidate/evidence per outcome→adverse·예외/무효/중복 ID/malformed result/timestamp·hash·gate 예외/예상외→`cannot_determine`·상태 0·예외문 0 | planner factory/guard | TestFactoryOrderAndFailClosed |
+| (9) spy gate 8키·정확 keyword context·outcome=allow/[allow_shadow_write]·adverse=block/[high_sensitivity_reconfirmation_required]·대체 결과→계획 거부·오직 replay-preserving hard-false submit만 후속 | planner current-gate 사영 | TestCurrentGateProjection |
+| (10) accepted receipt seed 후 retry factory·gate 실패 → fallback `requested_slots=()`+hard-false guard가 WU3 `exact_replay`(원 decision/lineage/현재 eligibility·신규 effect 0)·collision→`duplicate_evidence`·unseen lineage-valid→`cannot_determine`·lineage-invalid→gate10 reason(게이트 9~11 재정렬 불가 증명) | planner 실패→WU5 fallback 모델(landed WU3) | TestReplayPreservingOrder |
+| (11) accepted만 tuple bind·rejection/collision 폐기·exact_replay 0 채택·count/state 불일치 fail-closed·bind 값=WU3 값·WU3에 candidate/evidence/hash/DTO content 0 | adopter + WU5 count 검증 모델 | TestAdoptionOnlyAccepted |
+| (12) post-accepted bind 실패 → unrelated WU3 state byte-불변·`ledger.clear()` 미호출(WU5 latch 미구현) | adopter(ledger 무참조) + snapshot | TestPostAcceptedContainment |
+| (13) DTO/plan/adoption·producer evidence/source/purchase/product/SKU/subject 값이 모의 public 직렬화에 부재 | 모의 public projection | TestNoProducerEcho |
+| (14) store/API/service/audit/flag/learning/approval/reuse/ranking/safety/file/DB/env/network/provider/transport/secret/current `MemoryCandidate` import·call 0·선언된 WU4 파일만 변경 | candidates 모듈 import 표면 | TestContainment (AST) |
+
+### 11.7 WU4 경계
+`EphemeralLedger.submit` 호출·WU5 outer-lock/replay-preserving hard-false submit/poison-latch·`service.py`/audit/metrics·feature flag·current `MemoryCandidate`/`furef_v2`/retention enum/store writer·skin/other 수용·adverse-hold 발명·새 reason/version/입력필드·public 응답·persistence/delivery/intake/DB/env/network/provider/secret **0** — WU5~ 및 별도 승인 소관. candidate/adoption = **RAM-only 내부 review-only**(승인/reuse/promotion/ranking/safety mutation 아님). rollback = additive `candidates.py`/테스트 1파일 제거(runtime importer 0).
