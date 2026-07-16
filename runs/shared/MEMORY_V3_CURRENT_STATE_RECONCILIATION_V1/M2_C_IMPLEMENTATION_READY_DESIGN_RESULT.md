@@ -698,76 +698,120 @@ service-local `furef_v2` that the approved envelope intentionally omits, and its
 retention enum cannot represent an unconfigured adverse hold. C must not fabricate a
 furef, derive one from `subject_ref`, or silently coerce retention.
 
-The minimal additive design therefore uses two Foundation-owned, review-only types
-inside the dedicated C package:
+The minimal additive design therefore uses two immutable Foundation-owned,
+review-only `NamedTuple` DTOs inside the dedicated C package. Both carry the exact
+literal:
+
+```text
+CANDIDATE_CONTRACT_VERSION = "foundation.commerce_evidence_candidate.v1"
+```
+
+This is the version marker for the two candidate DTOs and the already-approved
+candidate `content_hash` projection. It closes the missing literal in that existing
+projection; it does not authorize a product contract, transport, storage, retention
+policy, current `MemoryCandidate` bridge, or runtime behavior. A different literal
+or a second accepted candidate version requires a reviewed design change.
 
 `CommerceOutcomeCandidateV1` is the future named Foundation fact-candidate form for
 the satisfaction axis; `CommerceAdverseCandidateV1` is the future named adverse-
 candidate form. Neither name denotes, subclasses, or writes the current
 `MemoryCandidate` at the pinned head.
 
-```text
-CommerceOutcomeCandidateV1
-  candidate_id                 Foundation-internal opaque ID
-  decision_id                  Foundation decision reference
-  lineage_pointer              Foundation opaque lineage reference
-  subject_ref                  validated opaque subject
-  source_service               "cosmile"
-  product_ref                  authenticated opaque product ref
-  sku_ref                      authenticated opaque SKU ref or null
-  satisfaction                 satisfied | neutral | dissatisfied
-  evidence_ref                 Foundation-internal evidence reference
-  content_hash                 hash of normalized candidate projection
-  consent_scope                "cross_service"
-  retention_expires_at         occurred_at + 90d
-  memory_kind                  "outcome_feedback"
-  sensitivity_level            "normal"
-  status                       "review_required"
-  raw_text_stored              false
-  applied_to_real_user         false
-  write_live                   false
+Every field and runtime type is fixed below. `Literal[...]` states the only valid
+string value even though the Python 3.7-compatible annotation is `str`.
 
-CommerceAdverseCandidateV1
-  [same identity/audit/minimization fields]
-  adverse_type                 skin_reaction | other | usage_safety
-  adverse_severity             low | moderate | severe | null
-  adverse_certainty            "reported"
-  memory_kind                  reaction (skin/other) | safety_note (usage_safety)
-  sensitivity_level            "high"
-  safety_handling              "human_safety_review_required"
-  response_policy              "preapproved_static_guidance_only"
-  status                       "review_required"
-```
+| `CommerceOutcomeCandidateV1` field | Python type | Exact invariant |
+|---|---|---|
+| `contract_version` | `str` | literal `foundation.commerce_evidence_candidate.v1` |
+| `candidate_id` | `str` | `^fcei_cand_v1_[0-9a-f]{32}$`; Foundation-generated |
+| `decision_id` | `str` | `^fcei_dec_v1_[0-9a-f]{32}$`; WU3 accepted result only |
+| `lineage_pointer` | `str` | `^fcei_lin_v1_[0-9a-f]{32}$`; WU3 accepted result only |
+| `subject_ref` | `str` | already validated `^subj_v2_[0-9a-f]{32}$`; opaque |
+| `source_service` | `str` | literal `cosmile` |
+| `product_ref` | `str` | non-empty authenticated opaque value from the validated envelope |
+| `sku_ref` | `Optional[str]` | null or non-empty authenticated opaque value |
+| `satisfaction` | `str` | `satisfied`, `neutral`, or `dissatisfied` |
+| `evidence_ref` | `str` | `^fcei_ref_v1_[0-9a-f]{32}$`; Foundation-generated |
+| `content_hash` | `str` | `^sha256:[0-9a-f]{64}$`; exact projection below |
+| `consent_scope` | `str` | literal `cross_service` |
+| `retention_expires_at` | `str` | exact UTC millisecond string `YYYY-MM-DDTHH:mm:ss.sssZ`, equal to validated `source.occurred_at + 90 days` |
+| `memory_kind` | `str` | literal `outcome_feedback` |
+| `sensitivity_level` | `str` | literal `normal` |
+| `status` | `str` | literal `review_required` |
+| `raw_text_stored` | `bool` | literal `False` |
+| `applied_to_real_user` | `bool` | literal `False` |
+| `write_live` | `bool` | literal `False` |
+
+| `CommerceAdverseCandidateV1` field | Python type | Exact invariant |
+|---|---|---|
+| `contract_version` | `str` | literal `foundation.commerce_evidence_candidate.v1` |
+| `candidate_id` | `str` | `^fcei_cand_v1_[0-9a-f]{32}$`; Foundation-generated |
+| `decision_id` | `str` | `^fcei_dec_v1_[0-9a-f]{32}$`; WU3 accepted result only |
+| `lineage_pointer` | `str` | `^fcei_lin_v1_[0-9a-f]{32}$`; WU3 accepted result only |
+| `subject_ref` | `str` | already validated `^subj_v2_[0-9a-f]{32}$`; opaque |
+| `source_service` | `str` | literal `cosmile` |
+| `product_ref` | `str` | non-empty authenticated opaque value from the validated envelope |
+| `sku_ref` | `Optional[str]` | null or non-empty authenticated opaque value |
+| `adverse_type` | `str` | current WU4 constructible value is only `usage_safety`; `skin_reaction`/`other` fail closed before construction |
+| `adverse_severity` | `Optional[str]` | current `usage_safety` invariant is null; low/moderate/severe are preserved enum values but cannot instantiate while skin/other policy is unconfigured |
+| `adverse_certainty` | `str` | literal `reported` |
+| `evidence_ref` | `str` | `^fcei_ref_v1_[0-9a-f]{32}$`; Foundation-generated |
+| `content_hash` | `str` | `^sha256:[0-9a-f]{64}$`; exact projection below |
+| `consent_scope` | `str` | literal `cross_service` |
+| `retention_expires_at` | `str` | exact UTC millisecond string `YYYY-MM-DDTHH:mm:ss.sssZ`, equal to validated `source.occurred_at + 90 days`; no adverse-hold representation is invented |
+| `memory_kind` | `str` | current constructible value `safety_note`; `reaction` remains blocked with skin/other |
+| `sensitivity_level` | `str` | literal `high` |
+| `safety_handling` | `str` | literal `human_safety_review_required` |
+| `response_policy` | `str` | literal `preapproved_static_guidance_only`; no guidance text |
+| `status` | `str` | literal `review_required` |
+| `raw_text_stored` | `bool` | literal `False` |
+| `applied_to_real_user` | `bool` | literal `False` |
+| `write_live` | `bool` | literal `False` |
+
+`retention_expires_at` is never a Python `datetime`, epoch number, duration, or
+current `retention_policy` enum. The mapper parses the already validated millisecond
+UTC input, adds exactly `timedelta(days=90)`, and emits the same three-millisecond
+UTC form. Skin/other cannot reach either DTO, so null, sentinel, or synthetic
+adverse-hold expiry is forbidden.
 
 No raw copy, natural-language claim, diagnosis, advice, report payload, rank, score,
 embedding, reusable flag, or user/customer ID exists in either type. Candidate IDs,
 content hashes, evidence refs, and lineage pointers are internal and are not returned
 to the producer.
 
-Foundation allocates opaque identifiers on the first committed writer with Python
+WU3 allocates the decision ID and root lineage pointer on the first committed writer.
+WU4 precomputes candidate/evidence ID values before WU3 so factory failure cannot
+follow a ledger commit, but those values are not issued, adopted, or persisted
+unless that call is the first accepted writer. Defaults use Python
 `uuid.uuid4().hex` and these exact patterns:
 
 ```text
 decision_id      ^fcei_dec_v1_[0-9a-f]{32}$
-lineage_pointer  ^fcei_lin_v1_[0-9a-f]{32}$   (one per root)
 candidate_id     ^fcei_cand_v1_[0-9a-f]{32}$
 evidence_ref     ^fcei_ref_v1_[0-9a-f]{32}$
 ```
 
-They are stored, never recomputed from producer identifiers, and exact replay returns
-the stored decision/lineage IDs. Candidate IDs and evidence refs remain internal.
+WU3 stores only its decision/lineage IDs and exact replay returns those stored values.
+Candidate IDs and evidence refs are never recomputed from producer identifiers,
+remain internal to the adopted RAM-only DTO tuple, and are discarded on rejection,
+collision, or replay.
 
 Candidate `content_hash` is `sha256:` plus lowercase SHA-256 over UTF-8 Python
 `json.dumps` with `sort_keys=True`, `separators=(",", ":")`, and
 `ensure_ascii=True` for this fixed projection: `contract_version`, `memory_kind`,
 `product_ref`, `sku_ref`, `satisfaction`, `adverse_type`, `adverse_severity`, and
-`adverse_certainty`. Absent-axis values are explicit JSON null. Subject, purchase,
+`adverse_certainty`. `contract_version` is exactly the literal above. For the
+outcome slot all three adverse values are JSON null; for the adverse slot
+`satisfaction` is JSON null. Absent-axis values are never copied across slots.
+Subject, purchase,
 decision, lineage, and candidate IDs are excluded so this hash is content integrity,
 not identity or authentication.
 
-All drafts enter `candidate` and deterministically transition to `review_required`
-in the same atomic commit. That transition is not approval. C exposes no method to
-mark reviewed or approved and imports no runtime/reuse writer.
+An adopted DTO is emitted directly with `status=review_required`; `candidate` is a
+logical pre-adoption state, not a separately persisted row or mutation. The accepted
+WU3 slot reservation and WU5 in-memory adoption form the bounded effect described in
+section 10.5. That effect is not approval. C exposes no method to mark reviewed or
+approved and imports no runtime/reuse writer.
 
 ### 10.2 Candidate-slot mapping
 
@@ -785,6 +829,14 @@ Two slots from one accepted node are intentional: the Founder fixed satisfaction
 adverse as independent axes. The adverse slot is evaluated first for retention and
 safety; its presence can block the entire envelope, while satisfaction can never
 remove or lower it.
+
+Output order is always `outcome`, then `adverse`; the requested-slot tuple uses that
+same order. A root and a correction use the current envelope axes. A correction's
+plan carries lifecycle action `supersede_predecessor`; it does not copy the prior
+candidate. A retraction has lifecycle action `revoke_lineage`, requested slots `()`,
+draft seeds `()`, and calls neither candidate nor evidence ID factory. A
+skin/other envelope yields `privacy_scope_exceeded`, zero slots, zero seeds, and no
+factory call, even if a caller incorrectly presents it as validated.
 
 ### 10.3 Mapping to the current 17-field `MemoryCandidate`
 
@@ -809,9 +861,36 @@ remove or lower it.
 | `write_live` | false | exact invariant |
 
 Because two required semantics are not exact, direct current `MemoryCandidate`
-materialization is blocked. The new candidate DTOs may be projected into the current
-`gate_decision` function for raw/PII, isolation, consent, and high-sensitivity policy
-checks, but the result is eligibility evidence only. C must never call
+materialization is blocked. Before WU3 submission, each prepared seed is projected
+into the current `gate_decision` function with exactly this temporary dictionary:
+
+```text
+{
+  "subject_ref": seed.subject_ref,
+  "memory_kind": seed.memory_kind,
+  "sensitivity_level": seed.sensitivity_level,
+  "consent_scope": "cross_service",
+  "raw_text_stored": False,
+  "write_intent": "candidate_only",
+  "applied_to_real_user": False,
+  "write_live": False,
+}
+```
+
+The exact call uses `consent_record=None`,
+`subject_context={"subject_ref": seed.subject_ref}`, and `memory_state={}`. The
+projection deliberately omits `furef_v2`, `retention_policy`, candidate/evidence
+IDs, product/SKU, `gate_decision`, and every write target. The only accepted
+category pairs are:
+
+| Seed | Required current-gate result | WU4 meaning |
+|---|---|---|
+| outcome | `gate_decision=allow`, `reason_codes=[allow_shadow_write]` | read-only policy evidence; never write authority |
+| usage-safety adverse | `gate_decision=block`, `reason_codes=[high_sensitivity_reconfirmation_required]` | preserve separate human-review draft; shared-memory materialization remains blocked |
+
+Any other shape, exception, reason, or decision collapses the candidate plan to
+`cannot_determine` with zero slots/drafts; WU5 then uses section 10.5's
+replay-preserving hard-false submit rather than a commit-capable path. C must never call
 `SharedMemoryStore.ingest`, `write_approved_memory`, learning approval, or reuse.
 
 For a high-sensitivity adverse DTO, the current gate's conservative `block` prevents
@@ -828,9 +907,6 @@ runtime gate.
 
 - Outcome and adverse drafts have evidence contribution zero for truth/safety
   upgrading, consistent with current Foundation customer-memory policy.
-- Every adverse draft is high sensitivity, human-review-required, and cannot be
-  approved by C. Severity may raise operational review priority in a later approved
-  policy, but this design invents no SLA or diagnosis.
 - `severe` is preserved. `usage_safety` remains adverse despite null severity.
   Satisfaction never changes either fact.
 - The only permitted response-policy marker is
@@ -840,6 +916,118 @@ runtime gate.
   Advisor handoff; runtime candidate review is not this design review.
 - Automatic promotion, learned/canonical write, reuse, ranking, personalization,
   safety override, and external reporting are structurally absent.
+
+### 10.5 Exact WU4 pure plan and WU5 adoption boundary
+
+WU4 implements these two pure functions and immutable internal result types; it
+does not call WU3 itself:
+
+```text
+plan_candidate_drafts_v1(
+  validated_envelope: Mapping[str, object],
+  *,
+  validation_result: ValidationResultV1,
+  candidate_id_factory: Callable[[], str] = _default_candidate_id,
+  evidence_ref_factory: Callable[[], str] = _default_evidence_ref,
+  current_gate: Callable[..., Mapping[str, object]] = gate_decision,
+) -> CandidateDraftPlanV1
+
+adopt_candidate_drafts_v1(
+  plan: CandidateDraftPlanV1,
+  *,
+  decision_id: str,
+  lineage_pointer: str,
+) -> CandidateAdoptionV1
+```
+
+`CandidateDraftPlanV1` is a `NamedTuple` with `status: str` (`planned|rejected`),
+`primary_reason_code: Optional[str]`, `reason_codes: Tuple[str, ...]`,
+`requested_slots: Tuple[str, ...]`, `seeds: Tuple[CandidateDraftSeedV1, ...]`, and
+`lifecycle_action: str` (`create_current|supersede_predecessor|revoke_lineage|none`).
+A rejected plan contains only a guarded C category and empty slots/seeds.
+
+`CandidateDraftSeedV1` is internal and immutable. Its exact fields are
+`slot: str`, `candidate_id: str`, `evidence_ref: str`, `content_hash: str`,
+`subject_ref: str`, `source_service: str`, `product_ref: str`,
+`sku_ref: Optional[str]`, `satisfaction: Optional[str]`,
+`adverse_type: Optional[str]`, `adverse_severity: Optional[str]`,
+`adverse_certainty: Optional[str]`, `retention_expires_at: str`,
+`memory_kind: str`, `sensitivity_level: str`, `policy_gate_decision: str`, and
+`policy_reason_codes: Tuple[str, ...]`. It contains no decision/lineage reference,
+no raw content, and is never serialized to the producer.
+
+The planner accepts only a real `ValidationResultV1` whose status is
+`accepted_for_eligibility_review`, provenance is `VERIFIED`, consent is `GRANTED`,
+and retention class is `feedback_non_adverse_90d`. A validation rejection is
+returned as its already-guarded primary category with zero plan state. A malformed
+result, input contradiction, mapper/gate/hash/timestamp error, factory exception,
+invalid or duplicate generated ID, or any unexpected exception becomes
+`cannot_determine` with zero slots/seeds and no exception text.
+
+That plan failure is not allowed to short-circuit WU3 gate 9. Factories and the
+read-only current-gate projection are candidate-effect preparation, not one of the
+reviewed current gates 0–8 that must pass before exact replay. Therefore an early
+`cannot_determine` here would incorrectly turn an otherwise exact replay into a new
+failure. WU5 uses the blocked-submit path below so unchanged WU3 still decides gate
+9 replay/collision first and gate 10 lineage before any gate 11 preparation failure.
+
+The default factories return `"fcei_cand_v1_" + uuid.uuid4().hex` and
+`"fcei_ref_v1_" + uuid.uuid4().hex`; injected factories are mandatory in tests.
+For each slot in deterministic outcome/adverse order, the candidate factory is
+called once and then the evidence factory once. Outputs must match
+`^fcei_cand_v1_[0-9a-f]{32}$` and `^fcei_ref_v1_[0-9a-f]{32}$` and be unique within
+the plan. A prepared seed is not a created or persisted candidate.
+
+The adopter accepts only a `planned` plan plus WU3-guaranteed
+`^fcei_dec_v1_[0-9a-f]{32}$` and `^fcei_lin_v1_[0-9a-f]{32}$` values. It performs no
+factory, parsing, hash, gate, I/O, lookup, copy of producer data, or policy decision;
+it only binds those two references and the fixed literals into the final DTO tuple,
+preserving seed order. `CandidateAdoptionV1` contains
+`drafts: Tuple[Union[CommerceOutcomeCandidateV1,
+CommerceAdverseCandidateV1], ...]` and `lifecycle_action: str`. It is an internal
+effect object, never the public `CommerceEvidenceDecisionV1`.
+
+The future WU5 orchestration sequence is exact and requires no WU3 change:
+
+1. WU5 owns one outer `RLock` and one preallocated boolean
+   `candidate_effect_healthy=True`. Under the lock, gate 0 remains first. If the flag
+   is ON but the health latch is false, return static `cannot_determine` before
+   parsing or calling WU3. Otherwise run gates 1–8.
+2. Attempt the full WU4 plan, including factories, hashes, retention timestamp, and
+   current-gate checks. A planned result selects its requested slots and the real
+   gate-11 `commit_guard`. A rejected/failed plan selects fallback slots `()` and a
+   side-effect-free guard that returns literal `False`; do not return yet.
+3. Call unchanged `EphemeralLedger.submit`. WU3 gate 9 runs before slot validation,
+   lineage, and the guard. Thus an exact committed fingerprint still returns
+   `exact_replay`, and a collision still returns `duplicate_evidence`, regardless of
+   current WU4 factory/gate failure. For unseen evidence, gate 10 still wins when
+   lineage fails; otherwise the hard-false guard reaches gate 11 and returns
+   `cannot_determine` with zero receipt/slot/lineage state. This preserves the
+   reviewed gate order and replay contract without a new lookup API or WU3 edit.
+4. For WU3 `rejected` or `exact_replay`, discard every prepared seed and adopt `()`.
+   Exact replay returns WU3's stored decision/lineage/current-eligibility result and
+   zero new candidate effect. Any unused generated IDs were never issued or stored.
+5. `status=accepted` is possible only for a planned result with the real guard.
+   Require `created_slots == len(plan.requested_slots) == len(plan.seeds)` and the
+   expected WU3 slot state, then bind WU3's decision ID and lineage pointer. A
+   retraction adopts `()` while retaining `revoke_lineage`.
+6. Precompute category-only response/audit material before submit where possible.
+   If an invariant mismatch or unexpected bind/remaining assembly exception occurs
+   after WU3 accepted, discard this call's adoption, set the preallocated health
+   latch to `False` while still holding the outer lock, and return only
+   `cannot_determine`. Do not call `ledger.clear()` and do not delete or mutate any
+   prior receipt, slot, lineage, tombstone, or eligibility state. The poisoned
+   service instance rejects every later call before WU3 until an explicit new
+   in-memory instance/process restart; there is no automatic recovery or replay from
+   the compromised instance.
+
+The poison latch is the smallest fail-closed containment because an epoch clear
+would erase unrelated prior accepted ephemeral evidence. It adds only one
+service-health category, contains no producer/customer value, and creates no WU3,
+storage, or product-policy surface. No durable partial is possible: the plan lives
+only on the call stack, adopted DTOs have no store, WU3 and its latch are RAM-only,
+and a process crash/restart destroys the whole instance. Durable or multi-process
+adoption remains a new storage design and approval.
 
 ## 11. Response, audit, and observability contracts
 
@@ -939,7 +1127,7 @@ C; zero-write/promotion invariants are hard review failures.
 | `foundation/shared_memory/commerce_evidence/verifiers.py` | protocols, verdict enums, UNCONFIGURED defaults | no credentials, env reads, network, or consent store |
 | `foundation/shared_memory/commerce_evidence/ledger.py` | protocol + locked ephemeral reference ledger; gates 9–11 | no file/DB, no `SharedMemoryStore` |
 | `foundation/shared_memory/commerce_evidence/lineage.py` | root/leaf/tombstone/successor rules and lifecycle effects | append-only only |
-| `foundation/shared_memory/commerce_evidence/candidates.py` | two dedicated DTOs, slot mapping, current-gate policy projection | no learning/reuse/store writes |
+| `foundation/shared_memory/commerce_evidence/candidates.py` | exact candidate version/DTOs, pure pre-ledger plan, total accepted-result adoption, read-only current-gate projection | no ledger mutation, learning/reuse/store writes |
 | `foundation/shared_memory/commerce_evidence/service.py` | flag-first in-process orchestration and minimized response | no endpoint, consumer, sender, or legacy signal call |
 | `foundation/shared_memory/commerce_evidence/audit.py` | safe audit projection and low-cardinality metrics records | no payload/identifier fields |
 | `foundation/shared_memory/reason_codes.py` | additive guarded delegation to the dedicated C set | preserve all current dynamic codes |
@@ -1051,6 +1239,74 @@ An implementation review could pass only with all of:
 10. no product migration, DB file, network, secret, transport, delivery, or candidate
     runtime connection.
 
+### 13.4 Exact WU4 mapping oracles and STOPs
+
+The authorized WU4 Worker changes only `candidates.py` and one dedicated
+`test_commerce_evidence_candidates.py`. Its required tests are:
+
+1. `CANDIDATE_CONTRACT_VERSION` equals the one exact literal and is present in both
+   DTOs and both slot-hash projections; a one-character change changes the hash.
+2. DTO `_fields` order and annotations match every row in section 10.1; the pure
+   planner/adopter boundary refuses to construct DTOs for wrong literals,
+   invalid/null IDs, wrong booleans, invalid enum pairs, or non-millisecond/non-UTC
+   or incorrect `retention_expires_at`.
+3. Synthetic accepted satisfaction-only, usage-safety-only, and combined envelopes
+   produce respectively `("outcome",)`, `("adverse",)`, and
+   `("outcome", "adverse")`; tuple/seed/final-DTO order is identical.
+4. Outcome and adverse hashes use the exact eight-key JSON projection, explicit null
+   absent axis, compact sorted ASCII serialization, and known synthetic golden
+   values. Neither hash changes with subject, purchase item, decision, lineage,
+   candidate, or evidence IDs.
+5. `retention_expires_at` is exactly occurred-at plus 90 days across month/year/leap
+   boundaries and remains `.sssZ`; no current retention enum appears.
+6. Purchase-feedback uses `create_current`; correction uses
+   `supersede_predecessor` and maps only corrected axes; retraction uses
+   `revoke_lineage`, produces zero slots/seeds/drafts, and calls zero factories.
+7. Skin/other, including satisfaction plus skin/other, returns
+   `privacy_scope_exceeded`, zero plan state, and zero factory calls. Satisfaction
+   never suppresses this result.
+8. Factory call order is candidate/evidence per outcome then adverse. Raised
+   exceptions, malformed IDs, duplicates, malformed validation results, timestamp/
+   hash/gate exceptions, and unexpected values yield category-only
+   `cannot_determine` and zero plan state with no exception text.
+9. A spy current gate receives exactly the projection and keyword contexts in
+   section 10.3. Outcome must be `allow/[allow_shadow_write]`; usage-safety adverse
+   must be `block/[high_sensitivity_reconfirmation_required]`. Alternate results
+   reject the plan; only the replay-preserving hard-false WU3 submit may follow,
+   never a commit-capable submission.
+10. Seed one accepted WU3 receipt, then force the retry's WU4 factory and current
+    gate to fail separately. The fallback `requested_slots=()` plus hard-false guard
+    must still return WU3 `exact_replay` with the original decision/lineage/current
+    eligibility and zero new effect. The same path must preserve
+    `duplicate_evidence` for collision; an unseen lineage-valid event must reach
+    `cannot_determine` with zero state, while a lineage-invalid event keeps gate 10's
+    reason. This proves WU4 failure cannot reorder gates 9–11.
+11. Synthetic WU3 result categories prove adoption behavior: only `accepted` binds
+    the prepared tuple; rejection and collision discard it; exact replay adopts
+    zero; accepted count/state mismatch fails closed. Bound decision/lineage values
+    are WU3 values, while WU3 contains no candidate/evidence/hash/DTO content.
+12. Inject a post-accepted bind/assembly failure with at least one unrelated prior
+    accepted receipt. The health latch becomes false, the call returns only
+    `cannot_determine`, `ledger.clear()` is never called, and the complete WU3
+    snapshot—including the unrelated receipt/slot/lineage—remains byte-for-byte
+    equal. Every later call on that service instance fails before WU3; only a fresh
+    in-memory instance/restart recovers.
+13. DTO/plan/adoption objects never appear in a simulated public decision
+    serialization; producer evidence/source/purchase/product/SKU/subject values are
+    absent from public/category-only results.
+14. AST/static containment proves no import/call of store, API, service, audit,
+    feature flags, learning, approval, reuse, ranking, safety mutation, file/DB,
+    environment, network/provider, transport, secret, or current
+    `MemoryCandidate`; only the declared WU4 file and test change.
+
+WU4 must STOP without implementation if any requirement needs a WU3 edit; a current
+`MemoryCandidate`, `furef_v2`, retention enum or store writer; skin/other acceptance
+or an adverse-hold representation; a new reason/version/input field; service/audit/
+flag behavior; persistence, delivery, intake, runtime, DB, environment, secret, or
+network; or any file beyond the two-path WU4 handoff. WU5 owns orchestration and the
+outer-lock/replay-preserving blocked-submit/poison-latch behavior; WU4 tests may
+model that contract but must not implement `service.py`.
+
 ## 14. Activation, rollback, and kill switch
 
 ### 14.1 Stages
@@ -1125,7 +1381,7 @@ product schema. Any future durable schema requires its own forward/down plan.
 |---|---|---|---|---|
 | D2-A, Cosmile owns normalization | exact v1 closed table; no reinterpretation | `contract.py`, `validator.py` | contract/property | every field has one outcome |
 | Foundation validates only | state separation and accepted-for-review result | `service.py` | integration/response | acceptance is not candidate/runtime |
-| Foundation-only candidates | dedicated internal candidate DTOs after acceptance | `candidates.py`, `ledger.py` | mapping/concurrency | zero Cosmile/current-store writer |
+| Foundation-only candidates | exact-version internal DTOs; fallible plan before ledger; accepted-only bind after ledger | `candidates.py`; WU3 stores slots only | mapping/adoption/concurrency | 0/1/2 deterministic; replay/reject zero; no producer echo/current-store writer |
 | separate consent; userId != consent | exact purpose/notice + current verifier | `verifiers.py`, `validator.py` | consent matrix | no login/subject inference |
 | identity linking OFF | identified-only, link false, no mint/re-key | `validator.py` | identity/root isolation | guest/link always reject |
 | append-only correction/retraction | single successor, tombstone, monotone effects | `lineage.py`, `ledger.py` | lineage/races | no overwrite/branch/resurrection |
@@ -1147,7 +1403,7 @@ product schema. Any future durable schema requires its own forward/down plan.
 | 1 | `C-CONTRACT-FREEZE` / Foundation Worker | C `contract.py`, `reason_codes.py`, `hash_v1.py`, synthetic fixture/tests | new Leo/GPT implementation approval | any v1 source ambiguity or reason mismatch | remove unimported files; exact field/code/hash manifest |
 | 2 | `C-VERIFIER-VALIDATOR` / Foundation Worker | C `verifiers.py`, `validator.py`, tests | WU1 reviewed | credential/protocol must be invented; default accepts any input | flag OFF; gate-order and default-reject evidence |
 | 3 | `C-EPHEMERAL-LEDGER` / Foundation Worker | C `ledger.py`, `lineage.py`, tests only | WU1–2 reviewed | cross-process/durable behavior requested | remove volatile driver; race/rollback evidence |
-| 4 | `C-CANDIDATE-DRAFTS` / Foundation Worker | C `candidates.py`, mapping tests | WU1–3 reviewed | furef fabricated, current memory store/reuse needed, adverse legal policy absent | no candidate import; slot/lifecycle evidence |
+| 4 | `C-CANDIDATE-DRAFTS` / Foundation Worker | C `candidates.py`, one dedicated mapping test | WU1–3 reviewed + this clarification independently reviewed | any section 13.4 STOP; WU3/service edit needed; furef/store/reuse/adverse policy invented | remove two unimported files; exact DTO/hash/plan/projection/adoption evidence |
 | 5 | `C-SHADOW-SERVICE` / Foundation Worker | C `service.py`, `audit.py`; additive guarded reason/flag lines | WU1–4 reviewed | endpoint/consumer/env/network/DB requested | flag OFF; response/audit/static evidence |
 | 6 | `C-VERIFICATION` / Foundation Worker | dedicated tests and synthetic fixtures only | WU1–5 | real data/DB/network/secret/provider needed | no product state; full evidence bundle |
 | 7 | `C-INDEPENDENT-IMPLEMENTATION-REVIEW` / independent Foundation Reviewer | read-only plus declared review result storage | WU1–6 evidence | any unproved objective gate | verdict to Advisor; no patch by Reviewer |
@@ -1172,6 +1428,8 @@ sends work directly to another subordinate.
 - purpose-specific consent and identified-only identity behavior;
 - correction/retraction/tombstone and non-adverse logical retention;
 - two Foundation-owned candidate draft types, mapping, and no-runtime lifecycle;
+- exact shared candidate-version literal, Python DTO fields, millisecond UTC expiry,
+  two-phase pure plan/adoption API, read-only current-gate projection, and WU4 tests;
 - response/audit/metrics minimization;
 - module boundaries, test plan, flags, rollback, threats, traceability, and future
   WorkUnit stops.
@@ -1189,7 +1447,9 @@ sends work directly to another subordinate.
 5. **Current candidate contract:** `furef_v2` and exact retention mapping are absent.
    C uses dedicated draft DTOs; current `MemoryCandidate`/store connection is blocked.
 6. **Durability/concurrency:** the bounded reference ledger proves one-process
-   semantics only. No restart/multi-process durability or product DB exists.
+   semantics only. Candidate plans/adoptions are RAM-only; a WU5 health latch
+   quarantines, but does not erase, the whole instance after any unexpected
+   post-ledger failure. No restart/multi-process durability or product DB exists.
 7. **Transport/limits:** no delivery, endpoint, retry, byte limit, rate limit, or
    consumer is designed. Cosmile rows remain contained.
 8. **Erasure:** retraction revokes eligibility but is not a complete legal erasure
