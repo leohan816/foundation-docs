@@ -268,9 +268,9 @@ leased --process crash/lease expiry--> ready
 ```
 
 No other transition is valid. Terminal states are `acknowledged`, `completed_rejected`,
-`dead_lettered`, and `blocked`. Retraction additionally changes every unfinished row in its
-root to `blocked`; an already acknowledged predecessor remains as evidence of what was
-accepted and is revoked by the Foundation tombstone.
+`dead_lettered`, and `blocked`. Retraction additionally changes every earlier unfinished row in
+its root to `blocked`; the retraction row itself remains deliverable; an already acknowledged
+predecessor remains as evidence of what was accepted and is revoked by the Foundation tombstone.
 
 Generic `FoundationSignalOutbox.status` maps as follows: `pending` for contained/ready/leased/
 retry_wait, `sent` for acknowledged, `failed` for completed_rejected/dead_lettered, and
@@ -378,7 +378,7 @@ review, and retention.
 | `provenance_category` | no | `VERIFIED` for accepted receipt |
 | `consent_category` | no | `GRANTED` for accepted receipt |
 | `retention_class` | no | `feedback_non_adverse_90d` in executable WU8 scope |
-| `effective_eligibility` | no | eligible/revoked/expired/ineligible |
+| `effective_eligibility` | no | eligible/revoked/expired |
 | `created_slot_count` | no | 0/1/2 |
 
 Unique indexes enforce `(service,source_event_id)`, `(service,evidence_id)`, and
@@ -408,9 +408,10 @@ PII, or arbitrary JSON.
 
 `content_expires_at = occurred_at + 90 days` for all admissible WU8 content, including
 `usage_safety`. Skin/other legal-hold content is never accepted while policy is UNCONFIGURED.
-At expiry, structured content and drafts become ineligible and are deleted/cryptographically
-unavailable by the selected backend procedure; the minimized receipt/tombstone may remain to
-the 180-day ceiling to prevent replay from re-creating expired content.
+At expiry, the receipt and lineage head store `effective_eligibility = expired`, associated
+review drafts store `status = expired`, and structured content is deleted or made
+cryptographically unavailable by the future selected backend procedure; the minimized
+receipt/tombstone may remain to the 180-day ceiling to prevent replay from re-creating expired content.
 
 ### 5.3 `LineageNodeV1`, `LineageHeadV1`, and successor uniqueness
 
@@ -424,7 +425,7 @@ retraction successor across both action types (uniqueness 4).
 `LineageHeadV1` is unique on non-null `(service,purchase_item_ref)`. Non-null fields are
 `root_evidence_id`, `current_leaf_evidence_id`, `lineage_pointer`, immutable `subject_ref`,
 `product_ref`, `tombstoned` boolean, `effective_eligibility`
-`eligible|ineligible|revoked|expired`, and monotonic positive `version`; only `sku_ref` is
+`eligible|revoked|expired`, and monotonic positive `version`; only `sku_ref` is
 nullable. Root creation inserts head version 1. Correction advances the leaf/version only when
 the target is current and all immutable axes match. Retraction sets tombstoned/revoked and does
 not create a new usable leaf.
@@ -731,7 +732,8 @@ app/scripts/wu8_commerce_evidence_no_activation.mjs
 Required oracles: frozen serialization and byte count; no extra fields; queue-depth shedding;
 root FIFO with cross-root concurrency; lease CAS/expiry; backoff+jitter/attempt 5; timeout after
 commit; exact replay acknowledgement; malformed/unknown ack; poison and oversize; terminal
-rejection; retraction blocks unfinished root; current-consent loss before every lease/retry;
+rejection; retraction blocks earlier unfinished root rows while its own row remains deliverable;
+current-consent loss before every lease/retry;
 adverse-hold/guest zero send; OFF zero claim; no raw values in failure state/log/metric/DLQ;
 migration forward/backfill/constraints/down gate; generic signal rows unchanged.
 
