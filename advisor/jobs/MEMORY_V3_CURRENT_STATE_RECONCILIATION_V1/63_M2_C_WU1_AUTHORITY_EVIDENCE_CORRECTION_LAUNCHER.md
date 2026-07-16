@@ -1,0 +1,40 @@
+========
+TARGET_ACTOR: foundation Worker
+TARGET_ACTOR_ID: foundation
+TARGET_PROJECT: FOUNDATION / Memory V3 M2 C WU1 correction
+TARGET_REPOSITORY: /home/leo/Project/FOUNDATION
+TARGET_BRANCH: shadow/foundation-shared-memory-v0
+BASELINE_COMMIT: 5b9d08abd049fcfb4eefd3d86f140561e5b94282
+EXPECTED_ORIGIN: git@github.com:leohan816/foundation.git
+TARGET_SESSION_NAME: foundation
+TARGET_WINDOW_ID: @3
+TARGET_PANE_ID: %3
+ROLE_MODE: SAME_FOUNDATION_WORKER_BOUNDED_WU1_CORRECTION
+ACTUAL_MODEL: verify live; do not infer
+MODEL_EFFORT: max — verify current live setting
+REQUIRED_SKILL: /fable-builder
+MISSION_ID: MEMORY_V3_CURRENT_STATE_RECONCILIATION_V1
+WORK_UNIT_ID: M2-C-WU1-AUTHORITY-EVIDENCE-CORRECTION-001
+READ_AND_EXECUTE: /home/leo/Project/.worktrees/foundation-docs/FOUNDATION_TEAM_ROLE_ALIGNMENT_20260714/advisor/jobs/MEMORY_V3_CURRENT_STATE_RECONCILIATION_V1/62_M2_C_WU1_AUTHORITY_EVIDENCE_CORRECTION_HANDOFF.md
+EXPECTED_RESULT: /home/leo/Project/.worktrees/foundation-docs/FOUNDATION_TEAM_ROLE_ALIGNMENT_20260714/runs/foundation/MEMORY_V3_CURRENT_STATE_RECONCILIATION_V1/M2_C_WU1_CONTRACT_FREEZE_RESULT.md
+EXPECTED_POINTER: /home/leo/Project/.worktrees/foundation-docs/FOUNDATION_TEAM_ROLE_ALIGNMENT_20260714/runs/foundation/MEMORY_V3_CURRENT_STATE_RECONCILIATION_V1/M2_C_WU1_CONTRACT_FREEZE_RESULT_POINTER.md
+EXPECTED_DESIGN_MIRROR: /home/leo/Project/.worktrees/foundation-docs/FOUNDATION_TEAM_ROLE_ALIGNMENT_20260714/설계문서/foundation/FOUNDATION_COMMERCE_EVIDENCE_SHADOW_설계서.md
+RETURN_TO: foundation-advisor
+PRE_DISPATCH_LIVE_VERIFICATION: REQUIRED
+DO_NOT_EXECUTE_FROM_MEMORY: true
+READ_REFERENCED_FILES_DIRECTLY: true
+DO_NOT_BROADEN_SCOPE: true
+NO_NEW_AGENT_OR_SUBAGENT: true
+DELTA_ONLY_VERIFICATION: true
+BEHAVIOR_CONTRACT_TEST_FIXTURE_CHANGE: forbidden
+WORK_UNIT_2_TO_8_EXECUTION: forbidden
+PRODUCT_CORRECTION_COMMIT_AND_NONFORCE_PUSH: authorized after exact delta checks
+FOUNDATION_DOCS_COMMIT_OR_PUSH: forbidden
+NO_REVIEWER_DISPATCH: true
+STOP_AFTER_RETURN: true
+
+Open READ_AND_EXECUTE directly. Correct only the stale authority wording and wrong
+handoff evidence, verify only the exact delta, commit/push the four product text
+paths, update the three unpublished evidence/mirror paths, return the pointer to
+foundation-advisor, and STOP. Do not start WU2.
+========
