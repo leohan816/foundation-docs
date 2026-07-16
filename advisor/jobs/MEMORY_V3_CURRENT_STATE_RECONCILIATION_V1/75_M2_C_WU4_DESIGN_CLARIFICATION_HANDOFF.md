@@ -11,12 +11,18 @@ TARGET_PRODUCT_REPOSITORY: /home/leo/Project/FOUNDATION
 PRODUCT_REPOSITORY_MODE: READ_ONLY
 TARGET_FOUNDATION_DOCS_WORKTREE: /home/leo/Project/.worktrees/foundation-docs/FOUNDATION_TEAM_ROLE_ALIGNMENT_20260714
 TARGET_FOUNDATION_DOCS_BRANCH: advisor/foundation-team-role-alignment-20260714
-FOUNDATION_DOCS_BASELINE: 9ba521e6f34d0f35fcf29009c560873fbced3f13
+DESIGN_SUBJECT_BASELINE: 9ba521e6f34d0f35fcf29009c560873fbced3f13
+HANDOFF_AND_LAUNCHER_COMMIT: supplied by Advisor dispatch envelope; current HEAD must equal it
 REQUIRED_SKILL: /fable-builder
 EFFORT: high
 RETURN_TO: foundation-advisor
 STOP_AFTER_RETURN: true
 ```
+
+`DESIGN_SUBJECT_BASELINE` is the pre-clarification design/evidence state. It is not
+the expected dispatch HEAD. The Advisor dispatch envelope supplies the immutable
+commit/blob/SHA containing this handoff and launcher; verify current foundation-docs
+HEAD equals that commit and that `DESIGN_SUBJECT_BASELINE` is its ancestor.
 
 ## 0. Purpose and authority
 
@@ -123,4 +129,3 @@ Completion requires:
 - result and pointer return to Advisor for independent delta design review.
 
 Return only the compact pointer and STOP. WU4 product implementation must not start.
-
