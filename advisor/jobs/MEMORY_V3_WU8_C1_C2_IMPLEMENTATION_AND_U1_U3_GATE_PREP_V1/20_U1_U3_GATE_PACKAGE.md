@@ -202,9 +202,11 @@ rollback without inventing a repository path or technology?
 
 The selected design must support durable receipts, minimized accepted evidence,
 lineage nodes and heads, tombstones, review-only draft slots, and category-only
-decision audits. It must enforce unique service/source-event, service/evidence,
-service/idempotency, service/purchase-lineage-head,
-service/predecessor-successor, and service/root-tombstone identities. One
+decision audits. It must enforce unique `(service, source_event_id)`,
+`(service, evidence_id)`, `(service, idempotency_key)`,
+`(service, predecessor/target_evidence_id)` across correction and retraction,
+`(service, evidence_id, candidate_slot)`, and `(service, root_evidence_id)`
+tombstone plus the purchase-lineage replay block. One
 all-or-none serializable-equivalent transaction must resolve replay/collision,
 validate lineage/tombstones, insert receipt/evidence, update lineage, reserve
 draft slots, re-read the exact-true commit guard, and commit. Serialization retry
