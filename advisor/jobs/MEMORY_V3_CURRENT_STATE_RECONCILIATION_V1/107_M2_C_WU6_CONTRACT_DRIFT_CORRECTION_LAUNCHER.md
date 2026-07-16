@@ -1,0 +1,44 @@
+========
+TARGET_ACTOR: foundation Worker
+TARGET_ACTOR_ID: foundation
+TARGET_PROJECT: FOUNDATION / Memory V3 M2 C Shadow WU6 bounded test correction
+TARGET_REPOSITORY: /home/leo/Project/FOUNDATION
+TARGET_BRANCH: shadow/foundation-shared-memory-v0
+BASELINE_COMMIT: 90d62984e5330c8b985dc6c2f18edf241909d7ed
+EXPECTED_ORIGIN: git@github.com:leohan816/foundation.git
+TARGET_SESSION_NAME: foundation
+TARGET_WINDOW_ID: @3
+TARGET_PANE_ID: %3
+ROLE_MODE: FOUNDATION_WORKER_WU6_TEST_CONTRACT_CORRECTION
+ACTUAL_MODEL: verify live; do not infer from session name
+MODEL_EFFORT: max — verify live before work
+REQUIRED_SKILL: /fable-builder
+MISSION_ID: MEMORY_V3_CURRENT_STATE_RECONCILIATION_V1
+WORK_UNIT_ID: M2-C-WU6-DRIFT-CORRECTION-001
+READ_AND_EXECUTE: /home/leo/Project/.worktrees/foundation-docs/FOUNDATION_TEAM_ROLE_ALIGNMENT_20260714/advisor/jobs/MEMORY_V3_CURRENT_STATE_RECONCILIATION_V1/106_M2_C_WU6_CONTRACT_DRIFT_CORRECTION_HANDOFF.md
+FOUNDER_RESPONSE_AND_ACK_COMMIT: d058e08989011f2b808b3e4c017168485d837cd6
+WU6_STOP_EVIDENCE_COMMIT: 4552b89b859a85f401e85763a9c6597df08135de
+EXPECTED_RESULT: /home/leo/Project/.worktrees/foundation-docs/FOUNDATION_TEAM_ROLE_ALIGNMENT_20260714/runs/foundation/MEMORY_V3_CURRENT_STATE_RECONCILIATION_V1/M2_C_WU6_CONTRACT_DRIFT_CORRECTION_RESULT.md
+EXPECTED_POINTER: /home/leo/Project/.worktrees/foundation-docs/FOUNDATION_TEAM_ROLE_ALIGNMENT_20260714/runs/foundation/MEMORY_V3_CURRENT_STATE_RECONCILIATION_V1/M2_C_WU6_CONTRACT_DRIFT_CORRECTION_RESULT_POINTER.md
+RETURN_TO: foundation-advisor
+DO_NOT_EXECUTE_FROM_MEMORY: true
+READ_REFERENCED_FILES_DIRECTLY: true
+DO_NOT_BROADEN_SCOPE: true
+NO_NEW_AGENT_OR_SUBAGENT: true
+CORRECTION_PATH_COUNT: 1
+FROZEN_WU6_PATH_COUNT: 4
+PRODUCT_SOURCE_RUNTIME_DESIGN_POLICY_SCHEMA_API_CONFIG_DEPENDENCY_CHANGE: forbidden
+DB_DOCKER_NETWORK_PROVIDER_SECRET_ENV_PERSISTENCE: forbidden
+ENDPOINT_CONSUMER_TRANSPORT_DELIVERY_INTAKE_STORE_RUNTIME: forbidden
+WORK_UNIT_7_TO_8: forbidden
+PRODUCT_COMMIT_AND_NONFORCE_SHADOW_PUSH: authorized only after every rerun gate passes
+FOUNDATION_DOCS_COMMIT_OR_PUSH: forbidden
+NO_REVIEWER_DISPATCH: true
+STOP_AFTER_RETURN: true
+
+Open READ_AND_EXECUTE directly. Apply `/fable-builder`, verify exact runtime/Git,
+frozen hashes, and live `max`; correct only the one stale existing test contract;
+rerun the exact suites; if all green, commit and non-force push exactly the five
+authorized test/fixture paths; write the declared result/pointer; return to
+foundation-advisor; STOP. Do not change product source or start WU7/WU8.
+========
