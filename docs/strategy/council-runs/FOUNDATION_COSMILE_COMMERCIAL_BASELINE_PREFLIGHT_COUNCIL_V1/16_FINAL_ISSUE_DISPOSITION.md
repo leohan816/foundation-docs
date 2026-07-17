@@ -1,5 +1,15 @@
 # Final Issue Disposition
 
+POST_COUNCIL_FOUNDER_CORRECTION: `TIMEBOX_MODEL_SUPERSEDED_IN_PART`
+
+CURRENT_TARGET_DURATION: `APPROXIMATELY_3_WORKING_DAYS`
+
+CURRENT_DAY_3_CHECKPOINT: `REQUIRED`
+
+CURRENT_HARD_STOP_AT_DAY_3: `NO`
+
+CURRENT_CONTINUATION_RULE: Necessary, bounded work inside the already approved audit scope continues beyond Day 3. This post-Council Founder correction supersedes every maximum-three-day or automatic-termination statement below without rewriting the frozen Challenger reports.
+
 MISSION_ID: `FOUNDATION_COSMILE_COMMERCIAL_BASELINE_PREFLIGHT_COUNCIL_V1`
 
 COUNCIL_PROCESS_COMPLETED: YES
@@ -31,9 +41,9 @@ FINDING: The audit must be a staged decision exercise rather than an eighteen-ou
 
 DISPOSITION: ACCEPTED
 
-RATIONALE: All roles converged on Day 1 `CONTINUE | EARLY_COMPLETE | HOLD`, a maximum three investigative days, and pursuit only of decision-changing questions.
+RATIONALE: All roles converged on Day 1 `CONTINUE | EARLY_COMPLETE | HOLD` and pursuit only of decision-changing questions. Leo subsequently corrected the duration to an approximately-three-day target with a mandatory checkpoint and bounded in-scope continuation.
 
-EFFECT_ON_PREFLIGHT: Add the Day 1 gate, early exit, first-decision-relevant boundary, and no-extension controls.
+EFFECT_ON_PREFLIGHT: Add the Day 1 gate, early exit, first-decision-relevant boundary, and bounded-continuation controls.
 
 MINORITY_POSITION_PRESERVED: YES
 
@@ -91,11 +101,11 @@ FINDING_ID: `PV-05`
 
 SOURCE_ROLE: `PRODUCT_USER_AND_BUSINESS_VALUE_CHALLENGER`
 
-FINDING: Day 3 must present bounded beta options and one next-priority recommendation rather than a generic readiness checklist.
+FINDING: The audit package must present bounded beta options and one next-priority recommendation rather than a generic readiness checklist.
 
 DISPOSITION: ACCEPTED
 
-RATIONALE: A decision-useful audit needs one to three option cards and a recommendation for Leo's consideration, with Public Launch-only deferrals.
+RATIONALE: A decision-useful final package needs one to three option cards and a recommendation for Leo's consideration, with Public Launch-only deferrals. At the corrected Day 3 checkpoint, their current evidence status is frozen without forcing a premature final recommendation.
 
 EFFECT_ON_PREFLIGHT: Put option cards and the non-authorizing recommendation in P4.
 
@@ -255,7 +265,7 @@ FINDING: Three-day feasibility needs live role capacity, concurrency, cutoffs, a
 
 DISPOSITION: ACCEPTED
 
-RATIONALE: The truthful default is three investigative working days through P1–P4 freeze, plus separately measured P5.
+RATIONALE: Council recommended three investigative working days through P1–P4 freeze. Leo subsequently replaced that limit with an approximately-three-day target, mandatory Day 3 checkpoint, and bounded continuation until the current-state decision package is complete; P5 remains separately measured.
 
 EFFECT_ON_PREFLIGHT: Correct the timebox claim and require live capacity/cutoff fields before dispatch.
 
@@ -319,9 +329,9 @@ FINDING: Admission, drift, evidence freeze, package freeze, expiry, and closure 
 
 DISPOSITION: ACCEPTED
 
-RATIONALE: These controls are necessary to enforce the timebox without extending the authority document.
+RATIONALE: These controls are necessary to enforce bounded scope, checkpoint evidence preservation, revised estimates, and exact escalation conditions without expanding the authority document.
 
-EFFECT_ON_PREFLIGHT: Add compact P1 fields and exact stop/expiry rules.
+EFFECT_ON_PREFLIGHT: Add compact P1 fields and exact checkpoint, continuation, return, and closure rules; elapsed Day 3 alone is not an expiry condition.
 
 MINORITY_POSITION_PRESERVED: YES
 
@@ -383,7 +393,7 @@ FINDING: New E4 integration execution may be allowed inside the audit under an e
 
 DISPOSITION: REJECTED_WITH_REASON
 
-RATIONALE: The later cross-review converged on E2 static default plus exact optional E3 only. E4 is release-validation evidence and threatens the fixed baseline timebox.
+RATIONALE: The later cross-review converged on E2 static default plus exact optional E3 only. E4 is release-validation evidence and remains disproportionate to the bounded baseline objective even after the timebox correction.
 
 EFFECT_ON_PREFLIGHT: Keep the E4 definition for later gates but prohibit new E4 execution in this audit.
 

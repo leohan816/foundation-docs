@@ -17,7 +17,7 @@ FOCUSED_REBUTTAL_ROUNDS_USED: 1
 CHANGES_REQUIRED:
 1. Add the Day 1 provisional-option and `CONTINUE | EARLY_COMPLETE | HOLD` gate.
 2. Limit Days 2–3 to decision-changing selected-slice questions and the first decision-relevant/blocking boundary.
-3. Clarify that the three investigative working days end at immutable P1–P4 freeze; P5 Independent Review/Advisor closure is separately measured by default.
+3. Define approximately three working days as the target, require a Day 3 checkpoint, allow necessary bounded continuation inside the approved scope, and keep P5 separately measured after final P1–P4 freeze.
 4. Consolidate the eighteen output concerns into P1–P5 views over one authoritative row set.
 5. Separate investigation-package completion, audit completion, and release-readiness evidence.
 6. Make `E2_STATIC_ONLY` the default ceiling, permit only exact preauthorized decision-changing E3, and exclude new E4 execution.
@@ -37,7 +37,7 @@ CHANGES_APPLIED:
 - Added owner-gap handling and prohibited-claim semantics.
 - Replaced operational E5 with a separate external-state dimension while retaining E0–E4 definitions.
 - Added output-local non-authorization and completion/readiness separation.
-- Corrected the timebox and added separately measured P5.
+- Corrected the duration model to an approximately-three-day target, mandatory Day 3 checkpoint, bounded in-scope continuation, exact return-to-Leo triggers, and separately measured P5.
 - Replaced the eighteen-output presentation with P1–P5 while preserving all eighteen concerns as fields/views.
 - Expanded blocker causality fields.
 - Replaced the Founder decision list with the minimum admission set and a larger explicit deferred set.
@@ -62,11 +62,17 @@ REASONS_NOT_APPLIED: The rejected formulations would overstate unknown demand, e
 
 UPDATED_PREFLIGHT_FILE: `docs/strategy/20260717_FOUNDATION_COSMILE_COMMERCIAL_BASELINE_STRATEGY_PREFLIGHT_KO.md`
 
-UPDATED_BLOB: `c9342b629a58d107dadddfda225662af4506da0e`
+COUNCIL_PUBLICATION_BLOB_BEFORE_TIMEBOX_CORRECTION: `c9342b629a58d107dadddfda225662af4506da0e`
 
-UPDATED_SHA256: `53132186af985cc1077e185053f17c2f9abe6bba3206df5b96de9d0a51fc80c6`
+COUNCIL_PUBLICATION_SHA256_BEFORE_TIMEBOX_CORRECTION: `53132186af985cc1077e185053f17c2f9abe6bba3206df5b96de9d0a51fc80c6`
 
-UPDATED_GIT_COMMIT: `RECORDED_IN_PR_HISTORY_AND_FINAL_RETURN`
+COUNCIL_PUBLICATION_COMMIT: `5cb94b24d9ee43f24776762ef81e4423ed9ace3d`
+
+CURRENT_PREFLIGHT_BLOB_AFTER_TIMEBOX_CORRECTION: `f850d11b6c6669253cf488447b1e732656cc7f03`
+
+CURRENT_PREFLIGHT_SHA256_AFTER_TIMEBOX_CORRECTION: `1056f9c802e574b48ff2139e1ffc857316d6e5d65cdf128000d621246b17db8f`
+
+TIMEBOX_CORRECTION_GIT_COMMIT: `RECORDED_IN_PR_HISTORY_AND_FINAL_RETURN`
 
 FINAL_VERDICT: `PROCEED_WITH_CORRECTIONS`
 
@@ -84,4 +90,38 @@ PRODUCT_REPOSITORY_CHANGES: NONE
 
 NEXT_STEP: Publish the exact Council snapshot and updated Preflight to the existing branch and Draft PR #2, then stop for Leo/GPT review.
 
-STOP: `PUBLICATION_PENDING`
+## Post-Council Founder timebox correction
+
+CORRECTION_SOURCE: `LEO_EXPLICIT_DIRECTION`
+
+TARGET_DURATION: `APPROXIMATELY_3_WORKING_DAYS`
+
+DAY_3_CHECKPOINT: `REQUIRED`
+
+HARD_STOP_AT_DAY_3: `NO`
+
+DAY_3_REQUIRED_ACTIONS:
+- Freeze completed evidence.
+- List exact remaining questions.
+- Confirm scope has not expanded.
+- Provide a revised bounded completion estimate and confidence.
+
+CONTINUATION_AFTER_DAY_3: Allowed without a new Leo approval when remaining work is necessary, bounded, and inside the already approved audit scope.
+
+RETURN_TO_LEO_ONLY_WHEN:
+- Material scope expansion is required.
+- A new high-risk decision is required.
+- Remaining duration materially exceeds the original estimate.
+- The audit can no longer answer the intended decision.
+
+PURPOSE_PRESERVED: Complete the actual current-state confirmation of Cosmile and Foundation; do not terminate merely because Day 3 elapsed.
+
+FROZEN_CHALLENGER_REPORTS_REWRITTEN: NO
+
+CURRENT_OPERATIVE_TIMEBOX_RECORDS:
+- Updated Preflight
+- `17_STRATEGIST_FINAL_SYNTHESIS_EN.md`
+- `18_LEO_DECISION_BRIEF_KO.md`
+- `20_FOUNDER_TIMEBOX_CORRECTION.md`
+
+STOP: `LEO_GPT_REVIEW_REQUIRED`

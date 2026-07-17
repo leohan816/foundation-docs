@@ -10,12 +10,20 @@ TRIGGERS:
 - Material product direction and release-scope decision
 - Cross-project Foundation/Cosmile/SIASIU boundaries
 - Payment, PII, DB, consent, security, production, and public-exposure implications
-- More than three working days including review/handoff elapsed time
+- Material duration risk or a remaining estimate that materially exceeds the original target
 - Material Paid Beta delay risk
 - Historical/current evidence conflicts and material unverified assumptions
 - Explicit Leo request
 
 COUNCIL_PROCESS_COMPLETED: YES
+
+POST_COUNCIL_FOUNDER_TIMEBOX_CORRECTION_APPLIED: YES
+
+TARGET_DURATION: `APPROXIMATELY_3_WORKING_DAYS`
+
+DAY_3_CHECKPOINT: `REQUIRED`
+
+HARD_STOP_AT_DAY_3: `NO`
 
 SELECTED_COUNCIL_COMPOSITION:
 1. `PRODUCT_USER_AND_BUSINESS_VALUE_CHALLENGER`
@@ -44,7 +52,7 @@ CHALLENGER_FINAL_VERDICTS:
 1. A bounded current commercial baseline is the best-supported next investigation unless an equivalent current pinned package or a concrete, safer, lower-cost customer-learning step answers the same immediate decision.
 2. The audit must be a stage-gated decision exercise, not an exhaustive repository audit or an eighteen-document production exercise.
 3. Day 1 must form one to three provisional beta options without inventing demand facts and return `CONTINUE`, `EARLY_COMPLETE`, or `HOLD`.
-4. Three working days is the maximum for evidence collection and immutable P1–P4 synthesis. P5 Independent Review and Advisor closure is separately measured by default.
+4. Approximately three working days is the target, not an absolute stop. Day 3 is a mandatory checkpoint that freezes completed evidence, lists exact remaining questions, confirms no scope expansion, and provides a revised bounded completion estimate. Necessary, bounded work within the approved scope continues to completion. P5 follows final P1–P4 freeze and is separately measured.
 5. P1–P5 are views over one authoritative row set: admission/closure, capability evidence, gates/blockers, delivery/decision, and review/Advisor closure.
 6. Audit completion is distinct from Paid Beta/Public Launch readiness and grants no product, branch, risk, release, implementation, or next-mission authority.
 7. Static E2 is the default evidence ceiling. Only an exact preauthorized, decision-changing, hermetic E3 exception may be added. No new E4 execution belongs in this baseline audit.
@@ -55,7 +63,7 @@ CHALLENGER_FINAL_VERDICTS:
 12. Confirmed Paid Beta blockers require direct selected-slice customer/operator causality. Critical unknown gate holds, general debt, and Public Launch work remain separate.
 13. Every option, READY, branch, external non-requirement, and next-step record is evidence/recommendation only and must carry output-local non-authorization.
 14. One accountable internal escalation owner is mandatory at admission. A substantive domain owner is admission-critical only when needed within the audit for safe evidence or an immediate option/priority decision with no safe unresolved fallback.
-15. Missing substantive owners may close as explicit owner gaps without extension but cannot produce owner-signed non-requirement, affected readiness, risk acceptance, release approval, or unconditional priority resolution.
+15. Missing substantive owners may be preserved as explicit owner gaps without waiting solely for owner resolution, but they cannot produce owner-signed non-requirement, affected readiness, risk acceptance, release approval, or unconditional priority resolution.
 16. The later Advisor activation record must live-repin authority, actors, runtime/model/skills, workspaces, capacity, cutoffs, and routes. This Council run does not dispatch the Advisor.
 
 ## Accepted Council findings
@@ -86,7 +94,7 @@ The Council did not resolve and was not authorized to resolve current product fl
 
 ## Changes from the initial Preflight
 
-1. Replace a full three-day-complete implication with three investigative days through P1–P4 freeze plus separately measured P5.
+1. Replace both a three-day-complete implication and a three-day hard stop with an approximately-three-day target, mandatory Day 3 checkpoint, bounded in-scope continuation, final P1–P4 freeze at actual investigation completion, and separately measured P5.
 2. Add a Day 1 option/decision gate and early termination.
 3. Consolidate eighteen output concerns into P1–P5.
 4. Separate `INVESTIGATION_PACKAGE_COMPLETE`, `AUDIT_COMPLETE`, and release-readiness evidence.
@@ -99,7 +107,7 @@ The Council did not resolve and was not authorized to resolve current product fl
 
 FINAL_STRATEGIST_VERDICT: `PROCEED_WITH_CORRECTIONS`
 
-The Council strengthened rather than reversed the initial diagnosis: a bounded audit is still necessary, but the original method and admission requirements were too broad and the three-day claim was ambiguous. The corrected audit is smaller, more decision-oriented, safer, and easier to terminate.
+The Council strengthened rather than reversed the initial diagnosis: a bounded audit is still necessary, but the original method and admission requirements were too broad and the three-day claim was ambiguous. The corrected audit is smaller, more decision-oriented, safer, and easier to control through actual completion.
 
 ## Required corrections before audit
 
@@ -110,7 +118,7 @@ The Council strengthened rather than reversed the initial diagnosis: a bounded a
 5. Freeze the minimum Public Launch distinction and the rule that Paid Beta evidence never implies Public Launch approval.
 6. Name one accountable internal escalation owner and return route. Apply the conditional substantive-owner predicate in the later admission manifest.
 7. In the later Advisor activation record, live-verify exact pins, current authority, actors/runtime/model/skills, capacity, integrator, Reviewer/Advisor windows, cutoffs, P1–P5 map, and no conflicting mission.
-8. Use the Day 1 gate, selected-slice authoritative rows, first-blocking-boundary rule, exact freeze times, no extension, and output-local non-authorization.
+8. Use the Day 1 gate, selected-slice authoritative rows, first-blocking-boundary rule, Day 3 checkpoint snapshot, revised bounded estimate, exact return-to-Leo triggers, final freeze at actual completion, and output-local non-authorization.
 
 ## Founder decisions required now
 
@@ -124,6 +132,10 @@ If Leo/GPT later approve Advisor handoff, the approval must state:
 4. `PUBLIC_LAUNCH_SEPARATE_GATE: YES`
 5. `OUTPUTS_NON_AUTHORIZING: YES`
 6. `ESCALATION_OWNER_AND_RETURN_ROUTE`: exact person/office and route.
+7. `TARGET_DURATION: APPROXIMATELY_3_WORKING_DAYS`
+8. `DAY_3_CHECKPOINT: REQUIRED`
+9. `HARD_STOP_AT_DAY_3: NO`
+10. `CONTINUE_AFTER_DAY_3`: only when remaining work is necessary, bounded, and within the already approved scope; return to Leo only on the four exact escalation triggers.
 
 ## Decisions deferred until audit result
 
@@ -162,7 +174,12 @@ SECRETS_OR_PII: PROHIBITED
 SCHEMA_MIGRATION_OR_PERSISTENT_PRODUCT_WRITE: PROHIBITED
 DEPENDENCY_INSTALL_OR_UPGRADE: PROHIBITED
 NETWORK: PROHIBITED_UNLESS_A_LATER_EXACT_AUTHORITY_OVERRIDES_THIS_WITH_LEO_APPROVAL
-AUTO_EXTENSION: NO
+TARGET_DURATION: APPROXIMATELY_3_WORKING_DAYS
+DAY_3_CHECKPOINT: REQUIRED
+HARD_STOP_AT_DAY_3: NO
+CONTINUE_AFTER_DAY_3: YES_WHEN_NECESSARY_BOUNDED_AND_WITHIN_APPROVED_SCOPE
+RETURN_TO_LEO: MATERIAL_SCOPE_EXPANSION | NEW_HIGH_RISK_DECISION |
+               MATERIAL_DURATION_OVERRUN | INTENDED_DECISION_NO_LONGER_ANSWERABLE
 AUTO_IMPLEMENTATION: NO
 ```
 
