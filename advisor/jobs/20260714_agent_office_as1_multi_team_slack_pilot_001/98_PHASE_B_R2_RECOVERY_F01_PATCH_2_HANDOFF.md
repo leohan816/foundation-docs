@@ -11,12 +11,13 @@ REQUIRED_SKILL: `/home/leo/Project/skill/fable-builder/SKILL.md`
 ## Dispatch profile
 
 - `SELECTED_MODEL`: Opus 4.8 (1M)
-- `SELECTED_MODE`: Claude Code Ultracode Worker
-- `SELECTED_EFFORT`: Ultracode
+- `SELECTED_MODE`: Claude Code Worker
+- `SELECTED_EFFORT`: max
 - `WHY_NOT_LOWER`: this patch closes a cross-await mutual-exclusion defect in
   durable Slack status recovery and reconciliation
 - `WHY_NOT_HIGHER`: the independent review identified exact methods, side
-  effects, and tests in a two-code-path correction; Ultracode is sufficient
+  effects, and tests in a two-code-path correction; the live Claude Code
+  runtime exposes `max` as its highest applicable effort and `max` is sufficient
 - `ESCALATION_TRIGGER`: return `HOLD` if the correction requires a store/schema,
   framework, accepted-design amendment, or weakening of the quarantine latch
 
