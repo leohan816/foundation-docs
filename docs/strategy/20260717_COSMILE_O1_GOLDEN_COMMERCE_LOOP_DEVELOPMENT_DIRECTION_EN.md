@@ -4,7 +4,7 @@
 DOCUMENT_TYPE: STRATEGY_DEVELOPMENT_DIRECTION
 ROLE: STRATEGY_DECISION_ARCHITECT
 DATE_UTC: 2026-07-17
-STATUS: DRAFT_FOR_LEO_GPT_REVIEW
+STATUS: COUNCIL_CORRECTED_FOR_LEO_GPT_REVIEW
 O1_WORKING_DIRECTION: ADOPTED_BY_LEO
 EXECUTABLE_AUTHORITY: NO
 ADVISOR_IMPLEMENTATION_PLAN: NOT_STARTED
@@ -82,9 +82,14 @@ cancellation or return request
 The two scenarios form one integrated milestone but must remain separate test cases.
 A completed delivery and a cancellation/refund are not the same business path.
 
-## 4. Decisions required before Advisor planning
+These arrows define scenario coverage, not a universal transaction order. The later
+provider- and inventory-specific contract must select safe ordering and compensation.
+Golden Reversal requires a captured-payment sandbox refund. A pre-capture void may be
+retained as lower-level evidence but cannot close Golden Reversal.
 
-Leo must receive concise, country-grounded options and a recommendation for:
+## 4. Progressive Founder decision gates
+
+Leo must receive concise, country-grounded options and recommendations for:
 
 1. first selling country and currency;
 2. initial real sellable SKU scope;
@@ -104,6 +109,23 @@ The decision package must also record two cross-cutting gates:
 Country selection comes first because it constrains currency, PSP, taxation, Legal,
 fulfillment, identity, and provider options. Current provider and regulatory claims
 must be verified against authoritative sources when the decision package is prepared.
+
+These decisions do not all need to close at once:
+
+- **Before country/provider research:** narrow the first country/currency, seller/entity
+  path, SKU shortlist, and the qualitative learning question for each stage.
+- **Before planning-only Advisor work:** approve O1, exclusions, the evidence claim
+  ladder, selective-reuse presumption, and the country/entity/SKU planning envelope.
+- **Before provider-specific contract freeze:** select identity, PSP/refund, inventory,
+  fulfillment/tracking, and recovery/reconciliation models using current authoritative
+  and vendor evidence; route applicable counsel/accounting questions.
+- **Before controlled live:** approve the exact participant/transaction envelope,
+  provider eligibility, support promise, limits, stop conditions, and Legal, security,
+  privacy, runtime, human-use, and operational gates.
+- **Before Paid Beta:** separately approve cohort, exposure, learning/exit criteria,
+  support coverage, and next-decision rule.
+
+No gate authorizes the next one automatically.
 
 ## 5. Build, buy, and open-source principle
 
@@ -134,6 +156,13 @@ component solely to claim stack coverage is prohibited.
 The goal is to exercise every material commerce boundary, not every available
 technology.
 
+Selective reuse is a reversible presumption, not a conclusion. Planning begins with
+read-only evidence and exact reuse hypotheses. A disposable implementation spike needs
+separate authority and is justified only where material uncertainty remains. If a
+component fails its declared reuse criterion, the Advisor may return a bounded
+replacement option to Leo; neither this direction nor a failed component authorizes a
+whole-product rewrite.
+
 ## 6. Contract-first foundation
 
 Before parallel frontend and backend implementation, the approved plan must freeze the
@@ -149,6 +178,9 @@ minimum shared contracts for:
 - Shipment and Tracking;
 - Cancellation and Refund;
 - ReconciliationRecord and AuditEvent.
+- Experience and Recovery Contract;
+- Data Authority and Lineage Contract;
+- Environment, Evidence Claim, and Authorization record.
 
 It must also freeze the invariants that determine:
 
@@ -160,6 +192,13 @@ It must also freeze the invariants that determine:
 - how refund and inventory treatment vary by cancellation/return policy;
 - which customer and operator permissions apply;
 - what evidence proves each transition.
+
+The early contract must also preserve server-authoritative item, price, amount,
+currency, SKU and stock values; customer/order and privileged-action authorization;
+provider-event authenticity, uniqueness, ordering, replay resistance and transaction
+binding; environment separation; customer/operator-visible state and permitted action;
+and distinct rollback, data recovery, economic compensation, and correction semantics.
+This is an invariant set, not a completed security audit or Execution Manifest.
 
 The strategy document must not prematurely prescribe a dangerous universal sequence
 such as “capture payment, confirm order, then discover stock.” The Advisor-managed
@@ -210,7 +249,21 @@ treatment, and reconciliation. Verify the minimum material failure cases:
 - provider refund success followed by internal transition failure;
 - operator recovery and audit evidence.
 
+Stages 2 and 3 together form `GOLDEN_COMMERCE_REHEARSAL`. They may earn only
+`SANDBOX_WALKING_SKELETON_EVIDENCE`, and only when Golden Order and captured-refund
+Golden Reversal separately pass under the same pinned contract, build/configuration,
+provider-backed sandbox, and bounded evidence set. Every attempt generated by the
+rehearsal must reconcile, including relevant immediate authorization, authoritative
+value binding, duplicate/out-of-order/idempotency, last-stock, and partial-failure
+cases. The result makes no live, reliability, usability, or commercial claim.
+
 ### Stage 4 — Operational safety gate
+
+A later `NONPRODUCTION_BACKBONE_EVIDENCE` claim requires a separately declared bounded
+reliability and recovery predicate, including applicable crash/restart durability,
+delayed or missing-event detection, broader bounded-population reconciliation,
+monitoring/containment, backup/restore, recovery rehearsal, and repeatability evidence.
+It still does not authorize controlled live.
 
 Before real money or customer PII, require proportionate evidence for:
 
@@ -260,21 +313,31 @@ assumed here.
 
 The first Cosmile integration milestone is complete only when:
 
-- Golden Order and Golden Reversal pass in non-production without mock behavior on the
-  integrated path;
+- Golden Order and captured-refund Golden Reversal separately pass in one pinned
+  provider-backed non-production context without mock behavior on the claimed path;
 - the same order and transition history can be traced across UI, API, database, PSP,
   inventory, shipment/refund, and operator records;
 - webhook verification and idempotency are evidenced;
 - no-oversell and compensation/recovery behavior are evidenced;
 - cancellation/refund and policy-based inventory treatment reconcile correctly;
 - customer and operator authorization boundaries are evidenced;
-- monitoring, audit, backup/recovery, and operator runbooks satisfy the approved gate;
-- evidence distinguishes sandbox capability from controlled live and Paid Beta
-  readiness.
+- every generated rehearsal attempt reconciles and relevant immediate authorization,
+  value-binding, duplicate/out-of-order, last-stock, and partial-failure cases pass;
+- customer- and operator-visible state, available/prohibited actions, and recovery
+  route accompany the technical trace without claiming later human-readiness evidence;
+- evidence distinguishes the rehearsal ceiling, later non-production backbone,
+  operational safety, controlled live, and Paid Beta readiness.
 
-Passing this milestone proves an integrated commerce backbone. It does not prove full
-feature completion, production scale, Public Launch readiness, or Foundation AI
-readiness.
+Passing this milestone proves only `SANDBOX_WALKING_SKELETON_EVIDENCE`. It does not
+prove a reliable non-production backbone, operational safety, controlled-live
+eligibility, Paid Beta readiness, commercial validation, full feature completion,
+production scale, Public Launch readiness, or Foundation AI readiness.
+
+All stage results use the compact status set
+`NOT_STARTED | IN_PROGRESS_WITHIN_AUTHORITY | EXTERNAL_PENDING |
+EVIDENCE_INCOMPLETE | PASS | HOLD`. Each records a claim ceiling, environment/exposure,
+exact applicable evidence pins, unresolved IDs, accountable owner, review disposition,
+and authorization state. `PASS` never authorizes progression.
 
 ## 11. Explicit exclusions
 
@@ -320,23 +383,29 @@ TRIGGERS:
 - payment, PII, DB, security, refund, and external-provider risk
 - multi-actor and cross-project impact
 - expected work materially above three working days
-COUNCIL_REVIEW_COMPLETED_FOR_THIS_DIRECTION: NO
-COUNCIL_DISPATCHED: NO
+COUNCIL_REVIEW_COMPLETED_FOR_THIS_DIRECTION: YES
+COUNCIL_MISSION_ID: COSMILE_O1_GOLDEN_COMMERCE_LOOP_STRATEGY_COUNCIL_V1
+COUNCIL_COMPOSITION: SELECTED_8
+COUNCIL_ROUNDS_COMPLETED: 3
+COUNCIL_FINAL_ROLE_VERDICTS: 8_PROCEED_WITH_CORRECTIONS
+STRATEGIST_FINAL_VERDICT: PROCEED_WITH_CORRECTIONS
 ```
 
-Council review is required before this direction becomes a final implementation
-mission. This draft does not dispatch the Council or Advisor.
+Council review corrected this direction but did not provide independent review,
+implementation authority, live approval, or risk acceptance. The Advisor remains
+undispatched.
 
 ## 14. Next decision
 
-Leo and GPT should review this development direction. If accepted, Strategy should
-prepare the concise country/provider/operations decision package. Only after Leo makes
-those decisions and approves the final bounded mission may the Advisor begin planning
-and orchestration.
+Leo and GPT should review this corrected direction and the bilingual consolidated
+Founder Decision Package. After Leo records the applicable progressive Gate A/B
+decisions and explicitly authorizes a bounded next step, Strategy may prepare the exact
+instruction for the Advisor. Only a separate Leo approval may start Advisor planning or
+orchestration.
 
 ```text
 LEO_GPT_REVIEW_REQUIRED: YES
-DECISION_PACKAGE_STARTED: NO
+DECISION_PACKAGE_COMPLETED: YES
 ADVISOR_DISPATCHED: NO
 IMPLEMENTATION_STARTED: NO
 STOP
