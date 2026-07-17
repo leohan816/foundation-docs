@@ -40,6 +40,8 @@ SESSION:
 foundation-council-delivery-evidence
 ROLE:
 DELIVERY_SCOPE_EVIDENCE_AND_OPERATIONS_CHALLENGER
+ROLE_CATEGORY:
+CORE
 CWD:
 /home/leo/Project/council/rules/delivery-scope-evidence-operations
 EXPECTED_CWD_MATCH:

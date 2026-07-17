@@ -25,6 +25,9 @@ work. With no current mission, the session stops after ACK.
 ## Shared routing and independence
 
 - Report only to the Strategy Decision Architect.
+- Only a role named in the exact `COUNCIL_COMPOSITION` may read the mission brief,
+  subject, other authorized findings, or debate questions and write a mission report.
+- Unselected Specialist roles remain `READY_IDLE` with mission `NONE`.
 - Do not communicate directly with another Challenger or Foundation Team actor.
 - Do not read another Challenger's role file, prompt, draft, report, or output.
 - Preserve independent initial opinions and minority findings.

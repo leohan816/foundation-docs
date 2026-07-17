@@ -52,3 +52,19 @@ Only explicit Leo instruction may bypass a required Council review.
 - `NOT_REQUIRED` records why no hard trigger and fewer than two soft triggers apply.
 - Triggering Council does not authorize a mission; an exact brief is still required.
 - Council completion does not approve implementation or Advisor dispatch.
+
+## Specialist composition discipline
+
+The Strategy Decision Architect selects the smallest sufficient composition. A materially
+decision-relevant domain may justify selecting its Specialist:
+
+- legal, regulatory, contractual, claims, jurisdiction, or platform policy;
+- concrete threat, abuse, fraud, privilege, secret, or security-control exposure;
+- interaction, comprehension, accessibility, recovery, or human-factors uncertainty;
+- source, lineage, semantic, quality, integrity, retention, or stewardship dependence;
+- AI behavior, routing, evaluation, nondeterminism, cost, or agent-authority dependence;
+- a need to test strategic assumptions, alternatives, failure chains, or falsifiability.
+
+A passing mention of a domain does not require all Specialists. Selection must be recorded
+in the mission's exact `COUNCIL_COMPOSITION`. Unselected Specialists remain `READY_IDLE`
+and receive no subject or output.

@@ -7,9 +7,10 @@ REPORTS_TO: STRATEGY_DECISION_ARCHITECT
 CURRENT_COUNCIL_MISSION: NONE
 ```
 
-Strategy Challenge Council v0 is a local Strategy-side advisory mechanism that gives
-the Strategy Decision Architect three independent challenges before a material strategic
-recommendation is finalized.
+Strategy Challenge Council v0 is a local Strategy-side advisory mechanism with three Core
+and six Specialist Challenger roles. The Strategy Decision Architect selects the smallest
+sufficient independent composition before a material strategic recommendation is
+finalized.
 
 The Council is not a decision-making body, a Foundation Team execution unit, or a code
 review function. It does not replace Leo's product and risk decisions, the Strategist's
@@ -31,14 +32,21 @@ duplicating the canonical contract.
 
 ## Active Challenger roles
 
-| Role | Runtime home | Primary question |
+| Category | Role | Runtime home |
 |---|---|---|
-| `PRODUCT_USER_AND_BUSINESS_VALUE_CHALLENGER` | `rules/product-user-business-value/` | Why should this be done, and why now? |
-| `SYSTEM_ARCHITECTURE_SAFETY_AND_GOVERNANCE_CHALLENGER` | `rules/systems-architecture-safety-governance/` | Is ownership, structure, safety, and risk treatment correct? |
-| `DELIVERY_SCOPE_EVIDENCE_AND_OPERATIONS_CHALLENGER` | `rules/delivery-scope-evidence-operations/` | Can it be completed, verified, operated, and closed? |
+| Core | `PRODUCT_USER_AND_BUSINESS_VALUE_CHALLENGER` | `rules/product-user-business-value/` |
+| Core | `SYSTEM_ARCHITECTURE_SAFETY_AND_GOVERNANCE_CHALLENGER` | `rules/systems-architecture-safety-governance/` |
+| Core | `DELIVERY_SCOPE_EVIDENCE_AND_OPERATIONS_CHALLENGER` | `rules/delivery-scope-evidence-operations/` |
+| Specialist | `LEGAL_REGULATORY_AND_POLICY_CHALLENGER` | `rules/legal-regulatory-policy/` |
+| Specialist | `SECURITY_THREAT_AND_ABUSE_CHALLENGER` | `rules/security-threat-abuse/` |
+| Specialist | `UX_HUMAN_FACTORS_AND_ACCESSIBILITY_CHALLENGER` | `rules/ux-human-factors-accessibility/` |
+| Specialist | `DATA_QUALITY_LINEAGE_AND_GOVERNANCE_CHALLENGER` | `rules/data-quality-lineage-governance/` |
+| Specialist | `AI_MODEL_BEHAVIOR_AND_EVALUATION_CHALLENGER` | `rules/ai-model-behavior-evaluation/` |
+| Specialist | `ADVERSARIAL_ASSUMPTION_AND_FAILURE_CHALLENGER` | `rules/adversarial-assumption-failure/` |
 
-These roles are not three general-purpose reviewers. Overlap is recorded explicitly,
-and each role stays within its own primary lens.
+Core roles identify broad concerns. Specialists perform deeper professional challenge only
+when selected. The nine roles are not general-purpose duplicate reviewers; every role
+stays inside its exact lens and records overlap explicitly.
 
 ## Routing
 
@@ -56,12 +64,15 @@ the Advisor or start another mission.
 
 ## Current state
 
-- active role definitions: 3
-- future challenger definitions: planned only
+- active role definitions: 9
+- Core roles: 3
+- Specialist roles: 6, persistent and `READY_IDLE` when unselected
+- upcoming Commercial Baseline Preflight composition: Core 3 only
+- Specialists selected for that upcoming preflight: no
 - Council mission: none
 - debate: none
 - product repository access/modification: none in setup
-- Git commit/push: none
+- automatic selection of all nine roles: prohibited
 
 Runtime state is recorded in `state/CURRENT_SESSIONS.md`. Future mission output is stored
 only under the Strategist-authorized `runs/<MISSION_ID>/` directory. Council reports and

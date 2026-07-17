@@ -40,6 +40,8 @@ SESSION:
 foundation-council-product-value
 ROLE:
 PRODUCT_USER_AND_BUSINESS_VALUE_CHALLENGER
+ROLE_CATEGORY:
+CORE
 CWD:
 /home/leo/Project/council/rules/product-user-business-value
 EXPECTED_CWD_MATCH:

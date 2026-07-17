@@ -36,7 +36,12 @@ or output during the independent initial pass.
 ## Routing and communication
 
 - The Strategy Decision Architect selects mission composition and supplies briefs.
-- Only selected roles receive a mission subject.
+- The Strategist selects the smallest sufficient composition; all nine roles are never
+  selected by default.
+- Only selected roles receive a mission subject, another Challenger's findings, debate
+  questions, or report-writing authority for that mission.
+- Unselected Specialist roles remain `READY_IDLE` with mission `NONE` and may not inspect
+  the subject or selected-role output.
 - Challenger results return only to the Strategy Decision Architect.
 - Direct Challenger-to-Challenger communication is forbidden.
 - A mediated disagreement round requires explicit authorization in the current mission.

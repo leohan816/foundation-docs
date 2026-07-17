@@ -10,8 +10,9 @@ CURRENT_COUNCIL_MISSION: NONE
 ## 1. Purpose
 
 The Council challenges material strategy before the Strategy Decision Architect produces
-a final recommendation. It supplies three independent lenses; it does not decide,
-orchestrate, implement, audit, or approve.
+a final recommendation. It maintains three Core and six Specialist lenses and uses the
+smallest sufficient selected composition. It does not decide, orchestrate, implement,
+audit, or approve.
 
 ## 2. Separation from other authorities
 
@@ -47,6 +48,8 @@ briefs define the temporary subject. None may silently absorb another layer's au
 
 ## 5. Active role differentiation
 
+### Core Challengers
+
 ```text
 PRODUCT / USER / BUSINESS:
 Why should this be done, and why now?
@@ -58,8 +61,34 @@ DELIVERY / EVIDENCE / OPERATIONS:
 Can it be completed, verified, operated, and closed?
 ```
 
-The three roles must not collapse into general-purpose reviewers. A finding that overlaps
-another lens must name the overlap and remain framed from the author's own primary lens.
+Core Challengers identify broad concerns but do not perform every specialist analysis.
+
+### Specialist Challengers
+
+```text
+LEGAL / REGULATORY / POLICY:
+Are applicable obligations and unresolved counsel questions explicit?
+
+SECURITY / THREAT / ABUSE:
+How could this be exploited, bypassed, abused, or compromised?
+
+UX / HUMAN FACTORS / ACCESSIBILITY:
+Can real people understand, trust, use, and recover from this behavior?
+
+DATA QUALITY / LINEAGE / GOVERNANCE:
+Is the data traceable, fit, governed, and safe for the proposed decision?
+
+AI MODEL BEHAVIOR / EVALUATION:
+Is AI behavior specified, testable, controllable, economical, and safe?
+
+ADVERSARIAL ASSUMPTION / FAILURE:
+What is the strongest credible case that the strategy is wrong?
+```
+
+Specialists go deeper only in their exact professional lens and must not repeat the Core
+roles' full work. All nine roles must not collapse into general-purpose reviewers. A
+finding that overlaps another lens names the overlap and remains framed from its author's
+primary lens.
 
 ## 6. Mission composition
 
@@ -70,10 +99,11 @@ COUNCIL_COMPOSITION:
 <exact selected roles in the approved mission brief>
 ```
 
-Only selected roles receive the subject. Unselected sessions stay idle. The intended
-composition for a future Foundation + Cosmile Commercial Baseline Strategy Preflight
-review is the three currently active roles, but that review is not active and no subject
-may be delivered during setup.
+Only selected roles receive the subject, another Challenger's findings, debate questions,
+or report-writing authority. Unselected sessions stay `READY_IDLE` with mission `NONE`.
+The intended composition for the upcoming Foundation + Cosmile Commercial Baseline
+Strategy Preflight remains the three Core roles only. All six Specialists are
+`NOT_SELECTED`; the preflight is not active and no subject may be delivered during setup.
 
 ## 7. Independence and preservation
 
@@ -92,7 +122,7 @@ claim independent-review status, or automatically begin follow-up work.
 
 ## 9. Runtime and storage
 
-- Each active role has a persistent role home and an independent tmux session.
+- Each of the nine active roles has a persistent role home and an independent tmux session.
 - Runtime identity is live-verified; session names are not model evidence.
 - No model install, upgrade, or change occurs without Leo approval.
 - Role homes contain instruction infrastructure only.

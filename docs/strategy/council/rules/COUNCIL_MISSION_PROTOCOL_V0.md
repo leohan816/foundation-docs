@@ -23,6 +23,7 @@ Every brief fixes:
 - exact evidence pins and allowed reads;
 - facts already verified versus assumptions and unknowns;
 - `COUNCIL_COMPOSITION` with exact selected roles;
+- each selected role's category: `CORE | SPECIALIST`;
 - timebox;
 - role-specific questions without changing canonical roles;
 - report path and report schema;
@@ -33,8 +34,12 @@ Every brief fixes:
 
 ## 3. Composition and delivery
 
-- Only selected roles receive the brief and subject.
-- Unselected sessions remain idle.
+- Only selected roles receive the brief, subject, another Challenger's findings, debate
+  questions, or report-writing authority.
+- Unselected sessions remain `READY_IDLE` with mission `NONE` and may not inspect the
+  subject or selected-role output.
+- The Strategist selects the smallest sufficient composition; all nine roles are not the
+  default composition.
 - Every selected role receives the same subject/evidence baseline plus its own lens
   questions.
 - No role receives another role's initial output.
@@ -77,4 +82,5 @@ read-only and may not receive generated Council artifacts.
 
 Council closure returns to the Strategist and then Leo. It does not dispatch the Advisor,
 activate implementation, accept risk, or begin a next mission. With no mission brief,
-all sessions remain `CURRENT_COUNCIL_MISSION: NONE`.
+all sessions remain `CURRENT_COUNCIL_MISSION: NONE`; unselected Specialists additionally
+remain `CURRENT_SPECIALIST_MISSION: NONE` and `READINESS: READY_IDLE`.
