@@ -118,6 +118,24 @@ RECOVERY_STATE: PENDING_SAME_SESSION_SAME_MODEL_RETRY
 COSMILE_PHASE_5_WORK_STARTED: YES
 ```
 
+After the Cosmile result was fixed and while Control analysis was running, the Advisor made
+one further bounded retry against the same existing Foundation session. This third dispatch
+was accepted without any model, effort, actor, workspace, skill, or authority change;
+`/fable-builder` loaded and the Worker began the named Phase 5 work.
+
+```text
+FOUNDATION_RECOVERY_ATTEMPT: 3
+FOUNDATION_RECOVERY_ACCEPTED: YES
+FOUNDATION_PHASE_5_WORK_STARTED_CURRENT: YES
+FOUNDATION_MODEL_CURRENT: Fable 5
+FOUNDATION_EFFORT_CURRENT: max
+FOUNDATION_SESSION_CURRENT: foundation window @3 pane %3
+MODEL_SUBSTITUTION: NO
+EFFORT_REDUCTION: NO
+ROLE_OR_WORKSPACE_CHANGE: NO
+RECOVERY_STATE_CURRENT: RUNNING_SAME_SESSION_SAME_MODEL
+```
+
 The Cosmile Worker completed its Phase 5 result personally with no subordinate dispatch.
 The Advisor read the complete result, verified its hashes and zero product changes, then
 committed and pushed the exact result and pointer at
