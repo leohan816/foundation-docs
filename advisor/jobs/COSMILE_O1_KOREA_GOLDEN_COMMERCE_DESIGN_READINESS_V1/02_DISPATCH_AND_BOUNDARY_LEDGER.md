@@ -117,3 +117,32 @@ MODEL_SUBSTITUTION: NO
 RECOVERY_STATE: PENDING_SAME_SESSION_SAME_MODEL_RETRY
 COSMILE_PHASE_5_WORK_STARTED: YES
 ```
+
+The Cosmile Worker completed its Phase 5 result personally with no subordinate dispatch.
+The Advisor read the complete result, verified its hashes and zero product changes, then
+committed and pushed the exact result and pointer at
+`c8f16404602cece33a66fcb261998bd7efe6f1c8`.
+
+## Phase 6 targeted Control dispatch
+
+The Advisor selected Control only after material cross-project questions were proven:
+product/SKU binding, canonical-versus-commerce ownership, immutable historical order-line
+binding, correction/withdrawal/outage behavior, and transaction/compensation boundaries.
+The exact targeted handoff was committed and pushed at
+`45656f5db664457bb5ff6e98e7e59782cff318ff`.
+
+```text
+CONTROL_ACTOR: foundation-control
+CONTROL_SESSION: foundation-control window @4 pane %4
+CONTROL_MODEL_SELECTION: Opus 4.8 (1M context)
+CONTROL_EFFORT: max
+CONTROL_WORKSPACE: /home/leo/Project/foundation-control
+CONTROL_REQUIRED_SKILL: NONE
+CONTROL_MODE: TARGETED_READ_ONLY_CROSS_PROJECT_CONTRACT_ANALYSIS
+CONTROL_PRODUCT_OR_CONTROL_REPO_WRITE: NONE
+CONTROL_IMPLEMENTATION_AUTHORITY: NONE
+CONTROL_SUBAGENT_AUTHORITY: NONE
+FOUNDATION_PHASE_5_DEPENDENCY: UNRESOLVED_PENDING_FOUNDATION_WORKER
+CONTROL_MUST_NOT_REPLACE_FOUNDATION_WORKER: TRUE
+DISPATCH_ACCEPTED: YES
+```
