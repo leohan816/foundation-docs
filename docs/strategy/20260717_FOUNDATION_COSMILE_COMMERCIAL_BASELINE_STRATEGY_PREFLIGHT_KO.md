@@ -14,6 +14,11 @@ EXECUTABLE_AUTHORITY: NO
 MANIFEST: NO
 DISPATCH: NO
 NEXT_MISSION_AUTO_START: NO
+COUNCIL_REVIEW: COMPLETED
+COUNCIL_RUN: FOUNDATION_COSMILE_COMMERCIAL_BASELINE_PREFLIGHT_COUNCIL_V1
+COUNCIL_FINAL_VERDICT: PROCEED_WITH_CORRECTIONS
+FOCUSED_REBUTTAL_ROUNDS_USED: 1
+LEO_GPT_ACCEPTANCE_REQUIRED_BEFORE_ADVISOR_HANDOFF: YES
 ```
 
 이 문서는 제안된 3-working-day commercial baseline audit의 필요성, 범위,
@@ -37,20 +42,31 @@ artifact 순으로 다시 확인했다.
 고정하기 전에는 활성화하면 안 된다.
 
 1. audit의 입력은 “상용화가 완료됐다는 가정”이 아니라 **정확히 pin한 현재
-   repository 상태**여야 한다.
-2. Day 3의 결과 중 하나로 commercial branch baseline을 결정해야 한다. 현재
-   Memory shadow branch를 미리 commercial baseline으로 선언하면 안 된다.
-3. 역할·routing은 현행 Agent Office Team Operating Model만 따라야 한다.
-   foundation-control의 오래된 `foundation-docs V2` 참조나 “cross-project 전권”
-   문구는 현재 권한으로 사용하면 안 된다.
-4. source 존재, static wiring, local execution, integrated runtime, external readiness를
-   서로 다른 evidence level로 분리해야 한다.
-5. 3 working days 종료 시 미확인 항목은 `UNVERIFIED`로 남기고 audit을 종료해야
-   한다. 미확인을 이유로 자동 연장하거나 구현으로 전환하면 안 된다.
-6. audit 실행 범위에서 허용할 local build/test/smoke/runtime의 종류와 안전조건은
-   Leo가 사전에 별도로 승인해야 한다. 이 preflight에서는 하나도 실행하지 않았다.
-7. audit 결과는 Independent Reviewer의 최종 독립 검토와 Advisor final audit을
-   거쳐 Strategy와 Leo에게 돌아와야 하며 다음 구현은 자동 시작되지 않는다.
+   repository 상태**와 이후 변경 금지 규칙이어야 한다.
+2. Day 1에는 한 개에서 최대 세 개의 비실행 Paid Beta option을 만들고
+   `CONTINUE | EARLY_COMPLETE | HOLD`를 판정해야 한다. Days 2–3에는 그 판정을
+   실제로 바꿀 수 있는 질문만 조사한다.
+3. 18개 결과 항목은 각각 별도 문서로 만들지 않고, 하나의 authoritative row set에서
+   파생되는 P1–P5 package로 통합해야 한다.
+4. audit evidence ceiling의 기본값은 `E2_STATIC_ONLY`다. 우선순위 결정을 실제로
+   바꾸는 exact hermetic E3 command만 Leo가 사전 승인할 수 있으며, 새 E4 실행은
+   이 baseline audit에서 금지한다.
+5. Foundation·SIASIU dependency, ordinary-commerce continuity, AI closed/hidden,
+   data authority, blocker causality는 선택된 beta critical slice에만 적용한다.
+   full platform/governance audit으로 확대하면 안 된다.
+6. `INVESTIGATION_PACKAGE_COMPLETE`, `AUDIT_COMPLETE`, Paid Beta/Public Launch
+   readiness evidence를 서로 분리해야 한다. audit 완료는 출시 승인이나 위험 수용이
+   아니다.
+7. 3 working days는 evidence collection과 immutable P1–P4 freeze까지다. P5
+   Independent Review와 Advisor closure는 admission에서 정확한 capacity가 별도로
+   확보되지 않는 한 추가 elapsed time으로 측정한다.
+8. 시작 전 내부 escalation owner와 return route는 필수다. substantive domain
+   owner는 3일 안의 안전한 evidence 또는 option/priority 결정에 꼭 필요하고 safe
+   unresolved fallback이 없을 때만 admission dependency다.
+9. READY, option, branch recommendation, external non-requirement, next-step record는
+   모두 output-local non-authorization을 가져야 한다.
+10. 역할·routing은 현행 Agent Office Team Operating Model만 따르고 dispatch 직전
+    Advisor가 authority, actor, runtime, capacity, workspace, cutoff를 다시 pin해야 한다.
 
 ### 왜 지금 필요한가
 
@@ -356,6 +372,13 @@ VERDICT: PROCEED_WITH_CORRECTIONS
 - runtime/test 실행 authority와 safety envelope가 아직 Founder에 의해 고정되지 않았다.
 - 현행 role authority와 오래된 foundation-control 문서의 충돌을 execution brief에서
   제거해야 한다.
+- validated demand를 admission fact로 가정하지 않되 Day 1에 testable provisional
+  beta option을 만들지 못하면 `HOLD`해야 한다.
+- 18개 output concern을 별도 deliverable로 만들지 않고 P1–P5 view로 통합해야 한다.
+- 3 investigative working days와 이후 Independent Review/Advisor closure elapsed
+  time을 분리해야 한다.
+- 모든 외부·고위험 domain owner를 무조건 먼저 지정하지 않는다. 대신 admission-
+  critical owner predicate와 owner-gap claim prohibition을 고정해야 한다.
 
 ### 권고 mission scope — 비실행 제안
 
@@ -380,6 +403,21 @@ VERDICT: PROCEED_WITH_CORRECTIONS
 이 방법은 향후 audit을 위한 Strategy recommendation이며 이번 preflight에서
 실행하지 않았다.
 
+### 0. Admission과 Day 1 decision gate
+
+- Day 0 P1에는 exact pins, authority/return route, selected actor capacity, evidence
+  ceiling, optional exact E3 allowlist, beta option envelope, frozen question IDs,
+  P1–P5 mapping, UTC cutoffs, drift/stop/no-extension을 기록한다.
+- Day 1은 사실·추론·가정·미확인을 분리한 한 개에서 최대 세 개의 provisional beta
+  option을 만든다. 이는 product selection이 아니라 investigation frame이다.
+- `CONTINUE`: credible option과 priority를 바꿀 수 있는 bounded safe question이 있다.
+- `EARLY_COMPLETE`: current evidence 또는 더 작은 customer-learning step이 같은
+  결정을 충분히 지원하고 추가 기술질문이 결론을 바꾸지 않는다.
+- `HOLD`: credible option을 만들 수 없거나 pin/authority/capacity/safety가 충족되지
+  않거나 decisive evidence가 금지된 범위를 요구한다.
+- Days 2–3은 `CONTINUE`된 question만 first decision-relevant/blocking boundary까지
+  추적한다.
+
 ### 1. Baseline pin
 
 - 시작 즉시 각 repository의 path, branch, HEAD, upstream equality, dirty state를
@@ -390,10 +428,12 @@ VERDICT: PROCEED_WITH_CORRECTIONS
 
 ### 2. Commercial ownership surface map
 
-- 전체 tracked surface를 기능 owner 기준으로 map한다.
+- Day 1에는 전체 tracked surface의 entry/owner를 lightweight index로 만들되, 그
+  index의 완결을 audit completion 조건으로 삼지 않는다.
 - 모든 파일을 줄 단위로 검토하지 않는다.
 - entry point, route, service, persistence, external adapter, feature flag, operator
-  surface를 찾은 뒤 critical flow와 관계없는 영역은 index만 남긴다.
+  surface를 찾은 뒤 선택된 beta critical slice와 관계없는 영역은 index만 남기고
+  `SAFE_TO_DEFER_FROM_AUDIT`로 종료한다.
 
 ### 3. Paid Beta critical-flow trace
 
@@ -410,12 +450,27 @@ VERDICT: PROCEED_WITH_CORRECTIONS
 - admin/operator path
 
 각 단계는 source existence와 runtime evidence를 별도로 기록한다.
+선택된 beta option이 소비하지 않는 flow는 deep trace하지 않고 out-of-slice 또는
+later-gate view로 남긴다.
 
 ### 4. Foundation commercial judgment trace
 
 canonical data → judgment → API/adapter → Cosmile display → Foundation unavailable
 behavior를 하나의 evidence chain으로 추적한다. SIASIU는 이 경로의 필수 dependency
 인지 여부만 확인하고, SIASIU 전체 제품 audit으로 확장하지 않는다.
+
+선택된 flow마다 다음을 기록한다.
+
+```text
+FOUNDATION_DEPENDENCY: REQUIRED | OPTIONAL_DEGRADABLE | NOT_REQUIRED | UNVERIFIED
+ORDINARY_COMMERCE_CONTINUITY: STATIC_SUPPORTED | STATIC_NOT_SUPPORTED | E3_VERIFIED | UNVERIFIED
+AI_WHEN_DEPENDENCY_UNAVAILABLE: CLOSED | HIDDEN | OTHER_PINNED_BEHAVIOR | UNVERIFIED
+SIASIU_DEPENDENCY: MANDATORY | OPTIONAL | ABSENT_AT_VERIFIED_BOUNDARY | UNVERIFIED
+```
+
+`OPTIONAL_DEGRADABLE`과 `NOT_REQUIRED` Foundation work는 Paid Beta blocker가 아니라
+no-build/deferred 후보다. `MANDATORY` 또는 `UNVERIFIED` SIASIU는 affected readiness를
+hold하고 별도 question으로 return하지만 full SIASIU audit을 자동 시작하지 않는다.
 
 ### 5. Classification and external split
 
@@ -424,11 +479,15 @@ behavior를 하나의 evidence chain으로 추적한다. SIASIU는 이 경로의
 - PG/배송/법무/운영은 code fact와 같은 표에서 READY로 추론하지 않는다.
 - external item은 owner, needed decision, earliest confirmation date만 기록한다.
 - unknown은 추측하지 않고 `UNVERIFIED`로 종료한다.
+- technical evidence E0–E4와 external state를 서로 다른 column으로 기록한다.
+- `OWNER_UNASSIGNED`는 허용하지만 owner가 없는데 `NOT_REQUIRED`, READY, risk
+  acceptance 또는 release approval로 바꾸는 것은 금지한다.
 
 ### 6. Runtime evidence safety
 
 이 preflight는 어떤 실행도 승인하지 않는다. 향후 audit에서 runtime evidence가
-필요하면 Leo가 허용 command class와 다음 금지를 먼저 고정해야 한다.
+필요하면 기본값은 `E2_STATIC_ONLY`다. E1/E2로 구분할 수 없는 두 material priority
+choice를 나누는 exact existing hermetic E3 command만 Leo가 먼저 고정할 수 있다.
 
 - production/staging/shared DB 접근 금지
 - 실제 고객 PII·secret·vendor credential 사용 금지
@@ -438,6 +497,9 @@ behavior를 하나의 evidence chain으로 추적한다. SIASIU는 이 경로의
 - 기존 script만 사용하고 dependency 설치/업그레이드 금지
 
 승인되지 않은 실행 항목은 `UNVERIFIED`로 남긴다.
+새 E4 integration execution은 이 baseline audit 범위 밖이다. 기존 E4 claim은 exact
+pin의 historical/current provenance로 index할 수 있지만 citation만으로 current E4가
+되지는 않는다.
 
 ## EVIDENCE_MODEL
 
@@ -450,9 +512,18 @@ behavior를 하나의 evidence chain으로 추적한다. SIASIU는 이 경로의
 | E2 | `STATIC_CONNECTED` | exact pinned call/config/schema chain | 정적 wiring 존재; 실행 가능 선언 금지 |
 | E3 | `LOCAL_EXECUTION_VERIFIED` | 승인된 clean local command, result, exit code, cleanup | 해당 local scenario 동작 |
 | E4 | `INTEGRATION_VERIFIED` | 격리된 non-prod end-to-end evidence와 failure case | 해당 통합 경로 동작 |
-| E5 | `EXTERNAL_OWNER_VERIFIED` | vendor/Legal/Ops owner 확인, 날짜, 계약/운영 근거 | 외부 dependency 준비 |
 
-E3~E5는 별도 audit authority와 safety envelope 없이는 획득하지 않는다.
+E3/E4는 별도 audit authority와 safety envelope 없이는 획득하지 않는다. 이번 audit은
+새 E4를 획득하지 않는다.
+
+External readiness는 기술 evidence보다 높은 level이 아니라 별도 dimension이다.
+
+```text
+EXTERNAL_STATE:
+NOT_ASSESSED | EXTERNAL_PENDING | EXTERNAL_OWNER_VERIFIED |
+EXTERNAL_NOT_REQUIRED_OWNER_SIGNED | OWNER_UNASSIGNED |
+OWNER_NAMED_AUTHORITY_UNVERIFIED
+```
 
 ### Status enum
 
@@ -476,15 +547,34 @@ OUT_OF_SCOPE
 
 READY는 다음을 모두 만족해야 한다.
 
+- exact `OPTION_ID`, target gate, selected critical slice가 있다.
 - exact commit pin과 owner가 있다.
 - critical flow의 source는 최소 E2다.
 - 사용자 돈·주문·재고·PII·권한에 영향을 주는 flow는 필요한 E3/E4가 있다.
-- external dependency는 필요한 E5 또는 명시적 non-requirement 결정이 있다.
+- external dependency는 owner evidence 또는 exact authority가 있는 owner-signed
+  non-requirement가 있다.
 - success path뿐 아니라 timeout, retry, duplicate, failure/rollback behavior 증거가 있다.
 - relevant critical item에 `UNVERIFIED`, `MOCK`, `SHADOW`가 남지 않는다.
 - historical test count나 source existence만으로 READY를 선언하지 않는다.
 
 Paid Beta READY와 Public Launch READY는 서로 다른 gate로 유지한다.
+
+READY는 evidence classification일 뿐 Leo의 release decision이 아니다. 모든 READY,
+option, branch, external non-requirement, next-step record에 다음을 포함한다.
+
+```text
+EVIDENCE_CLASSIFICATION_ONLY: YES
+SELECTED_BY_LEO: NONE
+RISK_ACCEPTED: NONE
+ACTION_AUTHORIZED: NONE
+RELEASE_AUTHORIZED: NO
+NEXT_MISSION_AUTHORIZED: NO
+```
+
+`INVESTIGATION_PACKAGE_COMPLETE`는 P1–P4가 freeze되고 모든 frozen row가 evidence 또는
+완전한 unresolved record를 가졌다는 뜻이다. `AUDIT_COMPLETE`는 여기에 immutable
+P1–P4 pins, Independent Reviewer result, Advisor closure와 return route를 담은 P5가
+완료됐다는 뜻이다. 둘 다 Paid Beta/Public Launch readiness나 실행 승인과 다르다.
 
 ## ROLE_ASSIGNMENT
 
@@ -544,9 +634,13 @@ Paid Beta READY와 Public Launch READY는 서로 다른 gate로 유지한다.
 
 ### 현실성 판정
 
-3 working days는 **baseline reconstruction과 decision package**에는 가능하다.
+3 working days는 **baseline reconstruction과 immutable P1–P4 decision package**에는
+가능하다.
 production certification, 외부 계약 완료, exhaustive security/code review, bug fix,
 새 architecture 설계까지 포함하면 불가능하다.
+
+P5 Independent Review와 Advisor closure는 admission에서 Reviewer/Advisor capacity와
+cutoff를 명시적으로 Day 3 안에 확보하지 않는 한 별도 elapsed time이다.
 
 ### Day 1 — pins, ownership, flow candidates
 
@@ -555,6 +649,8 @@ production certification, 외부 계약 완료, exhaustive security/code review,
 - critical entry point와 owner map
 - historical claim을 E0로 격리
 - initial unknown register
+- 한 개에서 최대 세 개의 provisional beta option과 minimum critical slice
+- `CONTINUE | EARLY_COMPLETE | HOLD` decision gate
 
 ### Day 2 — critical evidence chains
 
@@ -563,8 +659,10 @@ production certification, 외부 계약 완료, exhaustive security/code review,
 - SIASIU boundary-only dependency 확인
 - Control cross-project contract/dependency result
 - source/runtime/external 분리와 mock/real status 후보
+- Day 1 recommendation을 실제로 바꿀 수 있는 question만 first-blocking boundary까지
+  추적
 
-### Day 3 — decision package
+### Day 3 — P1–P4 decision package freeze
 
 - current as-built summaries
 - mock-versus-real matrix
@@ -573,7 +671,16 @@ production certification, 외부 계약 완료, exhaustive security/code review,
 - commercial branch baseline options/recommendation
 - feature complete/readiness/exit criteria
 - explicit no-build와 Founder/external decision register
-- independent Reviewer에게 넘길 exact subject/pins 준비
+- independent Reviewer에게 넘길 immutable P1–P4 exact subject/pins 준비
+- evidence/package freeze 후 새로운 evidence chase 금지
+
+### P5 — 별도 측정하는 review와 closure
+
+- Independent Reviewer가 immutable P1–P4를 검토한다.
+- Advisor가 completeness/evidence boundary와 return route를 final audit한다.
+- admission에서 exact capacity가 Day 3 안에 확보되지 않았다면 이 시간은 3 working
+  days 밖의 elapsed time으로 별도 기록한다.
+- P5 중 P1–P4 evidence collection을 다시 열지 않는다.
 
 ### 3일 안에 하지 못하는 것
 
@@ -597,7 +704,9 @@ BLOCKER_STATUS: preliminary 또는 confirmed 구분
 EXTENSION: NOT_AUTHORIZED
 IMPLEMENTATION: NOT_AUTHORIZED
 NEXT_MISSION: NOT_AUTHORIZED
-RETURN_TO: foundation-advisor -> Strategy Decision Architect -> Leo
+INVESTIGATION_PACKAGE_COMPLETE: YES | HOLD
+AUDIT_COMPLETE: NO_UNTIL_P5
+RETURN_TO_AFTER_P5: foundation-advisor -> Strategy Decision Architect -> Leo
 ```
 
 미확인 범위가 있어도 audit 기간을 자동 연장하지 않는다. product/release decision을
@@ -606,36 +715,51 @@ RETURN_TO: foundation-advisor -> Strategy Decision Architect -> Leo
 
 ## REQUIRED_FINAL_OUTPUTS
 
-별도 audit이 승인·실행된다면 Day 3 package에는 다음이 모두 있어야 한다.
+별도 audit이 승인·실행된다면 18개 concern을 각각 별도 문서로 만들지 않는다. 하나의
+authoritative row set에서 다음 P1–P5 view를 만든다.
 
-1. current Cosmile as-built state
-2. current Foundation commercial-core state
-3. mock versus real matrix
-4. Paid Beta blockers
-5. Public Launch blockers
-6. parallel Track C/F/X/P
-7. commercial branch baseline decision options and recommendation
-8. Commercial MVP Feature Complete criteria
-9. Paid Beta Ready criteria
-10. Paid Beta Exit criteria
-11. Public Launch Ready criteria
-12. explicit no-build list
-13. engineering workdays
-14. elapsed calendar dependencies
-15. estimate confidence and assumptions
-16. Founder decisions and external-owner decisions
-17. exact evidence index: repo/branch/commit/path/command/result/time
-18. `UNVERIFIED` register with owner and downstream impact
+1. **P1 — AUDIT_MANIFEST_AND_CLOSURE_RECORD**
+   - exact pins, authority/return route, selected actors/capacity, evidence ceiling,
+     optional E3 allowlist, Day 1/stop/expiry rule, UTC cutoffs, product diff 0,
+     non-authorization
+2. **P2 — CAPABILITY_EVIDENCE_MATRIX**
+   - current Cosmile/Foundation state, mock/real/status, exact evidence index,
+     last verified boundary, external state, Foundation/SIASIU dependency,
+     continuity/AI behavior, selected-flow data authority, `UNVERIFIED` register
+3. **P3 — GATE_BLOCKER_AND_CRITERIA_REGISTER**
+   - Commercial MVP Feature Complete, Paid Beta Ready/Exit, Public Launch Ready의
+     evidence view, confirmed blocker와 gate-holding unknown/general debt 분리,
+     explicit no-build
+4. **P4 — DELIVERY_AND_DECISION_PLAN**
+   - 한 개에서 최대 세 개의 beta option, Leo를 위한 recommendation, Track C/F/X/P,
+     branch options, option-relevant work estimate, external elapsed dependency,
+     Founder/external/owner-gap/later-Specialist question
+5. **P5 — INDEPENDENT_REVIEW_AND_ADVISOR_CLOSURE**
+   - immutable P1–P4 hashes, Reviewer verdict, Advisor completeness/evidence audit,
+     unresolved disagreement, elapsed time, return route, no authority expansion
+
+기존 18개 concern은 삭제하지 않고 P2–P4의 field/view로 모두 보존한다. Public Launch는
+완전한 product design이 아니라 Paid Beta와 다른 later-gate deferral/evidence question까지만
+기록한다.
 
 각 blocker는 다음 최소 필드를 가져야 한다.
 
 ```text
 ID
+OPTION_ID
 TARGET_GATE: PAID_BETA | PUBLIC_LAUNCH
 STATUS: PRELIMINARY | CONFIRMED | UNVERIFIED | EXTERNAL_PENDING
 EVIDENCE_LEVEL
+EXTERNAL_STATE
 OWNER
+OWNER_STATUS
 DEPENDENCY
+CUSTOMER_OR_OPERATOR_OUTCOME
+FAILURE_IF_DEFERRED
+CRITICAL_FLOW_PIN
+MINIMUM_RELEASE_SLICE
+VALUE_PRESERVING_WORKAROUND
+DEFERRAL_DESTINATION
 MINIMUM_CLOSURE_EVIDENCE
 ENGINEERING_WORKDAYS
 ELAPSED_CALENDAR_DEPENDENCY
@@ -667,28 +791,35 @@ CONFIDENCE
 ### Audit 실행 전에 필요한 결정
 
 1. **Audit 실행 승인**
-   - 3 working days, read-only, Foundation + Cosmile 중심, SIASIU boundary-only,
-     Control cross-project analysis로 실행할지.
+   - 최대 3 investigative working days, read-only, stage-gated P1–P4와 별도 P5로
+     실행할지. audit complete가 product gate `HOLD`를 반환할 수 있음을 수용할지.
 2. **Audit execution safety envelope**
-   - source/static inspection만 허용할지,
-   - 기존 local build/test/smoke/runtime까지 허용한다면 정확히 어떤 command class,
-     DB/network/data restrictions와 cleanup을 적용할지.
-3. **Paid Beta 제품 정의**
-   - real customer/real payment 여부, 대상 국가/통화, SKU 범위, 초대 규모,
-     운영자, 주문 수/기간 기반 exit threshold의 방향.
-4. **Public Launch 범위**
-   - Paid Beta와 달라지는 채널, 트래픽, 국가, 결제/배송/지원 범위.
-5. **Branch decision rule**
-   - audit은 현재 heads를 관찰 pin으로 사용하되, commercial development baseline은
-     Day 3 evidence 후 Leo가 선택한다는 원칙을 승인할지.
-6. **External owner register**
-   - PG, fulfillment/shipping, Legal/privacy/terms/refund, CS/Ops, domain/infra의
-     실제 decision owner를 누가 제공할지.
+   - Strategy 권고는 `E2_STATIC_ONLY`다. E3가 필요하면 exact command/scenario,
+     data, prohibited resources, cleanup, stop을 별도 승인한다. 새 E4는 금지한다.
+3. **Beta option envelope와 known non-negotiables**
+   - 이미 bounded된 option 하나를 조사할지, Day 1에 최대 세 option을 비교할지.
+   - Leo가 이미 확정한 real payment/geography/SKU/cohort/operator/data 제약만 적고
+     나머지는 `UNKNOWN`으로 둘지.
+4. **기존 continuity 방향과 Public Launch 분리 유지**
+   - Foundation/SIASIU/AI unavailable 시 ordinary commerce는 계속되고 unavailable/
+     unverified AI consultation은 closed/hidden이라는 기존 방향을 유지한다.
+   - Public Launch는 별도 later gate이며 Paid Beta evidence가 approval로 승계되지 않는다.
+5. **Output authority와 branch rule**
+   - READY, option, branch recommendation은 evidence/recommendation only이며 branch는
+     audit 후 Leo가 별도로 선택한다.
+6. **Escalation owner와 conditional domain-owner rule**
+   - 내부 escalation owner/return route를 고정한다.
+   - substantive owner는 `3일 안에 safe evidence 또는 option/priority 결정에 필요`하고
+     `safe unresolved fallback이 없음`이 모두 참일 때만 admission dependency다.
 
 ### 지금 결정하지 않아도 되는 것
 
+- 최종 beta option, cohort/SKU/국가/통화/채널/operator/exit threshold
+- commercial development branch와 구현 순서/일정
+- 상세 Public Launch product scope
 - U1/U2/U3 option과 Memory V3 재개 여부
 - 특정 DB/ORM/broker/authentication architecture
+- substantive Legal/privacy/security/data/AI/payment/fulfillment/vendor/Ops 결정
 - production risk acceptance
 - audit 이후 구현 mission
 
@@ -696,13 +827,17 @@ CONFIDENCE
 
 ## RECOMMENDED_NEXT_STEP
 
-가장 짧고 안전한 다음 단계는 Leo가 위 여섯 Founder decision에 답하는 것이다.
-그 답이 생긴 뒤에만 Strategy Decision Architect가 **별도의 bounded mission
-objective**를 `foundation-advisor`에게 전달한다. Advisor는 현행 Agent Office
-authority로 exact handoff와 runtime safety를 검증한다.
+가장 짧고 안전한 다음 단계는 이 Council run과 narrow Preflight delta를 기존 Draft
+PR #2에 올린 뒤 Leo와 GPT가 검토하는 것이다. Council-corrected Strategy recommendation에
+대한 explicit approval 전에는 Advisor에게 전달하지 않는다.
+
+Leo/GPT가 승인하고 별도로 handoff를 지시한 뒤에만 Strategy Decision Architect가
+**별도의 bounded mission objective**를 `foundation-advisor`에게 전달한다. Advisor는
+현행 Agent Office authority로 exact handoff, actors/runtime/model/skills, capacity,
+workspace, cutoff, safety를 live-verify한다.
 
 ```text
-CURRENT_NEXT_ACTION: LEO_DECISION_ONLY
+CURRENT_NEXT_ACTION: LEO_GPT_REVIEW_OF_COUNCIL_CORRECTED_PREFLIGHT
 ADVISOR_DISPATCH: NOT_PERFORMED
 COMMERCIAL_AUDIT: NOT_STARTED
 PRODUCT_IMPLEMENTATION: NOT_AUTHORIZED
