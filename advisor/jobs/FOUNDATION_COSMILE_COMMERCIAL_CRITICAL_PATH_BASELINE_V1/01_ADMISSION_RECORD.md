@@ -22,7 +22,7 @@ PRODUCT_REPOSITORY_CHANGES: ZERO
 2. The Strategy source pins and Council correction artifacts referenced by the handoff exist at their pinned commits and verify successfully.
 3. Current Agent Office operating and Advisor role authority was read directly and is compatible with this bounded mission when `foundation-strategy-sol` is treated as Leo's delegated strategy-side input and return target. Foundation Advisor remains the sole field orchestrator.
 4. The pinned branches and HEADs for Cosmile, FOUNDATION, SIASIU, and foundation-control match local worktrees, local upstream refs, and allowed GET-only remote metadata. Tracked state is clean in all four repositories.
-5. Pre-existing untracked state exists and is preserved untouched: Cosmile 6 entries, FOUNDATION 2 entries, SIASIU 3 entries, foundation-control 31 entries. These files are not mission evidence.
+5. Pre-existing untracked state exists and is preserved untouched: Cosmile 6 entries, FOUNDATION 2 entries, SIASIU 3 entries, foundation-control 33 entries. These files are not mission evidence.
 6. The isolated foundation-docs output branch and worktree were created from the exact Strategy handoff commit. No product or Control repository was modified.
 7. No baseline, authority, or binding contradiction currently requires a stop. Every dispatched actor remains subject to a live binding/readiness check immediately before dispatch.
 
@@ -33,7 +33,7 @@ PRODUCT_REPOSITORY_CHANGES: ZERO
 | Cosmile | `shadow/m4-cosmile-memory` | `b8b61d746e2bdbb8d7ab26405bf44fb665ad87a6` | equal | clean | preserve 6 entries untouched |
 | FOUNDATION | `shadow/foundation-shared-memory-v0` | `33570b9d7db79c991bb216b6a2dc80880ba1f2d6` | equal | clean | preserve 2 entries untouched |
 | SIASIU | `shadow/m4-siasiu-memory` | `e1830b45c6d2b22b2471bb5957b6aaf7fa6dd602` | equal | clean | preserve 3 entries untouched |
-| foundation-control | `shadow/m5-ingress-gate` | `c89b792bed177aad9322e09debecc76caab0c8a0` | equal | clean | preserve 31 entries untouched |
+| foundation-control | `shadow/m5-ingress-gate` | `c89b792bed177aad9322e09debecc76caab0c8a0` | equal | clean | preserve 33 entries untouched |
 
 ## Selected actors
 
