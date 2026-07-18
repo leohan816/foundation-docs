@@ -1,0 +1,36 @@
+{
+  "schemaVersion": "agent-office.as1-advisor-result.v1",
+  "evidenceId": "ev-as1-result-20260718-01",
+  "profileId": "AGENT_OFFICE_ADVISOR",
+  "advisorTeam": "AGENT_OFFICE_ADVISOR_TEAM",
+  "actorId": "agent-office-advisor",
+  "roleInstanceId": "foundation-advisor",
+  "intakeId": "as1i-870d6eb907eb1c48010d3dd2f413dc184cddcc9c",
+  "resultId": "as1-result-20260718-01",
+  "terminalStatus": "COMPLETED",
+  "acceptedIntakeEvidenceId": "ev-as1-intake-20260718-01",
+  "acceptedIntakeEvidenceHash": "sha256:2d9c3ac30642fbb13e85de2d278853099ffc6e5ea6d1c361134829d411145255",
+  "resultArtifact": {
+    "repository": "foundation-docs",
+    "commit": "4ff6fbef95ac8712d55eea5a64524700a940f1da",
+    "path": "advisor/jobs/20260714_agent_office_as1_multi_team_slack_pilot_001/runtime-evidence/agent-office-advisor/as1i-870d6eb907eb1c48010d3dd2f413dc184cddcc9c/result-artifact.json",
+    "sha256": "sha256:3061f21438fa5f8fc79fbabc4301ea62188172904cffee1d417746c62b60aa58"
+  },
+  "consumedQuestionReplyCount": 0,
+  "consumedQuestionReplySetHash": "sha256:4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+  "outboundRecord": {
+    "kind": "RESULT",
+    "intakeId": "as1i-870d6eb907eb1c48010d3dd2f413dc184cddcc9c",
+    "resultId": "as1-result-20260718-01",
+    "terminalStatus": "COMPLETED",
+    "resultArtifact": {
+      "repository": "foundation-docs",
+      "commit": "4ff6fbef95ac8712d55eea5a64524700a940f1da",
+      "path": "advisor/jobs/20260714_agent_office_as1_multi_team_slack_pilot_001/runtime-evidence/agent-office-advisor/as1i-870d6eb907eb1c48010d3dd2f413dc184cddcc9c/result-artifact.json",
+      "sha256": "sha256:3061f21438fa5f8fc79fbabc4301ea62188172904cffee1d417746c62b60aa58"
+    },
+    "summary": "AS1 live test 1 completed successfully by agent-office-advisor."
+  },
+  "outboundRecordHash": "sha256:b17014fde9e96b77ce0543907e83ec8f7fcf1228bf40443c254dbead7b7e6632",
+  "recordedAt": "2026-07-18T04:20:25.316Z"
+}
