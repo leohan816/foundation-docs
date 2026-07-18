@@ -50,4 +50,3 @@ Operator/test preview:
 5. Do not paste any value into chat or a result artifact.
 
 The Advisor/Worker may report only readiness booleans and key names. They must never read back or echo values.
-

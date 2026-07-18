@@ -80,4 +80,3 @@ Primary references:
 - command output and browser capture are sanitized.
 
 If a new schema/migration, Foundation write, broad storefront rewrite, public exposure, real PII, real payment, or production/shared service becomes necessary, stop and return to Strategy.
-

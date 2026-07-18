@@ -128,4 +128,3 @@ The result must include start/final branch and HEAD, commits, exact diff/path le
 ## Stop conditions
 
 Stop and return to the Advisor if new schema/migration, Foundation modification, broad storefront rewrite, public exposure, production/shared DB, real PII/payment, live/provider commitment, secret leakage, unallowlisted path, or material contract deviation is required.
-

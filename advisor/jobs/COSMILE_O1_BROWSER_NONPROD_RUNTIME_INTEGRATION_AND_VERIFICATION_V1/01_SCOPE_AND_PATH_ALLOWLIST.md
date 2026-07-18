@@ -116,4 +116,3 @@ CLEANUP: stop Next, stop tunnel, remove callback registrations when owner-contro
 9. Evidence is sanitized and the environment is fully shut down.
 10. Independent Reviewer returns PASS or bounded corrections are completed and re-reviewed.
 11. Advisor final audit holds the claim ceiling and activates HARD STOP.
-
