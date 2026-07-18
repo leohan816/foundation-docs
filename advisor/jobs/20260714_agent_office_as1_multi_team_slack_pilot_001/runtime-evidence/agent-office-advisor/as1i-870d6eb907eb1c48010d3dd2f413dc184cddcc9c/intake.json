@@ -1,0 +1,14 @@
+{
+  "schemaVersion": "agent-office.as1-advisor-intake.v1",
+  "evidenceId": "ev-as1-intake-20260718-01",
+  "profileId": "AGENT_OFFICE_ADVISOR",
+  "advisorTeam": "AGENT_OFFICE_ADVISOR_TEAM",
+  "actorId": "agent-office-advisor",
+  "roleInstanceId": "foundation-advisor",
+  "intakeId": "as1i-870d6eb907eb1c48010d3dd2f413dc184cddcc9c",
+  "advisorAckId": "as1-ack-20260718-01",
+  "acceptedAckEvidenceId": "ev-as1-ack-20260718-01",
+  "acceptedAckEnvelopeHash": "sha256:80c961e7b1859d6914f6f828c90a18655022a5a710c186f6c5e966e941e3b39d",
+  "classification": "ACCEPTED_NEW_MISSION",
+  "recordedAt": "2026-07-18T04:18:33.194Z"
+}
