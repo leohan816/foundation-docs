@@ -4,6 +4,8 @@ current-mission authority revision.
 
 Use the existing `agent-office-opus` Worker and current verified Opus 4.8 Max profile.
 Work only in the named implementation worktree from exact baseline `46d31e8`; obey the
-four-path allowlist, focused validation, 20-minute timebox, commit/non-force-push result,
-and STOP rules. Preserve the two existing untracked R2 artifacts unstaged. Return only the
-candidate or one exact blocker to `agent-office-advisor`.
+four-path allowlist, 20-minute timebox, commit/non-force-push result, and STOP rules. Run
+only the two exact `-t` filtered new tests named in the handoff, changed-file ESLint, and
+exact diff-check; never run either complete test file. Preserve the two existing untracked
+R2 artifacts unstaged. Return only the candidate or one exact blocker to
+`agent-office-advisor`.

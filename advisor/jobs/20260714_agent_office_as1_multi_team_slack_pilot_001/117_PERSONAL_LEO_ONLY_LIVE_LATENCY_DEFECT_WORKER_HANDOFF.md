@@ -46,11 +46,13 @@ unstaged. No path outside this allowlist may change.
 
 ## Focused validation only
 
-- `npx vitest run tests/integration/as1-slack-live-composition.test.ts tests/operations/as1-slack-lifecycle.test.ts`
+- `npx vitest run tests/integration/as1-slack-live-composition.test.ts -t "posts DELIVERY_CONFIRMED immediately and idempotently after durable transport"`
+- `npx vitest run tests/operations/as1-slack-lifecycle.test.ts -t "publishes exact evidence through one fixed Advisor action"`
 - changed-file ESLint for changed allowlisted files only;
 - exact-range `git diff --check 46d31e8ab7d595b544e392b55f9814891c65ebd2..HEAD`.
 
-Do not run a full suite, broad lint, typecheck, build, design review, or unchanged-surface
+The Worker must use these exact names for the two new tests. Do not run either full test
+file, any full suite, broad lint, typecheck, build, design review, or unchanged-surface
 review.
 
 ## Forbidden
