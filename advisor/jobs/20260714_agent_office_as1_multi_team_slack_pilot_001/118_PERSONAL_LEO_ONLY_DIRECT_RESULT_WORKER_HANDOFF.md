@@ -52,12 +52,19 @@ Default and non-personal modes remain unchanged.
 6. A result or projection failure is local to that message unless it proves credential,
    identity, fixed destination, or durable-state corruption. No Git artifact, commit, push,
    or provenance operation occurs in this personal result path.
+7. Add one narrow PERSONAL-result send surface to the existing outbox. It is callable only
+   from the composition's `PERSONAL_LEO_ONLY` path after the composition derives the sole
+   intake. Its only external value is bounded answer text. The outbox derives the
+   deterministic identity and immutable root/channel/thread, renders `RESULT [COMPLETED]`,
+   and reuses the existing `runOutbox` idempotence, retry, and reconciliation machinery.
+   Existing branded/default `send` and fixed `sendStatus` behavior remain unchanged.
 
 ## Frozen implementation allowlist
 
 - `src/runtime/as1-slack-pilot/composition.ts`
 - `src/runtime/as1-slack-pilot/cli.ts`
 - `src/application/slack-pilot/inbound-store.ts`
+- `src/application/slack-pilot/outbox.ts`
 - `tests/integration/as1-slack-live-composition.test.ts`
 - `tests/operations/as1-slack-lifecycle.test.ts`
 
@@ -75,9 +82,10 @@ broad lint, typecheck, build, or unchanged-surface checks.
 
 ## Forbidden
 
-No per-message Git evidence or provenance; design document; new phase; generic IPC,
-workflow, or Git framework; database; Registry; UI; systemd; shell-execution path;
-routing/profile/target/default-mode change; extra test; broad validation; or unrelated file.
+No direct Web-post bypass; per-message Git evidence or provenance; design document; new
+phase; generic IPC, workflow, or Git framework; database; Registry; UI; systemd;
+shell-execution path; routing/profile/target/default-mode change; extra test; broad
+validation; or unrelated file.
 
 ## Result and review
 
