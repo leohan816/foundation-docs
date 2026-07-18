@@ -102,19 +102,30 @@ repair.
 
 ## Verdict and outputs
 
-Allowed verdicts:
+The current Agent Office Reviewer role controls the Reviewer's direct verdict vocabulary:
 
 ```text
 PASS
-PASS_WITH_CORRECTIONS
-HOLD
+PASS_WITH_RISK
+NEEDS_PATCH
 FAIL
 ```
 
-`PASS_WITH_CORRECTIONS` must name bounded finding IDs, severity, exact path/behavior, violated invariant,
-required correction, and proof needed. Do not patch. A correction returns through the Advisor to the same
-Cosmile Worker; any delta re-review returns to this same Reviewer. A finding requiring another product path,
-schema change, runtime wiring, new policy, or scope expansion is a blocker, not an inferred authorization.
+For the Founder mission's required external review vocabulary, record this deterministic mapping in the
+artifact as a separate `MISSION_REVIEW_VERDICT`:
+
+```text
+ROLE_VERDICT: PASS           -> MISSION_REVIEW_VERDICT: PASS
+ROLE_VERDICT: NEEDS_PATCH    -> MISSION_REVIEW_VERDICT: PASS_WITH_CORRECTIONS
+ROLE_VERDICT: PASS_WITH_RISK -> MISSION_REVIEW_VERDICT: HOLD
+ROLE_VERDICT: FAIL           -> MISSION_REVIEW_VERDICT: FAIL
+```
+
+`NEEDS_PATCH` must name bounded finding IDs, severity, exact path/behavior, violated invariant, required
+correction, and proof needed. `PASS_WITH_RISK` is never automatically accepted and maps to mission `HOLD`.
+Do not patch. A correction returns through the Advisor to the same Cosmile Worker; any delta re-review returns
+to this same Reviewer. A finding requiring another product path, schema change, runtime wiring, new policy, or
+scope expansion is a blocker, not an inferred authorization.
 
 Write only these foundation-docs artifacts for Advisor publication:
 
