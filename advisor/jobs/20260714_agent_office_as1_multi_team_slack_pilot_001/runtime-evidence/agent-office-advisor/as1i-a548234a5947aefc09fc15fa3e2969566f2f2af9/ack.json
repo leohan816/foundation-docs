@@ -1,0 +1,23 @@
+{
+  "schemaVersion": "agent-office.as1-advisor-ack.v1",
+  "evidenceId": "ev-as1-ack-20260718-02",
+  "profileId": "AGENT_OFFICE_ADVISOR",
+  "advisorTeam": "AGENT_OFFICE_ADVISOR_TEAM",
+  "actorId": "agent-office-advisor",
+  "roleInstanceId": "foundation-advisor",
+  "intakeId": "as1i-a548234a5947aefc09fc15fa3e2969566f2f2af9",
+  "sourceEventId": "Ev0BJ0NMRQ5R",
+  "pointerHash": "sha256:7c329e4747aa0c711f6539d0b34d5a88397f9cb4b9e5907db0eea7b20147f234",
+  "advisorAckId": "as1-ack-20260718-02",
+  "acknowledgedAt": "2026-07-18T04:22:56.014Z",
+  "receiveGrantId": "as1-leo-rg-2-072b8009-58b5-41e6-ae07-b33e1cdc7907",
+  "receiveGrantBindingHash": "sha256:19f2d5cfb14f1ec95940d08e60e0c1fc27844bf9d5504d13c77dcfe328e2afe0",
+  "pilotId": "as1-pilot-agent-office-20260718-01",
+  "pointerDeliveryGrantId": "as1-pdg-leo-1fc0c09f2158d7836b6ef291",
+  "rootCorrelationHash": "sha256:8e64ef8e966dc62d66f4d094b9ee3703f888f0f73e839593addbadb918899295",
+  "pointerArtifactRef": "artifacts/as1-slack-pilot/agent-office-advisor/pointers/as1p-1fc0c09f2158d7836b6ef291046ecc80a72ca9cd/7c329e4747aa0c711f6539d0b34d5a88397f9cb4b9e5907db0eea7b20147f234.json",
+  "transportJournalRef": "indexes/as1-slack-pilot/profiles/agent-office-advisor/tmux-delivery.json",
+  "transportJournalHash": "sha256:a9ef10e55740759d6c0f51b65fc6cee276393a73b0f5f78a76acb8ad6e43c388",
+  "consumedDeliveryGrantId": "as1-pdg-leo-1fc0c09f2158d7836b6ef291",
+  "consumedLeaseId": "as1-lease-leo-1fc0c09f2158d7836b6ef291"
+}
