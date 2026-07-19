@@ -12,6 +12,12 @@ PAID BETA 승인: NO
 MEMORY V3 상태: PAUSED
 ```
 
+> **문서 범위:** 이 문서는 Cosmile Commerce의 현재 상태와 후속 로드맵이다.
+> Foundation 자체의 지식·검색·판단·모델·API 구현계획은 포함하지 않는다.
+> Foundation은 상품 snapshot 경계와 기존 AI 상담 bridge의 현재 상태를
+> 잊지 않기 위해서만 기록한다. Foundation AI 상담·추천·Memory V3의 구현과
+> 활성화는 현재 범위에서 명시적으로 보류한다.
+
 ## 1. 최종 방향
 
 Cosmile에는 백엔드가 전혀 없는 것이 아니다. 현재 고객·운영자 신원,
@@ -109,7 +115,9 @@ Foundation은 비동기 versioned snapshot을 제공한다. Foundation 장애가
 이 기능들은 향후 설계할 수 있지만 현재 Commerce 모듈에 조용히 포함하면
 안 된다.
 
-## 3. 현재 검증 증거의 한계
+## 3. 완료 증거와 한계
+
+### 3.1 비운영 Golden Commerce — ✅ 검수 완료
 
 현재 선언 가능한 최대 상태는 다음과 같다.
 
@@ -155,29 +163,33 @@ GOLDEN_ORDER_AND_GOLDEN_REVERSAL_EVIDENCE
 이 증거는 production readiness, Paid Beta readiness, 부하 대응, 실제 정산,
 실제 고객 개인정보 운영 또는 공개 서비스 준비를 증명하지 않는다.
 
-## 4. 현재 기능 상태표
+## 4. 현재 기능 상태표 — 완료·부분·미완료
+
+`✅ 완료`는 이 문서에서 **검수된 비운영 범위가 완료됐다는 뜻**이다.
+Production·Paid Beta·실고객 운영 완료를 뜻하지 않는다.
 
 | 영역 | 현재 상태 | 확인된 것 | 남은 것 |
 |---|---|---|---|
 | 기존 프런트엔드 재사용 | PARTIAL_REUSED | 기존 화면과 commerce spine을 확장했고 전체 재작성하지 않음 | 일관된 쇼핑 경험, 모바일, 접근성, 팝업·오류·빈 상태 |
-| Google OIDC | NONPROD_VERIFIED | 고객·운영자 로그인과 권한 분리 | 실제 도메인·세션 운영, 계정 복구, 개인정보·지원 절차 |
-| 카탈로그 | NONPROD_VERIFIED_SYNTHETIC | ELT snapshot 기반 적격 상품 경로 | 실제 판매 승인, 이미지·권리, merchandising, ELT 전체 준비 |
-| 장바구니 | NONPROD_VERIFIED | 로그인 고객 영속 장바구니와 구매 후 소비 | 만료·지원·운영 복구, production 동시성; guest는 제외 |
-| Checkout | NONPROD_VERIFIED | 서버 재검증과 Toss TEST 시작 | production UX, 이탈·timeout·복구, live 설정 |
-| 결제 capture | NONPROD_VERIFIED | Toss TEST capture 1건과 내부 상태 binding | live 가맹점, 실패·재시도 운영, 실제 정산 |
-| Toss webhook | SOURCE_AND_CONTRACT_PRESENT_RUNTIME_NOT_EXERCISED | query 재검증 설계와 코드 존재 | 실제 webhook inbox, 중복·순서역전·재처리·격리 증거 |
-| 주문 | NONPROD_VERIFIED | 주문생성, paid/refunded, 고객 주문상세 | 완전한 취소·반품 정책과 운영 복구 |
-| 재고 | NONPROD_VERIFIED | reserve·commit·oversell deny·환불 HOLD | 입고·조정·반품검수·재판매복구·운영 reconciliation |
-| 배송 | RECORD_ONLY_VERIFIED | 수동 운송사·송장·shipped 기록 | 실제 fulfillment 운영, 배송완료·예외; 택배 API는 연기 가능 |
-| 전액 환불 | NONPROD_VERIFIED_OPERATOR_ONLY | step-up을 거친 Toss TEST 전액 환불 | 고객 요청, 승인 정책, production 운영·회계 |
-| 주문취소 | NOT_VERIFIED | 최종 증거에 cancel transaction 없음 | 결제 전 취소와 결제 후 취소·환불 UX·정책 |
-| 반품 | NOT_IMPLEMENTED_AS_COMPLETE_FLOW | 완료 주장 없음 | 요청·승인·수거·입고·검수·처분·환불·재고정책 |
-| 부분 환불 | DEFERRED | 명시적으로 제외 | 실제 운영 필요와 회계 정책 승인 후 판단 |
-| 리뷰·평점 | NOT_IN_GOLDEN_COMMERCE_SCOPE | 완료 주장 없음 | 실구매자 리뷰·moderation·신고·이미지 |
-| 고객지원 | NOT_IN_GOLDEN_COMMERCE_SCOPE | 완료 주장 없음 | 문의·주문 연결·환불/반품 escalation·감사이력 |
-| 운영자 화면 | MINIMAL_PROOF_SURFACE | 주문조회·배송기록·전액환불 | 정식 대시보드·검색·필터·queue·복구·재고·고객지원 |
-| 배포·운영 | NOT_READY | 격리 runtime 시작과 정리 | 환경·release·rollback·monitoring·backup/restore·incident |
-| AI 자동운영 | NOT_IMPLEMENTED | 완료 주장 없음 | 이벤트·정책·승인·action adapter·운영 메모리·감사 |
+| Google OIDC | ✅ 완료(비운영) | 고객·운영자 로그인과 권한 분리 | 실제 도메인·세션 운영, 계정 복구, 개인정보·지원 절차 |
+| 카탈로그 | ✅ 완료(합성 SKU·비운영) | ELT snapshot 기반 적격 상품 경로 | 실제 판매 승인, 이미지·권리, merchandising, ELT 전체 준비 |
+| 장바구니 | ✅ 완료(로그인 고객·비운영) | 로그인 고객 영속 장바구니와 구매 후 소비 | 만료·지원·운영 복구, production 동시성; guest는 제외 |
+| Checkout | ✅ 완료(비운영) | 서버 재검증과 Toss TEST 시작 | production UX, 이탈·timeout·복구, live 설정 |
+| 결제 capture | ✅ 완료(Toss TEST) | Toss TEST capture 1건과 내부 상태 binding | live 가맹점, 실패·재시도 운영, 실제 정산 |
+| Toss webhook | 🟡 부분 완료 | query 재검증 설계와 코드 존재 | 실제 webhook inbox, 중복·순서역전·재처리·격리 runtime 증거 |
+| 주문 | ✅ 완료(Golden 상태·비운영) | 주문생성, paid/refunded, 고객 주문상세 | 완전한 취소·반품 정책과 운영 복구 |
+| 재고 | ✅ 완료(Golden 상태·비운영) | reserve·commit·oversell deny·환불 HOLD | 입고·조정·반품검수·재판매복구·운영 reconciliation |
+| 배송 | ✅ 완료(기록 전용·비운영) | 수동 운송사·송장·shipped 기록 | 실제 fulfillment 운영, 배송완료·예외; 택배 API는 연기 가능 |
+| 전액 환불 | ✅ 완료(운영자·Toss TEST) | step-up을 거친 Toss TEST 전액 환불 | 고객 요청, 승인 정책, production 운영·회계 |
+| 주문취소 | ❌ 미검증 | 최종 증거에 cancel transaction 없음 | 결제 전 취소와 결제 후 취소·환불 UX·정책 |
+| 반품 | ❌ 미완성 | 완료 주장 없음 | 요청·승인·수거·입고·검수·처분·환불·재고정책 |
+| 부분 환불 | ⏸ 연기 | 명시적으로 제외 | 실제 운영 필요와 회계 정책 승인 후 판단 |
+| 리뷰·평점 | ⏸ 현재 범위 밖 | 완료 주장 없음 | 실구매자 리뷰·moderation·신고·이미지 |
+| 고객지원 | ⏸ 현재 범위 밖 | 완료 주장 없음 | 문의·주문 연결·환불/반품 escalation·감사이력 |
+| 운영자 화면 | 🟡 최소 proof 완료 | 주문조회·배송기록·전액환불 | 정식 대시보드·검색·필터·queue·복구·재고·고객지원 |
+| 배포·운영 | ❌ 미완성 | 격리 runtime 시작과 정리 | 환경·release·rollback·monitoring·backup/restore·incident |
+| AI 상담·추천 | ⏸ Source/Shadow만 존재 | default-off·debug·Foundation bridge 코드 일부 존재 | Foundation 자체 runtime 검증·정식 계약·제품 UX·운영 승인 |
+| AI 자동운영 | ⏸ 미구현·연기 | 완료 주장 없음 | 이벤트·정책·승인·action adapter·운영 메모리·감사 |
 
 ## 4-A. 전체 As-Built 모듈 등록부
 
@@ -817,6 +829,13 @@ Cosmile의 최종 대시보드는 네 영역을 연결한다.
 의사결정을 개선할 때만 추가한다.
 
 ## 10. 단계별 실행 로드맵
+
+### 현재 완료 지점 — ✅ Golden Commerce 비운영 검증 완료
+
+Google 고객·운영자 신원, 합성 대표 SKU, 로그인 장바구니, Toss TEST capture,
+주문 확정, 재고 commit, 배송기록, 전액 환불, 환불 후 inventory HOLD,
+고객 주문상세까지 하나의 브라우저 흐름으로 검증했고 독립 검수를 통과했다.
+다음 Slice는 이 완료 증거를 보존한 상태에서 시작한다.
 
 ### Slice 1 — 검수된 Commerce spine 정착
 
