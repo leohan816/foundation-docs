@@ -2029,6 +2029,7 @@ STOP: ACTIVE
       const toc = document.getElementById('toc');
       const headings = [...documentRoot.querySelectorAll('h2, h3')];
       const used = new Set();
+      const pageUrl = window.location.href.split('#')[0];
 
       const makeId = (text, index) => {
         let base = text.toLowerCase().trim()
@@ -2045,11 +2046,17 @@ STOP: ACTIVE
       headings.forEach((heading, index) => {
         heading.id = makeId(heading.textContent, index);
         const link = document.createElement('a');
-        link.href = `#${heading.id}`;
+        // htmlpreview.github.io injects a GitHub <base> URL. A relative #hash
+        // would therefore open the GitHub blob (source code) instead of
+        // scrolling this rendered page. Keep the link on the actual viewer URL.
+        link.href = `${pageUrl}#${heading.id}`;
         link.textContent = heading.textContent;
         link.className = heading.tagName === 'H3' ? 'level-3' : 'level-2';
         toc.appendChild(link);
       });
+
+      const initialTarget = document.getElementById(decodeURIComponent(window.location.hash.slice(1)));
+      if (initialTarget) requestAnimationFrame(() => initialTarget.scrollIntoView({ block: 'start' }));
 
       const links = [...toc.querySelectorAll('a')];
       const observer = new IntersectionObserver((entries) => {
