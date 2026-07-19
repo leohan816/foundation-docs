@@ -123,7 +123,7 @@ POINTER_SHA256: 482aedeb3ef46ccffef05a596345ddf1502670138864e633886e1557ad9869e2
 The review launcher at commit `d52aee404a8739b89d6788b06ef1cf9b3512420c`
 contained one non-blocking documentation typo in commit 4's hash. The exact range
 endpoints still pinned the reviewed subject unambiguously. Advisor corrected that
-one character additively at commit `d0e7d9984b040ce75fbcd790cc53832a752b42b8`;
+one character additively at commit `d0e7d99b39749d4a45f9ea302ca4812f0d38c370`;
 the original reviewed launcher commit remains preserved.
 
 ## 5. Cleanup and containment
