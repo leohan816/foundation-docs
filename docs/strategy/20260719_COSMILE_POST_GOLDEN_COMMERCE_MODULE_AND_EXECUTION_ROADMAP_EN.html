@@ -1,0 +1,1383 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="light">
+  <meta name="description" content="Cosmile post-Golden-Commerce module and execution master plan.">
+  <title>Cosmile Post-Golden-Commerce Master Plan</title>
+  <style>
+    :root {
+      --ink: #16211b;
+      --muted: #657169;
+      --line: #dfe7e1;
+      --paper: #ffffff;
+      --wash: #f4f7f3;
+      --green: #3f7d20;
+      --green-2: #6aa634;
+      --green-soft: #eaf4df;
+      --navy: #1a2933;
+      --amber: #9b6400;
+      --amber-soft: #fff4d7;
+      --red: #a33a37;
+      --shadow: 0 18px 50px rgba(28, 49, 37, .10);
+      --radius: 18px;
+    }
+
+    * { box-sizing: border-box; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      margin: 0;
+      color: var(--ink);
+      background:
+        radial-gradient(circle at 8% 5%, rgba(106, 166, 52, .12), transparent 24rem),
+        linear-gradient(180deg, #f9fbf8 0, var(--wash) 26rem, #f7f9f7 100%);
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont,
+        "Segoe UI", sans-serif;
+      line-height: 1.65;
+    }
+
+    a { color: var(--green); text-decoration-thickness: 1px; text-underline-offset: 3px; }
+    a:hover { color: #285b11; }
+
+    .progress {
+      position: fixed;
+      inset: 0 auto auto 0;
+      width: 0;
+      height: 4px;
+      z-index: 100;
+      background: linear-gradient(90deg, var(--green-2), var(--green));
+      box-shadow: 0 0 16px rgba(63, 125, 32, .35);
+    }
+
+    .masthead {
+      border-bottom: 1px solid rgba(223, 231, 225, .85);
+      background: rgba(255, 255, 255, .82);
+      backdrop-filter: blur(18px);
+    }
+
+    .masthead-inner {
+      width: min(1480px, calc(100% - 40px));
+      margin: 0 auto;
+      min-height: 72px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      color: var(--navy);
+      font-weight: 800;
+      letter-spacing: -.02em;
+    }
+
+    .brand-mark {
+      width: 36px;
+      height: 36px;
+      border-radius: 10px;
+      display: grid;
+      place-items: center;
+      color: white;
+      background: var(--navy);
+      box-shadow: 0 8px 24px rgba(26, 41, 51, .18);
+    }
+
+    .brand small {
+      display: block;
+      color: var(--muted);
+      font-size: .68rem;
+      font-weight: 700;
+      letter-spacing: .13em;
+      text-transform: uppercase;
+    }
+
+    .header-actions { display: flex; align-items: center; gap: 10px; }
+
+    .button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 38px;
+      padding: 0 14px;
+      border: 1px solid var(--line);
+      border-radius: 10px;
+      color: var(--ink);
+      background: white;
+      font-size: .84rem;
+      font-weight: 750;
+      text-decoration: none;
+    }
+
+    .button:hover { border-color: #b8c8bb; color: var(--green); }
+
+    .hero {
+      width: min(1480px, calc(100% - 40px));
+      margin: 44px auto 26px;
+      padding: clamp(30px, 5vw, 70px);
+      overflow: hidden;
+      position: relative;
+      color: white;
+      border-radius: 28px;
+      background:
+        linear-gradient(115deg, rgba(26, 41, 51, .98), rgba(29, 59, 44, .96) 62%, rgba(63, 125, 32, .92));
+      box-shadow: var(--shadow);
+    }
+
+    .hero::after {
+      content: "";
+      position: absolute;
+      width: 440px;
+      height: 440px;
+      right: -120px;
+      top: -210px;
+      border-radius: 50%;
+      border: 1px solid rgba(255, 255, 255, .15);
+      box-shadow: 0 0 0 55px rgba(255,255,255,.035), 0 0 0 110px rgba(255,255,255,.025);
+    }
+
+    .eyebrow {
+      margin: 0 0 18px;
+      color: #cde8b7;
+      font-size: .78rem;
+      font-weight: 800;
+      letter-spacing: .17em;
+      text-transform: uppercase;
+    }
+
+    .hero h1 {
+      max-width: 900px;
+      margin: 0;
+      font-size: clamp(2.15rem, 5vw, 5rem);
+      line-height: 1.02;
+      letter-spacing: -.055em;
+    }
+
+    .hero-copy {
+      max-width: 820px;
+      margin: 24px 0 0;
+      color: #dbe7df;
+      font-size: clamp(1rem, 1.7vw, 1.22rem);
+    }
+
+    .chips {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 9px;
+      margin-top: 30px;
+    }
+
+    .chip {
+      padding: 7px 11px;
+      border: 1px solid rgba(255,255,255,.17);
+      border-radius: 999px;
+      background: rgba(255,255,255,.08);
+      color: #eff6f1;
+      font-size: .76rem;
+      font-weight: 750;
+    }
+
+    .summary-grid {
+      width: min(1480px, calc(100% - 40px));
+      margin: 0 auto 26px;
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 14px;
+    }
+
+    .summary-card {
+      padding: 20px;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: rgba(255,255,255,.92);
+      box-shadow: 0 10px 35px rgba(28,49,37,.055);
+    }
+
+    .summary-card .label {
+      color: var(--muted);
+      font-size: .68rem;
+      font-weight: 850;
+      letter-spacing: .13em;
+      text-transform: uppercase;
+    }
+
+    .summary-card strong {
+      display: block;
+      margin-top: 7px;
+      color: var(--navy);
+      font-size: 1.05rem;
+    }
+
+    .summary-card span {
+      display: block;
+      margin-top: 6px;
+      color: var(--muted);
+      font-size: .8rem;
+      line-height: 1.45;
+    }
+
+    .notice {
+      width: min(1480px, calc(100% - 40px));
+      margin: 0 auto 26px;
+      padding: 16px 20px;
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      border: 1px solid #efd79c;
+      border-radius: 14px;
+      background: var(--amber-soft);
+      color: #5f440d;
+      font-size: .88rem;
+    }
+
+    .layout {
+      width: min(1480px, calc(100% - 40px));
+      margin: 0 auto 80px;
+      display: grid;
+      grid-template-columns: 270px minmax(0, 1fr);
+      gap: 24px;
+      align-items: start;
+    }
+
+    .toc {
+      position: sticky;
+      top: 18px;
+      max-height: calc(100vh - 36px);
+      overflow: auto;
+      padding: 18px;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: rgba(255,255,255,.9);
+      box-shadow: 0 10px 35px rgba(28,49,37,.05);
+    }
+
+    .toc-title {
+      margin: 0 0 12px;
+      color: var(--muted);
+      font-size: .7rem;
+      font-weight: 850;
+      letter-spacing: .14em;
+      text-transform: uppercase;
+    }
+
+    .toc a {
+      display: block;
+      padding: 7px 8px;
+      border-radius: 8px;
+      color: #435148;
+      font-size: .78rem;
+      line-height: 1.35;
+      text-decoration: none;
+    }
+
+    .toc a:hover, .toc a.active { color: var(--green); background: var(--green-soft); }
+    .toc a.level-3 { padding-left: 20px; color: #748078; font-size: .73rem; }
+
+    .document {
+      min-width: 0;
+      padding: clamp(24px, 4vw, 58px);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: var(--paper);
+      box-shadow: var(--shadow);
+    }
+
+    .markdown-body > h1:first-child { display: none; }
+
+    .markdown-body h2,
+    .markdown-body h3,
+    .markdown-body h4 {
+      color: var(--navy);
+      line-height: 1.25;
+      scroll-margin-top: 20px;
+    }
+
+    .markdown-body h2 {
+      margin: 3.2rem 0 1.1rem;
+      padding-top: .7rem;
+      border-top: 1px solid var(--line);
+      font-size: clamp(1.55rem, 2.3vw, 2.15rem);
+      letter-spacing: -.035em;
+    }
+
+    .markdown-body h2:first-of-type { margin-top: 0; border-top: 0; padding-top: 0; }
+    .markdown-body h3 { margin: 2.2rem 0 .8rem; font-size: 1.24rem; }
+    .markdown-body h4 { margin: 1.7rem 0 .7rem; font-size: 1.03rem; }
+    .markdown-body p { margin: .85rem 0; }
+    .markdown-body strong { color: #20372a; }
+
+    .markdown-body blockquote {
+      margin: 1.4rem 0;
+      padding: 16px 20px;
+      border-left: 4px solid var(--green-2);
+      border-radius: 0 12px 12px 0;
+      background: var(--green-soft);
+      color: #29441f;
+    }
+
+    .markdown-body pre {
+      max-width: 100%;
+      overflow: auto;
+      padding: 17px 19px;
+      border: 1px solid #263a31;
+      border-radius: 13px;
+      color: #e8f4ec;
+      background: #17251e;
+      box-shadow: inset 0 0 0 1px rgba(255,255,255,.025);
+      font: 500 .79rem/1.65 ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+    }
+
+    .markdown-body :not(pre) > code {
+      padding: .15rem .35rem;
+      border-radius: 6px;
+      color: #315b20;
+      background: var(--green-soft);
+      font: 600 .84em ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+    }
+
+    .markdown-body table {
+      width: 100%;
+      margin: 1.2rem 0 1.8rem;
+      border-spacing: 0;
+      border-collapse: separate;
+      overflow: hidden;
+      border: 1px solid var(--line);
+      border-radius: 13px;
+      font-size: .79rem;
+    }
+
+    .markdown-body th,
+    .markdown-body td {
+      padding: 11px 12px;
+      vertical-align: top;
+      text-align: left;
+      border-right: 1px solid var(--line);
+      border-bottom: 1px solid var(--line);
+    }
+
+    .markdown-body th:last-child,
+    .markdown-body td:last-child { border-right: 0; }
+    .markdown-body tr:last-child td { border-bottom: 0; }
+    .markdown-body th { color: #263a31; background: #edf3ed; }
+    .markdown-body tbody tr:nth-child(even) { background: #fafcfa; }
+
+    .markdown-body ul,
+    .markdown-body ol { padding-left: 1.35rem; }
+    .markdown-body li { margin: .35rem 0; }
+    .markdown-body hr { border: 0; border-top: 1px solid var(--line); }
+
+    .footer {
+      margin-top: 48px;
+      padding-top: 24px;
+      border-top: 1px solid var(--line);
+      color: var(--muted);
+      font-size: .78rem;
+    }
+
+    @media (max-width: 1050px) {
+      .summary-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .layout { grid-template-columns: 1fr; }
+      .toc { position: relative; top: 0; max-height: 310px; }
+    }
+
+    @media (max-width: 680px) {
+      .masthead-inner, .hero, .summary-grid, .notice, .layout { width: min(100% - 22px, 1480px); }
+      .masthead-inner { min-height: 62px; }
+      .brand small, .header-actions .button:first-child { display: none; }
+      .hero { margin-top: 20px; padding: 28px 22px; border-radius: 20px; }
+      .summary-grid { grid-template-columns: 1fr; }
+      .document { padding: 23px 17px; }
+      .markdown-body table { display: block; overflow-x: auto; white-space: normal; }
+    }
+
+    @media print {
+      body { background: white; }
+      .progress, .masthead, .hero::after, .toc, .header-actions { display: none !important; }
+      .hero { color: black; background: white; box-shadow: none; border: 1px solid #bbb; }
+      .hero-copy, .eyebrow { color: #333; }
+      .layout { display: block; width: 100%; }
+      .document { box-shadow: none; border: 0; }
+      .summary-grid, .notice, .hero { width: 100%; }
+      a { color: inherit; text-decoration: none; }
+    }
+  </style>
+</head>
+<body>
+  <div class="progress" id="progress"></div>
+
+  <header class="masthead">
+    <div class="masthead-inner">
+      <div class="brand">
+        <span class="brand-mark" aria-hidden="true">✦</span>
+        <span>COSMILE <small>Agent-native commerce roadmap</small></span>
+      </div>
+      <nav class="header-actions" aria-label="Document links">
+        <a class="button" href="https://github.com/leohan816/foundation-docs/blob/agent/cosmile-post-golden-commerce-roadmap-20260719/docs/strategy/20260719_COSMILE_POST_GOLDEN_COMMERCE_MODULE_AND_EXECUTION_ROADMAP_EN.md">Markdown source</a>
+        <a class="button" href="https://github.com/leohan816/foundation-docs/pull/6">Draft PR #6</a>
+      </nav>
+    </div>
+  </header>
+
+  <section class="hero">
+    <p class="eyebrow">Working master plan · 19 July 2026</p>
+    <h1>From a verified commerce spine to an agent-operated Cosmile.</h1>
+    <p class="hero-copy">
+      Preserve deterministic commerce truth, complete the visible customer and operator product,
+      then add events, policy, operational memory, and progressively bounded AI authority.
+    </p>
+    <div class="chips" aria-label="Frozen boundaries">
+      <span class="chip">Korea · KRW</span>
+      <span class="chip">Google OIDC only</span>
+      <span class="chip">Toss Payments V2 only</span>
+      <span class="chip">Memory V3 paused</span>
+      <span class="chip">No implementation authority</span>
+    </div>
+  </section>
+
+  <section class="summary-grid" aria-label="Master plan status">
+    <div class="summary-card">
+      <div class="label">Evidence ceiling</div>
+      <strong>Reviewed non-production Golden Order + Reversal</strong>
+      <span>Browser evidence and independent PASS; not production readiness.</span>
+    </div>
+    <div class="summary-card">
+      <div class="label">Current commerce</div>
+      <strong>Backend skeleton exists</strong>
+      <span>Identity, cart, Toss TEST, order, inventory, shipment and full refund.</span>
+    </div>
+    <div class="summary-card">
+      <div class="label">Paid Beta path</div>
+      <strong>Approximately 10–18 workdays</strong>
+      <span>Provisional, completed as bounded slices rather than one open mission.</span>
+    </div>
+    <div class="summary-card">
+      <div class="label">Automation path</div>
+      <strong>Observe → propose → approve → execute</strong>
+      <span>Agents remain subordinate to policy and deterministic backend commands.</span>
+    </div>
+  </section>
+
+  <aside class="notice">
+    <strong>Authority notice.</strong>
+    <span>This is a working strategy master plan. It authorizes no implementation, merge,
+      Controlled Live, Paid Beta, production data, real payment, or Memory V3 activation.</span>
+  </aside>
+
+  <main class="layout">
+    <aside class="toc" aria-label="Table of contents">
+      <p class="toc-title">Contents</p>
+      <nav id="toc"></nav>
+    </aside>
+
+    <article class="document markdown-body" id="document">
+<h1>Cosmile Post-Golden-Commerce Module and Execution Roadmap</h1>
+<pre lang="text" class="notranslate"><code class="notranslate">DOCUMENT_STATUS: WORKING_MASTER_PLAN
+DOCUMENT_DATE: 2026-07-19
+PRODUCT: COSMILE
+DIRECTION_APPROVED: YES
+EXECUTABLE_AUTHORITY: NO
+IMPLEMENTATION_AUTHORIZED: NO
+PR_MERGE_AUTHORIZED: NO
+CONTROLLED_LIVE_AUTHORIZED: NO
+PAID_BETA_AUTHORIZED: NO
+MEMORY_V3_STATUS: PAUSED
+</code></pre>
+<h2>1. Executive determination</h2>
+<p>The proposed direction is valid, with one important correction to the wording.<br>
+Cosmile does <strong>not</strong> have “no backend.” It now has a real, bounded,<br>
+non-production commerce backend skeleton covering customer and operator identity,<br>
+catalog, cart, Toss TEST payment, order, inventory, shipment records, full refund,<br>
+customer projection, and reconciliation. That skeleton was exercised in a browser<br>
+and independently reviewed.</p>
+<p>What Cosmile does not yet have is a production-operable commerce platform around<br>
+that skeleton. The visible storefront is still incomplete, the operator surface is<br>
+a proof console rather than a real dashboard, several customer and operations<br>
+workflows do not exist, and production deployment, data operations, monitoring,<br>
+support, and agent automation remain unbuilt or unverified.</p>
+<p>The correct development method is therefore:</p>
+<blockquote>
+<p>Preserve the reviewed Golden Commerce spine, harden one bounded vertical slice<br>
+at a time, make each slice visibly usable, and add the event, policy, memory, and<br>
+agent-control layers only after the deterministic commerce system of record is<br>
+reliable.</p>
+</blockquote>
+<p>This avoids both failure modes:</p>
+<ul>
+<li>building frontend and backend modules independently and discovering integration<br>
+defects late; and</li>
+<li>allowing a future AI-operations vision to expand the immediate commerce scope.</li>
+</ul>
+<h2>2. Frozen product decisions</h2>
+<h3>2.1 Authentication</h3>
+<pre lang="text" class="notranslate"><code class="notranslate">CURRENT_PROVIDER: Google OIDC only
+CURRENT_IMPLEMENTATION: customer and operator test identities
+ARCHITECTURE: provider-neutral adapter boundary
+NOT_NOW: Kakao, Apple, Naver, guest checkout, multiple-provider implementation
+FUTURE_TRIGGER: an approved market, identity, UX, and operating decision
+</code></pre>
+<p>Google must remain the only implemented login provider for the current Korea-first<br>
+path. The internal customer identity must remain provider-neutral so that another<br>
+provider can be introduced later without making the provider account the commerce<br>
+system of record.</p>
+<h3>2.2 Payment</h3>
+<pre lang="text" class="notranslate"><code class="notranslate">CURRENT_PSP: Toss Payments V2 only
+CURRENT_CURRENCY: KRW only
+CURRENT_EVIDENCE: Toss TEST/sandbox capture and one full refund
+NOT_NOW: PayPal, Stripe, PortOne, overseas PSP, multi-PSP routing, multi-currency
+FUTURE_TRIGGER: overseas market, entity, settlement, tax, refund, and currency decisions
+</code></pre>
+<p>No second payment system should be added now. The payment service must keep a<br>
+provider adapter boundary, but only Toss should be implemented and operated until<br>
+the overseas commercial model is decided. An unused “future provider” interface is<br>
+acceptable; speculative provider integrations are not.</p>
+<h3>2.3 Foundation boundary</h3>
+<p>Foundation remains canonical for product identity, content, brand, ingredient,<br>
+claim, warning, safety, and provenance. Cosmile owns sellable SKU, KRW price,<br>
+stock, customer, cart, order, payment, fulfillment, cancellation, return, and<br>
+refund.</p>
+<p>Foundation delivers asynchronous, versioned product snapshots. Foundation must not<br>
+be a synchronous dependency of catalog availability, cart, checkout, payment,<br>
+order, fulfillment, cancellation, or refund. An ordinary Foundation outage must<br>
+not stop commerce.</p>
+<h3>2.4 Scope exclusions</h3>
+<p>The following are not part of the immediate commerce completion path:</p>
+<ul>
+<li>Foundation AI consultation;</li>
+<li>SIASIU AI integration;</li>
+<li>Memory V3 activation;</li>
+<li>customer-personalization memory;</li>
+<li>recommendation UI;</li>
+<li>US/USD implementation;</li>
+<li>overseas payment providers;</li>
+<li>B2B2C or influencer features;</li>
+<li>autonomous pricing, purchasing, inventory, CRM, or marketing;</li>
+<li>a full digital-twin visualization.</li>
+</ul>
+<p>They may be designed later against stable commerce evidence, but they must not<br>
+silently enter a current implementation slice.</p>
+<h2>3. Verified evidence ceiling</h2>
+<p>The current maximum supported claim is:</p>
+<pre lang="text" class="notranslate"><code class="notranslate">REVIEWED_BROWSER_BASED_NON_PRODUCTION
+GOLDEN_ORDER_AND_GOLDEN_REVERSAL_EVIDENCE
+</code></pre>
+<p>Pinned evidence:</p>
+<ul>
+<li>Cosmile branch:<br>
+<code class="notranslate">implementation/cosmile-o1-browser-nonprod-runtime-v1-20260718</code></li>
+<li>Cosmile HEAD:<br>
+<code class="notranslate">94693d26cec3c2e9ac830e9d2c2f6235dcf4c011</code></li>
+<li>Cosmile Draft PR:<br>
+<code class="notranslate">https://github.com/leohan816/Cosmile/pull/2</code></li>
+<li>final pointer commit:<br>
+<code class="notranslate">d61aae109bf3089a9f3d017483d9cb79af55d721</code></li>
+<li>Advisor final audit commit:<br>
+<code class="notranslate">b741882cd5ad9ec9f23b76b843965eb2d71dd58a</code></li>
+<li>Independent Review commit:<br>
+<code class="notranslate">5e524694f23e67a73eb0c89cbfa74020319e3534</code></li>
+</ul>
+<p>Verified non-production facts:</p>
+<ul>
+<li>Google customer and operator identities were distinct.</li>
+<li>The operator authority was bound to an allowlisted immutable Google subject,<br>
+not an email address.</li>
+<li>An eligible synthetic ELT item was placed in an authenticated cart.</li>
+<li>Toss TEST captured exactly one KRW 30,000 payment.</li>
+<li>One order was confirmed and customer-visible.</li>
+<li>One inventory reservation was committed.</li>
+<li>A record-only shipment with tracking was created.</li>
+<li>Toss TEST completed exactly one full captured-payment refund.</li>
+<li>The order transitioned from paid to refunded exactly once.</li>
+<li>Inventory stayed committed/HOLD and was not automatically restored to sellable.</li>
+<li>A repeated verification produced no second economic effect.</li>
+<li>Reconciliation tasks ended at zero.</li>
+<li>Customer history and stable refunded-order detail were visible.</li>
+<li>The focused final reviewer contract passed 79/79.</li>
+<li>The isolated app, tunnel, database, and mission secrets were cleaned up.</li>
+</ul>
+<p>This evidence does <strong>not</strong> prove production readiness, Paid Beta readiness, load<br>
+readiness, live settlement, real-customer privacy operations, or public exposure.</p>
+<h2>4. Current capability map</h2>
+<markdown-accessiblity-table><table role="table">
+<thead>
+<tr>
+<th>Capability</th>
+<th>Current status</th>
+<th>What is proven</th>
+<th>What remains</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Existing storefront reuse</td>
+<td>PARTIAL_REUSED</td>
+<td>Existing pages and commerce spine were extended rather than rewritten</td>
+<td>Consistent customer UX, navigation, responsive polish, popup behavior, empty/error states</td>
+</tr>
+<tr>
+<td>Google OIDC</td>
+<td>NONPROD_VERIFIED</td>
+<td>Customer/operator login and separation</td>
+<td>Production redirect/domain/session operations, account recovery, privacy/support procedures</td>
+</tr>
+<tr>
+<td>Catalog</td>
+<td>NONPROD_VERIFIED_SYNTHETIC</td>
+<td>Eligible ELT snapshot-backed catalog path</td>
+<td>Real sellable data approval, imagery/rights, merchandising, complete ELT readiness</td>
+</tr>
+<tr>
+<td>Cart</td>
+<td>NONPROD_VERIFIED</td>
+<td>Authenticated durable cart, quantity, post-purchase consumption</td>
+<td>Expiry/support behavior, production concurrency and operational recovery; guest cart remains excluded</td>
+</tr>
+<tr>
+<td>Checkout</td>
+<td>NONPROD_VERIFIED</td>
+<td>Server-side revalidation and Toss TEST launch</td>
+<td>Production UX, abandonment recovery, support states, live configuration</td>
+</tr>
+<tr>
+<td>Payment capture</td>
+<td>NONPROD_VERIFIED</td>
+<td>One Toss TEST capture with durable binding</td>
+<td>Live merchant activation; broader failure/retry operations; production settlement</td>
+</tr>
+<tr>
+<td>Toss webhook</td>
+<td>SOURCE_AND_CONTRACT_PRESENT_RUNTIME_NOT_EXERCISED</td>
+<td>Reviewed pull-verification design exists</td>
+<td>Runtime webhook inbox evidence, duplicate/out-of-order/retry/quarantine evidence</td>
+</tr>
+<tr>
+<td>Order</td>
+<td>NONPROD_VERIFIED</td>
+<td>Creation, paid state, stable history/detail</td>
+<td>Complete cancellation/return policy state machine, production support operations</td>
+</tr>
+<tr>
+<td>Inventory</td>
+<td>NONPROD_VERIFIED</td>
+<td>Reserve, commit, default-deny oversell path, refund HOLD</td>
+<td>Production stock intake/adjustment, returns inspection, reconciliation and operator controls</td>
+</tr>
+<tr>
+<td>Shipment</td>
+<td>RECORD_ONLY_VERIFIED</td>
+<td>Manual carrier/tracking and shipped state</td>
+<td>Real fulfillment workflow, delivery completion, exception handling; courier API may remain deferred</td>
+</tr>
+<tr>
+<td>Full refund</td>
+<td>NONPROD_VERIFIED_OPERATOR_ONLY</td>
+<td>One full Toss TEST refund with step-up and no replay effect</td>
+<td>Customer request workflow, approval policy, production operations, settlement accounting</td>
+</tr>
+<tr>
+<td>Order cancellation</td>
+<td>NOT_VERIFIED</td>
+<td>No completed cancel transaction was part of final evidence</td>
+<td>Pre-capture cancel and post-capture cancellation/refund policy and UX</td>
+</tr>
+<tr>
+<td>Returns</td>
+<td>NOT_IMPLEMENTED_AS_COMPLETE_FLOW</td>
+<td>None claimed</td>
+<td>Request, authorization, receipt, inspection, disposition, refund, inventory policy</td>
+</tr>
+<tr>
+<td>Partial refund</td>
+<td>DEFERRED</td>
+<td>Explicitly excluded</td>
+<td>Only add after operating need and accounting policy are approved</td>
+</tr>
+<tr>
+<td>Reviews/ratings</td>
+<td>NOT_IN_GOLDEN_COMMERCE_SCOPE</td>
+<td>None claimed</td>
+<td>Verified-purchase review, moderation, reporting, media, Foundation evidence boundary</td>
+</tr>
+<tr>
+<td>Customer support</td>
+<td>NOT_IN_GOLDEN_COMMERCE_SCOPE</td>
+<td>None claimed</td>
+<td>Ticket/contact workflow, order linking, refund/return escalation, audit trail</td>
+</tr>
+<tr>
+<td>Operator/admin</td>
+<td>MINIMAL_PROOF_SURFACE</td>
+<td>Order view, shipment record, full refund</td>
+<td>Real dashboard, search/filter, queues, recovery, customer support, inventory/product operations</td>
+</tr>
+<tr>
+<td>Deployment/operations</td>
+<td>NOT_READY</td>
+<td>Isolated runtime was started and cleaned up</td>
+<td>Stable environments, release, rollback, monitoring, backup/restore, incident response</td>
+</tr>
+<tr>
+<td>Agent automation</td>
+<td>NOT_IMPLEMENTED</td>
+<td>None claimed</td>
+<td>Event plane, policy engine, approval workflow, action adapters, evidence and audit</td>
+</tr>
+</tbody>
+</table></markdown-accessiblity-table>
+<h2>5. Target system structure</h2>
+<p>Cosmile should be organized into three explicit planes.</p>
+<pre lang="text" class="notranslate"><code class="notranslate">┌───────────────────────────────────────────────────────────────┐
+│  EXPERIENCE PLANE                                            │
+│  Customer Storefront · Customer Account · Operator Dashboard │
+└──────────────────────────────┬────────────────────────────────┘
+                               │ approved APIs / commands
+┌──────────────────────────────▼────────────────────────────────┐
+│  DETERMINISTIC COMMERCE PLANE                                │
+│  Identity · Catalog · Cart · Order · Payment · Inventory     │
+│  Fulfillment · Cancellation · Return · Refund · Audit        │
+└──────────────────────────────┬────────────────────────────────┘
+                               │ canonical domain events
+┌──────────────────────────────▼────────────────────────────────┐
+│  OPERATIONS AND AGENT CONTROL PLANE                           │
+│  Event Log · Read Models · Operational Memory · Policies     │
+│  Workflow Orchestration · Agent Proposals · Human Approval   │
+│  Bounded Actions · Outcome Verification                      │
+└──────────────────────────────┬────────────────────────────────┘
+                               │ asynchronous product snapshots
+                         ┌─────▼──────┐
+                         │ Foundation │
+                         └────────────┘
+</code></pre>
+<p>The deterministic commerce plane remains the money, order, inventory, and<br>
+customer-operation authority. An agent may propose or request a command, but it<br>
+must never directly rewrite payment, order, or inventory truth.</p>
+<h2>6. Frontend module roadmap</h2>
+<h3>F1. Storefront shell</h3>
+<p>Required:</p>
+<ul>
+<li>recognizable storefront home and category navigation;</li>
+<li>eligible ELT catalog with stable loading, empty, stale, and blocked states;</li>
+<li>product detail with authoritative price, availability, delivery, return, and<br>
+safety information;</li>
+<li>consistent responsive behavior for desktop and mobile;</li>
+<li>popup/event state that respects dismissal and does not reappear on every page;</li>
+<li>accessibility baseline for navigation, focus, forms, errors, and status changes.</li>
+</ul>
+<p>Reuse the current frontend and visual language where possible. This is bounded<br>
+productization, not a storefront rewrite.</p>
+<h3>F2. Cart and checkout experience</h3>
+<p>Required:</p>
+<ul>
+<li>visible and consistent cart entry points;</li>
+<li>quantity changes and removal;</li>
+<li>server-revalidated price and sellable state;</li>
+<li>clear Toss TEST/live-environment labeling according to environment;</li>
+<li>payment pending, failure, timeout, canceled, and recovered states;</li>
+<li>checkout recovery without silently creating duplicate orders or reservations.</li>
+</ul>
+<p>Only Toss appears as the payment method in the current path.</p>
+<h3>F3. Customer account</h3>
+<p>Required:</p>
+<ul>
+<li>Google login/logout and authenticated account shell;</li>
+<li>order history and stable order detail;</li>
+<li>payment, shipping, cancellation, return, and refund status timeline;</li>
+<li>customer cancellation request where policy permits;</li>
+<li>return/refund request and support escalation;</li>
+<li>clear separation of a request from a completed economic action;</li>
+<li>account/privacy/support entry points.</li>
+</ul>
+<h3>F4. Reviews and customer support</h3>
+<p>Required after the basic Paid Beta commerce path is stable:</p>
+<ul>
+<li>verified-purchase review and rating;</li>
+<li>review edit/delete rules and moderation status;</li>
+<li>abuse/report flow;</li>
+<li>customer inquiry linked to an order or product;</li>
+<li>support status, operator response, and auditable resolution.</li>
+</ul>
+<p>Reviews must not silently become Foundation canonical product facts. Any later<br>
+knowledge extraction requires a separate provenance and moderation contract.</p>
+<h3>F5. Operator dashboard experience</h3>
+<p>The existing <code class="notranslate">/o1/operator</code> proof surface should be replaced or absorbed into a<br>
+real operator experience only after its backend commands remain the same reviewed<br>
+commands.</p>
+<p>Minimum dashboard areas:</p>
+<ul>
+<li>current-day summary: orders, captured revenue, refunds, shipment backlog,<br>
+inventory risks, failed actions, reconciliation queue;</li>
+<li>order search, filters, detail, and state timeline;</li>
+<li>shipment/tracking recording;</li>
+<li>cancel, return, and full-refund workflows;</li>
+<li>inventory view and controlled adjustments;</li>
+<li>customer/support context with privacy-minimized access;</li>
+<li>audit history showing who or which agent proposed, approved, and executed an<br>
+action;</li>
+<li>mobile approval and alert surface for Leo;</li>
+<li>desktop detailed operations surface.</li>
+</ul>
+<p>The NOVA-style screen is a valid long-term information-design reference, but the<br>
+first dashboard should prioritize operational truth and actions over a decorative<br>
+digital twin.</p>
+<h2>7. Backend module roadmap</h2>
+<h3>B1. Identity and access</h3>
+<p>Current foundation:</p>
+<ul>
+<li>internal <code class="notranslate">CustomerAccount</code>;</li>
+<li>provider identity keyed by immutable issuer/subject;</li>
+<li>hashed server sessions;</li>
+<li>separate customer and operator identities;</li>
+<li>subject allowlisting and test-only step-up.</li>
+</ul>
+<p>Next:</p>
+<ul>
+<li>production domain/callback/session configuration;</li>
+<li>operator roles and least-privilege permissions;</li>
+<li>account disable/recovery procedures;</li>
+<li>step-up renewal and audit policy;</li>
+<li>privacy and retention procedures;</li>
+<li>provider-neutral contract preserved, Google-only implementation retained.</li>
+</ul>
+<h3>B2. Product, SKU, catalog, and price</h3>
+<p>Current foundation:</p>
+<ul>
+<li>Foundation snapshot and Cosmile SKU binding;</li>
+<li>one authoritative KRW price path;</li>
+<li>fail-closed eligibility.</li>
+</ul>
+<p>Next:</p>
+<ul>
+<li>real ELT product approval and snapshot ingestion;</li>
+<li>asset/commercial-rights gates;</li>
+<li>publish/unpublish and sellable-state workflow;</li>
+<li>stale/missing/corrected Foundation snapshot behavior;</li>
+<li>price history and order-time price snapshot;</li>
+<li>operator-controlled price and availability changes with audit.</li>
+</ul>
+<h3>B3. Cart and checkout</h3>
+<p>Current foundation:</p>
+<ul>
+<li>authenticated cart;</li>
+<li>server price and eligibility revalidation;</li>
+<li>exactly-once cart finalization after a verified purchase.</li>
+</ul>
+<p>Next:</p>
+<ul>
+<li>stable cart lifecycle and expiry policy;</li>
+<li>checkout recovery after timeouts or abandonment;</li>
+<li>cleanup of stale reservations/intents;</li>
+<li>support-visible failure categories;</li>
+<li>concurrency and idempotency evidence in the integration environment.</li>
+</ul>
+<p>Guest checkout remains deferred.</p>
+<h3>B4. Order lifecycle</h3>
+<p>The order state machine should explicitly distinguish:</p>
+<pre lang="text" class="notranslate"><code class="notranslate">created
+payment_pending
+paid
+fulfillment_preparing
+shipped
+delivered
+cancel_requested
+cancelled
+return_requested
+return_authorized
+return_received
+refund_pending
+refunded
+hold_reconciliation
+</code></pre>
+<p>The exact state set must be reviewed against current code before modification.<br>
+State transitions must be append-only, authorized, idempotent, and recoverable.<br>
+The UI must never produce money truth by changing an order label directly.</p>
+<h3>B5. Toss payment and refund</h3>
+<p>Current foundation:</p>
+<ul>
+<li>TEST capture and full refund;</li>
+<li>durable intent/transaction/refund records;</li>
+<li>Payment Query verification;</li>
+<li>idempotency and replay controls;</li>
+<li>full-refund-only policy.</li>
+</ul>
+<p>Next:</p>
+<ul>
+<li>runtime webhook inbox execution;</li>
+<li>duplicate, delayed, missing, and out-of-order event handling;</li>
+<li>quarantine and replay operations;</li>
+<li>payment-success/internal-failure recovery;</li>
+<li>refund-success/internal-failure recovery;</li>
+<li>settlement and reconciliation reports;</li>
+<li>live merchant and credentials only under a later explicit gate.</li>
+</ul>
+<p>No PayPal or second PSP is included.</p>
+<h3>B6. Inventory</h3>
+<p>Current foundation:</p>
+<ul>
+<li>reserve, commit, release substrate;</li>
+<li>default-deny oversell behavior;</li>
+<li>refund leaves inventory in HOLD.</li>
+</ul>
+<p>Next:</p>
+<ul>
+<li>stock receipt and adjustment workflow;</li>
+<li>expiry/damage/return disposition;</li>
+<li>operator-confirmed restoration to sellable;</li>
+<li>low-stock and anomaly alerts;</li>
+<li>reservation expiry/recovery jobs;</li>
+<li>reconciliation between order lines, reservations, and available stock;</li>
+<li>immutable adjustment audit evidence.</li>
+</ul>
+<h3>B7. Fulfillment and tracking</h3>
+<p>Current foundation:</p>
+<ul>
+<li>record-only carrier, tracking, and shipped state.</li>
+</ul>
+<p>Next:</p>
+<ul>
+<li>preparing, shipped, delivered, failed, returned states;</li>
+<li>operator queues and missing-tracking alerts;</li>
+<li>customer status visibility;</li>
+<li>record correction with audit;</li>
+<li>manual process runbook.</li>
+</ul>
+<p>A live courier API is not necessary for the first Paid Beta if manual tracking is<br>
+operationally controlled.</p>
+<h3>B8. Cancellation, return, and refund operations</h3>
+<p>These are different workflows and must not be collapsed into “refund works.”</p>
+<ul>
+<li><strong>Cancellation before capture:</strong> release inventory and terminate the intent with<br>
+no refund.</li>
+<li><strong>Cancellation after capture but before shipment:</strong> full Toss refund, order<br>
+transition, inventory policy, and customer/operator evidence.</li>
+<li><strong>Return after shipment:</strong> request, authorization, receipt, inspection,<br>
+disposition, full refund, and controlled inventory restoration.</li>
+<li><strong>Refund:</strong> economic reversal; currently full refund only.</li>
+</ul>
+<p>The Golden Reversal proves one operator-initiated full refund. It does not prove a<br>
+complete customer cancellation or return system.</p>
+<h3>B9. Reviews and support</h3>
+<p>Required records:</p>
+<ul>
+<li>verified purchase binding;</li>
+<li>rating/review state and moderation history;</li>
+<li>customer support case and order/product link;</li>
+<li>category-only reason codes;</li>
+<li>operator actions and resolution timeline;</li>
+<li>notification state;</li>
+<li>retention and privacy classification.</li>
+</ul>
+<h3>B10. Operations, audit, and recovery</h3>
+<p>Required:</p>
+<ul>
+<li>reconciliation work queues;</li>
+<li>incidents and bounded recovery actions;</li>
+<li>immutable payment/order/inventory/operator audit;</li>
+<li>idempotent retry commands;</li>
+<li>break-glass and step-up controls;</li>
+<li>operator action reason and evidence;</li>
+<li>no direct database correction from the dashboard;</li>
+<li>every sensitive action routed through a reviewed command service.</li>
+</ul>
+<h3>B11. Deployment and data operations</h3>
+<p>Required before Paid Beta:</p>
+<ul>
+<li>approved integration and release branch path;</li>
+<li>one necessary full build/typecheck/test integration gate;</li>
+<li>isolated staging and controlled production environments;</li>
+<li>migration application and rollback plan;</li>
+<li>backup and restore rehearsal;</li>
+<li>secret management and key rotation;</li>
+<li>HTTPS/domain/session configuration;</li>
+<li>logs, metrics, alerts, uptime, and error monitoring;</li>
+<li>incident response and shutdown procedures;</li>
+<li>privacy, authorization, and operational security review.</li>
+</ul>
+<h2>8. Operations and agent-control plane</h2>
+<p>“Middle-end” should be treated as a distinct operations and agent-control plane,<br>
+not as miscellaneous AI code placed between the frontend and backend.</p>
+<h3>M1. Canonical commerce event plane</h3>
+<p>Events should be emitted only after durable state transitions and should include<br>
+stable references, category data, provenance, schema version, and causation—not<br>
+raw secrets or unnecessary PII.</p>
+<p>Initial event families:</p>
+<ul>
+<li>identity/session category events;</li>
+<li>catalog and product availability;</li>
+<li>cart and checkout progression;</li>
+<li>payment captured/failed/unknown/refunded;</li>
+<li>order state transitions;</li>
+<li>inventory reserve/commit/release/HOLD/restore;</li>
+<li>shipment and tracking state;</li>
+<li>cancellation/return/support state;</li>
+<li>review lifecycle;</li>
+<li>operator proposal/approval/action;</li>
+<li>reconciliation and incident state.</li>
+</ul>
+<p>The event log is evidence and integration input. It is not allowed to replace the<br>
+transactional systems of record.</p>
+<h3>M2. Operational read models</h3>
+<p>Build query-optimized projections for:</p>
+<ul>
+<li>order and revenue funnel;</li>
+<li>payment/refund reconciliation;</li>
+<li>fulfillment backlog;</li>
+<li>inventory availability and risk;</li>
+<li>returns and support workload;</li>
+<li>customer lifecycle categories;</li>
+<li>product and SKU performance;</li>
+<li>agent proposal, approval, execution, and outcome.</li>
+</ul>
+<p>These projections power the dashboard without allowing dashboard queries to<br>
+rewrite source truth.</p>
+<h3>M3. Three distinct memory classes</h3>
+<ol>
+<li>
+<p><strong>Commerce operational memory — near-term</strong><br>
+Deterministic order, payment, inventory, support, policy, proposal, approval,<br>
+and outcome history owned by Cosmile.</p>
+</li>
+<li>
+<p><strong>Customer personalization memory — deferred</strong><br>
+Consent-bound customer preferences and consultation context. This is related<br>
+to Foundation Memory V3 and remains paused. It must not be smuggled into the<br>
+commerce operational-memory work.</p>
+</li>
+<li>
+<p><strong>Agent working memory — later and bounded</strong><br>
+Temporary reasoning context, hypotheses, proposals, and evaluation outcomes.<br>
+It may explain an action but must never become the order/payment/inventory<br>
+system of record.</p>
+</li>
+</ol>
+<h3>M4. Policy and authority engine</h3>
+<p>Machine-readable policies should define:</p>
+<ul>
+<li>which actions are read-only, proposal-only, approval-required, or bounded-auto;</li>
+<li>monetary, inventory, customer-impact, and time limits;</li>
+<li>required evidence and freshness;</li>
+<li>step-up and dual-control rules;</li>
+<li>fail-closed behavior;</li>
+<li>rollback or compensation path;</li>
+<li>escalation owner.</li>
+</ul>
+<h3>M5. Workflow orchestrator</h3>
+<p>The orchestrator coordinates deterministic commands such as:</p>
+<ul>
+<li>alert on low stock;</li>
+<li>propose a reorder;</li>
+<li>request approval;</li>
+<li>call an approved supplier adapter;</li>
+<li>verify response and update a purchase-order record;</li>
+<li>open an incident when the result is inconsistent.</li>
+</ul>
+<p>It must not let an LLM issue arbitrary database writes.</p>
+<h3>M6. Agent progression</h3>
+<pre lang="text" class="notranslate"><code class="notranslate">LEVEL 0: Visibility only
+LEVEL 1: AI analysis and explanation
+LEVEL 2: AI proposal; human executes
+LEVEL 3: AI proposal; human approves; system executes
+LEVEL 4: Bounded policy-approved automation
+LEVEL 5: Wider autonomy only after measured safety and business evidence
+</code></pre>
+<p>Candidate agents:</p>
+<ul>
+<li>demand forecasting;</li>
+<li>inventory and reorder;</li>
+<li>pricing and discount proposal;</li>
+<li>payment/refund anomaly detection;</li>
+<li>fulfillment exception handling;</li>
+<li>customer support triage;</li>
+<li>review and reputation analysis;</li>
+<li>CRM campaign proposal;</li>
+<li>weekly business analysis;</li>
+<li>operating-plan generation;</li>
+<li>Owner AI synthesis.</li>
+</ul>
+<p>No agent should start at Level 4 or Level 5.</p>
+<h3>M7. Action contract</h3>
+<p>Every consequential agent action follows:</p>
+<pre lang="text" class="notranslate"><code class="notranslate">observe durable evidence
+→ produce a bounded proposal
+→ policy and authority evaluation
+→ human approval when required
+→ deterministic backend command
+→ outcome verification
+→ audit and operational-memory record
+</code></pre>
+<h2>9. Dashboard target</h2>
+<p>The NOVA-style reference is directionally appropriate because it combines three<br>
+views:</p>
+<ol>
+<li>business and operations status;</li>
+<li>inventory/order/fulfillment state;</li>
+<li>agent relationships, recommendations, approvals, and execution.</li>
+</ol>
+<p>Cosmile should eventually provide four linked dashboard areas:</p>
+<h3>D1. Business overview</h3>
+<ul>
+<li>sales, orders, conversion, refunds, cancellations;</li>
+<li>contribution and campaign metrics when accounting inputs exist;</li>
+<li>critical operational alerts;</li>
+<li>weekly summary and recommended actions.</li>
+</ul>
+<h3>D2. Commerce operations</h3>
+<ul>
+<li>orders, payment, inventory, shipment, returns, support;</li>
+<li>queues, exceptions, retries, and reconciliation;</li>
+<li>desktop detailed work and mobile approvals.</li>
+</ul>
+<h3>D3. Customer intelligence</h3>
+<ul>
+<li>customer lifecycle and behavior categories;</li>
+<li>purchases, returns, support, reviews, and consented interactions;</li>
+<li>later Foundation consultation and personalization evidence;</li>
+<li>explicit privacy, consent, and access boundaries.</li>
+</ul>
+<h3>D4. Agent control plane</h3>
+<ul>
+<li>agent status and responsibility;</li>
+<li>proposals and supporting evidence;</li>
+<li>policy decision and approval requirement;</li>
+<li>executed actions and outcomes;</li>
+<li>stopped, failed, escalated, and rolled-back actions;</li>
+<li>Owner AI portfolio synthesis.</li>
+</ul>
+<p>The first dashboard release should be a clear operational command center, not a<br>
+full simulation. A digital twin can be added only if it improves an actual<br>
+operating decision.</p>
+<h2>10. Bounded execution roadmap</h2>
+<h3>Slice 1 — Land and harden the reviewed commerce spine</h3>
+<p>Target: 1–2 engineering workdays.</p>
+<ul>
+<li>decide the reviewed branch landing/integration path;</li>
+<li>resolve only blocking integration issues;</li>
+<li>run one justified full build/typecheck/test gate;</li>
+<li>preserve focused delta verification during corrections;</li>
+<li>remove dead preview-host configuration if still applicable;</li>
+<li>independent review of the integrated subject;</li>
+<li>STOP.</li>
+</ul>
+<h3>Slice 2 — Toss webhook, retry, and reconciliation</h3>
+<p>Target: 2–4 engineering workdays.</p>
+<ul>
+<li>runtime webhook inbox;</li>
+<li>query-based verification;</li>
+<li>duplicate, delayed, out-of-order, and replay cases;</li>
+<li>missing-event recovery;</li>
+<li>capture/refund internal-failure recovery;</li>
+<li>operator-visible reconciliation queue;</li>
+<li>focused and integration evidence;</li>
+<li>independent review;</li>
+<li>STOP.</li>
+</ul>
+<h3>Slice 3 — Customer cancellation/return and minimum operator operations</h3>
+<p>Target: 3–5 engineering workdays.</p>
+<ul>
+<li>pre-capture cancellation;</li>
+<li>paid-before-shipment full-refund cancellation;</li>
+<li>bounded return request/receipt/disposition states;</li>
+<li>customer request/status UI;</li>
+<li>operator order, shipment, cancellation, return, refund, and recovery queues;</li>
+<li>step-up and audit evidence;</li>
+<li>no partial refund and no courier integration;</li>
+<li>independent review;</li>
+<li>STOP.</li>
+</ul>
+<h3>Slice 4 — Visible storefront and account completion</h3>
+<p>Target: 3–5 engineering workdays.</p>
+<ul>
+<li>storefront navigation and catalog/product consistency;</li>
+<li>cart/checkout/pending/failure/recovery UX;</li>
+<li>order timeline and support entry points;</li>
+<li>mobile behavior and accessibility;</li>
+<li>popup/event dismissal correction;</li>
+<li>existing frontend reuse; no redesign or rewrite;</li>
+<li>independent proportional review;</li>
+<li>STOP.</li>
+</ul>
+<h3>Slice 5 — Data operations, deployment, monitoring, and security</h3>
+<p>Target: 4–7 engineering workdays.</p>
+<ul>
+<li>staging/production topology;</li>
+<li>migration and rollback;</li>
+<li>backup and restore rehearsal;</li>
+<li>secret and access operations;</li>
+<li>monitoring, alerting, incident, and shutdown;</li>
+<li>privacy and authorization review;</li>
+<li>Paid Beta operational checklist;</li>
+<li>STOP before Controlled Live.</li>
+</ul>
+<h3>Slice 6 — Event and dashboard foundation</h3>
+<p>Target: 5–10 engineering workdays after the deterministic Paid Beta core is<br>
+stable.</p>
+<ul>
+<li>canonical commerce events;</li>
+<li>operational read models;</li>
+<li>operator dashboard v1;</li>
+<li>proposal/approval/audit records;</li>
+<li>read-only analyst agents;</li>
+<li>no autonomous economic action;</li>
+<li>independent design and implementation review;</li>
+<li>STOP.</li>
+</ul>
+<h2>11. Time assessment</h2>
+<p>The essential internal work to reach a credible Paid Beta decision is not<br>
+necessarily a two-month engineering project.</p>
+<pre lang="text" class="notranslate"><code class="notranslate">PAID_BETA_ESSENTIAL_ENGINEERING:
+approximately 10–18 cumulative workdays
+
+LIKELY_ELAPSED_TIME_WITH_SAFE_PARALLELISM:
+approximately 2–4 weeks
+
+EXTERNAL_CALENDAR_DEPENDENCIES:
+Toss merchant/KYC/settlement, legal/privacy/tax, operating accounts, and domain/infra
+may extend calendar time independently of engineering completion.
+</code></pre>
+<p>The ranges are provisional until each bounded slice is admitted against the<br>
+actual branch and environment. They must not be converted into one large open-ended<br>
+mission.</p>
+<p>Agent-native operations and the NOVA-style dashboard are a subsequent product<br>
+track. A useful first read-only operational dashboard may take roughly 5–10<br>
+engineering workdays after the deterministic event and operations foundation is<br>
+stable. Broader AI operations should be estimated per agent and per authority<br>
+level, not as one “build all automation” mission.</p>
+<h2>12. Verification and review policy</h2>
+<ul>
+<li>Default to focused delta tests for each surgical correction.</li>
+<li>Do not repeat a full suite after every small change.</li>
+<li>Run one necessary full build/typecheck/test integration gate when a slice is<br>
+being closed or landed.</li>
+<li>Small reversible changes do not require an independent reviewer by default.</li>
+<li>Ordinary focused deltas use proportional review.</li>
+<li>Payment, identity, PII, authorization, inventory, migration, production, and<br>
+broad integration require the higher independent-review tier.</li>
+<li>Reviewer verdicts must state the actual model, effort, reviewed delta, commands,<br>
+evidence ceiling, and untested areas.</li>
+<li>A PASS never upgrades sandbox evidence to production readiness.</li>
+</ul>
+<h2>13. Explicit no-build list for the next commerce slices</h2>
+<ul>
+<li>no second payment provider;</li>
+<li>no PayPal, Stripe, PortOne, or overseas PSP;</li>
+<li>no Kakao, Apple, Naver, or guest checkout;</li>
+<li>no multi-currency or US implementation;</li>
+<li>no partial refund unless separately justified;</li>
+<li>no live courier API for the first Paid Beta path;</li>
+<li>no full storefront rewrite;</li>
+<li>no full digital twin;</li>
+<li>no Foundation AI or SIASIU AI integration;</li>
+<li>no Memory V3 activation;</li>
+<li>no autonomous price, inventory, reorder, refund, or marketing action;</li>
+<li>no production/live/real-customer use without a separate gate;</li>
+<li>no automatic next mission.</li>
+</ul>
+<h2>14. Recommendation</h2>
+<p>Proceed with incremental Cosmile completion, but do not start with the full agent<br>
+dashboard. The next bounded mission should be <strong>Slice 1: land and harden the<br>
+reviewed commerce spine</strong>, followed by the webhook/reconciliation slice.</p>
+<p>In parallel only where write ownership is non-overlapping, design can prepare the<br>
+customer cancellation/return flow and operator-dashboard information architecture.<br>
+Implementation must still close one integrated slice at a time.</p>
+<p>The sequence should remain:</p>
+<pre lang="text" class="notranslate"><code class="notranslate">reviewed spine landing
+→ webhook and recovery
+→ cancellation/return and operator operations
+→ visible storefront/account completion
+→ deployment, data operations, monitoring, and security
+→ event/read-model foundation
+→ read-only AI analysis
+→ approval-based agent actions
+→ bounded automation
+</code></pre>
+<p>This approach will make Cosmile visibly become a real shop while preserving the<br>
+core goal: an agent-operated commerce system whose decisions remain evidence-based,<br>
+policy-governed, reversible, and subordinate to deterministic commerce truth.</p>
+<h2>15. Decision status</h2>
+<pre lang="text" class="notranslate"><code class="notranslate">STRATEGY_VALIDITY_REVIEW: PASS_WITH_CLARIFICATIONS
+
+CLARIFICATION_1:
+The backend skeleton exists; production-operable backend and operations remain incomplete.
+
+CLARIFICATION_2:
+Golden Reversal proves one full operator refund, not complete cancellation/return operations.
+
+CLARIFICATION_3:
+Operational commerce memory is distinct from paused customer-personalization Memory V3.
+
+CLARIFICATION_4:
+The NOVA-style dashboard is a valid target, but deterministic systems, events, policies,
+and action authority must precede broad automation.
+
+NEXT_MISSION_AUTHORIZED: NO
+ADVISOR_DISPATCHED: NO
+IMPLEMENTATION_STARTED: NO
+STOP: ACTIVE
+</code></pre>
+      <footer class="footer">
+        Cosmile Post-Golden-Commerce Working Master Plan · Source of authority remains Leo/GPT
+        and the current Agent Office operating model. This document is strategy evidence only.
+      </footer>
+    </article>
+  </main>
+
+  <script>
+    (() => {
+      const documentRoot = document.getElementById('document');
+      const toc = document.getElementById('toc');
+      const headings = [...documentRoot.querySelectorAll('h2, h3')];
+      const used = new Set();
+      const pageUrl = window.location.href.split('#')[0];
+
+      const makeId = (text, index) => {
+        let base = text.toLowerCase().trim()
+          .replace(/[^a-z0-9\s-]/g, '')
+          .replace(/\s+/g, '-')
+          .replace(/-+/g, '-') || `section-${index + 1}`;
+        let value = base;
+        let suffix = 2;
+        while (used.has(value)) value = `${base}-${suffix++}`;
+        used.add(value);
+        return value;
+      };
+
+      headings.forEach((heading, index) => {
+        heading.id = makeId(heading.textContent, index);
+        const link = document.createElement('a');
+        // htmlpreview.github.io injects a GitHub <base> URL. A relative #hash
+        // would therefore open the GitHub blob (source code) instead of
+        // scrolling this rendered page. Keep the link on the actual viewer URL.
+        link.href = `${pageUrl}#${heading.id}`;
+        link.textContent = heading.textContent;
+        link.className = heading.tagName === 'H3' ? 'level-3' : 'level-2';
+        toc.appendChild(link);
+      });
+
+      const initialTarget = document.getElementById(decodeURIComponent(window.location.hash.slice(1)));
+      if (initialTarget) requestAnimationFrame(() => initialTarget.scrollIntoView({ block: 'start' }));
+
+      const links = [...toc.querySelectorAll('a')];
+      const observer = new IntersectionObserver((entries) => {
+        const visible = entries
+          .filter(entry => entry.isIntersecting)
+          .sort((a, b) => a.boundingClientRect.top - b.boundingClientRect.top)[0];
+        if (!visible) return;
+        links.forEach(link => link.classList.toggle('active', link.hash === `#${visible.target.id}`));
+      }, { rootMargin: '-8% 0px -80% 0px', threshold: 0 });
+      headings.forEach(heading => observer.observe(heading));
+
+      const progress = document.getElementById('progress');
+      const updateProgress = () => {
+        const max = document.documentElement.scrollHeight - window.innerHeight;
+        progress.style.width = `${max > 0 ? (window.scrollY / max) * 100 : 0}%`;
+      };
+      updateProgress();
+      window.addEventListener('scroll', updateProgress, { passive: true });
+      window.addEventListener('resize', updateProgress);
+    })();
+  </script>
+</body>
+</html>
