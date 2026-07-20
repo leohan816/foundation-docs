@@ -21,7 +21,7 @@ Using one disposable PostgreSQL database and controlled local/fake verification 
 4. unresolved attempts 1–6 schedule only `[1,4,16,64,256,1024]` minutes;
 5. unresolved attempt 7 becomes `exhausted`, clears due/lease, and opens/reuses exactly one `webhook_unverified` reconciliation task;
 6. exhausted rows remain visible in repository projection but nonclaimable and are never reported complete;
-7. delayed/out-of-order distinct inbox rows remain independently fenced; no latest/global guess or coalescing;
+7. delayed/out-of-order distinct inbox rows are selected as the exact expected set and remain independently fenced; no latest/global guess or coalescing. Do not assert PostgreSQL `UPDATE ... RETURNING` raw array order; the contract orders selection, not returned-array presentation;
 8. `PaymentTransaction=0`, `Refund=0`, and capture/refund/order/inventory effects remain zero.
 
 Do not run recovery bridge, operator HTTP, provider transport, or R2C/R2D/R3/R4.
@@ -43,8 +43,8 @@ No product source or tracked path may be edited, staged, committed, or generated
 
 - One ignored private execution root inside the worktree: `app/scripts/tmp/cosmile-o1-r2b-runtime-verification/` (`leo:leo`, `0700`; first prove `git check-ignore` resolves to the existing `tmp/` rule). This exact path is also inside the existing Vitest `scripts/**/*.vitest.ts` include; no config change is permitted.
 - One driver only: `app/scripts/tmp/cosmile-o1-r2b-runtime-verification/r2b_reliability_driver.vitest.ts` (`leo:leo`, `0600`), created with `apply_patch` and removed before return.
-- Durable result: `/home/leo/Project/.mission-tmp/COSMILE_O1_TOSS_RELIABILITY_RUNTIME_VERIFICATION_V1/worker/34_R2B_FINAL_RESULT.md` (`0600`).
-- Durable pointer: `/home/leo/Project/.mission-tmp/COSMILE_O1_TOSS_RELIABILITY_RUNTIME_VERIFICATION_V1/worker/35_R2B_FINAL_POINTER.md` (`0600`).
+- Durable result: `/home/leo/Project/.mission-tmp/COSMILE_O1_TOSS_RELIABILITY_RUNTIME_VERIFICATION_V1/worker/36_R2B_CORRECTED_RESULT.md` (`0600`).
+- Durable pointer: `/home/leo/Project/.mission-tmp/COSMILE_O1_TOSS_RELIABILITY_RUNTIME_VERIFICATION_V1/worker/37_R2B_CORRECTED_POINTER.md` (`0600`).
 
 No log, PID, config, raw payload/response, identifier, or other artifact. Runtime identifiers are generated in process and never printed. Output is counts, booleans, durations, and state categories only.
 
@@ -56,7 +56,7 @@ No log, PID, config, raw payload/response, identifier, or other artifact. Runtim
 4. Run the locked worktree-local Prisma `migrate deploy` once against the committed schema; exactly nine migrations, no manual SQL/schema change.
 5. Run only the exact temporary driver with the already-existing worktree-local `app/node_modules/.bin/vitest` and `app/vitest.config.ts`; no repository test file or test name may run. The driver may use multiple exact named invocations through an environment phase solely for one deliberate process exit/relaunch pair and the deterministic attempt sequence. This focused temporary runtime driver is the bounded alias-aware loader correction for the absent `tsx`; no additional config or dependency is permitted. No Python DB test, app/Next runtime, or other executable may run.
 6. The driver may seed only the minimal synthetic Order/PaymentIntent/WebhookEventInbox/ReconciliationTask state needed for the named proofs through existing repository/runtime boundaries. No direct SQL and no economic row/effect.
-7. Use explicit deterministic clocks; do not sleep for backoff durations. The restart proof must persist only DB state, terminate the first driver process cleanly after acquiring one lease, and use the same driver in a fresh process to prove live-lease denial then expired-lease reclaim/fencing.
+7. Use explicit deterministic clocks; do not sleep for backoff durations. The restart proof must persist only DB state, terminate the first driver process cleanly after acquiring one lease, and use the same driver in a fresh process to prove live-lease denial then expired-lease reclaim/fencing. Temporary deferred controls must be cleaned in a `finally` path so one failed assertion cannot contaminate the later exhausted/nonclaimable proof.
 8. Unconditionally remove container and the exact ignored execution root/driver; verify their absence, port/process/container absence, product Git clean/upstream-equal at unchanged HEAD, and unchanged package/lock/schema.
 
 No install/copy/symlink/generate/build/typecheck/repository or broad test suite, app/server, provider/network, Google/auth, shared/production DB, real credential/PII, product source/tracked write, R2C-R4, or Reviewer.
