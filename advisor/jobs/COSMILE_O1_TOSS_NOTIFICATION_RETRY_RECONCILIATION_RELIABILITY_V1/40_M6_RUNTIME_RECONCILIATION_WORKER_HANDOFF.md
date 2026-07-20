@@ -43,18 +43,22 @@ OBJECTIVE:
 - Add the minimum non-production operator reconciliation projection and manual bounded recovery trigger over the existing M4/M5 substrate.
 - Never wire legacy runO1VerificationSweep. No scheduler, new service, schema, migration, or new economic semantics.
 
-FINAL PRE-WIRING R1E GATE — RUN ONCE BEFORE ANY M6 FEATURE WRITE:
+BOUNDED DEPENDENCY RECOVERY GATE — RUN ONCE BEFORE ANY M6 FEATURE WRITE:
 - Confirm BASE, clean/upstream-equal Git state, absence of app/node_modules, app/.next, and app/tsconfig.tsbuildinfo, and that app/node_modules is ignored/untracked.
-- Verify source/shared app/package.json and app/package-lock.json are byte-identical. Capture the shared node_modules byte baseline.
-- Copy read-only /home/leo/Project/Cosmile/app/node_modules directly to the worktree app/node_modules using `cp -a --reflink=auto --no-preserve=links`; it must be a real ignored directory, not a symlink or hardlink. Verify representative source/destination inodes differ.
-- Run offline Prisma generate exactly once from app/ against the pinned schema with process-local `DATABASE_URL=postgresql://localhost:1/o1_schema_validation`, `CHECKPOINT_DISABLE=1`, `PRISMA_HIDE_UPDATE_MESSAGE=1`, `PRISMA_GENERATE_SKIP_AUTOINSTALL=1`, and `npm_config_offline=true`. No install, download, network, or DB connection.
+- Treat `/home/leo/Project/Cosmile/app/node_modules` as non-authoritative and read-only: never modify, restore, copy, symlink, or reuse it. Capture one read-only aggregate hash/file-count baseline and repeat it after recovery solely to prove this recovery did not change it. Do not investigate its earlier drift unless one narrow metadata-only attribution snapshot is materially necessary; provenance may remain UNKNOWN.
+- Verify source/worktree app/package.json and app/package-lock.json are byte-identical and preserve their SHA-256 values.
+- Use only the mission-local cache `/home/leo/Project/.mission-tmp/COSMILE_O1_TOSS_NOTIFICATION_RETRY_RECONCILIATION_RELIABILITY_V1/runtime/dependency-recovery/npm-cache`; do not read or mutate a shared npm cache.
+- From worktree app/, perform exactly one lockfile-pinned install: `npm ci --ignore-scripts --no-audit --no-fund --cache /home/leo/Project/.mission-tmp/COSMILE_O1_TOSS_NOTIFICATION_RETRY_RECONCILIATION_RELIABILITY_V1/runtime/dependency-recovery/npm-cache`, with the update notifier disabled. No upgrade, dependency substitution, global install, package/lock edit, or second install. If the lifecycle-minimized install cannot complete without a manifest/product change, STOP.
+- Prove app/node_modules is a real ignored worktree-local directory, not a symlink, and that no symlink under it resolves outside the exact worktree app/node_modules tree. Any dangling or outside-resolving symlink is failure; do not repair it.
+- Run local/offline Prisma generate exactly once from app/ against the pinned schema with process-local `DATABASE_URL=postgresql://localhost:1/o1_schema_validation`, `CHECKPOINT_DISABLE=1`, `PRISMA_HIDE_UPDATE_MESSAGE=1`, `PRISMA_GENERATE_SKIP_AUTOINSTALL=1`, and `npm_config_offline=true`. No install, download, network, provider, or DB connection during generate.
 - Before typecheck, prove both `@prisma/client` and forwarded `.prisma/client/default` resolve inside the worktree app/node_modules.
 - Reapply only the approved one-line fail-closed narrowing in app/src/lib/runtime/o1ReliabilityRuntime.ts: after the exhaust branch returns, return unless `d.kind === "reschedule"` before reading delayMinutes.
 - Run exactly once from app/: `./node_modules/.bin/tsc --noEmit -p tsconfig.json --incremental false`.
 - Only if typecheck passes, run exactly once from app/ with `NEXT_TELEMETRY_DISABLED=1` and the same unreachable sentinel DATABASE_URL: `./node_modules/.bin/next build`.
 - Do not start or serve the build. No DB/provider/network endpoint may be contacted.
-- If either gate fails: revert the one line, remove only attributable app/node_modules, app/.next, app/tsconfig.tsbuildinfo and panic artifacts, verify shared bytes unchanged and Git clean/upstream-equal, return HOLD, and do not diagnose/retry/M6/Reviewer. No fourth environment correction is authorized.
-- If both pass: remove app/.next and app/tsconfig.tsbuildinfo, preserve the ignored real app/node_modules and approved one-line narrowing, STOP for Advisor validation, then resume only the frozen seven-path M6 scope after Advisor confirmation.
+- Verify package/lock bytes are unchanged and the shared source/dependency tree matches the recovery-start baseline. Remove app/.next and app/tsconfig.tsbuildinfo after evidence capture.
+- If install, generate, typecheck, or build fails: revert the one line; remove only attributable worktree-local app/node_modules, mission-local npm cache, app/.next, app/tsconfig.tsbuildinfo, and new attributable panic artifacts; verify shared bytes unchanged and Git clean/upstream-equal; return HOLD. No further environment attempt, diagnosis, M6, or Reviewer is authorized.
+- If all gates pass: preserve the ignored real worktree-local app/node_modules only for M6, preserve the approved one-line narrowing, STOP for Advisor validation, then resume only the frozen seven-path M6 scope after Advisor confirmation.
 
 CONTRACT_TO_CODE_GATE:
 - Before code, map every requirement below to one of the seven paths and a focused test; no blank row. A blank requires STOP to foundation-advisor.
@@ -85,17 +89,17 @@ TESTS_FIRST_AND_DELTA_ONLY_VERIFICATION:
 - DB test command only: python3 scripts/o1_toss_reconciliation_runtime.dbtest.py using one disposable synthetic PostgreSQL instance with loopback/socket containment and cleanup evidence.
 - Prove unauthorized/missing/invalid/stale/mismatch/replay => zero bridge call; valid step-up => one fixed bounded bridge call; extra input rejection; GET authorization/redaction/bounds; exhausted_unverified visibility and non-reprocessing; operator-request/system-continuation separation; replay/exactly-once safety.
 - Fake transport only. External provider/network calls and real economic effects: ZERO.
-- Do not rerun typecheck, build, or Prisma generate after R1E. No other test, full suite, validate, install, route/runtime start, shared/production DB, or provider command.
+- Do not rerun dependency install, typecheck, build, or Prisma generate after the recovery gate. No other test, full suite, validate, route/runtime start, shared/production DB, or provider command.
 
 STRICT_EXCLUSIONS:
 - No path outside the seven; no schema/migration; no scheduler/service; no legacy sweep; no new money/refund authority; no UI redesign; no provider/network; no shared/production DB; no PII/secret/identifier exposure; no M7 or next mission.
-- No out-of-freeze repair after R1 failure, test weakening, optional documentation, or policy invention.
+- No out-of-freeze recovery repair, test weakening, optional documentation, or policy invention.
 
 STOP_CONDITIONS:
-- Any extra path/schema/service, new economic semantic/effect, operator impersonation, identifier exposure, compile/build failure, unsafe dependency/runtime need, contract gap, scope expansion, or need for a fourth environment correction.
+- Any extra path/schema/service, new economic semantic/effect, operator impersonation, identifier exposure, recovery-gate failure, unsafe dependency/runtime need, contract gap, scope expansion, or need for another environment correction.
 
 GIT_AND_RETURN:
-- Advisor monitors paths and commands. Exact-path staging only; one additive product commit; one non-force push only after every gate passes. Before the commit, remove the ignored app/node_modules copy and verify shared bytes unchanged.
+- Advisor monitors paths and commands. Exact-path staging only; one additive product commit; one non-force push only after every gate passes. Before the commit, remove the ignored worktree-local app/node_modules and mission-local npm cache and verify shared bytes unchanged.
 - At reporting, read implementation-report-template and return a compact evidence index within 80 lines.
 - STOP after M6. Do not dispatch a Reviewer or begin another module.
 
