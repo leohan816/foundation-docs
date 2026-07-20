@@ -32,31 +32,32 @@ Do not run recovery bridge, operator HTTP, provider transport, or R2C/R2D/R3/R4.
 - `app/src/lib/payment/repository.ts`
 - `app/src/lib/payment/reliability.ts`
 - `app/src/lib/runtime/o1ReliabilityRuntime.ts`
+- `app/vitest.config.ts` only as the existing pinned alias-aware execution configuration.
 - `app/prisma/schema.prisma` and the nine committed `migration.sql` files only.
 
-No product source, tracked path, or ignored worktree path may be edited, staged, committed, or generated.
+No product source or tracked path may be edited, staged, committed, or generated; the one exact ignored temporary driver path below is the sole worktree write.
 
 ## Exact temporary/output paths
 
-- One owner-only execution root outside the product worktree: `/home/leo/Project/.mission-tmp/COSMILE_O1_TOSS_RELIABILITY_RUNTIME_VERIFICATION_V1/r2b-native/` (`leo:leo`, `0700`).
-- One temporary driver only: `/home/leo/Project/.mission-tmp/COSMILE_O1_TOSS_RELIABILITY_RUNTIME_VERIFICATION_V1/r2b-native/r2b_native_driver.ts` (`leo:leo`, `0600`), created with `apply_patch` and removed before return.
-- Durable result: `/home/leo/Project/.mission-tmp/COSMILE_O1_TOSS_RELIABILITY_RUNTIME_VERIFICATION_V1/worker/46_R2B_NATIVE_RERUN_RESULT.md` (`0600`).
-- Durable pointer: `/home/leo/Project/.mission-tmp/COSMILE_O1_TOSS_RELIABILITY_RUNTIME_VERIFICATION_V1/worker/47_R2B_NATIVE_RERUN_POINTER.md` (`0600`).
+- One ignored owner-only execution root inside the worktree: `app/scripts/tmp/cosmile-o1-r2b-runtime-verification/` (`leo:leo`, `0700`; first prove the existing `tmp/` ignore rule).
+- One temporary driver only: `app/scripts/tmp/cosmile-o1-r2b-runtime-verification/r2b_reliability_driver.vitest.ts` (`leo:leo`, `0600`), created with `apply_patch` and removed before return.
+- Durable result: `/home/leo/Project/.mission-tmp/COSMILE_O1_TOSS_RELIABILITY_RUNTIME_VERIFICATION_V1/worker/46_R2B_VITEST_RERUN_RESULT.md` (`0600`).
+- Durable pointer: `/home/leo/Project/.mission-tmp/COSMILE_O1_TOSS_RELIABILITY_RUNTIME_VERIFICATION_V1/worker/47_R2B_VITEST_RERUN_POINTER.md` (`0600`).
 
 No log, PID, config, raw payload/response, identifier, or other artifact. Runtime identifiers are generated in process and never printed. Output is counts, booleans, durations, and state categories only.
 
 ## Frozen command/action ceiling
 
-1. Verify exact clean/upstream-equal base, unchanged package/lock/schema, absent `cosmile-o1-r2b-pg-20260720`, closed `127.0.0.1:55440`, and absent native execution root.
-2. Reuse the passed native-loader contract: Node 24 `node:module.registerHooks` maps only `@/` to regular `.ts` or `index.ts` files below the exact worktree `app/src` root. Create only the protected external root/driver. No loader package, config, product path, or alternate resolution mechanism. Return `READY_TO_RUN` before DB action.
+1. Verify exact clean/upstream-equal base, real ignored worktree-local `app/node_modules`, unchanged package/lock/schema, absent `cosmile-o1-r2b-pg-20260720`, closed `127.0.0.1:55440`, and absent execution root.
+2. Prove the exact execution root is ignored, then create only the protected ignored root/driver. Reuse only the existing worktree-local Vitest binary and pinned `app/vitest.config.ts`; no new loader, config, package, or dependency. Return `READY_TO_RUN` before DB action.
 3. Start one local `postgres:16-alpine` container with `--pull=never`, tmpfs data, synthetic credentials, and `127.0.0.1:55440:5432`; wait with `pg_isready`.
 4. Run the locked worktree-local Prisma `migrate deploy` once against the committed schema; exactly nine migrations, no manual SQL/schema change.
-5. Run only the exact temporary driver with installed Node 24 native TypeScript support and its in-process alias hook. The driver may use multiple exact named invocations through an environment phase solely for one deliberate process exit/relaunch pair and the deterministic attempt sequence. It may dynamically import only `app/src/lib/payment/repository.ts`, `app/src/lib/payment/reliability.ts`, and `app/src/lib/runtime/o1ReliabilityRuntime.ts` as R2B entry modules. No Vitest, `tsx`, config, loader package, Python DB test, app/Next runtime, repository test, or other executable may run.
+5. Run only the exact temporary driver with the existing worktree-local `app/node_modules/.bin/vitest` and pinned `app/vitest.config.ts`. Invoke only the named R2B phase blocks in this temporary driver; no repository test file or repository test name may run. The driver may use multiple exact named invocations through an environment phase solely for one deliberate process exit/relaunch pair and the deterministic attempt sequence. No additional config/dependency, `tsx`, Python DB test, app/Next runtime, or other test executable may run.
 6. The driver may seed only the minimal synthetic Order/PaymentIntent/WebhookEventInbox/ReconciliationTask state needed for the named proofs through existing repository/runtime boundaries. No direct SQL and no economic row/effect.
 7. Use explicit deterministic clocks; do not sleep for backoff durations. The restart proof must persist only DB state, terminate the first driver process cleanly after acquiring one lease, and use the same driver in a fresh process to prove live-lease denial then expired-lease reclaim/fencing. Temporary deferred controls must be cleaned in a `finally` path so one failed assertion cannot contaminate the later exhausted/nonclaimable proof.
-8. Unconditionally remove container and the exact external execution root/driver; verify their absence, port/process/container absence, product Git clean/upstream-equal at unchanged HEAD, and unchanged package/lock/schema.
+8. Unconditionally remove container and the exact ignored execution root/driver; verify their absence, port/process/container absence, product Git clean/upstream-equal at unchanged HEAD, and unchanged package/lock/schema.
 
-No install/copy/symlink/generate/build/typecheck/Vitest/repository or broad test suite, app/server, provider/network, Google/auth, shared/production DB, real credential/PII, product or ignored-worktree write, R2C-R4, or Reviewer.
+No install/copy/symlink/generate/build/typecheck/repository test or broad suite, app/server, provider/network, Google/auth, shared/production DB, real credential/PII, product source/tracked write, additional ignored path, R2C-R4, or Reviewer.
 
 ## STOP and return
 
