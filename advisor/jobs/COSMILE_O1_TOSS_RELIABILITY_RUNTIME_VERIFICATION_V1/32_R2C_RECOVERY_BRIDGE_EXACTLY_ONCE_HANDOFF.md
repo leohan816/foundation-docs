@@ -30,8 +30,11 @@ Do not create a new refund, change amount/currency/capture, infer operator autho
 - `app/src/lib/payment/contracts.ts`
 - `app/src/lib/payment/repository.ts`
 - `app/src/lib/payment/webhook.ts`
+- `app/src/lib/payment/tossV2.ts`
+- `app/src/lib/payment/service.ts`
 - `app/src/lib/runtime/o1ReliabilityRuntime.ts`
 - `app/src/lib/order/repository.ts`
+- `app/src/lib/order/service.ts`
 - `app/scripts/o1_toss_recovery_bridge.vitest.ts`
 - `app/scripts/o1_toss_recovery_bridge.dbtest.py`
 - `app/vitest.config.ts`
