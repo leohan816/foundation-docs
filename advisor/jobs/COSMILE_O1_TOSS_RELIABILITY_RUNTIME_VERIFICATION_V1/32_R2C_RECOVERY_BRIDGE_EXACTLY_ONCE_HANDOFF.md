@@ -2,7 +2,7 @@
 
 MISSION_ID: `COSMILE_O1_TOSS_RELIABILITY_RUNTIME_VERIFICATION_V1`
 MODULE: `R2C_RECOVERY_BRIDGE_EXACTLY_ONCE`
-PRODUCT_BASE: `6e43735e496a93597a1f3423f88f9966aeba758b`
+PRODUCT_BASE: `c8c18b5cd0c4c01d8fdcbb1601265db3d6855cf3`
 PRODUCT_WORKTREE: `/home/leo/Project/.worktrees/Cosmile/COSMILE_O1_TOSS_RELIABILITY_RUNTIME_VERIFICATION_V1`
 WORKER: existing `cosmile:0.0` / Cosmile Worker / Opus 4.8 / xhigh
 SKILL: `/fable-builder`; `implementation-execution`, `contract-to-code-mapping`, `test-design-before-code`; `implementation-report-template` only for return.
@@ -45,15 +45,15 @@ No product source or tracked path may be edited, staged, committed, or generated
 - One driver: `r2c_recovery_bridge.vitest.ts` (`0600`), created with `apply_patch`, removed before return.
 - Private external root: `/home/leo/Project/.mission-tmp/COSMILE_O1_TOSS_RELIABILITY_RUNTIME_VERIFICATION_V1/r2c` (`leo:leo`, `0700`).
 - Count-only fake-provider ledger: `provider_effect_counts.json` (`0600`), created by the driver; exact keys only `capture_calls`, `capture_effects`, `refund_calls`, `refund_effects`. No identifier/hash/key/body.
-- Result: `/home/leo/Project/.mission-tmp/COSMILE_O1_TOSS_RELIABILITY_RUNTIME_VERIFICATION_V1/worker/38_R2C_RESULT.md` (`0600`).
-- Pointer: `/home/leo/Project/.mission-tmp/COSMILE_O1_TOSS_RELIABILITY_RUNTIME_VERIFICATION_V1/worker/39_R2C_POINTER.md` (`0600`).
+- Result: `/home/leo/Project/.mission-tmp/COSMILE_O1_TOSS_RELIABILITY_RUNTIME_VERIFICATION_V1/worker/40_R2C_RUNTIME_RESULT.md` (`0600`).
+- Pointer: `/home/leo/Project/.mission-tmp/COSMILE_O1_TOSS_RELIABILITY_RUNTIME_VERIFICATION_V1/worker/41_R2C_RUNTIME_POINTER.md` (`0600`).
 
 No log, PID, config, raw provider/request/response, identifier, or other artifact. Runtime identifiers and idempotency values are generated/used in process and never printed or written outside the disposable DB.
 
 ## Frozen command/action ceiling
 
 1. Verify clean/upstream-equal base, real ignored worktree-local dependencies, unchanged package/lock/schema, ignored driver path, absent `cosmile-o1-r2c-pg-20260720`, closed `127.0.0.1:55441`, and no prior R2C artifact.
-2. Read only the exact ceiling; freeze the precise existing recovery call graph, injectable failure point, state invariants, and driver diff. Create only the exact protected roots/driver; return `READY_TO_RUN` before DB action. STOP if the real bridge cannot support this without product changes or authorization invention.
+2. Read only the exact ceiling; use the approved `NonprodRecoveryBridgeOverride` seam at the existing composition root. Freeze the precise existing recovery call graph, one-shot failure delegates, state invariants, and driver diff. Create only the exact protected roots/driver; return `READY_TO_RUN` before DB action. STOP if any further product change, duplicated convergence logic, or authorization invention is required.
 3. Start one `postgres:16-alpine` container with `--pull=never`, tmpfs data, synthetic credentials, and `127.0.0.1:55441:5432`; wait with `pg_isready`.
 4. Run locked worktree-local Prisma `migrate deploy` once against the committed schema; exactly nine migrations, no manual SQL/schema change.
 5. Run only the temporary Vitest driver with the existing worktree Vitest/config in two fresh-process phases against the same disposable DB and count ledger:
