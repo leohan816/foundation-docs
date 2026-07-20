@@ -37,7 +37,7 @@ Do not run recovery bridge, operator HTTP, provider transport, or R2C/R2D/R3/R4.
 - `app/vitest.config.ts` only as the existing alias-aware execution configuration.
 - `app/prisma/schema.prisma` and the nine committed `migration.sql` files only.
 
-No product path may be edited, staged, committed, or generated.
+No product source or tracked path may be edited, staged, committed, or generated; the one exact ignored temporary driver path below is the sole worktree write.
 
 ## Exact temporary/output paths
 
