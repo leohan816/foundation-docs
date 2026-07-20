@@ -41,8 +41,8 @@ No product source or tracked path may be edited, staged, committed, or generated
 
 ## Exact temporary/output paths
 
-- One ignored private execution root inside the worktree: `app/tmp/cosmile-o1-r2b-runtime-verification/` (`leo:leo`, `0700`; first prove `git check-ignore` resolves to the existing `tmp/` rule).
-- One driver only: `app/tmp/cosmile-o1-r2b-runtime-verification/r2b_reliability_driver.vitest.ts` (`leo:leo`, `0600`), created with `apply_patch` and removed before return.
+- One ignored private execution root inside the worktree: `app/scripts/tmp/cosmile-o1-r2b-runtime-verification/` (`leo:leo`, `0700`; first prove `git check-ignore` resolves to the existing `tmp/` rule). This exact path is also inside the existing Vitest `scripts/**/*.vitest.ts` include; no config change is permitted.
+- One driver only: `app/scripts/tmp/cosmile-o1-r2b-runtime-verification/r2b_reliability_driver.vitest.ts` (`leo:leo`, `0600`), created with `apply_patch` and removed before return.
 - Durable result: `/home/leo/Project/.mission-tmp/COSMILE_O1_TOSS_RELIABILITY_RUNTIME_VERIFICATION_V1/worker/34_R2B_FINAL_RESULT.md` (`0600`).
 - Durable pointer: `/home/leo/Project/.mission-tmp/COSMILE_O1_TOSS_RELIABILITY_RUNTIME_VERIFICATION_V1/worker/35_R2B_FINAL_POINTER.md` (`0600`).
 
