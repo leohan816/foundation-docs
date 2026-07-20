@@ -1,0 +1,67 @@
+# R2B Restart, Lease, and Exhaustion — Cosmile Worker
+
+MISSION_ID: `COSMILE_O1_TOSS_RELIABILITY_RUNTIME_VERIFICATION_V1`
+MODULE: `R2B_RESTART_LEASE_EXHAUSTION`
+PRODUCT_BASE: `6e43735e496a93597a1f3423f88f9966aeba758b`
+PRODUCT_WORKTREE: `/home/leo/Project/.worktrees/Cosmile/COSMILE_O1_TOSS_RELIABILITY_RUNTIME_VERIFICATION_V1`
+WORKER: existing `cosmile:0.0` / Cosmile Worker / Opus 4.8 / xhigh
+SKILL: `/fable-builder`; `implementation-execution`, `contract-to-code-mapping`, `test-design-before-code`; `implementation-report-template` only for return.
+INSTRUCTION_GATE: `PROCEED_WITH_LIMITS`
+PRODUCT_WRITE: `PROHIBITED`
+PROVIDER_OR_GOOGLE_CONTACT: `PROHIBITED`
+REVIEW: no module Reviewer; cumulative payment/state review remains deferred to final `HARD_IMPORTANT_SAFETY` admission.
+
+## Exact objective
+
+Using one disposable PostgreSQL database and controlled local/fake verification only, prove:
+
+1. only due `pending` rows with expired/no lease are claimable;
+2. claim atomically increments attempt count and `leaseVersion` and returns the fence token;
+3. a live lease is not reclaimed, an expired lease is reclaimed after process restart, and the stale token cannot settle/reschedule/exhaust;
+4. unresolved attempts 1–6 schedule only `[1,4,16,64,256,1024]` minutes;
+5. unresolved attempt 7 becomes `exhausted`, clears due/lease, and opens/reuses exactly one `webhook_unverified` reconciliation task;
+6. exhausted rows remain visible in repository projection but nonclaimable and are never reported complete;
+7. delayed/out-of-order distinct inbox rows remain independently fenced; no latest/global guess or coalescing;
+8. `PaymentTransaction=0`, `Refund=0`, and capture/refund/order/inventory effects remain zero.
+
+Do not run recovery bridge, operator HTTP, provider transport, or R2C/R2D/R3/R4.
+
+## Exact product read ceiling
+
+- `app/src/lib/payment/contracts.ts`
+- `app/src/lib/payment/repository.ts`
+- `app/src/lib/payment/reliability.ts`
+- `app/src/lib/runtime/o1ReliabilityRuntime.ts`
+- `app/scripts/o1_toss_reliability_contract.vitest.ts`
+- `app/scripts/o1_toss_reliability.dbtest.py`
+- `app/prisma/schema.prisma` and the nine committed `migration.sql` files only.
+
+No product path may be edited, staged, committed, or generated.
+
+## Exact temporary/output paths
+
+- Private root: `/home/leo/Project/.mission-tmp/COSMILE_O1_TOSS_RELIABILITY_RUNTIME_VERIFICATION_V1/r2b` (`leo:leo`, `0700`).
+- One driver only: `r2b_reliability_driver.ts` (`leo:leo`, `0600`), created with `apply_patch`.
+- Durable result: `/home/leo/Project/.mission-tmp/COSMILE_O1_TOSS_RELIABILITY_RUNTIME_VERIFICATION_V1/worker/32_R2B_RESULT.md` (`0600`).
+- Durable pointer: `/home/leo/Project/.mission-tmp/COSMILE_O1_TOSS_RELIABILITY_RUNTIME_VERIFICATION_V1/worker/33_R2B_POINTER.md` (`0600`).
+
+No log, PID, config, raw payload/response, identifier, or other artifact. Runtime identifiers are generated in process and never printed. Output is counts, booleans, durations, and state categories only.
+
+## Frozen command/action ceiling
+
+1. Verify exact clean/upstream-equal base, real ignored worktree-local `app/node_modules`, unchanged package/lock/schema, absent `cosmile-o1-r2b-pg-20260720`, and closed `127.0.0.1:55440`.
+2. Read only the exact ceiling, freeze a compact contract-to-code map, then create only the protected root/driver. Return `READY_TO_RUN` before DB action.
+3. Start one local `postgres:16-alpine` container with `--pull=never`, tmpfs data, synthetic credentials, and `127.0.0.1:55440:5432`; wait with `pg_isready`.
+4. Run the locked worktree-local Prisma `migrate deploy` once against the committed schema; exactly nine migrations, no manual SQL/schema change.
+5. Run the single driver only with the worktree-local `tsx`, pinned `app/tsconfig.json`, absolute worktree `NODE_PATH`, and the disposable loopback `DATABASE_URL`. Multiple named driver phases are allowed only inside this one invocation, except one deliberate process exit/relaunch pair for the restart/expired-lease proof. No Vitest, Python DB test, app/Next runtime, or other executable may run.
+6. The driver may seed only the minimal synthetic Order/PaymentIntent/WebhookEventInbox/ReconciliationTask state needed for the named proofs through existing repository/runtime boundaries. No direct SQL and no economic row/effect.
+7. Use explicit deterministic clocks; do not sleep for backoff durations. The restart proof must persist only DB state, terminate the first driver process cleanly after acquiring one lease, and use the same driver in a fresh process to prove live-lease denial then expired-lease reclaim/fencing.
+8. Unconditionally remove container and exact R2B root/driver; verify port/process/container absence, product Git clean/upstream-equal at unchanged HEAD, and unchanged package/lock/schema.
+
+No install/copy/symlink/generate/build/typecheck/test suite, app/server, provider/network, Google/auth, shared/production DB, real credential/PII, product write, R2C-R4, or Reviewer.
+
+## STOP and return
+
+STOP for any extra path, product delta, unresolved module loader requiring config/install, direct SQL need, schema drift, provider/economic action, real-time long wait, raw identifier output, or uncertain cleanup. Do not explore alternatives or patch source.
+
+Return at most 40 lines: `SKILL_AND_REFS`, `BASELINE`, `TEMP_PATHS`, `MIGRATIONS`, `LEASE_RESTART_MATRIX`, `BACKOFF_EXHAUSTION_MATRIX`, `OUT_OF_ORDER_FENCING`, `PROJECTION_NONCLAIMABLE`, `ECONOMIC_EFFECT_COUNT`, `PROVIDER_CONTACT`, `PRODUCT_WRITES`, `CLEANUP`, `GIT_STATE`, `R2B_VERDICT`, `BLOCKER`, `RETURN_TO`, `STOP`.
