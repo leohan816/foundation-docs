@@ -28,6 +28,8 @@ No actual Google or Toss request, external callback, real credential/PII, custom
 
 - `app/src/app/api/o1/operator/reconciliation/route.ts`
 - `app/src/lib/shopper.ts`
+- `app/src/lib/auth/contracts.ts`
+- `app/src/lib/auth/googleOidc.ts`
 - `app/src/lib/auth/session.ts`
 - `app/src/lib/auth/repository.ts`
 - `app/src/lib/auth/o1Operator.ts`
