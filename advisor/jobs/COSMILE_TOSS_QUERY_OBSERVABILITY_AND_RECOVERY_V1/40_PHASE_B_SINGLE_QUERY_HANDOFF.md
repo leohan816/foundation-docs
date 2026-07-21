@@ -3,12 +3,12 @@
 MISSION_ID: `COSMILE_TOSS_QUERY_OBSERVABILITY_AND_RECOVERY_V1`
 PHASE: `B_SINGLE_OFFICIAL_TOSS_GET`
 ENTRY_GATE: `PROCEED_WITH_LIMITS`
-PREREQUISITE_REVIEW: `PASS`, Fable 5 / max
-REVIEW_RESULT: `/home/leo/Project/.mission-tmp/COSMILE_TOSS_QUERY_OBSERVABILITY_AND_RECOVERY_V1/phase-a-review/20_REVIEW_RESULT.md`
-REVIEW_RESULT_SHA256: `e0db18fcad0c7927ee0d6ecccdb1fa9a3f9dcd48a79d6464c4bd4f71d16654da`
+PREREQUISITE_REVIEW: `PASS`, Fable 5 / max (Phase A diagnostic and transport-allowlist correction)
+REVIEW_RESULT: `/home/leo/Project/.mission-tmp/COSMILE_TOSS_QUERY_OBSERVABILITY_AND_RECOVERY_V1/transport-review/60_REVIEW_RESULT.md`
+REVIEW_RESULT_SHA256: `6404559acb8f3df1b61340857863ccd8e9ae1a2dd121ccd7eae7de178dde8d74`
 ACTOR: existing Cosmile Worker (`cosmile:0.0`), Opus 4.8 / xhigh, same session and exact product worktree
 PRODUCT_BRANCH: `implementation/cosmile-toss-query-observability-recovery-v1-20260721`
-PRODUCT_HEAD: `4f767737c18715de2f48bb3f90a16e807691bc4d`
+PRODUCT_HEAD: `92331e755323d9b4d750a3da0b721df36197f588`
 RETURN_TO: `foundation-advisor`
 
 ## Entry and skill
@@ -25,7 +25,8 @@ Before any DB/container/credential/provider action, verify categorically without
   - `/home/leo/Project/.mission-tmp/COSMILE_O1_TOSS_RELIABILITY_RUNTIME_VERIFICATION_V1/r3r4-replacement/correlation/recovery.json`
   - `/home/leo/Project/.mission-tmp/COSMILE_O1_TOSS_RELIABILITY_RUNTIME_VERIFICATION_V1/r3r4-replacement/correlation/recovery.pgcustom`
   - `/home/leo/Project/.mission-tmp/COSMILE_O1_TOSS_RELIABILITY_RUNTIME_VERIFICATION_V1/r3r4-replacement/stage.jsonl`;
-- categorical stage counts are exactly: provider window `1`, prior official recovery GETs `2`, provider-key/capture/refund stages `0`;
+- categorical preserved-stage counts are exactly: provider window `1`, prior-mission official recovery GETs `2`, provider-key/capture/refund stages `0`;
+- this mission's Phase B official GET count is `0`; the prior transport-allowlist HOLD performed no provider contact;
 - prior first failure and both unresolved query stages remain present;
 - durable Toss TEST store is regular non-symlink `leo:leo 0600`; required variable names are SET, values never read out, printed, hashed, copied, or logged; mode/owner/inode/size/mtime must be recorded categorically for post-check equality;
 - no mission app/browser/SDK/provider process, container, or prior query driver is active; selected loopback port is unused.
@@ -60,7 +61,7 @@ Run one focused one-shot command only. No test suite, build, typecheck, generate
 
 Write only protected regular non-symlink `leo:leo 0600`:
 
-- `/home/leo/Project/.mission-tmp/COSMILE_TOSS_QUERY_OBSERVABILITY_AND_RECOVERY_V1/phase-b/40_WORKER_RESULT.md`
-- `/home/leo/Project/.mission-tmp/COSMILE_TOSS_QUERY_OBSERVABILITY_AND_RECOVERY_V1/phase-b/41_WORKER_POINTER.md`
+- `/home/leo/Project/.mission-tmp/COSMILE_TOSS_QUERY_OBSERVABILITY_AND_RECOVERY_V1/phase-b/70_FINAL_QUERY_RESULT.md`
+- `/home/leo/Project/.mission-tmp/COSMILE_TOSS_QUERY_OBSERVABILITY_AND_RECOVERY_V1/phase-b/71_FINAL_QUERY_POINTER.md`
 
 Result <=50 lines: precontact gates, exact query count `1`, category/status class, tuple-match boolean, before/after equality, effects `0`, cleanup/Git/store state, disposition, next action. Do not self-review. Return to Advisor and STOP.
