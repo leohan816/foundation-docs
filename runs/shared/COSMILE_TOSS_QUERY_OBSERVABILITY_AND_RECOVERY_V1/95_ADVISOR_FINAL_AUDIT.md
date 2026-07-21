@@ -1,48 +1,50 @@
 # COSMILE_TOSS_QUERY_OBSERVABILITY_AND_RECOVERY_V1 — Advisor Final Audit
 
 MISSION_ID: `COSMILE_TOSS_QUERY_OBSERVABILITY_AND_RECOVERY_V1`
-ADVISOR_VERDICT: `HOLD_WITH_NAMED_BLOCKER`
-NAMED_BLOCKER: `TRANSPORT_ALLOWLIST_MISSING_ORDER_QUERY`
-CLAIM_CEILING: `REVIEWED_OFFLINE_TOSS_QUERY_DIAGNOSTIC_CATEGORIZATION__PHASE_B_PROVIDER_QUERY_NOT_EXECUTED__RECOVERY_PRESERVED`
+ADVISOR_VERDICT: `PASS`
+RECOVERY_DISPOSITION: `TERMINAL_NONCAPTURED_CLOSED`
+CLAIM_CEILING: `REVIEWED_TOSS_QUERY_OBSERVABILITY_WITH_ONE_OFFICIAL_TEST_GET_AND_TERMINAL_NONCAPTURED_RECOVERY_CLOSURE`
 RETURN_TO: `foundation-strategy-sol -> Leo`
 
 ## Exact result index
 
 - Product base: `824b41751238390b8baf54a3be68ee82a4d5823f`.
 - Product branch: `implementation/cosmile-toss-query-observability-recovery-v1-20260721`.
-- Product candidate: `4f767737c18715de2f48bb3f90a16e807691bc4d`, clean/upstream-equal `0/0`.
-- Exact product delta: `app/src/lib/payment/webhook.ts`; `app/scripts/o1_browser_runtime_contract.vitest.ts`.
-- Phase A Worker evidence: `/home/leo/Project/.mission-tmp/COSMILE_TOSS_QUERY_OBSERVABILITY_AND_RECOVERY_V1/phase-a/10_WORKER_RESULT.md` and `11_WORKER_POINTER.md`.
-- Phase A review evidence: `/home/leo/Project/.mission-tmp/COSMILE_TOSS_QUERY_OBSERVABILITY_AND_RECOVERY_V1/phase-a-review/20_REVIEW_RESULT.md` and `21_REVIEW_POINTER.md`.
-- Phase B evidence: `/home/leo/Project/.mission-tmp/COSMILE_TOSS_QUERY_OBSERVABILITY_AND_RECOVERY_V1/phase-b/40_WORKER_RESULT.md` and `41_WORKER_POINTER.md`.
+- Product candidate: `92331e755323d9b4d750a3da0b721df36197f588`, clean and upstream-equal.
+- Exact cumulative product paths: `app/src/lib/payment/webhook.ts`; `app/src/lib/payment/tossSandboxTransport.ts`; `app/scripts/o1_toss_sandbox_transport.ts`; `app/scripts/o1_browser_runtime_contract.vitest.ts`.
+- Phase A evidence: `/home/leo/Project/.mission-tmp/COSMILE_TOSS_QUERY_OBSERVABILITY_AND_RECOVERY_V1/phase-a/{10_WORKER_RESULT.md,11_WORKER_POINTER.md}`.
+- Phase A review: `/home/leo/Project/.mission-tmp/COSMILE_TOSS_QUERY_OBSERVABILITY_AND_RECOVERY_V1/phase-a-review/{20_REVIEW_RESULT.md,21_REVIEW_POINTER.md}`.
+- Preserved transport-gap failure: `/home/leo/Project/.mission-tmp/COSMILE_TOSS_QUERY_OBSERVABILITY_AND_RECOVERY_V1/phase-b/{40_WORKER_RESULT.md,41_WORKER_POINTER.md}`.
+- Allowlist correction: `/home/leo/Project/.mission-tmp/COSMILE_TOSS_QUERY_OBSERVABILITY_AND_RECOVERY_V1/transport-correction/{50_WORKER_RESULT.md,51_WORKER_POINTER.md}`.
+- Allowlist review: `/home/leo/Project/.mission-tmp/COSMILE_TOSS_QUERY_OBSERVABILITY_AND_RECOVERY_V1/transport-review/{60_REVIEW_RESULT.md,61_REVIEW_POINTER.md}`.
+- Final query: `/home/leo/Project/.mission-tmp/COSMILE_TOSS_QUERY_OBSERVABILITY_AND_RECOVERY_V1/phase-b/{70_FINAL_QUERY_RESULT.md,71_FINAL_QUERY_POINTER.md}`.
 
-## Phase A
+## Offline diagnostic and transport correction
 
-- Added one category-only classifier used by both existing Toss query inspection lanes. Required categories are distinct: `not_found`, `authentication_failure`, `transport_failure`, `response_parse_failure`, `unsupported_provider_status`, and `tuple_binding_mismatch`; other closed outcomes remain distinct.
-- Focused named synthetic test: explicit unmasked RED exit `1`; identical GREEN exit `0`, `5 passed | 93 skipped`. No full suite/build/typecheck/DB/runtime/provider action.
-- Independent review admission: `HARD_IMPORTANT_SAFETY`; actual Reviewer binding `Fable 5 / max`, fresh independent session, `/fable-sentinel` with review-classification, delta-review, safety-review, provenance-review, and contract-review.
-- Independent verdict: `PASS`, blocking findings `0`. Review reproduced no tests and made no patch.
+- Phase A added one category-only classifier distinguishing `not_found`, `authentication_failure`, `transport_failure`, `response_parse_failure`, `unsupported_provider_status`, and `tuple_binding_mismatch`; focused test recorded unmasked RED `1` then GREEN `0` (`5 passed | 93 skipped`).
+- The reviewed transport initially blocked the official merchant-order lookup. The authorized correction admitted only GET `/v1/payments/orders/{encodedOrderNo}` in the runtime transport and reviewed parity twin, behind the existing exact-origin, TEST-only credential, one-shot, redirect, timeout, response-cap, strict-JSON, and no-retry gates.
+- Correction focused test recorded meaningful RED exit `1` then GREEN exit `0` (`1 passed | 98 skipped`); provider/network/DB/credential/economic effects were `0`.
+- Correction review admission: `HARD_IMPORTANT_SAFETY`; actual independent binding `Fable 5 / max`, fresh context, `/fable-sentinel` with review-classification, delta-review, safety-review, provenance-review, and contract-review.
+- Correction review verdict: `PASS`; blocking findings `0`; exact three-path delta; no test rerun or mutation.
+- Non-blocking inherited notes: percent-encoded dot-segment charset hardening and one stale historical transport-header comment remain backlog only; neither changed the reviewed disposition.
 
-## Phase B
+## Phase B single official TEST query
 
-- Precontact product, review, preserved-evidence, stage-count, credential-store names/status, image, and containment gates passed.
-- A superseded precontact HOLD incorrectly treated host `pg_restore` absence as dispositive. Advisor corrected it because the existing local `postgres:16-alpine` image provides in-container `pg_restore`; no install or pull was needed.
-- The current reviewed TEST transport allowlist admits single-segment `/v1/payments/{paymentKey}` but not the required `/v1/payments/orders/{orderNo}` recovery path. The official recovery GET therefore cannot reach Toss through the current approved transport.
-- Fixing or bypassing that allowlist would be implementation beyond this mission's diagnostic-delta ceiling. Work stopped before driver, DB restore, credential read, or provider contact.
-- Phase B official GET count: `0`. Provider POST/window/capture/refund count: `0`. Provider, economic, internal-DB, and product-Git effects: `0`.
-- No Phase B Reviewer was needed: no Phase B code delta, DB action, credential use, or provider action occurred.
+- All product, review, protected-recovery, zero-current-query, TEST-store names/status, process/container, and loopback-port precontact gates passed.
+- One preserved dump was restored to one disposable loopback PostgreSQL container using its bundled `pg_restore`; no migration or durable application-data mutation occurred.
+- Pre-query categorical state: one unclaimed `action_required` intent; capture count `0`; refund count `0`.
+- Official Toss TEST `queryPaymentByOrderNo` GET count: exactly `1`; no poll, retry, fallback request, POST, payment window, capture, or refund.
+- Reviewed classification: `ok_binding_matched`; tuple match `true`; provider status `EXPIRED`.
+- Before/after internal state and counts were equal; provider mutation, economic effect, capture, refund, and internal DB write counts were `0`.
+- Frozen disposition applied: `EXPIRED` with exact tuple binding is `TERMINAL_NONCAPTURED`; no refund is due or authorized.
+- No additional Phase B Reviewer was needed: Phase B introduced no tracked code delta after the Fable-reviewed transport correction and performed one read-only GET with zero economic/internal effect.
 
-## Preserved state and cleanup
+## Cleanup and final state
 
-- Protected recovery evidence remains unchanged and nonempty, regular non-symlink `leo:leo 0600`:
-  - `/home/leo/Project/.mission-tmp/COSMILE_O1_TOSS_RELIABILITY_RUNTIME_VERIFICATION_V1/r3r4-replacement/correlation/recovery.json`;
-  - `/home/leo/Project/.mission-tmp/COSMILE_O1_TOSS_RELIABILITY_RUNTIME_VERIFICATION_V1/r3r4-replacement/correlation/recovery.pgcustom`;
-  - `/home/leo/Project/.mission-tmp/COSMILE_O1_TOSS_RELIABILITY_RUNTIME_VERIFICATION_V1/r3r4-replacement/stage.jsonl`.
-- Durable Toss TEST store remains regular non-symlink `leo:leo 0600` at `/home/leo/Project/Cosmile/.secrets/nonproduction/toss-test.env`; values were not printed, hashed, copied, logged, or returned.
-- Phase B temporary driver is absent. No mission container, selected port, app/browser/SDK process, production/live contact, real payment, PII, merge, or protected-branch action remains.
-
-## Required next authority
-
-Before any further official query, Leo/Strategy must authorize a separate bounded transport delta that admits only the exact encoded read-only merchant-order query path, preserves the existing confirm/query/cancel allowlist and secret boundary, uses focused adversarial path/traversal tests, and receives proportional independent safety review. A later mission must separately authorize its own single official GET; this mission does not auto-extend or start it.
+- Disposable container, loopback port, one-shot driver, and temporary directory are absent.
+- Terminal non-capture evidence permitted deletion of the protected recovery JSON, dump, stage file, and their now-empty recovery root; absence independently verified.
+- Durable Toss TEST store remains regular non-symlink `leo:leo 0600`; it was not deleted, and its metadata remained unchanged across the query.
+- Product worktree is clean and upstream-equal at `92331e755323d9b4d750a3da0b721df36197f588`.
+- No production/live access, real payment, PII, provider commitment, PR merge, protected-branch movement, refund, capture, or automatic next mission occurred.
 
 HARD_STOP: `ACTIVE`
