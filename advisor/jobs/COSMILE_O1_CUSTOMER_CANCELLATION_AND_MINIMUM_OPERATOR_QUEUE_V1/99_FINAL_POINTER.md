@@ -1,7 +1,7 @@
 # Final Pointer — COSMILE_O1_CUSTOMER_CANCELLATION_AND_MINIMUM_OPERATOR_QUEUE_V1
 
 MISSION_ID: `COSMILE_O1_CUSTOMER_CANCELLATION_AND_MINIMUM_OPERATOR_QUEUE_V1`
-MISSION_RESULT: `PASS_WITH_RISK`
+MISSION_RESULT: `CLOSED_PASS_WITH_ACCEPTED_PROVENANCE_RISK`
 CLAIM_CEILING: `REVIEWED_NON_PRODUCTION_CUSTOMER_CANCELLATION_AND_MINIMUM_OPERATOR_QUEUE`
 BLOCKING_FINDINGS: `0`
 
@@ -14,9 +14,9 @@ BLOCKING_FINDINGS: `0`
 - Review result: `72_INDEPENDENT_HARD_SAFETY_REVIEW_RESULT.md`.
 - Review pointer: `73_INDEPENDENT_HARD_SAFETY_REVIEW_POINTER.md`.
 - Advisor audit: `90_ADVISOR_FINAL_AUDIT.md`.
-- Required Leo/GPT disposition: accept or reject the recorded immutable
-  co-author-trailer provenance limitation; no product safety correction is
-  pending.
+- Leo final disposition: `ACCEPT_PROVENANCE_LIMITATION`; the immutable
+  co-author trailer carries zero authorship weight. Git history was not
+  rewritten and no product safety correction is pending.
 
 HARD_STOP: no merge, production/live activation, real payment, Controlled Live,
 Paid Beta, or automatic next mission.

@@ -2,7 +2,7 @@
 
 ADVISOR_AUDIT: `READY_TO_RETURN_WITH_REVIEWER_PASS_WITH_RISK`
 CLAIM_CEILING: `REVIEWED_NON_PRODUCTION_CUSTOMER_CANCELLATION_AND_MINIMUM_OPERATOR_QUEUE`
-FINAL_APPROVAL_AND_RISK_ACCEPTANCE: `LEO/GPT`
+FINAL_APPROVAL_AND_RISK_ACCEPTANCE: `LEO_ACCEPTED_PROVENANCE_LIMITATION`
 
 ## Exact subject and Git state
 
@@ -68,8 +68,9 @@ Changed paths:
   value recorded in the review handoff. Its inaccurate Claude co-author trailer
   remains in immutable history; no amend/rewrite/force push was performed.
 - Reviewer F2: 12/21 commits carry an Opus trailer and 9/21 do not; trailers
-  carry zero implementation-authorship weight. Leo/GPT owns acceptance of this
-  durable provenance limitation.
+  carry zero implementation-authorship weight. Leo accepted this immutable
+  provenance limitation with zero authorship weight. Git history remains
+  unchanged.
 - Reviewer O1 LOW: customer structural ownership can recognize a hypothetical
   non-O1-orderNo intent-backed order that stricter operator queue gates would
   not show. It is unreachable through current mint paths and fails in the
@@ -91,6 +92,6 @@ Changed paths:
 The exact frozen non-production scope is implemented, focused evidence is
 green, the cumulative hard/safety review has no blocking finding, and the
 candidate remains contained and reproducible at its claim ceiling. The result
-is returned as `PASS_WITH_RISK` for Leo/GPT final approval and explicit
-provenance-risk acceptance. HARD STOP: no merge, production/live activation,
+is closed as `PASS_WITH_ACCEPTED_PROVENANCE_RISK` following Leo's explicit
+acceptance. HARD STOP remains active: no merge, production/live activation,
 real payment, Controlled Live, Paid Beta, or automatic next mission.
