@@ -10,6 +10,8 @@ SKILL: /fable-builder
 REFERENCES: implementation-execution, contract-to-code-mapping, test-design-before-code; implementation-report-template only at return
 DB: one disposable loopback/tmpfs PostgreSQL with synthetic data only
 PROVIDER_ECONOMIC_RUNTIME_EFFECT: 0
+RESULT: advisor/jobs/COSMILE_CONSOLE_DASHBOARD_OPERATOR_AUTHORITY_CORRECTION_IMPLEMENTATION_V1/61_M2D_WORKER_RESULT.md
+POINTER: advisor/jobs/COSMILE_CONSOLE_DASHBOARD_OPERATOR_AUTHORITY_CORRECTION_IMPLEMENTATION_V1/62_M2D_WORKER_POINTER.md
 STOP_AFTER: M2D result
 ```
 
