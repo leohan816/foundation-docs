@@ -24,7 +24,7 @@ PASS — candidate cut over onto the existing domain as a verified non-productio
 - Fixture one-shot boundary (`O1_FIXTURE_ONESHOT=1` + `O1_FIXTURE_PRESERVE_FOR_RUNTIME=1`, external approved bundle root, `NODE_ENV=development`, disposable DB): PASS (5 asserted; 6 non-oneshot guards skipped). Bundle root = 3 files. `/account/orders` HTTP 200 confirms live candidate↔disposable-DB binding.
 
 ## Secret / provider containment
-- Protected store verified regular, non-symlink, mode 600, owner leo:leo. Both Toss keys SET by name only (`NEXT_PUBLIC_O1_TOSS_TEST_CLIENT_KEY`, `O1_TOSS_TEST_SECRET_KEY`); values never read, printed, or logged. Local-substitute flag not set (no such env var exists to set).
+- Protected store verified regular, non-symlink, mode 600, owner leo:leo. Both Toss keys SET by name only (`NEXT_PUBLIC_O1_TOSS_TEST_CLIENT_KEY`, `O1_TOSS_TEST_SECRET_KEY`); values were consumed only through the protected process-environment boundary and were never printed, copied, hashed, or logged. Local substitute remained unset.
 - Zero provider/economic effect: no Google or Toss request issued; no auth/payment link followed; GET-only checks.
 
 ## Cleanup / preserved
