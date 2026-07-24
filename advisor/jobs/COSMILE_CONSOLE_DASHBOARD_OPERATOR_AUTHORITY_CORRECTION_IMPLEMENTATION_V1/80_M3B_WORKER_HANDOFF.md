@@ -2,7 +2,7 @@
 
 MISSION: `COSMILE_CONSOLE_DASHBOARD_OPERATOR_AUTHORITY_CORRECTION_IMPLEMENTATION_V1`
 MODULE: M3B
-BASE: `4aac190042eb87b88da324b939176742be1b6c8e`
+BASE: `bbd3d2469f2bdf86e0bb9a00c2c3c6f71fc2d10b`
 ACTOR: existing Cosmile Claude Worker primary · Opus 4.8/xhigh
 SKILL: `/fable-builder` with implementation-execution, contract-to-code-mapping, test-design-before-code; implementation-report-template only at return
 
