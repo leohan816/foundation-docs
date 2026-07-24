@@ -1,0 +1,54 @@
+# P1 Designer Screen Census Result
+
+- `MISSION_ID`: `COSMILE_O1_STOREFRONT_AND_CUSTOMER_ACCOUNT_COMPLETION_V1`
+- `ACTOR/RUNTIME`: `foundation-designer` · `foundation-designer:codex.0` · `gpt-5.6-sol/max`
+- `HANDOFF_VERIFIED`: commit `bc62578e9f6266a235fa342b54d47e3743fc98db` · blob `c7c8bda71e8d37e32970e064b77a9d2285d1db3c` · SHA256 `82526882598e05205ee2b56c42fe575545a33ac77b992fbc0ecc6d889a2aeeb6`
+- `PRODUCT`: `implementation/cosmile-o1-storefront-customer-account-v1-20260724` · clean unchanged `51ef5f2b4d576979f4b432f114151755f02f3385`
+- `EVIDENCE_QUALIFIER`: every visual conclusion below is `SOURCE_INSPECTION`; no browser/runtime proof.
+
+## Screen and state census
+
+| Surface | Current experience + exact evidence | Coherence/usability gap | Retain | Later-candidate state/acceptance need | Class |
+|---|---|---|---|---|---|
+| Home | `SOURCE_INSPECTION` — deal, group-buy, brand, personalized masonry modules use the legacy product client (`app/src/app/page.tsx:8-15,19-101`). | No O1 branch or data-failure/empty state; O1 shop can therefore begin in a different catalog truth. | Section labels, horizontal brand rail, two-column cards, orange price/action language. | O1 mode must expose only eligible O1 identity or a truthful unavailable state; no fabricated fallback. | `REPAIR` |
+| Catalog | `SOURCE_INSPECTION` — O1 gets an eligible two-column test grid and explicit empty copy (`app/src/app/shop/page.tsx:14-38,48-57`); global category nav still reads legacy products (`app/src/components/layout/CategoryNav.tsx:20-33`). | “테스트 카탈로그” can sit under legacy categories and a permanently active “인기” tab. | Existing grid/card radius, concise test disclaimer, category chips, empty-state tone. | One catalog truth per mode; selected category semantics, unavailable/error/loading, 320px wrapping/scroll acceptance. | `REPAIR` |
+| Product detail | `SOURCE_INSPECTION` — O1 is a minimal placeholder/title/price/disclaimer/add flow (`app/src/app/products/[id]/page.tsx:37-63`), while legacy uses carousel, wish, commerce and rich content (`:88-229`). | Abrupt visual/information discontinuity; not-found is the only inspected O1 ineligibility outcome. | Existing detail spacing, orange price, test disclaimer, shared `AddToCartButton`. | Preserve server-priced eligible SKU; define closed eligible/unavailable/loading/error states without importing deferred judgment content. | `REPAIR` |
+| Deferred personalization | `SOURCE_INSPECTION` — home claims AI execution/curation (`app/src/app/page.tsx:19-20,85-99`) and legacy detail contains personalized reasoning/AI entry (`app/src/app/products/[id]/page.tsx:156-168,222-228`). | These are absent from the O1 branch and cannot be assumed part of storefront completion. | Existing modules as historical visual evidence only. | Keep Foundation judgment/personalization outside the bounded candidate unless separately approved. | `DEFER` |
+| Cart | `SOURCE_INSPECTION` — shared item cards, quantity, coupon, totals, empty CTA and O1 checkout slot (`app/src/components/product/CartList.tsx:102-186`); O1 identity comes from eligible catalog (`app/src/app/cart/page.tsx:14-47`). | Quantity/remove/wishlist update optimistically and swallow failures; O1 error is small inline text without alert/focus semantics. | Item card, total block, empty-state CTA, server price boundary. | Durable row mutation result/recovery, sold-out handling, closed O1 error copy, focus restoration and live status. | `REPAIR` |
+| Checkout transition | `SOURCE_INSPECTION` — cart delegates O1 to `O1TossCheckout` (`app/src/components/product/CartList.tsx:165-175`); design evidence requires reservation before provider and verified commit (`app/docs/COSMILE_O1_BROWSER_NONPROD_RUNTIME_INTEGRATION.md:70-74,94-102`). | The delegated component is outside the read ceiling, so idle/start/provider-return/confirm/HOLD behavior is not proven. | Existing single checkout location and “server truth” boundary. | Worker must prove closed states, duplicate-submit guard, browser-return distrust, durable error/retry, busy/live/focus behavior. | `UNVERIFIED` |
+| Account | `SOURCE_INSPECTION` — minimized guest/member identity and four-card menu (`app/src/app/account/page.tsx:10-51`); Google mode avoids stored/displayed PII (`:13-16`). | No inspected account-level order/request summary, but the entry hierarchy is clear. | Avatar/header, bordered menu rows, guest merge copy, PII-minimized “회원” label. | Preserve current hierarchy; candidate may expose truthful request status only through existing orders entry. | `RETAIN` |
+| Order history | `SOURCE_INSPECTION` — date, opaque short id, order status, product, total and one request badge; empty CTA exists (`app/src/app/account/orders/page.tsx:21-60`). | Unknown order enum falls through raw; order and service-request states have weak hierarchy and no explicit loading/error. | Stacked order cards, count, no list-row action, empty “상품 둘러보기”. | Closed Korean vocabulary, one durable request badge, no raw enums, error/loading distinct from empty. | `REPAIR` |
+| Order detail | `SOURCE_INSPECTION` — post-payment confirmation is separated from history detail, followed by items, totals, O1 status slot, test boundary and two exits (`app/src/app/orders/[orderId]/page.tsx:23-92`). | O1 status internals are outside the ceiling; inspected shell itself is coherent. | Confirmation/detail distinction, item/total cards, nonprod notice, shopping/history exits. | Preserve shell/order; prove that status/actions do not duplicate or contradict totals and order truth. | `RETAIN` |
+| Timeline | `SOURCE_INSPECTION` — append-only `OrderStatusHistory` exists as design evidence (`app/docs/COSMILE_O1_KOREA_GOLDEN_COMMERCE_IMPLEMENTATION_DESIGN.md:118-132,185`), but no timeline UI is present in inspected detail source. | Sequence labels, actor minimization, empty/loading/error and screen-reader order are not observable. | Existing detail stack and opaque public order number. | Worker must establish the current customer projection/history shape before any candidate timeline treatment. | `UNVERIFIED` |
+| Cancellation/support | `SOURCE_INSPECTION` — history badge maps completed pre-capture, paid cancel lifecycle and shipped support states (`app/src/lib/order/o1OrderServiceRequestBadge.ts:3-20`); reviewed copy/state matrix is evidence (`설계자료/COSMILE_O1_고객취소_최소운영큐_설계서.md:23-58`). | Detail action/status rendering is outside the ceiling; shipped-support recovery/processing has no visible badge mapping. | Closed, plain Korean badge vocabulary; one action only in detail; no list CTA. | Exact eligibility must remain server-owned; pending/refused/completed/recovery, single CTA/control-zero and durable re-entry must be accepted. | `REPAIR` |
+| Mobile navigation | `SOURCE_INSPECTION` — 390×844 device shell becomes fullscreen below 480px (`app/src/app/globals.css:24-33`); header has labeled back/menu/home/search/cart (`app/src/components/layout/AppHeader.tsx:38-78`) and category horizontal scroll (`app/src/app/globals.css:51-55`). | Fixed phone frame above 479px, layered header/category/bottom nav, hard-coded category active state; `MallTabs` behavior is outside the ceiling. | Existing shell/header icons, Korean labels, bottom-safe scroll padding. | Prove 320/390/768 behavior, correct current-page semantics, non-overlap, keyboard order and exact bottom-tab destinations. | `REPAIR` |
+| Accessibility | `SOURCE_INSPECTION` — header/FAB have names and native links/buttons, but carousel auto-advances and uses clickable `<i>` dots (`app/src/components/product/ProductCarousel.tsx:16-19,44-47`); inspected CSS has motion but no reduced-motion/focus-visible rule (`app/src/app/globals.css:120-148,195-201,239-253`). | Keyboard-inoperable dots, unmanaged autoplay, alert dialogs, silent add failure, no live status, several small text controls. | Native semantics and existing aria-label vocabulary. | Visible focus, 44px touch targets, pause/keyboard carousel, reduced motion, `aria-busy/live/alert`, 200% text and focus recovery. | `REPAIR` |
+| Empty/error/loading | `SOURCE_INSPECTION` — catalog/cart/history have directed empty states (`app/src/app/shop/page.tsx:16-21,87-99`; `app/src/components/product/CartList.tsx:102-109`; `app/src/app/account/orders/page.tsx:26-31`); cart has O1 inline error but legacy paths use `alert()`/silent catches (`app/src/components/product/CartList.tsx:32-49,57-74,77-100,167-174`). | Empty is strongest; loading is absent in inspected pages, and error/retry behavior is inconsistent or silent. | Plain corrective copy and “상품 둘러보기” CTA. | Every async surface needs distinct loading/empty/error/stale/HOLD copy, retry ownership and no false zero/success. | `REPAIR` |
+
+## `/frontend-design` bounded two-pass conclusion
+
+- Pass 1 subject/job: Korean O1 nonprod customer moves from eligible product to cart/test checkout, then reads truthful order and service-request state inside the existing mobile shell.
+- Pass 1 retained system: `#F6F5F3/#FFFFFF/#1B1714/#6B645E/#F2622A`, system Korean type, 16px gutters, rounded cards, orange action/price, concise Korean state copy (`app/src/app/globals.css:3-18,24-33,94-118`).
+- Pass 2 critique: a new palette, type system, signature motif, navigation model or richer dashboard would be redesign; the agenda is narrowed to reuse plus state coherence, accessibility and responsive repair.
+
+## Smallest later-candidate agenda
+
+1. Reconcile home/category/product O1 truth inside the current shell and existing cards.
+2. Specify one closed cart→checkout→confirmation/HOLD state vocabulary without redesigning payment.
+3. Complete account history/detail/request hierarchy; add no list CTA and invent no timeline facts.
+4. Apply one responsive/accessibility/empty-error-loading acceptance floor across those reused surfaces.
+
+## Worker facts required
+
+- Exact `O1TossCheckout` and `O1OrderStatus` view models, actions, loading/error/HOLD, focus/live behavior.
+- Exact `MallTabs` destinations/current-state semantics and category-drawer keyboard/focus behavior.
+- Whether route-level loading/error/not-found files exist and how query error categories are sanitized.
+- Current customer history/timeline projection shape and whether the visible `ProductCartFab` is intentionally inert.
+
+## Boundary/result
+
+- Read ceiling respected; all visual claims are `SOURCE_INSPECTION`. No product write, runtime, browser, test, build, typecheck, DB, provider, network, secret, PII, commit or push.
+- No sub-agent/delegation, browser dispatch, self-review, approval, or next-mission action.
+- Docs output is limited to result 12 and pointer 13, intentionally uncommitted.
+- Concurrent untracked results 14/15 and handoff 16 appeared after the initial clean docs check; they were not read, touched, staged, committed or pushed.
+- `RETURN_TO: foundation-advisor` · `PROPOSED_NEXT_ACTOR: foundation-advisor` · `STOP`
