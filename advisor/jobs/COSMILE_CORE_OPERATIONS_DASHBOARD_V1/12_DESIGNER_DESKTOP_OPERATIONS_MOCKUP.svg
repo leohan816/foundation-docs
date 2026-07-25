@@ -1,0 +1,245 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1920" height="1100" viewBox="0 0 1920 1100" role="img" aria-labelledby="title desc">
+  <title id="title">COSMILE Core Operations Dashboard desktop and mobile design candidate</title>
+  <desc id="desc">A 1440 by 1000 desktop operations ledger with exact left navigation and a 390 by 844 responsive read-only view. Both show non-production synthetic labels and truthful blocked states without invented metrics.</desc>
+  <defs>
+    <style>
+      .ui{font-family:"Noto Sans KR","Apple SD Gothic Neo","Malgun Gothic",sans-serif}
+      .data{font-family:ui-monospace,SFMono-Regular,Menlo,monospace}
+      .ink{fill:#16231D}.muted{fill:#647068}.paper{fill:#F4F6F2}.surface{fill:#FFFFFF}
+      .small{font-size:12px}.body{font-size:14px}.label{font-size:13px;font-weight:700}
+      .h1{font-size:30px;font-weight:800;letter-spacing:-1px}.h2{font-size:18px;font-weight:800}
+      .hair{stroke:#D7DDD7;stroke-width:1}.focus{stroke:#0F766E;stroke-width:2}
+    </style>
+    <filter id="shadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="8" stdDeviation="16" flood-color="#16231D" flood-opacity=".09"/>
+    </filter>
+    <clipPath id="desktopClip"><rect x="30" y="70" width="1440" height="1000" rx="12"/></clipPath>
+    <clipPath id="mobileClip"><rect x="1500" y="70" width="390" height="844" rx="12"/></clipPath>
+  </defs>
+
+  <rect width="1920" height="1100" fill="#DDE2DC"/>
+  <text x="30" y="42" class="ui data ink label">DESKTOP · 1440×1000 · ORIGINAL SIZE</text>
+  <text x="1500" y="42" class="ui data ink label">MOBILE · 390×844 · ORIGINAL SIZE</text>
+
+  <!-- DESKTOP 1440 × 1000 -->
+  <g clip-path="url(#desktopClip)">
+    <rect x="30" y="70" width="1440" height="1000" class="surface"/>
+    <rect x="30" y="70" width="1440" height="64" fill="#FFFFFF"/>
+    <line x1="30" y1="134" x2="1470" y2="134" class="hair"/>
+    <text x="58" y="109" class="ui ink label" font-size="15">COSMILE OPERATIONS</text>
+    <g class="ui body muted">
+      <text x="500" y="109">Console · 대화/계획/근거</text>
+      <text x="705" y="109" class="ink" font-weight="800">Dashboard · 운영</text>
+      <line x1="705" y1="122" x2="824" y2="122" stroke="#0F766E" stroke-width="3"/>
+      <text x="855" y="109">Lab · 승격 후보</text>
+    </g>
+    <g class="ui data small">
+      <rect x="1120" y="88" width="132" height="28" rx="14" fill="#FFF7E6" stroke="#E9C98C"/>
+      <text x="1138" y="107" fill="#82530A">격리 비프로덕션</text>
+      <rect x="1262" y="88" width="120" height="28" rx="14" fill="#E9F5F2" stroke="#A7D8CF"/>
+      <text x="1282" y="107" fill="#0F665E">합성 데이터</text>
+      <rect x="1392" y="88" width="52" height="28" rx="14" fill="#F1F3F1"/>
+      <text x="1408" y="107" class="muted">KO</text>
+    </g>
+
+    <!-- left navigation -->
+    <rect x="30" y="134" width="250" height="936" fill="#16231D"/>
+    <text x="58" y="176" class="ui" fill="#AAB9B1" font-size="11" font-weight="700" letter-spacing="1.4">OPERATIONS</text>
+    <rect x="46" y="193" width="218" height="44" rx="9" fill="#25372F"/>
+    <rect x="46" y="193" width="4" height="44" rx="2" fill="#71C7B5"/>
+    <text x="66" y="220" class="ui" fill="#FFFFFF" font-size="14" font-weight="800">Dashboard</text>
+
+    <g class="ui" font-size="14">
+      <text x="66" y="269" fill="#E7ECE9">Orders</text>
+      <text x="66" y="317" fill="#85948C">Customers</text><circle cx="238" cy="312" r="4" fill="none" stroke="#85948C"/>
+      <text x="66" y="365" fill="#85948C">Products</text><circle cx="238" cy="360" r="4" fill="none" stroke="#85948C"/>
+      <text x="66" y="413" fill="#85948C">Inventory</text><circle cx="238" cy="408" r="4" fill="none" stroke="#85948C"/>
+      <text x="66" y="461" fill="#E7ECE9">Fulfillment</text>
+      <text x="66" y="509" fill="#BFCAC4">Payments &amp; Refunds</text>
+      <text x="66" y="557" fill="#BFCAC4">Support</text>
+      <text x="66" y="605" fill="#E7ECE9">Reconciliation</text>
+      <text x="66" y="653" fill="#E7ECE9">Audit</text>
+      <text x="66" y="701" fill="#E7ECE9">Settings</text>
+    </g>
+    <line x1="58" y1="746" x2="252" y2="746" stroke="#34483F"/>
+    <circle cx="70" cy="778" r="5" fill="none" stroke="#85948C"/>
+    <text x="84" y="783" class="ui" fill="#85948C" font-size="11">아직 구현되지 않음</text>
+    <text x="58" y="1018" class="ui" fill="#829188" font-size="11">실제 운영·고객 데이터 아님</text>
+    <text x="58" y="1038" class="ui data" fill="#AAB9B1" font-size="11">SYNTHETIC / NON-PROD</text>
+
+    <!-- main -->
+    <rect x="280" y="134" width="1190" height="936" class="paper"/>
+    <text x="324" y="181" class="ui data" fill="#0F766E" font-size="11" font-weight="700">TODAY · ACTION FIRST</text>
+    <text x="324" y="220" class="ui ink h1">오늘 처리할 일</text>
+    <text x="324" y="247" class="ui muted body">권한과 사실이 확인된 작업만 진행합니다. 막힌 작업은 이유와 안전한 다음 행동을 함께 표시합니다.</text>
+
+    <!-- action ledger -->
+    <rect x="324" y="278" width="760" height="388" rx="14" class="surface" filter="url(#shadow)"/>
+    <text x="352" y="315" class="ui ink h2">운영 작업 원장</text>
+    <text x="1048" y="315" text-anchor="end" class="ui data muted small">상태 예시 · 운영 데이터 아님</text>
+    <line x1="352" y1="334" x2="1056" y2="334" class="hair"/>
+
+    <!-- signature truth rail -->
+    <line x1="370" y1="360" x2="370" y2="626" stroke="#D4DBD6" stroke-width="4" stroke-linecap="round"/>
+
+    <g class="ui">
+      <circle cx="370" cy="384" r="8" fill="#C2412D"/>
+      <text x="394" y="379" class="ink label">취소·지원 요청</text>
+      <text x="394" y="401" class="muted small">요청 큐를 읽기 전에 운영 권한을 확인합니다.</text>
+      <rect x="732" y="364" width="92" height="26" rx="13" fill="#FCECEA"/>
+      <text x="748" y="382" class="data" fill="#A62F20" font-size="11" font-weight="700">DENIED</text>
+      <text x="850" y="379" class="muted small">보호된 read 없음</text>
+      <text x="850" y="401" fill="#A62F20" class="small" font-weight="700">조치 없음</text>
+      <line x1="394" y1="424" x2="1056" y2="424" class="hair"/>
+
+      <circle cx="370" cy="456" r="8" fill="#A16207"/>
+      <text x="394" y="451" class="ink label">출고 대기</text>
+      <text x="394" y="473" class="muted small">현재 주문·출고 사실을 확인할 수 없습니다.</text>
+      <rect x="706" y="436" width="118" height="26" rx="13" fill="#FFF6DF"/>
+      <text x="720" y="454" class="data" fill="#82530A" font-size="11" font-weight="700">UNAVAILABLE</text>
+      <text x="850" y="451" class="muted small">수치 표시 없음</text>
+      <text x="850" y="473" fill="#82530A" class="small" font-weight="700">읽기만 다시 확인</text>
+      <line x1="394" y1="496" x2="1056" y2="496" class="hair"/>
+
+      <circle cx="370" cy="528" r="8" fill="#A16207"/>
+      <text x="394" y="523" class="ink label">정합성 HOLD · 복구</text>
+      <text x="394" y="545" class="muted small">복구 권한 또는 연결이 확인되기 전 실행하지 않습니다.</text>
+      <rect x="680" y="508" width="144" height="26" rx="13" fill="#FFF6DF"/>
+      <text x="694" y="526" class="data" fill="#82530A" font-size="11" font-weight="700">NOT_CONFIGURED</text>
+      <text x="850" y="523" class="muted small">마지막 사실 유지</text>
+      <text x="850" y="545" fill="#82530A" class="small" font-weight="700">보호 조치 없음</text>
+      <line x1="394" y1="568" x2="1056" y2="568" class="hair"/>
+
+      <circle cx="370" cy="600" r="8" fill="#87918C"/>
+      <text x="394" y="595" class="ink label">재고 위험 집계</text>
+      <text x="394" y="617" class="muted small">현재는 주문 상세의 재고 사실만 지원합니다.</text>
+      <rect x="680" y="580" width="144" height="26" rx="13" fill="#EEF1EF"/>
+      <text x="693" y="598" class="data" fill="#52605A" font-size="11" font-weight="700">NOT_IMPLEMENTED</text>
+      <text x="850" y="595" class="muted small">집계 수치 없음</text>
+      <text x="850" y="617" class="small ink" font-weight="700">상세 사실만 확인</text>
+    </g>
+
+    <!-- blocked panel -->
+    <rect x="1104" y="278" width="322" height="388" rx="14" fill="#FFFDFC" stroke="#E5D8D2"/>
+    <rect x="1104" y="278" width="5" height="388" rx="2.5" fill="#C2412D"/>
+    <text x="1134" y="315" class="ui ink h2">막힌 작업</text>
+    <text x="1134" y="345" class="ui data" fill="#A62F20" font-size="12" font-weight="700">DENIED</text>
+    <text x="1134" y="371" class="ui ink label">권한 확인 전 처리하지 않음</text>
+    <text x="1134" y="397" class="ui muted small">Console 로그인은 O1 조치 권한을</text>
+    <text x="1134" y="417" class="ui muted small">대신하지 않습니다.</text>
+    <line x1="1134" y1="444" x2="1396" y2="444" class="hair"/>
+    <text x="1134" y="475" class="ui ink label">안전한 다음 행동</text>
+    <text x="1134" y="501" class="ui muted small">• 권한 상태를 확인합니다.</text>
+    <text x="1134" y="523" class="ui muted small">• 사실 read만 다시 시도합니다.</text>
+    <text x="1134" y="545" class="ui muted small">• HOLD에서는 control을 숨깁니다.</text>
+    <rect x="1134" y="578" width="168" height="38" rx="9" fill="#FFFFFF" stroke="#BFC8C2"/>
+    <text x="1152" y="602" class="ui ink small" font-weight="700">권한 상태 보기 →</text>
+    <text x="1134" y="640" class="ui muted" font-size="10">읽기 전용 · 실행/승격 없음</text>
+
+    <!-- summary facts -->
+    <text x="324" y="712" class="ui ink h2">확인 가능한 사실</text>
+    <text x="497" y="711" class="ui muted small">작업 원장 다음에 표시</text>
+    <g class="ui">
+      <rect x="324" y="732" width="350" height="92" rx="12" class="surface" stroke="#D7DDD7"/>
+      <text x="348" y="759" class="muted small">요청 큐</text>
+      <text x="348" y="787" class="data" fill="#A16207" font-size="12" font-weight="700">UNAVAILABLE</text>
+      <text x="348" y="807" class="muted small">확인되지 않은 값은 표시하지 않음</text>
+
+      <rect x="690" y="732" width="350" height="92" rx="12" class="surface" stroke="#D7DDD7"/>
+      <text x="714" y="759" class="muted small">정합성 현황</text>
+      <text x="714" y="787" class="data" fill="#C2412D" font-size="12" font-weight="700">DENIED</text>
+      <text x="714" y="807" class="muted small">권한 전 read·count 없음</text>
+
+      <rect x="1056" y="732" width="370" height="92" rx="12" class="surface" stroke="#D7DDD7"/>
+      <text x="1080" y="759" class="muted small">민감 활동</text>
+      <text x="1080" y="787" class="data" fill="#52605A" font-size="12" font-weight="700">NOT_IMPLEMENTED</text>
+      <text x="1080" y="807" class="muted small">조회 계약 없음 · 활동 수치 없음</text>
+    </g>
+
+    <!-- state legend -->
+    <rect x="324" y="852" width="1102" height="158" rx="12" fill="#EAF0EC"/>
+    <text x="348" y="884" class="ui ink label">진실 상태 표현 규칙</text>
+    <text x="520" y="884" class="ui muted small">운영 데이터 아님</text>
+    <g class="ui data" font-size="10.5" font-weight="700">
+      <rect x="348" y="906" width="128" height="28" rx="14" fill="#DDF2ED"/><text x="365" y="925" fill="#0F665E">CONFIRMED · 확인됨</text>
+      <rect x="488" y="906" width="169" height="28" rx="14" fill="#FFFFFF" stroke="#8BC9BD"/><text x="504" y="925" fill="#0F665E">CONFIRMED_ZERO · 확인된 0건</text>
+      <rect x="669" y="906" width="166" height="28" rx="14" fill="#FFF6DF"/><text x="685" y="925" fill="#82530A">UNAVAILABLE · 조회할 수 없음</text>
+      <rect x="847" y="906" width="180" height="28" rx="14" fill="#FFF6DF" stroke="#E6C678"/><text x="863" y="925" fill="#82530A">NOT_CONFIGURED · 연결되지 않음</text>
+      <rect x="1039" y="906" width="196" height="28" rx="14" fill="#EEF1EF"/><text x="1055" y="925" fill="#52605A">NOT_IMPLEMENTED · 구현되지 않음</text>
+      <rect x="1247" y="906" width="124" height="28" rx="14" fill="#FCECEA"/><text x="1263" y="925" fill="#A62F20">DENIED · 권한 없음</text>
+    </g>
+    <text x="348" y="974" class="ui muted small">색은 보조 수단입니다. 화면과 보조기술 모두 영어 token + 한국어 뜻을 읽습니다.</text>
+    <text x="1394" y="1036" text-anchor="end" class="ui data muted" font-size="10">M1 DESIGN ONLY · NO LIVE DATA</text>
+  </g>
+  <rect x="30" y="70" width="1440" height="1000" rx="12" fill="none" stroke="#B8C0BA"/>
+
+  <!-- MOBILE 390 × 844 -->
+  <g clip-path="url(#mobileClip)">
+    <rect x="1500" y="70" width="390" height="844" class="paper"/>
+    <rect x="1500" y="70" width="390" height="60" class="surface"/>
+    <line x1="1500" y1="130" x2="1890" y2="130" class="hair"/>
+    <rect x="1518" y="88" width="32" height="32" rx="8" fill="#F1F3F1"/>
+    <line x1="1527" y1="98" x2="1541" y2="98" stroke="#16231D" stroke-width="2"/>
+    <line x1="1527" y1="104" x2="1541" y2="104" stroke="#16231D" stroke-width="2"/>
+    <line x1="1527" y1="110" x2="1541" y2="110" stroke="#16231D" stroke-width="2"/>
+    <text x="1562" y="106" class="ui ink" font-size="13" font-weight="800">COSMILE OPERATIONS</text>
+    <text x="1866" y="106" text-anchor="end" class="ui data" fill="#0F766E" font-size="11">DASHBOARD</text>
+
+    <rect x="1500" y="130" width="390" height="44" fill="#16231D"/>
+    <circle cx="1524" cy="152" r="5" fill="#E6B550"/>
+    <text x="1538" y="157" class="ui" fill="#FFFFFF" font-size="12" font-weight="700">격리 비프로덕션 · 합성 데이터</text>
+    <text x="1868" y="157" text-anchor="end" class="ui" fill="#B8C7BF" font-size="10">실제 운영 아님</text>
+
+    <text x="1520" y="207" class="ui data" fill="#0F766E" font-size="10.5" font-weight="700">TODAY · ACTION FIRST</text>
+    <text x="1520" y="239" class="ui ink" font-size="25" font-weight="800">오늘 처리할 일</text>
+    <text x="1520" y="263" class="ui muted" font-size="12">사실 확인 전에는 처리하지 않습니다.</text>
+
+    <!-- mobile truth cards -->
+    <g class="ui">
+      <rect x="1520" y="286" width="350" height="126" rx="12" class="surface" stroke="#E2C5BE"/>
+      <rect x="1520" y="286" width="4" height="126" rx="2" fill="#C2412D"/>
+      <text x="1540" y="316" class="ink label">취소·지원 요청</text>
+      <rect x="1760" y="299" width="88" height="24" rx="12" fill="#FCECEA"/>
+      <text x="1774" y="316" class="data" fill="#A62F20" font-size="10.5" font-weight="700">DENIED</text>
+      <text x="1540" y="346" class="muted small">권한 확인 전 큐를 읽지 않습니다.</text>
+      <line x1="1540" y1="363" x2="1850" y2="363" class="hair"/>
+      <text x="1540" y="389" class="ink small" font-weight="700">안전한 다음 행동 · 권한 상태 확인</text>
+
+      <rect x="1520" y="426" width="350" height="126" rx="12" class="surface" stroke="#E7D4A5"/>
+      <rect x="1520" y="426" width="4" height="126" rx="2" fill="#A16207"/>
+      <text x="1540" y="456" class="ink label">출고 대기</text>
+      <rect x="1738" y="439" width="110" height="24" rx="12" fill="#FFF6DF"/>
+      <text x="1751" y="456" class="data" fill="#82530A" font-size="10" font-weight="700">UNAVAILABLE</text>
+      <text x="1540" y="486" class="muted small">확인되지 않은 주문 수는 표시하지 않습니다.</text>
+      <line x1="1540" y1="503" x2="1850" y2="503" class="hair"/>
+      <text x="1540" y="529" class="ink small" font-weight="700">안전한 다음 행동 · 읽기만 다시 확인</text>
+
+      <rect x="1520" y="566" width="350" height="126" rx="12" class="surface" stroke="#E7D4A5"/>
+      <rect x="1520" y="566" width="4" height="126" rx="2" fill="#A16207"/>
+      <text x="1540" y="596" class="ink label">정합성 HOLD · 복구</text>
+      <rect x="1707" y="579" width="141" height="24" rx="12" fill="#FFF6DF"/>
+      <text x="1720" y="596" class="data" fill="#82530A" font-size="9.5" font-weight="700">NOT_CONFIGURED</text>
+      <text x="1540" y="626" class="muted small">복구 권한이 확인되기 전 실행하지 않습니다.</text>
+      <line x1="1540" y1="643" x2="1850" y2="643" class="hair"/>
+      <text x="1540" y="669" fill="#82530A" class="small" font-weight="700">보호 조치 없음</text>
+    </g>
+
+    <rect x="1520" y="714" width="350" height="76" rx="12" fill="#EAF0EC"/>
+    <text x="1540" y="743" class="ui ink label">모바일은 사실 확인만</text>
+    <text x="1540" y="766" class="ui muted small">보호된 작업은 데스크톱에서 진행합니다.</text>
+
+    <text x="1520" y="833" class="ui ink label">진실 상태</text>
+    <g class="ui data" font-size="9.5" font-weight="700">
+      <text x="1520" y="856" fill="#0F665E">CONFIRMED</text>
+      <text x="1598" y="856" fill="#0F665E">CONFIRMED_ZERO</text>
+      <text x="1715" y="856" fill="#82530A">UNAVAILABLE</text>
+      <text x="1804" y="856" fill="#A62F20">DENIED</text>
+      <text x="1520" y="878" fill="#82530A">NOT_CONFIGURED</text>
+      <text x="1640" y="878" fill="#52605A">NOT_IMPLEMENTED</text>
+    </g>
+    <text x="1520" y="902" class="ui muted" font-size="10">표현 규칙 · 운영 데이터 아님</text>
+  </g>
+  <rect x="1500" y="70" width="390" height="844" rx="12" fill="none" stroke="#B8C0BA"/>
+
+  <text x="30" y="1090" class="ui data" fill="#52605A" font-size="10">M1 DESIGN CANDIDATE · NO STOREFRONT CHROME · NO INVENTED KPI · NO PRODUCT WRITE</text>
+</svg>
