@@ -48,7 +48,9 @@ Any failed precondition, build, ownership assertion, liveness/readiness check, C
 - product source/config/schema/migration/fixture/test change;
 - typecheck, Vitest, DB, provider, economic, public-preview, or existing-service action;
 - second build, start, readiness request, Chromium request, or evidence experiment;
-- session/process exit, kill, clear, restart, replacement, new Actor, or scope expansion.
+- no Actor or tmux session/process exit, kill, clear, restart, or replacement;
+- termination is authorized and mandatory only for the exact mission runtime process group captured by this E6 attempt;
+- no new Actor or scope expansion.
 
 ## Durable return
 
