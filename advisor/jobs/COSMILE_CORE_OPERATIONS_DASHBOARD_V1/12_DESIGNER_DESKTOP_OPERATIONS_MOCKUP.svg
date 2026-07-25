@@ -163,7 +163,7 @@
     <g class="ui data" font-size="10.5" font-weight="700">
       <rect x="348" y="906" width="128" height="28" rx="14" fill="#DDF2ED"/><text x="365" y="925" fill="#0F665E">CONFIRMED · 확인됨</text>
       <rect x="488" y="906" width="169" height="28" rx="14" fill="#FFFFFF" stroke="#8BC9BD"/><text x="504" y="925" fill="#0F665E">CONFIRMED_ZERO · 확인된 0건</text>
-      <rect x="669" y="906" width="166" height="28" rx="14" fill="#FFF6DF"/><text x="685" y="925" fill="#82530A">UNAVAILABLE · 조회할 수 없음</text>
+      <rect x="669" y="906" width="166" height="28" rx="14" fill="#FFF6DF"/><text x="685" y="925" fill="#82530A">UNAVAILABLE · 현재 조회할 수 없음</text>
       <rect x="847" y="906" width="180" height="28" rx="14" fill="#FFF6DF" stroke="#E6C678"/><text x="863" y="925" fill="#82530A">NOT_CONFIGURED · 연결되지 않음</text>
       <rect x="1039" y="906" width="196" height="28" rx="14" fill="#EEF1EF"/><text x="1055" y="925" fill="#52605A">NOT_IMPLEMENTED · 구현되지 않음</text>
       <rect x="1247" y="906" width="124" height="28" rx="14" fill="#FCECEA"/><text x="1263" y="925" fill="#A62F20">DENIED · 권한 없음</text>
@@ -225,7 +225,7 @@
     </g>
 
     <rect x="1520" y="714" width="350" height="76" rx="12" fill="#EAF0EC"/>
-    <text x="1540" y="743" class="ui ink label">모바일은 사실 확인만</text>
+    <text x="1540" y="743" class="ui ink label">모바일에서는 운영 사실만 확인할 수 있습니다.</text>
     <text x="1540" y="766" class="ui muted small">보호된 작업은 데스크톱에서 진행합니다.</text>
 
     <text x="1520" y="833" class="ui ink label">진실 상태</text>

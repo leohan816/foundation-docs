@@ -8,6 +8,7 @@
 - Single job: **“오늘 무엇을 처리해야 하고, 무엇이 사실이며, 무엇이 막혀 있는가?”**
 - Audience: 비프로덕션 O1 주문·지원·출고·정합성 운영자
 - Boundary: product/runtime/auth/DB/provider mutation 없음; 수치·고객·매출·재고를 발명하지 않음
+- Vocabulary relationship: 이 Core Operations Dashboard 계약은 이 Dashboard view에 한해 predecessor `COSMILE_DASHBOARD_CAPABILITY_REGISTRY_AND_OPERATOR_AUTHORITY_DESIGN_V1/21_DESIGNER_IA_CONTRACT.md`의 seven-state presentation vocabulary를 supersede한다. Predecessor capability-registry evidence states는 provenance qualifier로 계속 authoritative하며, `NOT_COLLECTED`, `STALE`, `SYNTHETIC`, `UNVERIFIED`는 정직한 Dashboard unavailable/provenance presentation으로 매핑하고 절대 `CONFIRMED_ZERO`로 매핑하지 않는다.
 
 ## 1. 현재 증거와 문제 정의
 
@@ -177,7 +178,9 @@ Each ledger row has exactly: operator question, state, last confirmed fact/copy,
 | `NOT_IMPLEMENTED` | `아직 구현되지 않음` | `상태: 아직 구현되지 않음` | no current source/read/page contract | no href/action; Lab evidence link may exist |
 | `DENIED` | `권한 없음` | `상태: 권한 없음` | authorization fails before protected read | no protected content, count, stale value or action |
 
-Priority: `DENIED` → `NOT_CONFIGURED` → `UNAVAILABLE` → `NOT_IMPLEMENTED` → confirmed value. A runtime state never silently becomes zero.
+Operational precedence: `DENIED` → `HOLD` → `NOT_CONFIGURED` → `UNAVAILABLE` → `NOT_IMPLEMENTED` → `CONFIRMED`/`CONFIRMED_ZERO`. A runtime state never silently becomes zero.
+
+`HOLD` is a cross-cutting operational command-blocking condition, not a fabricated datum. It dominates actions while the underlying datum truth remains visible; no mutation control appears.
 
 ## 6. State, action and recovery presentation
 
