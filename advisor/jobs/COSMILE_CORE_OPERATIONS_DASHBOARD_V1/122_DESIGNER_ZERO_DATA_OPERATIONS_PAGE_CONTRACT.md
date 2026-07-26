@@ -76,6 +76,8 @@ new one.
 - The rail retains the accepted groups: `개요`, `커머스`, `운영`, `거버넌스`.
 - `주문` is the only selected rail item on this route. `운영 대시보드` remains
   present but unselected.
+- Shell-owned inert labels remain: Customer, Product, and Payments & Refunds display
+  `아직 구현되지 않음`; Inventory displays `집계 조회 계약 없음`.
 - The 64px top switcher retains `Console`, `Dashboard`, and `Lab`; `Dashboard` is
   current and the verified-operation indicator remains at the right.
 - Main canvas begins at x=250/y=64 and uses the accepted pale grid. Content uses
@@ -217,4 +219,3 @@ strip, table card, stable headers, and contained zero body.
    visible.
 7. The same contract maps to fulfillment and requests without inventing data.
 8. Keyboard, screen-reader, mobile, high-text, and reduced-motion behavior is explicit.
-
