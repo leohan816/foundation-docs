@@ -1,0 +1,730 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>COSMILE — 주문 0건 운영 화면 후보</title>
+  <style>
+    :root {
+      --rail: #173d32;
+      --rail-active: #245849;
+      --rail-focus: #8cc5a7;
+      --verified: #2e7658;
+      --canvas: #f3f6f3;
+      --paper: #ffffff;
+      --ink: #17231e;
+      --muted: #5f7068;
+      --rule: #cbd6cf;
+      --soft-rule: #dfe7e2;
+      --mint: #e8f3ed;
+      --font-sans: "Noto Sans CJK KR", "Apple SD Gothic Neo", "Malgun Gothic", sans-serif;
+      --font-mono: "Noto Sans Mono CJK KR", "Noto Sans CJK KR", monospace;
+    }
+
+    * { box-sizing: border-box; }
+    html { color-scheme: light; background: var(--canvas); }
+    body {
+      margin: 0;
+      min-width: 320px;
+      color: var(--ink);
+      font-family: var(--font-sans);
+      background: var(--canvas);
+    }
+    a, button, select { font: inherit; }
+    a { color: inherit; text-decoration: none; }
+    :focus-visible {
+      outline: 3px solid var(--verified);
+      outline-offset: 2px;
+    }
+
+    .shell {
+      display: grid;
+      grid-template: 64px minmax(836px, 1fr) / 250px minmax(0, 1fr);
+      min-height: 900px;
+    }
+    .rail {
+      grid-area: 1 / 1 / 3 / 2;
+      display: flex;
+      min-height: 900px;
+      flex-direction: column;
+      color: #f5fbf7;
+      background: var(--rail);
+    }
+    .brand {
+      display: flex;
+      height: 64px;
+      align-items: center;
+      gap: 12px;
+      padding: 0 20px;
+      border-bottom: 1px solid rgb(255 255 255 / 10%);
+    }
+    .brand-mark {
+      display: grid;
+      width: 32px;
+      height: 32px;
+      place-items: center;
+      border: 1px solid #8cc5a7;
+      border-radius: 8px;
+      color: #8cc5a7;
+      font-weight: 800;
+    }
+    .brand-name { font-size: 16px; font-weight: 800; letter-spacing: .12em; }
+    .brand-sub {
+      margin-top: 1px;
+      color: #a9c9bc;
+      font-family: var(--font-mono);
+      font-size: 8px;
+      font-weight: 700;
+      letter-spacing: .2em;
+    }
+    .rail-nav { flex: 1; padding: 17px 12px 0; }
+    .nav-group + .nav-group { margin-top: 18px; }
+    .nav-label {
+      margin: 0 10px 7px;
+      color: #88a69a;
+      font-size: 10px;
+      font-weight: 700;
+    }
+    .nav-item {
+      display: flex;
+      min-height: 38px;
+      align-items: center;
+      gap: 11px;
+      padding: 0 12px;
+      border-left: 3px solid transparent;
+      border-radius: 6px;
+      color: #e5eee9;
+      font-size: 13px;
+      font-weight: 600;
+    }
+    .nav-item::before {
+      width: 7px;
+      height: 7px;
+      border: 1px solid #8db4a4;
+      border-radius: 2px;
+      content: "";
+    }
+    .nav-item[aria-current="page"] {
+      border-left-color: var(--rail-focus);
+      color: #fff;
+      background: var(--rail-active);
+      font-weight: 800;
+    }
+    .nav-meta {
+      margin-left: auto;
+      color: #8eaaa0;
+      font-size: 9px;
+      font-weight: 700;
+    }
+    .rail-env {
+      margin: 0 22px 24px;
+      padding: 12px 0 0 13px;
+      border-top: 1px solid rgb(255 255 255 / 9%);
+      border-left: 4px solid #6dc69f;
+      color: #9fb8ae;
+      font-size: 10px;
+      line-height: 1.7;
+    }
+    .mobile-rail-trigger { display: none; }
+
+    .spacebar {
+      grid-area: 1 / 2 / 2 / 3;
+      display: flex;
+      align-items: stretch;
+      justify-content: space-between;
+      padding: 0 30px;
+      border-bottom: 1px solid var(--rule);
+      background: var(--paper);
+    }
+    .spaces { display: flex; align-items: stretch; gap: 28px; }
+    .space {
+      display: flex;
+      align-items: center;
+      border-bottom: 3px solid transparent;
+      color: #68776f;
+      font-size: 14px;
+      font-weight: 700;
+    }
+    .space[aria-current="page"] {
+      border-bottom-color: var(--verified);
+      color: var(--ink);
+    }
+    .verified {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      color: #49655a;
+      font-size: 12px;
+      font-weight: 700;
+    }
+    .verified::before {
+      width: 9px;
+      height: 9px;
+      border-radius: 50%;
+      background: var(--verified);
+      box-shadow: 0 0 0 4px #e6f0eb;
+      content: "";
+    }
+
+    .workspace {
+      grid-area: 2 / 2 / 3 / 3;
+      min-width: 0;
+      padding: 23px 30px 32px;
+      background:
+        linear-gradient(90deg, rgb(203 214 207 / 24%) 1px, transparent 1px) 0 0 / 32px 32px,
+        var(--canvas);
+    }
+    .page-head {
+      display: grid;
+      grid-template-columns: minmax(260px, 1fr) minmax(320px, 570px);
+      align-items: end;
+      gap: 32px;
+      margin-bottom: 19px;
+    }
+    .eyebrow {
+      margin: 0 0 3px;
+      color: var(--verified);
+      font-family: var(--font-mono);
+      font-size: 10px;
+      font-weight: 800;
+      letter-spacing: .17em;
+    }
+    h1 {
+      margin: 0;
+      font-size: 30px;
+      line-height: 1.18;
+      letter-spacing: -.04em;
+    }
+    .head-support {
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+      gap: 14px;
+      padding-bottom: 2px;
+    }
+    .description {
+      margin: 0;
+      color: #53665d;
+      font-size: 13px;
+      line-height: 1.55;
+      text-align: right;
+    }
+    .provenance {
+      flex: none;
+      padding: 6px 9px;
+      border: 1px solid #b9cec3;
+      border-radius: 999px;
+      color: #2a6650;
+      background: #edf6f1;
+      font-size: 10px;
+      font-weight: 800;
+      white-space: nowrap;
+    }
+
+    .summary {
+      display: grid;
+      grid-template-columns: 300px minmax(300px, 1fr) 350px;
+      min-height: 94px;
+      margin-bottom: 24px;
+      overflow: hidden;
+      border: 1px solid var(--rule);
+      border-top: 4px solid var(--verified);
+      border-radius: 10px;
+      background: var(--paper);
+    }
+    .summary-cell {
+      display: flex;
+      min-width: 0;
+      flex-direction: column;
+      justify-content: center;
+      padding: 14px 20px;
+    }
+    .summary-cell + .summary-cell { border-left: 1px solid var(--soft-rule); }
+    .summary-label {
+      margin: 0 0 3px;
+      color: var(--muted);
+      font-size: 11px;
+      font-weight: 700;
+    }
+    .summary-value {
+      margin: 0;
+      font-size: 20px;
+      font-weight: 800;
+      letter-spacing: -.02em;
+    }
+    .summary-value.count { font-family: var(--font-mono); font-size: 26px; }
+    .summary-help {
+      margin: 2px 0 0;
+      color: #718078;
+      font-size: 10px;
+    }
+    .filter-wrap {
+      display: grid;
+      grid-template-columns: 1fr 160px;
+      align-items: center;
+      gap: 15px;
+    }
+    .filter-copy { min-width: 0; }
+    .filter-wrap select {
+      width: 160px;
+      height: 42px;
+      padding: 0 34px 0 13px;
+      border: 1px solid #9fb3aa;
+      border-radius: 6px;
+      color: var(--ink);
+      background: var(--paper);
+      font-size: 12px;
+      font-weight: 700;
+    }
+
+    .table-card {
+      overflow: hidden;
+      border: 1px solid var(--rule);
+      border-radius: 10px;
+      background: var(--paper);
+    }
+    .table-toolbar {
+      display: flex;
+      min-height: 58px;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 20px;
+      border-bottom: 1px solid var(--rule);
+    }
+    .table-toolbar h2 { margin: 0; font-size: 16px; }
+    .result-count {
+      color: #586a61;
+      font-family: var(--font-mono);
+      font-size: 11px;
+      font-weight: 700;
+    }
+    .table-scroll { overflow-x: auto; }
+    table {
+      width: 100%;
+      min-width: 870px;
+      border-collapse: collapse;
+      table-layout: fixed;
+    }
+    col.order-no { width: 46%; }
+    col.order-status { width: 28%; }
+    col.order-detail { width: 26%; }
+    th {
+      height: 50px;
+      padding: 0 20px;
+      border-right: 1px solid var(--soft-rule);
+      border-bottom: 1px solid var(--rule);
+      color: #52645b;
+      background: #f8faf8;
+      font-size: 11px;
+      text-align: left;
+    }
+    th:last-child { border-right: 0; }
+    .empty-row td { padding: 29px; }
+    .empty-panel {
+      display: grid;
+      min-height: 275px;
+      place-items: center;
+      padding: 28px;
+      border: 1px solid #d6e0da;
+      border-radius: 8px;
+      background: #f9fbf9;
+      text-align: center;
+    }
+    .empty-content { max-width: 480px; }
+    .empty-icon {
+      display: grid;
+      width: 48px;
+      height: 48px;
+      margin: 0 auto 17px;
+      place-items: center;
+      border: 1px solid #8eac9e;
+      border-radius: 8px;
+      color: var(--verified);
+      background: var(--paper);
+    }
+    .empty-content h3 { margin: 0 0 8px; font-size: 19px; }
+    .empty-content p {
+      margin: 0;
+      color: #63736b;
+      font-size: 12px;
+      line-height: 1.65;
+    }
+    .empty-badge {
+      display: inline-block;
+      margin-top: 15px;
+      padding: 5px 10px;
+      border-radius: 999px;
+      color: #28634d;
+      background: var(--mint);
+      font-family: var(--font-mono);
+      font-size: 10px;
+      font-weight: 800;
+    }
+    .data-note {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+      margin-top: 18px;
+      color: #64756c;
+      font-size: 10px;
+    }
+
+    .sr-only {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      padding: 0;
+      overflow: hidden;
+      clip: rect(0, 0, 0, 0);
+      white-space: nowrap;
+      border: 0;
+    }
+    #offline-raster { display: none; }
+
+    @media (max-width: 1050px) {
+      .summary { grid-template-columns: 220px minmax(250px, 1fr); }
+      .summary-cell:last-child {
+        grid-column: 1 / -1;
+        border-top: 1px solid var(--soft-rule);
+        border-left: 0;
+      }
+      .page-head { grid-template-columns: 1fr; gap: 8px; }
+      .head-support { justify-content: flex-start; }
+      .description { text-align: left; }
+    }
+
+    @media (max-width: 760px) {
+      .shell {
+        grid-template: 56px 48px minmax(calc(100vh - 104px), auto) / minmax(0, 1fr);
+        min-height: 100vh;
+      }
+      .spacebar {
+        grid-area: 1 / 1 / 2 / 2;
+        padding: 0 18px;
+      }
+      .spaces { gap: 20px; }
+      .verified { font-size: 0; }
+      .rail {
+        grid-area: 2 / 1 / 3 / 2;
+        min-height: 48px;
+        background: var(--rail);
+      }
+      .brand, .rail-nav, .rail-env { display: none; }
+      .mobile-rail-trigger {
+        display: flex;
+        width: 100%;
+        align-items: center;
+        justify-content: space-between;
+        padding: 0 18px;
+        border: 0;
+        color: #fff;
+        background: transparent;
+        font-size: 12px;
+        font-weight: 800;
+      }
+      .workspace {
+        grid-area: 3 / 1 / 4 / 2;
+        padding: 20px 16px 28px;
+      }
+      .head-support { align-items: flex-start; flex-direction: column; gap: 8px; }
+      .summary { grid-template-columns: 1fr; }
+      .summary-cell + .summary-cell {
+        border-top: 1px solid var(--soft-rule);
+        border-left: 0;
+      }
+      .summary-cell:last-child { grid-column: auto; }
+      .filter-wrap { grid-template-columns: 1fr; }
+      .filter-wrap select { width: 100%; }
+      table { min-width: 680px; }
+      .empty-row td { padding: 18px; }
+      .data-note { align-items: flex-start; flex-direction: column; gap: 5px; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        scroll-behavior: auto !important;
+        transition-duration: .01ms !important;
+        animation-duration: .01ms !important;
+        animation-iteration-count: 1 !important;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="shell">
+    <aside class="rail" aria-label="Dashboard 운영 메뉴">
+      <div class="brand">
+        <div class="brand-mark" aria-hidden="true">×</div>
+        <div>
+          <div class="brand-name">COSMILE</div>
+          <div class="brand-sub">COMMERCE OPERATIONS</div>
+        </div>
+      </div>
+      <button class="mobile-rail-trigger" type="button" aria-expanded="false" aria-controls="rail-navigation">
+        <span>운영 메뉴 · 주문</span><span aria-hidden="true">☰</span>
+      </button>
+      <nav class="rail-nav" id="rail-navigation">
+        <section class="nav-group" aria-labelledby="nav-overview">
+          <h2 class="nav-label" id="nav-overview">개요</h2>
+          <a class="nav-item" href="#">운영 대시보드</a>
+        </section>
+        <section class="nav-group" aria-labelledby="nav-commerce">
+          <h2 class="nav-label" id="nav-commerce">커머스</h2>
+          <a class="nav-item" href="#" aria-current="page">주문</a>
+          <a class="nav-item" href="#">고객 <span class="nav-meta">준비 중</span></a>
+          <a class="nav-item" href="#">상품 <span class="nav-meta">준비 중</span></a>
+          <a class="nav-item" href="#">재고 <span class="nav-meta">집계 준비 중</span></a>
+        </section>
+        <section class="nav-group" aria-labelledby="nav-operations">
+          <h2 class="nav-label" id="nav-operations">운영</h2>
+          <a class="nav-item" href="#">출고</a>
+          <a class="nav-item" href="#">결제·환불 <span class="nav-meta">준비 중</span></a>
+          <a class="nav-item" href="#">고객 지원</a>
+          <a class="nav-item" href="#">정합성</a>
+        </section>
+        <section class="nav-group" aria-labelledby="nav-governance">
+          <h2 class="nav-label" id="nav-governance">거버넌스</h2>
+          <a class="nav-item" href="#">감사</a>
+          <a class="nav-item" href="#">설정</a>
+        </section>
+      </nav>
+      <div class="rail-env">비프로덕션 환경<br>운영 상태를 변경하지 않습니다</div>
+    </aside>
+
+    <header class="spacebar">
+      <nav class="spaces" aria-label="제품 공간">
+        <a class="space" href="#">Console</a>
+        <a class="space" href="#" aria-current="page">Dashboard</a>
+        <a class="space" href="#">Lab</a>
+      </nav>
+      <div class="verified">검토된 운영 정보만 표시</div>
+    </header>
+
+    <main class="workspace">
+      <header class="page-head">
+        <div>
+          <p class="eyebrow">COSMILE / TODAY'S COMMERCE TRUTH</p>
+          <h1>주문</h1>
+        </div>
+        <div class="head-support">
+          <p class="description">현재 확인 가능한 주문번호와 주문 상태를 한 곳에서 확인합니다.</p>
+          <span class="provenance">합성 비프로덕션 데이터</span>
+        </div>
+      </header>
+
+      <section class="summary" aria-label="현재 주문 요약">
+        <div class="summary-cell">
+          <p class="summary-label">전체 주문</p>
+          <p class="summary-value count">0건</p>
+          <p class="summary-help">현재 조회된 목록 기준</p>
+        </div>
+        <div class="summary-cell">
+          <p class="summary-label">상태 분포</p>
+          <p class="summary-value">표시할 주문 상태 없음</p>
+          <p class="summary-help">행이 생기면 검토된 한국어 상태로 표시</p>
+        </div>
+        <div class="summary-cell filter-wrap">
+          <div class="filter-copy">
+            <label class="summary-label" for="status-filter">주문 상태</label>
+            <p class="summary-help" id="filter-help">현재 목록에서만 필터</p>
+          </div>
+          <select id="status-filter" aria-describedby="filter-help">
+            <option>전체 상태</option>
+            <option>결제 대기</option>
+            <option>결제 완료</option>
+            <option>출고 완료</option>
+            <option>취소</option>
+            <option>환불 완료</option>
+            <option>확인할 수 없음</option>
+          </select>
+        </div>
+      </section>
+
+      <section class="table-card" aria-labelledby="orders-list-heading">
+        <header class="table-toolbar">
+          <h2 id="orders-list-heading">주문 목록</h2>
+          <span class="result-count" aria-live="polite">조회 결과 0건</span>
+        </header>
+        <div class="table-scroll" role="region" aria-label="주문 목록 표, 작은 화면에서는 가로로 스크롤">
+          <table>
+            <caption class="sr-only">현재 조회된 주문번호, 주문 상태, 공용 주문 상세 목적지</caption>
+            <colgroup>
+              <col class="order-no"><col class="order-status"><col class="order-detail">
+            </colgroup>
+            <thead>
+              <tr><th scope="col">주문번호</th><th scope="col">주문 상태</th><th scope="col">상세</th></tr>
+            </thead>
+            <tbody>
+              <tr class="empty-row">
+                <td colspan="3">
+                  <div class="empty-panel" role="status">
+                    <div class="empty-content">
+                      <div class="empty-icon" aria-hidden="true">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                          <rect x="5" y="3.5" width="14" height="17" rx="2" stroke="currentColor"/>
+                          <path d="M8.5 9h7M8.5 13h7M8.5 17h4" stroke="currentColor" stroke-linecap="round"/>
+                        </svg>
+                      </div>
+                      <h3>확인할 주문이 없습니다</h3>
+                      <p>현재 조회된 주문 목록이 비어 있습니다.<br>새 주문이 확인되면 이 표의 같은 열 구조에 표시됩니다.</p>
+                      <span class="empty-badge">확인된 결과 · 0건</span>
+                    </div>
+                  </div>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <footer class="data-note">
+        <span>주문번호 · 매핑된 주문 상태 · 공용 주문 상세만 표시</span>
+        <span>원시 상태값과 내부 식별자는 표시하지 않습니다.</span>
+      </footer>
+    </main>
+  </div>
+
+  <!-- Offline raster source: same tokens/content, fixed to the required 1440×900 frame. -->
+  <template id="offline-raster">
+<svg id="raster-source" xmlns="http://www.w3.org/2000/svg" width="1440" height="900" viewBox="0 0 1440 900">
+  <defs>
+    <pattern id="grid" width="32" height="32" patternUnits="userSpaceOnUse">
+      <path d="M32 0H0V32" fill="none" stroke="#cbd6cf" stroke-opacity=".24"/>
+    </pattern>
+    <style>
+      text { font-family: "Noto Sans CJK KR", sans-serif; fill: #17231e; }
+      .mono { font-family: "Noto Sans Mono CJK KR", "Noto Sans CJK KR", monospace; }
+      .rail-label { fill: #88a69a; font-size: 10px; font-weight: 700; }
+      .rail-item { fill: #e5eee9; font-size: 13px; font-weight: 600; }
+      .rail-meta { fill: #8eaaa0; font-size: 9px; font-weight: 700; }
+      .muted { fill: #5f7068; }
+      .utility { fill: #2e7658; font-size: 10px; font-weight: 800; letter-spacing: 1.7px; }
+      .small { font-size: 10px; }
+      .body { font-size: 12px; }
+      .label { fill: #52645b; font-size: 11px; font-weight: 700; }
+      .bold { font-weight: 700; }
+      .heavy { font-weight: 800; }
+    </style>
+  </defs>
+
+  <rect width="1440" height="900" fill="#f3f6f3"/>
+  <rect x="250" y="64" width="1190" height="836" fill="url(#grid)"/>
+
+  <!-- accepted 250px operations rail -->
+  <rect width="250" height="900" fill="#173d32"/>
+  <line x1="0" y1="64" x2="250" y2="64" stroke="#ffffff" stroke-opacity=".10"/>
+  <rect x="20" y="16" width="32" height="32" rx="8" fill="none" stroke="#8cc5a7"/>
+  <path d="M30 26l12 12M42 26L30 38" stroke="#8cc5a7" stroke-width="2"/>
+  <text x="62" y="31" fill="#ffffff" font-size="16" font-weight="800" letter-spacing="1.9">COSMILE</text>
+  <text class="mono" x="62" y="46" fill="#a9c9bc" font-size="8" font-weight="700" letter-spacing="1.6">COMMERCE OPERATIONS</text>
+
+  <text class="rail-label" x="22" y="91">개요</text>
+  <rect x="27" y="111" width="7" height="7" rx="1.5" fill="none" stroke="#8db4a4"/>
+  <text class="rail-item" x="46" y="120">운영 대시보드</text>
+
+  <text class="rail-label" x="22" y="169">커머스</text>
+  <rect x="12" y="181" width="226" height="40" rx="6" fill="#245849"/>
+  <rect x="12" y="181" width="3" height="40" rx="1.5" fill="#8cc5a7"/>
+  <rect x="27" y="197" width="7" height="7" rx="1.5" fill="none" stroke="#d8eee3"/>
+  <text x="46" y="207" fill="#ffffff" font-size="13" font-weight="800">주문</text>
+  <rect x="27" y="236" width="7" height="7" rx="1.5" fill="none" stroke="#8db4a4"/>
+  <text class="rail-item" x="46" y="246">고객</text>
+  <text class="rail-meta" x="205" y="246" text-anchor="end">준비 중</text>
+  <rect x="27" y="274" width="7" height="7" rx="1.5" fill="none" stroke="#8db4a4"/>
+  <text class="rail-item" x="46" y="284">상품</text>
+  <text class="rail-meta" x="205" y="284" text-anchor="end">준비 중</text>
+  <rect x="27" y="312" width="7" height="7" rx="1.5" fill="none" stroke="#8db4a4"/>
+  <text class="rail-item" x="46" y="322">재고</text>
+  <text class="rail-meta" x="224" y="322" text-anchor="end">집계 준비 중</text>
+
+  <line x1="12" y1="349" x2="238" y2="349" stroke="#ffffff" stroke-opacity=".08"/>
+  <text class="rail-label" x="22" y="373">운영</text>
+  <rect x="27" y="391" width="7" height="7" rx="1.5" fill="none" stroke="#8db4a4"/>
+  <text class="rail-item" x="46" y="401">출고</text>
+  <rect x="27" y="429" width="7" height="7" rx="1.5" fill="none" stroke="#8db4a4"/>
+  <text class="rail-item" x="46" y="439">결제·환불</text>
+  <text class="rail-meta" x="224" y="439" text-anchor="end">준비 중</text>
+  <rect x="27" y="467" width="7" height="7" rx="1.5" fill="none" stroke="#8db4a4"/>
+  <text class="rail-item" x="46" y="477">고객 지원</text>
+  <rect x="27" y="505" width="7" height="7" rx="1.5" fill="none" stroke="#8db4a4"/>
+  <text class="rail-item" x="46" y="515">정합성</text>
+
+  <line x1="12" y1="542" x2="238" y2="542" stroke="#ffffff" stroke-opacity=".08"/>
+  <text class="rail-label" x="22" y="566">거버넌스</text>
+  <rect x="27" y="584" width="7" height="7" rx="1.5" fill="none" stroke="#8db4a4"/>
+  <text class="rail-item" x="46" y="594">감사</text>
+  <rect x="27" y="622" width="7" height="7" rx="1.5" fill="none" stroke="#8db4a4"/>
+  <text class="rail-item" x="46" y="632">설정</text>
+
+  <line x1="22" y1="800" x2="228" y2="800" stroke="#ffffff" stroke-opacity=".09"/>
+  <rect x="22" y="817" width="4" height="43" rx="2" fill="#6dc69f"/>
+  <text x="36" y="829" fill="#a9c9bc" font-size="10">비프로덕션 환경</text>
+  <text x="36" y="848" fill="#a9c9bc" font-size="10">운영 상태를 변경하지 않습니다</text>
+
+  <!-- accepted space switcher -->
+  <rect x="250" width="1190" height="64" fill="#ffffff"/>
+  <line x1="250" y1="63.5" x2="1440" y2="63.5" stroke="#cbd6cf"/>
+  <text x="282" y="38" fill="#68776f" font-size="14" font-weight="700">Console</text>
+  <text x="365" y="38" font-size="14" font-weight="800">Dashboard</text>
+  <rect x="365" y="61" width="74" height="3" fill="#2e7658"/>
+  <text x="468" y="38" fill="#68776f" font-size="14" font-weight="700">Lab</text>
+  <circle cx="1275" cy="32" r="4.5" fill="#2e7658"/>
+  <circle cx="1275" cy="32" r="8.5" fill="none" stroke="#e6f0eb" stroke-width="4"/>
+  <text x="1288" y="37" fill="#49655a" font-size="12" font-weight="700">검토된 운영 정보만 표시</text>
+
+  <!-- page heading -->
+  <text class="utility mono" x="280" y="95">COSMILE / TODAY'S COMMERCE TRUTH</text>
+  <text x="280" y="136" font-size="30" font-weight="800" letter-spacing="-1.2">주문</text>
+  <text x="1018" y="128" fill="#53665d" font-size="13" text-anchor="end">현재 확인 가능한 주문번호와 주문 상태를 한 곳에서 확인합니다.</text>
+  <rect x="1032" y="108" width="168" height="28" rx="14" fill="#edf6f1" stroke="#b9cec3"/>
+  <text x="1116" y="126" fill="#2a6650" font-size="10" font-weight="800" text-anchor="middle">합성 비프로덕션 데이터</text>
+
+  <!-- bounded summary -->
+  <rect x="280" y="164" width="1130" height="94" rx="10" fill="#ffffff" stroke="#cbd6cf"/>
+  <path d="M290 164H1400Q1410 164 1410 174" fill="none" stroke="#2e7658" stroke-width="4"/>
+  <line x1="580" y1="168" x2="580" y2="258" stroke="#dfe7e2"/>
+  <line x1="1000" y1="168" x2="1000" y2="258" stroke="#dfe7e2"/>
+  <text class="label" x="300" y="190">전체 주문</text>
+  <text class="mono" x="300" y="224" font-size="26" font-weight="800">0건</text>
+  <text x="300" y="243" fill="#718078" font-size="10">현재 조회된 목록 기준</text>
+  <text class="label" x="600" y="190">상태 분포</text>
+  <text x="600" y="219" font-size="20" font-weight="800">표시할 주문 상태 없음</text>
+  <text x="600" y="242" fill="#718078" font-size="10">행이 생기면 검토된 한국어 상태로 표시</text>
+  <text class="label" x="1020" y="190">주문 상태</text>
+  <text x="1020" y="243" fill="#718078" font-size="10">현재 목록에서만 필터</text>
+  <rect x="1224" y="190" width="166" height="42" rx="6" fill="#ffffff" stroke="#9fb3aa"/>
+  <text x="1238" y="216" font-size="12" font-weight="700">전체 상태</text>
+  <path d="M1368 207l5 5 5-5" fill="none" stroke="#52645b" stroke-width="1.5"/>
+
+  <!-- stable order table -->
+  <rect x="280" y="282" width="1130" height="472" rx="10" fill="#ffffff" stroke="#cbd6cf"/>
+  <path d="M280 340H1410" stroke="#cbd6cf"/>
+  <text x="300" y="317" font-size="16" font-weight="800">주문 목록</text>
+  <text class="mono" x="1390" y="317" fill="#586a61" font-size="11" font-weight="700" text-anchor="end">조회 결과 0건</text>
+  <rect x="281" y="341" width="1128" height="49" fill="#f8faf8"/>
+  <line x1="280" y1="390" x2="1410" y2="390" stroke="#cbd6cf"/>
+  <line x1="800" y1="341" x2="800" y2="390" stroke="#dfe7e2"/>
+  <line x1="1115" y1="341" x2="1115" y2="390" stroke="#dfe7e2"/>
+  <text class="label" x="300" y="371">주문번호</text>
+  <text class="label" x="820" y="371">주문 상태</text>
+  <text class="label" x="1135" y="371">상세</text>
+
+  <!-- contained zero state inside tbody -->
+  <rect x="310" y="419" width="1070" height="275" rx="8" fill="#f9fbf9" stroke="#d6e0da"/>
+  <rect x="821" y="451" width="48" height="48" rx="8" fill="#ffffff" stroke="#8eac9e"/>
+  <rect x="833" y="460" width="24" height="30" rx="3" fill="none" stroke="#2e7658"/>
+  <path d="M838 469h14M838 476h14M838 483h8" stroke="#2e7658" stroke-linecap="round"/>
+  <text x="845" y="536" font-size="19" font-weight="800" text-anchor="middle">확인할 주문이 없습니다</text>
+  <text x="845" y="565" fill="#63736b" font-size="12" text-anchor="middle">현재 조회된 주문 목록이 비어 있습니다.</text>
+  <text x="845" y="586" fill="#63736b" font-size="12" text-anchor="middle">새 주문이 확인되면 이 표의 같은 열 구조에 표시됩니다.</text>
+  <rect x="778" y="610" width="134" height="27" rx="13.5" fill="#e8f3ed"/>
+  <text class="mono" x="845" y="628" fill="#28634d" font-size="10" font-weight="800" text-anchor="middle">확인된 결과 · 0건</text>
+
+  <!-- bounded-field note -->
+  <text x="280" y="793" fill="#64756c" font-size="10">주문번호 · 매핑된 주문 상태 · 공용 주문 상세만 표시</text>
+  <text x="1410" y="793" fill="#64756c" font-size="10" text-anchor="end">원시 상태값과 내부 식별자는 표시하지 않습니다.</text>
+</svg>
+  </template>
+</body>
+</html>
