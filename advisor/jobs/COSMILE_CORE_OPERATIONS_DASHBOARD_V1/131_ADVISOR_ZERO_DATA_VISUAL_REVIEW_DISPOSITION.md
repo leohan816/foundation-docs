@@ -11,6 +11,6 @@ BLOCKING: `B1`
   - Customer, Product, Payments & Refunds: `아직 구현되지 않음`.
   - Inventory: `집계 조회 계약 없음`.
   - Pin the same distinction in contract `122`; no other visual or contract change.
-- Reviewer binding reconciliation: process argv directly proves `claude-fable-5[1m] --effort max`; product CWD exact. The stale UI directive cited as P1 has zero binding weight.
+- Reviewer binding reconciliation: actual review binding was `Opus 5/max`, as recorded by the Reviewer’s live session directive. Handoff `128` incorrectly named Fable 5; that admission label has zero model-binding weight.
 - Review outputs `129/130` remain preserved; no risk is accepted.
 - Product write remains prohibited until corrected visual delta re-review passes.
