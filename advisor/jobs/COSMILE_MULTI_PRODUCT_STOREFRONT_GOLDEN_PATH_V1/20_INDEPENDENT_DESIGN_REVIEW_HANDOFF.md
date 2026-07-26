@@ -48,10 +48,10 @@ Inspect only these baseline files, read-only:
 3. `app/src/app/products/[id]/page.tsx`
 4. `app/src/app/cart/page.tsx`
 5. `app/src/app/wishlist/page.tsx`
-6. `app/src/components/ProductCard.tsx`
-7. `app/src/components/WishlistButton.tsx`
-8. `app/src/components/AddToCartButton.tsx`
-9. `app/src/components/MallTabs.tsx`
+6. `app/src/components/product/ProductCard.tsx`
+7. `app/src/components/product/WishlistButton.tsx`
+8. `app/src/components/product/AddToCartButton.tsx`
+9. `app/src/components/layout/MallTabs.tsx`
 10. `app/src/app/globals.css`
 
 ## Criteria
