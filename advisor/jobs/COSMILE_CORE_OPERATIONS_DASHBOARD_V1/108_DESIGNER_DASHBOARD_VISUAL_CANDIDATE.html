@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="ko">
+<html lang="ko" class="fonts-loading">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -38,8 +38,16 @@
       overflow: hidden;
       color: var(--ink);
       background: var(--canvas);
-      font-family: "Pretendard", "Noto Sans KR", "Apple SD Gothic Neo", system-ui, sans-serif;
+      font-family: "Noto Sans KR", "Pretendard", "Apple SD Gothic Neo", system-ui, sans-serif;
       -webkit-font-smoothing: antialiased;
+    }
+
+    html.fonts-loading body {
+      visibility: hidden;
+    }
+
+    html.fonts-ready body {
+      visibility: visible;
     }
 
     body {
@@ -218,7 +226,7 @@
     .nav-group-title {
       margin: 0 10px 7px;
       color: #86A296;
-      font-family: ui-monospace, "SFMono-Regular", monospace;
+      font-family: "Noto Sans KR", "Pretendard", sans-serif;
       font-size: 9px;
       font-weight: 800;
       letter-spacing: 0.16em;
@@ -334,7 +342,7 @@
 
     h1 {
       margin: 0;
-      font-family: "Arial Narrow", "Pretendard", "Noto Sans KR", sans-serif;
+      font-family: "Noto Sans KR", "Pretendard", sans-serif;
       font-size: 31px;
       font-stretch: condensed;
       font-weight: 850;
@@ -393,7 +401,7 @@
     .truth-value {
       margin: 0;
       color: var(--ink);
-      font-family: "Arial Narrow", "Pretendard", sans-serif;
+      font-family: "Noto Sans KR", "Pretendard", sans-serif;
       font-size: 24px;
       font-weight: 850;
       letter-spacing: -0.03em;
@@ -626,6 +634,7 @@
 
     .summary-value {
       color: var(--ink);
+      font-family: "Noto Sans KR", "Pretendard", sans-serif;
       font-size: 12px;
       font-weight: 800;
     }
@@ -882,5 +891,10 @@
       <span class="truth-footer-note">내부 상태 코드와 미확인 값은 표시하지 않습니다.</span>
     </footer>
   </main>
+  <script>
+    document.fonts.ready.then(function () {
+      document.documentElement.classList.replace("fonts-loading", "fonts-ready");
+    });
+  </script>
 </body>
 </html>
