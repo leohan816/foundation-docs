@@ -1,0 +1,194 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1440" height="900" viewBox="0 0 1440 900" role="img" aria-labelledby="title desc">
+  <title id="title">Cosmile Console dashboard acceptance correction, 1440 by 900 desktop specimen</title>
+  <desc id="desc">A persistent 250 pixel operations rail sits below global Console chrome. The main workspace leads with three concise action rows, followed by a bounded operational summary and a recent-order reuse panel. All displayed values are structural examples, not live data.</desc>
+  <defs>
+    <style>
+      .ui { font-family: Inter, Pretendard, "Noto Sans KR", system-ui, sans-serif; }
+      .ink { fill: #17211C; }
+      .muted { fill: #526159; }
+      .micro { font-size: 11px; font-weight: 700; letter-spacing: .08em; }
+      .meta { font-size: 12px; }
+      .body { font-size: 14px; }
+      .label { font-size: 15px; font-weight: 650; }
+      .section { font-size: 18px; font-weight: 700; }
+      .title { font-size: 28px; font-weight: 720; }
+      .white { fill: #FFFFFF; }
+      .focus { fill: none; stroke: #167A64; stroke-width: 2; }
+    </style>
+    <clipPath id="railClip"><rect x="0" y="88" width="250" height="812"/></clipPath>
+  </defs>
+
+  <g class="ui">
+    <!-- Global Console chrome: 52px -->
+    <rect width="1440" height="52" fill="#17211C"/>
+    <circle cx="28" cy="26" r="10" fill="#167A64"/>
+    <path d="M24 26h8M28 22v8" stroke="#FFFFFF" stroke-width="1.5" stroke-linecap="round"/>
+    <text x="48" y="31" class="white label">COSMILE</text>
+    <text x="178" y="31" class="white body" font-weight="700">Console</text>
+    <text x="255" y="31" fill="#9FB0A7" class="body">Lab</text>
+    <rect x="170" y="47" width="65" height="3" rx="1.5" fill="#167A64"/>
+    <text x="1404" y="31" fill="#C9D3CD" text-anchor="end" class="meta">운영 공간</text>
+
+    <!-- Synthetic/non-production truth rail: 36px -->
+    <rect y="52" width="1440" height="36" fill="#FFF8E8"/>
+    <line x1="0" y1="87.5" x2="1440" y2="87.5" stroke="#D9C18D"/>
+    <circle cx="28" cy="70" r="7" fill="#A15C16"/>
+    <text x="44" y="74" class="body" fill="#6E430D" font-weight="650">합성·비프로덕션 운영 화면 · 검토된 읽기만 표시합니다</text>
+    <text x="1404" y="74" text-anchor="end" class="meta" fill="#6E430D">DESIGN SPECIMEN · LIVE DATA 아님</text>
+
+    <!-- Persistent 250px rail -->
+    <g clip-path="url(#railClip)">
+      <rect x="0" y="88" width="250" height="812" fill="#17211C"/>
+      <text x="20" y="122" fill="#93A49B" class="micro">OPERATIONS</text>
+
+      <rect x="12" y="138" width="226" height="44" rx="6" fill="#294139"/>
+      <rect x="12" y="138" width="3" height="44" rx="1.5" fill="#167A64"/>
+      <circle cx="32" cy="160" r="4" fill="#62B89F"/>
+      <text x="46" y="165" class="white label">Dashboard</text>
+      <text x="220" y="164" text-anchor="end" fill="#BFD7CB" class="meta">현재</text>
+
+      <circle cx="32" cy="204" r="4" fill="#62B89F"/>
+      <text x="46" y="209" class="white body">Orders</text>
+      <text x="220" y="209" text-anchor="end" fill="#93A49B" class="body">›</text>
+
+      <circle cx="32" cy="248" r="4" fill="#A15C16"/>
+      <text x="46" y="247" fill="#C8D1CC" class="body">Customers</text>
+      <text x="46" y="261" fill="#D4A967" class="meta">아직 구현되지 않음</text>
+
+      <circle cx="32" cy="292" r="4" fill="#A15C16"/>
+      <text x="46" y="291" fill="#C8D1CC" class="body">Products</text>
+      <text x="46" y="305" fill="#D4A967" class="meta">아직 구현되지 않음</text>
+
+      <circle cx="32" cy="336" r="4" fill="#A15C16"/>
+      <text x="46" y="335" fill="#C8D1CC" class="body">Inventory</text>
+      <text x="46" y="349" fill="#D4A967" class="meta">현재 조회할 수 없음</text>
+
+      <circle cx="32" cy="380" r="4" fill="#62B89F"/>
+      <text x="46" y="385" class="white body">Fulfillment</text>
+      <text x="220" y="385" text-anchor="end" fill="#93A49B" class="body">›</text>
+
+      <circle cx="32" cy="424" r="4" fill="#A15C16"/>
+      <text x="46" y="423" fill="#C8D1CC" class="body">Payments &amp; Refunds</text>
+      <text x="46" y="437" fill="#D4A967" class="meta">아직 구현되지 않음</text>
+
+      <circle cx="32" cy="468" r="4" fill="#62B89F"/>
+      <text x="46" y="473" class="white body">Support</text>
+      <text x="220" y="473" text-anchor="end" fill="#93A49B" class="body">›</text>
+
+      <circle cx="32" cy="512" r="4" fill="#62B89F"/>
+      <text x="46" y="517" class="white body">Reconciliation</text>
+      <text x="220" y="517" text-anchor="end" fill="#93A49B" class="body">›</text>
+
+      <circle cx="32" cy="556" r="4" fill="#62B89F"/>
+      <text x="46" y="561" class="white body">Audit</text>
+      <text x="220" y="561" text-anchor="end" fill="#93A49B" class="body">›</text>
+
+      <circle cx="32" cy="600" r="4" fill="#62B89F"/>
+      <text x="46" y="605" class="white body">Settings</text>
+      <text x="220" y="605" text-anchor="end" fill="#93A49B" class="body">›</text>
+
+      <line x1="20" y1="648" x2="230" y2="648" stroke="#3A4A42"/>
+      <text x="20" y="676" fill="#93A49B" class="meta">250px · 화면에 고정</text>
+      <text x="20" y="696" fill="#93A49B" class="meta">메인 콘텐츠만 세로 스크롤</text>
+      <text x="20" y="862" fill="#71837A" class="meta">Console operations</text>
+    </g>
+
+    <!-- Main workspace -->
+    <rect x="250" y="88" width="1190" height="812" fill="#F4F6F4"/>
+    <text x="294" y="132" class="micro" fill="#167A64">DASHBOARD / 오늘</text>
+    <text x="294" y="171" class="title ink">오늘 처리할 일</text>
+    <text x="294" y="198" class="body muted">검토된 Console 읽기만으로 다음 행동과 확인 가능한 사실을 구분합니다.</text>
+
+    <!-- Action queue -->
+    <rect x="294" y="224" width="724" height="316" rx="10" fill="#FFFFFF" stroke="#CED6D1"/>
+    <rect x="294" y="224" width="3" height="316" rx="1.5" fill="#167A64"/>
+    <text x="318" y="257" class="section ink">지금 처리할 일</text>
+    <text x="994" y="255" text-anchor="end" class="micro" fill="#167A64">TRIAGE SPINE</text>
+    <text x="318" y="280" class="meta muted">상태 예시이며 운영 데이터가 아닙니다</text>
+
+    <rect x="310" y="296" width="692" height="70" rx="7" fill="#F9FAF9" stroke="#D8DEDA"/>
+    <text x="328" y="321" class="label ink">고객 요청 대응</text>
+    <text x="328" y="345" class="body muted">답변이 필요한 요청을 확인합니다</text>
+    <rect x="582" y="312" width="184" height="30" rx="15" fill="#FFF3DD" stroke="#D8A24D"/>
+    <circle cx="600" cy="327" r="4" fill="#A15C16"/>
+    <text x="612" y="331" class="meta" fill="#74410A" font-weight="700">UNAVAILABLE · 조회 불가</text>
+    <rect x="846" y="309" width="136" height="36" rx="6" fill="#FFFFFF" stroke="#167A64" stroke-width="2"/>
+    <rect x="842" y="305" width="144" height="44" rx="9" class="focus" opacity=".34"/>
+    <text x="914" y="332" text-anchor="middle" class="body" fill="#126550" font-weight="700">지원 열기 →</text>
+
+    <rect x="310" y="374" width="692" height="70" rx="7" fill="#FFFFFF" stroke="#D8DEDA"/>
+    <text x="328" y="399" class="label ink">출고 확인</text>
+    <text x="328" y="423" class="body muted">검토된 주문 흐름에서 출고 상태를 확인합니다</text>
+    <rect x="582" y="390" width="160" height="30" rx="15" fill="#E6F4EF" stroke="#78AF9E"/>
+    <circle cx="600" cy="405" r="4" fill="#167A64"/>
+    <text x="612" y="409" class="meta" fill="#105C4A" font-weight="700">CONFIRMED · 확인됨</text>
+    <text x="914" y="410" text-anchor="middle" class="body" fill="#126550" font-weight="700">주문 열기 →</text>
+
+    <rect x="310" y="452" width="692" height="70" rx="7" fill="#F9FAF9" stroke="#D8DEDA"/>
+    <text x="328" y="477" class="label ink">정합성 점검</text>
+    <text x="328" y="501" class="body muted">기존 정합성 읽기의 상태를 확인합니다</text>
+    <rect x="582" y="468" width="210" height="30" rx="15" fill="#FFF3DD" stroke="#D8A24D"/>
+    <circle cx="600" cy="483" r="4" fill="#A15C16"/>
+    <text x="612" y="487" class="meta" fill="#74410A" font-weight="700">NOT_CONFIGURED · 미연결</text>
+    <text x="914" y="488" text-anchor="middle" class="body" fill="#126550" font-weight="700">정합성 열기 →</text>
+
+    <!-- Recent orders reuse panel -->
+    <rect x="1042" y="224" width="354" height="316" rx="10" fill="#FFFFFF" stroke="#CED6D1"/>
+    <text x="1066" y="257" class="section ink">최근 주문</text>
+    <rect x="1246" y="239" width="126" height="24" rx="12" fill="#E6F4EF"/>
+    <text x="1309" y="255" text-anchor="middle" class="micro" fill="#105C4A">SAME READ</text>
+    <text x="1066" y="284" class="meta muted">기존 bounded order 결과만 재사용</text>
+    <line x1="1066" y1="301" x2="1372" y2="301" stroke="#D8DEDA"/>
+    <text x="1066" y="326" class="micro muted">불투명 주문번호</text>
+    <text x="1372" y="326" text-anchor="end" class="micro muted">범주 · 상태</text>
+
+    <rect x="1066" y="342" width="306" height="42" rx="5" fill="#F9FAF9"/>
+    <rect x="1078" y="358" width="92" height="7" rx="3.5" fill="#CAD3CE"/>
+    <rect x="1262" y="358" width="94" height="7" rx="3.5" fill="#CAD3CE"/>
+    <rect x="1066" y="392" width="306" height="42" rx="5" fill="#F9FAF9"/>
+    <rect x="1078" y="408" width="108" height="7" rx="3.5" fill="#CAD3CE"/>
+    <rect x="1278" y="408" width="78" height="7" rx="3.5" fill="#CAD3CE"/>
+    <rect x="1066" y="442" width="306" height="42" rx="5" fill="#F9FAF9"/>
+    <rect x="1078" y="458" width="84" height="7" rx="3.5" fill="#CAD3CE"/>
+    <rect x="1250" y="458" width="106" height="7" rx="3.5" fill="#CAD3CE"/>
+    <text x="1066" y="514" class="meta" fill="#6E430D">고객·금액·결제·공급자 정보 없음</text>
+
+    <!-- Operational summary -->
+    <rect x="294" y="564" width="1102" height="232" rx="10" fill="#FFFFFF" stroke="#CED6D1"/>
+    <text x="318" y="599" class="section ink">운영 요약</text>
+    <text x="1372" y="597" text-anchor="end" class="meta muted">큰 숫자·추세·추정값 없음</text>
+
+    <line x1="318" y1="620" x2="1372" y2="620" stroke="#D8DEDA"/>
+    <text x="318" y="649" class="label ink">요청 큐</text>
+    <text x="492" y="649" class="body muted">request read의 사실만</text>
+    <text x="1372" y="649" text-anchor="end" class="meta" fill="#74410A" font-weight="700">상태 코드 + 한국어 레이블</text>
+
+    <line x1="318" y1="666" x2="1372" y2="666" stroke="#E4E8E5"/>
+    <text x="318" y="695" class="label ink">주문 흐름</text>
+    <text x="492" y="695" class="body muted">bounded order read의 사실만</text>
+    <text x="1372" y="695" text-anchor="end" class="meta" fill="#105C4A" font-weight="700">추가 read 없음</text>
+
+    <line x1="318" y1="712" x2="1372" y2="712" stroke="#E4E8E5"/>
+    <text x="318" y="741" class="label ink">정합성</text>
+    <text x="492" y="741" class="body muted">reconciliation read의 사실만</text>
+    <text x="1372" y="741" text-anchor="end" class="meta" fill="#74410A" font-weight="700">복구 안내는 상태별 표시</text>
+
+    <line x1="318" y1="758" x2="1372" y2="758" stroke="#E4E8E5"/>
+    <text x="318" y="781" class="label ink">재고 · 감사</text>
+    <text x="492" y="781" class="body muted">집계/조회 계약 없음 — 0 또는 정상으로 추정하지 않음</text>
+    <text x="1372" y="781" text-anchor="end" class="meta" fill="#74410A" font-weight="700">UNAVAILABLE</text>
+
+    <!-- Six-state footer legend -->
+    <text x="294" y="834" class="micro muted">TRUTH STATES</text>
+    <g class="meta" font-weight="700">
+      <text x="404" y="834" fill="#105C4A">CONFIRMED</text>
+      <text x="508" y="834" fill="#105C4A">CONFIRMED_ZERO</text>
+      <text x="660" y="834" fill="#74410A">UNAVAILABLE</text>
+      <text x="774" y="834" fill="#74410A">NOT_CONFIGURED</text>
+      <text x="920" y="834" fill="#74410A">NOT_IMPLEMENTED</text>
+      <text x="1080" y="834" fill="#8A2E2B">DENIED</text>
+    </g>
+    <text x="294" y="864" class="meta muted">1440×900 acceptance specimen · 250px persistent rail · keyboard focus shown on “지원 열기” · reduced-motion safe</text>
+    <text x="1396" y="864" text-anchor="end" class="meta muted">main scroll ↓</text>
+  </g>
+</svg>
