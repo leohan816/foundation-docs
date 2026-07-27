@@ -15,7 +15,7 @@ Status: `COMPLETE` · MODULE `F1_FOUNDATION_TEST_ONLY_CANDIDATE_EXPORT` · `RETU
 
 `python3 -m unittest foundation.tests.test_cosmile_commerce_snapshot_candidate`
 
-- **RED (test only, before code):** 29 tests, **0 PASS** — 17 FAIL + 10 ERROR. Three distinct causes reproduced the frozen gaps: missing `TEST_ONLY_CANDIDATE`/`GATE_STATUS_NOT_RECORDED`, missing `SnapshotExporter.publish_test_candidates`, missing `vault_candidate` module.
+- **RED (test only, before code):** 29 tests — **2 PASS, 17 FAIL, 10 ERROR**. Three distinct causes reproduced the frozen gaps: missing `TEST_ONLY_CANDIDATE`/`GATE_STATUS_NOT_RECORDED`, missing `SnapshotExporter.publish_test_candidates`, missing `vault_candidate` module. The earlier `0 PASS` claim was arithmetically incorrect and is superseded by this line.
 - **GREEN:** **31/31 PASS, 0 skipped** — 22 pure + 9 vault-touch (read-only, pinned vault). No DB/network/env.
 - Count 29→31: one **code** defect found mid-cycle (below) added two cases. No expectation was lowered, no case skipped or deleted.
 
@@ -48,6 +48,8 @@ Status: `COMPLETE` · MODULE `F1_FOUNDATION_TEST_ONLY_CANDIDATE_EXPORT` · `RETU
 4. **`source_checksum`** — canonical value is `pending` for all eight records. Carried verbatim; **no hash fabricated**. Consistent with `GATE_PROVENANCE_CHECKSUM = NOT_RECORDED`.
 5. **`GATE_STATUS_PASS` removed** after first GREEN — it was referenced only by tests (dead constant); the prohibited value now appears literally in the test.
 6. **Design-doc mirror to foundation-docs not performed** — the handoff restricts docs commits to paths 66/67. `설계서` v0.3 exists in the FOUNDATION repo only; flagging for Advisor routing under the docs sync policy.
+7. **Focused-process count:** the focused unittest process ran **7 times total**, not only the single RED/GREEN pair: initial RED 1; RED-cause diagnostic 2; first post-code GREEN attempt 1 (failed on brand-level sibling metadata); corrected GREEN 1; final evidence/containment GREEN 2. Verdict weight is limited to the preserved initial RED, the first actionable post-code failure, and the final post-edit GREEN.
+8. **Immutable product commit-message evidence defect:** product commit `4362c272…` records `RED 29/0 PASS`; the actual arithmetic is 2 PASS + 17 FAIL + 10 ERROR = 29. History is not rewritten; this correction and the Advisor audit carry the authoritative count.
 
 ## Not proven (explicitly)
 
