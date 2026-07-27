@@ -16,6 +16,12 @@ RETURN_TO: foundation-advisor
 - Docs branch/base for this handoff: `advisor/cosmile-modern-customer-storefront-visual-refresh-v1-20260727`
 - Public reference: `https://cosmile.leohan.net`
 - Preserve the existing runtime, all sessions, and Golden Reversal HOLD.
+- The preserved Codex pane root remains the prior dashboard docs worktree because
+  its in-place `/cd` does not change the process CWD. This is not design
+  authority. Every tool call must set `workdir` explicitly to one of the two
+  exact mission worktrees above (or use an exact absolute path there). The first
+  tool call must prove the selected mission path, branch, HEAD, and clean state.
+  Do not read from or write to the prior dashboard worktree.
 
 ## Mandatory reads
 
