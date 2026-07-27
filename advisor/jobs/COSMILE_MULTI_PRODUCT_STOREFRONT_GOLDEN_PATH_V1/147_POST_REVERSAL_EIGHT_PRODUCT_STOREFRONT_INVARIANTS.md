@@ -16,6 +16,20 @@ This is a recorded follow-on constraint only. It does not authorize work before 
 - No legacy/mock catalog truth, fake promotions, dead features, or unsupported success state.
 - Require browser-visible design review before product acceptance.
 
+## Leo follow-on visual evidence
+
+- The current storefront is **not** an acceptable final design. Preserve it only as the as-built fallback until the replacement passes the complete parity gate below.
+- Observed defects: phone-mock frame dominates; four narrow cards are squeezed across mobile width; imagery is absent/placeheld; typography and spacing are weak; CTA blocks are oversized/awkward; hierarchy and brand presentation are poor; only seven products appear.
+- The replacement must be a real responsive storefront, never a phone mock:
+  - coherent home, catalog, and detail hierarchy;
+  - two-column mobile layout and an appropriate desktop grid;
+  - real canonical product imagery, or truthful fail-closed placeholders when canonical imagery is unavailable;
+  - consistent typography, spacing, cards, and CTAs;
+  - clear customer login and cart state;
+  - all eight ELT products only after the eighth product's canonical gap is closed;
+  - complete browser purchase, refund, and customer/operator projection evidence.
+- This evidence authorizes no work before the current order-detail/list correction and Golden Reversal close.
+
 ## Replacement safety
 
 - Preserve the existing storefront in parallel throughout redesign.
