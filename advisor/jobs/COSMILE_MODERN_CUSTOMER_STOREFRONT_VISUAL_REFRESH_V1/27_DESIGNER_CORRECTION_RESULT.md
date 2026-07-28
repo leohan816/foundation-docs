@@ -25,11 +25,12 @@ STATUS: `F1–F6 CLOSED / DESIGN ARTIFACTS ONLY`
 
 ## Render verification
 
-- `13_DESIGNER_DESKTOP_1440x900.svg`: captured at exactly `1440×900`.
-- `14_DESIGNER_MOBILE_390x844.svg`: captured at exactly `390×844`.
+- The Designer raw-headless child stalled and was contained without output; it produced no artifact capture.
+- Advisor completed the finite CDP render and original-size inspection: `13_DESIGNER_DESKTOP_1440x900.svg` at exactly `1440×900` and `14_DESIGNER_MOBILE_390x844.svg` at exactly `390×844`.
 - Environment: approved local Noto CJK via exact `FONTCONFIG_SYSROOT`, `FONTCONFIG_FILE`, and `FONTCONFIG_PATH` mission settings.
-- Original-size categorical result: Korean `LEGIBLE`; clipping `NONE`; overlap `NONE` on both artifacts.
-- Temporary PNGs, failed empty render state, and browser profiles: `DELETED`.
+- Advisor categorical result: Korean `LEGIBLE`; clipping `NONE`; overlap `NONE` on both artifacts.
+- Temporary Chromium, profile, PNG, controller, and failed empty render artifacts: `DELETED`.
+- No Actor or session was terminated.
 
 ## Validation
 

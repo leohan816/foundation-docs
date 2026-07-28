@@ -74,7 +74,7 @@ Mist background, pine text: `비프로덕션 테스트 쇼핑 · 실제 청구�
 
 ### CatalogCard
 
-- Surface radius 14 px; 1 px line; no decorative shadow at rest.
+- Surface radius 16 px; 1 px line; no decorative shadow at rest. The exact accepted 1440 reference card is `312×194` with a `112×170` media rail.
 - Desktop media uses the accepted horizontal rail. Mobile grid media is the same card's 4:3 vertical variant, explicitly pending, with runtime-index ledger edge.
 - Detail link wraps only media, name, and price. Wishlist and cart remain sibling controls.
 - Wishlist is a 44 px icon button. Cart is a 44 px text action. Hover lifts by 2 px only when motion is allowed.
@@ -86,7 +86,7 @@ Mist background, pine text: `비프로덕션 테스트 쇼핑 · 실제 청구�
 - Order: context → media → identity + one Wishlist control → KRW price → availability → Cart action → `AddStatus`.
 - Media has no representational container. The pending label remains visible and is not alt text for a nonexistent image.
 - `AddStatus` has exactly one DOM/live-region slot directly below the mobile purchase action: adding, persistent added + Cart link, or generic error. It never represents sold-out/unavailable; availability has its own product-state row above the purchase bar.
-- On Add error, focus returns to the Cart action. At 200% text zoom, the purchase bar loses fixed positioning and follows availability in normal document flow, with its single `AddStatus` slot immediately after the action.
+- For every Add result, focus remains on the originating Cart action; when success exposes the persistent Cart link, that link is next in tab order. At 200% text zoom, the purchase bar loses fixed positioning and follows availability in normal document flow, with its single `AddStatus` slot immediately after the action.
 - The Wishlist control is not repeated inside the purchase bar; one component owns pressed state, optimistic rollback, and announcement.
 
 ### Cart and Checkout

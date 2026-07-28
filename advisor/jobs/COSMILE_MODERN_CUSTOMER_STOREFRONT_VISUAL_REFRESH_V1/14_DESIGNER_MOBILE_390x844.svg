@@ -42,7 +42,7 @@
     <circle cx="11" cy="23" r="2" fill="#24463C"/><circle cx="23" cy="23" r="2" fill="#24463C"/>
   </g>
   <circle cx="370" cy="17" r="8" fill="#F15A35"/>
-  <text x="370" y="20.5" text-anchor="middle" font-size="9" font-weight="800" class="white" data-bind="cartCount">0</text>
+  <text x="370" y="20.5" text-anchor="middle" font-size="9" font-weight="800" data-bind="cartCount">0</text>
 
   <rect y="64" width="390" height="34" fill="#24463C"/>
   <circle cx="17" cy="81" r="3" fill="#F15A35"/>
