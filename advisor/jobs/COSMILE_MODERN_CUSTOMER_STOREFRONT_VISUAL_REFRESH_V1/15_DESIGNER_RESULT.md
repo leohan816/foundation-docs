@@ -4,7 +4,7 @@
 
 - Completed the design-only storefront contract at the dispatched docs pin.
 - Produced an as-built parity matrix, implementation-ready visual contract, and exact-size desktop/mobile SVG candidates.
-- Direction: `Porcelain Ledger` — real responsive shell, mineral structure, one persimmon commerce accent, truthful pending-media surfaces, and full dynamic catalog rendering.
+- Direction: `Porcelain Ledger` — real responsive shell, mineral structure, one persimmon commerce accent with ink action text, truthful pending-media surfaces, and full runtime-bound catalog rendering.
 - No product, runtime, data, auth, provider, secret, browser state, commit, or push mutation occurred.
 
 ## ACTOR / RUNTIME BINDING
@@ -34,9 +34,10 @@
 
 ## VISUAL SELF-CHECK
 
-- Desktop candidate: exact `1440×900`; full seven-item public snapshot rendered as `4+3`; no device frame; no eighth tile.
-- Mobile candidate: exact `390×844`; true viewport; admitted detail, truthful pending media, KRW price, wishlist/cart separation, non-production context, and reviewed five-route nav.
+- Desktop candidate: exact `1440×900`; count-independent editorial lead; full seven-item public snapshot rendered from the admitted-array contract as `4+3`; no device frame or eighth tile; accepted horizontal card geometry frozen.
+- Mobile candidate: exact `390×844`; true viewport; admitted detail, truthful pending media, KRW price, one Wishlist state source, one Cart `AddStatus` slot, non-production context, and reviewed five-route nav with Wishlist deliberately entered through MY.
 - Both SVGs are self-contained vector/text artifacts with no remote or embedded unverified image.
+- Korean legibility was verified with the approved local Noto CJK environment: `FONTCONFIG_SYSROOT=/home/leo/.cache/ms-playwright/local-runtime/root`, `FONTCONFIG_FILE=/home/leo/.cache/ms-playwright/local-runtime/root/etc/fonts/fonts.conf`, and `FONTCONFIG_PATH=/home/leo/.cache/ms-playwright/local-runtime/root/etc/fonts`.
 - Each SVG was rendered exactly once to a temporary PNG, inspected once at original resolution, and the PNG/profile deleted.
 
 ## DATA / ASSET LIMITATIONS

@@ -7,15 +7,15 @@ Direction: **Porcelain Ledger** — editorial Korean beauty presentation with co
 
 The current storefront has the right guarded commerce behavior but compresses every desktop route into a phone mock and gives nearly every decision the same orange weight. The refresh turns the customer surface into a real responsive store: calm editorial space, disciplined catalog rhythm, and one unmistakable action color. It must feel premium without inventing product imagery or product meaning.
 
-The signature device is the **ledger edge**: a thin numbered rule on each admitted media surface. It expresses that the catalog is a reviewed collection, not a claim about the product. The number is the current rendered sequence, never an identifier and never a reserved capacity marker.
+The signature device is the **ledger edge**: a thin numbered rule on each admitted catalog media surface. It expresses that the catalog is a reviewed collection, not a claim about the product. The number is derived from the mapped runtime index, never an identifier and never a reserved capacity marker. Editorial copy never names the collection size.
 
 ## 2. Truth and data binding
 
-- `catalog = admittedItems`; `count = catalog.length`; render every item in order.
+- `catalog = admittedItems`; `count = catalog.length`; render every item in order. Every visible count uses `catalog.length`; every catalog ledger sequence uses the mapped `index + 1`; every card binds to that same mapped item.
 - At seven items, desktop is `4 + 3`; the fourth position in row two is ordinary page space, not a placeholder.
 - At eight items, the same CSS grid naturally becomes `4 + 4`. No special eighth-product branch is allowed.
 - Bind card/detail identity to runtime `displayName`; bind currency to runtime integer KRW formatting.
-- Candidate names/prices are the observed public snapshot for visual fidelity only. Implementation must never copy them into CSS or static markup.
+- Candidate names/prices are the observed public snapshot for visual fidelity only. Implementation must never copy names, prices, counts, or sequence values into CSS or static markup.
 - Product media uses `MediaPending`: an abstract flat field, ledger rule, and `제품 이미지 준비 중`. No bottle silhouette, packshot, efficacy cue, ingredient cue, or remote asset.
 - The non-production notice appears once near the top of every customer route and again only where payment/order context requires it.
 
@@ -30,7 +30,7 @@ The signature device is the **ledger edge**: a thin numbered rule on each admitt
 | `mist` | `#DDE8E1` | Truth notes, pending media, quiet selected states |
 | `persimmon` | `#F15A35` | Primary commerce action and active destination only |
 
-Semantic additions: `error #A43E35`, `warning #8A5A21`, `success #2F6A53`, `line rgba(24,33,29,.14)`. Persimmon is not used for prices merely to create urgency; prices default to ink and gain weight through typography.
+Semantic additions: `error #A43E35`, `warning #8A5A21`, `success #2F6A53`, `line rgba(24,33,29,.14)`. Persimmon is not used for prices merely to create urgency; prices default to ink and gain weight through typography. Normal-size text on persimmon actions is `ink`, not white.
 
 ## 4. Typography
 
@@ -47,7 +47,7 @@ Semantic additions: `error #A43E35`, `warning #8A5A21`, `success #2F6A53`, `line
 - No device frame. Header spans the viewport; content is centered at `max-width: 1312px` with 64 px outer gutters at 1440.
 - Header: 82 px. Logo left, primary destinations centered, account/cart right. The non-production strip is 34 px directly below.
 - Footer contains the same route-safe customer destinations and non-production note; no mobile tab bar.
-- Catalog: four equal columns, 16 px gutter. At 1024–1279 use three columns.
+- Catalog: four equal columns, 16 px gutter. At 1024–1279 use three columns. The accepted desktop card geometry is frozen as a horizontal `112×170` media rail plus content/actions; implementation may scale by token but may not substitute a new card composition.
 
 ### Tablet 640–1023
 
@@ -57,9 +57,10 @@ Semantic additions: `error #A43E35`, `warning #8A5A21`, `success #2F6A53`, `line
 ### Mobile < 640
 
 - True viewport, no bezel or fake status bar. Header is 64 px plus the 34 px context strip.
-- Catalog is two columns with 12 px gutters and 16 px page margins.
+- Catalog is two columns with 12 px gutters and 16 px page margins. It is the same `CatalogCard` in its frozen vertical variant: 4:3 media above identity/price/actions, not a second component.
 - Five customer destinations use the existing reviewed route set in an 82 px safe-area-aware bottom nav.
-- Detail is media-first; its purchase bar is fixed above the bottom nav and never covers inline status/error copy.
+- Wishlist discovery on mobile deliberately uses the existing `/account` Wishlist row and runtime count badge; do not add a sixth tab or duplicate route entry.
+- Detail is media-first; it has one Wishlist control beside identity. Its purchase bar contains only the Cart action and one `AddStatus` slot, is fixed above the bottom nav at normal text size, and never covers inline status/error copy.
 
 ## 6. Core components
 
@@ -74,7 +75,7 @@ Mist background, pine text: `비프로덕션 테스트 쇼핑 · 실제 청구�
 ### CatalogCard
 
 - Surface radius 14 px; 1 px line; no decorative shadow at rest.
-- Media is 4:3, explicitly pending, with sequence ledger edge.
+- Desktop media uses the accepted horizontal rail. Mobile grid media is the same card's 4:3 vertical variant, explicitly pending, with runtime-index ledger edge.
 - Detail link wraps only media, name, and price. Wishlist and cart remain sibling controls.
 - Wishlist is a 44 px icon button. Cart is a 44 px text action. Hover lifts by 2 px only when motion is allowed.
 - Name, price, and actions align to a common baseline; no discount or review slot exists.
@@ -82,9 +83,11 @@ Mist background, pine text: `비프로덕션 테스트 쇼핑 · 실제 청구�
 ### ProductDetail
 
 - Desktop: 7/5 media/content split. Mobile: stacked.
-- Order: context → media → identity → KRW price → wishlist/cart → status slot.
+- Order: context → media → identity + one Wishlist control → KRW price → availability → Cart action → `AddStatus`.
 - Media has no representational container. The pending label remains visible and is not alt text for a nonexistent image.
-- `AddStatus` occupies a stable block directly below the action: adding, persistent added + Cart link, generic error, or sold-out/unavailable.
+- `AddStatus` has exactly one DOM/live-region slot directly below the mobile purchase action: adding, persistent added + Cart link, or generic error. It never represents sold-out/unavailable; availability has its own product-state row above the purchase bar.
+- On Add error, focus returns to the Cart action. At 200% text zoom, the purchase bar loses fixed positioning and follows availability in normal document flow, with its single `AddStatus` slot immediately after the action.
+- The Wishlist control is not repeated inside the purchase bar; one component owns pressed state, optimistic rollback, and announcement.
 
 ### Cart and Checkout
 

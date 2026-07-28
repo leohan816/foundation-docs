@@ -1,6 +1,6 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="1440" height="900" viewBox="0 0 1440 900" role="img" aria-labelledby="title desc">
   <title id="title">COSMILE 현대 고객 스토어프론트 데스크톱 후보</title>
-  <desc id="desc">전화기 프레임 없는 1440×900 홈 화면. 편집형 소개와 실제 공개 스냅샷의 일곱 테스트 상품을 4개와 3개로 모두 표시한다.</desc>
+  <desc id="desc">전화기 프레임 없는 1440×900 홈 화면. 수량과 무관한 편집형 소개 뒤에 현재 공개 테스트 상품 전체를 반응형 그리드로 표시한다.</desc>
   <defs>
     <linearGradient id="paperGlow" x1="0" y1="0" x2="1" y2="1">
       <stop offset="0" stop-color="#F8F6F0"/>
@@ -65,7 +65,7 @@
     <circle cx="12" cy="25" r="2" fill="#24463C"/><circle cx="25" cy="25" r="2" fill="#24463C"/>
   </g>
   <circle cx="1341" cy="24" r="9" fill="#F15A35"/>
-  <text x="1341" y="28" text-anchor="middle" font-size="10" font-weight="800" class="white">0</text>
+  <text x="1341" y="28" text-anchor="middle" font-size="10" font-weight="800" class="white" data-bind="cartCount">0</text>
 
   <!-- Truth context, never promotional -->
   <rect y="82" width="1440" height="34" fill="#24463C"/>
@@ -75,9 +75,9 @@
 
   <!-- Editorial home lead -->
   <g transform="translate(64 142)">
-    <text x="0" y="18" class="label pine">CURRENT TEST COLLECTION · 07</text>
-    <text x="0" y="78" class="serif" font-size="50" font-weight="700">오늘 볼 수 있는</text>
-    <text x="0" y="136" class="serif" font-size="50" font-weight="700">일곱 가지.</text>
+    <text x="0" y="18" class="label pine">CURRENT TEST COLLECTION</text>
+    <text x="0" y="78" class="serif" font-size="50" font-weight="700">오늘 만나는</text>
+    <text x="0" y="136" class="serif" font-size="50" font-weight="700">테스트 컬렉션.</text>
     <text x="0" y="174" font-size="15" class="muted">현재 준비된 테스트 상품을 빠짐없이, 과장 없이 보여드려요.</text>
     <g transform="translate(0 192)">
       <rect width="142" height="38" rx="19" fill="#24463C"/>
@@ -90,10 +90,10 @@
   <g transform="translate(820 142)" filter="url(#softShadow)">
     <rect width="556" height="220" rx="20" fill="url(#heroMist)"/>
     <text x="28" y="34" class="utility pine" font-size="10">COMPLETE RETURNED SET</text>
-    <text x="28" y="104" class="serif pine" font-size="64" font-weight="700">07</text>
+    <text x="28" y="104" class="serif pine" font-size="64" font-weight="700" data-bind="catalog.length">07</text>
     <text x="29" y="130" class="small pine">현재 테스트 상품</text>
     <line x1="164" y1="28" x2="164" y2="192" stroke="#24463C" stroke-opacity=".20"/>
-    <g transform="translate(196 43)">
+    <g transform="translate(196 43)" data-repeat="catalog">
       <rect x="0" y="0" width="42" height="42" rx="9" fill="#FFFEFB" opacity=".88"/>
       <rect x="52" y="0" width="42" height="42" rx="9" fill="#FFFEFB" opacity=".88"/>
       <rect x="104" y="0" width="42" height="42" rx="9" fill="#FFFEFB" opacity=".88"/>
@@ -109,132 +109,132 @@
 
   <!-- Catalog heading -->
   <text x="64" y="410" class="serif" font-size="28" font-weight="700">테스트 상품 전체</text>
-  <text x="284" y="408" font-size="13" font-weight="700" class="muted">7개</text>
+  <text x="284" y="408" font-size="13" font-weight="700" class="muted" data-bind="catalog.length">7개</text>
   <text x="1376" y="408" text-anchor="end" class="small muted">이름과 가격은 현재 카탈로그 기준</text>
 
   <!-- Card 01 -->
-  <g transform="translate(64 430)">
+  <g transform="translate(64 430)" data-bind="catalog[0]" data-variant="desktop-horizontal">
     <rect width="312" height="194" rx="16" fill="#FFFEFB" stroke="#18211D" stroke-opacity=".13"/>
     <rect x="12" y="12" width="112" height="170" rx="12" fill="url(#mediaMist)"/>
     <rect x="22" y="24" width="3" height="26" rx="1.5" fill="#F15A35"/>
-    <text x="33" y="35" class="utility pine" font-size="9">01</text>
+    <text x="33" y="35" class="utility pine" font-size="9" data-bind="index + 1">01</text>
     <path d="M32 100h72M32 108h48" stroke="#24463C" stroke-opacity=".18" stroke-width="2" stroke-linecap="round"/>
     <text x="68" y="143" text-anchor="middle" font-size="11" font-weight="600" class="pine">이미지</text>
     <text x="68" y="159" text-anchor="middle" font-size="11" class="muted">준비 중</text>
-    <text x="142" y="52" class="name">비타유스</text>
-    <text x="142" y="73" class="name">아이백크림</text>
-    <text x="142" y="107" class="price">₩24,000</text>
+    <text x="142" y="52" class="name" data-bind="item.displayName">비타유스</text>
+    <text x="142" y="73" class="name" data-bind="item.displayName">아이백크림</text>
+    <text x="142" y="107" class="price" data-bind="formatKRW(item.price)">₩24,000</text>
     <circle cx="161" cy="151" r="18" fill="#FFFEFB" stroke="#24463C" stroke-opacity=".28"/>
     <path d="M153 147c0-5 7-7 8-1 1-6 8-4 8 1 0 5-8 10-8 10s-8-5-8-10z" fill="none" stroke="#24463C" stroke-width="1.5"/>
     <rect x="188" y="133" width="112" height="36" rx="18" fill="#F15A35"/>
-    <text x="244" y="156" text-anchor="middle" font-size="12" font-weight="700" class="white">장바구니 담기</text>
+    <text x="244" y="156" text-anchor="middle" font-size="12" font-weight="700">장바구니 담기</text>
   </g>
 
   <!-- Card 02 -->
-  <g transform="translate(392 430)">
+  <g transform="translate(392 430)" data-bind="catalog[1]" data-variant="desktop-horizontal">
     <rect width="312" height="194" rx="16" fill="#FFFEFB" stroke="#18211D" stroke-opacity=".13"/>
     <rect x="12" y="12" width="112" height="170" rx="12" fill="url(#mediaMist)"/>
     <rect x="22" y="24" width="3" height="26" rx="1.5" fill="#F15A35"/>
-    <text x="33" y="35" class="utility pine" font-size="9">02</text>
+    <text x="33" y="35" class="utility pine" font-size="9" data-bind="index + 1">02</text>
     <path d="M32 100h72M32 108h48" stroke="#24463C" stroke-opacity=".18" stroke-width="2" stroke-linecap="round"/>
     <text x="68" y="143" text-anchor="middle" font-size="11" font-weight="600" class="pine">이미지</text>
     <text x="68" y="159" text-anchor="middle" font-size="11" class="muted">준비 중</text>
-    <text x="142" y="52" class="name">V-PDRN 너리싱</text>
-    <text x="142" y="73" class="name">프렙 크림</text>
-    <text x="142" y="107" class="price">₩31,000</text>
+    <text x="142" y="52" class="name" data-bind="item.displayName">V-PDRN 너리싱</text>
+    <text x="142" y="73" class="name" data-bind="item.displayName">프렙 크림</text>
+    <text x="142" y="107" class="price" data-bind="formatKRW(item.price)">₩31,000</text>
     <circle cx="161" cy="151" r="18" fill="#FFFEFB" stroke="#24463C" stroke-opacity=".28"/>
     <path d="M153 147c0-5 7-7 8-1 1-6 8-4 8 1 0 5-8 10-8 10s-8-5-8-10z" fill="none" stroke="#24463C" stroke-width="1.5"/>
     <rect x="188" y="133" width="112" height="36" rx="18" fill="#F15A35"/>
-    <text x="244" y="156" text-anchor="middle" font-size="12" font-weight="700" class="white">장바구니 담기</text>
+    <text x="244" y="156" text-anchor="middle" font-size="12" font-weight="700">장바구니 담기</text>
   </g>
 
   <!-- Card 03 -->
-  <g transform="translate(720 430)">
+  <g transform="translate(720 430)" data-bind="catalog[2]" data-variant="desktop-horizontal">
     <rect width="312" height="194" rx="16" fill="#FFFEFB" stroke="#18211D" stroke-opacity=".13"/>
     <rect x="12" y="12" width="112" height="170" rx="12" fill="url(#mediaMist)"/>
     <rect x="22" y="24" width="3" height="26" rx="1.5" fill="#F15A35"/>
-    <text x="33" y="35" class="utility pine" font-size="9">03</text>
+    <text x="33" y="35" class="utility pine" font-size="9" data-bind="index + 1">03</text>
     <path d="M32 100h72M32 108h48" stroke="#24463C" stroke-opacity=".18" stroke-width="2" stroke-linecap="round"/>
     <text x="68" y="143" text-anchor="middle" font-size="11" font-weight="600" class="pine">이미지</text>
     <text x="68" y="159" text-anchor="middle" font-size="11" class="muted">준비 중</text>
-    <text x="142" y="52" class="name">퓨어 콜라겐</text>
-    <text x="142" y="73" class="name">필오프팩</text>
-    <text x="142" y="107" class="price">₩18,000</text>
+    <text x="142" y="52" class="name" data-bind="item.displayName">퓨어 콜라겐</text>
+    <text x="142" y="73" class="name" data-bind="item.displayName">필오프팩</text>
+    <text x="142" y="107" class="price" data-bind="formatKRW(item.price)">₩18,000</text>
     <circle cx="161" cy="151" r="18" fill="#FFFEFB" stroke="#24463C" stroke-opacity=".28"/>
     <path d="M153 147c0-5 7-7 8-1 1-6 8-4 8 1 0 5-8 10-8 10s-8-5-8-10z" fill="none" stroke="#24463C" stroke-width="1.5"/>
     <rect x="188" y="133" width="112" height="36" rx="18" fill="#F15A35"/>
-    <text x="244" y="156" text-anchor="middle" font-size="12" font-weight="700" class="white">장바구니 담기</text>
+    <text x="244" y="156" text-anchor="middle" font-size="12" font-weight="700">장바구니 담기</text>
   </g>
 
   <!-- Card 04 -->
-  <g transform="translate(1048 430)">
+  <g transform="translate(1048 430)" data-bind="catalog[3]" data-variant="desktop-horizontal">
     <rect width="312" height="194" rx="16" fill="#FFFEFB" stroke="#18211D" stroke-opacity=".13"/>
     <rect x="12" y="12" width="112" height="170" rx="12" fill="url(#mediaMist)"/>
     <rect x="22" y="24" width="3" height="26" rx="1.5" fill="#F15A35"/>
-    <text x="33" y="35" class="utility pine" font-size="9">04</text>
+    <text x="33" y="35" class="utility pine" font-size="9" data-bind="index + 1">04</text>
     <path d="M32 100h72M32 108h48" stroke="#24463C" stroke-opacity=".18" stroke-width="2" stroke-linecap="round"/>
     <text x="68" y="143" text-anchor="middle" font-size="11" font-weight="600" class="pine">이미지</text>
     <text x="68" y="159" text-anchor="middle" font-size="11" class="muted">준비 중</text>
-    <text x="142" y="52" class="name">멀티비타민</text>
-    <text x="142" y="73" class="name">듀얼 패드</text>
-    <text x="142" y="107" class="price">₩27,000</text>
+    <text x="142" y="52" class="name" data-bind="item.displayName">멀티비타민</text>
+    <text x="142" y="73" class="name" data-bind="item.displayName">듀얼 패드</text>
+    <text x="142" y="107" class="price" data-bind="formatKRW(item.price)">₩27,000</text>
     <circle cx="161" cy="151" r="18" fill="#FFFEFB" stroke="#24463C" stroke-opacity=".28"/>
     <path d="M153 147c0-5 7-7 8-1 1-6 8-4 8 1 0 5-8 10-8 10s-8-5-8-10z" fill="none" stroke="#24463C" stroke-width="1.5"/>
     <rect x="188" y="133" width="112" height="36" rx="18" fill="#F15A35"/>
-    <text x="244" y="156" text-anchor="middle" font-size="12" font-weight="700" class="white">장바구니 담기</text>
+    <text x="244" y="156" text-anchor="middle" font-size="12" font-weight="700">장바구니 담기</text>
   </g>
 
   <!-- Card 05 -->
-  <g transform="translate(64 640)">
+  <g transform="translate(64 640)" data-bind="catalog[4]" data-variant="desktop-horizontal">
     <rect width="312" height="194" rx="16" fill="#FFFEFB" stroke="#18211D" stroke-opacity=".13"/>
     <rect x="12" y="12" width="112" height="170" rx="12" fill="url(#mediaMist)"/>
     <rect x="22" y="24" width="3" height="26" rx="1.5" fill="#F15A35"/>
-    <text x="33" y="35" class="utility pine" font-size="9">05</text>
+    <text x="33" y="35" class="utility pine" font-size="9" data-bind="index + 1">05</text>
     <path d="M32 100h72M32 108h48" stroke="#24463C" stroke-opacity=".18" stroke-width="2" stroke-linecap="round"/>
     <text x="68" y="143" text-anchor="middle" font-size="11" font-weight="600" class="pine">이미지</text>
     <text x="68" y="159" text-anchor="middle" font-size="11" class="muted">준비 중</text>
-    <text x="142" y="62" class="name">토닝 세럼</text>
-    <text x="142" y="107" class="price">₩30,000</text>
+    <text x="142" y="62" class="name" data-bind="item.displayName">토닝 세럼</text>
+    <text x="142" y="107" class="price" data-bind="formatKRW(item.price)">₩30,000</text>
     <circle cx="161" cy="151" r="18" fill="#FFFEFB" stroke="#24463C" stroke-opacity=".28"/>
     <path d="M153 147c0-5 7-7 8-1 1-6 8-4 8 1 0 5-8 10-8 10s-8-5-8-10z" fill="none" stroke="#24463C" stroke-width="1.5"/>
     <rect x="188" y="133" width="112" height="36" rx="18" fill="#F15A35"/>
-    <text x="244" y="156" text-anchor="middle" font-size="12" font-weight="700" class="white">장바구니 담기</text>
+    <text x="244" y="156" text-anchor="middle" font-size="12" font-weight="700">장바구니 담기</text>
   </g>
 
   <!-- Card 06 -->
-  <g transform="translate(392 640)">
+  <g transform="translate(392 640)" data-bind="catalog[5]" data-variant="desktop-horizontal">
     <rect width="312" height="194" rx="16" fill="#FFFEFB" stroke="#18211D" stroke-opacity=".13"/>
     <rect x="12" y="12" width="112" height="170" rx="12" fill="url(#mediaMist)"/>
     <rect x="22" y="24" width="3" height="26" rx="1.5" fill="#F15A35"/>
-    <text x="33" y="35" class="utility pine" font-size="9">06</text>
+    <text x="33" y="35" class="utility pine" font-size="9" data-bind="index + 1">06</text>
     <path d="M32 100h72M32 108h48" stroke="#24463C" stroke-opacity=".18" stroke-width="2" stroke-linecap="round"/>
     <text x="68" y="143" text-anchor="middle" font-size="11" font-weight="600" class="pine">이미지</text>
     <text x="68" y="159" text-anchor="middle" font-size="11" class="muted">준비 중</text>
-    <text x="142" y="52" class="name">더블 글로우</text>
-    <text x="142" y="73" class="name">세럼</text>
-    <text x="142" y="107" class="price">₩37,000</text>
+    <text x="142" y="52" class="name" data-bind="item.displayName">더블 글로우</text>
+    <text x="142" y="73" class="name" data-bind="item.displayName">세럼</text>
+    <text x="142" y="107" class="price" data-bind="formatKRW(item.price)">₩37,000</text>
     <circle cx="161" cy="151" r="18" fill="#FFFEFB" stroke="#24463C" stroke-opacity=".28"/>
     <path d="M153 147c0-5 7-7 8-1 1-6 8-4 8 1 0 5-8 10-8 10s-8-5-8-10z" fill="none" stroke="#24463C" stroke-width="1.5"/>
     <rect x="188" y="133" width="112" height="36" rx="18" fill="#F15A35"/>
-    <text x="244" y="156" text-anchor="middle" font-size="12" font-weight="700" class="white">장바구니 담기</text>
+    <text x="244" y="156" text-anchor="middle" font-size="12" font-weight="700">장바구니 담기</text>
   </g>
 
   <!-- Card 07; the row ends here. There is deliberately no eighth card or reserved tile. -->
-  <g transform="translate(720 640)">
+  <g transform="translate(720 640)" data-bind="catalog[6]" data-variant="desktop-horizontal">
     <rect width="312" height="194" rx="16" fill="#FFFEFB" stroke="#18211D" stroke-opacity=".13"/>
     <rect x="12" y="12" width="112" height="170" rx="12" fill="url(#mediaMist)"/>
     <rect x="22" y="24" width="3" height="26" rx="1.5" fill="#F15A35"/>
-    <text x="33" y="35" class="utility pine" font-size="9">07</text>
+    <text x="33" y="35" class="utility pine" font-size="9" data-bind="index + 1">07</text>
     <path d="M32 100h72M32 108h48" stroke="#24463C" stroke-opacity=".18" stroke-width="2" stroke-linecap="round"/>
     <text x="68" y="143" text-anchor="middle" font-size="11" font-weight="600" class="pine">이미지</text>
     <text x="68" y="159" text-anchor="middle" font-size="11" class="muted">준비 중</text>
-    <text x="142" y="52" class="name">퍼플 톤업</text>
-    <text x="142" y="73" class="name">선스크린</text>
-    <text x="142" y="107" class="price">₩22,000</text>
+    <text x="142" y="52" class="name" data-bind="item.displayName">퍼플 톤업</text>
+    <text x="142" y="73" class="name" data-bind="item.displayName">선스크린</text>
+    <text x="142" y="107" class="price" data-bind="formatKRW(item.price)">₩22,000</text>
     <circle cx="161" cy="151" r="18" fill="#FFFEFB" stroke="#24463C" stroke-opacity=".28"/>
     <path d="M153 147c0-5 7-7 8-1 1-6 8-4 8 1 0 5-8 10-8 10s-8-5-8-10z" fill="none" stroke="#24463C" stroke-width="1.5"/>
     <rect x="188" y="133" width="112" height="36" rx="18" fill="#F15A35"/>
-    <text x="244" y="156" text-anchor="middle" font-size="12" font-weight="700" class="white">장바구니 담기</text>
+    <text x="244" y="156" text-anchor="middle" font-size="12" font-weight="700">장바구니 담기</text>
   </g>
 
   <line x1="64" y1="866" x2="1376" y2="866" stroke="#18211D" stroke-opacity=".12"/>
